@@ -1,7 +1,7 @@
 default_platform :ios
 
 lane :prebuild do
-    plist_name = '/VisheoApp/Visheo/Info.plist' 
+    plist_name = './VisheoApp/Visheo/Info.plist' 
     cocoapods(podfile: "VisheoApp")
     first_build_num = 0
     env_build_number = ENV['XCS_INTEGRATION_NUMBER']
