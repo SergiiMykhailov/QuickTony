@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F5A7BDD9A952420AB97BDB2 /* Pods_Visheo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */; };
 		B4B9D19A1FA8A52300CBD7DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B9D1991FA8A52300CBD7DB /* AppDelegate.swift */; };
 		B4B9D19C1FA8A52300CBD7DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B9D19B1FA8A52300CBD7DB /* ViewController.swift */; };
 		B4B9D19F1FA8A52300CBD7DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B9D19D1FA8A52300CBD7DB /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.release.xcconfig"; sourceTree = "<group>"; };
+		A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
 		B4B9D1961FA8A52300CBD7DB /* Visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B9D1991FA8A52300CBD7DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4B9D19B1FA8A52300CBD7DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5A7BDD9A952420AB97BDB2 /* Pods_Visheo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96EB3AB061448D793927EB4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B4B9D18D1FA8A52300CBD7DB = {
 			isa = PBXGroup;
 			children = (
 				B4B9D1981FA8A52300CBD7DB /* Visheo */,
 				B4B9D1971FA8A52300CBD7DB /* Products */,
+				CC7C1C17CFB809EE5564ADC0 /* Pods */,
+				96EB3AB061448D793927EB4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = Visheo;
 			sourceTree = "<group>";
 		};
+		CC7C1C17CFB809EE5564ADC0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */,
+				9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4B9D1A81FA8A52300CBD7DB /* Build configuration list for PBXNativeTarget "Visheo" */;
 			buildPhases = (
+				E8E3817E1590F42B3F36AE55 /* [CP] Check Pods Manifest.lock */,
 				B4B9D1921FA8A52300CBD7DB /* Sources */,
 				B4B9D1931FA8A52300CBD7DB /* Frameworks */,
 				B4B9D1941FA8A52300CBD7DB /* Resources */,
+				E93BDD87166AC91A93EBDEF6 /* [CP] Embed Pods Frameworks */,
+				7CBF36C8E795C858C5527222 /* [CP] Copy Pods Resources */,
+				B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytis stup */,
 			);
 			buildRules = (
 			);
@@ -130,6 +158,68 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CBF36C8E795C858C5527222 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytis stup */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Crashlytis stup";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f9edfee36e59c3f16c7050739bbfeb28125f15d9 9b5908df5162e17c4eaf46bb3b9b26f69c9b19256845a053289fac3d6ad29cab";
+		};
+		E8E3817E1590F42B3F36AE55 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E93BDD87166AC91A93EBDEF6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B4B9D1921FA8A52300CBD7DB /* Sources */ = {
@@ -211,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -262,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -272,13 +362,14 @@
 		};
 		B4B9D1A91FA8A52300CBD7DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4M6W632NJ7;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.olearis.Visheo;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -287,13 +378,14 @@
 		};
 		B4B9D1AA1FA8A52300CBD7DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4M6W632NJ7;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.olearis.Visheo;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
