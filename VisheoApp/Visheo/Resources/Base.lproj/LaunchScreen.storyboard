@@ -27,7 +27,7 @@
                                 <rect key="frame" x="96.5" y="171.5" width="182" height="204"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The most touching greeting card in the world" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lu-vY-HTM">
-                                <rect key="frame" x="83" y="579.5" width="210" height="47.5"/>
+                                <rect key="frame" x="83" y="585" width="210" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="210" id="Xaj-qa-kw5"/>
                                 </constraints>

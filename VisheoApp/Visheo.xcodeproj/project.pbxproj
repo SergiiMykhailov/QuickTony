@@ -16,6 +16,9 @@
 		B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC41FA9E650000BB33B /* Roboto-Bold.ttf */; };
 		B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC51FA9E650000BB33B /* Roboto-Medium.ttf */; };
 		B48AAAC91FA9E650000BB33B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC61FA9E650000BB33B /* Roboto-Regular.ttf */; };
+		B48AAACC1FA9F623000BB33B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAACB1FA9F623000BB33B /* OnboardingViewController.swift */; };
+		B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAACF1FAA03CC000BB33B /* RootViewControllerSegue.swift */; };
+		B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAD11FAA03CC000BB33B /* UIView+LayerInspectable.swift */; };
 		B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,9 @@
 		B48AAAC41FA9E650000BB33B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		B48AAAC51FA9E650000BB33B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		B48AAAC61FA9E650000BB33B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		B48AAACB1FA9F623000BB33B /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B48AAACF1FAA03CC000BB33B /* RootViewControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerSegue.swift; sourceTree = "<group>"; };
+		B48AAAD11FAA03CC000BB33B /* UIView+LayerInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayerInspectable.swift"; sourceTree = "<group>"; };
 		B4B9D1961FA8A52300CBD7DB /* Visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B9D1A51FA8A52300CBD7DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -59,6 +65,8 @@
 		B48AAAB41FA9E574000BB33B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B48AAACD1FAA03CC000BB33B /* Utilities */,
+				B48AAACA1FA9F5D0000BB33B /* Onboarding */,
 				B48AAAB51FA9E574000BB33B /* AppDelegate.swift */,
 				B48AAAB61FA9E574000BB33B /* ViewController.swift */,
 			);
@@ -93,6 +101,39 @@
 				B48AAAC61FA9E650000BB33B /* Roboto-Regular.ttf */,
 			);
 			path = Roboto;
+			sourceTree = "<group>";
+		};
+		B48AAACA1FA9F5D0000BB33B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B48AAACB1FA9F623000BB33B /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B48AAACD1FAA03CC000BB33B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B48AAACE1FAA03CC000BB33B /* Segues */,
+				B48AAAD01FAA03CC000BB33B /* UIKitExtensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B48AAACE1FAA03CC000BB33B /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				B48AAACF1FAA03CC000BB33B /* RootViewControllerSegue.swift */,
+			);
+			path = Segues;
+			sourceTree = "<group>";
+		};
+		B48AAAD01FAA03CC000BB33B /* UIKitExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				B48AAAD11FAA03CC000BB33B /* UIView+LayerInspectable.swift */,
+			);
+			path = UIKitExtensions;
 			sourceTree = "<group>";
 		};
 		B4B9D18D1FA8A52300CBD7DB = {
@@ -275,8 +316,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
+				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
 				B48AAAB81FA9E574000BB33B /* ViewController.swift in Sources */,
+				B48AAACC1FA9F623000BB33B /* OnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +377,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
