@@ -1,7 +1,7 @@
 default_platform :ios
 
 lane :prebuild do
-    plist_name = './VisheoApp/Visheo/Info.plist' 
+    plist_name = './VisheoApp/Visheo/Info.plist'
     cocoapods(podfile: "VisheoApp")
     first_build_num = 0
     env_build_number = ENV['XCS_INTEGRATION_NUMBER']
@@ -22,7 +22,8 @@ lane :postbuild do
         scheme: scheme_name,
         skip_build_archive: true,
         archive_path: ENV['XCS_ARCHIVE'],
-        codesigning_identity: 'iPhone Distribution: Olearis TOV (4M6W632NJ7)')
+        codesigning_identity: 'iPhone Distribution: Olearis TOV (4M6W632NJ7)',
+        export_xcargs: "-allowProvisioningUpdates")
 
     pilot(
         ipa: ipa_name,

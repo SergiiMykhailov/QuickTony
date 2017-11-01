@@ -53,10 +53,10 @@
 		B4B9D18D1FA8A52300CBD7DB = {
 			isa = PBXGroup;
 			children = (
+				96EB3AB061448D793927EB4A /* Frameworks */,
 				B4B9D1981FA8A52300CBD7DB /* Visheo */,
 				B4B9D1971FA8A52300CBD7DB /* Products */,
 				CC7C1C17CFB809EE5564ADC0 /* Pods */,
-				96EB3AB061448D793927EB4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
