@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
         
+        if let launchProxyController = self.window?.rootViewController as? LaunchProxyViewController {
+            let launchProxyRouter = DefaultLaunchProxyRouter()
+            launchProxyRouter.start(with: launchProxyController)
+        }
+        
         return true
     }
 
