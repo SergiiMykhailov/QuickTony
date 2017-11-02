@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3F5A7BDD9A952420AB97BDB2 /* Pods_Visheo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */; };
+		B43748641FAB57CF0098B131 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748631FAB57CF0098B131 /* AuthorizationViewController.swift */; };
+		B43748681FAB57F50098B131 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748671FAB57F50098B131 /* AuthorizationRouter.swift */; };
+		B437486A1FAB580D0098B131 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748691FAB580D0098B131 /* AuthorizationViewModel.swift */; };
 		B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB51FA9E574000BB33B /* AppDelegate.swift */; };
 		B48AAAB81FA9E574000BB33B /* LaunchProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB61FA9E574000BB33B /* LaunchProxyViewController.swift */; };
 		B48AAABF1FA9E58F000BB33B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABA1FA9E58F000BB33B /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 		60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.release.xcconfig"; sourceTree = "<group>"; };
 		A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
+		B43748631FAB57CF0098B131 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		B43748671FAB57F50098B131 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
+		B43748691FAB580D0098B131 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		B48AAAB51FA9E574000BB33B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B48AAAB61FA9E574000BB33B /* LaunchProxyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchProxyViewController.swift; sourceTree = "<group>"; };
 		B48AAABA1FA9E58F000BB33B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,9 +84,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B43748621FAB57AF0098B131 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				B43748661FAB57DA0098B131 /* ViewModel */,
+				B43748651FAB57D30098B131 /* Router */,
+				B43748631FAB57CF0098B131 /* AuthorizationViewController.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		B43748651FAB57D30098B131 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B43748671FAB57F50098B131 /* AuthorizationRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B43748661FAB57DA0098B131 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B43748691FAB580D0098B131 /* AuthorizationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B48AAAB41FA9E574000BB33B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B43748621FAB57AF0098B131 /* Authorization */,
 				B4DA3E7B1FAA3C0300D8F2F9 /* Services */,
 				B48AAAD51FAA0AC4000BB33B /* BaseRouting */,
 				B48AAAD41FAA0608000BB33B /* LaunchProxy */,
@@ -397,13 +430,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B43748681FAB57F50098B131 /* AuthorizationRouter.swift in Sources */,
 				B48AAADF1FAA0F98000BB33B /* LaunchProxyViewModel.swift in Sources */,
 				B48AAADC1FAA0BC5000BB33B /* LaunchProxyRouter.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
+				B43748641FAB57CF0098B131 /* AuthorizationViewController.swift in Sources */,
 				B48AAAE21FAA38C7000BB33B /* OnboardingRouter.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
+				B437486A1FAB580D0098B131 /* AuthorizationViewModel.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
 				B4DA3E7A1FAA3AF000D8F2F9 /* OnboardingViewModel.swift in Sources */,
 				B48AAAB81FA9E574000BB33B /* LaunchProxyViewController.swift in Sources */,

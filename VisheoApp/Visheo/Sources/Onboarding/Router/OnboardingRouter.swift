@@ -21,7 +21,7 @@ class VisheoOnboardingRouter : OnboardingRouter {
     
     let dependencies: RouterDependencies
     private(set) weak var controller: UIViewController?
-    private(set) weak var viewModel: VisheoOnboardingViewModel?
+    private(set) weak var viewModel: OnboardingViewModel?
     
     public init(dependencies: RouterDependencies) {
         self.dependencies = dependencies

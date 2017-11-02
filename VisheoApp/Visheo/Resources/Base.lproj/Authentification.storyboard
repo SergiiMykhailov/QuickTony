@@ -6,9 +6,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="Q8O-pd-l3u">
@@ -18,17 +27,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x95-MI-4Tk">
-                                <rect key="frame" x="142.5" y="315" width="90.5" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <nil key="textColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomePic" translatesAutoresizingMaskIntoConstraints="NO" id="fRm-Ar-x2G">
+                                <rect key="frame" x="19" y="29" width="337" height="337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fRm-Ar-x2G" secondAttribute="height" multiplier="1:1" id="bkZ-Qt-ydU"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cl-C3-lQA">
+                                <rect key="frame" x="19" y="587" width="337" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Xbq-vK-AUQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Start without registration">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxr-0m-Cd1">
+                                <rect key="frame" x="140" y="381" width="95" height="24"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-aV-LR4">
+                                <rect key="frame" x="117.5" y="423" width="60" height="60"/>
+                                <state key="normal" image="facebook"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBX-BJ-M18">
+                                <rect key="frame" x="197.5" y="423" width="60" height="60"/>
+                                <state key="normal" image="facebook"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEG-HI-xW5">
+                                <rect key="frame" x="120.5" y="491" width="53" height="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYC-xN-UXT">
+                                <rect key="frame" x="208.5" y="491" width="38.5" height="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtD-zk-jvZ" userLabel="Separator">
+                                <rect key="frame" x="129.5" y="528" width="116" height="1"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="jiM-by-Htp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="x95-MI-4Tk" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" id="cDf-N4-37r"/>
-                            <constraint firstItem="x95-MI-4Tk" firstAttribute="centerY" secondItem="Qmw-ge-h1G" secondAttribute="centerY" id="nMg-0r-APm"/>
+                            <constraint firstItem="Ihp-aV-LR4" firstAttribute="top" secondItem="fxr-0m-Cd1" secondAttribute="bottom" constant="18" id="0kF-2B-Jnd"/>
+                            <constraint firstItem="fxr-0m-Cd1" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" id="4Md-o9-RhP"/>
+                            <constraint firstItem="dtD-zk-jvZ" firstAttribute="top" secondItem="lEG-HI-xW5" secondAttribute="bottom" constant="21" id="55c-p8-1p3"/>
+                            <constraint firstItem="lEG-HI-xW5" firstAttribute="centerX" secondItem="Ihp-aV-LR4" secondAttribute="centerX" id="5A2-n7-oTc"/>
+                            <constraint firstItem="fRm-Ar-x2G" firstAttribute="top" secondItem="yff-uO-Qij" secondAttribute="top" constant="9" id="Auv-GA-sBN"/>
+                            <constraint firstItem="RYC-xN-UXT" firstAttribute="centerX" secondItem="uBX-BJ-M18" secondAttribute="centerX" id="DH8-O5-VHU"/>
+                            <constraint firstItem="uBX-BJ-M18" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" constant="40" id="LZT-PC-Ins"/>
+                            <constraint firstItem="Ihp-aV-LR4" firstAttribute="centerX" secondItem="yff-uO-Qij" secondAttribute="centerX" constant="-40" id="PVO-zU-QSv"/>
+                            <constraint firstItem="yff-uO-Qij" firstAttribute="bottom" secondItem="6Cl-C3-lQA" secondAttribute="bottom" constant="20" id="S79-IX-Of5"/>
+                            <constraint firstItem="6Cl-C3-lQA" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" id="a8T-Er-19a"/>
+                            <constraint firstItem="RYC-xN-UXT" firstAttribute="top" secondItem="uBX-BJ-M18" secondAttribute="bottom" constant="8" id="etg-9z-Lxu"/>
+                            <constraint firstItem="6Cl-C3-lQA" firstAttribute="width" secondItem="fRm-Ar-x2G" secondAttribute="width" id="g6R-9E-BUC"/>
+                            <constraint firstItem="dtD-zk-jvZ" firstAttribute="trailing" secondItem="uBX-BJ-M18" secondAttribute="trailing" constant="-12" id="h9K-gJ-291"/>
+                            <constraint firstItem="yff-uO-Qij" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fRm-Ar-x2G" secondAttribute="trailing" constant="19" id="lt5-wp-fA4"/>
+                            <constraint firstItem="fRm-Ar-x2G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yff-uO-Qij" secondAttribute="leading" constant="19" id="nHx-gZ-x6D"/>
+                            <constraint firstItem="uBX-BJ-M18" firstAttribute="top" secondItem="fxr-0m-Cd1" secondAttribute="bottom" constant="18" id="njI-ko-1MC"/>
+                            <constraint firstItem="fRm-Ar-x2G" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" id="tCS-wc-E8g"/>
+                            <constraint firstItem="dtD-zk-jvZ" firstAttribute="leading" secondItem="Ihp-aV-LR4" secondAttribute="leading" constant="12" id="uoI-ZR-4S2"/>
+                            <constraint firstItem="fxr-0m-Cd1" firstAttribute="top" secondItem="fRm-Ar-x2G" secondAttribute="bottom" constant="15" id="vrx-oB-G2V"/>
+                            <constraint firstItem="lEG-HI-xW5" firstAttribute="top" secondItem="Ihp-aV-LR4" secondAttribute="bottom" constant="8" id="xMM-4a-FKq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yff-uO-Qij"/>
                     </view>
@@ -38,4 +114,8 @@
             <point key="canvasLocation" x="-583.20000000000005" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="facebook" width="60" height="60"/>
+        <image name="welcomePic" width="337" height="337"/>
+    </resources>
 </document>
