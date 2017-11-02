@@ -32,10 +32,19 @@
                     </view>
                     <connections>
                         <segue destination="H4H-G1-GP2" kind="presentation" identifier="showOnboarding" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="Csq-Li-SFc"/>
+                        <segue destination="0i1-p3-K6d" kind="custom" identifier="showLogin" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="gRp-jy-M3T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Authentification-->
+        <scene sceneID="Dmh-da-xMK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authentification" id="0i1-p3-K6d" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lso-yR-4r3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1874" y="51"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="iHp-Kz-Hv6">
@@ -146,6 +155,9 @@
                                                                 <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="gotItPressed:" destination="H4H-G1-GP2" eventType="touchUpInside" id="d5g-HT-Za5"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -215,11 +227,12 @@
                     </view>
                     <connections>
                         <outlet property="pageControl" destination="A5l-y7-Tr1" id="AIf-5h-EyJ"/>
+                        <segue destination="0i1-p3-K6d" kind="custom" identifier="showLogin" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="iCM-Od-qFn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bo7-5Q-nXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669.5999999999999" y="29.23538230884558"/>
+            <point key="canvasLocation" x="1033" y="500"/>
         </scene>
     </scenes>
     <resources>
@@ -227,4 +240,7 @@
         <image name="onboarding2" width="375" height="335"/>
         <image name="onboarding3" width="375" height="335"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iCM-Od-qFn"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -7,7 +7,7 @@
 import UIKit
 
 protocol FlowRouter: class {
-//    var dependencies: RouterDependencies { get }
+    var dependencies: RouterDependencies { get }
     func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
 }
@@ -22,5 +22,6 @@ extension FlowRouter {
     }
 }
 
-//struct RouterDependencies {
-//}
+struct RouterDependencies {
+    let appStateService : AppStateService
+}

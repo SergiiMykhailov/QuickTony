@@ -23,7 +23,11 @@
 		B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAD71FAA0AE2000BB33B /* Routing.swift */; };
 		B48AAADC1FAA0BC5000BB33B /* LaunchProxyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAADB1FAA0BC5000BB33B /* LaunchProxyRouter.swift */; };
 		B48AAADF1FAA0F98000BB33B /* LaunchProxyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAADE1FAA0F98000BB33B /* LaunchProxyViewModel.swift */; };
+		B48AAAE21FAA38C7000BB33B /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAE11FAA38C7000BB33B /* OnboardingRouter.swift */; };
 		B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */; };
+		B4CFB7711FAB4A7900D6E73A /* Authentification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */; };
+		B4DA3E7A1FAA3AF000D8F2F9 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA3E791FAA3AF000D8F2F9 /* OnboardingViewModel.swift */; };
+		B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,9 +49,13 @@
 		B48AAAD71FAA0AE2000BB33B /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		B48AAADB1FAA0BC5000BB33B /* LaunchProxyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchProxyRouter.swift; sourceTree = "<group>"; };
 		B48AAADE1FAA0F98000BB33B /* LaunchProxyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchProxyViewModel.swift; sourceTree = "<group>"; };
+		B48AAAE11FAA38C7000BB33B /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		B4B9D1961FA8A52300CBD7DB /* Visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B9D1A51FA8A52300CBD7DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B4CFB7701FAB4A7900D6E73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentification.storyboard; sourceTree = "<group>"; };
+		B4DA3E791FAA3AF000D8F2F9 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,7 @@
 		B48AAAB41FA9E574000BB33B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B4DA3E7B1FAA3C0300D8F2F9 /* Services */,
 				B48AAAD51FAA0AC4000BB33B /* BaseRouting */,
 				B48AAAD41FAA0608000BB33B /* LaunchProxy */,
 				B48AAACD1FAA03CC000BB33B /* Utilities */,
@@ -89,6 +98,7 @@
 				B48AAABA1FA9E58F000BB33B /* Assets.xcassets */,
 				B48AAABB1FA9E58F000BB33B /* LaunchScreen.storyboard */,
 				B48AAABD1FA9E58F000BB33B /* Main.storyboard */,
+				B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */,
 			);
 			name = Resources;
 			path = Visheo/Resources;
@@ -115,6 +125,8 @@
 		B48AAACA1FA9F5D0000BB33B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				B48AAAE31FAA394B000BB33B /* ViewModels */,
+				B48AAAE01FAA38A7000BB33B /* Router */,
 				B48AAACB1FA9F623000BB33B /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
@@ -180,6 +192,22 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		B48AAAE01FAA38A7000BB33B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B48AAAE11FAA38C7000BB33B /* OnboardingRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B48AAAE31FAA394B000BB33B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA3E791FAA3AF000D8F2F9 /* OnboardingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		B4B9D18D1FA8A52300CBD7DB = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +235,14 @@
 				B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */,
 			);
 			path = Visheo;
+			sourceTree = "<group>";
+		};
+		B4DA3E7B1FAA3C0300D8F2F9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CC7C1C17CFB809EE5564ADC0 /* Pods */ = {
@@ -282,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B48AAAC01FA9E58F000BB33B /* LaunchScreen.storyboard in Resources */,
+				B4CFB7711FAB4A7900D6E73A /* Authentification.storyboard in Resources */,
 				B48AAAC91FA9E650000BB33B /* Roboto-Regular.ttf in Resources */,
 				B48AAABF1FA9E58F000BB33B /* Assets.xcassets in Resources */,
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
@@ -365,10 +402,13 @@
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
+				B48AAAE21FAA38C7000BB33B /* OnboardingRouter.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
+				B4DA3E7A1FAA3AF000D8F2F9 /* OnboardingViewModel.swift in Sources */,
 				B48AAAB81FA9E574000BB33B /* LaunchProxyViewController.swift in Sources */,
 				B48AAACC1FA9F623000BB33B /* OnboardingViewController.swift in Sources */,
+				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +429,14 @@
 				B48AAABE1FA9E58F000BB33B /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4CFB7701FAB4A7900D6E73A /* Base */,
+			);
+			name = Authentification.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

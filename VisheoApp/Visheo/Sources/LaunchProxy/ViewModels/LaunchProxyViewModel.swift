@@ -8,20 +8,24 @@
 
 import Foundation
 
-class LaunchProxyViewModel {
-    private static let onboardingShownKey = "OnboardingScreenWasShown"
-    
-    private let userDefaults : UserDefaults
+protocol LaunchProxyViewModel : class {
+    func launch()
+}
+
+class VisheoLaunchProxyViewModel : LaunchProxyViewModel {
+    private let appState : AppStateService
     
     weak var router: LaunchProxyRouter?
     
-    init(userDefaults: UserDefaults) {
-        self.userDefaults = userDefaults
+    init(appState: AppStateService) {
+        self.appState = appState
     }
     
     func launch() {
-        if !userDefaults.bool(forKey: LaunchProxyViewModel.onboardingShownKey) {
+        if appState.shouldShowOnboarding {
             router?.showOnboarding()
+        } else {
+            router?.showLogin()
         }
     }
 }

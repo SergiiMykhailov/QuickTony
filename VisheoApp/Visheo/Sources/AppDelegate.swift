@@ -23,10 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         if let launchProxyController = self.window?.rootViewController as? LaunchProxyViewController {
-            let launchProxyRouter = DefaultLaunchProxyRouter()
+            
+            let appState = VisheoAppStateService()
+            let dependencies = RouterDependencies(appStateService: appState)
+            let launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies)
             launchProxyRouter.start(with: launchProxyController)
         }
-        
         return true
     }
 
