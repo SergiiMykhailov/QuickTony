@@ -69,7 +69,7 @@
                                                             <constraint firstAttribute="width" secondItem="JDK-Vd-kEv" secondAttribute="height" multiplier="75:67" id="8Y4-fw-RdD"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXx-OS-CWP">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXx-OS-CWP">
                                                         <rect key="frame" x="66" y="447" width="243" height="47"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="243" id="7QV-oO-AqQ"/>
@@ -194,6 +194,7 @@
                                     <constraint firstAttribute="trailing" secondItem="lcs-9R-bTB" secondAttribute="trailing" id="feI-CA-cPl"/>
                                     <constraint firstItem="lcs-9R-bTB" firstAttribute="top" secondItem="ZWD-Wu-RMd" secondAttribute="top" id="kHo-ZS-W66"/>
                                 </constraints>
+                                <viewLayoutGuide key="safeArea" id="rZW-7x-vF7"/>
                                 <connections>
                                     <outlet property="delegate" destination="H4H-G1-GP2" id="FDF-a1-PJ8"/>
                                 </connections>
@@ -213,7 +214,8 @@
                             <constraint firstItem="A5l-y7-Tr1" firstAttribute="centerX" secondItem="27c-L2-qbc" secondAttribute="centerX" id="MF8-jd-0jf"/>
                             <constraint firstItem="0rJ-fO-h6i" firstAttribute="height" secondItem="27c-L2-qbc" secondAttribute="height" id="MFv-Lh-c2C"/>
                             <constraint firstItem="UYS-tL-1aw" firstAttribute="width" secondItem="27c-L2-qbc" secondAttribute="width" id="NvM-XD-FcM"/>
-                            <constraint firstItem="ukI-9a-If0" firstAttribute="bottom" secondItem="A5l-y7-Tr1" secondAttribute="bottom" constant="105" id="TC4-KY-7wz"/>
+                            <constraint firstItem="ukI-9a-If0" firstAttribute="bottom" secondItem="A5l-y7-Tr1" secondAttribute="bottom" priority="750" constant="105" id="TC4-KY-7wz"/>
+                            <constraint firstItem="A5l-y7-Tr1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gXx-OS-CWP" secondAttribute="bottom" constant="20" id="Tcu-Pj-Kta"/>
                             <constraint firstItem="gpR-Cr-cJd" firstAttribute="width" secondItem="27c-L2-qbc" secondAttribute="width" id="XyO-Qr-g0u"/>
                             <constraint firstItem="lcs-9R-bTB" firstAttribute="height" secondItem="27c-L2-qbc" secondAttribute="height" id="eMd-hi-onq"/>
                             <constraint firstItem="ZWD-Wu-RMd" firstAttribute="bottom" secondItem="ukI-9a-If0" secondAttribute="bottom" id="gdh-VZ-LTk"/>
