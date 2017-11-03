@@ -5,4 +5,13 @@ target 'Visheo' do
   
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  
+  pod 'GoogleSignIn'
+  
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
+  
+  pod 'MBProgressHUD'
 end

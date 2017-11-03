@@ -40,5 +40,21 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate, RouterPr
     @IBAction func gotItPressed(_ sender: Any) {
         viewModel.onBoardingSeen()
     }
+}
+
+extension OnboardingViewController {
+    //MARK: - Routing
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if router.shouldPerformSegue(withIdentifier: identifier, sender: sender) == false {
+            return false
+        }
+        
+        return super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        router.prepare(for: segue, sender: sender)
+    }
 }

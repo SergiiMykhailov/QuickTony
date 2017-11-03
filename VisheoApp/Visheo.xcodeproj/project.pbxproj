@@ -15,7 +15,7 @@
 		B48AAAB81FA9E574000BB33B /* LaunchProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB61FA9E574000BB33B /* LaunchProxyViewController.swift */; };
 		B48AAABF1FA9E58F000BB33B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABA1FA9E58F000BB33B /* Assets.xcassets */; };
 		B48AAAC01FA9E58F000BB33B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABB1FA9E58F000BB33B /* LaunchScreen.storyboard */; };
-		B48AAAC11FA9E58F000BB33B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABD1FA9E58F000BB33B /* Main.storyboard */; };
+		B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABD1FA9E58F000BB33B /* LaunchProxy.storyboard */; };
 		B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC41FA9E650000BB33B /* Roboto-Bold.ttf */; };
 		B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC51FA9E650000BB33B /* Roboto-Medium.ttf */; };
 		B48AAAC91FA9E650000BB33B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC61FA9E650000BB33B /* Roboto-Regular.ttf */; };
@@ -27,6 +27,9 @@
 		B48AAADC1FAA0BC5000BB33B /* LaunchProxyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAADB1FAA0BC5000BB33B /* LaunchProxyRouter.swift */; };
 		B48AAADF1FAA0F98000BB33B /* LaunchProxyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAADE1FAA0F98000BB33B /* LaunchProxyViewModel.swift */; };
 		B48AAAE21FAA38C7000BB33B /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAE11FAA38C7000BB33B /* OnboardingRouter.swift */; };
+		B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */; };
+		B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A79CEF1FAC927200C208CF /* Main.storyboard */; };
+		B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */; };
 		B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */; };
 		B4CFB7711FAB4A7900D6E73A /* Authentification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */; };
 		B4DA3E7A1FAA3AF000D8F2F9 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA3E791FAA3AF000D8F2F9 /* OnboardingViewModel.swift */; };
@@ -44,7 +47,7 @@
 		B48AAAB61FA9E574000BB33B /* LaunchProxyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchProxyViewController.swift; sourceTree = "<group>"; };
 		B48AAABA1FA9E58F000BB33B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B48AAABC1FA9E58F000BB33B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B48AAABE1FA9E58F000BB33B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B48AAABE1FA9E58F000BB33B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchProxy.storyboard; sourceTree = "<group>"; };
 		B48AAAC41FA9E650000BB33B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		B48AAAC51FA9E650000BB33B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		B48AAAC61FA9E650000BB33B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -56,6 +59,10 @@
 		B48AAADB1FAA0BC5000BB33B /* LaunchProxyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchProxyRouter.swift; sourceTree = "<group>"; };
 		B48AAADE1FAA0F98000BB33B /* LaunchProxyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchProxyViewModel.swift; sourceTree = "<group>"; };
 		B48AAAE11FAA38C7000BB33B /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
+		B4A79CE91FAB82D500C208CF /* Visheo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Visheo-Bridging-Header.h"; sourceTree = "<group>"; };
+		B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		B4A79CF01FAC927200C208CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		B4B9D1961FA8A52300CBD7DB /* Visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B9D1A51FA8A52300CBD7DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -120,6 +127,7 @@
 				B48AAACD1FAA03CC000BB33B /* Utilities */,
 				B48AAACA1FA9F5D0000BB33B /* Onboarding */,
 				B48AAAB51FA9E574000BB33B /* AppDelegate.swift */,
+				B4A79CE91FAB82D500C208CF /* Visheo-Bridging-Header.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -130,8 +138,9 @@
 				B48AAAC21FA9E650000BB33B /* Fonts */,
 				B48AAABA1FA9E58F000BB33B /* Assets.xcassets */,
 				B48AAABB1FA9E58F000BB33B /* LaunchScreen.storyboard */,
-				B48AAABD1FA9E58F000BB33B /* Main.storyboard */,
+				B48AAABD1FA9E58F000BB33B /* LaunchProxy.storyboard */,
 				B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */,
+				B4A79CEF1FAC927200C208CF /* Main.storyboard */,
 			);
 			name = Resources;
 			path = Visheo/Resources;
@@ -185,6 +194,7 @@
 		B48AAAD01FAA03CC000BB33B /* UIKitExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */,
 				B48AAAD11FAA03CC000BB33B /* UIView+LayerInspectable.swift */,
 			);
 			path = UIKitExtensions;
@@ -274,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */,
+				B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -323,6 +334,7 @@
 				TargetAttributes = {
 					B4B9D1951FA8A52300CBD7DB = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -356,8 +368,9 @@
 				B48AAABF1FA9E58F000BB33B /* Assets.xcassets in Resources */,
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
+				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
 				B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */,
-				B48AAAC11FA9E58F000BB33B /* Main.storyboard in Resources */,
+				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,8 +446,10 @@
 				B43748681FAB57F50098B131 /* AuthorizationRouter.swift in Sources */,
 				B48AAADF1FAA0F98000BB33B /* LaunchProxyViewModel.swift in Sources */,
 				B48AAADC1FAA0BC5000BB33B /* LaunchProxyRouter.swift in Sources */,
+				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
+				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
 				B43748641FAB57CF0098B131 /* AuthorizationViewController.swift in Sources */,
 				B48AAAE21FAA38C7000BB33B /* OnboardingRouter.swift in Sources */,
@@ -459,10 +474,18 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		B48AAABD1FA9E58F000BB33B /* Main.storyboard */ = {
+		B48AAABD1FA9E58F000BB33B /* LaunchProxy.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B48AAABE1FA9E58F000BB33B /* Base */,
+			);
+			name = LaunchProxy.storyboard;
+			sourceTree = "<group>";
+		};
+		B4A79CEF1FAC927200C208CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4A79CF01FAC927200C208CF /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -590,12 +613,15 @@
 			baseConfigurationReference = A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4M6W632NJ7;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Visheo/Sources/Visheo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -606,12 +632,14 @@
 			baseConfigurationReference = 9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4M6W632NJ7;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Visheo/Sources/Visheo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

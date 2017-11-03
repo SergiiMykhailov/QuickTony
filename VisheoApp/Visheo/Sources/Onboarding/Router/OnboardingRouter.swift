@@ -36,8 +36,16 @@ class VisheoOnboardingRouter : OnboardingRouter {
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let _ = SegueList(segue: segue) else {
+        guard let segueList = SegueList(segue: segue) else {
             return
+        }
+        switch segueList {
+        case .showLogin:
+            let loginController = segue.destination as! AuthorizationViewController
+            let router = VisheoAuthorizationRouter(dependencies: dependencies)
+            router.start(with: loginController)
+        default:
+            break
         }
     }
 }

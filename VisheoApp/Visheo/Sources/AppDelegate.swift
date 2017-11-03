@@ -10,26 +10,38 @@ import UIKit
 import Fabric
 import Crashlytics
 import Firebase
+import GoogleSignIn
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        if let launchProxyController = self.window?.rootViewController as? LaunchProxyViewController {
+        if let launchProxyController = self.window?.rootViewController as? LaunchProxyViewController {            
+            let appState     = VisheoAppStateService()
+            let authService  = VisheoAuthorizationService()
+            let dependencies = RouterDependencies(appStateService: appState, authorizationService: authService)
             
-            let appState = VisheoAppStateService()
-            let dependencies = RouterDependencies(appStateService: appState)
             let launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies)
             launchProxyRouter.start(with: launchProxyController)
         }
+    
         return true
+    }
+
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let facebookHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        let googleHandled   = GIDSignIn.sharedInstance().handle(url,
+                                                              sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
+                                                              annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        return facebookHandled || googleHandled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

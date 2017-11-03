@@ -49,6 +49,10 @@ class DefaultLaunchProxyRouter : LaunchProxyRouter {
             let onboardingController = segue.destination as! OnboardingViewController            
             let router    = VisheoOnboardingRouter(dependencies: dependencies)
             router.start(with: onboardingController)
+        case .showLogin:
+            let loginController = segue.destination as! AuthorizationViewController
+            let router = VisheoAuthorizationRouter(dependencies: dependencies)
+            router.start(with: loginController)
         default:
             break
         }
