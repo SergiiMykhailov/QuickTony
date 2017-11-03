@@ -30,7 +30,7 @@ class DefaultLaunchProxyRouter : LaunchProxyRouter {
     }
     
     func start(with viewController: LaunchProxyViewController) {
-        let vm = VisheoLaunchProxyViewModel(appState: dependencies.appStateService)
+        let vm = VisheoLaunchProxyViewModel(appState: dependencies.appStateService, authService: dependencies.authorizationService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -65,6 +65,7 @@ extension DefaultLaunchProxyRouter {
     }
     
     func showMainScreen() {
+        controller?.performSegue(SegueList.showMainScreen, sender: nil)
     }
     
     func showOnboarding() {

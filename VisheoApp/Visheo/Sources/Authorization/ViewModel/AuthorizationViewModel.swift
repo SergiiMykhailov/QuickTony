@@ -11,6 +11,7 @@ import UIKit
 protocol AuthorizationViewModel : class {
     func loginWithGoogle()
     func loginWithFacebook()
+    func loginAsAnonymous()
     
     var showProgressCallback : ((Bool) -> ())? {get set}
     var getPresentationViewController : (() -> (UIViewController?))? {get set}
@@ -44,6 +45,11 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     func loginWithFacebook() {
         self.showProgressCallback?(true)
         self.authService.loginWithFacebook(from: getPresentationViewController?())
+    }
+    
+    func loginAsAnonymous() {
+        self.showProgressCallback?(true)
+        self.authService.loginAsAnonymous()
     }
     
     @objc func processLogin() {

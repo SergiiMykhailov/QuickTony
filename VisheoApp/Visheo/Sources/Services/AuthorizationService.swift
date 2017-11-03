@@ -16,6 +16,7 @@ protocol AuthorizationService {
     
     func loginWithFacebook(from vc: UIViewController?)
     func loginWithGoogle(from vc: UIViewController?)
+    func loginAsAnonymous()
 }
 
 extension Notification.Name {
@@ -35,7 +36,9 @@ enum LoginError: Error {
 }
 
 class VisheoAuthorizationService : NSObject, AuthorizationService {
-    var isAuthorized: Bool = false
+    var isAuthorized: Bool  {        
+        return Auth.auth().currentUser != nil
+    }
     weak var presentationViewController : UIViewController?
     
     override init() {
@@ -49,6 +52,20 @@ class VisheoAuthorizationService : NSObject, AuthorizationService {
     
     func notifyLoginFail(error: LoginError) {
         NotificationCenter.default.post(name: .userLoginFailed, object: self, userInfo: [Notification.Keys.error : error])
+    }
+}
+
+// MARK: Firebase auth
+
+extension VisheoAuthorizationService {
+    func loginAsAnonymous() {
+        Auth.auth().signInAnonymously { (user, error) in
+            if let error = error {
+                self.notifyLoginFail(error: .unknownError(description: error.localizedDescription))
+            } else {
+                self.notifyLogin()
+            }
+        }
     }
 }
 

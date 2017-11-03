@@ -1,6 +1,5 @@
 //
 //  UIViewController+Alert.swift
-//  Caresharing
 //
 //  Created by Petro Kolesnikov on 10/2/15.
 //  Copyright © 2015 Olearis. All rights reserved.

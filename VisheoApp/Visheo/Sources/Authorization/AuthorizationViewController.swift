@@ -51,6 +51,7 @@ class AuthorizationViewController: UIViewController, RouterProxy {
     }
     
     @IBAction func withoutRegistrationPressed(_ sender: Any) {
+        viewModel.loginAsAnonymous()
     }
 }
 
