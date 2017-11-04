@@ -11,6 +11,8 @@ import UIKit
 
 protocol AuthorizationRouter: FlowRouter {
     func showMainScreen()
+    func showSignIn()
+    func showSignUp()
 }
 
 class VisheoAuthorizationRouter : AuthorizationRouter {
@@ -40,6 +42,14 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
             return
         }
         switch segueList {
+        case .showSignIn:
+            let signInController = segue.destination as! SignInViewController
+            let router = VisheoSignInRouter(dependencies: dependencies)
+            router.start(with: signInController)
+        case .showSignUp:
+            let signUpController = segue.destination as! SignUpViewController
+            let router = VisheoSignUpRouter(dependencies: dependencies)
+            router.start(with: signUpController)
         default:
             break
         }
@@ -49,6 +59,14 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
 extension VisheoAuthorizationRouter {
     func showMainScreen() {
         controller?.performSegue(SegueList.showMainScreen, sender: nil)
+    }
+    
+    func showSignIn() {
+        controller?.performSegue(SegueList.showSignIn, sender: nil)
+    }
+    
+    func showSignUp() {
+        controller?.performSegue(SegueList.showSignUp, sender: nil)
     }
 }
 

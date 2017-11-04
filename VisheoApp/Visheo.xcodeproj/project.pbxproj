@@ -11,6 +11,12 @@
 		B43748641FAB57CF0098B131 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748631FAB57CF0098B131 /* AuthorizationViewController.swift */; };
 		B43748681FAB57F50098B131 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748671FAB57F50098B131 /* AuthorizationRouter.swift */; };
 		B437486A1FAB580D0098B131 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748691FAB580D0098B131 /* AuthorizationViewModel.swift */; };
+		B43E3B5D1FACE6A3005064D1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B5C1FACE6A3005064D1 /* SignInViewController.swift */; };
+		B43E3B5F1FACE6B2005064D1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B5E1FACE6B2005064D1 /* SignUpViewController.swift */; };
+		B43E3B611FACE6DD005064D1 /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B601FACE6DD005064D1 /* SignInRouter.swift */; };
+		B43E3B631FACE6EA005064D1 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B621FACE6EA005064D1 /* SignUpRouter.swift */; };
+		B43E3B651FACE6FE005064D1 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B641FACE6FE005064D1 /* SignInViewModel.swift */; };
+		B43E3B671FACE710005064D1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B661FACE710005064D1 /* SignUpViewModel.swift */; };
 		B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB51FA9E574000BB33B /* AppDelegate.swift */; };
 		B48AAAB81FA9E574000BB33B /* LaunchProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB61FA9E574000BB33B /* LaunchProxyViewController.swift */; };
 		B48AAABF1FA9E58F000BB33B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABA1FA9E58F000BB33B /* Assets.xcassets */; };
@@ -43,6 +49,12 @@
 		B43748631FAB57CF0098B131 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		B43748671FAB57F50098B131 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		B43748691FAB580D0098B131 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		B43E3B5C1FACE6A3005064D1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		B43E3B5E1FACE6B2005064D1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B43E3B601FACE6DD005064D1 /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
+		B43E3B621FACE6EA005064D1 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
+		B43E3B641FACE6FE005064D1 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		B43E3B661FACE710005064D1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		B48AAAB51FA9E574000BB33B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B48AAAB61FA9E574000BB33B /* LaunchProxyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchProxyViewController.swift; sourceTree = "<group>"; };
 		B48AAABA1FA9E58F000BB33B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +109,8 @@
 				B43748661FAB57DA0098B131 /* ViewModel */,
 				B43748651FAB57D30098B131 /* Router */,
 				B43748631FAB57CF0098B131 /* AuthorizationViewController.swift */,
+				B43E3B5C1FACE6A3005064D1 /* SignInViewController.swift */,
+				B43E3B5E1FACE6B2005064D1 /* SignUpViewController.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -105,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				B43748671FAB57F50098B131 /* AuthorizationRouter.swift */,
+				B43E3B601FACE6DD005064D1 /* SignInRouter.swift */,
+				B43E3B621FACE6EA005064D1 /* SignUpRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -113,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				B43748691FAB580D0098B131 /* AuthorizationViewModel.swift */,
+				B43E3B641FACE6FE005064D1 /* SignInViewModel.swift */,
+				B43E3B661FACE710005064D1 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -449,14 +467,20 @@
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
+				B43E3B611FACE6DD005064D1 /* SignInRouter.swift in Sources */,
 				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
+				B43E3B651FACE6FE005064D1 /* SignInViewModel.swift in Sources */,
+				B43E3B5F1FACE6B2005064D1 /* SignUpViewController.swift in Sources */,
+				B43E3B631FACE6EA005064D1 /* SignUpRouter.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
 				B43748641FAB57CF0098B131 /* AuthorizationViewController.swift in Sources */,
+				B43E3B671FACE710005064D1 /* SignUpViewModel.swift in Sources */,
 				B48AAAE21FAA38C7000BB33B /* OnboardingRouter.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B437486A1FAB580D0098B131 /* AuthorizationViewModel.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
 				B4DA3E7A1FAA3AF000D8F2F9 /* OnboardingViewModel.swift in Sources */,
+				B43E3B5D1FACE6A3005064D1 /* SignInViewController.swift in Sources */,
 				B48AAAB81FA9E574000BB33B /* LaunchProxyViewController.swift in Sources */,
 				B48AAACC1FA9F623000BB33B /* OnboardingViewController.swift in Sources */,
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,

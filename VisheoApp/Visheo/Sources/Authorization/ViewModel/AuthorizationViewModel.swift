@@ -13,6 +13,9 @@ protocol AuthorizationViewModel : class {
     func loginWithFacebook()
     func loginAsAnonymous()
     
+    func signIn()
+    func signUp()
+    
     var showProgressCallback : ((Bool) -> ())? {get set}
     var getPresentationViewController : (() -> (UIViewController?))? {get set}
     var warningAlertHandler : ((String) -> ())? {get set}
@@ -50,6 +53,14 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     func loginAsAnonymous() {
         self.showProgressCallback?(true)
         self.authService.loginAsAnonymous()
+    }
+    
+    func signIn() {
+        router?.showSignIn()
+    }
+    
+    func signUp() {
+        router?.showSignUp()
     }
     
     @objc func processLogin() {

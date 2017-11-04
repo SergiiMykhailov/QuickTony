@@ -41,7 +41,7 @@ class VisheoOnboardingRouter : OnboardingRouter {
         }
         switch segueList {
         case .showLogin:
-            let loginController = segue.destination as! AuthorizationViewController
+            let loginController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
             let router = VisheoAuthorizationRouter(dependencies: dependencies)
             router.start(with: loginController)
         default:

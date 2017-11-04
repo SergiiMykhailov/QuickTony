@@ -11,8 +11,11 @@ import MBProgressHUD
 
 class AuthorizationViewController: UIViewController, RouterProxy {
 
+    @IBOutlet weak var signInUpTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTextViewLinks()
     }
     
     //MARK: - VM+Router init
@@ -52,6 +55,45 @@ class AuthorizationViewController: UIViewController, RouterProxy {
     
     @IBAction func withoutRegistrationPressed(_ sender: Any) {
         viewModel.loginAsAnonymous()
+    }
+    
+    func signInPressed() {
+        viewModel.signIn()
+    }
+    
+    func signUpPressed() {
+        viewModel.signUp()
+    }
+}
+
+extension AuthorizationViewController : UITextViewDelegate {
+    enum Schemes {
+        static let signInScheme = "signin"
+        static let signUpScheme = "signup"
+    }
+    
+    func configureTextViewLinks() {
+        let mutable  = NSMutableAttributedString(attributedString: signInUpTextView.attributedText)
+        let signInRange = mutable.mutableString.range(of: "Sign In")
+        let signUpRange = mutable.mutableString.range(of: "Sign Up")
+        
+        mutable.addAttribute(.link, value: "\(Schemes.signInScheme)://", range: signInRange)
+        mutable.addAttribute(.link, value: "\(Schemes.signUpScheme)://", range: signUpRange)
+        
+        mutable.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: signUpRange)
+        mutable.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: signInRange)
+        
+        signInUpTextView.linkTextAttributes = [:]
+        signInUpTextView.attributedText = mutable
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if URL.scheme == Schemes.signInScheme {
+            signInPressed()
+        } else if URL.scheme == Schemes.signUpScheme {
+            signUpPressed()
+        }
+        return false
     }
 }
 
