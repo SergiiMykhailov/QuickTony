@@ -71,16 +71,25 @@ class SignUpViewController: UIViewController {
     // MARK: Keyboard observing
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let userInfo = notification.userInfo, let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
-            let keyboardHeight = endFrame.height
-            contentScroll.contentInset.bottom = keyboardHeight
-            contentScroll.scrollIndicatorInsets.bottom = keyboardHeight
+        if let userInfo = notification.userInfo,
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
+            
+            UIView.animate(withDuration: duration, animations: {
+                let keyboardHeight = endFrame.height
+                self.contentScroll.contentInset.bottom = keyboardHeight
+                self.contentScroll.scrollIndicatorInsets.bottom = keyboardHeight
+            })
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        contentScroll.contentInset.bottom = 0
-        contentScroll.scrollIndicatorInsets.bottom = 0
+        let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+        
+        UIView.animate(withDuration: duration, animations: {
+            self.contentScroll.contentInset.bottom = 0
+            self.contentScroll.scrollIndicatorInsets.bottom = 0
+        })
     }
 }
 

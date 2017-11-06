@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase //TODO: REMOVE
 
 protocol SignUpViewModel : LongFailableActionViewModel {
     var email : String {get set}
@@ -65,24 +64,34 @@ class VisheoSignUpViewModel : SignUpViewModel {
     init(userInputValidator: UserInputValidator, authService: AuthorizationService) {
         self.authService = authService
         self.validator = userInputValidator
-        NotificationCenter.default.addObserver(self, selector: #selector(VisheoSignUpViewModel.processLogin), name: .userLoggedIn, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(VisheoSignUpViewModel.processLoginFail(notification:)), name: .userLoginFailed, object: nil)
     }
     
     func signUp() {
-        self.showProgressCallback?(true)
+        showProgressCallback?(true)
+        startAuthObserving()
         authService.signUp(with: email, password: password, fullName: fullName)
     }
     
     @objc func processLogin() {
-        self.showProgressCallback?(false)
-        self.router?.showMainScreen()
+        showProgressCallback?(false)
+        stopAuthObserving()
+        router?.showMainScreen()
     }
     
     @objc func processLoginFail(notification: Notification) {
-        self.showProgressCallback?(false)
+        showProgressCallback?(false)
+        stopAuthObserving()
         if case .unknownError(let description)? = notification.userInfo?[Notification.Keys.error] as? LoginError {
-            self.warningAlertHandler?(description)
+            warningAlertHandler?(description)
         }
+    }
+    
+    private func startAuthObserving() {
+        NotificationCenter.default.addObserver(self, selector: #selector(VisheoAutorizationViewModel.processLogin), name: .userLoggedIn, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(VisheoAutorizationViewModel.processLoginFail(notification:)), name: .userLoginFailed, object: nil)
+    }
+    
+    private func stopAuthObserving() {
+        NotificationCenter.default.removeObserver(self)
     }
 }

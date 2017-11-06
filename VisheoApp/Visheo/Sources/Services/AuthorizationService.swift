@@ -19,6 +19,7 @@ protocol AuthorizationService {
     func loginAsAnonymous()
     
     func signUp(with email: String, password: String, fullName: String)
+    func signIn(with email: String, password: String)
 }
 
 extension Notification.Name {
@@ -89,6 +90,16 @@ extension VisheoAuthorizationService {
                                 }
         }
     }
+    
+    func signIn(with email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                self.notifyLoginFail(error: .unknownError(description: error.localizedDescription))
+            } else {
+                self.notifyLogin()
+            }
+        }
+    }    
 }
 
 // MARK: Facebook

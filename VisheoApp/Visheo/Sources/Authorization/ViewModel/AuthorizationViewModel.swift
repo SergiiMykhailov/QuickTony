@@ -29,28 +29,28 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     
     init(authService: AuthorizationService) {
         self.authService = authService
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(VisheoAutorizationViewModel.processLogin), name: .userLoggedIn, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(VisheoAutorizationViewModel.processLoginFail(notification:)), name: .userLoginFailed, object: nil)
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        stopAuthObserving()
     }
     
     func loginWithGoogle() {
-        self.showProgressCallback?(true)
-        self.authService.loginWithGoogle(from: getPresentationViewController?())
+        showProgressCallback?(true)
+        startAuthObserving()
+        authService.loginWithGoogle(from: getPresentationViewController?())
     }
     
     func loginWithFacebook() {
-        self.showProgressCallback?(true)
-        self.authService.loginWithFacebook(from: getPresentationViewController?())
+        showProgressCallback?(true)
+        startAuthObserving()
+        authService.loginWithFacebook(from: getPresentationViewController?())
     }
     
     func loginAsAnonymous() {
-        self.showProgressCallback?(true)
-        self.authService.loginAsAnonymous()
+        showProgressCallback?(true)
+        startAuthObserving()
+        authService.loginAsAnonymous()
     }
     
     func signIn() {
@@ -62,14 +62,25 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     }
     
     @objc func processLogin() {
-        self.showProgressCallback?(false)
-        self.router?.showMainScreen()
+        showProgressCallback?(false)
+        stopAuthObserving()
+        router?.showMainScreen()
     }
     
     @objc func processLoginFail(notification: Notification) {
+        stopAuthObserving()
         self.showProgressCallback?(false)
         if case .unknownError(let description)? = notification.userInfo?[Notification.Keys.error] as? LoginError {
             self.warningAlertHandler?(description)
         }
+    }
+    
+    private func startAuthObserving() {
+        NotificationCenter.default.addObserver(self, selector: #selector(VisheoAutorizationViewModel.processLogin), name: .userLoggedIn, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(VisheoAutorizationViewModel.processLoginFail(notification:)), name: .userLoginFailed, object: nil)
+    }
+    
+    private func stopAuthObserving() {
+        NotificationCenter.default.removeObserver(self)
     }
 }

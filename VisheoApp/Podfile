@@ -1,5 +1,7 @@
 target 'Visheo' do
   use_frameworks!
+  inhibit_all_warnings!
+  
   pod 'Fabric'
   pod 'Crashlytics'
   
