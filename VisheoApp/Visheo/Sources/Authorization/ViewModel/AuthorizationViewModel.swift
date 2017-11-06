@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AuthorizationViewModel : class {
+protocol AuthorizationViewModel : LongFailableActionViewModel {
     func loginWithGoogle()
     func loginWithFacebook()
     func loginAsAnonymous()
@@ -16,9 +16,7 @@ protocol AuthorizationViewModel : class {
     func signIn()
     func signUp()
     
-    var showProgressCallback : ((Bool) -> ())? {get set}
     var getPresentationViewController : (() -> (UIViewController?))? {get set}
-    var warningAlertHandler : ((String) -> ())? {get set}
 }
 
 class VisheoAutorizationViewModel : AuthorizationViewModel {

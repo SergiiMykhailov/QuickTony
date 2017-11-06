@@ -17,6 +17,8 @@ protocol AuthorizationService {
     func loginWithFacebook(from vc: UIViewController?)
     func loginWithGoogle(from vc: UIViewController?)
     func loginAsAnonymous()
+    
+    func signUp(with email: String, password: String, fullName: String)
 }
 
 extension Notification.Name {
@@ -65,6 +67,26 @@ extension VisheoAuthorizationService {
             } else {
                 self.notifyLogin()
             }
+        }
+    }
+    
+    func signUp(with email: String, password: String, fullName: String) {
+        Auth.auth().createUser(withEmail: email,
+                               password: password) { (user, error) in
+                                if let user = user {
+                                    let changeRequest = user.createProfileChangeRequest()
+                                    changeRequest.displayName = fullName
+                                    
+                                    user.sendEmailVerification(completion: { (error) in
+                                        //TODO: Handle email verification fail (save status before sendign and cehck it on every start)
+                                    })
+                                    changeRequest.commitChanges { (error) in
+                                        //TODO: Handle full name setup fail (save full name before sendign and resend it of failed on every start)
+                                    }
+                                    self.notifyLogin()                                    
+                                } else {
+                                    self.notifyLoginFail(error: .unknownError(description: error?.localizedDescription ?? ""))
+                                }
         }
     }
 }

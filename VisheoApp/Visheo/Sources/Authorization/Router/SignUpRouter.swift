@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SignUpRouter: FlowRouter {
+    func showMainScreen()
 }
 
 class VisheoSignUpRouter : SignUpRouter {
@@ -24,7 +25,7 @@ class VisheoSignUpRouter : SignUpRouter {
     }
     
     func start(with viewController: SignUpViewController) {
-        let vm = VisheoSignUpViewModel()
+        let vm = VisheoSignUpViewModel(userInputValidator: dependencies.userInputValidator, authService: dependencies.authorizationService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -36,6 +37,7 @@ class VisheoSignUpRouter : SignUpRouter {
             return
         }
         switch segueList {
+            
         default:
             break
         }
@@ -43,5 +45,8 @@ class VisheoSignUpRouter : SignUpRouter {
 }
 
 extension VisheoSignUpRouter {
+    func showMainScreen() {
+        controller?.performSegue(SegueList.showMainScreen, sender: nil)
+    }
 }
 

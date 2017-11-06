@@ -23,9 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         if let launchProxyController = self.window?.rootViewController as? LaunchProxyViewController {            
-            let appState     = VisheoAppStateService()
-            let authService  = VisheoAuthorizationService()
-            let dependencies = RouterDependencies(appStateService: appState, authorizationService: authService)
+            let appState       = VisheoAppStateService()
+            let authService    = VisheoAuthorizationService()
+            let inputValidator = VisheoUserInputValidator()
+            let dependencies   = RouterDependencies(appStateService: appState,
+                                                  authorizationService: authService,
+                                                  userInputValidator: inputValidator)
             
             let launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies)
             launchProxyRouter.start(with: launchProxyController)
