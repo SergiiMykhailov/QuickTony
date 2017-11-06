@@ -16,6 +16,8 @@ class SignInViewController: UIViewController, RouterProxy {
     @IBOutlet weak var contentScroll: UIScrollView!
     @IBOutlet weak var signInButton: UIButton!
     
+    var sendEmailAction : UIAlertAction?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +39,10 @@ class SignInViewController: UIViewController, RouterProxy {
         
         viewModel.warningAlertHandler = { [weak self] in
             self?.showWarningAlertWithText(text: $0)
+        }
+        
+        viewModel.didSendForgotPasswordCallback = { [weak self] in
+            self?.showWarningAlertWithText(text: NSLocalizedString("Reset password link was sent.", comment: "Reset passwod link was sent sent message text"))
         }
     }
     
@@ -84,15 +90,44 @@ class SignInViewController: UIViewController, RouterProxy {
     
     // MARK: Actions
     
-    @IBAction func forgotPaswordTapped(_ sender: Any) {
-    }
-    
     @IBAction func signInTapped(_ sender: Any) {
         viewModel.signIn()
     }
     
     @IBAction func backTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension SignInViewController {
+    @IBAction func forgotPaswordTapped(_ sender: Any) {
+        let alert = UIAlertController(title: NSLocalizedString("Forgot your password?", comment: "forgot password alert title"), message: NSLocalizedString("Please enter your email address. You will receive a link to create a new password via email.", comment: "Forgot password alert message text"), preferredStyle: .alert)
+        
+        var forgotEmailField : UITextField?
+        alert.addTextField { (textField) in
+            forgotEmailField = textField
+            textField.keyboardType = .emailAddress
+            textField.autocapitalizationType = .none
+            textField.placeholder = NSLocalizedString("Email", comment: "forgot password alert email field placeholder")
+            textField.addTarget(self, action: #selector(self.forgotEmailChanged(_:)), for: .editingChanged)
+        }
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
+        
+        sendEmailAction = UIAlertAction(title: NSLocalizedString("Send", comment: "Send reset password email button"), style: .default, handler: { (action) in
+            
+            if let text = forgotEmailField?.text, !text.isEmpty {
+                self.viewModel.forgotPassword(for: text)
+            }
+        })
+        sendEmailAction?.isEnabled = false
+        alert.addAction(sendEmailAction!)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func forgotEmailChanged(_ sender:UITextField) {
+        sendEmailAction?.isEnabled  = viewModel.canSendForgotPassword(to: sender.text ?? "")
     }
 }
 

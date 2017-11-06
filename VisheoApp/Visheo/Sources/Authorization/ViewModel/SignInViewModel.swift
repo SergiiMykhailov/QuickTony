@@ -17,9 +17,15 @@ protocol SignInViewModel : LongFailableActionViewModel {
     var didChangeCallback : (()->())? {get set}
     
     func signIn()
+    
+    func forgotPassword(for email: String)
+    func canSendForgotPassword(to email: String) -> Bool
+    var didSendForgotPasswordCallback : (()->())? {get set}
 }
 
 class VisheoSignInViewModel : SignInViewModel {
+    var didSendForgotPasswordCallback: (() -> ())?
+    
     var didChangeCallback: (() -> ())? {
         didSet {
             didChangeCallback?()
@@ -62,6 +68,23 @@ class VisheoSignInViewModel : SignInViewModel {
         authService.signIn(with: email, password: password)
     }
     
+    func canSendForgotPassword(to email: String) -> Bool {
+        return validator.isValid(email:email)
+    }
+    
+    func forgotPassword(for email: String) {
+        showProgressCallback?(true)
+        
+        authService.sendResetPassword(for: email) {[weak self] (error) in
+            self?.showProgressCallback?(false)
+            if case .unknownError(let description)? = error {
+                self?.warningAlertHandler?(description)
+            } else {
+                self?.didSendForgotPasswordCallback?()
+            }
+        }
+    }
+    
     @objc func processLogin() {
         showProgressCallback?(false)
         stopAuthObserving()
@@ -71,7 +94,7 @@ class VisheoSignInViewModel : SignInViewModel {
     @objc func processLoginFail(notification: Notification) {
         showProgressCallback?(false)
         stopAuthObserving()
-        if case .unknownError(let description)? = notification.userInfo?[Notification.Keys.error] as? LoginError {
+        if case .unknownError(let description)? = notification.userInfo?[Notification.Keys.error] as? AuthError {
             warningAlertHandler?(description)
         }
     }

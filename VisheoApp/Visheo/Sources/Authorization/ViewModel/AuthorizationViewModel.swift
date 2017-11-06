@@ -70,7 +70,7 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     @objc func processLoginFail(notification: Notification) {
         stopAuthObserving()
         self.showProgressCallback?(false)
-        if case .unknownError(let description)? = notification.userInfo?[Notification.Keys.error] as? LoginError {
+        if case .unknownError(let description)? = notification.userInfo?[Notification.Keys.error] as? AuthError {
             self.warningAlertHandler?(description)
         }
     }

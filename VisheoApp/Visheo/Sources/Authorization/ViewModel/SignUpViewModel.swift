@@ -81,7 +81,7 @@ class VisheoSignUpViewModel : SignUpViewModel {
     @objc func processLoginFail(notification: Notification) {
         showProgressCallback?(false)
         stopAuthObserving()
-        if case .unknownError(let description)? = notification.userInfo?[Notification.Keys.error] as? LoginError {
+        if case .unknownError(let description)? = notification.userInfo?[Notification.Keys.error] as? AuthError {
             warningAlertHandler?(description)
         }
     }

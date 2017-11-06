@@ -20,6 +20,8 @@ protocol AuthorizationService {
     
     func signUp(with email: String, password: String, fullName: String)
     func signIn(with email: String, password: String)
+    
+    func sendResetPassword(for email: String, completion : ((AuthError?) -> ())?)
 }
 
 extension Notification.Name {
@@ -33,7 +35,7 @@ extension Notification {
     }
 }
 
-enum LoginError: Error {
+enum AuthError: Error {
     case cancelled
     case unknownError(description : String)
 }
@@ -53,7 +55,7 @@ class VisheoAuthorizationService : NSObject, AuthorizationService {
         NotificationCenter.default.post(name: .userLoggedIn, object: self)
     }
     
-    func notifyLoginFail(error: LoginError) {
+    func notifyLoginFail(error: AuthError) {
         NotificationCenter.default.post(name: .userLoginFailed, object: self, userInfo: [Notification.Keys.error : error])
     }
 }
@@ -99,7 +101,18 @@ extension VisheoAuthorizationService {
                 self.notifyLogin()
             }
         }
-    }    
+    }
+    
+    func sendResetPassword(for email: String, completion: ((AuthError?) -> ())?) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let error = error {
+                completion?(.unknownError(description: error.localizedDescription))
+            } else {
+                completion?(nil)
+            }
+        }
+    }
+    
 }
 
 // MARK: Facebook
