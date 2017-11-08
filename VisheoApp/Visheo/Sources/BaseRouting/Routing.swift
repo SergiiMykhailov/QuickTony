@@ -26,4 +26,5 @@ struct RouterDependencies {
     let appStateService : AppStateService
     let authorizationService : AuthorizationService
     let userInputValidator : UserInputValidator
+    let occasionsListService : OccasionsListService
 }

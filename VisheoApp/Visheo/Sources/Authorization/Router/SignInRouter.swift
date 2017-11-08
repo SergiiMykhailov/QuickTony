@@ -37,8 +37,10 @@ class VisheoSignInRouter : SignInRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showMainScreen:
+            let mainScreenController = (segue.destination as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
+            let router = VisheoChooseOccasionRouter(dependencies: dependencies)
+            router.start(with: mainScreenController)
         }
     }
 }

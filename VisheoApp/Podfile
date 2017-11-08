@@ -1,3 +1,5 @@
+platform :ios, '10.0'
+
 target 'Visheo' do
   use_frameworks!
   inhibit_all_warnings!
@@ -17,4 +19,7 @@ target 'Visheo' do
   
   pod 'MBProgressHUD'
   pod 'Validator'
+  
+  
+  pod 'SDWebImage', '~> 4.0'
 end

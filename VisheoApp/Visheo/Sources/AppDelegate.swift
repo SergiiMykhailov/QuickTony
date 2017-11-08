@@ -20,20 +20,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         if let launchProxyController = self.window?.rootViewController as? LaunchProxyViewController {            
             let appState       = VisheoAppStateService()
             let authService    = VisheoAuthorizationService()
             let inputValidator = VisheoUserInputValidator()
+            let occasionsList  = VisheoOccasionsListService()
             let dependencies   = RouterDependencies(appStateService: appState,
                                                   authorizationService: authService,
-                                                  userInputValidator: inputValidator)
+                                                  userInputValidator: inputValidator,
+                                                  occasionsListService: occasionsList)
             
             let launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies)
             launchProxyRouter.start(with: launchProxyController)
         }
-    
+        
+        
         return true
     }
 

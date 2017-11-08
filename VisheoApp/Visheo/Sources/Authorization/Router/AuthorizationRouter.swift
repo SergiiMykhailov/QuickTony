@@ -50,8 +50,10 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
             let signUpController = segue.destination as! SignUpViewController
             let router = VisheoSignUpRouter(dependencies: dependencies)
             router.start(with: signUpController)
-        default:
-            break
+        case .showMainScreen:
+            let mainScreenController = (segue.destination as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
+            let router = VisheoChooseOccasionRouter(dependencies: dependencies)
+            router.start(with: mainScreenController)
         }
     }
 }

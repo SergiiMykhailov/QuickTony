@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3F5A7BDD9A952420AB97BDB2 /* Pods_Visheo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */; };
+		B40706421FB0AD37009780A7 /* ChooseOccasionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40706411FB0AD37009780A7 /* ChooseOccasionViewModel.swift */; };
+		B40706441FB0AD47009780A7 /* ChooseOccasionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40706431FB0AD47009780A7 /* ChooseOccasionRouter.swift */; };
+		B40706461FB0AD6A009780A7 /* ChooseOccasionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40706451FB0AD6A009780A7 /* ChooseOccasionViewController.swift */; };
 		B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B409B3A41FADBC2100FE43F1 /* ViewModels.swift */; };
+		B42A29841FB1ED5700A8741F /* OccassionsCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29831FB1ED5700A8741F /* OccassionsCollectionMediator.swift */; };
+		B42A29861FB1ED6A00A8741F /* HolidaysCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29851FB1ED6A00A8741F /* HolidaysCollectionMediator.swift */; };
+		B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
 		B43748641FAB57CF0098B131 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748631FAB57CF0098B131 /* AuthorizationViewController.swift */; };
 		B43748681FAB57F50098B131 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748671FAB57F50098B131 /* AuthorizationRouter.swift */; };
 		B437486A1FAB580D0098B131 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43748691FAB580D0098B131 /* AuthorizationViewModel.swift */; };
@@ -19,6 +25,11 @@
 		B43E3B651FACE6FE005064D1 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B641FACE6FE005064D1 /* SignInViewModel.swift */; };
 		B43E3B671FACE710005064D1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B661FACE710005064D1 /* SignUpViewModel.swift */; };
 		B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */; };
+		B48258FC1FB208EC00A7F5B0 /* HolidayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48258FA1FB208EB00A7F5B0 /* HolidayCollectionViewCell.swift */; };
+		B48258FD1FB208EC00A7F5B0 /* OccassionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48258FB1FB208EB00A7F5B0 /* OccassionCollectionViewCell.swift */; };
+		B48258FF1FB2098200A7F5B0 /* OccasionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48258FE1FB2098200A7F5B0 /* OccasionCellViewModel.swift */; };
+		B48259011FB2099100A7F5B0 /* HolidayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48259001FB2099100A7F5B0 /* HolidayCellViewModel.swift */; };
+		B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48259021FB3060800A7F5B0 /* OccasionsListService.swift */; };
 		B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB51FA9E574000BB33B /* AppDelegate.swift */; };
 		B48AAAB81FA9E574000BB33B /* LaunchProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB61FA9E574000BB33B /* LaunchProxyViewController.swift */; };
 		B48AAABF1FA9E58F000BB33B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABA1FA9E58F000BB33B /* Assets.xcassets */; };
@@ -48,7 +59,13 @@
 		60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.release.xcconfig"; sourceTree = "<group>"; };
 		A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
+		B40706411FB0AD37009780A7 /* ChooseOccasionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOccasionViewModel.swift; sourceTree = "<group>"; };
+		B40706431FB0AD47009780A7 /* ChooseOccasionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOccasionRouter.swift; sourceTree = "<group>"; };
+		B40706451FB0AD6A009780A7 /* ChooseOccasionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOccasionViewController.swift; sourceTree = "<group>"; };
 		B409B3A41FADBC2100FE43F1 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		B42A29831FB1ED5700A8741F /* OccassionsCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccassionsCollectionMediator.swift; sourceTree = "<group>"; };
+		B42A29851FB1ED6A00A8741F /* HolidaysCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaysCollectionMediator.swift; sourceTree = "<group>"; };
+		B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDateLabel.swift; sourceTree = "<group>"; };
 		B43748631FAB57CF0098B131 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		B43748671FAB57F50098B131 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		B43748691FAB580D0098B131 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
@@ -59,6 +76,11 @@
 		B43E3B641FACE6FE005064D1 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		B43E3B661FACE710005064D1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputValidator.swift; sourceTree = "<group>"; };
+		B48258FA1FB208EB00A7F5B0 /* HolidayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayCollectionViewCell.swift; sourceTree = "<group>"; };
+		B48258FB1FB208EB00A7F5B0 /* OccassionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccassionCollectionViewCell.swift; sourceTree = "<group>"; };
+		B48258FE1FB2098200A7F5B0 /* OccasionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionCellViewModel.swift; sourceTree = "<group>"; };
+		B48259001FB2099100A7F5B0 /* HolidayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayCellViewModel.swift; sourceTree = "<group>"; };
+		B48259021FB3060800A7F5B0 /* OccasionsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsListService.swift; sourceTree = "<group>"; };
 		B48AAAB51FA9E574000BB33B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B48AAAB61FA9E574000BB33B /* LaunchProxyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchProxyViewController.swift; sourceTree = "<group>"; };
 		B48AAABA1FA9E58F000BB33B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +129,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B407063E1FB0ACE2009780A7 /* ChooseOccassion */ = {
+			isa = PBXGroup;
+			children = (
+				B443F4F01FB2075D004929BB /* Cells */,
+				B407063F1FB0ACFD009780A7 /* ViewModel */,
+				B40706401FB0AD0E009780A7 /* Router */,
+				B40706451FB0AD6A009780A7 /* ChooseOccasionViewController.swift */,
+				B42A29831FB1ED5700A8741F /* OccassionsCollectionMediator.swift */,
+				B42A29851FB1ED6A00A8741F /* HolidaysCollectionMediator.swift */,
+			);
+			path = ChooseOccassion;
+			sourceTree = "<group>";
+		};
+		B407063F1FB0ACFD009780A7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B40706411FB0AD37009780A7 /* ChooseOccasionViewModel.swift */,
+				B48258FE1FB2098200A7F5B0 /* OccasionCellViewModel.swift */,
+				B48259001FB2099100A7F5B0 /* HolidayCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B40706401FB0AD0E009780A7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B40706431FB0AD47009780A7 /* ChooseOccasionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B42A29871FB1F8A200A8741F /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
 		B43748621FAB57AF0098B131 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,9 +200,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B443F4F01FB2075D004929BB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B48258FA1FB208EB00A7F5B0 /* HolidayCollectionViewCell.swift */,
+				B48258FB1FB208EB00A7F5B0 /* OccassionCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		B48AAAB41FA9E574000BB33B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B42A29871FB1F8A200A8741F /* CustomUI */,
+				B407063E1FB0ACE2009780A7 /* ChooseOccassion */,
 				B43748621FAB57AF0098B131 /* Authorization */,
 				B4DA3E7B1FAA3C0300D8F2F9 /* Services */,
 				B48AAAD51FAA0AC4000BB33B /* BaseRouting */,
@@ -309,6 +381,7 @@
 				B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */,
 				B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */,
 				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
+				B48259021FB3060800A7F5B0 /* OccasionsListService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -471,27 +544,38 @@
 				B48AAADF1FAA0F98000BB33B /* LaunchProxyViewModel.swift in Sources */,
 				B48AAADC1FAA0BC5000BB33B /* LaunchProxyRouter.swift in Sources */,
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
+				B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
+				B48258FF1FB2098200A7F5B0 /* OccasionCellViewModel.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
 				B43E3B611FACE6DD005064D1 /* SignInRouter.swift in Sources */,
 				B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */,
 				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
 				B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */,
+				B48258FD1FB208EC00A7F5B0 /* OccassionCollectionViewCell.swift in Sources */,
+				B48259011FB2099100A7F5B0 /* HolidayCellViewModel.swift in Sources */,
 				B43E3B651FACE6FE005064D1 /* SignInViewModel.swift in Sources */,
+				B48258FC1FB208EC00A7F5B0 /* HolidayCollectionViewCell.swift in Sources */,
 				B43E3B5F1FACE6B2005064D1 /* SignUpViewController.swift in Sources */,
+				B40706461FB0AD6A009780A7 /* ChooseOccasionViewController.swift in Sources */,
 				B43E3B631FACE6EA005064D1 /* SignUpRouter.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
+				B42A29841FB1ED5700A8741F /* OccassionsCollectionMediator.swift in Sources */,
 				B43748641FAB57CF0098B131 /* AuthorizationViewController.swift in Sources */,
 				B43E3B671FACE710005064D1 /* SignUpViewModel.swift in Sources */,
 				B48AAAE21FAA38C7000BB33B /* OnboardingRouter.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B437486A1FAB580D0098B131 /* AuthorizationViewModel.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
+				B40706421FB0AD37009780A7 /* ChooseOccasionViewModel.swift in Sources */,
 				B4DA3E7A1FAA3AF000D8F2F9 /* OnboardingViewModel.swift in Sources */,
+				B42A29861FB1ED6A00A8741F /* HolidaysCollectionMediator.swift in Sources */,
 				B43E3B5D1FACE6A3005064D1 /* SignInViewController.swift in Sources */,
 				B48AAAB81FA9E574000BB33B /* LaunchProxyViewController.swift in Sources */,
 				B48AAACC1FA9F623000BB33B /* OnboardingViewController.swift in Sources */,
+				B40706441FB0AD47009780A7 /* ChooseOccasionRouter.swift in Sources */,
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,
+				B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,8 +53,10 @@ class DefaultLaunchProxyRouter : LaunchProxyRouter {
             let loginController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
             let router = VisheoAuthorizationRouter(dependencies: dependencies)
             router.start(with: loginController)
-        default:
-            break
+        case .showMainScreen:
+            let mainScreenController = (segue.destination as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
+            let router = VisheoChooseOccasionRouter(dependencies: dependencies)
+            router.start(with: mainScreenController)
         }
     }
 }
