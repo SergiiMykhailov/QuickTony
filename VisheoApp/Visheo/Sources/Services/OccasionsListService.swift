@@ -9,9 +9,12 @@
 import Foundation
 import Firebase
 
+extension Notification.Name {
+    static let occasionsChanged = Notification.Name("occasionsChanged")
+}
+
 protocol OccasionsListService: class {
-    func occasionsRecords() -> [OccasionRecord]
-    var didChangeRecords : (()->())? {get set}
+    var occasionRecords : [OccasionRecord] {get}
 }
 
 enum OccasionCategory {
@@ -24,20 +27,26 @@ protocol OccasionRecord {
     var date : Date? {get}
     var priority : Int {get}
     var category : OccasionCategory {get}
-    var previewCoverUrl : URL? {get}
+    
+    var previewCover: OccasionCover {get}
+    var covers : [OccasionCover] {get}
+}
+
+protocol OccasionCover {
+    var id : Int {get}
+    var url : URL? {get}
+    var previewUrl : URL? {get}
 }
 
 class VisheoOccasionsListService : OccasionsListService {
-    var didChangeRecords: (() -> ())?
-    
-    func occasionsRecords() -> [OccasionRecord] {
-        return occasionRecords
+    var occasionRecords: [OccasionRecord] {
+        return _occasionRecords
     }
     
     let occasionsRef : DatabaseReference
     let coversRef : DatabaseReference
-    var occasionRecords : [VisheoOccasionRecord] = []
-    var occasionObservers : [Int : UInt] = [:]
+    var _occasionRecords : [VisheoOccasionRecord] = []
+    var occasionObservers : [Int : [Int: DatabaseHandle]] = [:]
     
     init() {
         occasionsRef = Database.database().reference().child("occasions")
@@ -46,55 +55,76 @@ class VisheoOccasionsListService : OccasionsListService {
     }
     
     func loadOccasions() {
-        occasionsRef.observeSingleEvent(of: .value) { (snapshot) in
+        occasionsRef.observe(.value) { (snapshot) in
+            self.stopObservingCovers()
             guard let occasions = snapshot.value as? [Any] else {return}
-            self.occasionRecords =  occasions.flatMap { $0 as? [String : Any] }
+            self._occasionRecords =  occasions.flatMap { $0 as? [String : Any] }
                                             .flatMap { VisheoOccasionRecord(dictionary: $0) }
-            
-            for (index, occasion) in self.occasionRecords.enumerated() {
-                self.observe(occasion: occasion, at: index)
+            self.startObservingCovers()
+        }
+    }
+    func startObservingCovers() {
+        for (index, occasion) in self._occasionRecords.enumerated() {
+            self.observeCovers(for: occasion, at: index)
+        }
+    }
+    
+    func stopObservingCovers() {
+        for (index, _) in self._occasionRecords.enumerated() {
+            if let occasionObservers = occasionObservers[index] {
+                occasionObservers.forEach({ (key, value) in
+                    coversRef.child("\(key)").removeObserver(withHandle: value)
+                })
             }
         }
     }
     
     func didChange(at index: Int) {
-        didChangeRecords?()
+        NotificationCenter.default.post(name: .occasionsChanged, object: self)
     }
     
-    func observe(occasion: VisheoOccasionRecord, at index: Int) {
-        if let coverId = occasion.previewCoverId {
-            let observerId = coversRef.child("\(coverId)").observe(.value, with: { (snapshot) in
-                
-                if let urlString = (snapshot.value as? [String : Any])?["url"] as? String {
-                    let occasion = self.occasionRecords[index]
-                    occasion.previewCoverUrl = URL(string: urlString)
-                    self.didChange(at: index)
-                }
+    func observeCovers(for occasion: VisheoOccasionRecord, at index: Int) {
+        
+        var currentOccasionObservers : [Int:DatabaseHandle] = [:]
+        
+        for (coverIndex, cover) in occasion.covers.enumerated() {
+            let coverObserverId = coversRef.child("\(cover.id)").observe(.value, with: { (snapshot) in
+                occasion.cover(at: coverIndex)?.update(with: snapshot.value as? [String : Any])
+                self.didChange(at: index)
             })
-            occasionObservers[index] = observerId
+            currentOccasionObservers[coverIndex] = coverObserverId
         }
+        
+        occasionObservers[index] = currentOccasionObservers
     }
 }
 
 class VisheoOccasionRecord : OccasionRecord {
+    var previewCover: OccasionCover
+    var covers: [OccasionCover]
     let priority: Int
-    let covers : [Int]
     let name : String
     let date : Date?
     let category : OccasionCategory
     
-    var previewCoverUrl : URL?
-    let previewCoverId : Int?
+    fileprivate func cover(at index: Int) -> VisheoOccasionCover? {
+        if index < covers.count {
+            return covers[index] as? VisheoOccasionCover
+        }
+        return nil
+    }
     
     init?(dictionary : [String : Any]) {
         name = dictionary["name"] as? String ?? ""
-        covers = dictionary["covers"] as? [Int] ?? []
+        
+        covers = (dictionary["covers"] as? [Int] ?? []).map { VisheoOccasionCover(id: $0) }
+        
         date = VisheoOccasionRecord.date(from: dictionary["date"] as? String)
         priority = dictionary["priority"] as? Int ?? Int.max
         if let previewId = dictionary["preview"] as? Int, previewId < covers.count {
-            previewCoverId = covers[previewId]
+            previewCover = covers[previewId]
         } else {
-            previewCoverId = nil
+            return nil
         }
         
         if let stringCat = dictionary["category"] as? String {
@@ -109,5 +139,21 @@ class VisheoOccasionRecord : OccasionRecord {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd'-'MM'-'yyyy"
         return formatter.date(from: dateString)
+    }
+}
+
+class VisheoOccasionCover : OccasionCover {
+    let id: Int
+    var url: URL?
+    var previewUrl: URL?
+    init(id : Int) {
+        self.id = id
+    }
+    
+    func update(with dictionary : [String : Any]?) {
+        guard let snapshot = dictionary else {return}
+        
+        url = URL(string: snapshot["url"] as? String ?? "")
+        previewUrl = URL(string: snapshot["previewUrl"] as? String ?? "") ?? url
     }
 }

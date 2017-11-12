@@ -23,12 +23,12 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     
     func holidayViewModel(at index: Int) -> HolidayCellViewModel {
         let record = holidays[index]
-        return VisheoHolidayCellViewModel(date: record.date, imageURL: record.previewCoverUrl)
+        return VisheoHolidayCellViewModel(date: record.date, imageURL: record.previewCover.previewUrl)
     }
     
     func occasionViewModel(at index: Int) -> OccasionCellViewModel {
         let record = occasions[index]
-        return VisheoOccasionCellViewModel(name: record.name, imageURL: record.previewCoverUrl)
+        return VisheoOccasionCellViewModel(name: record.name, imageURL: record.previewCover.previewUrl)
     }
     
     var holidaysCount: Int {
@@ -44,13 +44,18 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     
     init(occasionsList: OccasionsListService) {
         self.occasionsList = occasionsList
-        self.occasionsList.didChangeRecords = {[weak self] in
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.occasionsChanged, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
             self?.didChangeCallback?()
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private var holidays : [OccasionRecord] {
-        return self.occasionsList.occasionsRecords().filter {
+        return self.occasionsList.occasionRecords.filter {
             $0.category == OccasionCategory.holiday
             }.sorted {
                 let date0 = $0.date ?? Date.distantFuture
@@ -60,7 +65,7 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     }
     
     private var occasions : [OccasionRecord] {
-        return self.occasionsList.occasionsRecords().filter {
+        return self.occasionsList.occasionRecords.filter {
             $0.category == OccasionCategory.occasion
             }.sorted {
                 $0.priority < $1.priority
