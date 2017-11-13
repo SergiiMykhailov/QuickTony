@@ -120,7 +120,7 @@ public final class VisheoRenderer
 	
 	func renderTransitions(urls: [URL], task: VisheoRenderTask)
 	{
-		let nn = Bundle.main.path(forResource: "data", ofType: "json")!;
+		let nn = Bundle.main.path(forResource: "data1", ofType: "json")!;
 		let url1 = URL.init(fileURLWithPath: nn);
 		
 		let renderer = VideoConvertibleRenderer();
@@ -130,11 +130,8 @@ public final class VisheoRenderer
 		{
 			let last = (documentsDirectory()?.appendingPathComponent("video_\(i)_last.jpg"))!
 			let first = (documentsDirectory()?.appendingPathComponent("video_\(i+1)_first.jpg"))!
-			
-			let imgl = UIImage(contentsOfFile: last.path)!
-			let imgf = UIImage(contentsOfFile: first.path)!;
-			
-			let transition = LottieTransition(animation: url1, size: task.renderSize, frames: [imgl, imgf]);
+
+			let transition = LottieTransition(animation: url1, size: task.renderSize, frames: [first, last]);
 			
 			let url = (documentsDirectory()?.appendingPathComponent("transition_\(i).mp4"))!;
 			

@@ -72,70 +72,74 @@ final class MotionAnimator: VideoConvertible
 	}
 	
 	
-	func prepareForRender(_ completion: @escaping (Result<VideoConvertibleRenderTask>) -> Void)
+	func render(to url: URL, on queue: DispatchQueue? = nil, completion: @escaping (Result<Void>) -> Void)
 	{
-//		DispatchQueue.main.async
-//		{
-			let frame = CGRect(origin: CGPoint.zero, size: self.bounds);
+		let frame = CGRect(origin: CGPoint.zero, size: self.bounds);
 			
-			let path = Bundle.main.path(forResource: "blank", ofType: "m4v")!;
-			let blankURL = URL.init(fileURLWithPath: path);
-			
-			let asset = AVURLAsset(url: blankURL);
-			
-			let videoTrack = asset.tracks(withMediaType: .video).first!;
-			
-			let composition = AVMutableComposition();
-			
-			guard let track = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else {
-				completion(.failure(error: VideoConvertibleError.error));
-				return;
+		let path = Bundle.main.path(forResource: "blank", ofType: "m4v")!;
+		let blankURL = URL.init(fileURLWithPath: path);
+		
+		let asset = AVURLAsset(url: blankURL);
+		
+		let videoTrack = asset.tracks(withMediaType: .video).first!;
+		
+		let composition = AVMutableComposition();
+		
+		guard let track = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else {
+			completion(.failure(error: VideoConvertibleError.error));
+			return;
+		}
+		
+		let duration = CMTimeMakeWithSeconds(self.duration, 600);
+		let range = CMTimeRangeMake(kCMTimeZero, duration);
+		
+		try? track.insertTimeRange(CMTimeRangeMake(kCMTimeZero, duration), of: videoTrack, at: kCMTimeZero);
+		
+		let trackInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: track);
+		
+		let mainInstruction = AVMutableVideoCompositionInstruction();
+		mainInstruction.layerInstructions = [trackInstruction];
+		mainInstruction.timeRange = range;
+		
+		let parentLayer = CALayer();
+		let videoLayer = CALayer();
+		
+		parentLayer.frame = frame;
+		videoLayer.frame = frame;
+		
+		parentLayer.addSublayer(videoLayer);
+		parentLayer.addSublayer(self.motionLayer.parent);
+		
+		let videoComposition = AVMutableVideoComposition();
+		
+		let width = round(self.bounds.width / 16.0) * 16.0;
+		let height = round(self.bounds.height * (self.bounds.width / width))
+		
+		videoComposition.renderSize = CGSize(width: width, height: height);
+		videoComposition.instructions = [mainInstruction];
+		videoComposition.frameDuration = CMTimeMake(1, 30);
+		videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer);
+		
+		guard let session = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetHighestQuality) else {
+			completion(.failure(error: VideoConvertibleError.error));
+			return;
+		}
+		
+		session.outputURL = url;
+		session.outputFileType = .mp4;
+		session.shouldOptimizeForNetworkUse = true;
+		session.videoComposition = videoComposition;
+		session.timeRange = range;
+
+		session.exportAsynchronously
+		{
+			if let e = session.error {
+				completion(.failure(error: e));
+			} else {
+				completion(.success(value: Void()))
 			}
-			
-			let duration = CMTimeMakeWithSeconds(self.duration, 600);
-			let range = CMTimeRangeMake(kCMTimeZero, duration);
-			
-			try? track.insertTimeRange(CMTimeRangeMake(kCMTimeZero, duration), of: videoTrack, at: kCMTimeZero);
-			
-			let trackInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: track);
-			
-			let mainInstruction = AVMutableVideoCompositionInstruction();
-			mainInstruction.layerInstructions = [trackInstruction];
-			mainInstruction.timeRange = range;
-			
-			let parentLayer = CALayer();
-			let videoLayer = CALayer();
-			
-			parentLayer.frame = frame;
-			videoLayer.frame = frame;
-			
-			parentLayer.addSublayer(videoLayer);
-			parentLayer.addSublayer(self.motionLayer.parent);
-			
-			let videoComposition = AVMutableVideoComposition();
-			
-			let width = round(self.bounds.width / 16.0) * 16.0;
-			let height = round(self.bounds.height * (self.bounds.width / width))
-			
-			videoComposition.renderSize = CGSize(width: width, height: height);
-			videoComposition.instructions = [mainInstruction];
-			videoComposition.frameDuration = CMTimeMake(1, 30);
-			videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer);
-			
-			let task = VideoConvertibleRenderTask(main: composition, video: videoComposition, range: range);
-		
-			completion(.success(value: task));
-//		}
+		}
 	}
-	
-	
-	func willBeginRender()
-	{
-		
-	}
-	
-	
-	
 	
 	var scaledAssetSize: CGSize
 	{
@@ -166,10 +170,10 @@ final class MotionAnimator: VideoConvertible
 		parentLayer.backgroundColor = UIColor.red.cgColor;
 		parentLayer.masksToBounds = true;
 		
-		let assetLayer = CALayer()
-		assetLayer.contents = asset.cgImage;
+		let assetLayer = CustomAnimatable()
+//		assetLayer.contents = asset.cgImage;
 		assetLayer.frame = CGRect(origin: CGPoint.zero, size: assetSize);
-		assetLayer.backgroundColor = UIColor.green.cgColor;
+//		assetLayer.backgroundColor = UIColor.green.cgColor;
 		assetLayer.masksToBounds = false;
 		assetLayer.position = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0);
 		
@@ -183,10 +187,10 @@ final class MotionAnimator: VideoConvertible
 		
 		parentLayer.addSublayer(assetLayer);
 		
-		let animation = CABasicAnimation(keyPath: "position");
+		let animation = CABasicAnimation(keyPath: "brightness");
 		
-		animation.fromValue = NSValue.init(cgPoint: position);
-		animation.toValue = NSValue.init(cgPoint: finalPosition);
+		animation.fromValue = 1.0//NSValue.init(cgPoint: position);
+		animation.toValue = 0.0//NSValue.init(cgPoint: finalPosition);
 		animation.duration = duration;
 		animation.isRemovedOnCompletion = false;
 		animation.repeatCount = 1;

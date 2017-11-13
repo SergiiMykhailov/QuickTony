@@ -10,22 +10,28 @@ import UIKit
 import AVFoundation
 import AVKit
 import VisheoVideo
+import Lottie
+import GPUImage
 
 class ViewController: UIViewController
 {
 	let renderer = VisheoRenderer();
+	var lotView: LOTAnimationView!;
+	var writer: AVAssetWriter!;
+	var input: AVAssetWriterInput!;
+	var adapter: AVAssetWriterInputPixelBufferAdaptor!;
+	let queue = DispatchQueue(label: "queue", qos: DispatchQoS.default);
 	
 	override func viewDidAppear(_ animated: Bool)
 	{
 		super.viewDidAppear(animated);
-		// Do any additional setup after loading the view, typically from a nib.
-		
-		
-		
-//		let result = animator!.prepareMotionLayer();
-//
-//		view.layer.addSublayer(result.parent);
-//		result.animatable.add(result.animation, forKey: "animation");
+
+//		let path = Bundle.main.path(forResource: "data1", ofType: "json");
+//		container = LOTAnimationView(filePath: path!);
+//		container?.frame = view.bounds;
+//		view.insertSubview(container!, at: 0)
+
+//		view.layer.insertSublayer(layer, at: 0);
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -34,32 +40,25 @@ class ViewController: UIViewController
 	}
 
 	
+	enum BufferFetchResult
+	{
+		case finish
+		case skip
+		case buffer(buffer: CVPixelBuffer, time: CMTime)
+	}
+	
+	
 	func animate()
 	{
-				let layer = CustomAnimatable();
-		//
-				layer.frame = view.bounds;
-				layer.backgroundColor = UIColor.magenta.cgColor;
-		//
-				view.layer.insertSublayer(layer, at: 0);
+		let frame = CGRect(origin: .zero, size: CGSize(width: 480.0, height: 480.0));
 		
-		CATransaction.begin()
-		CATransaction.setDisableActions(true);
-		CATransaction.setAnimationDuration(2.2);
+		let path =  Bundle.main.path(forResource: "data1", ofType: "json");
+		lotView = LOTAnimationView(filePath: path!)
+		lotView.frame = frame;
 		
-		let anim = CABasicAnimation(keyPath: "brightness");
+		view.insertSubview(lotView, at: 0);
 		
-		anim.duration = 10.0;
-		anim.fromValue = 1.0;
-		//		anim.fillMode = kCAFillModeBoth;
-//		anim.beginTime = AVCoreAnimationBeginTimeAtZero;
-		//		anim.repeatCount = 1;
-		anim.toValue = 0.0;
-		anim.isRemovedOnCompletion = false;
-		
-		CATransaction.commit();
-		
-		layer.add(anim, forKey: "anim")
+		lotView.play();
 	}
 	
 	

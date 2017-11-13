@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum Result<T>
+public enum Result<T>
 {
 	case success(value: T)
 	case failure(error: Error)
 	
 	
-	var value: T?
+	public var value: T?
 	{
 		switch self
 		{

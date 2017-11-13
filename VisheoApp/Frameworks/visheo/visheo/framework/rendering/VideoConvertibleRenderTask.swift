@@ -9,11 +9,11 @@
 
 import AVFoundation
 
-struct VideoConvertibleRenderTask
+public struct VideoConvertibleRenderTask
 {
-	let mainComposition: AVComposition;
-	let videoComposition: AVVideoComposition;
-	let timeRange: CMTimeRange;
+	public let mainComposition: AVComposition;
+	public let videoComposition: AVVideoComposition;
+	public let timeRange: CMTimeRange;
 	
 	init(main: AVComposition, video: AVVideoComposition, range: CMTimeRange)
 	{

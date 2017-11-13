@@ -17,9 +17,7 @@ enum VideoConvertibleError: Error
 
 protocol VideoConvertible
 {
-	func prepareForRender(_ completion: @escaping (Result<VideoConvertibleRenderTask>) -> Void)
-	func willBeginRender()
-	func didBeginRender()
+	func render(to url: URL, on queue: DispatchQueue?, completion: @escaping (Result<Void>) -> Void)
 }
 
 
@@ -33,48 +31,13 @@ extension VideoConvertible
 final class VideoConvertibleRenderer
 {
 	private var asset: VideoConvertible? = nil;
-	
+	private let queue = DispatchQueue(label: "com.visheo.convertible.queue", qos: .default, attributes: .concurrent);
 	
 	public init(){}
 	
 	
 	public func render(asset: VideoConvertible, to url: URL, completion: @escaping (Result<Void>) -> Void)
 	{
-		DispatchQueue.main.async {
-			asset.prepareForRender { (result) in
-				
-				if case .failure(let error) = result {
-					completion(.failure(error: error));
-					return;
-				}
-				
-				guard let task = result.value, let session = AVAssetExportSession(asset: task.mainComposition, presetName: AVAssetExportPresetHighestQuality) else {
-					completion(.failure(error: VideoConvertibleError.error));
-					return;
-				}
-				
-				session.outputURL = url;
-				session.outputFileType = .mp4;
-				session.shouldOptimizeForNetworkUse = true;
-				session.videoComposition = task.videoComposition;
-				session.timeRange = task.timeRange;
-				
-				asset.willBeginRender()
-				
-				session.exportAsynchronously
-				{
-					if let e = session.error {
-						completion(.failure(error: e));
-					} else {
-						completion(.success(value: Void()))
-					}
-					print("\(String(describing: session.error))")
-				}
-				
-				asset.didBeginRender();
-			}
-		}
-		
-		
+		asset.render(to: url, on: queue, completion: completion);
 	}
 }
