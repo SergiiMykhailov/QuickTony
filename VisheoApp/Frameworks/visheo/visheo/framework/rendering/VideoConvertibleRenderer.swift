@@ -30,7 +30,6 @@ extension VideoConvertible
 
 final class VideoConvertibleRenderer
 {
-	private var asset: VideoConvertible? = nil;
 	private let queue = DispatchQueue(label: "com.visheo.convertible.queue", qos: .default, attributes: .concurrent);
 	
 	public init(){}

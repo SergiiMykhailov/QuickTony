@@ -112,10 +112,10 @@ final class MotionAnimator: VideoConvertible
 		
 		let videoComposition = AVMutableVideoComposition();
 		
-		let width = round(self.bounds.width / 16.0) * 16.0;
-		let height = round(self.bounds.height * (self.bounds.width / width))
+//		let width = round(self.bounds.width / 16.0) * 16.0;
+//		let height = round(self.bounds.height * (self.bounds.width / width))
 		
-		videoComposition.renderSize = CGSize(width: width, height: height);
+		videoComposition.renderSize = bounds;//CGSize(width: width, height: height);
 		videoComposition.instructions = [mainInstruction];
 		videoComposition.frameDuration = CMTimeMake(1, 30);
 		videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer);
@@ -170,10 +170,10 @@ final class MotionAnimator: VideoConvertible
 		parentLayer.backgroundColor = UIColor.red.cgColor;
 		parentLayer.masksToBounds = true;
 		
-		let assetLayer = CustomAnimatable()
-//		assetLayer.contents = asset.cgImage;
+		let assetLayer = CALayer();
+		assetLayer.contents = asset.cgImage;
 		assetLayer.frame = CGRect(origin: CGPoint.zero, size: assetSize);
-//		assetLayer.backgroundColor = UIColor.green.cgColor;
+		assetLayer.backgroundColor = UIColor.green.cgColor;
 		assetLayer.masksToBounds = false;
 		assetLayer.position = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0);
 		
@@ -187,10 +187,10 @@ final class MotionAnimator: VideoConvertible
 		
 		parentLayer.addSublayer(assetLayer);
 		
-		let animation = CABasicAnimation(keyPath: "brightness");
+		let animation = CABasicAnimation(keyPath: "position");
 		
-		animation.fromValue = 1.0//NSValue.init(cgPoint: position);
-		animation.toValue = 0.0//NSValue.init(cgPoint: finalPosition);
+		animation.fromValue = NSValue.init(cgPoint: position);
+		animation.toValue = NSValue.init(cgPoint: finalPosition);
 		animation.duration = duration;
 		animation.isRemovedOnCompletion = false;
 		animation.repeatCount = 1;

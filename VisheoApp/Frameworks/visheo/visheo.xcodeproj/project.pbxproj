@@ -27,8 +27,8 @@
 		92472F031FAB437B002F1887 /* RealmConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92472F021FAB437B002F1887 /* RealmConvertible.swift */; };
 		92472F051FAB442C002F1887 /* RLMVisheoRenderTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92472F041FAB442C002F1887 /* RLMVisheoRenderTask.swift */; };
 		92522F661FB0B909008B0347 /* CustomAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92522F641FB0B776008B0347 /* CustomAnimatable.swift */; };
-		9262756D1FB5EA6A0006484F /* GPUImageLottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262756C1FB5EA6A0006484F /* GPUImageLottieAnimation.swift */; };
 		926CA3B31FB9616000106EE3 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */; };
+		926CA3B91FBA047300106EE3 /* LottieComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926CA3B81FBA047300106EE3 /* LottieComposition.swift */; };
 		928B4ADB1FA7897B001499F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B4ADA1FA7897B001499F4 /* AppDelegate.swift */; };
 		928B4ADD1FA7897B001499F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B4ADC1FA7897B001499F4 /* ViewController.swift */; };
 		928B4AE01FA7897B001499F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928B4ADE1FA7897B001499F4 /* Main.storyboard */; };
@@ -44,6 +44,8 @@
 		92AC95B31FA8E00A003B973B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC95AC1FA8E00A003B973B /* Result.swift */; };
 		92AC95B41FA8E00A003B973B /* VideoConvertibleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC95AE1FA8E00A003B973B /* VideoConvertibleRenderer.swift */; };
 		92AC95B51FA8E00A003B973B /* VideoConvertibleRenderTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC95AF1FA8E00A003B973B /* VideoConvertibleRenderTask.swift */; };
+		92DCBCF91FBADFE9004C0046 /* data2.json in Resources */ = {isa = PBXBuildFile; fileRef = 92DCBCF81FBADFE9004C0046 /* data2.json */; };
+		92DCBCFA1FBADFF0004C0046 /* data2.json in Resources */ = {isa = PBXBuildFile; fileRef = 92DCBCF81FBADFE9004C0046 /* data2.json */; };
 		92EBEE191FB491AD00B9237C /* data1.json in Resources */ = {isa = PBXBuildFile; fileRef = 92EBEE151FB491AD00B9237C /* data1.json */; };
 		92EBEE1A1FB491AD00B9237C /* data1.json in Resources */ = {isa = PBXBuildFile; fileRef = 92EBEE151FB491AD00B9237C /* data1.json */; };
 		92EBEE211FB497E100B9237C /* images in Resources */ = {isa = PBXBuildFile; fileRef = 92EBEE201FB497E100B9237C /* images */; };
@@ -110,8 +112,8 @@
 		92472F021FAB437B002F1887 /* RealmConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConvertible.swift; sourceTree = "<group>"; };
 		92472F041FAB442C002F1887 /* RLMVisheoRenderTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMVisheoRenderTask.swift; sourceTree = "<group>"; };
 		92522F641FB0B776008B0347 /* CustomAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimatable.swift; sourceTree = "<group>"; };
-		9262756C1FB5EA6A0006484F /* GPUImageLottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUImageLottieAnimation.swift; sourceTree = "<group>"; };
 		926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		926CA3B81FBA047300106EE3 /* LottieComposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieComposition.swift; sourceTree = "<group>"; };
 		928B4AD71FA7897B001499F4 /* visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928B4ADA1FA7897B001499F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		928B4ADC1FA7897B001499F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		92AC95AC1FA8E00A003B973B /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		92AC95AE1FA8E00A003B973B /* VideoConvertibleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoConvertibleRenderer.swift; sourceTree = "<group>"; };
 		92AC95AF1FA8E00A003B973B /* VideoConvertibleRenderTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoConvertibleRenderTask.swift; sourceTree = "<group>"; };
+		92DCBCF81FBADFE9004C0046 /* data2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data2.json; sourceTree = "<group>"; };
 		92EBEE151FB491AD00B9237C /* data1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data1.json; sourceTree = "<group>"; };
 		92EBEE201FB497E100B9237C /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		92EBEE271FB4BF3800B9237C /* Comp 1.kf.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Comp 1.kf.json"; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 		92068FB11FA8D75700688EE9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				92DCBCF81FBADFE9004C0046 /* data2.json */,
 				92EBEE271FB4BF3800B9237C /* Comp 1.kf.json */,
 				92EBEE201FB497E100B9237C /* images */,
 				92EBEE151FB491AD00B9237C /* data1.json */,
@@ -253,7 +257,6 @@
 				928B4AE11FA7897B001499F4 /* Assets.xcassets */,
 				928B4AE31FA7897B001499F4 /* LaunchScreen.storyboard */,
 				928B4AE61FA7897B001499F4 /* Info.plist */,
-				9262756C1FB5EA6A0006484F /* GPUImageLottieAnimation.swift */,
 			);
 			path = visheo;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			children = (
 				92AC95A91FA8E00A003B973B /* MotionAnimator.swift */,
 				92AC95AA1FA8E00A003B973B /* LottieTransition.swift */,
+				926CA3B81FBA047300106EE3 /* LottieComposition.swift */,
 			);
 			path = convertibles;
 			sourceTree = "<group>";
@@ -455,6 +459,7 @@
 				92004BF21FAB7A350011CC54 /* Image 19.jpg in Resources */,
 				92004BF41FAB7A350011CC54 /* Image 17.jpg in Resources */,
 				92EBEE211FB497E100B9237C /* images in Resources */,
+				92DCBCF91FBADFE9004C0046 /* data2.json in Resources */,
 				92068FBE1FA8D75700688EE9 /* vcTransition2.json in Resources */,
 				92068FC11FA8D75700688EE9 /* blank.m4v in Resources */,
 				92004BF11FAB7A350011CC54 /* Image 18.jpg in Resources */,
@@ -483,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92DCBCFA1FBADFF0004C0046 /* data2.json in Resources */,
 				92EBEE221FB497E100B9237C /* images in Resources */,
 				92EBEE1A1FB491AD00B9237C /* data1.json in Resources */,
 			);
@@ -546,7 +552,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../../Pods/Target Support Files/Pods-VisheoVideoFramework-visheo/Pods-VisheoVideoFramework-visheo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
@@ -554,7 +559,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GPUImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
@@ -590,7 +594,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9262756D1FB5EA6A0006484F /* GPUImageLottieAnimation.swift in Sources */,
 				92522F661FB0B909008B0347 /* CustomAnimatable.swift in Sources */,
 				928B4ADD1FA7897B001499F4 /* ViewController.swift in Sources */,
 				928B4ADB1FA7897B001499F4 /* AppDelegate.swift in Sources */,
@@ -616,6 +619,7 @@
 				92AC95B01FA8E00A003B973B /* VideoThumbnailExtractor.swift in Sources */,
 				92AC95B41FA8E00A003B973B /* VideoConvertibleRenderer.swift in Sources */,
 				92472EFD1FAB3E81002F1887 /* VisheoRenderTask.swift in Sources */,
+				926CA3B91FBA047300106EE3 /* LottieComposition.swift in Sources */,
 				92472EFE1FAB3E8B002F1887 /* VisheoRenderer.swift in Sources */,
 				926CA3B31FB9616000106EE3 /* UIImage+Utils.swift in Sources */,
 				92AC95B51FA8E00A003B973B /* VideoConvertibleRenderTask.swift in Sources */,

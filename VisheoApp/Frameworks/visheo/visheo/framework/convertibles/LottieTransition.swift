@@ -8,6 +8,7 @@
 
 import Lottie
 import AVFoundation
+import pop
 
 
 public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
@@ -16,6 +17,12 @@ public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
     private let size: CGSize;
     private let frames: [URL];
 	private let queue = DispatchQueue(label: "com.visheo.lottie.render", qos: .default);
+	private let imageRenderer: UIGraphicsImageRenderer;
+	
+	private var assetWriter: AVAssetWriter?;
+	private var assetWriterInput: AVAssetWriterInput?;
+	private var pixelBufferAdapter: AVAssetWriterInputPixelBufferAdaptor?;
+	private var animationContainer: LOTAnimationView?;
 	
 	
     public init(animation: URL, size: CGSize, frames: [URL])
@@ -23,6 +30,7 @@ public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
         self.animation = animation;
         self.size = CGSize(width: size.width, height: size.height);
         self.frames = frames;
+		self.imageRenderer = UIGraphicsImageRenderer(size: size);
 		
 		super.init()
     }
@@ -35,7 +43,96 @@ public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
     
 	func render(to url: URL, on queue: DispatchQueue? = nil, completion: @escaping (Result<Void>) -> Void)
     {
-		perFrameRender(to: url, on: queue, completion: completion);
+		let frame = CGRect(origin: CGPoint.zero, size: self.size);
+		let container = createAnimationContainer();
+		
+		self.animationContainer = container;
+		
+		let path = Bundle.main.path(forResource: "blank", ofType: "m4v")!;
+		let blankURL = URL.init(fileURLWithPath: path);
+		
+		let asset = AVURLAsset(url: blankURL);
+		
+		let videoTrack = asset.tracks(withMediaType: .video).first!;
+		
+		let composition = AVMutableComposition();
+		
+		guard let track = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else {
+			completion(.failure(error: VideoConvertibleError.error));
+			return;
+		}
+		//
+		let duration = CMTimeMakeWithSeconds(Float64(container.animationDuration), asset.duration.timescale);
+		let range = CMTimeRangeMake(kCMTimeZero, duration);
+		
+		try? track.insertTimeRange(CMTimeRangeMake(kCMTimeZero, duration), of: videoTrack, at: kCMTimeZero);
+		
+		let trackInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: track);
+		
+		let mainInstruction = AVMutableVideoCompositionInstruction();
+		mainInstruction.layerInstructions = [trackInstruction];
+		mainInstruction.timeRange = range;
+		
+		let parentLayer = CALayer();
+		let videoLayer = CALayer();
+		
+		parentLayer.frame = frame;
+		videoLayer.frame = frame;
+		
+		parentLayer.addSublayer(videoLayer);
+		parentLayer.addSublayer(container.layer);
+		
+//		container.play();
+		
+		let animation = POPBasicAnimation(customPropertyNamed: "prop", read: { (obj, values) in
+			if let v = obj as? LOTAnimationView, let vls = values {
+				vls[0] = v.currentFrameHandle;
+			}
+		}) { (obj, values) in
+			if let v = obj as? LOTAnimationView, let vls = values {
+				v.currentFrameHandle = vls[0];
+			}
+		}
+		
+		animation?.duration = CFTimeInterval(container.animationDuration);
+		animation?.fromValue = container.sceneModel?.startFrame;
+		animation?.toValue = container.sceneModel?.endFrame;
+		animation?.beginTime = AVCoreAnimationBeginTimeAtZero;
+		animation?.removedOnCompletion = false;
+		animation?.repeatCount = 0;
+		
+		container.pop_add(animation, forKey: "ke");
+		
+		let videoComposition = AVMutableVideoComposition();
+		
+//		let width = round(self.size.width / 16.0) * 16.0;
+//		let height = round(self.size.height * (self.size.width / width))
+		
+		videoComposition.renderSize = size;//CGSize(width: width, height: height);
+		videoComposition.instructions = [mainInstruction];
+		videoComposition.frameDuration = CMTimeMake(1, container.sceneModel?.framerate?.int32Value ?? 30);
+		videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer);
+//		videoComposition.customVideoCompositorClass = LottieComposition.self;
+		
+		guard let session = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetHighestQuality) else {
+			completion(.failure(error: VideoConvertibleError.error));
+			return;
+		}
+		
+		session.outputURL = url;
+		session.outputFileType = .mp4;
+		session.shouldOptimizeForNetworkUse = true;
+		session.videoComposition = videoComposition;
+		session.timeRange = range;
+		
+		session.exportAsynchronously
+			{
+				if let e = session.error {
+					completion(.failure(error: e));
+				} else {
+					completion(.success(value: Void()))
+				}
+		}
     }
 	
 	
@@ -43,7 +140,7 @@ public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
 	{
 		let frame = CGRect(origin: CGPoint.zero, size: size);
 
-		let assets = [ "image_0" : frames[0].path, "image_1" : frames[1].path ]
+		let assets = [ "image_1" : frames[0].path, "image_0" : frames[1].path ]
 		let composition = LOTComposition(filePath: animation.path, assetPaths: assets);
 		
 		let animationContainerView = LOTAnimationView(model: composition, in: nil);
@@ -110,9 +207,15 @@ public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
 	
 	func renderLayer(_ layer: CALayer, with renderer: UIGraphicsImageRenderer) -> CVPixelBuffer?
 	{
+		let begin = CACurrentMediaTime();
+		
 		let image = renderer.image { (ctx) in
-			layer.draw(in: ctx.cgContext);
+			layer.render(in: ctx.cgContext);
 		}
+		
+		let end = CACurrentMediaTime();
+		
+		let diff = end - begin;
 		
 		return image.pixelBuffer;
 	}
@@ -121,6 +224,7 @@ public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
 	func perFrameRender(to url: URL, on queue: DispatchQueue? = nil, completion: @escaping (Result<Void>) -> Void)
 	{
 		let container = createAnimationContainer();
+		self.animationContainer = container;
 		
 		let startFrame = container.sceneModel?.startFrame?.intValue ?? 0;
 		let endFrame = container.sceneModel?.endFrame?.intValue ?? 0;
@@ -143,7 +247,6 @@ public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
 		}
 		
 		let layerToRender = container.layer;
-		let renderer = UIGraphicsImageRenderer(size: size);
 		
 		do
 		{
@@ -159,41 +262,64 @@ public final class LottieTransition: NSObject, VideoConvertible, CALayerDelegate
 			
 			let adapter = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: input, sourcePixelBufferAttributes: pixelBufferAdapterAttributes);
 			
+			self.assetWriter = writer;
+			self.assetWriterInput = input;
+			self.pixelBufferAdapter = adapter;
+			
 			guard writer.startWriting() else {
-				throw VideoConvertibleError.error;
+				let error = writer.error ?? VideoConvertibleError.error;
+				throw error;
 			}
 			
 			writer.startSession(atSourceTime: time);
 			
 			input.requestMediaDataWhenReady(on: self.queue, using: { [weak self] in
 				
-				guard let `self` = self else { return; }
+				guard let `self` = self else {
+					input.markAsFinished();
+					writer.cancelWriting();
+					completion(.failure(error: VideoConvertibleError.error));
+					return;
+				}
 				
 				while input.isReadyForMoreMediaData
 				{
-					let progress = CMTimeGetSeconds(time) / animationDuration;
+					autoreleasepool {
 					
-					if progress >= 1.0 {
-						input.markAsFinished();
-						writer.finishWriting {
-							print("finished")
+						let progress = CMTimeGetSeconds(time) / animationDuration;
+					
+						if progress >= 1.0 {
+							input.markAsFinished();
+							writer.finishWriting {
+								switch writer.error
+								{
+									case .none:
+										completion(.success(value: Void()));
+									case .some(let error):
+										completion(.failure(error: error));
+								}
+							}
+							return;
 						}
-						break;
+					
+						container.animationProgress = CGFloat(progress);
+					
+						guard let buffer = self.renderLayer(layerToRender, with: self.imageRenderer) else {
+							return;
+						}
+					
+						adapter.append(buffer, withPresentationTime: time);
+						time = CMTimeAdd(time, frameDuration);
 					}
-					
-					container.animationProgress = CGFloat(progress);
-					
-					guard let buffer = self.renderLayer(layerToRender, with: renderer) else {
-						break;
-					}
-					
-					adapter.append(buffer, withPresentationTime: time);
-					time = CMTimeAdd(time, frameDuration);
 				}
 			})
 		}
 		catch (let error)
 		{
+			assetWriterInput?.markAsFinished();
+			assetWriter?.cancelWriting();
+			
+			print("Transition render finished with error \(error)");
 			completion(.failure(error: error));
 		}
 	}

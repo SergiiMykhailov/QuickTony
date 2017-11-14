@@ -53,7 +53,6 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GPUImage (0.1.7)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.11):
@@ -89,7 +88,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - GoogleSignIn
-  - GPUImage
   - lottie-ios (from `https://github.com/nivanchikov/lottie-ios.git`)
   - MBProgressHUD
   - pop
@@ -103,7 +101,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   lottie-ios:
-    :commit: c6ef98b90241fdabd3b061c4889829cf9fbc067e
+    :commit: 7b391bbce75d3738716927c91ffec9ee1d21abbd
     :git: https://github.com/nivanchikov/lottie-ios.git
 
 SPEC CHECKSUMS:
@@ -121,7 +119,6 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   lottie-ios: 94fa2d82547ce3adf1e61157653ba99999fd279f
@@ -133,6 +130,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
 
-PODFILE CHECKSUM: b4ceb11cfdbce6746aa2ba17974cf21ded0900a7
+PODFILE CHECKSUM: a01a52cee58ac536739ced7eb43826766445ae87
 
 COCOAPODS: 1.3.1

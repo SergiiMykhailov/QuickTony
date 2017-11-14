@@ -7,18 +7,35 @@
 //
 
 import AVFoundation
+import Lottie
 
 
 public final class VisheoRenderer
 {
-	public init() {
-		
+	var tasks = [Any]()
+	
+	var start: CFAbsoluteTime!;
+	
+	let extractor = VideoThumbnailExtractor();
+	let renderer = VideoConvertibleRenderer();
+	
+	
+	public init()
+	{
+		LOTAnimationCache.shared().disableCaching();
 	}
+	
 	
 	public func render(task: VisheoRenderTask)
 	{
+		NotificationCenter.default.post(name: NSNotification.Name(rawValue: "start"), object: self, userInfo: nil)
+		
+		start = CACurrentMediaTime();
+		
 		let coverImage = UIImage(contentsOfFile: task.cover.path)!;
-		let motion = MotionAnimator(asset: coverImage, bounds: task.renderSize, duration: 2.2);
+		let motion = MotionAnimator(asset: coverImage, bounds: task.maxRenderSize, duration: 2.2);
+		
+		tasks.append(motion)
 		
 		var urls = [URL]()
 		
@@ -27,8 +44,6 @@ public final class VisheoRenderer
 		try? FileManager.default.removeItem(at: url);
 		
 		urls.append(url);
-		
-		let renderer = VideoConvertibleRenderer();
 		
 		let group = DispatchGroup();
 		
@@ -41,7 +56,9 @@ public final class VisheoRenderer
 		for (index, photo) in task.photos.enumerated()
 		{
 			let image = UIImage(contentsOfFile: photo.path)!;
-			let motion = MotionAnimator(asset: image, bounds: task.renderSize, duration: 2.2);
+			let motion = MotionAnimator(asset: image, bounds: task.maxRenderSize, duration: 2.2);
+			
+			tasks.append(motion);
 			
 			let url = (documentsDirectory()?.appendingPathComponent("video_\(index + 1).mp4"))!;
 			
@@ -58,6 +75,7 @@ public final class VisheoRenderer
 		
 		group.notify(queue: DispatchQueue.main)
 		{
+			self.tasks.removeAll()
 			self.renderThumbnails(videos: urls, task: task);
 		}
 	}
@@ -72,8 +90,6 @@ public final class VisheoRenderer
 		let group = DispatchGroup();
 		
 		var urls = [URL]()
-		
-		let extractor = VideoThumbnailExtractor();
 		
 		for (index, asset) in assets.enumerated()
 		{
@@ -113,40 +129,47 @@ public final class VisheoRenderer
 		}
 		
 		group.notify(queue: DispatchQueue.main) {
-			self.renderTransitions(urls: urls, task: task);
+			self.renderTransitions(urls: urls, count: 5, task: task);
 		}
 	}
 	
 	
-	func renderTransitions(urls: [URL], task: VisheoRenderTask)
+	func renderTransitions(urls: [URL], current: Int = 0, count: Int, task: VisheoRenderTask)
 	{
+		if (current > count) {
+			print("Finished transitions rendering");
+			tasks.removeAll()
+			stitch(task: task)
+			return;
+		}
+		
 		let nn = Bundle.main.path(forResource: "data1", ofType: "json")!;
 		let url1 = URL.init(fileURLWithPath: nn);
 		
-		let renderer = VideoConvertibleRenderer();
-		let group = DispatchGroup();
 		
-		for i in 0...5
-		{
-			let last = (documentsDirectory()?.appendingPathComponent("video_\(i)_last.jpg"))!
-			let first = (documentsDirectory()?.appendingPathComponent("video_\(i+1)_first.jpg"))!
+		
+//		let group = DispatchGroup();
+		
+//		for i in 0...5
+//		{
+			let last = (documentsDirectory()?.appendingPathComponent("video_\(current)_last.jpg"))!
+			let first = (documentsDirectory()?.appendingPathComponent("video_\(current+1)_first.jpg"))!
 
-			let transition = LottieTransition(animation: url1, size: task.renderSize, frames: [first, last]);
+			let transition = LottieTransition(animation: url1, size: task.maxRenderSize, frames: [first, last]);
 			
-			let url = (documentsDirectory()?.appendingPathComponent("transition_\(i).mp4"))!;
+			tasks.append(transition);
+			
+			let url = (documentsDirectory()?.appendingPathComponent("transition_\(current).mp4"))!;
 			
 			try? FileManager.default.removeItem(at: url);
-			
-			group.enter()
-			
-			renderer.render(asset: transition, to: url, completion: { (res) in
-				group.leave();
-			})
-		}
 		
-		group.notify(queue: DispatchQueue.main) {
-			self.stitch(task: task)
-		}
+		print("Starting transition render at \(CACurrentMediaTime()), \(url)")
+			
+			renderer.render(asset: transition, to: url, completion: { [weak self] (res) in
+				DispatchQueue.main.async {
+					self?.renderTransitions(urls: urls, current: current + 1, count: count, task: task);
+				}
+			})
 	}
 	
 	
@@ -226,8 +249,14 @@ public final class VisheoRenderer
 		session?.outputFileType = .mp4;
 		session?.videoComposition = videoComposition;
 		
-		session?.exportAsynchronously {
-			print("Final export \(String(describing: session?.error))");
+		session?.exportAsynchronously { [unowned self] in
+			let end = CACurrentMediaTime();
+			
+			let diff = end - self.start;
+			
+			NotificationCenter.default.post(name: NSNotification.Name(rawValue: "finished"), object: self, userInfo: [ "time" : diff ])
+			
+			print("Final export in \(diff) seconds  to \(String(describing: session?.error)) to \(output)");
 		}
 	}
 }

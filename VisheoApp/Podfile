@@ -33,7 +33,6 @@ abstract_target 'VisheoVideoFramework' do
 	
 	pod 'RealmSwift'
 	pod 'lottie-ios', :git => 'https://github.com/nivanchikov/lottie-ios.git'
-	pod 'GPUImage'
 	pod 'pop'
 	
 	target 'visheo' do

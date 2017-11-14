@@ -26,10 +26,25 @@
                                     <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jPQ-eR-bx3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEA-l4-VC3">
+                                <rect key="frame" x="0.0" y="323" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AEA-l4-VC3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1N2-Eq-AXh"/>
+                            <constraint firstItem="AEA-l4-VC3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EJA-6q-bFb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AEA-l4-VC3" secondAttribute="trailing" id="EMi-yE-9o0"/>
+                            <constraint firstItem="AEA-l4-VC3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VSX-Kz-dy7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="statusLabel" destination="AEA-l4-VC3" id="YZU-3l-nqh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

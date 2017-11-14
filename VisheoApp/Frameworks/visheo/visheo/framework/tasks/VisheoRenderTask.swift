@@ -49,6 +49,12 @@ public struct VisheoRenderTask: RealmConvertible
 	}
 	
 	
+	var maxRenderSize: CGSize
+	{
+		return CGSize(width: RenderQuality.res1080.rawValue, height: RenderQuality.res1080.rawValue);
+	}
+	
+	
 	func encode() -> RLMVisheoRenderTask
 	{
 		let task = RLMVisheoRenderTask();
