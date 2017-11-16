@@ -20,6 +20,5 @@ target 'Visheo' do
   pod 'MBProgressHUD'
   pod 'Validator'
   
-  
   pod 'SDWebImage', '~> 4.0'
 end

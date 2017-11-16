@@ -15,6 +15,9 @@ protocol ChooseOccasionViewModel : class {
     func holidayViewModel(at index: Int) -> HolidayCellViewModel
     func occasionViewModel(at index: Int) -> OccasionCellViewModel
     
+    func selectHoliday(at index: Int)
+    func selectOccasion(at index: Int)
+    
     var didChangeCallback: (()->())? {get set}
 }
 
@@ -70,5 +73,13 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
             }.sorted {
                 $0.priority < $1.priority
         }
+    }
+    
+    func selectHoliday(at index: Int) {
+        self.router?.showSelectCover(for: holidays[index])
+    }
+    
+    func selectOccasion(at index: Int) {
+        self.router?.showSelectCover(for: occasions[index])
     }
 }

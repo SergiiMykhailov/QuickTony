@@ -15,6 +15,9 @@
         <array key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
         </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
         <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
         </array>
@@ -27,6 +30,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="abM-5F-e7m">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="J8F-X6-tff" kind="relationship" relationship="rootViewController" id="JBh-vV-tOh"/>
@@ -66,6 +70,12 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
@@ -151,6 +161,12 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="6"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOQ-BF-cQF">
@@ -212,11 +228,182 @@
                     <connections>
                         <outlet property="holidaysCollection" destination="iN2-6H-mSy" id="jbG-Ik-bt7"/>
                         <outlet property="occasionsCollection" destination="U4i-gy-rd0" id="9Ku-Pn-slE"/>
+                        <segue destination="p6i-YY-etj" kind="show" identifier="showOccasion" id="Jcd-lo-oU3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejo-aY-AV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="104.8" y="-213.64317841079463"/>
         </scene>
+        <!--SELECT COVER-->
+        <scene sceneID="1Tb-hG-HqO">
+            <objects>
+                <viewController id="p6i-YY-etj" customClass="SelectCoverViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rG3-Bp-aKL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ivx-NK-aur">
+                                <rect key="frame" x="0.0" y="20" width="375" height="335"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="40" minimumInteritemSpacing="40" id="cZc-RR-MPj">
+                                    <size key="itemSize" width="335" height="335"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="coverCell" id="U9P-Wr-zye" customClass="CoverCollectionViewCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="0.0" width="335" height="335"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6CY-5R-w8z">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="6CY-5R-w8z" secondAttribute="trailing" id="6pd-9M-7LN"/>
+                                            <constraint firstAttribute="bottom" secondItem="6CY-5R-w8z" secondAttribute="bottom" id="MmN-EJ-pWf"/>
+                                            <constraint firstItem="6CY-5R-w8z" firstAttribute="leading" secondItem="U9P-Wr-zye" secondAttribute="leading" id="iqg-uE-faT"/>
+                                            <constraint firstItem="6CY-5R-w8z" firstAttribute="top" secondItem="U9P-Wr-zye" secondAttribute="top" id="rEg-7v-POC"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="coverImage" destination="6CY-5R-w8z" id="pwP-Jl-O0F"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4X-2C-4q9">
+                                <rect key="frame" x="0.0" y="375" width="375" height="59"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="LQz-ay-vZx"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8bN-E3-hLD">
+                                    <size key="itemSize" width="59" height="59"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="158" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="coverCell" id="T9L-oI-TdG" customClass="CoverCollectionViewCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="158" y="0.0" width="59" height="59"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZmD-FX-0bI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ZmD-FX-0bI" secondAttribute="bottom" id="Gf8-7x-IXt"/>
+                                            <constraint firstItem="ZmD-FX-0bI" firstAttribute="top" secondItem="T9L-oI-TdG" secondAttribute="top" id="Nze-w6-VOU"/>
+                                            <constraint firstItem="ZmD-FX-0bI" firstAttribute="leading" secondItem="T9L-oI-TdG" secondAttribute="leading" id="kBJ-6w-U5F"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZmD-FX-0bI" secondAttribute="trailing" id="uq4-WB-SAV"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="coverImage" destination="ZmD-FX-0bI" id="ued-oO-ozy"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="p6i-YY-etj" id="ZLt-be-M24"/>
+                                    <outlet property="delegate" destination="p6i-YY-etj" id="hQ6-vs-8kk"/>
+                                </connections>
+                            </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangleCopy9" translatesAutoresizingMaskIntoConstraints="NO" id="VLI-39-98b">
+                                <rect key="frame" x="150.5" y="368" width="73" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="KKY-dS-Rmd"/>
+                                    <constraint firstAttribute="height" constant="73" id="hXy-5x-oFx"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wj-Y4-Mkt">
+                                <rect key="frame" x="20" y="523" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="hB8-im-1P2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="I like this Cover">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="likeCoverPressed:" destination="p6i-YY-etj" eventType="touchUpInside" id="wgv-Cp-gNv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ivx-NK-aur" firstAttribute="height" secondItem="rG3-Bp-aKL" secondAttribute="width" constant="-40" id="1rx-H4-oUi"/>
+                            <constraint firstItem="5Wj-Y4-Mkt" firstAttribute="leading" secondItem="ld1-s3-pKQ" secondAttribute="leading" constant="20" id="3n9-Pc-03x"/>
+                            <constraint firstItem="ld1-s3-pKQ" firstAttribute="bottom" secondItem="5Wj-Y4-Mkt" secondAttribute="bottom" constant="20" id="6gZ-oz-JWd"/>
+                            <constraint firstItem="ld1-s3-pKQ" firstAttribute="trailing" secondItem="H4X-2C-4q9" secondAttribute="trailing" id="GEt-Xu-g5W"/>
+                            <constraint firstItem="Ivx-NK-aur" firstAttribute="leading" secondItem="rG3-Bp-aKL" secondAttribute="leading" id="NrX-ss-m2V"/>
+                            <constraint firstItem="H4X-2C-4q9" firstAttribute="leading" secondItem="ld1-s3-pKQ" secondAttribute="leading" id="WxP-7r-mOg"/>
+                            <constraint firstItem="VLI-39-98b" firstAttribute="centerX" secondItem="rG3-Bp-aKL" secondAttribute="centerX" id="ZLV-5g-vMh"/>
+                            <constraint firstItem="ld1-s3-pKQ" firstAttribute="trailing" secondItem="Ivx-NK-aur" secondAttribute="trailing" id="oKp-6t-3dJ"/>
+                            <constraint firstItem="Ivx-NK-aur" firstAttribute="top" secondItem="ld1-s3-pKQ" secondAttribute="top" constant="20" id="tLL-hA-MPK"/>
+                            <constraint firstItem="H4X-2C-4q9" firstAttribute="top" secondItem="Ivx-NK-aur" secondAttribute="bottom" constant="20" id="wbV-S3-VQq"/>
+                            <constraint firstItem="ld1-s3-pKQ" firstAttribute="trailing" secondItem="5Wj-Y4-Mkt" secondAttribute="trailing" constant="20" id="wfw-31-3Bj"/>
+                            <constraint firstItem="VLI-39-98b" firstAttribute="centerY" secondItem="H4X-2C-4q9" secondAttribute="centerY" id="xPe-S9-vyH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ld1-s3-pKQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SELECT COVER" id="Kjn-mm-pFO">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="rwd-3a-J13">
+                            <connections>
+                                <action selector="backPressed:" destination="p6i-YY-etj" id="6WD-bx-Cn2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="coversFilmstripCollection" destination="H4X-2C-4q9" id="uiE-4c-TbH"/>
+                        <outlet property="pagedCoversCollection" destination="Ivx-NK-aur" id="Xfn-ik-ilu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Bq-Tg-Lce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="909.60000000000002" y="-206.44677661169416"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="arrow" width="20" height="20"/>
+        <image name="rectangleCopy9" width="73" height="73"/>
+    </resources>
 </document>

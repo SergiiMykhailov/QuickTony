@@ -21,6 +21,10 @@ class OccassionsCollectionMediator : NSObject, UICollectionViewDelegate, UIColle
         occasionsCollection.dataSource = self
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.selectOccasion(at: indexPath.row)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "occassionCell", for: indexPath) as! OccassionCollectionViewCell
         let vm = viewModel.occasionViewModel(at: indexPath.row)

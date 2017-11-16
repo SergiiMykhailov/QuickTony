@@ -30,6 +30,10 @@ class HolidaysCollectionMediator : NSObject, UICollectionViewDelegate, UICollect
         return containerWidth - 3 * itemsSpacing
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.selectHoliday(at: indexPath.row)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "holidayCell", for: indexPath) as! HolidayCollectionViewCell
         let vm = viewModel.holidayViewModel(at: indexPath.row)

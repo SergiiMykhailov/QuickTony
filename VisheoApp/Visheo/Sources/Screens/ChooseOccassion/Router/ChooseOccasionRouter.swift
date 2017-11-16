@@ -9,11 +9,12 @@
 import UIKit
 
 protocol ChooseOccasionRouter: FlowRouter {
+    func showSelectCover(for occasion: OccasionRecord)
 }
 
 class VisheoChooseOccasionRouter : ChooseOccasionRouter {
     enum SegueList: String, SegueListType {
-        case showOccasion = ""
+        case showOccasion = "showOccasion"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: UIViewController?
@@ -36,12 +37,17 @@ class VisheoChooseOccasionRouter : ChooseOccasionRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showOccasion:
+            let selectCoverController = segue.destination as! SelectCoverViewController
+            let selectCoverRouter = VisheoSelectCoverRouter(dependencies: dependencies, occasion: sender as! OccasionRecord)
+            selectCoverRouter.start(with: selectCoverController)
         }
     }
 }
 
-extension ChooseOccasionRouter {
+extension VisheoChooseOccasionRouter {
+    func showSelectCover(for occasion: OccasionRecord) {
+        controller?.performSegue(SegueList.showOccasion, sender: occasion)
+    }
 }
 
