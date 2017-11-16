@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double VisheoVideoVersionNumber;
 FOUNDATION_EXPORT const unsigned char VisheoVideoVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <VisheoVideo/PublicHeader.h>
-
-

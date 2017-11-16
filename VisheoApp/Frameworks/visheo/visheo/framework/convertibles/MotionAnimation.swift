@@ -1,5 +1,5 @@
 //
-//  MotionAnimator.swift
+//  MotionAnimation.swift
 //  VisheoVideo
 //
 //  Created by Nikita Ivanchikov on 10/31/17.
@@ -51,12 +51,16 @@ extension CGSize
 }
 
 
-final class MotionAnimator: VideoConvertible
+final class MotionAnimation: VideoConvertible
 {
+	var renderQueueSupport: ProcessingQueueType {
+		return .concurrent;
+	}
+	
 	typealias MotionLayer = (parent: CALayer, animatable: CALayer, animation: CABasicAnimation);
 	
 	
-	private let asset: UIImage;
+	private let asset: URL;
 	private let duration: TimeInterval;
 	private let bounds: CGSize;
 	
@@ -64,7 +68,7 @@ final class MotionAnimator: VideoConvertible
 	private lazy var motionLayer: MotionLayer = prepareMotionLayer();
 	
 	
-	init(asset: UIImage, bounds: CGSize, duration: TimeInterval)
+	init(asset: URL, bounds: CGSize, duration: TimeInterval)
 	{
 		self.asset = asset;
 		self.duration = duration;
@@ -141,9 +145,9 @@ final class MotionAnimator: VideoConvertible
 		}
 	}
 	
-	var scaledAssetSize: CGSize
+	func scaledAssetSize(for image: UIImage) -> CGSize
 	{
-		var size = asset.size;
+		var size = image.size;
 		
 		let horizontalScale = bounds.width / size.width;
 		let verticalScale = bounds.height / size.height;
@@ -159,7 +163,9 @@ final class MotionAnimator: VideoConvertible
 	
 	public func prepareMotionLayer() -> MotionLayer
 	{
-		let assetSize = scaledAssetSize;
+		let image = UIImage(contentsOfFile: asset.path)!;
+		
+		let assetSize = scaledAssetSize(for: image);
 		
 		let motion = Motion.motionForAsset(sized: assetSize, inBounds: bounds);
 		
@@ -171,7 +177,7 @@ final class MotionAnimator: VideoConvertible
 		parentLayer.masksToBounds = true;
 		
 		let assetLayer = CALayer();
-		assetLayer.contents = asset.cgImage;
+		assetLayer.contents = image.cgImage;
 		assetLayer.frame = CGRect(origin: CGPoint.zero, size: assetSize);
 		assetLayer.backgroundColor = UIColor.green.cgColor;
 		assetLayer.masksToBounds = false;

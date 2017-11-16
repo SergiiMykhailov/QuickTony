@@ -14,7 +14,7 @@ import Lottie
 
 class ViewController: UIViewController
 {
-	let renderer = VisheoRenderer();
+	let renderQueue = VisheoVideo.RenderQueue();
 	var lotView: LOTAnimationView!;
 	var writer: AVAssetWriter!;
 	var input: AVAssetWriterInput!;
@@ -96,13 +96,24 @@ class ViewController: UIViewController
 		let video = Bundle.main.path(forResource: "video", ofType: "mp4")!;
 		let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
 		
-		let task = VisheoRenderTask(id: "3434534",
-		                            cover: URL(fileURLWithPath: cover),
-		                            photos: photos,
-		                            video: URL(fileURLWithPath: video),
-		                            audio: URL(fileURLWithPath: audio));
+		var task = RenderTask(quality: .res480);
 		
-		renderer.render(task: task);
+		task.addMedia(URL(fileURLWithPath: cover), type: .cover);
+		task.addMedia(photos, type: .photo);
+		task.addMedia(URL(fileURLWithPath: video), type: .video);
+		task.addMedia(URL(fileURLWithPath: audio), type: .audio);
+		
+//		let task = VisheoRenderTask(cover: URL(fileURLWithPath: cover),
+//		                            photos: photos,
+//		                            video: URL(fileURLWithPath: video),
+//		                            audio: URL(fileURLWithPath: audio),
+//		                            quality: .res480);
+
+		
+		
+//		renderer.render(task: task);
+		
+		renderQueue.enqueue(task);
 	}
 	
 

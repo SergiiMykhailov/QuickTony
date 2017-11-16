@@ -15,8 +15,18 @@ enum VideoConvertibleError: Error
 }
 
 
+enum ProcessingQueueType
+{
+	case main
+	case serial
+	case concurrent
+}
+
+
 protocol VideoConvertible
 {
+	var renderQueueSupport: ProcessingQueueType { get }
+	
 	func render(to url: URL, on queue: DispatchQueue?, completion: @escaping (Result<Void>) -> Void)
 }
 
@@ -30,13 +40,31 @@ extension VideoConvertible
 
 final class VideoConvertibleRenderer
 {
-	private let queue = DispatchQueue(label: "com.visheo.convertible.queue", qos: .default, attributes: .concurrent);
+	private let concurrentQueue = OperationQueue();
+	private let serialQueue = OperationQueue()
 	
-	public init(){}
-	
-	
-	public func render(asset: VideoConvertible, to url: URL, completion: @escaping (Result<Void>) -> Void)
+	public init()
 	{
-		asset.render(to: url, on: queue, completion: completion);
+		serialQueue.maxConcurrentOperationCount = 1;
+	}
+	
+	
+	public func render(asset: VideoConvertible, to url: URL, completion: @escaping (Result<Void>) -> Void) -> Operation
+	{
+		let operation = VideoConvertibleRenderOperation(asset: asset, url: url);
+		
+		operation.completion = completion;
+		
+		switch asset.renderQueueSupport
+		{
+			case .concurrent:
+				concurrentQueue.addOperation(operation);
+			case .serial:
+				serialQueue.addOperation(operation);
+			case .main:
+				OperationQueue.main.addOperation(operation);
+		}
+		
+		return operation;
 	}
 }

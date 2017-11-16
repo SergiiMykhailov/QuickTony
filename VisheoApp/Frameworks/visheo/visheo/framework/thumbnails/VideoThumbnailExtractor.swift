@@ -26,6 +26,38 @@ enum VideoAssetFrame
 }
 
 
+struct VideoThumbnail
+{
+	let frame: VideoAssetFrame;
+	let image: UIImage;
+	let requestedTime: CMTime;
+	let actualTime: CMTime;
+	
+	
+//	enum CodingKeys: String, CodingKey
+//	{
+//		case frame
+//		case image
+//		case requestedTime
+//		case actualTime
+//	}
+//
+//
+//	func encode(to encoder: Encoder) throws
+//	{
+//		let container = encoder.container(keyedBy: CodingKeys.self);
+//
+////		container.encodefr
+//	}
+//
+//
+//	init(from decoder: Decoder) throws
+//	{
+//
+//	}
+}
+
+
 final class VideoThumbnailExtractor
 {
 	typealias ExtractionResult = (frame: VideoAssetFrame, image: UIImage, time: CMTime)
@@ -44,7 +76,7 @@ final class VideoThumbnailExtractor
 	///   - tolerance: The tolerance allowed before and after frame time
 	///   - completion: A block that is called when thumbnail requests are complete.
 	func generateThumbnails(asset: AVURLAsset, frames: [VideoAssetFrame], tolerance: CMTime? = nil,
-	                        completion: @escaping (Result<[ExtractionResult]>) -> Void)
+	                        completion: @escaping (Result<[VideoThumbnail]>) -> Void)
 	{
 		queue.async { [weak self] in
 			
@@ -60,7 +92,7 @@ final class VideoThumbnailExtractor
 				
 				let generator = try me.generator(for: asset, tolerance: tolerance);
 				
-				var results = [ExtractionResult]()
+				var results = [VideoThumbnail]()
 				
 				for frame in frames
 				{
@@ -68,7 +100,8 @@ final class VideoThumbnailExtractor
 					
 					let thumbnail = try me.generateThumbnailAt(time: time, generator: generator);
 					
-					let result = ExtractionResult(frame: frame, image: thumbnail.image, time: thumbnail.time);
+					let result = VideoThumbnail(frame: frame, image: thumbnail.image, requestedTime: time, actualTime: thumbnail.time)
+					
 					results.append(result);
 				}
 				
