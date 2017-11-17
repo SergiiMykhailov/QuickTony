@@ -395,15 +395,120 @@
                     <connections>
                         <outlet property="coversFilmstripCollection" destination="H4X-2C-4q9" id="uiE-4c-TbH"/>
                         <outlet property="pagedCoversCollection" destination="Ivx-NK-aur" id="Xfn-ik-ilu"/>
+                        <segue destination="Jff-7H-OPY" kind="show" identifier="showPhotoLibrary" id="5FA-bE-CEV"/>
+                        <segue destination="g7P-Dq-lrL" kind="show" identifier="showPhotoPermissions" id="kaJ-ks-jkt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Bq-Tg-Lce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="909.60000000000002" y="-206.44677661169416"/>
         </scene>
+        <!--CAMERA ROLL-->
+        <scene sceneID="QSR-hm-aO0">
+            <objects>
+                <viewController id="Jff-7H-OPY" customClass="PhotoPickerViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Sh-bm-f5s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo gallery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIP-Nz-Odf">
+                                <rect key="frame" x="137" y="291" width="100.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AIP-Nz-Odf" firstAttribute="centerX" secondItem="7Sh-bm-f5s" secondAttribute="centerX" id="Cqp-ol-4U5"/>
+                            <constraint firstItem="AIP-Nz-Odf" firstAttribute="centerY" secondItem="7Sh-bm-f5s" secondAttribute="centerY" id="miI-C3-iA0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Xm-8v-w1Q"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="CAMERA ROLL" id="e9u-sD-Rjf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mIt-Tx-lLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2471" y="-206"/>
+        </scene>
+        <!--CAMERA ROLL-->
+        <scene sceneID="Pqk-JV-iIr">
+            <objects>
+                <viewController id="g7P-Dq-lrL" customClass="PhotoPermissionsViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ggx-u0-qca">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="bdG-sn-BZg">
+                                <rect key="frame" x="0.0" y="230" width="0.0" height="144"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR PHOTOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-PL-lMo">
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add memorable to your Visheo — please allow Visheo to access your photos when prompted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-CT-UNf">
+                                        <rect key="frame" x="0.0" y="42" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-vf-rCc">
+                                        <rect key="frame" x="0.0" y="84" width="0.0" height="60"/>
+                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="2ss-oF-nBH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                        <state key="normal" title="Allow Access">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="allowAccessPressed:" destination="g7P-Dq-lrL" eventType="touchUpInside" id="66r-Z1-q3t"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1No-CB-AOz" firstAttribute="trailing" secondItem="bdG-sn-BZg" secondAttribute="trailing" constant="61" id="c82-WJ-btx"/>
+                            <constraint firstItem="bdG-sn-BZg" firstAttribute="leading" secondItem="1No-CB-AOz" secondAttribute="leading" constant="61" id="fNv-3f-ZpU"/>
+                            <constraint firstItem="bdG-sn-BZg" firstAttribute="centerY" secondItem="ggx-u0-qca" secondAttribute="centerY" id="yVo-Y2-JGz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1No-CB-AOz"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="CAMERA ROLL" id="vhb-wR-qwm">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="DMV-nE-TMj">
+                            <connections>
+                                <action selector="backPressed:" destination="g7P-Dq-lrL" id="LwK-G1-Gly"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="yI4-Lp-Ujp">
+                            <connections>
+                                <action selector="skipPressed:" destination="g7P-Dq-lrL" id="UoW-jk-3Qq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Jff-7H-OPY" kind="show" identifier="showPhotoLibrary" id="rLY-V1-s8d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="own-Fx-bDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1679" y="432"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow" width="20" height="20"/>
         <image name="rectangleCopy9" width="73" height="73"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rLY-V1-s8d"/>
+    </inferredMetricsTieBreakers>
 </document>

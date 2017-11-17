@@ -12,6 +12,13 @@
 		B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
 		B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */; };
 		B44450CD1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450CC1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift */; };
+		B44450D01FBEDA7B0021772F /* VisheoRenderingAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450CF1FBEDA7B0021772F /* VisheoRenderingAssets.swift */; };
+		B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450D41FBEF3F00021772F /* PhotoPermissionsViewController.swift */; };
+		B44450D71FBEF4220021772F /* PhotoPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450D61FBEF4220021772F /* PhotoPermissionsRouter.swift */; };
+		B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450D81FBEF4340021772F /* PhotoPermissionsViewModel.swift */; };
+		B44450DB1FBF02D70021772F /* PhotoPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450DA1FBF02D70021772F /* PhotoPickerRouter.swift */; };
+		B44450DD1FBF02E50021772F /* PhotoPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450DC1FBF02E50021772F /* PhotoPickerViewModel.swift */; };
+		B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450DE1FBF02F60021772F /* PhotoPickerViewController.swift */; };
 		B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */; };
 		B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48259021FB3060800A7F5B0 /* OccasionsListService.swift */; };
 		B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB51FA9E574000BB33B /* AppDelegate.swift */; };
@@ -70,6 +77,13 @@
 		B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDateLabel.swift; sourceTree = "<group>"; };
 		B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputValidator.swift; sourceTree = "<group>"; };
 		B44450CC1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmstripCoversCollectionMediator.swift; sourceTree = "<group>"; };
+		B44450CF1FBEDA7B0021772F /* VisheoRenderingAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoRenderingAssets.swift; sourceTree = "<group>"; };
+		B44450D41FBEF3F00021772F /* PhotoPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsViewController.swift; sourceTree = "<group>"; };
+		B44450D61FBEF4220021772F /* PhotoPermissionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsRouter.swift; sourceTree = "<group>"; };
+		B44450D81FBEF4340021772F /* PhotoPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPermissionsViewModel.swift; sourceTree = "<group>"; };
+		B44450DA1FBF02D70021772F /* PhotoPickerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerRouter.swift; sourceTree = "<group>"; };
+		B44450DC1FBF02E50021772F /* PhotoPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewModel.swift; sourceTree = "<group>"; };
+		B44450DE1FBF02F60021772F /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedCoverCollectionMediator.swift; sourceTree = "<group>"; };
 		B48259021FB3060800A7F5B0 /* OccasionsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsListService.swift; sourceTree = "<group>"; };
 		B48AAAB51FA9E574000BB33B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +163,43 @@
 				B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */,
 			);
 			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		B44450CE1FBEDA0F0021772F /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				B44450CF1FBEDA7B0021772F /* VisheoRenderingAssets.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		B44450D11FBEF3B70021772F /* PhotoPicking */ = {
+			isa = PBXGroup;
+			children = (
+				B44450D31FBEF3CA0021772F /* ViewModel */,
+				B44450D21FBEF3C30021772F /* Router */,
+				B44450D41FBEF3F00021772F /* PhotoPermissionsViewController.swift */,
+				B44450DE1FBF02F60021772F /* PhotoPickerViewController.swift */,
+			);
+			path = PhotoPicking;
+			sourceTree = "<group>";
+		};
+		B44450D21FBEF3C30021772F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B44450D61FBEF4220021772F /* PhotoPermissionsRouter.swift */,
+				B44450DA1FBF02D70021772F /* PhotoPickerRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B44450D31FBEF3CA0021772F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B44450D81FBEF4340021772F /* PhotoPermissionsViewModel.swift */,
+				B44450DC1FBF02E50021772F /* PhotoPickerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B48AAAB41FA9E574000BB33B /* Sources */ = {
@@ -265,6 +316,7 @@
 		B4BCABC51FB8CC7C003EDC7F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B44450D11FBEF3B70021772F /* PhotoPicking */,
 				B4BCAC031FB8CDE0003EDC7F /* SelectCover */,
 				B4BCABC61FB8CC7C003EDC7F /* Authorization */,
 				B4BCABD21FB8CC7C003EDC7F /* ChooseOccassion */,
@@ -431,6 +483,7 @@
 		B4DA3E7B1FAA3C0300D8F2F9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B44450CE1FBEDA0F0021772F /* Rendering */,
 				B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */,
 				B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */,
 				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
@@ -616,22 +669,29 @@
 				B4BCABFF1FB8CC7D003EDC7F /* LaunchProxyViewModel.swift in Sources */,
 				B4BCABF91FB8CC7D003EDC7F /* ChooseOccasionRouter.swift in Sources */,
 				B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */,
+				B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */,
 				B4BCAC091FB8CE09003EDC7F /* SelectCoverRouter.swift in Sources */,
 				B4BCABEE1FB8CC7D003EDC7F /* SignUpRouter.swift in Sources */,
 				B4BCAC0D1FB8D59A003EDC7F /* CoverCollectionViewCell.swift in Sources */,
 				B4BCABFB1FB8CC7D003EDC7F /* HolidayCellViewModel.swift in Sources */,
 				B4BCABFD1FB8CC7D003EDC7F /* LaunchProxyViewController.swift in Sources */,
 				B4BCAC0B1FB8CE18003EDC7F /* SelectCoverViewModel.swift in Sources */,
+				B44450D71FBEF4220021772F /* PhotoPermissionsRouter.swift in Sources */,
+				B44450DD1FBF02E50021772F /* PhotoPickerViewModel.swift in Sources */,
 				B4BCABF31FB8CC7D003EDC7F /* SignUpViewModel.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
 				B4BCABF61FB8CC7D003EDC7F /* ChooseOccasionViewController.swift in Sources */,
+				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4BCABF11FB8CC7D003EDC7F /* AuthorizationViewModel.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
+				B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */,
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
 				B4BCABF01FB8CC7D003EDC7F /* SignUpViewController.swift in Sources */,
+				B44450D01FBEDA7B0021772F /* VisheoRenderingAssets.swift in Sources */,
 				B4BCABEF1FB8CC7D003EDC7F /* SignInViewController.swift in Sources */,
 				B4BCABFC1FB8CC7D003EDC7F /* OccasionCellViewModel.swift in Sources */,
+				B44450DB1FBF02D70021772F /* PhotoPickerRouter.swift in Sources */,
 				B4BCAC021FB8CC7D003EDC7F /* OnboardingViewModel.swift in Sources */,
 				B4BCAC011FB8CC7D003EDC7F /* OnboardingRouter.swift in Sources */,
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,

@@ -52,7 +52,7 @@
 	<key>FacebookAppID</key>
 	<string>971160783034751</string>
 	<key>FacebookDisplayName</key>
-	<string>Peter's first app</string>
+	<string>Peter&apos;s first app</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -80,6 +80,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To add memorable to your Visheo — please allow Visheo to access your photos when prompted</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

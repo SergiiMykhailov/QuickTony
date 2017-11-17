@@ -8,6 +8,7 @@
 
 import Foundation
 import SDWebImage
+import Photos
 
 extension Notification.Name {
     static let preselectedCoverChanged = Notification.Name("preselectedCoverChanged")
@@ -53,14 +54,27 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
         showProgressCallback?(true)
         let selectedCover = occasion.covers[preselectedCoverIndex]
         
+        SDImageCache.shared().config.shouldCacheImagesInMemory = false
         SDWebImageManager.shared().loadImage(with: selectedCover.url, options: [], progress: nil) { (image, data, error, cacheType, success, url) in
             self.showProgressCallback?(false)
-            if (image != nil) {
-//                Save file
-                //TODO: NAvigate further
+            if let coverData = data {
+                let assets = VisheoRenderingAssets()
+                assets.setCover(with: coverData)
+                self.navigateFurther(with: assets)
             } else if let error = error {
                 self.warningAlertHandler?(error.localizedDescription)
             }
+            SDImageCache.shared().config.shouldCacheImagesInMemory = true
+        }
+    }
+    
+    func navigateFurther(with assets: VisheoRenderingAssets) {
+        let photosAuthStatus = PHPhotoLibrary.authorizationStatus()
+        
+        if photosAuthStatus == .authorized {
+            router?.showPhotoLibrary(with: assets)
+        } else {
+            router?.showPhotoPermissions(with: assets)
         }
     }
 }

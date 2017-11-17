@@ -9,11 +9,14 @@
 import UIKit
 
 protocol SelectCoverRouter: FlowRouter {
+    func showPhotoLibrary(with assets: VisheoRenderingAssets)
+    func showPhotoPermissions(with assets: VisheoRenderingAssets)
 }
 
 class VisheoSelectCoverRouter : SelectCoverRouter {
     enum SegueList: String, SegueListType {
-        case next //TODO: Add correct
+        case showPhotoLibrary = "showPhotoLibrary"
+        case showPhotoPermissions = "showPhotoPermissions"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: UIViewController?
@@ -39,12 +42,25 @@ class VisheoSelectCoverRouter : SelectCoverRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showPhotoPermissions:
+            let photoPermissionsController = segue.destination as! PhotoPermissionsViewController
+            let permissionsRouter = VisheoPhotoPermissionsRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets)
+            permissionsRouter.start(with: photoPermissionsController)
+        case .showPhotoLibrary:
+            let pickerController = segue.destination as! PhotoPickerViewController
+            let pickerRouter = VisheoPhotoPickerRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets)
+            pickerRouter.start(with: pickerController)
         }
     }
 }
 
-extension SelectCoverRouter {
+extension VisheoSelectCoverRouter {
+    func showPhotoLibrary(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showPhotoLibrary, sender: assets)
+    }
+    
+    func showPhotoPermissions(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showPhotoPermissions, sender: assets)
+    }
 }
 
