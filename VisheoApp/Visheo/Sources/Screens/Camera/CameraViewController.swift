@@ -12,6 +12,8 @@ import GPUImage
 class CameraViewController: UIViewController
 {
 	@IBOutlet weak var cameraPreview: GPUImageView!
+	@IBOutlet weak var cameraRecordButton: CameraRecordButton!
+	
 	
 	//MARK: - VM+Router init
 	
@@ -24,10 +26,19 @@ class CameraViewController: UIViewController
 	}
 	
 	
+	//MARK: - Lifecycle
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		viewModel.addPreviewOutput(cameraPreview);
+		
+		viewModel.recordingStateChangedBlock = { [weak self] _ in
+			guard let `self` = self else {return}
+			DispatchQueue.main.async {
+				self.cameraRecordButton.isSelected = self.viewModel.isRecording;
+			}
+		}
 	}
 	
 	
@@ -43,6 +54,11 @@ class CameraViewController: UIViewController
 	
 	
 	//MARK: - Actions
+	
+	@IBAction func toggleVideoRecording()
+	{
+		viewModel.toggleRecording();
+	}
 	
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
 		navigationController?.popViewController(animated: true);

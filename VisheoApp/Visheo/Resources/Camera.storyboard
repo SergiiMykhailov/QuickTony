@@ -42,17 +42,20 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWJ-0h-vua" customClass="CameraRecordButton" customModule="Visheo" customModuleProvider="target">
-                                <rect key="frame" x="146.5" y="501" width="82" height="82"/>
+                                <rect key="frame" x="142.5" y="493" width="90" height="90"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="87F-zK-6rB"/>
-                                    <constraint firstAttribute="height" constant="82" id="ylu-Cp-rQb"/>
+                                    <constraint firstAttribute="width" constant="90" id="87F-zK-6rB"/>
+                                    <constraint firstAttribute="height" constant="90" id="ylu-Cp-rQb"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="ringLayerColor">
                                         <color key="value" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleVideoRecording" destination="Isd-d2-FNo" eventType="touchUpInside" id="Lyo-4Y-4yg"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,6 +79,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cameraPreview" destination="4kz-0E-zHu" id="NEX-nr-RxR"/>
+                        <outlet property="cameraRecordButton" destination="kWJ-0h-vua" id="KhT-YZ-bKy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71N-M6-rxD" userLabel="First Responder" sceneMemberID="firstResponder"/>

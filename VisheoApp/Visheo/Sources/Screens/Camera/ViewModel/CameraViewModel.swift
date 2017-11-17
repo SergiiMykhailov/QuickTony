@@ -17,23 +17,37 @@ enum CameraScreenPresentation
 }
 
 
+enum CameraRecordingState
+{
+	case countdown(value: Int)
+	case recording
+	case stopped
+}
+
+
 protocol CameraViewModel: class
 {
+	var isRecording: Bool { get }
 	var screenPresentation: CameraScreenPresentation { get }
+	
+	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? { get set };
 	
 	func addPreviewOutput(_ output: GPUImageInput)
 	func prepareCamera()
+	func toggleRecording()
 }
 
 
 class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDelegate
 {
 	weak var router: CameraRouter?
+	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil;
 	
 	private let cropFilter = GPUImageCropFilter();
 	
 	private var camera: GPUImageVideoCamera?;
 	private var movieWriter: GPUImageMovieWriter?;
+	private (set) var isRecording = false;
 	
 	
 	var screenPresentation: CameraScreenPresentation {
@@ -68,17 +82,40 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 	}
 	
 	
-	private func handlePermissionsUpdate()
+	func addPreviewOutput(_ output: GPUImageInput) {
+		cropFilter.addTarget(output);
+	}
+	
+	
+	func toggleRecording()
 	{
-		if canStartCamera {
-			createCamera();
-			return;
+		if isRecording {
+			finishRecording();
+		} else {
+			startRecording();
 		}
 	}
 	
 	
-	func addPreviewOutput(_ output: GPUImageInput) {
-		cropFilter.addTarget(output);
+	private func startRecording()
+	{
+		isRecording = true;
+		
+		recordingStateChangedBlock?(.recording);
+		
+//		movieWriter?.startRecording();
+	}
+	
+	
+	private func finishRecording()
+	{
+		isRecording = false;
+		
+		recordingStateChangedBlock?(.stopped);
+		
+//		movieWriter?.finishRecording(completionHandler: { [weak self] in
+//			self?.recordingStateChangedBlock?(.stopped);
+//		});
 	}
 	
 	
@@ -119,8 +156,18 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 }
 
 
+//MARK: - Permissions handling
+
 fileprivate extension VisheoCameraViewModel
 {
+	private func handlePermissionsUpdate()
+	{
+		if canStartCamera {
+			createCamera();
+			return;
+		}
+	}
+	
 	private var canStartCamera: Bool {
 		return pendingPermissions.isEmpty && deniedPermissions.isEmpty;
 	}
