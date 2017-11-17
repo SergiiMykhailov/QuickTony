@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Isd-d2-FNo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--RECORD YOUR VIDEO WISH-->
+        <scene sceneID="qKt-3P-dpY">
+            <objects>
+                <viewController id="Isd-d2-FNo" customClass="CameraViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GA8-0f-PZ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjS-Wn-L8J">
+                                <rect key="frame" x="20" y="40" width="335" height="335"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4kz-0E-zHu" customClass="GPUImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gjS-Wn-L8J" secondAttribute="height" multiplier="1:1" id="2a4-3m-htd"/>
+                                    <constraint firstItem="4kz-0E-zHu" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="o7w-15-9xD"/>
+                                    <constraint firstAttribute="trailing" secondItem="4kz-0E-zHu" secondAttribute="trailing" id="oNb-hM-Axo"/>
+                                    <constraint firstItem="4kz-0E-zHu" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="vEM-n3-yMU"/>
+                                    <constraint firstAttribute="bottom" secondItem="4kz-0E-zHu" secondAttribute="bottom" id="zyz-H2-PXA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWJ-0h-vua" customClass="CameraRecordButton" customModule="Visheo" customModuleProvider="target">
+                                <rect key="frame" x="146.5" y="501" width="82" height="82"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="87F-zK-6rB"/>
+                                    <constraint firstAttribute="height" constant="82" id="ylu-Cp-rQb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ringLayerColor">
+                                        <color key="value" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kWJ-0h-vua" firstAttribute="centerX" secondItem="GA8-0f-PZ9" secondAttribute="centerX" id="9Iu-iy-M2i"/>
+                            <constraint firstItem="gjS-Wn-L8J" firstAttribute="leading" secondItem="hQK-Ul-OcZ" secondAttribute="leading" constant="20" id="Cye-xO-RQ1"/>
+                            <constraint firstItem="hQK-Ul-OcZ" firstAttribute="trailing" secondItem="gjS-Wn-L8J" secondAttribute="trailing" constant="20" id="R1D-g8-fdU"/>
+                            <constraint firstItem="hQK-Ul-OcZ" firstAttribute="bottom" secondItem="kWJ-0h-vua" secondAttribute="bottom" constant="40" id="eqp-wd-j8N"/>
+                            <constraint firstItem="gjS-Wn-L8J" firstAttribute="top" secondItem="hQK-Ul-OcZ" secondAttribute="top" constant="20" id="s9s-sI-gBm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hQK-Ul-OcZ"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="RECORD YOUR VIDEO WISH" id="a5t-vd-l66">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="3Vr-ah-nx8">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="Isd-d2-FNo" id="yrY-04-H0G"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cameraPreview" destination="4kz-0E-zHu" id="NEX-nr-RxR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="71N-M6-rxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="424.80000000000001" y="164.16791604197903"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow" width="20" height="20"/>
+    </resources>
+</document>
