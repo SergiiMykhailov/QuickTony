@@ -13,6 +13,7 @@ class CameraViewController: UIViewController
 {
 	@IBOutlet weak var cameraPreview: GPUImageView!
 	@IBOutlet weak var cameraRecordButton: CameraRecordButton!
+	@IBOutlet weak var cameraToggleButton: UIButton!
 	
 	
 	//MARK: - VM+Router init
@@ -34,9 +35,22 @@ class CameraViewController: UIViewController
 		viewModel.addPreviewOutput(cameraPreview);
 		
 		viewModel.recordingStateChangedBlock = { [weak self] _ in
-			guard let `self` = self else {return}
+			guard let `self` = self else { return }
 			DispatchQueue.main.async {
 				self.cameraRecordButton.isSelected = self.viewModel.isRecording;
+				self.cameraToggleButton.isHidden = self.viewModel.isRecording;
+			}
+		}
+		
+		viewModel.cameraReadinessChangeBlock = { [weak self] state in
+			guard let `self` = self else { return }
+			DispatchQueue.main.async {
+				switch state {
+					case .ready:
+						self.hidePermissions();
+					case .needsPermissions(let enableViaSettings):
+						self.displayPermissions(enableViaSettings: enableViaSettings);
+				}
 			}
 		}
 	}
@@ -55,9 +69,12 @@ class CameraViewController: UIViewController
 	
 	//MARK: - Actions
 	
-	@IBAction func toggleVideoRecording()
-	{
+	@IBAction func toggleVideoRecording() {
 		viewModel.toggleRecording();
+	}
+	
+	@IBAction func toggleCameraFace() {
+		viewModel.toggleCameraFace()
 	}
 	
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
@@ -79,5 +96,19 @@ extension CameraViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		super.prepare(for: segue, sender: sender)
 		router.prepare(for: segue, sender: sender)
+	}
+}
+
+extension CameraViewController {
+	//MARK: - Permissions
+	func displayPermissions(enableViaSettings: Bool)
+	{
+		
+	}
+	
+	
+	func hidePermissions()
+	{
+		
 	}
 }

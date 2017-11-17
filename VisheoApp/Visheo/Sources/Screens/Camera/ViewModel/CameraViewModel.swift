@@ -10,10 +10,10 @@ import AVFoundation
 import GPUImage
 
 
-enum CameraScreenPresentation
+enum CameraReadiness
 {
-	case camera
-	case permissions
+	case ready
+	case needsPermissions(enableViaSettings: Bool)
 }
 
 
@@ -28,13 +28,14 @@ enum CameraRecordingState
 protocol CameraViewModel: class
 {
 	var isRecording: Bool { get }
-	var screenPresentation: CameraScreenPresentation { get }
 	
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? { get set };
+	var cameraReadinessChangeBlock: ((CameraReadiness) -> Void)? { get set };
 	
 	func addPreviewOutput(_ output: GPUImageInput)
 	func prepareCamera()
 	func toggleRecording()
+	func toggleCameraFace();
 }
 
 
@@ -42,17 +43,13 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 {
 	weak var router: CameraRouter?
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil;
+	var cameraReadinessChangeBlock: ((CameraReadiness) -> Void)? = nil;
 	
 	private let cropFilter = GPUImageCropFilter();
 	
 	private var camera: GPUImageVideoCamera?;
 	private var movieWriter: GPUImageMovieWriter?;
 	private (set) var isRecording = false;
-	
-	
-	var screenPresentation: CameraScreenPresentation {
-		return canStartCamera ? .camera : .permissions;
-	}
 	
 	
 	func prepareCamera()
@@ -62,11 +59,18 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 			return;
 		}
 		
-		for type in pendingPermissions {
-			AVCaptureDevice.requestAccess(for: type, completionHandler: { [weak self] _ in
-				self?.handlePermissionsUpdate();
-			});
-		}
+		let hasDeniedPermissions = !deniedPermissions.isEmpty;
+		cameraReadinessChangeBlock?(.needsPermissions(enableViaSettings: hasDeniedPermissions));
+		
+//		guard !pendingPermissions.isEmpty else {
+//			return;
+//		}
+//
+//		for type in pendingPermissions {
+//			AVCaptureDevice.requestAccess(for: type, completionHandler: { [weak self] _ in
+//				self?.handlePermissionsUpdate();
+//			});
+//		}
 	}
 	
 	
@@ -79,6 +83,8 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 		
 		camera?.addTarget(cropFilter);
 		camera?.startCapture();
+		
+		cameraReadinessChangeBlock?(.ready);
 	}
 	
 	
@@ -116,6 +122,12 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 //		movieWriter?.finishRecording(completionHandler: { [weak self] in
 //			self?.recordingStateChangedBlock?(.stopped);
 //		});
+	}
+	
+	
+	func toggleCameraFace()
+	{
+		camera?.rotateCamera();
 	}
 	
 	
@@ -164,7 +176,9 @@ fileprivate extension VisheoCameraViewModel
 	{
 		if canStartCamera {
 			createCamera();
-			return;
+		} else {
+			let hasDeniedPermissions = !deniedPermissions.isEmpty;
+			cameraReadinessChangeBlock?(.needsPermissions(enableViaSettings: hasDeniedPermissions));
 		}
 	}
 	

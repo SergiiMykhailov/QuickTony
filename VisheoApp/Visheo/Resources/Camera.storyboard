@@ -26,10 +26,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnp-BU-IW8">
+                                        <rect key="frame" x="20" y="281" width="34" height="34"/>
+                                        <state key="normal" image="camera_toggle_button"/>
+                                        <connections>
+                                            <action selector="toggleCameraFace" destination="Isd-d2-FNo" eventType="touchUpInside" id="8Hz-Ac-sHb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gjS-Wn-L8J" secondAttribute="height" multiplier="1:1" id="2a4-3m-htd"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gnp-BU-IW8" secondAttribute="bottom" constant="20" id="BoB-jS-RV0"/>
+                                    <constraint firstItem="Gnp-BU-IW8" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" constant="20" id="HtJ-oO-Ap7"/>
                                     <constraint firstItem="4kz-0E-zHu" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="o7w-15-9xD"/>
                                     <constraint firstAttribute="trailing" secondItem="4kz-0E-zHu" secondAttribute="trailing" id="oNb-hM-Axo"/>
                                     <constraint firstItem="4kz-0E-zHu" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="vEM-n3-yMU"/>
@@ -80,6 +89,7 @@
                     <connections>
                         <outlet property="cameraPreview" destination="4kz-0E-zHu" id="NEX-nr-RxR"/>
                         <outlet property="cameraRecordButton" destination="kWJ-0h-vua" id="KhT-YZ-bKy"/>
+                        <outlet property="cameraToggleButton" destination="Gnp-BU-IW8" id="Hhg-VT-2eT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71N-M6-rxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,5 +99,6 @@
     </scenes>
     <resources>
         <image name="arrow" width="20" height="20"/>
+        <image name="camera_toggle_button" width="34" height="34"/>
     </resources>
 </document>
