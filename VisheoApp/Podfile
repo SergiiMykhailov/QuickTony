@@ -21,4 +21,8 @@ target 'Visheo' do
   pod 'Validator'
   
   pod 'SDWebImage', '~> 4.0'
+  
+  pod 'GPUImage'
+  
+   pod 'Reveal-SDK', :configurations => ['Debug']
 end
