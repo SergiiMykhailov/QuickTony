@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3F5A7BDD9A952420AB97BDB2 /* Pods_Visheo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */; };
-		9262CBA31FBDF15600F90AB3 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9262CBA21FBDF15600F90AB3 /* Camera.storyboard */; };
 		9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */; };
 		9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */; };
 		9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */; };
 		9262CBB31FBE139700F90AB3 /* CameraRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */; };
+		92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */; };
+		92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */; };
+		92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */; };
 		B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B409B3A41FADBC2100FE43F1 /* ViewModels.swift */; };
 		B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
 		B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */; };
@@ -69,11 +71,13 @@
 
 /* Begin PBXFileReference section */
 		60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9262CBA21FBDF15600F90AB3 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
 		9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRecordButton.swift; sourceTree = "<group>"; };
+		92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTipsView.swift; sourceTree = "<group>"; };
+		92DEDBAF1FC0598400C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
+		92DEDBB21FC0599100C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CameraTips.xib; sourceTree = "<group>"; };
 		9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.release.xcconfig"; sourceTree = "<group>"; };
 		A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
 		B409B3A41FADBC2100FE43F1 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				9262CBAF1FBDFA4100F90AB3 /* ViewModel */,
 				9262CBAC1FBDF96100F90AB3 /* Router */,
 				9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */,
+				92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -211,7 +216,8 @@
 				B48AAABD1FA9E58F000BB33B /* LaunchProxy.storyboard */,
 				B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */,
 				B4A79CEF1FAC927200C208CF /* Main.storyboard */,
-				9262CBA21FBDF15600F90AB3 /* Camera.storyboard */,
+				92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */,
+				92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */,
 			);
 			name = Resources;
 			path = Visheo/Resources;
@@ -560,7 +566,8 @@
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
 				B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
-				9262CBA31FBDF15600F90AB3 /* Camera.storyboard in Resources */,
+				92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */,
+				92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +640,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-11/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -648,6 +656,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -688,6 +697,7 @@
 				B4BCABFF1FB8CC7D003EDC7F /* LaunchProxyViewModel.swift in Sources */,
 				B4BCABF91FB8CC7D003EDC7F /* ChooseOccasionRouter.swift in Sources */,
 				B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */,
+				92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */,
 				9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */,
 				B4BCAC091FB8CE09003EDC7F /* SelectCoverRouter.swift in Sources */,
 				B4BCABEE1FB8CC7D003EDC7F /* SignUpRouter.swift in Sources */,
@@ -717,6 +727,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92DEDBAF1FC0598400C7FBB1 /* Base */,
+			);
+			name = Camera.storyboard;
+			sourceTree = "<group>";
+		};
+		92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92DEDBB21FC0599100C7FBB1 /* Base */,
+			);
+			name = CameraTips.xib;
+			sourceTree = "<group>";
+		};
 		B48AAABB1FA9E58F000BB33B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

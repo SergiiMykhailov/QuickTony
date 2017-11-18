@@ -26,44 +26,48 @@ class CameraViewController: UIViewController
 		self.router    = router
 	}
 	
-	
 	//MARK: - Lifecycle
-	
-	override func viewDidLoad() {
+
+	override func viewDidLoad()
+	{
 		super.viewDidLoad()
+	
+		let tipsButton = UIButton(type: .custom);
+		tipsButton.setImage(UIImage(named: "tipsIcon"), for: .normal);
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
 		
 		viewModel.addPreviewOutput(cameraPreview);
 		
-		viewModel.recordingStateChangedBlock = { [weak self] _ in
-			guard let `self` = self else { return }
+		viewModel.recordingStateChangedBlock = { [weak self] update in
 			DispatchQueue.main.async {
-				self.cameraRecordButton.isSelected = self.viewModel.isRecording;
-				self.cameraToggleButton.isHidden = self.viewModel.isRecording;
-			}
-		}
-		
-		viewModel.cameraReadinessChangeBlock = { [weak self] state in
-			guard let `self` = self else { return }
-			DispatchQueue.main.async {
-				switch state {
-					case .ready:
-						self.hidePermissions();
-					case .needsPermissions(let enableViaSettings):
-						self.displayPermissions(enableViaSettings: enableViaSettings);
-				}
+				self?.handleRecordingState(with: update);
 			}
 		}
 	}
 	
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated);
+		
+		if isMovingToParentViewController {
+			viewModel.startCapture();
+		}
+	}
+	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated);
 		
-		guard isMovingToParentViewController else {
-			return;
+		if isMovingToParentViewController && viewModel.shouldPresentCameraTips {
+			displayTipsController();
+		}
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		if isMovingFromParentViewController {
+			viewModel.stopCapture();
 		}
 		
-		viewModel.prepareCamera()
+		super.viewWillDisappear(animated);
 	}
 	
 	
@@ -79,6 +83,11 @@ class CameraViewController: UIViewController
 	
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
 		navigationController?.popViewController(animated: true);
+	}
+	
+	private func handleRecordingState(with update: CameraRecordingState) {
+		cameraRecordButton.isRecording = viewModel.isRecording;
+		cameraToggleButton.isHidden = viewModel.isRecording;
 	}
 }
 
@@ -99,16 +108,21 @@ extension CameraViewController {
 	}
 }
 
+
 extension CameraViewController {
-	//MARK: - Permissions
-	func displayPermissions(enableViaSettings: Bool)
-	{
-		
-	}
+	//MARK: - Tips
 	
-	
-	func hidePermissions()
-	{
+	private func displayTipsController(onDisplay: (() -> Void)? = nil) {
+		guard let buttonView = navigationItem.rightBarButtonItem?.customView, let navigationView = navigationController?.view else {
+			return;
+		}
 		
+		let tipsButtonFrame = navigationView.convert(buttonView.frame, from: buttonView.superview);
+		
+		let tipsView = CameraTipsView.display(in: navigationView, aligningTo: tipsButtonFrame, completion: onDisplay)
+		
+		tipsView?.tipsDismissedBlock = { [weak self] in
+			self?.viewModel.markCameraTipsSeen();
+		}
 	}
 }

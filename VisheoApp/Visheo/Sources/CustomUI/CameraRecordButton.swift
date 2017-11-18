@@ -122,7 +122,7 @@ class CameraRecordButton: UIControl
 		
 		var path: UIBezierPath;
 		
-		if isSelected {
+		if isRecording {
 			path = UIBezierPath(roundedRect: rect,
 								byRoundingCorners: .allCorners,
 								cornerRadii: CGSize(width: rect.width / 5.0, height: rect.height / 5.0));
@@ -148,7 +148,7 @@ class CameraRecordButton: UIControl
 	}
 	
 	
-	override var isSelected: Bool {
+	var isRecording: Bool = false {
 		didSet {
 			updateStatusKnobPath(animated: true);
 		}

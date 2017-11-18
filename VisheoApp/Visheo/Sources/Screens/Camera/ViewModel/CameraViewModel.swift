@@ -10,13 +10,6 @@ import AVFoundation
 import GPUImage
 
 
-enum CameraReadiness
-{
-	case ready
-	case needsPermissions(enableViaSettings: Bool)
-}
-
-
 enum CameraRecordingState
 {
 	case countdown(value: Int)
@@ -27,23 +20,27 @@ enum CameraRecordingState
 
 protocol CameraViewModel: class
 {
+	var shouldPresentCameraTips: Bool { get };
+	func markCameraTipsSeen();
+	
 	var isRecording: Bool { get }
 	
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? { get set };
-	var cameraReadinessChangeBlock: ((CameraReadiness) -> Void)? { get set };
 	
 	func addPreviewOutput(_ output: GPUImageInput)
-	func prepareCamera()
+	func startCapture()
+	func stopCapture();
 	func toggleRecording()
 	func toggleCameraFace();
 }
 
 
-class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDelegate
+class VisheoCameraViewModel: NSObject, CameraViewModel
 {
+	var appState : AppStateService
+	
 	weak var router: CameraRouter?
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil;
-	var cameraReadinessChangeBlock: ((CameraReadiness) -> Void)? = nil;
 	
 	private let cropFilter = GPUImageCropFilter();
 	
@@ -52,29 +49,14 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 	private (set) var isRecording = false;
 	
 	
-	func prepareCamera()
+	init(appState: AppStateService)
 	{
-		if canStartCamera {
-			createCamera();
-			return;
-		}
-		
-		let hasDeniedPermissions = !deniedPermissions.isEmpty;
-		cameraReadinessChangeBlock?(.needsPermissions(enableViaSettings: hasDeniedPermissions));
-		
-//		guard !pendingPermissions.isEmpty else {
-//			return;
-//		}
-//
-//		for type in pendingPermissions {
-//			AVCaptureDevice.requestAccess(for: type, completionHandler: { [weak self] _ in
-//				self?.handlePermissionsUpdate();
-//			});
-//		}
+		self.appState = appState;
+		super.init();
 	}
 	
 	
-	private func createCamera()
+	func startCapture()
 	{
 		camera = GPUImageVideoCamera(sessionPreset: AVCaptureSession.Preset.high.rawValue, cameraPosition: .front);
 		camera?.outputImageOrientation = .portrait;
@@ -83,8 +65,6 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 		
 		camera?.addTarget(cropFilter);
 		camera?.startCapture();
-		
-		cameraReadinessChangeBlock?(.ready);
 	}
 	
 	
@@ -103,6 +83,16 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 	}
 	
 	
+	func stopCapture()
+	{
+		if isRecording {
+			finishRecording();
+		}
+		
+		camera?.stopCapture();
+	}
+	
+	
 	private func startRecording()
 	{
 		isRecording = true;
@@ -111,7 +101,6 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 		
 //		movieWriter?.startRecording();
 	}
-	
 	
 	private func finishRecording()
 	{
@@ -124,13 +113,22 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 //		});
 	}
 	
-	
-	func toggleCameraFace()
-	{
+	func toggleCameraFace() {
 		camera?.rotateCamera();
 	}
 	
+	var shouldPresentCameraTips: Bool {
+		return true; appState.shouldShowCameraTips;
+	}
 	
+	func markCameraTipsSeen() {
+		appState.cameraTips(wereSeen: true);
+	}
+}
+
+
+extension VisheoCameraViewModel: GPUImageVideoCameraDelegate
+{
 	func willOutputSampleBuffer(_ sampleBuffer: CMSampleBuffer!)
 	{
 		guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
@@ -164,40 +162,5 @@ class VisheoCameraViewModel: NSObject, CameraViewModel, GPUImageVideoCameraDeleg
 		if !cropFilter.cropRegion.equalTo(cropRect) {
 			cropFilter.cropRegion = cropRect;
 		}
-	}
-}
-
-
-//MARK: - Permissions handling
-
-fileprivate extension VisheoCameraViewModel
-{
-	private func handlePermissionsUpdate()
-	{
-		if canStartCamera {
-			createCamera();
-		} else {
-			let hasDeniedPermissions = !deniedPermissions.isEmpty;
-			cameraReadinessChangeBlock?(.needsPermissions(enableViaSettings: hasDeniedPermissions));
-		}
-	}
-	
-	private var canStartCamera: Bool {
-		return pendingPermissions.isEmpty && deniedPermissions.isEmpty;
-	}
-	
-	
-	private var necessaryMedia: [AVMediaType] {
-		return [.video, .audio];
-	}
-	
-	
-	private var pendingPermissions: [AVMediaType] {
-		return necessaryMedia.filter{ AVCaptureDevice.authorizationStatus(for: $0) == .notDetermined }
-	}
-	
-	
-	private var deniedPermissions: [AVMediaType] {
-		return necessaryMedia.filter{ return [.denied, .restricted].contains(AVCaptureDevice.authorizationStatus(for: $0)) }
 	}
 }
