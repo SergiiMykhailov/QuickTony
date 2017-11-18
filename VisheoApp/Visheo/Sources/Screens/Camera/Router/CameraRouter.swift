@@ -10,14 +10,14 @@ import UIKit
 
 
 protocol CameraRouter: FlowRouter {
-	
+	func showCropScreen(for movie: URL)
 }
 
 
 class VisheoCameraRouter: CameraRouter
 {
 	enum SegueList: String, SegueListType {
-		case next //TODO: Add correct
+		case showCropScreen = "showCropScreen"
 	}
 	
 	let dependencies: RouterDependencies
@@ -50,5 +50,7 @@ class VisheoCameraRouter: CameraRouter
 
 
 extension VisheoCameraRouter {
-	
+	func showCropScreen(for movie: URL) {
+//		controller?.performSegue(SegueList.showCropScreen, sender: movie);
+	}
 }

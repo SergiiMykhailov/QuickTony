@@ -16,9 +16,9 @@ class CameraRecordButton: UIControl
 	private let statusKnobLayer = CAShapeLayer();
 	
 	
-	var progress: CGFloat = 0.0 {
+	var progress: Double = 0.0 {
 		didSet {
-			progressLayer.strokeEnd = progress;
+			progressLayer.strokeEnd = CGFloat(progress);
 		}
 	}
 	

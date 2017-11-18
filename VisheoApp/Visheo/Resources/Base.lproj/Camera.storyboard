@@ -7,9 +7,15 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--RECORD YOUR VIDEO WISH-->
         <scene sceneID="qKt-3P-dpY">
@@ -26,6 +32,40 @@
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjJ-FK-D1Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="176"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V01-yZ-NSN">
+                                        <rect key="frame" x="273.5" y="15" width="46.5" height="19"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-DV-gPA" customClass="CameraRecordIndicator" customModule="Visheo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="5" width="9" height="9.5"/>
+                                                <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="pSM-DV-gPA" secondAttribute="height" multiplier="1:1" id="9sA-Ik-ddr"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="REC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct7-4F-cZX">
+                                                <rect key="frame" x="14" y="0.0" width="32.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                                <color key="textColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="centerY" secondItem="Ct7-4F-cZX" secondAttribute="centerY" id="3PE-ui-5Ea"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ct7-4F-cZX" secondAttribute="bottom" id="57N-Pc-ptE"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="leading" secondItem="V01-yZ-NSN" secondAttribute="leading" id="CJQ-sI-8Qe"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="height" secondItem="Ct7-4F-cZX" secondAttribute="height" multiplier="0.5" id="XS5-kZ-ANr"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ct7-4F-cZX" secondAttribute="trailing" id="ZCN-QJ-ZSM"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="trailing" secondItem="Ct7-4F-cZX" secondAttribute="leading" constant="-5" id="aFX-3F-Ser"/>
+                                            <constraint firstItem="Ct7-4F-cZX" firstAttribute="top" secondItem="V01-yZ-NSN" secondAttribute="top" id="oSd-ju-uBU"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnp-BU-IW8">
                                         <rect key="frame" x="20" y="281" width="34" height="34"/>
                                         <state key="normal" image="camera_toggle_button"/>
@@ -38,10 +78,16 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gjS-Wn-L8J" secondAttribute="height" multiplier="1:1" id="2a4-3m-htd"/>
                                     <constraint firstAttribute="bottom" secondItem="Gnp-BU-IW8" secondAttribute="bottom" constant="20" id="BoB-jS-RV0"/>
+                                    <constraint firstItem="MjJ-FK-D1Y" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="GdU-xW-uYi"/>
                                     <constraint firstItem="Gnp-BU-IW8" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" constant="20" id="HtJ-oO-Ap7"/>
+                                    <constraint firstAttribute="bottom" secondItem="MjJ-FK-D1Y" secondAttribute="bottom" id="OEO-Hr-tBO"/>
+                                    <constraint firstItem="MjJ-FK-D1Y" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="Sgq-Bv-hsv"/>
+                                    <constraint firstAttribute="trailing" secondItem="MjJ-FK-D1Y" secondAttribute="trailing" id="dMy-Xf-wQX"/>
                                     <constraint firstItem="4kz-0E-zHu" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="o7w-15-9xD"/>
                                     <constraint firstAttribute="trailing" secondItem="4kz-0E-zHu" secondAttribute="trailing" id="oNb-hM-Axo"/>
+                                    <constraint firstAttribute="trailing" secondItem="V01-yZ-NSN" secondAttribute="trailing" constant="15" id="qbn-rt-J7k"/>
                                     <constraint firstItem="4kz-0E-zHu" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="vEM-n3-yMU"/>
+                                    <constraint firstItem="V01-yZ-NSN" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" constant="15" id="zNf-Pi-bmG"/>
                                     <constraint firstAttribute="bottom" secondItem="4kz-0E-zHu" secondAttribute="bottom" id="zyz-H2-PXA"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -96,6 +142,9 @@
                         <outlet property="cameraPreview" destination="4kz-0E-zHu" id="NEX-nr-RxR"/>
                         <outlet property="cameraRecordButton" destination="kWJ-0h-vua" id="KhT-YZ-bKy"/>
                         <outlet property="cameraToggleButton" destination="Gnp-BU-IW8" id="Hhg-VT-2eT"/>
+                        <outlet property="countdownLabel" destination="MjJ-FK-D1Y" id="MU7-ak-MSh"/>
+                        <outlet property="recordingIndicator" destination="pSM-DV-gPA" id="Zai-iO-14U"/>
+                        <outlet property="recordingStatusView" destination="V01-yZ-NSN" id="5Qh-Qh-zKq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71N-M6-rxD" userLabel="First Responder" sceneMemberID="firstResponder"/>

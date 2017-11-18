@@ -14,7 +14,9 @@ class CameraViewController: UIViewController
 	@IBOutlet weak var cameraPreview: GPUImageView!
 	@IBOutlet weak var cameraRecordButton: CameraRecordButton!
 	@IBOutlet weak var cameraToggleButton: UIButton!
-	
+	@IBOutlet weak var recordingStatusView: UIView!
+	@IBOutlet weak var recordingIndicator: CameraRecordIndicator!
+	@IBOutlet weak var countdownLabel: UILabel!
 	
 	//MARK: - VM+Router init
 	
@@ -41,6 +43,12 @@ class CameraViewController: UIViewController
 		viewModel.recordingStateChangedBlock = { [weak self] update in
 			DispatchQueue.main.async {
 				self?.handleRecordingState(with: update);
+			}
+		}
+		
+		viewModel.recordingProgressChangedBlock = { [weak self] update in
+			DispatchQueue.main.async {
+				self?.cameraRecordButton.progress = update;
 			}
 		}
 	}
@@ -85,9 +93,25 @@ class CameraViewController: UIViewController
 		navigationController?.popViewController(animated: true);
 	}
 	
-	private func handleRecordingState(with update: CameraRecordingState) {
-		cameraRecordButton.isRecording = viewModel.isRecording;
-		cameraToggleButton.isHidden = viewModel.isRecording;
+	private func handleRecordingState(with update: CameraRecordingState)
+	{
+		recordingStatusView.isHidden = (update != .recording);
+		recordingIndicator.toggleAnimation(update == .recording);
+		
+		if case .countdown(let value) = update {
+			countdownLabel.isHidden = false;
+			countdownLabel.text = value;
+		} else {
+			countdownLabel.isHidden = true;
+		}
+		
+		if case .stopped = update {
+			cameraRecordButton.isRecording = false;
+			cameraToggleButton.isHidden = false;
+		} else {
+			cameraRecordButton.isRecording = true;
+			cameraToggleButton.isHidden = true;
+		}
 	}
 }
 
