@@ -23,10 +23,11 @@ class VisheoCameraPermissionsRouter: CameraPermissionsRouter
 	let dependencies: RouterDependencies
 	private(set) weak var controller: UIViewController?
 	private(set) weak var viewModel: CameraPermissionsViewModel?
+    let assets : VisheoRenderingAssets
 	
-	
-	public init(dependencies: RouterDependencies) {
+	public init(dependencies: RouterDependencies, assets : VisheoRenderingAssets) {
 		self.dependencies = dependencies
+        self.assets = assets
 	}
 	
 	func start(with viewController: CameraPermissionsViewController) {
@@ -44,7 +45,7 @@ class VisheoCameraPermissionsRouter: CameraPermissionsRouter
 		switch segueList {
 			case .showCameraScreen:
 				let cameraController = segue.destination as! CameraViewController
-				let router = VisheoCameraRouter(dependencies: dependencies)
+                let router = VisheoCameraRouter(dependencies: dependencies, assets: self.assets)
 				router.start(with: cameraController)
 			default:
 				break

@@ -10,6 +10,11 @@ import Foundation
 
 class VisheoRenderingAssets {
     private(set) var coverUrl : URL?
+    
+    var videoUrl : URL {
+        return assetsFolderUrl.appendingPathComponent("video.mov")
+    }
+    
     var photoUrls : [URL] {
         return photoUrlsDict.sorted {$0.0 < $1.0}.map {$0.value}
     }
@@ -27,6 +32,14 @@ class VisheoRenderingAssets {
     func setCover(with data: Data) {
         coverUrl = assetsFolderUrl.appendingPathComponent("cover")
         try! data.write(to: coverUrl!)        
+    }
+    
+    func removePhotos() {
+        photoUrlsDict.forEach { (number, photoUrl) in
+            try? FileManager.default.removeItem(at: photoUrl)
+        }
+        
+        photoUrlsDict.removeAll()
     }
     
     func addPhoto(data: Data, at index: Int) {

@@ -67,30 +67,31 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     }
     
     func skipPhotos() {
-        showVideoScreen()
+        assets.removePhotos()
+        showVideoScreen(with: assets)
     }
     
     func proceed() {
         showProgressCallback?(true)
         loadAssets {
             self.showProgressCallback?(false)
-            self.showVideoScreen()
+            self.showVideoScreen(with: self.assets)
         }
     }
     
     // MARK: Private
     
-    private func showVideoScreen() {
+    private func showVideoScreen(with assets: VisheoRenderingAssets) {
         if permissionsService.cameraAccessAllowed {
-            router?.showCamera()
+            router?.showCamera(with: assets)
         } else {
-            router?.showCameraPermissions()
+            router?.showCameraPermissions(with: assets)
         }
     }
     
     func loadAssets(completion: @escaping ()->()) {
         let group = DispatchGroup()
-        
+        assets.removePhotos()
         for (index, assetLocalId) in selectedPhotos.enumerated() {
             let result = PHAsset.fetchAssets(withLocalIdentifiers: [assetLocalId], options: nil)
             if let asset = result.firstObject {

@@ -83,6 +83,9 @@
 		B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC0E1FB8D5D0003EDC7F /* CoverCellViewModel.swift */; };
 		B4CFB7711FAB4A7900D6E73A /* Authentification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */; };
 		B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */; };
+		B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */; };
+		B4F666271FC1C9FB00B68055 /* VideoTrimmingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */; };
+		B4F666291FC1CA1200B68055 /* VideoTrimmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +170,9 @@
 		B4BCAC0E1FB8D5D0003EDC7F /* CoverCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverCellViewModel.swift; sourceTree = "<group>"; };
 		B4CFB7701FAB4A7900D6E73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentification.storyboard; sourceTree = "<group>"; };
 		B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateService.swift; sourceTree = "<group>"; };
+		B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingRouter.swift; sourceTree = "<group>"; };
+		B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingViewModel.swift; sourceTree = "<group>"; };
+		B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +392,7 @@
 		B4BCABC51FB8CC7C003EDC7F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B4F666201FC1C96C00B68055 /* VideoTrimming */,
 				B44450D11FBEF3B70021772F /* PhotoPicking */,
 				9262CBA91FBDF71A00F90AB3 /* Camera */,
 				B4BCAC031FB8CDE0003EDC7F /* SelectCover */,
@@ -562,6 +569,32 @@
 				B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B4F666201FC1C96C00B68055 /* VideoTrimming */ = {
+			isa = PBXGroup;
+			children = (
+				B4F666231FC1C98900B68055 /* Router */,
+				B4F666211FC1C97C00B68055 /* ViewModel */,
+				B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */,
+			);
+			path = VideoTrimming;
+			sourceTree = "<group>";
+		};
+		B4F666211FC1C97C00B68055 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B4F666231FC1C98900B68055 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		CC7C1C17CFB809EE5564ADC0 /* Pods */ = {
@@ -756,6 +789,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92C006631FC0B4AC000AFD4E /* CameraPermissionsRouter.swift in Sources */,
+				B4F666271FC1C9FB00B68055 /* VideoTrimmingViewModel.swift in Sources */,
 				B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */,
 				9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */,
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
@@ -788,6 +822,7 @@
 				92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */,
 				9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */,
 				B4BCAC091FB8CE09003EDC7F /* SelectCoverRouter.swift in Sources */,
+				B4F666291FC1CA1200B68055 /* VideoTrimmingViewController.swift in Sources */,
 				B4BCABEE1FB8CC7D003EDC7F /* SignUpRouter.swift in Sources */,
 				B4BCAC0D1FB8D59A003EDC7F /* CoverCollectionViewCell.swift in Sources */,
 				B4BCABFB1FB8CC7D003EDC7F /* HolidayCellViewModel.swift in Sources */,
@@ -802,6 +837,7 @@
 				B4BCABF11FB8CC7D003EDC7F /* AuthorizationViewModel.swift in Sources */,
 				9262CBB31FBE139700F90AB3 /* CameraRecordButton.swift in Sources */,
 				9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */,
+				B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B44450E11FBF0B580021772F /* PhotoCollectionViewCell.swift in Sources */,
 				B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */,

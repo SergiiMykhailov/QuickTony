@@ -49,11 +49,11 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
             pickerRouter.start(with: pickerController)
         case .showCamera:
             let cameraController = segue.destination as! CameraViewController
-            let cameraRouter = VisheoCameraRouter(dependencies: dependencies)
+            let cameraRouter = VisheoCameraRouter(dependencies: dependencies, assets: assets)
             cameraRouter.start(with: cameraController)
         case .showCameraPermissions:
             let cameraPermissionController = segue.destination as! CameraPermissionsViewController
-            let cameraPermissionsRouter = VisheoCameraPermissionsRouter(dependencies: dependencies)
+            let cameraPermissionsRouter = VisheoCameraPermissionsRouter(dependencies: dependencies, assets: assets)
             cameraPermissionsRouter.start(with: cameraPermissionController)
         }
     }

@@ -9,8 +9,8 @@
 import UIKit
 
 protocol PhotoPickerRouter: FlowRouter {
-    func showCamera()
-    func showCameraPermissions()
+    func showCamera(with assets: VisheoRenderingAssets)
+    func showCameraPermissions(with assets: VisheoRenderingAssets)
 }
 
 class VisheoPhotoPickerRouter : PhotoPickerRouter {
@@ -43,23 +43,23 @@ class VisheoPhotoPickerRouter : PhotoPickerRouter {
         switch segueList {
         case .showCamera:
             let cameraController = segue.destination as! CameraViewController
-            let cameraRouter = VisheoCameraRouter(dependencies: dependencies)
+            let cameraRouter = VisheoCameraRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets)
             cameraRouter.start(with: cameraController)
         case .showCameraPermissions:
             let cameraPermissionController = segue.destination as! CameraPermissionsViewController
-            let cameraPermissionsRouter = VisheoCameraPermissionsRouter(dependencies: dependencies)
+            let cameraPermissionsRouter = VisheoCameraPermissionsRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets)
             cameraPermissionsRouter.start(with: cameraPermissionController)
         }
     }
 }
 
 extension VisheoPhotoPickerRouter {    
-    func showCamera() {
-        controller?.performSegue(SegueList.showCamera, sender: nil)
+    func showCamera(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showCamera, sender: assets)
     }
     
-    func showCameraPermissions() {
-        controller?.performSegue(SegueList.showCameraPermissions, sender: nil)
+    func showCameraPermissions(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showCameraPermissions, sender: assets)
     }
 }
 

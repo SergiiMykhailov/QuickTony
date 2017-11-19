@@ -63,9 +63,11 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	private var outputVideoSize = CGSize(width: 480.0, height: 480.0);
 	private var displayLink: CADisplayLink? = nil;
 	
+    private let assets : VisheoRenderingAssets
 	
-	init(appState: AppStateService) {
+	init(appState: AppStateService, assets : VisheoRenderingAssets) {
 		self.appState = appState;
+        self.assets = assets
 		super.init();
 	}
 	
@@ -110,7 +112,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		
 		do
 		{
-			let url = try generateMovieURL();
+			let url = assets.videoUrl;
 			
 			movieWriter = GPUImageMovieWriter(movieURL: url, size: outputVideoSize);
 			movieWriter?.encodingLiveVideo = true;
@@ -183,29 +185,17 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 			return;
 		}
 		
-		let url = writer.assetWriter.outputURL;
+//        let url = writer.assetWriter.outputURL;
 		
 		writer.finishRecording(completionHandler: { [weak self] in
 			finalize(nil);
-			self?.router?.showCropScreen(for: url);
+            if let strongSelf = self {
+                DispatchQueue.main.async {
+                    strongSelf.router?.showTrimScreen(with: strongSelf.assets)
+                }
+            }
 		});
 	}
-	
-	
-	private func generateMovieURL() throws -> URL {
-		
-		let filename = UUID().uuidString;
-		let path = filename + ".mov";
-		
-		let manager = FileManager.default;
-		
-		let url = try manager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("recordings");
-		
-		try manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil);
-		
-		return url.appendingPathComponent(path);
-	}
-	
 	
 	@objc func updateRecordingDuration()
 	{

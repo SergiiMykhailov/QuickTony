@@ -10,27 +10,28 @@ import UIKit
 
 
 protocol CameraRouter: FlowRouter {
-	func showCropScreen(for movie: URL)
+	func showTrimScreen(with assets: VisheoRenderingAssets)
 }
 
 
 class VisheoCameraRouter: CameraRouter
 {
 	enum SegueList: String, SegueListType {
-		case showCropScreen = "showCropScreen"
+		case showTrimScreen = "showTrimScreen"
 	}
 	
 	let dependencies: RouterDependencies
 	private(set) weak var controller: UIViewController?
 	private(set) weak var viewModel: CameraViewModel?
-	
+    let assets : VisheoRenderingAssets
 
-	public init(dependencies: RouterDependencies) {
+    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets) {
 		self.dependencies = dependencies
+        self.assets = assets
 	}
 	
 	func start(with viewController: CameraViewController) {
-		let vm = VisheoCameraViewModel(appState: dependencies.appStateService);
+        let vm = VisheoCameraViewModel(appState: dependencies.appStateService, assets: self.assets);
 		viewModel = vm
 		vm.router = self
 		self.controller = viewController
@@ -42,15 +43,17 @@ class VisheoCameraRouter: CameraRouter
 			return
 		}
 		switch segueList {
-		default:
-			break
+        case .showTrimScreen:
+            let trimmingController = segue.destination as! VideoTrimmingViewController
+            let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: assets)
+            trimmingRouter.start(with: trimmingController)
 		}
 	}
 }
 
 
 extension VisheoCameraRouter {
-	func showCropScreen(for movie: URL) {
-//		controller?.performSegue(SegueList.showCropScreen, sender: movie);
-	}
+    func showTrimScreen(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showTrimScreen, sender: assets)
+    }
 }
