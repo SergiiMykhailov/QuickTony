@@ -10,11 +10,15 @@ import UIKit
 
 protocol PhotoPermissionsRouter: FlowRouter {
     func showPhotoLibrary()
+    func showCamera()
+    func showCameraPermissions()
 }
 
 class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
     enum SegueList: String, SegueListType {
         case showPhotoLibrary = "showPhotoLibrary"
+        case showCamera = "showCameraScreen"
+        case showCameraPermissions = "showCameraPermissionsScreen"
     }
     let dependencies: RouterDependencies
     let assets : VisheoRenderingAssets
@@ -27,7 +31,7 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
     }
     
     func start(with viewController: PhotoPermissionsViewController) {
-        let vm = VisheoPhotoPermissionsViewModel()
+        let vm = VisheoPhotoPermissionsViewModel(permissionsService: dependencies.appPermissionsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController        
@@ -43,6 +47,14 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
             let pickerController = segue.destination as! PhotoPickerViewController
             let pickerRouter = VisheoPhotoPickerRouter(dependencies: dependencies, assets: assets)
             pickerRouter.start(with: pickerController)
+        case .showCamera:
+            let cameraController = segue.destination as! CameraViewController
+            let cameraRouter = VisheoCameraRouter(dependencies: dependencies)
+            cameraRouter.start(with: cameraController)
+        case .showCameraPermissions:
+            let cameraPermissionController = segue.destination as! CameraPermissionsViewController
+            let cameraPermissionsRouter = VisheoCameraPermissionsRouter(dependencies: dependencies)
+            cameraPermissionsRouter.start(with: cameraPermissionController)
         }
     }
 }
@@ -50,6 +62,14 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
 extension VisheoPhotoPermissionsRouter {
     func showPhotoLibrary() {
         controller?.performSegue(SegueList.showPhotoLibrary, sender: nil)
+    }
+    
+    func showCamera() {
+        controller?.performSegue(SegueList.showCamera, sender: nil)
+    }
+    
+    func showCameraPermissions() {
+        controller?.performSegue(SegueList.showCameraPermissions, sender: nil)
     }
 }
 

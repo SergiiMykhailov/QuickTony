@@ -515,11 +515,29 @@
                     <connections>
                         <outlet property="collectionView" destination="bqS-g2-86B" id="bBb-UT-D0A"/>
                         <outlet property="proceedButton" destination="VUs-tX-owo" id="KXm-bS-qsX"/>
+                        <segue destination="53N-Og-RIQ" kind="show" identifier="showCameraScreen" id="jJm-eC-c3f"/>
+                        <segue destination="c8Z-PU-L7t" kind="show" identifier="showCameraPermissionsScreen" id="ddP-AN-G6D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0H-4c-W6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2756" y="-163"/>
+            <point key="canvasLocation" x="2599" y="-278"/>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="m56-aN-BhQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Camera" id="53N-Og-RIQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9q-YM-Vh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3652" y="-264"/>
+        </scene>
+        <!--CameraPermissionsViewControllerScene-->
+        <scene sceneID="wF9-Ow-pi2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Camera" referencedIdentifier="CameraPermissionsViewControllerScene" id="c8Z-PU-L7t" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rbW-qM-wCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3812" y="-164"/>
         </scene>
         <!--CAMERA ROLL-->
         <scene sceneID="Pqk-JV-iIr">
@@ -587,11 +605,13 @@
                     </navigationItem>
                     <connections>
                         <segue destination="Dje-Hm-87p" kind="show" identifier="showPhotoLibrary" id="6pg-nG-fzZ"/>
+                        <segue destination="53N-Og-RIQ" kind="show" identifier="showCameraScreen" id="G1f-tY-ZBC"/>
+                        <segue destination="c8Z-PU-L7t" kind="show" identifier="showCameraPermissionsScreen" id="Y7f-9b-FXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="own-Fx-bDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679" y="432"/>
+            <point key="canvasLocation" x="1786" y="458"/>
         </scene>
     </scenes>
     <resources>
@@ -599,6 +619,8 @@
         <image name="rectangleCopy9" width="73" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6pg-nG-fzZ"/>
+        <segue reference="Y7f-9b-FXA"/>
+        <segue reference="G1f-tY-ZBC"/>
+        <segue reference="2OI-cd-wsG"/>
     </inferredMetricsTieBreakers>
 </document>

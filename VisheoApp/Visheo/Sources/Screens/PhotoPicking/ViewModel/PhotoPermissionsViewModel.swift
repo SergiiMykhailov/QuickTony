@@ -6,8 +6,7 @@
 //  Copyright © 2017 Olearis. All rights reserved.
 //
 
-import Foundation
-import Photos
+import UIKit
 
 protocol PhotoPermissionsViewModel : class {
     func skipPhotos()
@@ -16,27 +15,35 @@ protocol PhotoPermissionsViewModel : class {
 
 class VisheoPhotoPermissionsViewModel : PhotoPermissionsViewModel {
     func skipPhotos() {
-        //TODO: SHow video permissions/picker screen
+        if permissionsService.cameraAccessAllowed {
+            router?.showCamera()
+        } else {
+            router?.showCameraPermissions()
+        }
     }
     
     func allowAccess() {
-        if PHPhotoLibrary.authorizationStatus() == .authorized {
+        if permissionsService.galleryAccessAllowed {
             self.router?.showPhotoLibrary()
-        } else if PHPhotoLibrary.authorizationStatus() == .denied {
+            return;
+        }
+        
+        if !permissionsService.galleryAccessPending
+        {
             UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
-        } else {
-            PHPhotoLibrary.requestAuthorization { (status) in
-                DispatchQueue.main.async {
-                    if status == .authorized {
-                        self.router?.showPhotoLibrary()
-                    }
-                }
+            return
+        }
+        
+        permissionsService.requestGalleryAccess {
+            if self.permissionsService.galleryAccessAllowed {
+                self.router?.showPhotoLibrary()
             }
         }
     }
     
     weak var router: PhotoPermissionsRouter?
-    
-    init() {
+    let permissionsService: AppPermissionsService
+    init(permissionsService: AppPermissionsService) {
+        self.permissionsService = permissionsService
     }
 }

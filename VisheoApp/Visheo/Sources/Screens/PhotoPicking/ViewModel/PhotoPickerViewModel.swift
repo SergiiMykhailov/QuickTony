@@ -16,6 +16,7 @@ protocol PhotoPickerViewModel : LongFailableActionViewModel {
     var proceedText : String {get}
     var canProceed : Bool {get}
     func proceed()
+    func skipPhotos()
     
     var didChange: (()->())? {get set}
 }
@@ -31,14 +32,7 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
         }
     }
     
-    func proceed() {
-        showProgressCallback?(true)
-        loadAssets {
-            self.showProgressCallback?(false)            
-        }
-    }
-    
-    var proceedText: String {    
+    var proceedText: String {
         return String.localizedStringWithFormat(NSLocalizedString("Proceed with %d Photo(s)", comment: ""), selectedPhotos.count)
     }
     
@@ -50,9 +44,11 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     var selectedPhotos : [String] = []
     private let maxPhotos = 5
     let assets: VisheoRenderingAssets
+    let permissionsService: AppPermissionsService
     
-    init(assets: VisheoRenderingAssets) {
+    init(assets: VisheoRenderingAssets, permissionsService: AppPermissionsService) {
         self.assets = assets
+        self.permissionsService = permissionsService
     }
     
     func checkPhoto(id: String) {
@@ -70,7 +66,27 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
         return index + 1
     }
     
+    func skipPhotos() {
+        showVideoScreen()
+    }
+    
+    func proceed() {
+        showProgressCallback?(true)
+        loadAssets {
+            self.showProgressCallback?(false)
+            self.showVideoScreen()
+        }
+    }
+    
     // MARK: Private
+    
+    private func showVideoScreen() {
+        if permissionsService.cameraAccessAllowed {
+            router?.showCamera()
+        } else {
+            router?.showCameraPermissions()
+        }
+    }
     
     func loadAssets(completion: @escaping ()->()) {
         let group = DispatchGroup()

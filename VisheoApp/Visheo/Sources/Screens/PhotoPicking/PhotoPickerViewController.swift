@@ -77,7 +77,7 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @IBAction func skipPressed(_ sender: Any) {
-//        viewModel.skipPhotos()
+        viewModel.skipPhotos()
     }
     
     @IBAction func proceedPressed(_ sender: Any) {

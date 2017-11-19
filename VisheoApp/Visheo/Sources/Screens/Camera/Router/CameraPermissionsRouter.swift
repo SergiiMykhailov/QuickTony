@@ -30,7 +30,7 @@ class VisheoCameraPermissionsRouter: CameraPermissionsRouter
 	}
 	
 	func start(with viewController: CameraPermissionsViewController) {
-		let vm = VisheoCameraPermissionsViewModel();
+        let vm = VisheoCameraPermissionsViewModel(permissionsService: dependencies.appPermissionsService);
 		viewModel = vm
 		vm.router = self
 		self.controller = viewController

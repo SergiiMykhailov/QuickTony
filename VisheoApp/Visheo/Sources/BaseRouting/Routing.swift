@@ -24,6 +24,7 @@ extension FlowRouter {
 
 struct RouterDependencies {
     let appStateService : AppStateService
+    let appPermissionsService : AppPermissionsService
     let authorizationService : AuthorizationService
     let userInputValidator : UserInputValidator
     let occasionsListService : OccasionsListService

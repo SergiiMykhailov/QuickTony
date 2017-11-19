@@ -8,7 +8,6 @@
 
 import Foundation
 import SDWebImage
-import Photos
 
 extension Notification.Name {
     static let preselectedCoverChanged = Notification.Name("preselectedCoverChanged")
@@ -36,9 +35,11 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     
     weak var router: SelectCoverRouter?
     let occasion : OccasionRecord
+    let permissionsService : AppPermissionsService
     
-    init(occasion: OccasionRecord) {
+    init(occasion: OccasionRecord, permissionsService: AppPermissionsService) {
         self.occasion = occasion
+        self.permissionsService = permissionsService
         preselectedCoverIndex = 0
     }
     
@@ -69,9 +70,7 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     }
     
     func navigateFurther(with assets: VisheoRenderingAssets) {
-        let photosAuthStatus = PHPhotoLibrary.authorizationStatus()
-        
-        if photosAuthStatus == .authorized {
+        if permissionsService.galleryAccessAllowed {
             router?.showPhotoLibrary(with: assets)
         } else {
             router?.showPhotoPermissions(with: assets)

@@ -20,6 +20,7 @@
 		92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */; };
 		92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */; };
 		B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B409B3A41FADBC2100FE43F1 /* ViewModels.swift */; };
+		B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */; };
 		B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
 		B43163811FBF480A00135B70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B43163831FBF480A00135B70 /* Localizable.strings */; };
 		B43163861FBF482A00135B70 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = B43163881FBF482A00135B70 /* Localizable.stringsdict */; };
@@ -100,6 +101,7 @@
 		9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.release.xcconfig"; sourceTree = "<group>"; };
 		A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
 		B409B3A41FADBC2100FE43F1 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPermissionsService.swift; sourceTree = "<group>"; };
 		B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDateLabel.swift; sourceTree = "<group>"; };
 		B43163821FBF480A00135B70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B43163871FBF482A00135B70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */,
 				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
 				B48259021FB3060800A7F5B0 /* OccasionsListService.swift */,
+				B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				B4BCAC021FB8CC7D003EDC7F /* OnboardingViewModel.swift in Sources */,
 				B4BCAC011FB8CC7D003EDC7F /* OnboardingRouter.swift in Sources */,
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,
+				B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */,
 				B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

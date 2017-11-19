@@ -9,11 +9,14 @@
 import UIKit
 
 protocol PhotoPickerRouter: FlowRouter {
+    func showCamera()
+    func showCameraPermissions()
 }
 
 class VisheoPhotoPickerRouter : PhotoPickerRouter {
     enum SegueList: String, SegueListType {
-        case showVideo = "showVideo"
+        case showCamera = "showCameraScreen"
+        case showCameraPermissions = "showCameraPermissionsScreen"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: UIViewController?
@@ -26,7 +29,7 @@ class VisheoPhotoPickerRouter : PhotoPickerRouter {
     }
     
     func start(with viewController: PhotoPickerViewController) {
-        let vm = VisheoPhotoPickerViewModel(assets: self.assets)
+        let vm = VisheoPhotoPickerViewModel(assets: self.assets, permissionsService: dependencies.appPermissionsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -38,12 +41,25 @@ class VisheoPhotoPickerRouter : PhotoPickerRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showCamera:
+            let cameraController = segue.destination as! CameraViewController
+            let cameraRouter = VisheoCameraRouter(dependencies: dependencies)
+            cameraRouter.start(with: cameraController)
+        case .showCameraPermissions:
+            let cameraPermissionController = segue.destination as! CameraPermissionsViewController
+            let cameraPermissionsRouter = VisheoCameraPermissionsRouter(dependencies: dependencies)
+            cameraPermissionsRouter.start(with: cameraPermissionController)
         }
     }
 }
 
-extension VisheoPhotoPickerRouter {
+extension VisheoPhotoPickerRouter {    
+    func showCamera() {
+        controller?.performSegue(SegueList.showCamera, sender: nil)
+    }
+    
+    func showCameraPermissions() {
+        controller?.performSegue(SegueList.showCameraPermissions, sender: nil)
+    }
 }
 

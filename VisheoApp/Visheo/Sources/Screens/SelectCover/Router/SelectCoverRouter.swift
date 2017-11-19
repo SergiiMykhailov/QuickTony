@@ -30,7 +30,7 @@ class VisheoSelectCoverRouter : SelectCoverRouter {
     }
     
     func start(with viewController: SelectCoverViewController) {
-        let vm = VisheoSelectCoverViewModel(occasion: self.occasion)
+        let vm = VisheoSelectCoverViewModel(occasion: self.occasion, permissionsService: dependencies.appPermissionsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
