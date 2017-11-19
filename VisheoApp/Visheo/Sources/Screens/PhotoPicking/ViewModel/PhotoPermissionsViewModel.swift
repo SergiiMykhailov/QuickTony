@@ -29,7 +29,7 @@ class VisheoPhotoPermissionsViewModel : PhotoPermissionsViewModel {
                 DispatchQueue.main.async {
                     if status == .authorized {
                         self.router?.showPhotoLibrary()
-                    }                    
+                    }
                 }
             }
         }

@@ -26,7 +26,7 @@ class VisheoPhotoPickerRouter : PhotoPickerRouter {
     }
     
     func start(with viewController: PhotoPickerViewController) {
-        let vm = VisheoPhotoPickerViewModel()
+        let vm = VisheoPhotoPickerViewModel(assets: self.assets)
         viewModel = vm
         vm.router = self
         self.controller = viewController

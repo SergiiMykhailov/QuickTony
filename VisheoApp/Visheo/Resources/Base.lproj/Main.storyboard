@@ -395,8 +395,8 @@
                     <connections>
                         <outlet property="coversFilmstripCollection" destination="H4X-2C-4q9" id="uiE-4c-TbH"/>
                         <outlet property="pagedCoversCollection" destination="Ivx-NK-aur" id="Xfn-ik-ilu"/>
-                        <segue destination="Jff-7H-OPY" kind="show" identifier="showPhotoLibrary" id="5FA-bE-CEV"/>
                         <segue destination="g7P-Dq-lrL" kind="show" identifier="showPhotoPermissions" id="kaJ-ks-jkt"/>
+                        <segue destination="Dje-Hm-87p" kind="show" identifier="showPhotoLibrary" id="2OI-cd-wsG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Bq-Tg-Lce" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -404,32 +404,122 @@
             <point key="canvasLocation" x="909.60000000000002" y="-206.44677661169416"/>
         </scene>
         <!--CAMERA ROLL-->
-        <scene sceneID="QSR-hm-aO0">
+        <scene sceneID="Igs-qs-P4H">
             <objects>
-                <viewController id="Jff-7H-OPY" customClass="PhotoPickerViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Sh-bm-f5s">
+                <viewController id="Dje-Hm-87p" customClass="PhotoPickerViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QIG-10-ptK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo gallery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIP-Nz-Odf">
-                                <rect key="frame" x="137" y="291" width="100.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bqS-g2-86B">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kj7-rI-oCS">
+                                    <size key="itemSize" width="142" height="157"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="vS9-zg-DbW" customClass="PhotoCollectionViewCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="142" height="157"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="142" height="157"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vky-KG-SW4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="142" height="157"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3K-9g-VPF" customClass="PhotoSelectionIndexView" customModule="Visheo" customModuleProvider="target">
+                                                    <rect key="frame" x="104" y="10" width="28" height="28"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="Q4N-Gy-yB0"/>
+                                                        <constraint firstAttribute="width" constant="28" id="Vti-mc-Lwc"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                            <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="E3K-9g-VPF" firstAttribute="top" secondItem="vS9-zg-DbW" secondAttribute="top" constant="10" id="7OB-jt-FZM"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vky-KG-SW4" secondAttribute="trailing" id="SYa-4g-kDA"/>
+                                            <constraint firstItem="Vky-KG-SW4" firstAttribute="top" secondItem="vS9-zg-DbW" secondAttribute="top" id="T4h-At-ELm"/>
+                                            <constraint firstItem="Vky-KG-SW4" firstAttribute="leading" secondItem="vS9-zg-DbW" secondAttribute="leading" id="Xpi-PM-VWg"/>
+                                            <constraint firstAttribute="trailing" secondItem="E3K-9g-VPF" secondAttribute="trailing" constant="10" id="ctN-jK-6qK"/>
+                                            <constraint firstAttribute="bottom" secondItem="Vky-KG-SW4" secondAttribute="bottom" id="vq9-0M-32n"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="Vky-KG-SW4" id="1zK-q0-8Iw"/>
+                                            <outlet property="indexView" destination="E3K-9g-VPF" id="0yR-RE-kqC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Dje-Hm-87p" id="FUQ-XC-ZhI"/>
+                                    <outlet property="delegate" destination="Dje-Hm-87p" id="TRR-rS-Vpg"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUs-tX-owo">
+                                <rect key="frame" x="20" y="523" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7eY-HM-o1W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="proceedPressed:" destination="Dje-Hm-87p" eventType="touchUpInside" id="35F-qV-cH4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AIP-Nz-Odf" firstAttribute="centerX" secondItem="7Sh-bm-f5s" secondAttribute="centerX" id="Cqp-ol-4U5"/>
-                            <constraint firstItem="AIP-Nz-Odf" firstAttribute="centerY" secondItem="7Sh-bm-f5s" secondAttribute="centerY" id="miI-C3-iA0"/>
+                            <constraint firstItem="rg0-Vo-cCn" firstAttribute="bottom" secondItem="bqS-g2-86B" secondAttribute="bottom" id="LSh-02-Ri6"/>
+                            <constraint firstItem="bqS-g2-86B" firstAttribute="leading" secondItem="rg0-Vo-cCn" secondAttribute="leading" id="TCI-56-1hb"/>
+                            <constraint firstItem="VUs-tX-owo" firstAttribute="leading" secondItem="rg0-Vo-cCn" secondAttribute="leading" constant="20" id="hRU-3x-mvI"/>
+                            <constraint firstItem="bqS-g2-86B" firstAttribute="top" secondItem="rg0-Vo-cCn" secondAttribute="top" id="rjd-4A-avc"/>
+                            <constraint firstItem="rg0-Vo-cCn" firstAttribute="trailing" secondItem="VUs-tX-owo" secondAttribute="trailing" constant="20" id="rnp-57-r8C"/>
+                            <constraint firstItem="rg0-Vo-cCn" firstAttribute="trailing" secondItem="bqS-g2-86B" secondAttribute="trailing" id="ugE-B9-h2Z"/>
+                            <constraint firstItem="rg0-Vo-cCn" firstAttribute="bottom" secondItem="VUs-tX-owo" secondAttribute="bottom" constant="20" id="wlA-Aa-67d"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4Xm-8v-w1Q"/>
+                        <viewLayoutGuide key="safeArea" id="rg0-Vo-cCn"/>
                     </view>
-                    <navigationItem key="navigationItem" title="CAMERA ROLL" id="e9u-sD-Rjf"/>
+                    <navigationItem key="navigationItem" title="CAMERA ROLL" id="TbV-zh-dIQ">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="yNi-rB-3LT">
+                            <connections>
+                                <action selector="backPressed:" destination="Dje-Hm-87p" id="b4u-eU-Kuq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="3e4-SB-Y6h">
+                            <connections>
+                                <action selector="skipPressed:" destination="Dje-Hm-87p" id="oLg-QP-aAf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="bqS-g2-86B" id="bBb-UT-D0A"/>
+                        <outlet property="proceedButton" destination="VUs-tX-owo" id="KXm-bS-qsX"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mIt-Tx-lLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0H-4c-W6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2471" y="-206"/>
+            <point key="canvasLocation" x="2756" y="-163"/>
         </scene>
         <!--CAMERA ROLL-->
         <scene sceneID="Pqk-JV-iIr">
@@ -496,7 +586,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Jff-7H-OPY" kind="show" identifier="showPhotoLibrary" id="rLY-V1-s8d"/>
+                        <segue destination="Dje-Hm-87p" kind="show" identifier="showPhotoLibrary" id="6pg-nG-fzZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="own-Fx-bDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -509,6 +599,6 @@
         <image name="rectangleCopy9" width="73" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rLY-V1-s8d"/>
+        <segue reference="6pg-nG-fzZ"/>
     </inferredMetricsTieBreakers>
 </document>

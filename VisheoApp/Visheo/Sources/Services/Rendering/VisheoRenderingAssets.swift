@@ -10,6 +10,11 @@ import Foundation
 
 class VisheoRenderingAssets {
     private(set) var coverUrl : URL?
+    var photoUrls : [URL] {
+        return photoUrlsDict.sorted {$0.0 < $1.0}.map {$0.value}
+    }
+    
+    private var  photoUrlsDict : [Int: URL] = [:]
     let assetsFolderUrl : URL
     
     init() {
@@ -22,5 +27,11 @@ class VisheoRenderingAssets {
     func setCover(with data: Data) {
         coverUrl = assetsFolderUrl.appendingPathComponent("cover")
         try! data.write(to: coverUrl!)        
+    }
+    
+    func addPhoto(data: Data, at index: Int) {
+        let photoUrl = assetsFolderUrl.appendingPathComponent("photo\(index)")
+        photoUrlsDict[index] = photoUrl
+        try! data.write(to: photoUrl)
     }
 }
