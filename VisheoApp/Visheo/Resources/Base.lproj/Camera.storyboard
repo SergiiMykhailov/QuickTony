@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Isd-d2-FNo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--RECORD YOUR VIDEO WISH-->
+        <scene sceneID="qKt-3P-dpY">
+            <objects>
+                <viewController storyboardIdentifier="CameraViewControllerScene" id="Isd-d2-FNo" customClass="CameraViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GA8-0f-PZ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjS-Wn-L8J">
+                                <rect key="frame" x="20" y="40" width="335" height="335"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4kz-0E-zHu" customClass="GPUImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjJ-FK-D1Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="176"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V01-yZ-NSN">
+                                        <rect key="frame" x="273" y="15" width="47" height="19"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-DV-gPA" customClass="CameraRecordIndicator" customModule="Visheo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="5" width="9.5" height="9.5"/>
+                                                <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="pSM-DV-gPA" secondAttribute="height" multiplier="1:1" id="9sA-Ik-ddr"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="REC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct7-4F-cZX">
+                                                <rect key="frame" x="14.5" y="0.0" width="32.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                                <color key="textColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="centerY" secondItem="Ct7-4F-cZX" secondAttribute="centerY" id="3PE-ui-5Ea"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ct7-4F-cZX" secondAttribute="bottom" id="57N-Pc-ptE"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="leading" secondItem="V01-yZ-NSN" secondAttribute="leading" id="CJQ-sI-8Qe"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="height" secondItem="Ct7-4F-cZX" secondAttribute="height" multiplier="0.5" id="XS5-kZ-ANr"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ct7-4F-cZX" secondAttribute="trailing" id="ZCN-QJ-ZSM"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="trailing" secondItem="Ct7-4F-cZX" secondAttribute="leading" constant="-5" id="aFX-3F-Ser"/>
+                                            <constraint firstItem="Ct7-4F-cZX" firstAttribute="top" secondItem="V01-yZ-NSN" secondAttribute="top" id="oSd-ju-uBU"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnp-BU-IW8">
+                                        <rect key="frame" x="20" y="281" width="34" height="34"/>
+                                        <state key="normal" image="camera_toggle_button"/>
+                                        <connections>
+                                            <action selector="toggleCameraFace" destination="Isd-d2-FNo" eventType="touchUpInside" id="8Hz-Ac-sHb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gjS-Wn-L8J" secondAttribute="height" multiplier="1:1" id="2a4-3m-htd"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gnp-BU-IW8" secondAttribute="bottom" constant="20" id="BoB-jS-RV0"/>
+                                    <constraint firstItem="MjJ-FK-D1Y" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="GdU-xW-uYi"/>
+                                    <constraint firstItem="Gnp-BU-IW8" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" constant="20" id="HtJ-oO-Ap7"/>
+                                    <constraint firstAttribute="bottom" secondItem="MjJ-FK-D1Y" secondAttribute="bottom" id="OEO-Hr-tBO"/>
+                                    <constraint firstItem="MjJ-FK-D1Y" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="Sgq-Bv-hsv"/>
+                                    <constraint firstAttribute="trailing" secondItem="MjJ-FK-D1Y" secondAttribute="trailing" id="dMy-Xf-wQX"/>
+                                    <constraint firstItem="4kz-0E-zHu" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="o7w-15-9xD"/>
+                                    <constraint firstAttribute="trailing" secondItem="4kz-0E-zHu" secondAttribute="trailing" id="oNb-hM-Axo"/>
+                                    <constraint firstAttribute="trailing" secondItem="V01-yZ-NSN" secondAttribute="trailing" constant="15" id="qbn-rt-J7k"/>
+                                    <constraint firstItem="4kz-0E-zHu" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="vEM-n3-yMU"/>
+                                    <constraint firstItem="V01-yZ-NSN" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" constant="15" id="zNf-Pi-bmG"/>
+                                    <constraint firstAttribute="bottom" secondItem="4kz-0E-zHu" secondAttribute="bottom" id="zyz-H2-PXA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWJ-0h-vua" customClass="CameraRecordButton" customModule="Visheo" customModuleProvider="target">
+                                <rect key="frame" x="142.5" y="493" width="90" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="87F-zK-6rB"/>
+                                    <constraint firstAttribute="height" constant="90" id="ylu-Cp-rQb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ringLayerColor">
+                                        <color key="value" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleVideoRecording" destination="Isd-d2-FNo" eventType="touchUpInside" id="Lyo-4Y-4yg"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kWJ-0h-vua" firstAttribute="centerX" secondItem="GA8-0f-PZ9" secondAttribute="centerX" id="9Iu-iy-M2i"/>
+                            <constraint firstItem="gjS-Wn-L8J" firstAttribute="leading" secondItem="hQK-Ul-OcZ" secondAttribute="leading" constant="20" id="Cye-xO-RQ1"/>
+                            <constraint firstItem="hQK-Ul-OcZ" firstAttribute="trailing" secondItem="gjS-Wn-L8J" secondAttribute="trailing" constant="20" id="R1D-g8-fdU"/>
+                            <constraint firstItem="hQK-Ul-OcZ" firstAttribute="bottom" secondItem="kWJ-0h-vua" secondAttribute="bottom" constant="40" id="eqp-wd-j8N"/>
+                            <constraint firstItem="gjS-Wn-L8J" firstAttribute="top" secondItem="hQK-Ul-OcZ" secondAttribute="top" constant="20" id="s9s-sI-gBm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hQK-Ul-OcZ"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="RECORD YOUR VIDEO WISH" id="a5t-vd-l66">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="3Vr-ah-nx8">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="Isd-d2-FNo" id="yrY-04-H0G"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cameraPreview" destination="4kz-0E-zHu" id="NEX-nr-RxR"/>
+                        <outlet property="cameraRecordButton" destination="kWJ-0h-vua" id="KhT-YZ-bKy"/>
+                        <outlet property="cameraToggleButton" destination="Gnp-BU-IW8" id="Hhg-VT-2eT"/>
+                        <outlet property="countdownLabel" destination="MjJ-FK-D1Y" id="MU7-ak-MSh"/>
+                        <outlet property="recordingIndicator" destination="pSM-DV-gPA" id="Zai-iO-14U"/>
+                        <outlet property="recordingStatusView" destination="V01-yZ-NSN" id="5Qh-Qh-zKq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="71N-M6-rxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="424.80000000000001" y="164.16791604197903"/>
+        </scene>
+        <!--RECORD YOUR VIDEO WISH-->
+        <scene sceneID="h5e-Bu-kvd">
+            <objects>
+                <viewController storyboardIdentifier="CameraPermissionsViewControllerScene" id="aOk-hY-81T" customClass="CameraPermissionsViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fv3-MH-0GX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qa-yL-bpA">
+                                <rect key="frame" x="0.0" y="176.5" width="375" height="314.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJk-8Q-bOw">
+                                        <rect key="frame" x="60" y="0.0" width="255" height="79.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-i9-Wr9">
+                                        <rect key="frame" x="65.5" y="124.5" width="244" height="95"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-tb-5X6">
+                                        <rect key="frame" x="87.5" y="254.5" width="200" height="60"/>
+                                        <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="xJm-ZU-Tct"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
+                                        <state key="normal" title="Allow Access">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionButtonPressed" destination="aOk-hY-81T" eventType="touchUpInside" id="4fS-bu-ssi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="MqL-i9-Wr9" firstAttribute="top" secondItem="xJk-8Q-bOw" secondAttribute="bottom" constant="45" id="7vk-Xi-pN0"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xJk-8Q-bOw" secondAttribute="trailing" constant="60" id="EZ7-Ma-S7Q"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MqL-i9-Wr9" secondAttribute="trailing" constant="60" id="PP5-0U-fOx"/>
+                                    <constraint firstItem="MqL-i9-Wr9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7qa-yL-bpA" secondAttribute="leading" constant="60" id="eVm-0w-jG9"/>
+                                    <constraint firstItem="xJk-8Q-bOw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7qa-yL-bpA" secondAttribute="leading" constant="60" id="gNm-67-s3V"/>
+                                    <constraint firstItem="Cbl-tb-5X6" firstAttribute="centerX" secondItem="7qa-yL-bpA" secondAttribute="centerX" id="kwK-w4-PNR"/>
+                                    <constraint firstItem="xJk-8Q-bOw" firstAttribute="centerX" secondItem="7qa-yL-bpA" secondAttribute="centerX" id="n2M-Yt-7Ln"/>
+                                    <constraint firstItem="MqL-i9-Wr9" firstAttribute="centerX" secondItem="7qa-yL-bpA" secondAttribute="centerX" id="nQS-6Z-KRO"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cbl-tb-5X6" secondAttribute="bottom" id="p9U-hQ-ttf"/>
+                                    <constraint firstItem="Cbl-tb-5X6" firstAttribute="top" secondItem="MqL-i9-Wr9" secondAttribute="bottom" constant="35" id="yAE-dU-Kys"/>
+                                    <constraint firstItem="xJk-8Q-bOw" firstAttribute="top" secondItem="7qa-yL-bpA" secondAttribute="top" id="z90-Zc-Tmz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D1h-Kp-tTq" firstAttribute="trailing" secondItem="7qa-yL-bpA" secondAttribute="trailing" id="IyZ-HD-wSo"/>
+                            <constraint firstItem="7qa-yL-bpA" firstAttribute="centerY" secondItem="Fv3-MH-0GX" secondAttribute="centerY" id="alo-g2-u7i"/>
+                            <constraint firstItem="7qa-yL-bpA" firstAttribute="leading" secondItem="D1h-Kp-tTq" secondAttribute="leading" id="miP-lf-PaC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="D1h-Kp-tTq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="RECORD YOUR VIDEO WISH" id="LNN-dW-DoG">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="wNq-nG-eWV">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="aOk-hY-81T" id="0qX-Ay-wKC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="actionButton" destination="Cbl-tb-5X6" id="s3F-Q9-MLY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pua-D5-CXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="438" y="834"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow" width="20" height="20"/>
+        <image name="camera_toggle_button" width="34" height="34"/>
+    </resources>
+</document>
