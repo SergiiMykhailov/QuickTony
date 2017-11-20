@@ -117,6 +117,8 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
         movieWriter?.encodingLiveVideo = true;
         movieWriter?.hasAudioTrack = true;
         
+        camera?.audioEncodingTarget = movieWriter
+
         movieWriter?.failureBlock = { [weak self] error in
             self?.finishRecording(error: error);
         }
