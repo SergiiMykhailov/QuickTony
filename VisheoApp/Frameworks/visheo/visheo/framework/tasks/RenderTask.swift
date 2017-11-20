@@ -77,7 +77,7 @@ extension RenderTask: Codable, MutablePersistable, RowConvertible
 	{
 		let container = try decoder.container(keyedBy: CodingKeys.self);
 		
-		id = try container.decode(Int64.self, forKey: .id);
+		id = try container.decodeIfPresent(Int64.self, forKey: .id);
 
 		let rawQuality = try container.decode(Int.self, forKey: .quality)
 		quality = RenderQuality(rawValue: rawQuality) ?? .res480;

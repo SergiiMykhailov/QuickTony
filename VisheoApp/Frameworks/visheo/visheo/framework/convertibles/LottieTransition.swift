@@ -33,7 +33,7 @@ public final class LottieTransition: VideoConvertible
 	
 	
 	var renderQueueSupport: ProcessingQueueType {
-		return .concurrent;
+		return .serial;
 	}
 	
     
@@ -139,7 +139,7 @@ public final class LottieTransition: VideoConvertible
 		{
 			let frame = CGRect(origin: CGPoint.zero, size: size);
 			
-			let assets = [ "image_1" : frames[0].path, "image_0" : frames[1].path ]
+			let assets = [ "image_0" : frames[0].path, "image_1" : frames[1].path ]
 			let composition = LOTComposition(filePath: animation.path, assetPaths: assets);
 			
 			let animationContainerView = LOTAnimationView(model: composition, in: nil);

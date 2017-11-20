@@ -12,49 +12,27 @@ import GRDB
 
 public final class RenderQueue
 {
-	private let pool: DatabasePool;
+	private let database: RenderDatabase;
+	private lazy var renderer = VisheoRenderer(db: self.database)
 	
-	private lazy var renderer = VisheoRenderer(dbPool: self.pool);
 	
-	
-	public init()
-	{
-		pool = try! DatabasePool(path: RenderQueue.dbPath);
-		Migrations.migrate(in: pool);
+	public init() {
+		database = try! VisheoRenderDatabase();
 	}
 	
 	
 	public func enqueue(_ task: RenderTask)
 	{
-		var task = task;
-		
-		do
-		{
-			try pool.writeInTransaction{ (db) in
-				try task.save(db);
-				
-				for var media in task.media {
-					media.taskId = task.id;
-					try media.save(db);
-				}
-				
-				return .commit;
+		database.add(task: task) { result in
+			switch result {
+				case .success(let task):
+					self.renderer.render(task: task);
+				default:
+					break;
 			}
-			
-			renderer.render(task: task);
-		}
-		catch (let error) {
-			print("\(error)")
 		}
 	}
 	
 	
-	private static var dbPath: String
-	{
-		let url = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("visheo_tasks.sqlite");
-		
-		print("\(url.path)")
-		
-		return url.path;
-	}
+	
 }

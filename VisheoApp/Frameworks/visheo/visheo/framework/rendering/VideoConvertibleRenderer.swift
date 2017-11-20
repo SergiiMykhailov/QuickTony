@@ -7,7 +7,7 @@
 //
 
 import AVFoundation
-
+import PromiseKit
 
 enum VideoConvertibleError: Error
 {
@@ -43,14 +43,14 @@ final class VideoConvertibleRenderer
 	private let concurrentQueue = OperationQueue();
 	private let serialQueue = OperationQueue()
 	
-	public init()
-	{
+	init() {
 		serialQueue.maxConcurrentOperationCount = 1;
 	}
 	
 	
-	public func render(asset: VideoConvertible, to url: URL, completion: @escaping (Result<Void>) -> Void) -> Operation
-	{
+	@discardableResult
+	func render(asset: VideoConvertible, to url: URL, completion: @escaping (Result<Void>) -> Void) -> Operation {
+		
 		let operation = VideoConvertibleRenderOperation(asset: asset, url: url);
 		
 		operation.completion = completion;
@@ -66,5 +66,22 @@ final class VideoConvertibleRenderer
 		}
 		
 		return operation;
+	}
+}
+
+
+extension VideoConvertibleRenderer
+{
+	func render(asset: VideoConvertible, to url: URL) -> Promise<Void> {
+		return Promise { fl, rj in
+			render(asset: asset, to: url, completion: { (result) in
+				switch result {
+				case .success:
+					fl(())
+				case .failure(let error):
+					rj(error);
+				}
+			})
+		}
 	}
 }
