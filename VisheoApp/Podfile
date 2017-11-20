@@ -23,6 +23,7 @@ target 'Visheo' do
   pod 'SDWebImage', '~> 4.0'
   
   pod 'GPUImage'
+  pod 'PryntTrimmerView'
   
    pod 'Reveal-SDK', :configurations => ['Debug']
 end

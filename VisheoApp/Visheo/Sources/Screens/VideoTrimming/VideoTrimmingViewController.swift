@@ -8,35 +8,85 @@
 
 import UIKit
 import AVFoundation
+import PryntTrimmerView
+import MBProgressHUD
 
 class VideoTrimmingViewController: UIViewController {
 
-    var player : AVPlayer!
+    @IBOutlet weak var trimmingView: TrimmerView!
+    @IBOutlet weak var videoContainer: UIView!
+    @IBOutlet weak var playButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let playerItem = AVPlayerItem(url: viewModel.videoUrl)
-        player = AVPlayer(playerItem: playerItem)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(VideoTrimmerViewController.itemDidFinishPlaying(_:)),
-//                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
-        
-        let layer: AVPlayerLayer = AVPlayerLayer(player: player)
+        let layer = viewModel.createPlayerLayer()
         layer.backgroundColor = UIColor.white.cgColor
         layer.frame = CGRect(x: 0, y: 0, width: videoContainer.frame.width, height: videoContainer.frame.height)
-        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        
         videoContainer.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
         videoContainer.layer.addSublayer(layer)
+        
+        viewModel.playbackTimeChanged = {[weak self] in
+            self?.trimmingView.seek(to: $0)
+        }
+        
+        viewModel.playbackStatusChanged = { [weak self] in
+            self?.playButton.isHidden = ($0 == .playing)
+        }
+        
+        viewModel.showProgressCallback = {[weak self] in
+            guard let `self` = self else {return}
+            if $0 {
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+            } else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        }
+        
+        viewModel.warningAlertHandler = {[weak self] in
+            self?.showWarningAlertWithText(text: $0)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        player.play()
+        trimmingView.delegate = self
+        viewModel.setup(trimmerView: trimmingView)
+        viewModel.didChange(startTime: trimmingView.startTime, endTime: trimmingView.endTime, at: nil, stopMoving: true)
+    }
+    @IBAction func playPressed(_ sender: Any) {
+        viewModel.togglePlayback()
+    }
+    
+    @IBAction func retakePressed(_ sender: Any) {
+        confirmGoingBack()
+    }
+    
+    @IBAction func videoTapped(_ sender: Any) {
+        viewModel.togglePlayback()
+    }
+    
+    @IBAction func continuePressed(_ sender: Any) {
+        viewModel.confirmTrimming()
+    }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        confirmGoingBack()
+    }
+    
+    private func confirmGoingBack() {
+        let alertController = UIAlertController(title: NSLocalizedString("Notification", comment: "Notification alert title"),
+                                                message: NSLocalizedString("Existing video wish will be replaced with the new one", comment: "New video recording notification text"), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK, Сontinue", comment: "OK, Сontinue button text"), style: .default, handler: {_ in
+            self.viewModel.cancelTrimming()
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - VM+Router init
-    
-    @IBOutlet weak var videoContainer: UIView!
-    
+
     private(set) var viewModel: VideoTrimmingViewModel!
     private(set) var router: FlowRouter!
     
@@ -46,6 +96,15 @@ class VideoTrimmingViewController: UIViewController {
     }
 }
 
+extension VideoTrimmingViewController: TrimmerViewDelegate {
+    func positionBarStoppedMoving(_ playerTime: CMTime) {
+        viewModel.didChange(startTime: trimmingView.startTime, endTime: trimmingView.endTime, at: playerTime, stopMoving: true)
+    }
+    
+    func didChangePositionBar(_ playerTime: CMTime) {
+        viewModel.didChange(startTime: trimmingView.startTime, endTime: trimmingView.endTime, at: playerTime, stopMoving: false)
+    }
+}
 
 extension VideoTrimmingViewController {
     //MARK: - Routing

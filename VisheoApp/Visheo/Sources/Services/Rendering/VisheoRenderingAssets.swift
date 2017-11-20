@@ -15,6 +15,10 @@ class VisheoRenderingAssets {
         return assetsFolderUrl.appendingPathComponent("video.mov")
     }
     
+    var trimmedVideoUrl : URL {
+        return assetsFolderUrl.appendingPathComponent("final_video.mov")
+    }
+    
     var photoUrls : [URL] {
         return photoUrlsDict.sorted {$0.0 < $1.0}.map {$0.value}
     }
@@ -46,5 +50,9 @@ class VisheoRenderingAssets {
         let photoUrl = assetsFolderUrl.appendingPathComponent("photo\(index)")
         photoUrlsDict[index] = photoUrl
         try! data.write(to: photoUrl)
+    }
+    
+    func removeVideo() {
+        try? FileManager.default.removeItem(at: videoUrl)
     }
 }

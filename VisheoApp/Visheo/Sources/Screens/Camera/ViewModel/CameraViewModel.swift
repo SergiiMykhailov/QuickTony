@@ -109,39 +109,34 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	private func startRecording() {
 		
 		isRecording = true;
-		
-		do
-		{
-			let url = assets.videoUrl;
-			
-			movieWriter = GPUImageMovieWriter(movieURL: url, size: outputVideoSize);
-			movieWriter?.encodingLiveVideo = true;
-			movieWriter?.hasAudioTrack = true;
-			
-			movieWriter?.failureBlock = { [weak self] error in
-				self?.finishRecording(error: error);
-			}
-			
-			var countdownValue = 3;
-			
-			recordingStateChangedBlock?(.countdown(value: "\(countdownValue)"));
-			
-			countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
-				
-				countdownValue -= 1;
-				
-				if countdownValue > 0 {
-					self?.recordingStateChangedBlock?(.countdown(value: "\(countdownValue)"));
-				} else {
-					self?.startWriting();
-				}
-			}
-			
-			RunLoop.main.add(countdownTimer!, forMode: .commonModes);
-		}
-		catch (let error) {
-			finishRecording(error: error);
-		}
+        
+        assets.removeVideo()
+        let url = assets.videoUrl;
+        
+        movieWriter = GPUImageMovieWriter(movieURL: url, size: outputVideoSize);
+        movieWriter?.encodingLiveVideo = true;
+        movieWriter?.hasAudioTrack = true;
+        
+        movieWriter?.failureBlock = { [weak self] error in
+            self?.finishRecording(error: error);
+        }
+        
+        var countdownValue = 3;
+        
+        recordingStateChangedBlock?(.countdown(value: "\(countdownValue)"));
+        
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
+            
+            countdownValue -= 1;
+            
+            if countdownValue > 0 {
+                self?.recordingStateChangedBlock?(.countdown(value: "\(countdownValue)"));
+            } else {
+                self?.startWriting();
+            }
+        }
+        
+        RunLoop.main.add(countdownTimer!, forMode: .commonModes);
 	}
 	
 	

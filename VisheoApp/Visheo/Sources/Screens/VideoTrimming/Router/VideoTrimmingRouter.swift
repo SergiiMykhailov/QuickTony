@@ -9,6 +9,7 @@
 import UIKit
 
 protocol VideoTrimmingRouter: FlowRouter {
+    func goBack()
 }
 
 class VisheoVideoTrimmingRouter : VideoTrimmingRouter { 
@@ -46,5 +47,8 @@ class VisheoVideoTrimmingRouter : VideoTrimmingRouter {
 }
 
 extension VisheoVideoTrimmingRouter {
+    func goBack() {
+        controller?.navigationController?.popViewController(animated: true)
+    }
 }
 
