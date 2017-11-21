@@ -10,11 +10,12 @@ import UIKit
 
 protocol VideoTrimmingRouter: FlowRouter {
     func goBack()
+    func showPreview(with assets: VisheoRenderingAssets)
 }
 
 class VisheoVideoTrimmingRouter : VideoTrimmingRouter { 
     enum SegueList: String, SegueListType {
-        case next
+        case showPreview = "showPreview"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: VideoTrimmingViewController?
@@ -40,8 +41,10 @@ class VisheoVideoTrimmingRouter : VideoTrimmingRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showPreview:
+            let previewController = segue.destination as! VisheoPreviewViewController
+            let previewRouter = VisheoPreviewRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets)
+            previewRouter.start(with: previewController)
         }
     }
 }
@@ -49,6 +52,10 @@ class VisheoVideoTrimmingRouter : VideoTrimmingRouter {
 extension VisheoVideoTrimmingRouter {
     func goBack() {
         controller?.navigationController?.popViewController(animated: true)
+    }
+    
+    func showPreview(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showPreview, sender: assets)
     }
 }
 

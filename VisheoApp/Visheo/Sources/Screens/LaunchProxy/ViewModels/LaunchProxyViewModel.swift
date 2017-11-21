@@ -24,6 +24,8 @@ class VisheoLaunchProxyViewModel : LaunchProxyViewModel {
     }
     
     func launch() {
+//        router?.showTestScreen()
+//        return
         if appState.shouldShowOnboarding {
             router?.showOnboarding()
         } else if self.authService.isAuthorized {

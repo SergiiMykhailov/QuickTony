@@ -34,10 +34,19 @@
                         <segue destination="H4H-G1-GP2" kind="presentation" identifier="showOnboarding" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="Csq-Li-SFc"/>
                         <segue destination="0i1-p3-K6d" kind="custom" identifier="showLogin" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="gRp-jy-M3T"/>
                         <segue destination="Va2-ef-feG" kind="custom" identifier="showMainScreen" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="SEK-eb-HA1"/>
+                        <segue destination="fRP-bx-fCa" kind="show" identifier="showTest" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="sdq-Q5-LiM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--VisheoPreview-->
+        <scene sceneID="1dx-iE-93A">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VisheoPreview" id="fRP-bx-fCa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rI-K5-GTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1174" y="-291"/>
         </scene>
         <!--Main-->
         <scene sceneID="X7f-e7-Wv3">

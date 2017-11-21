@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1dc-lh-5ja">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--PREVIEW VISHEO-->
+        <scene sceneID="bCK-D1-rAw">
+            <objects>
+                <viewController id="1dc-lh-5ja" customClass="VisheoPreviewViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rw1-Sv-gHM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHA-oq-exf">
+                                <rect key="frame" x="20" y="20" width="335" height="335"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ViB-xA-wIp">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="S8j-7i-Dai">
+                                        <rect key="frame" x="127" y="127.5" width="80" height="80"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ViB-xA-wIp" secondAttribute="trailing" id="Hlb-Bj-lYM"/>
+                                    <constraint firstAttribute="width" secondItem="SHA-oq-exf" secondAttribute="height" id="L65-Bt-QnT"/>
+                                    <constraint firstAttribute="bottom" secondItem="ViB-xA-wIp" secondAttribute="bottom" id="NAh-5m-aur"/>
+                                    <constraint firstItem="S8j-7i-Dai" firstAttribute="centerY" secondItem="SHA-oq-exf" secondAttribute="centerY" id="Pm6-dK-BAT"/>
+                                    <constraint firstItem="ViB-xA-wIp" firstAttribute="leading" secondItem="SHA-oq-exf" secondAttribute="leading" id="cQW-Nj-yae"/>
+                                    <constraint firstItem="ViB-xA-wIp" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="top" id="df7-Or-GyF"/>
+                                    <constraint firstItem="S8j-7i-Dai" firstAttribute="centerX" secondItem="SHA-oq-exf" secondAttribute="centerX" id="hZV-yW-3PF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5n-Gj-tF4">
+                                <rect key="frame" x="20" y="523" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="qVf-FH-acs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Send your Visheo">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="844-DT-RCB">
+                                <rect key="frame" x="34" y="390" width="307" height="92"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quN-cm-BH1" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="92"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="ONH-P3-UBZ"/>
+                                            <constraint firstAttribute="height" constant="92" id="Teh-VT-hWc"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="cover"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit Cover"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-Nm-fJA" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="78.5" y="0.0" width="61" height="92"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="Zqm-jN-9oN"/>
+                                            <constraint firstAttribute="height" constant="92" id="h6I-2C-X6p"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="slideshow"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit  Slideshow"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dns-fU-1gV" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="167.5" y="0.0" width="61" height="92"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="X9J-Ub-ExQ"/>
+                                            <constraint firstAttribute="height" constant="92" id="xp0-n1-Ttm"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="video"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit  Video Wish"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-ST-sYJ" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="257" y="0.0" width="50" height="92"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="92" id="23N-zw-Hdw"/>
+                                            <constraint firstAttribute="width" constant="50" id="HLv-KD-6fJ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="music"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit Music"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="gUy-jM-9A2"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IxG-iG-yUR" firstAttribute="bottom" secondItem="Y5n-Gj-tF4" secondAttribute="bottom" constant="20" id="3Ql-Tc-eJX"/>
+                            <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="Y5n-Gj-tF4" secondAttribute="trailing" constant="20" id="3Qq-5T-EsJ"/>
+                            <constraint firstItem="SHA-oq-exf" firstAttribute="top" secondItem="IxG-iG-yUR" secondAttribute="top" constant="20" id="9fy-ua-eOw"/>
+                            <constraint firstItem="Y5n-Gj-tF4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="844-DT-RCB" secondAttribute="bottom" constant="8" id="BKg-gx-IiF"/>
+                            <constraint firstItem="Y5n-Gj-tF4" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="20" id="IAQ-Rb-dKN"/>
+                            <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="844-DT-RCB" secondAttribute="trailing" constant="34" id="jZv-l7-T4j"/>
+                            <constraint firstItem="SHA-oq-exf" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="20" id="oYh-YN-dZg"/>
+                            <constraint firstItem="844-DT-RCB" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="bottom" priority="750" constant="35" id="q0x-Sd-hZe"/>
+                            <constraint firstItem="844-DT-RCB" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="34" id="rri-hM-YyE"/>
+                            <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="SHA-oq-exf" secondAttribute="trailing" constant="20" id="tIJ-CF-gDY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IxG-iG-yUR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="PREVIEW VISHEO" id="es6-uU-TqK">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="AGg-tT-fqf"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AGZ-T9-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="72.799999999999997" y="185.75712143928038"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow" width="20" height="20"/>
+        <image name="cover" width="50" height="52"/>
+        <image name="music" width="50" height="52"/>
+        <image name="play" width="80" height="80"/>
+        <image name="slideshow" width="50" height="52"/>
+        <image name="video" width="50" height="52"/>
+    </resources>
+</document>

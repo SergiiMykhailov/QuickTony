@@ -12,6 +12,8 @@ protocol LaunchProxyRouter: FlowRouter {
     func showOnboarding()
     func showLogin()
     func showMainScreen()
+    
+    func showTestScreen()
 }
 
 class DefaultLaunchProxyRouter : LaunchProxyRouter {
@@ -19,6 +21,7 @@ class DefaultLaunchProxyRouter : LaunchProxyRouter {
         case showOnboarding = "showOnboarding"
         case showLogin      = "showLogin"
         case showMainScreen = "showMainScreen"
+        case showTest       = "showTest"
     }
     
     let dependencies: RouterDependencies
@@ -57,6 +60,8 @@ class DefaultLaunchProxyRouter : LaunchProxyRouter {
             let mainScreenController = (segue.destination as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
             let router = VisheoChooseOccasionRouter(dependencies: dependencies)
             router.start(with: mainScreenController)
+        case .showTest:
+            break
         }
     }
 }
@@ -72,5 +77,9 @@ extension DefaultLaunchProxyRouter {
     
     func showOnboarding() {
         controller?.performSegue(SegueList.showOnboarding, sender: nil)
+    }
+    
+    func showTestScreen() {
+        controller?.performSegue(SegueList.showTest, sender: nil)
     }
 }

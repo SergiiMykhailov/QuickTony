@@ -93,8 +93,8 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
             DispatchQueue.main.async {
                 self.showProgressCallback?(false)
                 if success {
-					self.export(assets: self.assets);
-                    self.warningAlertHandler?("Trimmed successfully") //TODO: navigate further
+//self.export(assets: self.assets);
+                    self.router?.showPreview(with: self.assets)
                 } else {
                     self.warningAlertHandler?(NSLocalizedString("An error occured while processing video", comment: "Processing video error text"))
                 }

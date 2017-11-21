@@ -25,6 +25,8 @@
 		B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
 		B43163811FBF480A00135B70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B43163831FBF480A00135B70 /* Localizable.strings */; };
 		B43163861FBF482A00135B70 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = B43163881FBF482A00135B70 /* Localizable.stringsdict */; };
+		B433DDE41FC41E5900309974 /* EditVisheoButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B433DDE21FC41E5900309974 /* EditVisheoButton.xib */; };
+		B433DDE61FC41EBD00309974 /* EditVisheoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */; };
 		B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */; };
 		B44450CD1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450CC1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift */; };
 		B44450D01FBEDA7B0021772F /* VisheoRenderingAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450CF1FBEDA7B0021772F /* VisheoRenderingAssets.swift */; };
@@ -36,6 +38,10 @@
 		B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450DE1FBF02F60021772F /* PhotoPickerViewController.swift */; };
 		B44450E11FBF0B580021772F /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450E01FBF0B580021772F /* PhotoCollectionViewCell.swift */; };
 		B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450E21FBF0F360021772F /* PhotoSelectionIndexView.swift */; };
+		B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280B1FC346960070FFB7 /* PreviewViewModel.swift */; };
+		B465280E1FC346A30070FFB7 /* PreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280D1FC346A30070FFB7 /* PreviewRouter.swift */; };
+		B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */; };
+		B46528131FC34A0F0070FFB7 /* VisheoPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46528111FC34A0F0070FFB7 /* VisheoPreview.storyboard */; };
 		B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */; };
 		B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48259021FB3060800A7F5B0 /* OccasionsListService.swift */; };
 		B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB51FA9E574000BB33B /* AppDelegate.swift */; };
@@ -154,6 +160,8 @@
 		B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDateLabel.swift; sourceTree = "<group>"; };
 		B43163821FBF480A00135B70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B43163871FBF482A00135B70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		B433DDE31FC41E5900309974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditVisheoButton.xib; sourceTree = "<group>"; };
+		B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVisheoButton.swift; sourceTree = "<group>"; };
 		B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputValidator.swift; sourceTree = "<group>"; };
 		B44450CC1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmstripCoversCollectionMediator.swift; sourceTree = "<group>"; };
 		B44450CF1FBEDA7B0021772F /* VisheoRenderingAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoRenderingAssets.swift; sourceTree = "<group>"; };
@@ -165,6 +173,10 @@
 		B44450DE1FBF02F60021772F /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		B44450E01FBF0B580021772F /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B44450E21FBF0F360021772F /* PhotoSelectionIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionIndexView.swift; sourceTree = "<group>"; };
+		B465280B1FC346960070FFB7 /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
+		B465280D1FC346A30070FFB7 /* PreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRouter.swift; sourceTree = "<group>"; };
+		B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewViewController.swift; sourceTree = "<group>"; };
+		B46528121FC34A0F0070FFB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/VisheoPreview.storyboard; sourceTree = "<group>"; };
 		B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedCoverCollectionMediator.swift; sourceTree = "<group>"; };
 		B48259021FB3060800A7F5B0 /* OccasionsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsListService.swift; sourceTree = "<group>"; };
 		B48AAAB51FA9E574000BB33B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -300,6 +312,7 @@
 				B44450E21FBF0F360021772F /* PhotoSelectionIndexView.swift */,
 				9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */,
 				92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */,
+				B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -342,6 +355,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B46528081FC346650070FFB7 /* VisheoPreview */ = {
+			isa = PBXGroup;
+			children = (
+				B465280A1FC3467B0070FFB7 /* ViewModel */,
+				B46528091FC346740070FFB7 /* Router */,
+				B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */,
+			);
+			path = VisheoPreview;
+			sourceTree = "<group>";
+		};
+		B46528091FC346740070FFB7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B465280D1FC346A30070FFB7 /* PreviewRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B465280A1FC3467B0070FFB7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B465280B1FC346960070FFB7 /* PreviewViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B48AAAB41FA9E574000BB33B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +408,8 @@
 				B43163881FBF482A00135B70 /* Localizable.stringsdict */,
 				92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */,
 				92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */,
+				B46528111FC34A0F0070FFB7 /* VisheoPreview.storyboard */,
+				B433DDE21FC41E5900309974 /* EditVisheoButton.xib */,
 			);
 			name = Resources;
 			path = Visheo/Resources;
@@ -461,6 +502,7 @@
 		B4BCABC51FB8CC7C003EDC7F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B46528081FC346650070FFB7 /* VisheoPreview */,
 				B4F666201FC1C96C00B68055 /* VideoTrimming */,
 				B44450D11FBEF3B70021772F /* PhotoPicking */,
 				9262CBA91FBDF71A00F90AB3 /* Camera */,
@@ -767,10 +809,12 @@
 				B48AAAC91FA9E650000BB33B /* Roboto-Regular.ttf in Resources */,
 				B43163861FBF482A00135B70 /* Localizable.stringsdict in Resources */,
 				B48AAABF1FA9E58F000BB33B /* Assets.xcassets in Resources */,
+				B46528131FC34A0F0070FFB7 /* VisheoPreview.storyboard in Resources */,
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
 				B43163811FBF480A00135B70 /* Localizable.strings in Resources */,
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
+				B433DDE41FC41E5900309974 /* EditVisheoButton.xib in Resources */,
 				B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
 				92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */,
@@ -903,6 +947,7 @@
 				B4BCABFE1FB8CC7D003EDC7F /* LaunchProxyRouter.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
 				B4BCABF21FB8CC7D003EDC7F /* SignInViewModel.swift in Sources */,
+				B433DDE61FC41EBD00309974 /* EditVisheoButton.swift in Sources */,
 				B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */,
 				92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */,
 				B4BCAC001FB8CC7D003EDC7F /* OnboardingViewController.swift in Sources */,
@@ -918,6 +963,7 @@
 				B44450CD1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift in Sources */,
 				B4BCABF41FB8CC7D003EDC7F /* HolidayCollectionViewCell.swift in Sources */,
 				B4BCABFF1FB8CC7D003EDC7F /* LaunchProxyViewModel.swift in Sources */,
+				B465280E1FC346A30070FFB7 /* PreviewRouter.swift in Sources */,
 				B4BCABF91FB8CC7D003EDC7F /* ChooseOccasionRouter.swift in Sources */,
 				B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */,
 				B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */,
@@ -935,12 +981,14 @@
 				B4BCABF31FB8CC7D003EDC7F /* SignUpViewModel.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
 				B4BCABF61FB8CC7D003EDC7F /* ChooseOccasionViewController.swift in Sources */,
+				B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */,
 				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4BCABF11FB8CC7D003EDC7F /* AuthorizationViewModel.swift in Sources */,
 				9262CBB31FBE139700F90AB3 /* CameraRecordButton.swift in Sources */,
 				9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */,
 				B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
+				B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */,
 				B44450E11FBF0B580021772F /* PhotoCollectionViewCell.swift in Sources */,
 				B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */,
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
@@ -999,6 +1047,22 @@
 				B43163871FBF482A00135B70 /* en */,
 			);
 			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		B433DDE21FC41E5900309974 /* EditVisheoButton.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B433DDE31FC41E5900309974 /* Base */,
+			);
+			name = EditVisheoButton.xib;
+			sourceTree = "<group>";
+		};
+		B46528111FC34A0F0070FFB7 /* VisheoPreview.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B46528121FC34A0F0070FFB7 /* Base */,
+			);
+			name = VisheoPreview.storyboard;
 			sourceTree = "<group>";
 		};
 		B48AAABB1FA9E58F000BB33B /* LaunchScreen.storyboard */ = {
