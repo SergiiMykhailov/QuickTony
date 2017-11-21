@@ -88,8 +88,33 @@
 		B4F666291FC1CA1200B68055 /* VideoTrimmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		924DEB851FC3B22B00B04EE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 928B4AD71FA7897B001499F4;
+			remoteInfo = visheo;
+		};
+		924DEB871FC3B22B00B04EE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 928B4AF21FA78AAF001499F4;
+			remoteInfo = visheoTests;
+		};
+		924DEB891FC3B22B00B04EE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 929A19261FA8D46800363CC9;
+			remoteInfo = VisheoVideo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
 		9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
 		9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
@@ -187,6 +212,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		924DEB801FC3B22B00B04EE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				924DEB861FC3B22B00B04EE8 /* visheo.app */,
+				924DEB881FC3B22B00B04EE8 /* visheoTests.xctest */,
+				924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9262CBA91FBDF71A00F90AB3 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +398,7 @@
 		B4B9D18D1FA8A52300CBD7DB = {
 			isa = PBXGroup;
 			children = (
+				924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */,
 				96EB3AB061448D793927EB4A /* Frameworks */,
 				B4B9D1981FA8A52300CBD7DB /* Visheo */,
 				B4B9D1971FA8A52300CBD7DB /* Products */,
@@ -658,12 +694,42 @@
 			mainGroup = B4B9D18D1FA8A52300CBD7DB;
 			productRefGroup = B4B9D1971FA8A52300CBD7DB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 924DEB801FC3B22B00B04EE8 /* Products */;
+					ProjectRef = 924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B4B9D1951FA8A52300CBD7DB /* Visheo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		924DEB861FC3B22B00B04EE8 /* visheo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = visheo.app;
+			remoteRef = 924DEB851FC3B22B00B04EE8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		924DEB881FC3B22B00B04EE8 /* visheoTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = visheoTests.xctest;
+			remoteRef = 924DEB871FC3B22B00B04EE8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VisheoVideo.framework;
+			remoteRef = 924DEB891FC3B22B00B04EE8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B4B9D1941FA8A52300CBD7DB /* Resources */ = {

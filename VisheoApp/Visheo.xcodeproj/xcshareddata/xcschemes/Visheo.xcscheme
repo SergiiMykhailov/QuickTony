@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "929A19251FA8D46800363CC9"
+               BuildableName = "VisheoVideo.framework"
+               BlueprintName = "VisheoVideo"
+               ReferencedContainer = "container:Frameworks/visheo/visheo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B4B9D1951FA8A52300CBD7DB"
                BuildableName = "Visheo.app"
                BlueprintName = "Visheo"

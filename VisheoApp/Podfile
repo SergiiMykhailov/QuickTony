@@ -1,9 +1,12 @@
 platform :ios, '10.0'
 
+use_frameworks!
+inhibit_all_warnings!
+
+workspace 'Visheo.xcworkspace'
+
 target 'Visheo' do
-  use_frameworks!
-  inhibit_all_warnings!
-  
+
   pod 'Fabric'
   pod 'Crashlytics'
   
@@ -26,4 +29,21 @@ target 'Visheo' do
   pod 'PryntTrimmerView'
   
    pod 'Reveal-SDK', :configurations => ['Debug']
+end
+
+abstract_target 'VisheoVideoFramework' do
+	
+	project 'Frameworks/visheo/visheo'
+	
+	pod 'GRDB.swift'
+	pod 'lottie-ios', :git => 'https://github.com/nivanchikov/lottie-ios.git'
+	pod 'pop'
+	pod 'PromiseKit', '~> 4'
+	
+	target 'visheo' do
+	end
+	
+	target 'VisheoVideo' do
+	end
+	
 end
