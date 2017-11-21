@@ -16,6 +16,7 @@ struct MotionTask: StatefulTask
 	var id: Int64?;
 	var output: URL? = nil;
 	var renderOrder: Int;
+	var hasAudio: Bool;
 	
 	
 	init(media: MediaUnit, taskId: Int64?, order: Int)
@@ -27,8 +28,10 @@ struct MotionTask: StatefulTask
 		if (media.type == .video) {
 			state = .finished;
 			output = media.url;
+			hasAudio = true;
 		} else {
 			state = .pending;
+			hasAudio = false;
 		}
 	}
 }
@@ -48,6 +51,7 @@ extension MotionTask: Codable, RowConvertible, MutablePersistable
 		case id
 		case output
 		case renderOrder = "render_order"
+        case hasAudio = "has_audio"
 	}
 	
 	
@@ -61,6 +65,7 @@ extension MotionTask: Codable, RowConvertible, MutablePersistable
 		try container.encode(id, forKey: .id);
 		try container.encode(output?.path, forKey: .output);
 		try container.encode(renderOrder, forKey: .renderOrder)
+        try container.encode(hasAudio, forKey: .hasAudio);
 	}
 	
 	
@@ -75,7 +80,8 @@ extension MotionTask: Codable, RowConvertible, MutablePersistable
 		taskId = try container.decodeIfPresent(Int64.self, forKey: .taskId);
 		mediaId = try container.decodeIfPresent(Int64.self, forKey: .mediaId);
 		renderOrder = try container.decode(Int.self, forKey: .renderOrder);
-		
+        hasAudio = try container.decode(Bool.self, forKey: .hasAudio);
+        
 		let rawOutput = try container.decodeIfPresent(String.self, forKey: .output);
 		if let _ = rawOutput {
 			output = URL(fileURLWithPath: rawOutput!);

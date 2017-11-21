@@ -36,6 +36,7 @@ struct Migrations
 				t.column("output", .text);
 				t.column("state", .integer);
 				t.column("render_order", .integer);
+                t.column("has_audio", .boolean)
 			})
 			
 			try db.create(table: TransitionTask.databaseTableName, body: { (t) in

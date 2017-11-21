@@ -85,7 +85,8 @@ final class VisheoRenderer
 				self.render(transitions: $0, task: task)
 			}
 			.then {
-				self.stitch(task: task);
+				print("Rendered transitions in \(CACurrentMediaTime() - start)");
+				return self.stitch(task: task);
 			}
 			.then {
 				print("Rendered in \(CACurrentMediaTime() - start)");
@@ -155,7 +156,7 @@ final class VisheoRenderer
 			self.db.fetchMedia(for: motion)
 		}
 		.then { media -> Promise<Void> in
-			let animation = MotionAnimation(asset: media!.url, bounds: task.maxRenderSize, duration: 2.2);
+			let animation = MotionAnimation(asset: media!.url, bounds: task.renderSize, duration: 2.2);
 			return self.renderer.render(asset: animation, to: url);
 		}
 		.then { _ -> Promise<MotionTask> in
@@ -194,7 +195,7 @@ final class VisheoRenderer
 			return Promise(value: transition);
 		}
 		.then { transition -> Promise<TransitionTask> in
-			let animation = LottieTransition(animation: animationURL, size: task.maxRenderSize, frames: [transition.fromMotionFrame!, transition.toMotionFrame!])
+			let animation = LottieFrameTransition(animation: animationURL, size: task.renderSize, frames: [transition.fromMotionFrame!, transition.toMotionFrame!])
 			return self.renderer.render(asset: animation, to: url).then{ _ in transition };
 		}
 		.then { transition -> Promise<TransitionTask> in

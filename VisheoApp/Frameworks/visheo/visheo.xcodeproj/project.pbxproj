@@ -47,6 +47,7 @@
 		92AFAD811FC372FC0086262E /* VisheoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AFAD801FC372FC0086262E /* VisheoVideo.swift */; };
 		92AFAD831FC382190086262E /* data3.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AFAD821FC382190086262E /* data3.json */; };
 		92AFAD841FC382190086262E /* data3.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AFAD821FC382190086262E /* data3.json */; };
+		92AFAD861FC38B4C0086262E /* LottieFrameTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AFAD851FC38B4C0086262E /* LottieFrameTransition.swift */; };
 		92DCBCF91FBADFE9004C0046 /* data2.json in Resources */ = {isa = PBXBuildFile; fileRef = 92DCBCF81FBADFE9004C0046 /* data2.json */; };
 		92DCBCFA1FBADFF0004C0046 /* data2.json in Resources */ = {isa = PBXBuildFile; fileRef = 92DCBCF81FBADFE9004C0046 /* data2.json */; };
 		92EBEE191FB491AD00B9237C /* data1.json in Resources */ = {isa = PBXBuildFile; fileRef = 92EBEE151FB491AD00B9237C /* data1.json */; };
@@ -142,6 +143,7 @@
 		92AC95AE1FA8E00A003B973B /* VideoConvertibleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoConvertibleRenderer.swift; sourceTree = "<group>"; };
 		92AFAD801FC372FC0086262E /* VisheoVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoVideo.swift; sourceTree = "<group>"; };
 		92AFAD821FC382190086262E /* data3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data3.json; sourceTree = "<group>"; };
+		92AFAD851FC38B4C0086262E /* LottieFrameTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieFrameTransition.swift; sourceTree = "<group>"; };
 		92DCBCF81FBADFE9004C0046 /* data2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data2.json; sourceTree = "<group>"; };
 		92EBEE151FB491AD00B9237C /* data1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data1.json; sourceTree = "<group>"; };
 		92EBEE201FB497E100B9237C /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				92AC95A91FA8E00A003B973B /* MotionAnimation.swift */,
 				92AC95AA1FA8E00A003B973B /* LottieTransition.swift */,
 				92AFAD801FC372FC0086262E /* VisheoVideo.swift */,
+				92AFAD851FC38B4C0086262E /* LottieFrameTransition.swift */,
 			);
 			path = convertibles;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				9224A83F1FBCCC9200304905 /* MediaUnit.swift in Sources */,
 				924E41731FBB74A400117FEF /* AsyncOperation.swift in Sources */,
 				926CA3B31FB9616000106EE3 /* UIImage+Utils.swift in Sources */,
+				92AFAD861FC38B4C0086262E /* LottieFrameTransition.swift in Sources */,
 				929126B01FC14A38000E9D24 /* RenderDatabase.swift in Sources */,
 				92AC95B31FA8E00A003B973B /* Result.swift in Sources */,
 				92AFAD811FC372FC0086262E /* VisheoVideo.swift in Sources */,

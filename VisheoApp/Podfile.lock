@@ -109,7 +109,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   lottie-ios:
-    :commit: 7b391bbce75d3738716927c91ffec9ee1d21abbd
+    :commit: 1a4a807c11c4d51f25d2b2aed1dfc708f228c65a
     :git: https://github.com/nivanchikov/lottie-ios.git
 
 SPEC CHECKSUMS:
@@ -130,7 +130,7 @@ SPEC CHECKSUMS:
   GRDB.swift: fa0742c1b3d8aa6e3610a05ebf7c6b9e77589726
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
-  lottie-ios: 94fa2d82547ce3adf1e61157653ba99999fd279f
+  lottie-ios: b87472c879608e6bff15a76eb60257fcb5fd06c7
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
