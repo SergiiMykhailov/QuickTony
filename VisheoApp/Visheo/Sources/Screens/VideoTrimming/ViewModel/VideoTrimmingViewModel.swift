@@ -8,6 +8,7 @@
 
 import AVFoundation
 import PryntTrimmerView
+import VisheoVideo
 
 enum PlaybackStatus {
     case playing
@@ -92,6 +93,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
             DispatchQueue.main.async {
                 self.showProgressCallback?(false)
                 if success {
+					self.export(assets: self.assets);
                     self.warningAlertHandler?("Trimmed successfully") //TODO: navigate further
                 } else {
                     self.warningAlertHandler?(NSLocalizedString("An error occured while processing video", comment: "Processing video error text"))
@@ -199,12 +201,32 @@ func trimVideo(sourceURL: URL, destinationURL: URL, trimPoints: (CMTime, CMTime)
         completion?(false)
         return
     }
+	
+	try? FileManager.default.removeItem(at: destinationURL);
     
     exportSession.outputURL = destinationURL as URL
-    exportSession.outputFileType = AVFileType.m4v
+    exportSession.outputFileType = AVFileType.mov
     exportSession.shouldOptimizeForNetworkUse = true
     
     exportSession.exportAsynchronously {
         completion?(exportSession.error == nil)
     }
+}
+
+
+extension VideoTrimmingViewModel
+{
+	func export(assets: VisheoRenderingAssets)
+	{
+		let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
+		
+		var task = RenderTask(quality: .res720);
+		
+		task.addMedia(assets.coverUrl!, type: .cover);
+		task.addMedia(assets.photoUrls, type: .photo);
+		task.addMedia(assets.videoUrl, type: .video);
+		task.addMedia(URL(fileURLWithPath: audio), type: .audio);
+		
+		RenderQueue.shared.enqueue(task);
+	}
 }

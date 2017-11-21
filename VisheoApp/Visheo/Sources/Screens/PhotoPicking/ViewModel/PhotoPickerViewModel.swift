@@ -91,6 +91,8 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     
     func loadAssets(completion: @escaping ()->()) {
         let group = DispatchGroup()
+		let options = PHImageRequestOptions();
+		options.isNetworkAccessAllowed = true;
         assets.removePhotos()
         for (index, assetLocalId) in selectedPhotos.enumerated() {
             let result = PHAsset.fetchAssets(withLocalIdentifiers: [assetLocalId], options: nil)
@@ -98,7 +100,7 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
                 
                 group.enter()
                 PHImageManager.default().requestImageData(for: asset,
-                                                          options: nil,
+                                                          options: options,
                                                           resultHandler: { (data, mimetype, orientation, options) in
                                                             if let photoData = data {
                                                                 self.assets.addPhoto(data: photoData, at: index)

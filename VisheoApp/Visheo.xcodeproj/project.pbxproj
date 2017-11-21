@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F5A7BDD9A952420AB97BDB2 /* Pods_Visheo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */; };
 		9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */; };
 		9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */; };
 		9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */; };
@@ -19,6 +18,8 @@
 		92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */; };
 		92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */; };
 		92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */; };
+		92EF8E841FC4190D005926E5 /* VisheoVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; };
+		92EF8E851FC4190D005926E5 /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B409B3A41FADBC2100FE43F1 /* ViewModels.swift */; };
 		B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */; };
 		B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
@@ -86,6 +87,7 @@
 		B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */; };
 		B4F666271FC1C9FB00B68055 /* VideoTrimmingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */; };
 		B4F666291FC1CA1200B68055 /* VideoTrimmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */; };
+		D4D60DB38EDB3A168B57C72A /* Pods_Visheo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,10 +112,31 @@
 			remoteGlobalIDString = 929A19261FA8D46800363CC9;
 			remoteInfo = VisheoVideo;
 		};
+		92EF8E861FC4190D005926E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 929A19251FA8D46800363CC9;
+			remoteInfo = VisheoVideo;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		92EF8E881FC4190D005926E5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				92EF8E851FC4190D005926E5 /* VisheoVideo.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
 		9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
@@ -126,8 +149,6 @@
 		92DEDBAF1FC0598400C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		92DEDBB21FC0599100C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CameraTips.xib; sourceTree = "<group>"; };
 		92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRecordIndicator.swift; sourceTree = "<group>"; };
-		9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.release.xcconfig"; sourceTree = "<group>"; };
-		A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
 		B409B3A41FADBC2100FE43F1 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPermissionsService.swift; sourceTree = "<group>"; };
 		B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDateLabel.swift; sourceTree = "<group>"; };
@@ -198,6 +219,8 @@
 		B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingRouter.swift; sourceTree = "<group>"; };
 		B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingViewModel.swift; sourceTree = "<group>"; };
 		B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingViewController.swift; sourceTree = "<group>"; };
+		BEA24D4F70D81BC5C6DF5B7F /* Pods-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
+		C370ACF7CBAB1D0D1A2A453C /* Pods-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,13 +228,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F5A7BDD9A952420AB97BDB2 /* Pods_Visheo.framework in Frameworks */,
+				92EF8E841FC4190D005926E5 /* VisheoVideo.framework in Frameworks */,
+				D4D60DB38EDB3A168B57C72A /* Pods_Visheo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A25D211DE89E6E80DEC2011 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		727D4B8F4BD8991BC05A56B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BEA24D4F70D81BC5C6DF5B7F /* Pods-Visheo.debug.xcconfig */,
+				C370ACF7CBAB1D0D1A2A453C /* Pods-Visheo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		924DEB801FC3B22B00B04EE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,14 +291,6 @@
 				92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		96EB3AB061448D793927EB4A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				60CA3B92135B1FD9CD3E9341 /* Pods_Visheo.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B42A29871FB1F8A200A8741F /* CustomUI */ = {
@@ -399,10 +432,10 @@
 			isa = PBXGroup;
 			children = (
 				924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */,
-				96EB3AB061448D793927EB4A /* Frameworks */,
 				B4B9D1981FA8A52300CBD7DB /* Visheo */,
 				B4B9D1971FA8A52300CBD7DB /* Products */,
-				CC7C1C17CFB809EE5564ADC0 /* Pods */,
+				727D4B8F4BD8991BC05A56B0 /* Pods */,
+				3A25D211DE89E6E80DEC2011 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -633,15 +666,6 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		CC7C1C17CFB809EE5564ADC0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */,
-				9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -649,17 +673,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4B9D1A81FA8A52300CBD7DB /* Build configuration list for PBXNativeTarget "Visheo" */;
 			buildPhases = (
-				E8E3817E1590F42B3F36AE55 /* [CP] Check Pods Manifest.lock */,
+				E2BE12273340EFE97536135C /* [CP] Check Pods Manifest.lock */,
 				B4B9D1921FA8A52300CBD7DB /* Sources */,
 				B4B9D1931FA8A52300CBD7DB /* Frameworks */,
 				B4B9D1941FA8A52300CBD7DB /* Resources */,
-				E93BDD87166AC91A93EBDEF6 /* [CP] Embed Pods Frameworks */,
-				7CBF36C8E795C858C5527222 /* [CP] Copy Pods Resources */,
 				B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytis stup */,
+				92EF8E881FC4190D005926E5 /* Embed Frameworks */,
+				DD698383854C530CB34D0E1B /* [CP] Embed Pods Frameworks */,
+				04778D0C6B6EF5C3357F55D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				92EF8E871FC4190D005926E5 /* PBXTargetDependency */,
 			);
 			name = Visheo;
 			productName = Visheo;
@@ -755,7 +781,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7CBF36C8E795C858C5527222 /* [CP] Copy Pods Resources */ = {
+		04778D0C6B6EF5C3357F55D6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -787,25 +813,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" f9edfee36e59c3f16c7050739bbfeb28125f15d9 9b5908df5162e17c4eaf46bb3b9b26f69c9b19256845a053289fac3d6ad29cab";
 		};
-		E8E3817E1590F42B3F36AE55 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Visheo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E93BDD87166AC91A93EBDEF6 /* [CP] Embed Pods Frameworks */ = {
+		DD698383854C530CB34D0E1B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -826,6 +834,10 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -843,10 +855,32 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2BE12273340EFE97536135C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Visheo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -925,6 +959,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		92EF8E871FC4190D005926E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VisheoVideo;
+			targetProxy = 92EF8E861FC4190D005926E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */ = {
@@ -1103,13 +1145,14 @@
 		};
 		B4B9D1A91FA8A52300CBD7DB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1C0DFCF39B165B13CAD6FEF /* Pods-Visheo.debug.xcconfig */;
+			baseConfigurationReference = BEA24D4F70D81BC5C6DF5B7F /* Pods-Visheo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4M6W632NJ7;
+				DEVELOPMENT_TEAM = NW83AWMN8Z;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
@@ -1124,13 +1167,14 @@
 		};
 		B4B9D1AA1FA8A52300CBD7DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F1A439620490D2D7968FF59 /* Pods-Visheo.release.xcconfig */;
+			baseConfigurationReference = C370ACF7CBAB1D0D1A2A453C /* Pods-Visheo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4M6W632NJ7;
+				DEVELOPMENT_TEAM = NW83AWMN8Z;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";

@@ -12,6 +12,8 @@ import GRDB
 
 public final class RenderQueue
 {
+	public static let shared = RenderQueue();
+	
 	private let database: RenderDatabase;
 	private lazy var renderer = VisheoRenderer(db: self.database)
 	

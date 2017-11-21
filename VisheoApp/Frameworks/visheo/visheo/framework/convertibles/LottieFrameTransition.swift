@@ -112,11 +112,14 @@ class LottieFrameTransition: VideoConvertible
 					me.writer?.finishWriting {
 						completion(.success(value: Void()));
 					}
+					break;
 				} else {
 					autoreleasepool {
 						let buffer = me.produceFrame(i: i, options: options)!;
-						me.adaptor?.append(buffer, withPresentationTime: CMTime(value: CMTimeValue(i), timescale: 30));
-						i = i + 1;
+						if input.isReadyForMoreMediaData {
+							me.adaptor?.append(buffer, withPresentationTime: CMTime(value: CMTimeValue(i), timescale: 30));
+							i = i + 1;
+						}
 					}
 				}
 			}

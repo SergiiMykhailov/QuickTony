@@ -205,6 +205,7 @@ final class VisheoRenderer
 			return self.db.add(transition: transition)
 		}
 		.recover{ (e) -> Promise<TransitionTask> in
+			print("Failed to render transition \(e) - \(transition)")
 			transition.state = .pending;
 			return self.db.add(transition: transition)
 		}
@@ -266,6 +267,7 @@ final class VisheoRenderer
 			
 			extractor.generateThumbnails(asset: asset, frames: [frame], completion: { (result) in
 				if case .failure(let error) = result {
+					print("Failed to generate thumbnails for \(url)");
 					rj(error);
 					return;
 				}
