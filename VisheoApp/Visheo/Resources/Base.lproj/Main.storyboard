@@ -406,7 +406,7 @@
         <!--CAMERA ROLL-->
         <scene sceneID="Igs-qs-P4H">
             <objects>
-                <viewController id="Dje-Hm-87p" customClass="PhotoPickerViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoPickerViewController" id="Dje-Hm-87p" customClass="PhotoPickerViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QIG-10-ptK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -542,7 +542,7 @@
         <!--CAMERA ROLL-->
         <scene sceneID="Pqk-JV-iIr">
             <objects>
-                <viewController id="g7P-Dq-lrL" customClass="PhotoPermissionsViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoPermissionsViewController" id="g7P-Dq-lrL" customClass="PhotoPermissionsViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ggx-u0-qca">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -622,6 +622,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Y7f-9b-FXA"/>
         <segue reference="G1f-tY-ZBC"/>
-        <segue reference="2OI-cd-wsG"/>
+        <segue reference="6pg-nG-fzZ"/>
     </inferredMetricsTieBreakers>
 </document>

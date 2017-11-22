@@ -11,6 +11,8 @@ import UIKit
 protocol PhotoPickerRouter: FlowRouter {
     func showCamera(with assets: VisheoRenderingAssets)
     func showCameraPermissions(with assets: VisheoRenderingAssets)
+    
+    func goBack(with assets: VisheoRenderingAssets)
 }
 
 class VisheoPhotoPickerRouter : PhotoPickerRouter {
@@ -22,14 +24,16 @@ class VisheoPhotoPickerRouter : PhotoPickerRouter {
     private(set) weak var controller: UIViewController?
     private(set) weak var viewModel: PhotoPickerViewModel?
     let assets : VisheoRenderingAssets
+    private let photosSelectedCallback  : ((VisheoRenderingAssets)->())?
     
-    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets) {
+    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets,callback: ((VisheoRenderingAssets)->())? = nil) {
         self.dependencies = dependencies
         self.assets = assets
+        self.photosSelectedCallback = callback
     }
     
-    func start(with viewController: PhotoPickerViewController) {
-        let vm = VisheoPhotoPickerViewModel(assets: self.assets, permissionsService: dependencies.appPermissionsService)
+    func start(with viewController: PhotoPickerViewController, editMode: Bool = false) {
+        let vm = VisheoPhotoPickerViewModel(assets: self.assets, permissionsService: dependencies.appPermissionsService, editMode: editMode)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -60,6 +64,11 @@ extension VisheoPhotoPickerRouter {
     
     func showCameraPermissions(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showCameraPermissions, sender: assets)
+    }
+    
+    func goBack(with assets: VisheoRenderingAssets) {
+        photosSelectedCallback?(assets)
+        controller?.dismiss(animated: true, completion: nil)
     }
 }
 

@@ -10,11 +10,15 @@ import UIKit
 
 protocol PreviewRouter: FlowRouter {
     func showCoverEdit(with assets: VisheoRenderingAssets)
+    func showPhotosEdit(with assets: VisheoRenderingAssets)
+    func showPhotoPermissions(with assets: VisheoRenderingAssets)
 }
 
 class VisheoPreviewRouter : PreviewRouter {
     enum SegueList: String, SegueListType {
         case showCoverEdit = "showCoverEdit"
+        case showPhotosEdit = "showPhotosEdit"
+        case showPhotoPermissions = "showPhotoPermissions"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: VisheoPreviewViewController?
@@ -27,7 +31,7 @@ class VisheoPreviewRouter : PreviewRouter {
     }
     
     func start(with viewController: VisheoPreviewViewController) {
-        let vm = VisheoPreviewViewModel(assets: assets)
+        let vm = VisheoPreviewViewModel(assets: assets, permissionsService: dependencies.appPermissionsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -41,8 +45,16 @@ class VisheoPreviewRouter : PreviewRouter {
         switch segueList {
         case .showCoverEdit:
             let selectCoverScreen = (segue.destination as! UINavigationController).viewControllers[0] as! SelectCoverViewController
-            let selectCoverRouter = VisheoSelectCoverRouter(dependencies: dependencies, occasion: assets.originalOccasion, assets: assets, callback: {self.assets = $0})
+            let selectCoverRouter = VisheoSelectCoverRouter(dependencies: dependencies, occasion: assets.originalOccasion, assets: sender as? VisheoRenderingAssets, callback: {self.assets = $0})
             selectCoverRouter.start(with: selectCoverScreen, editMode: true)
+        case .showPhotosEdit:
+            let editPhotosScreen = (segue.destination as! UINavigationController).viewControllers[0] as! PhotoPickerViewController
+            let editPhotosRouter = VisheoPhotoPickerRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets, callback: {self.assets = $0})
+            editPhotosRouter.start(with: editPhotosScreen, editMode: true)
+        case .showPhotoPermissions:
+            let photoPermissionsScreen = (segue.destination as! UINavigationController).viewControllers[0] as! PhotoPermissionsViewController
+            let photoPermissionsRouter = VisheoPhotoPermissionsRouter(dependencies: dependencies, assets: assets, callback: {self.assets = $0})
+            photoPermissionsRouter.start(with: photoPermissionsScreen, editMode: true)
         }
     }
 }
@@ -50,6 +62,14 @@ class VisheoPreviewRouter : PreviewRouter {
 extension VisheoPreviewRouter {
     func showCoverEdit(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showCoverEdit, sender: assets)
+    }
+    
+    func showPhotosEdit(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showPhotosEdit, sender: assets)
+    }
+    
+    func showPhotoPermissions(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showPhotoPermissions, sender: assets)
     }
 }
 

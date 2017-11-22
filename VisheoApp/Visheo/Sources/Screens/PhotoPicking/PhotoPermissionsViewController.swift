@@ -13,6 +13,10 @@ class PhotoPermissionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if viewModel.showCancel {
+            navigationItem.leftBarButtonItem = nil
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(PhotoPermissionsViewController.cancelPressed(_:)))
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -36,7 +40,11 @@ class PhotoPermissionsViewController: UIViewController {
     
     @IBAction func skipPressed(_ sender: Any) {
         viewModel.skipPhotos()
-    }    
+    }
+    
+    @IBAction func cancelPressed(_ sender: Any) {
+        viewModel.skipPhotos()
+    }
 }
 
 extension PhotoPermissionsViewController {

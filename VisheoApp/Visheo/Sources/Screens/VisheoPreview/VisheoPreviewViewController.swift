@@ -14,12 +14,12 @@ class VisheoPreviewViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        tempImage.image = viewModel.coverImage
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tempImage.image = viewModel.coverImage
+        tempImage.animationDuration = 2
+        tempImage.animationImages = viewModel.phtos
+        tempImage.startAnimating()
     }
 
     //MARK: - VM+Router init
@@ -36,6 +36,15 @@ class VisheoPreviewViewController: UIViewController {
     
     @IBAction func editCover(_ sender: Any) {
         viewModel.editCover()
+    }
+    @IBAction func editPhotos(_ sender: Any) {
+        viewModel.editPhotos()
+    }
+    
+    @IBAction func editVideo(_ sender: Any) {
+    }
+    
+    @IBAction func editSoundtrack(_ sender: Any) {
     }
 }
 

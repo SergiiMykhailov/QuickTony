@@ -59,6 +59,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     }
     
     func cancelTrimming() {
+        player.pause()
         stopPlaybackTimeChecker()
         assets.removeVideo()
         router?.goBack()
@@ -94,6 +95,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
                 self.showProgressCallback?(false)
                 if success {
 //self.export(assets: self.assets);
+                    self.player.pause()
                     self.router?.showPreview(with: self.assets)
                 } else {
                     self.warningAlertHandler?(NSLocalizedString("An error occured while processing video", comment: "Processing video error text"))

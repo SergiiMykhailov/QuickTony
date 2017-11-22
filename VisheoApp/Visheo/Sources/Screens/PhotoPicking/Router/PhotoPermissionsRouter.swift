@@ -12,6 +12,8 @@ protocol PhotoPermissionsRouter: FlowRouter {
     func showPhotoLibrary()
     func showCamera()
     func showCameraPermissions()
+    
+    func goBack()
 }
 
 class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
@@ -24,14 +26,18 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
     let assets : VisheoRenderingAssets
     private(set) weak var controller: UIViewController?
     private(set) weak var viewModel: PhotoPermissionsViewModel?
+    var editMode : Bool = false
+    let pickerCallback: ((VisheoRenderingAssets)->())?
     
-    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets) {
+    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets, callback: ((VisheoRenderingAssets)->())? = nil) {
         self.dependencies = dependencies
         self.assets = assets
+        self.pickerCallback = callback
     }
     
-    func start(with viewController: PhotoPermissionsViewController) {
-        let vm = VisheoPhotoPermissionsViewModel(permissionsService: dependencies.appPermissionsService)
+    func start(with viewController: PhotoPermissionsViewController, editMode: Bool = false) {
+        self.editMode = editMode
+        let vm = VisheoPhotoPermissionsViewModel(permissionsService: dependencies.appPermissionsService, editMode: editMode)
         viewModel = vm
         vm.router = self
         self.controller = viewController        
@@ -45,8 +51,8 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
         switch segueList {
         case .showPhotoLibrary:
             let pickerController = segue.destination as! PhotoPickerViewController
-            let pickerRouter = VisheoPhotoPickerRouter(dependencies: dependencies, assets: assets)
-            pickerRouter.start(with: pickerController)
+            let pickerRouter = VisheoPhotoPickerRouter(dependencies: dependencies, assets: assets, callback: pickerCallback)
+            pickerRouter.start(with: pickerController, editMode: editMode)
         case .showCamera:
             let cameraController = segue.destination as! CameraViewController
             let cameraRouter = VisheoCameraRouter(dependencies: dependencies, assets: assets)
@@ -70,6 +76,10 @@ extension VisheoPhotoPermissionsRouter {
     
     func showCameraPermissions() {
         controller?.performSegue(SegueList.showCameraPermissions, sender: nil)
+    }
+    
+    func goBack() {
+        controller?.dismiss(animated: true, completion: nil)
     }
 }
 

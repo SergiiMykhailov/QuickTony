@@ -9,24 +9,7 @@
 import Foundation
 
 class VisheoRenderingAssets {
-    
-    private(set) var coverUrl : URL?
-    private(set) var coverIndex: Int?
     let originalOccasion: OccasionRecord
-    
-    var videoUrl : URL {
-        return assetsFolderUrl.appendingPathComponent("video.mov")
-    }
-    
-    var trimmedVideoUrl : URL {
-        return assetsFolderUrl.appendingPathComponent("final_video.mov")
-    }
-    
-    var photoUrls : [URL] {
-        return photoUrlsDict.sorted {$0.0 < $1.0}.map {$0.value}
-    }
-    
-    private var  photoUrlsDict : [Int: URL] = [:]
     let assetsFolderUrl : URL
     
     init(originalOccasion: OccasionRecord) {
@@ -37,17 +20,31 @@ class VisheoRenderingAssets {
         try! FileManager.default.createDirectory(at: assetsFolderUrl, withIntermediateDirectories: false, attributes: nil)
     }
     
+    // MARK: Cover
+    private(set) var coverUrl : URL?
+    private(set) var coverIndex: Int?
+    
     func setCover(with data: Data, at index: Int) {
         coverIndex = index
         coverUrl = assetsFolderUrl.appendingPathComponent("cover")
-        try! data.write(to: coverUrl!)        
+        try! data.write(to: coverUrl!)
+    }
+    
+    // MARK: Photos
+    
+    private var  photoUrlsDict : [Int: URL] = [:]
+    
+    var photosLocalIds : [String] = []
+    
+    var photoUrls : [URL] {
+        return photoUrlsDict.sorted {$0.0 < $1.0}.map {$0.value}
     }
     
     func removePhotos() {
         photoUrlsDict.forEach { (number, photoUrl) in
             try? FileManager.default.removeItem(at: photoUrl)
         }
-        
+        photosLocalIds.removeAll()
         photoUrlsDict.removeAll()
     }
     
@@ -55,6 +52,16 @@ class VisheoRenderingAssets {
         let photoUrl = assetsFolderUrl.appendingPathComponent("photo\(index)")
         photoUrlsDict[index] = photoUrl
         try! data.write(to: photoUrl)
+    }
+    
+    // MARK: Video
+    
+    var videoUrl : URL {
+        return assetsFolderUrl.appendingPathComponent("video.mov")
+    }
+    
+    var trimmedVideoUrl : URL {
+        return assetsFolderUrl.appendingPathComponent("final_video.mov")
     }
     
     func removeVideo() {

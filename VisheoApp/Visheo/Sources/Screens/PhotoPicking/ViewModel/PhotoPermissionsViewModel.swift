@@ -11,10 +11,21 @@ import UIKit
 protocol PhotoPermissionsViewModel : class {
     func skipPhotos()
     func allowAccess()
+    
+    var showCancel : Bool {get}
 }
 
 class VisheoPhotoPermissionsViewModel : PhotoPermissionsViewModel {
+    var showCancel: Bool {
+        return editMode
+    }
+    
     func skipPhotos() {
+        if editMode {
+            router?.goBack()
+            return
+        }
+        
         if permissionsService.cameraAccessAllowed {
             router?.showCamera()
         } else {
@@ -43,7 +54,10 @@ class VisheoPhotoPermissionsViewModel : PhotoPermissionsViewModel {
     
     weak var router: PhotoPermissionsRouter?
     let permissionsService: AppPermissionsService
-    init(permissionsService: AppPermissionsService) {
+    let editMode : Bool
+    
+    init(permissionsService: AppPermissionsService, editMode: Bool) {
         self.permissionsService = permissionsService
+        self.editMode = editMode
     }
 }

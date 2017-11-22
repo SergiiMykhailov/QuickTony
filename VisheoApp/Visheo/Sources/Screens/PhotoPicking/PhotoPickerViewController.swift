@@ -51,6 +51,12 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
                 MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
+        
+        if viewModel.hideNavigationButtons {
+            navigationItem.hidesBackButton = true
+            navigationItem.leftBarButtonItem = nil
+            navigationItem.rightBarButtonItem = nil
+        }
     }
 
     deinit {

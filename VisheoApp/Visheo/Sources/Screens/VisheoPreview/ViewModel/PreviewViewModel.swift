@@ -11,22 +11,40 @@ import UIKit
 
 protocol PreviewViewModel : class {
     func editCover()
+    func editPhotos()
     
-    var coverImage : UIImage? {get}
+    var phtos : [UIImage] {get}
 }
 
 class VisheoPreviewViewModel : PreviewViewModel {
-    var coverImage: UIImage? {
-        return UIImage(data: FileManager.default.contents(atPath: (assets.coverUrl?.path)!)!)
+
+    
+    var phtos: [UIImage] {
+        var phts = [UIImage]()
+        for photoUrl in assets.photoUrls {
+            phts.append(UIImage(data: FileManager.default.contents(atPath: photoUrl.path)!)!)
+        }
+        
+        return phts
     }
     weak var router: PreviewRouter?
     let assets: VisheoRenderingAssets
+    let permissionsService : AppPermissionsService
     
-    init(assets: VisheoRenderingAssets) {
+    init(assets: VisheoRenderingAssets, permissionsService: AppPermissionsService) {
         self.assets = assets
+        self.permissionsService = permissionsService
     }
     
     func editCover() {
         router?.showCoverEdit(with: assets)
+    }
+    
+    func editPhotos() {
+        if permissionsService.galleryAccessAllowed {
+            router?.showPhotosEdit(with: assets)
+        } else {
+            router?.showPhotoPermissions(with: assets)
+        }
     }
 }

@@ -13,6 +13,7 @@ protocol PhotoPickerViewModel : LongFailableActionViewModel {
     func checkPhoto(id: String)
     func photoSelectionIndex(for id: String) -> Int?
     
+    var hideNavigationButtons : Bool {get}
     var proceedText : String {get}
     var canProceed : Bool {get}
     func proceed()
@@ -22,6 +23,10 @@ protocol PhotoPickerViewModel : LongFailableActionViewModel {
 }
 
 class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
+    var hideNavigationButtons: Bool {
+        return editMode
+    }
+    
     var showProgressCallback: ((Bool) -> ())?
     
     var warningAlertHandler: ((String) -> ())?
@@ -37,7 +42,7 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     }
     
     var canProceed: Bool {
-        return selectedPhotos.count > 0
+        return selectedPhotos.count > 0 || editMode
     }
     
     weak var router: PhotoPickerRouter?
@@ -45,10 +50,13 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     private let maxPhotos = 5
     let assets: VisheoRenderingAssets
     let permissionsService: AppPermissionsService
+    let editMode : Bool
     
-    init(assets: VisheoRenderingAssets, permissionsService: AppPermissionsService) {
+    init(assets: VisheoRenderingAssets, permissionsService: AppPermissionsService, editMode: Bool = false) {
         self.assets = assets
         self.permissionsService = permissionsService
+        selectedPhotos = assets.photosLocalIds
+        self.editMode = editMode
     }
     
     func checkPhoto(id: String) {
@@ -82,6 +90,11 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     // MARK: Private
     
     private func showVideoScreen(with assets: VisheoRenderingAssets) {
+        if editMode {
+            router?.goBack(with: assets)
+            return
+        }
+        
         if permissionsService.cameraAccessAllowed {
             router?.showCamera(with: assets)
         } else {
@@ -111,6 +124,7 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
         }
         
         group.notify(queue: DispatchQueue.main) {
+            self.assets.photosLocalIds = self.selectedPhotos
             completion()
         }
     }

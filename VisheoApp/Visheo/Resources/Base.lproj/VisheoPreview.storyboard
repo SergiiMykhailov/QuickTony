@@ -103,6 +103,9 @@
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="slideshow"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit  Slideshow"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="editPhotos:" destination="1dc-lh-5ja" eventType="touchUpInside" id="HEg-SE-Bob"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dns-fU-1gV" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
                                         <rect key="frame" x="167.5" y="0.0" width="61" height="92"/>
@@ -115,6 +118,9 @@
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="video"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit  Video Wish"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="editVideo:" destination="1dc-lh-5ja" eventType="touchUpInside" id="rXN-E1-o8A"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-ST-sYJ" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
                                         <rect key="frame" x="257" y="0.0" width="50" height="92"/>
@@ -127,6 +133,9 @@
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="music"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit Music"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="editSoundtrack:" destination="1dc-lh-5ja" eventType="touchUpInside" id="V7I-um-xXl"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -156,11 +165,65 @@
                     <connections>
                         <outlet property="tempImage" destination="XWc-Zb-TyF" id="uK5-b4-50r"/>
                         <segue destination="QZ2-Cu-dgT" kind="presentation" identifier="showCoverEdit" id="5PD-PQ-kxA"/>
+                        <segue destination="M6r-Vb-FkU" kind="presentation" identifier="showPhotoPermissions" id="qLH-ea-4XQ"/>
+                        <segue destination="1mU-4s-aDM" kind="presentation" identifier="showPhotosEdit" id="JCb-Pq-bK2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGZ-T9-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="72.799999999999997" y="185.75712143928038"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="j26-Ie-gS6">
+            <objects>
+                <navigationController id="M6r-Vb-FkU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fwm-5M-iu8">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dTq-Z7-1ey" kind="relationship" relationship="rootViewController" id="PVv-kg-w5O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6MC-lV-XRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006" y="-750"/>
+        </scene>
+        <!--PhotoPermissionsViewController-->
+        <scene sceneID="6vz-xT-eBU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="PhotoPermissionsViewController" id="dTq-Z7-1ey" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gah-uK-Ajm"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bjJ-zF-ycD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1622" y="-751"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Y0i-rU-htD">
+            <objects>
+                <navigationController id="1mU-4s-aDM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tqu-xZ-RPl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Dcg-id-Pzp" kind="relationship" relationship="rootViewController" id="OEQ-Sb-YDV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhV-hI-aII" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006" y="-17"/>
+        </scene>
+        <!--PhotoPickerViewController-->
+        <scene sceneID="UPj-D2-Nnk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="PhotoPickerViewController" id="Dcg-id-Pzp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QRI-RU-dYh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w0Q-mq-8bj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1622" y="-18"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DXk-3B-qZj">
@@ -197,4 +260,5 @@
         <image name="slideshow" width="50" height="52"/>
         <image name="video" width="50" height="52"/>
     </resources>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
