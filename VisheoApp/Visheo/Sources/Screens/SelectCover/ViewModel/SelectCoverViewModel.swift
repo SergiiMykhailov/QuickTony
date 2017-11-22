@@ -16,6 +16,7 @@ extension Notification.Name {
 protocol SelectCoverViewModel : LongFailableActionViewModel {
     func coverViewModel(at index: Int) -> CoverCellViewModel
     var coversNumber : Int {get}
+    var hideBackButton: Bool {get}
     
     var preselectedCoverIndex : Int {get set}
     
@@ -23,6 +24,10 @@ protocol SelectCoverViewModel : LongFailableActionViewModel {
 }
 
 class VisheoSelectCoverViewModel : SelectCoverViewModel {
+    var hideBackButton: Bool {
+        return editMode
+    }
+    
     var showProgressCallback: ((Bool) -> ())?
     
     var warningAlertHandler: ((String) -> ())?
@@ -36,11 +41,16 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     weak var router: SelectCoverRouter?
     let occasion : OccasionRecord
     let permissionsService : AppPermissionsService
+    let assets: VisheoRenderingAssets
+    let editMode : Bool
     
-    init(occasion: OccasionRecord, permissionsService: AppPermissionsService) {
+    init(occasion: OccasionRecord, assets: VisheoRenderingAssets, permissionsService: AppPermissionsService, editMode: Bool = false) {
         self.occasion = occasion
         self.permissionsService = permissionsService
-        preselectedCoverIndex = 0
+        self.assets = assets
+        self.editMode = editMode
+        
+        preselectedCoverIndex = assets.coverIndex ?? 0
     }
     
     func coverViewModel(at index: Int) -> CoverCellViewModel {
@@ -59,9 +69,8 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
         SDWebImageManager.shared().loadImage(with: selectedCover.url, options: [], progress: nil) { (image, data, error, cacheType, success, url) in
             self.showProgressCallback?(false)
             if let coverData = data {
-                let assets = VisheoRenderingAssets()
-                assets.setCover(with: coverData)
-                self.navigateFurther(with: assets)
+                self.assets.setCover(with: coverData, at: self.preselectedCoverIndex)
+                self.navigateFurther(with: self.assets)
             } else if let error = error {
                 self.warningAlertHandler?(error.localizedDescription)
             }
@@ -70,6 +79,11 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     }
     
     func navigateFurther(with assets: VisheoRenderingAssets) {
+        if editMode {
+            router?.goBack(wit: assets)
+            return
+        }
+        
         if permissionsService.galleryAccessAllowed {
             router?.showPhotoLibrary(with: assets)
         } else {

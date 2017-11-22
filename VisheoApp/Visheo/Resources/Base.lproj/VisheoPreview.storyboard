@@ -34,16 +34,23 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="S8j-7i-Dai">
                                         <rect key="frame" x="127" y="127.5" width="80" height="80"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XWc-Zb-TyF">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ViB-xA-wIp" secondAttribute="trailing" id="Hlb-Bj-lYM"/>
                                     <constraint firstAttribute="width" secondItem="SHA-oq-exf" secondAttribute="height" id="L65-Bt-QnT"/>
                                     <constraint firstAttribute="bottom" secondItem="ViB-xA-wIp" secondAttribute="bottom" id="NAh-5m-aur"/>
+                                    <constraint firstAttribute="bottom" secondItem="XWc-Zb-TyF" secondAttribute="bottom" id="P5e-E0-4vv"/>
                                     <constraint firstItem="S8j-7i-Dai" firstAttribute="centerY" secondItem="SHA-oq-exf" secondAttribute="centerY" id="Pm6-dK-BAT"/>
+                                    <constraint firstAttribute="trailing" secondItem="XWc-Zb-TyF" secondAttribute="trailing" id="UWJ-wX-U2x"/>
+                                    <constraint firstItem="XWc-Zb-TyF" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="top" id="cE2-Lc-oIT"/>
                                     <constraint firstItem="ViB-xA-wIp" firstAttribute="leading" secondItem="SHA-oq-exf" secondAttribute="leading" id="cQW-Nj-yae"/>
                                     <constraint firstItem="ViB-xA-wIp" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="top" id="df7-Or-GyF"/>
                                     <constraint firstItem="S8j-7i-Dai" firstAttribute="centerX" secondItem="SHA-oq-exf" secondAttribute="centerX" id="hZV-yW-3PF"/>
+                                    <constraint firstItem="XWc-Zb-TyF" firstAttribute="leading" secondItem="SHA-oq-exf" secondAttribute="leading" id="xNo-Rx-g76"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -81,6 +88,9 @@
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="cover"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit Cover"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="editCover:" destination="1dc-lh-5ja" eventType="touchUpInside" id="Jix-KE-EJ8"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-Nm-fJA" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
                                         <rect key="frame" x="78.5" y="0.0" width="61" height="92"/>
@@ -143,10 +153,40 @@
                         <barButtonItem key="leftBarButtonItem" image="arrow" id="AGg-tT-fqf"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tempImage" destination="XWc-Zb-TyF" id="uK5-b4-50r"/>
+                        <segue destination="QZ2-Cu-dgT" kind="presentation" identifier="showCoverEdit" id="5PD-PQ-kxA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGZ-T9-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="72.799999999999997" y="185.75712143928038"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DXk-3B-qZj">
+            <objects>
+                <navigationController id="QZ2-Cu-dgT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZU9-2Y-yL7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="B7d-r8-V7R" kind="relationship" relationship="rootViewController" id="3p5-9e-PV1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gkz-U1-JAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006" y="681"/>
+        </scene>
+        <!--SelectCoverViewController-->
+        <scene sceneID="hVs-3M-mrA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="SelectCoverViewController" id="B7d-r8-V7R" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZXH-xj-ghU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgr-bL-TOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1622" y="680"/>
         </scene>
     </scenes>
     <resources>

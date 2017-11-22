@@ -39,6 +39,10 @@ class SelectCoverViewController: UIViewController {
         self.viewModel.warningAlertHandler = {[weak self] in
             self?.showWarningAlertWithText(text: $0)
         }
+        
+        if viewModel.hideBackButton {
+            self.navigationItem.leftBarButtonItem = nil
+        }
     }
     
     override func viewDidLayoutSubviews() {

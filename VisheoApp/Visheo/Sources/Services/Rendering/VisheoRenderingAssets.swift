@@ -9,7 +9,10 @@
 import Foundation
 
 class VisheoRenderingAssets {
+    
     private(set) var coverUrl : URL?
+    private(set) var coverIndex: Int?
+    let originalOccasion: OccasionRecord
     
     var videoUrl : URL {
         return assetsFolderUrl.appendingPathComponent("video.mov")
@@ -26,14 +29,16 @@ class VisheoRenderingAssets {
     private var  photoUrlsDict : [Int: URL] = [:]
     let assetsFolderUrl : URL
     
-    init() {
+    init(originalOccasion: OccasionRecord) {
+        self.originalOccasion = originalOccasion
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let folderUUID = UUID().uuidString
         assetsFolderUrl = documentsUrl.appendingPathComponent(folderUUID)
         try! FileManager.default.createDirectory(at: assetsFolderUrl, withIntermediateDirectories: false, attributes: nil)
     }
     
-    func setCover(with data: Data) {
+    func setCover(with data: Data, at index: Int) {
+        coverIndex = index
         coverUrl = assetsFolderUrl.appendingPathComponent("cover")
         try! data.write(to: coverUrl!)        
     }

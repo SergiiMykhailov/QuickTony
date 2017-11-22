@@ -11,6 +11,8 @@ import UIKit
 protocol SelectCoverRouter: FlowRouter {
     func showPhotoLibrary(with assets: VisheoRenderingAssets)
     func showPhotoPermissions(with assets: VisheoRenderingAssets)
+    
+    func goBack(wit assets: VisheoRenderingAssets)
 }
 
 class VisheoSelectCoverRouter : SelectCoverRouter {
@@ -21,16 +23,20 @@ class VisheoSelectCoverRouter : SelectCoverRouter {
     let dependencies: RouterDependencies
     private(set) weak var controller: UIViewController?
     private(set) weak var viewModel: SelectCoverViewModel?
+    private let coverSelectedCallback  : ((VisheoRenderingAssets)->())?
     
     let occasion : OccasionRecord
+    let assets: VisheoRenderingAssets
     
-    public init(dependencies: RouterDependencies, occasion: OccasionRecord) {
+    public init(dependencies: RouterDependencies, occasion: OccasionRecord, assets: VisheoRenderingAssets? = nil, callback: ((VisheoRenderingAssets)->())? = nil) {
         self.dependencies = dependencies
         self.occasion = occasion
+        self.assets = assets ?? VisheoRenderingAssets(originalOccasion: occasion)
+        self.coverSelectedCallback = callback
     }
     
-    func start(with viewController: SelectCoverViewController) {
-        let vm = VisheoSelectCoverViewModel(occasion: self.occasion, permissionsService: dependencies.appPermissionsService)
+    func start(with viewController: SelectCoverViewController, editMode: Bool = false) {
+        let vm = VisheoSelectCoverViewModel(occasion: self.occasion, assets: assets, permissionsService: dependencies.appPermissionsService, editMode: editMode)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -61,6 +67,11 @@ extension VisheoSelectCoverRouter {
     
     func showPhotoPermissions(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showPhotoPermissions, sender: assets)
+    }
+    
+    func goBack(wit assets: VisheoRenderingAssets) {
+        coverSelectedCallback?(assets)
+        controller?.dismiss(animated: true, completion: nil)
     }
 }
 

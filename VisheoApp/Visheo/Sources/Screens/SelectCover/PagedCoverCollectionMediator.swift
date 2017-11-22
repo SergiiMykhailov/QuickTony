@@ -30,6 +30,7 @@ class PagedCoverCollectionMediator : NSObject, UICollectionViewDelegate, UIColle
             guard let strongSelf = self else { return }
             strongSelf.scrollToItem(number: strongSelf.viewModel.preselectedCoverIndex)
         }
+        scrollToItem(number: viewModel.preselectedCoverIndex)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

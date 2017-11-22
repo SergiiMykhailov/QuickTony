@@ -9,16 +9,17 @@
 import UIKit
 
 protocol PreviewRouter: FlowRouter {
+    func showCoverEdit(with assets: VisheoRenderingAssets)
 }
 
 class VisheoPreviewRouter : PreviewRouter {
     enum SegueList: String, SegueListType {
-        case next
+        case showCoverEdit = "showCoverEdit"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: VisheoPreviewViewController?
     private(set) weak var viewModel: PreviewViewModel?
-    let assets : VisheoRenderingAssets
+    private(set) var assets : VisheoRenderingAssets
     
     public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets) {
         self.dependencies = dependencies
@@ -26,7 +27,7 @@ class VisheoPreviewRouter : PreviewRouter {
     }
     
     func start(with viewController: VisheoPreviewViewController) {
-        let vm = VisheoPreviewViewModel()
+        let vm = VisheoPreviewViewModel(assets: assets)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -38,12 +39,17 @@ class VisheoPreviewRouter : PreviewRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showCoverEdit:
+            let selectCoverScreen = (segue.destination as! UINavigationController).viewControllers[0] as! SelectCoverViewController
+            let selectCoverRouter = VisheoSelectCoverRouter(dependencies: dependencies, occasion: assets.originalOccasion, assets: assets, callback: {self.assets = $0})
+            selectCoverRouter.start(with: selectCoverScreen, editMode: true)
         }
     }
 }
 
 extension VisheoPreviewRouter {
+    func showCoverEdit(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showCoverEdit, sender: assets)
+    }
 }
 

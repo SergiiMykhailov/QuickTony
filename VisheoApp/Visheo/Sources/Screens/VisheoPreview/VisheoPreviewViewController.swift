@@ -14,6 +14,12 @@ class VisheoPreviewViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        tempImage.image = viewModel.coverImage
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tempImage.image = viewModel.coverImage
     }
 
     //MARK: - VM+Router init
@@ -21,9 +27,15 @@ class VisheoPreviewViewController: UIViewController {
     private(set) var viewModel: PreviewViewModel!
     private(set) var router: FlowRouter!
     
+    @IBOutlet weak var tempImage: UIImageView!
+    
     func configure(viewModel: PreviewViewModel, router: FlowRouter) {
         self.viewModel = viewModel
         self.router    = router
+    }
+    
+    @IBAction func editCover(_ sender: Any) {
+        viewModel.editCover()
     }
 }
 
