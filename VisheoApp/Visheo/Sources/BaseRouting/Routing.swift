@@ -28,4 +28,6 @@ struct RouterDependencies {
     let authorizationService : AuthorizationService
     let userInputValidator : UserInputValidator
     let occasionsListService : OccasionsListService
+    
+    let purchasesInfo: UserPurchasesInfo
 }

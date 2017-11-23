@@ -73,6 +73,9 @@
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendPressed:" destination="1dc-lh-5ja" eventType="touchUpInside" id="3mi-ZE-lAV"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="844-DT-RCB">
                                 <rect key="frame" x="34" y="390" width="307" height="92"/>
@@ -169,6 +172,9 @@
                         <segue destination="M6r-Vb-FkU" kind="presentation" identifier="showPhotoPermissions" id="qLH-ea-4XQ"/>
                         <segue destination="1mU-4s-aDM" kind="presentation" identifier="showPhotosEdit" id="JCb-Pq-bK2"/>
                         <segue destination="tA6-hS-3QI" kind="presentation" identifier="showVideoEdit" id="kyV-qm-SYP"/>
+                        <segue destination="L2Y-ET-ymb" kind="show" identifier="showSendVisheo" id="qxY-1U-qrq"/>
+                        <segue destination="ScI-5d-mqh" kind="presentation" identifier="showRegistration" id="rs3-wO-P6I"/>
+                        <segue destination="6UL-HJ-Leg" kind="show" identifier="showCardTypeSelection" id="eFQ-jm-mFU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGZ-T9-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,7 +195,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6MC-lV-XRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="-750"/>
+            <point key="canvasLocation" x="1006" y="-1084"/>
         </scene>
         <!--PhotoPermissionsViewController-->
         <scene sceneID="6vz-xT-eBU">
@@ -199,7 +205,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjJ-zF-ycD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="-751"/>
+            <point key="canvasLocation" x="1622" y="-1083"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y0i-rU-htD">
@@ -215,7 +221,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yhV-hI-aII" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="-17"/>
+            <point key="canvasLocation" x="1006" y="-349"/>
         </scene>
         <!--PhotoPickerViewController-->
         <scene sceneID="UPj-D2-Nnk">
@@ -225,7 +231,15 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0Q-mq-8bj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="-18"/>
+            <point key="canvasLocation" x="1621" y="-351"/>
+        </scene>
+        <!--Authentification-->
+        <scene sceneID="vvP-4y-ecX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authentification" id="ScI-5d-mqh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ESG-wG-bsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910" y="255"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DXk-3B-qZj">
@@ -242,6 +256,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkz-U1-JAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1006" y="681"/>
+        </scene>
+        <!--SHARE YOUR VISHEO-->
+        <scene sceneID="2Er-xZ-amW">
+            <objects>
+                <viewController id="L2Y-ET-ymb" customClass="ShareVisheoViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WVY-Wz-gyc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mpf-wC-7hc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SHARE YOUR VISHEO" id="gn6-b8-TgL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ECA-Rw-rYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3210" y="208"/>
+        </scene>
+        <!--SEND VISHEO CARDS-->
+        <scene sceneID="Sh8-hc-egi">
+            <objects>
+                <viewController id="6UL-HJ-Leg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="liW-6o-MC3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3HU-aQ-Kdx"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SEND VISHEO CARDS" id="Hhq-5k-nKh"/>
+                    <connections>
+                        <segue destination="L2Y-ET-ymb" kind="show" identifier="showSendVisheo" id="Lk5-UW-sFW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mfq-Dt-ZNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2233" y="626"/>
         </scene>
         <!--SelectCoverViewController-->
         <scene sceneID="hVs-3M-mrA">
@@ -288,5 +337,8 @@
         <image name="slideshow" width="50" height="52"/>
         <image name="video" width="50" height="52"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Lk5-UW-sFW"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

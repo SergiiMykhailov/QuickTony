@@ -41,6 +41,10 @@
 		B465280E1FC346A30070FFB7 /* PreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280D1FC346A30070FFB7 /* PreviewRouter.swift */; };
 		B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */; };
 		B46528131FC34A0F0070FFB7 /* VisheoPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46528111FC34A0F0070FFB7 /* VisheoPreview.storyboard */; };
+		B46761271FC7118F006E9CB2 /* ShareVisheoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46761261FC7118F006E9CB2 /* ShareVisheoViewController.swift */; };
+		B46761291FC7119D006E9CB2 /* ShareRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46761281FC7119D006E9CB2 /* ShareRouter.swift */; };
+		B467612B1FC711BD006E9CB2 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */; };
+		B467612D1FC7367A006E9CB2 /* UserPurchasesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */; };
 		B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */; };
 		B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48259021FB3060800A7F5B0 /* OccasionsListService.swift */; };
 		B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB51FA9E574000BB33B /* AppDelegate.swift */; };
@@ -175,6 +179,10 @@
 		B465280D1FC346A30070FFB7 /* PreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRouter.swift; sourceTree = "<group>"; };
 		B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewViewController.swift; sourceTree = "<group>"; };
 		B46528121FC34A0F0070FFB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/VisheoPreview.storyboard; sourceTree = "<group>"; };
+		B46761261FC7118F006E9CB2 /* ShareVisheoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVisheoViewController.swift; sourceTree = "<group>"; };
+		B46761281FC7119D006E9CB2 /* ShareRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareRouter.swift; sourceTree = "<group>"; };
+		B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareViewModel.swift; path = Visheo/Sources/Screens/VisheoScreen/ViewModel/ShareViewModel.swift; sourceTree = SOURCE_ROOT; };
+		B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesInfo.swift; sourceTree = "<group>"; };
 		B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedCoverCollectionMediator.swift; sourceTree = "<group>"; };
 		B48259021FB3060800A7F5B0 /* OccasionsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsListService.swift; sourceTree = "<group>"; };
 		B48AAAB51FA9E574000BB33B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -379,6 +387,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B46761231FC70E33006E9CB2 /* VisheoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B46761251FC70E51006E9CB2 /* Router */,
+				B46761241FC70E45006E9CB2 /* ViewModel */,
+				B46761261FC7118F006E9CB2 /* ShareVisheoViewController.swift */,
+			);
+			path = VisheoScreen;
+			sourceTree = "<group>";
+		};
+		B46761241FC70E45006E9CB2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B46761251FC70E51006E9CB2 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B46761281FC7119D006E9CB2 /* ShareRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		B48AAAB41FA9E574000BB33B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +533,7 @@
 		B4BCABC51FB8CC7C003EDC7F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B46761231FC70E33006E9CB2 /* VisheoScreen */,
 				B46528081FC346650070FFB7 /* VisheoPreview */,
 				B4F666201FC1C96C00B68055 /* VideoTrimming */,
 				B44450D11FBEF3B70021772F /* PhotoPicking */,
@@ -675,6 +710,7 @@
 				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
 				B48259021FB3060800A7F5B0 /* OccasionsListService.swift */,
 				B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */,
+				B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -932,6 +968,7 @@
 			files = (
 				92C006631FC0B4AC000AFD4E /* CameraPermissionsRouter.swift in Sources */,
 				B4F666271FC1C9FB00B68055 /* VideoTrimmingViewModel.swift in Sources */,
+				B467612B1FC711BD006E9CB2 /* ShareViewModel.swift in Sources */,
 				B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */,
 				9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */,
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
@@ -949,6 +986,7 @@
 				B4BCAC001FB8CC7D003EDC7F /* OnboardingViewController.swift in Sources */,
 				B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */,
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
+				B467612D1FC7367A006E9CB2 /* UserPurchasesInfo.swift in Sources */,
 				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
 				B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */,
 				B4BCABF51FB8CC7D003EDC7F /* OccassionCollectionViewCell.swift in Sources */,
@@ -960,6 +998,7 @@
 				B4BCABF41FB8CC7D003EDC7F /* HolidayCollectionViewCell.swift in Sources */,
 				B4BCABFF1FB8CC7D003EDC7F /* LaunchProxyViewModel.swift in Sources */,
 				B465280E1FC346A30070FFB7 /* PreviewRouter.swift in Sources */,
+				B46761271FC7118F006E9CB2 /* ShareVisheoViewController.swift in Sources */,
 				B4BCABF91FB8CC7D003EDC7F /* ChooseOccasionRouter.swift in Sources */,
 				B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */,
 				B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */,
@@ -995,6 +1034,7 @@
 				B4BCABFC1FB8CC7D003EDC7F /* OccasionCellViewModel.swift in Sources */,
 				B44450DB1FBF02D70021772F /* PhotoPickerRouter.swift in Sources */,
 				B4BCAC021FB8CC7D003EDC7F /* OnboardingViewModel.swift in Sources */,
+				B46761291FC7119D006E9CB2 /* ShareRouter.swift in Sources */,
 				B4BCAC011FB8CC7D003EDC7F /* OnboardingRouter.swift in Sources */,
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,
 				B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */,

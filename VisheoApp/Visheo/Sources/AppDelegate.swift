@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                 appPermissionsService: permissionsService,
                                                   authorizationService: authService,
                                                   userInputValidator: inputValidator,
-                                                  occasionsListService: occasionsList)
+                                                  occasionsListService: occasionsList,
+                                                  purchasesInfo: DummyUserPurchasesInfo(premiumCardsNumber: 2) )
             
             let launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies)
             launchProxyRouter.start(with: launchProxyController)

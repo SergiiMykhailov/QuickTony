@@ -13,6 +13,7 @@ import FBSDKLoginKit
 
 protocol AuthorizationService {
     var isAuthorized : Bool {get}
+    var isAnonymous : Bool {get}
     
     func loginWithFacebook(from vc: UIViewController?)
     func loginWithGoogle(from vc: UIViewController?)
@@ -44,6 +45,11 @@ class VisheoAuthorizationService : NSObject, AuthorizationService {
     var isAuthorized: Bool  {        
         return Auth.auth().currentUser != nil
     }
+    
+    var isAnonymous: Bool  {
+        return Auth.auth().currentUser?.isAnonymous ?? true
+    }
+    
     weak var presentationViewController : UIViewController?
     
     override init() {
