@@ -47,6 +47,20 @@ class VideoTrimmingViewController: UIViewController {
         viewModel.warningAlertHandler = {[weak self] in
             self?.showWarningAlertWithText(text: $0)
         }
+        
+        if viewModel.hideBackButton {
+            navigationItem.leftBarButtonItem = nil
+        }
+        
+        viewModel.assetsChanged = {[weak self] in
+            if let layer = self?.viewModel.createPlayerLayer() {
+                layer.backgroundColor = UIColor.white.cgColor
+                layer.frame = CGRect(x: 0, y: 0, width: self?.videoContainer.frame.width ?? 0, height: self?.videoContainer.frame.height ?? 0)
+                
+                self?.videoContainer.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
+                self?.videoContainer.layer.addSublayer(layer)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,7 +93,7 @@ class VideoTrimmingViewController: UIViewController {
                                                 message: NSLocalizedString("Existing video wish will be replaced with the new one", comment: "New video recording notification text"), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: NSLocalizedString("OK, Сontinue", comment: "OK, Сontinue button text"), style: .default, handler: {_ in
-            self.viewModel.cancelTrimming()
+            self.viewModel.retakeVideo()
         }))
         
         self.present(alertController, animated: true, completion: nil)

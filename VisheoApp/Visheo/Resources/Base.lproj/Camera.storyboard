@@ -45,17 +45,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V01-yZ-NSN">
-                                        <rect key="frame" x="275.5" y="15" width="44.5" height="19"/>
+                                        <rect key="frame" x="273.5" y="15" width="46.5" height="19"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-DV-gPA" customClass="CameraRecordIndicator" customModule="Visheo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="9.5" height="9.5"/>
+                                                <rect key="frame" x="0.0" y="5" width="9" height="9.5"/>
                                                 <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pSM-DV-gPA" secondAttribute="height" multiplier="1:1" id="9sA-Ik-ddr"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="REC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct7-4F-cZX">
-                                                <rect key="frame" x="14.5" y="0.0" width="30" height="19"/>
+                                                <rect key="frame" x="14" y="0.0" width="32.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -161,7 +161,7 @@
         <!--RECORD YOUR VIDEO WISH-->
         <scene sceneID="8Ma-Bt-ZOd">
             <objects>
-                <viewController id="UoZ-eD-0S2" customClass="VideoTrimmingViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoTrimmingViewController" id="UoZ-eD-0S2" customClass="VideoTrimmingViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pq0-z6-R95">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,6 +288,7 @@
                         <outlet property="trimmingView" destination="xbQ-h4-co6" id="kko-vC-ebi"/>
                         <outlet property="videoContainer" destination="uye-d5-Vf3" id="oOi-nS-ojQ"/>
                         <segue destination="b88-56-ymn" kind="show" identifier="showPreview" id="yjH-mq-c81"/>
+                        <segue destination="Isd-d2-FNo" kind="show" identifier="showRetake" id="0Qk-pt-sxu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0T5-d8-gjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -297,7 +298,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2250" y="179"/>
+            <point key="canvasLocation" x="2276" y="179"/>
         </scene>
         <!--VisheoPreview-->
         <scene sceneID="flM-PZ-kyp">
@@ -316,10 +317,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qa-yL-bpA">
-                                <rect key="frame" x="0.0" y="181" width="375" height="305.5"/>
+                                <rect key="frame" x="0.0" y="176.5" width="375" height="314.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJk-8Q-bOw">
-                                        <rect key="frame" x="60" y="0.0" width="255" height="70.5"/>
+                                        <rect key="frame" x="60" y="0.0" width="255" height="79.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -330,13 +331,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-i9-Wr9">
-                                        <rect key="frame" x="65.5" y="115.5" width="244" height="95"/>
+                                        <rect key="frame" x="65.5" y="124.5" width="244" height="95"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-tb-5X6">
-                                        <rect key="frame" x="87.5" y="245.5" width="200" height="60"/>
+                                        <rect key="frame" x="87.5" y="254.5" width="200" height="60"/>
                                         <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="xJm-ZU-Tct"/>
@@ -402,4 +403,7 @@
         <image name="camera_toggle_button" width="34" height="34"/>
         <image name="play" width="80" height="80"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Qk-pt-sxu"/>
+    </inferredMetricsTieBreakers>
 </document>

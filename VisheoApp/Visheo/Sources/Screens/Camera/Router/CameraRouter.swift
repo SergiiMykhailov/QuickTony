@@ -24,10 +24,13 @@ class VisheoCameraRouter: CameraRouter
 	private(set) weak var controller: UIViewController?
 	private(set) weak var viewModel: CameraViewModel?
     let assets : VisheoRenderingAssets
+    
+    private var finishRecordingCallback: ((VisheoRenderingAssets)->())?
 
-    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets) {
+    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets, finishRecordingCallback: ((VisheoRenderingAssets)->())? = nil) {
 		self.dependencies = dependencies
         self.assets = assets
+        self.finishRecordingCallback = finishRecordingCallback
 	}
 	
 	func start(with viewController: CameraViewController) {
@@ -54,6 +57,12 @@ class VisheoCameraRouter: CameraRouter
 
 extension VisheoCameraRouter {
     func showTrimScreen(with assets: VisheoRenderingAssets) {
-        controller?.performSegue(SegueList.showTrimScreen, sender: assets)
+        if (finishRecordingCallback != nil) {
+            finishRecordingCallback?(assets)
+            controller?.navigationController?.popViewController(animated: true)
+        } else {
+            controller?.performSegue(SegueList.showTrimScreen, sender: assets)
+        }
+        
     }
 }

@@ -11,25 +11,30 @@ import UIKit
 protocol VideoTrimmingRouter: FlowRouter {
     func goBack()
     func showPreview(with assets: VisheoRenderingAssets)
+    func goBackFromEdit(with assets: VisheoRenderingAssets?)
+    func showRetake(with assets: VisheoRenderingAssets)
 }
 
-class VisheoVideoTrimmingRouter : VideoTrimmingRouter { 
+class VisheoVideoTrimmingRouter : VideoTrimmingRouter {
     enum SegueList: String, SegueListType {
         case showPreview = "showPreview"
+        case showRetake = "showRetake"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: VideoTrimmingViewController?
-    private(set) weak var viewModel: VideoTrimmingViewModel?
+    private(set) weak var viewModel: VisheoVideoTrimmingViewModel?
+    private let editModeCallback: ((VisheoRenderingAssets)->())?
     
     let assets : VisheoRenderingAssets
     
-    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets) {
+    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets, callback: ((VisheoRenderingAssets)->())? = nil) {
         self.dependencies = dependencies
         self.assets = assets
+        self.editModeCallback = callback
     }
     
-    func start(with viewController: VideoTrimmingViewController) {
-        let vm = VisheoVideoTrimmingViewModel(assets: assets)
+    func start(with viewController: VideoTrimmingViewController, editMode: Bool = false) {
+        let vm = VisheoVideoTrimmingViewModel(assets: assets, editMode: editMode)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -45,6 +50,12 @@ class VisheoVideoTrimmingRouter : VideoTrimmingRouter {
             let previewController = segue.destination as! VisheoPreviewViewController
             let previewRouter = VisheoPreviewRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets)
             previewRouter.start(with: previewController)
+        case .showRetake:
+            let retakeViewController = segue.destination as! CameraViewController
+            let retakeRouter = VisheoCameraRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets) {
+                self.viewModel?.update(with: $0)
+            }
+            retakeRouter.start(with: retakeViewController)
         }
     }
 }
@@ -56,6 +67,17 @@ extension VisheoVideoTrimmingRouter {
     
     func showPreview(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showPreview, sender: assets)
+    }
+    
+    func goBackFromEdit(with assets: VisheoRenderingAssets?) {
+        if let assets = assets {
+            editModeCallback?(assets)
+        }
+        controller?.dismiss(animated: true, completion: nil)
+    }
+    
+    func showRetake(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showRetake, sender: assets)
     }
 }
 

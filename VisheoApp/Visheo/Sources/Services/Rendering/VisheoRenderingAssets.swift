@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import AVFoundation
+
 
 class VisheoRenderingAssets {
     let originalOccasion: OccasionRecord
@@ -56,12 +58,18 @@ class VisheoRenderingAssets {
     
     // MARK: Video
     
+    var trimPoints : (CMTime, CMTime)?
+    
     var videoUrl : URL {
         return assetsFolderUrl.appendingPathComponent("video.mov")
     }
     
     var trimmedVideoUrl : URL {
         return assetsFolderUrl.appendingPathComponent("final_video.mov")
+    }
+    
+    func replaceVideoWithTrimmed() {
+        let _ = try! FileManager.default.replaceItemAt(videoUrl, withItemAt: trimmedVideoUrl)
     }
     
     func removeVideo() {

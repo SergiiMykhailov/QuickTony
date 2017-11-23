@@ -12,21 +12,12 @@ import UIKit
 protocol PreviewViewModel : class {
     func editCover()
     func editPhotos()
+    func editVideo()
     
-    var phtos : [UIImage] {get}
+    var assets : VisheoRenderingAssets {get}
 }
 
 class VisheoPreviewViewModel : PreviewViewModel {
-
-    
-    var phtos: [UIImage] {
-        var phts = [UIImage]()
-        for photoUrl in assets.photoUrls {
-            phts.append(UIImage(data: FileManager.default.contents(atPath: photoUrl.path)!)!)
-        }
-        
-        return phts
-    }
     weak var router: PreviewRouter?
     let assets: VisheoRenderingAssets
     let permissionsService : AppPermissionsService
@@ -46,5 +37,9 @@ class VisheoPreviewViewModel : PreviewViewModel {
         } else {
             router?.showPhotoPermissions(with: assets)
         }
+    }
+    
+    func editVideo() {
+        router?.showVideoEdit(with: assets)
     }
 }

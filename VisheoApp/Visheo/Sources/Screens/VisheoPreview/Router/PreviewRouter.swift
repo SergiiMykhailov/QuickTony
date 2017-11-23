@@ -12,6 +12,7 @@ protocol PreviewRouter: FlowRouter {
     func showCoverEdit(with assets: VisheoRenderingAssets)
     func showPhotosEdit(with assets: VisheoRenderingAssets)
     func showPhotoPermissions(with assets: VisheoRenderingAssets)
+    func showVideoEdit(with assets: VisheoRenderingAssets)
 }
 
 class VisheoPreviewRouter : PreviewRouter {
@@ -19,6 +20,7 @@ class VisheoPreviewRouter : PreviewRouter {
         case showCoverEdit = "showCoverEdit"
         case showPhotosEdit = "showPhotosEdit"
         case showPhotoPermissions = "showPhotoPermissions"
+        case showVideoEdit = "showVideoEdit"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: VisheoPreviewViewController?
@@ -55,6 +57,10 @@ class VisheoPreviewRouter : PreviewRouter {
             let photoPermissionsScreen = (segue.destination as! UINavigationController).viewControllers[0] as! PhotoPermissionsViewController
             let photoPermissionsRouter = VisheoPhotoPermissionsRouter(dependencies: dependencies, assets: assets, callback: {self.assets = $0})
             photoPermissionsRouter.start(with: photoPermissionsScreen, editMode: true)
+        case .showVideoEdit:
+            let editVideoScreen = (segue.destination as! UINavigationController).viewControllers[0] as! VideoTrimmingViewController
+            let editVideoRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets, callback: {self.assets = $0})
+            editVideoRouter.start(with: editVideoScreen, editMode: true)
         }
     }
 }
@@ -70,6 +76,10 @@ extension VisheoPreviewRouter {
     
     func showPhotoPermissions(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showPhotoPermissions, sender: assets)
+    }
+    
+    func showVideoEdit(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showVideoEdit, sender: assets)
     }
 }
 

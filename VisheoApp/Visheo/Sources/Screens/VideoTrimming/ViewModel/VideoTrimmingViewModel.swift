@@ -20,16 +20,25 @@ protocol VideoTrimmingViewModel : LongFailableActionViewModel {
     func createPlayerLayer() -> CALayer
     func setup(trimmerView: TrimmerView)
     
+    var assetsChanged : (()->())? {get set}
     var playbackTimeChanged: ((CMTime)->())? {get set}
     var playbackStatusChanged: ((PlaybackStatus)->())? {get set}
     
+    var hideBackButton : Bool {get}
+    
     func didChange(startTime: CMTime?, endTime: CMTime?, at time: CMTime?, stopMoving: Bool)
     
-    func cancelTrimming()
+    func retakeVideo()
     func confirmTrimming()
 }
 
 class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
+    var assetsChanged: (() -> ())?
+    
+    var hideBackButton: Bool {
+        return editMode
+    }
+    
     var showProgressCallback: ((Bool) -> ())?
     var warningAlertHandler: ((String) -> ())?
     var playbackStatusChanged: ((PlaybackStatus) -> ())?
@@ -37,32 +46,49 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     
     weak var router: VideoTrimmingRouter?
     private var player : AVPlayer!
-    private let assets : VisheoRenderingAssets
-    private let playerAsset : AVAsset
+    private var assets : VisheoRenderingAssets!
+    private var playerAsset : AVAsset!
     private var playbackTimeCheckerTimer: Timer?
     
     private var startTime : CMTime?
     private var endTime : CMTime?
     
-    init(assets: VisheoRenderingAssets) {
+    private let editMode: Bool
+    
+    init(assets: VisheoRenderingAssets, editMode: Bool) {
+        self.editMode = editMode
+        
+        update(with: assets)
+    }
+    
+    func update(with assets: VisheoRenderingAssets) {
         self.assets = assets
         playerAsset = AVAsset(url: assets.videoUrl)
         let playerItem = AVPlayerItem(asset: playerAsset)
         player = AVPlayer(playerItem: playerItem)
         
+        NotificationCenter.default.removeObserver(self)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(VisheoVideoTrimmingViewModel.itemDidFinishPlaying(_:)),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+        
+        assetsChanged?()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func cancelTrimming() {
+    func retakeVideo() {
         player.pause()
         stopPlaybackTimeChecker()
-        assets.removeVideo()
-        router?.goBack()
+        
+        if editMode {
+            router?.showRetake(with: assets)
+        } else {
+            assets.removeVideo()
+            router?.goBack()
+        }
     }
     
     func setup(trimmerView: TrimmerView) {
@@ -90,20 +116,25 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     func confirmTrimming() {
         showProgressCallback?(true)
         let trimPoints = (startTime ?? CMTime(value: 0, timescale: playerAsset.duration.timescale), endTime ?? playerAsset.duration)
+        assets.trimPoints = trimPoints
         trimVideo(sourceURL: assets.videoUrl, destinationURL: assets.trimmedVideoUrl, trimPoints: trimPoints) { (success) in
             DispatchQueue.main.async {
                 self.showProgressCallback?(false)
                 if success {
 //self.export(assets: self.assets);
+                    self.assets.replaceVideoWithTrimmed()
                     self.player.pause()
-                    self.router?.showPreview(with: self.assets)
+                    if self.editMode {
+                        self.router?.goBackFromEdit(with: self.assets)
+                    } else {
+                        self.router?.showPreview(with: self.assets)
+                    }
                 } else {
                     self.warningAlertHandler?(NSLocalizedString("An error occured while processing video", comment: "Processing video error text"))
                 }
             }
         }
     }
-    
     
     private func startPlaybackTimeChecker() {
         stopPlaybackTimeChecker()
@@ -195,7 +226,7 @@ func trimVideo(sourceURL: URL, destinationURL: URL, trimPoints: (CMTime, CMTime)
         }
         accumulatedTime = CMTimeAdd(accumulatedTime, durationOfCurrentSlice)
     }
-    catch let _ {
+    catch _ {
         completion?(false)
     }
     

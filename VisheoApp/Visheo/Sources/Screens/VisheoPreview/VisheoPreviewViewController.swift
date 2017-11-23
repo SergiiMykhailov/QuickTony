@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class VisheoPreviewViewController: UIViewController {
 
+    @IBOutlet weak var videoContainer: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,9 +19,19 @@ class VisheoPreviewViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tempImage.animationDuration = 2
-        tempImage.animationImages = viewModel.phtos
-        tempImage.startAnimating()
+        
+        let playerAsset = AVAsset(url: viewModel.assets.videoUrl)
+        let playerItem = AVPlayerItem(asset: playerAsset)
+        let player = AVPlayer(playerItem: playerItem)
+        let layer = AVPlayerLayer(player: player)
+        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.frame = CGRect(x: 0, y: 0, width: videoContainer.frame.width, height: videoContainer.frame.height)
+        
+        videoContainer.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
+        videoContainer.layer.addSublayer(layer)
+        player.play()
     }
 
     //MARK: - VM+Router init
@@ -42,6 +54,7 @@ class VisheoPreviewViewController: UIViewController {
     }
     
     @IBAction func editVideo(_ sender: Any) {
+        viewModel.editVideo()
     }
     
     @IBAction func editSoundtrack(_ sender: Any) {
