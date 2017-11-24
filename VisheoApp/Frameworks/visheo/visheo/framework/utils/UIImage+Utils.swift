@@ -44,4 +44,20 @@ extension UIImage
 		
 		return buf;
 	}
+	
+	
+	func scaledSize(fitting fittingSize: CGSize) -> CGSize
+	{
+		var scaledSize = self.size;
+		
+		let horizontalScale = fittingSize.width / size.width;
+		let verticalScale = fittingSize.height / size.height;
+		
+		let scale = fmax(horizontalScale, verticalScale);
+		
+		scaledSize.width *= scale;
+		scaledSize.height *= scale;
+		
+		return scaledSize;
+	}
 }

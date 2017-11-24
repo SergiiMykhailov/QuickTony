@@ -144,4 +144,33 @@ extension RenderDatabase
 			})
 		}
 	}
+	
+	func add(timelineTask: PhotosTimelineTask) -> Promise<PhotosTimelineTask>
+	{
+		return Promise { fl, rj in
+			add(timelineTask: timelineTask, completion: { result in
+				switch result {
+				case .success(let value):
+					fl(value);
+				case .failure(let error):
+					rj(error);
+				}
+			})
+		}
+	}
+	
+	
+	func fetchTimelineTasks(for task: RenderTask) -> Promise<[PhotosTimelineTask]>
+	{
+		return Promise { fl, rj in
+			fetchTimelineTasks(for: task, completion: { (result) in
+				switch result {
+				case .success(let value):
+					fl(value);
+				case .failure(let error):
+					rj(error);
+				}
+			})
+		}
+	}
 }

@@ -44,6 +44,8 @@ final class VideoConvertibleRenderer
 	private let serialQueue = OperationQueue()
 	
 	init() {
+		concurrentQueue.maxConcurrentOperationCount = 20;
+		concurrentQueue.qualityOfService = .userInteractive;
 		serialQueue.maxConcurrentOperationCount = 1;
 	}
 	

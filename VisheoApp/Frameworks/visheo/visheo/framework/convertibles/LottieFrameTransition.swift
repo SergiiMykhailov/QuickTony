@@ -81,6 +81,9 @@ class LottieFrameTransition: VideoConvertible
 	
 	func render(to url: URL, on queue: DispatchQueue?, completion: @escaping (Result<Void>) -> Void)
 	{
+		let start = CACurrentMediaTime();
+		print("Start rendering transition \(url.lastPathComponent)")
+		
 		let adap = [ String(kCVPixelBufferPixelFormatTypeKey) : kCVPixelFormatType_32ARGB ];
 		let out : [String : Any ] = [ AVVideoCodecKey : AVVideoCodecJPEG,
 									  AVVideoWidthKey : size.width,
@@ -110,6 +113,7 @@ class LottieFrameTransition: VideoConvertible
 				if i > endFrame {
 					input.markAsFinished();
 					me.writer?.finishWriting {
+						print("Finished rendering transition \(url.lastPathComponent) in \(CACurrentMediaTime() - start)")
 						completion(.success(value: Void()));
 					}
 					break;

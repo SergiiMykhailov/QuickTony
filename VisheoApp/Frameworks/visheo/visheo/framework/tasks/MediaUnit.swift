@@ -17,7 +17,7 @@ public enum MediaType: String
 }
 
 
-struct MediaUnit
+struct MediaUnit: FileURLRepresentable
 {
 	let type: MediaType;
 	let renderOrder: Int;
@@ -31,6 +31,11 @@ struct MediaUnit
 		self.type = type;
 		self.renderOrder = renderOrder;
 		self.url = url;
+	}
+	
+	
+	var fileURL: URL? {
+		return url;
 	}
 }
 

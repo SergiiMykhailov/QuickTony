@@ -56,6 +56,13 @@ struct Migrations
 				t.column("to_motion_time_value", .integer);
 				t.column("to_motion_time_scale", .integer);
 			})
+			
+			try db.create(table: PhotosTimelineTask.databaseTableName, body: { (t) in
+				t.column("id", .integer).primaryKey(onConflict: nil, autoincrement: true);
+				t.column("task_id", .integer).references(RenderTask.databaseTableName, column: "id", onDelete: .cascade, onUpdate: .cascade, deferred: true);
+				t.column("output", .text);
+				t.column("state", .integer);
+			})
 		}
 		
 		try? migrator.migrate(dbPool)

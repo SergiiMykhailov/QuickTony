@@ -119,7 +119,7 @@ final class VideoThumbnailExtractor
 	{
 		var generatedTime: CMTime = kCMTimeInvalid;
 		let cgImage = try generator.copyCGImage(at: time, actualTime: &generatedTime);
-		print("rqTime \(CMTimeGetSeconds(time)), act \(CMTimeGetSeconds(generatedTime))")
+//		print("rqTime \(CMTimeGetSeconds(time)), act \(CMTimeGetSeconds(generatedTime))")
 		let image = UIImage(cgImage: cgImage);
 		return (image, generatedTime);
 	}
