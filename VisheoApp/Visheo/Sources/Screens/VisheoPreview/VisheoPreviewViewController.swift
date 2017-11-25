@@ -46,6 +46,7 @@ class VisheoPreviewViewController: UIViewController {
     }
 	
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+		videoContainer.pause();
 		navigationController?.popViewController(animated: true);
 	}
     

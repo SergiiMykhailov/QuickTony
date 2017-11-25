@@ -28,6 +28,36 @@ public final class Container: VideoConvertible
 	}
 	
 	
+	func animation(for motion: Motion, in layer: CALayer, initialOffset offset: CGPoint) -> CABasicAnimation
+	{
+		var animation: CABasicAnimation;
+		
+		if case .zoom = motion {
+			animation = CABasicAnimation(keyPath: "transform.scale");
+			animation.fromValue = 1.0;
+			animation.toValue = 1.2;
+		}
+		else {
+			var position = layer.position;
+			position.x += offset.x;
+			position.y += offset.y;
+			
+			var finalPosition = layer.position;
+			finalPosition.x -= offset.x;
+			finalPosition.y -= offset.y;
+			
+			animation = CABasicAnimation(keyPath: "position");
+			animation.fromValue = position;
+			animation.toValue = finalPosition;
+		}
+		
+		animation.isRemovedOnCompletion = false;
+		animation.fillMode = kCAFillModeBoth;
+		
+		return animation;
+	}
+	
+	
 	func prepare() -> (layer: CALayer, duration: TimeInterval)
 	{
 		let frame = CGRect(origin: .zero, size: size);
@@ -54,13 +84,7 @@ public final class Container: VideoConvertible
 			contentsLayer.backgroundColor = UIColor.clear.cgColor;
 			contentsLayer.opacity = (index > 0) ? 0.0 : 1.0;
 			
-			var position = contentsLayer.position;
-			position.x += offset.x;
-			position.y += offset.y;
 			
-			var finalPosition = contentsLayer.position;
-			finalPosition.x -= offset.x;
-			finalPosition.y -= offset.y;
 			
 			containerLayer.insertSublayer(contentsLayer, at: 0);
 			
@@ -84,13 +108,9 @@ public final class Container: VideoConvertible
 			
 			if index < frames.count - 1
 			{
-				let motionAnimation = CABasicAnimation(keyPath: "position");
+				let motionAnimation = animation(for: motion, in: contentsLayer, initialOffset: offset);
 				motionAnimation.beginTime = beginTime;
 				motionAnimation.duration = 2.2;
-				motionAnimation.fromValue = position;
-				motionAnimation.toValue = finalPosition;
-				motionAnimation.isRemovedOnCompletion = false;
-				motionAnimation.fillMode = kCAFillModeBoth;
 				
 				contentsLayer.add(motionAnimation, forKey: "motion");
 				

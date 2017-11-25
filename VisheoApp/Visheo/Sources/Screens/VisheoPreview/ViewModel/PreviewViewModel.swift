@@ -96,9 +96,9 @@ class VisheoPreviewViewModel : PreviewViewModel {
 	{
 		switch status {
 			case .failed:
-				return "Failed to render preview";
+				return "Failed to generate preview";
 			case .rendering:
-				return "Rendering preview...";
+				return "Generating preview...";
 			default:
 				return nil;
 		}

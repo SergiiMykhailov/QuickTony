@@ -24,7 +24,7 @@ extension Motion
 {
 	static func motionForAsset(sized assetSize: CGSize, inBounds boundingSize: CGSize) -> Motion
 	{
-		if assetSize.isLess(than: boundingSize) {
+		if assetSize.isLessOrClose(to: boundingSize) {
 			return .zoom;
 		}
 		
@@ -38,7 +38,7 @@ extension Motion
 			return side > 0 ? .top : .bottom;
 		}
 		
-		return .left;
+		return .zoom;
 	}
 	
 	
@@ -70,9 +70,15 @@ extension Motion
 
 extension CGSize
 {
-	func isLess(than other: CGSize) -> Bool
+	func isLessOrClose(to other: CGSize, threshold: CGFloat = 3.0) -> Bool
 	{
-		return width < other.width && height < other.height;
+		if width < other.width && height < other.height {
+			return true;
+		}
+		
+		return fabs(width - height) < threshold &&
+			fabs(width - other.width) < threshold &&
+			fabs(height - other.height) < threshold;
 	}
 }
 
