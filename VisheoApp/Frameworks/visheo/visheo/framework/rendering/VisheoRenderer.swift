@@ -12,6 +12,12 @@ import GRDB
 import PromiseKit
 
 
+protocol FileURLRepresentable {
+	var fileURL: URL? { get }
+	var taskId: Int64? { get }
+}
+
+
 func renderOrder(lhs: MediaUnit, rhs: MediaUnit) -> Bool
 {
 	switch (lhs.type, rhs.type)
@@ -46,24 +52,8 @@ final class VisheoRenderer
 	
 	private func generateSubtasks(for task: RenderTask) -> Promise<Void>
 	{
-		return firstly {
-			db.fetchMediaUnits([.cover, .photo, .video], for: task)
-		}
-		.then { units -> Promise<[MotionTask]> in
-			
-			let sorted = units.sorted(by: renderOrder)
-			let motions = sorted.enumerated().map{ MotionTask(media: $0.element, taskId: task.id, order: $0.offset) }
-			return self.db.add(motions: motions);
-		}
-		.then { motions -> Promise<Void> in
-			
-			var transitions = [TransitionTask]();
-			for i in 0..<motions.count-1 {
-				let transition = TransitionTask(from: motions[i].id, to: motions[i+1].id, taskId: task.id, order: i);
-				transitions.append(transition);
-			}
-			return self.db.add(transitions: transitions).then{ _ in Void() };
-		}
+		let timeline = PhotosTimelineTask(taskId: task.id!);
+		return db.add(timelineTask: timeline).then{ _ in Void() }
 	}
 	
 	
@@ -71,29 +61,74 @@ final class VisheoRenderer
 	{
 		let start = CACurrentMediaTime();
 		
-		generateSubtasks(for: task)
-			.then {
-				self.db.motions(for: task);
-			}
-			.then {
-				self.render(motions: $0, task: task);
-			}
-			.then {
-				self.db.transitions(for: task);
-			}
-			.then {
-				self.render(transitions: $0, task: task)
-			}
-			.then {
-				print("Rendered transitions in \(CACurrentMediaTime() - start)");
-				return self.stitch(task: task);
-			}
-			.then {
-				print("Rendered in \(CACurrentMediaTime() - start)");
-			}
-			.catch { error in
-				print("Rendered \(error)");
-			}
+		firstly {
+			generateSubtasks(for: task);
+		}
+		.then { _ -> Promise<PhotosTimelineTask> in
+			self.db.fetchTimelineTasks(for: task).then{ $0.first! };
+		}
+		.then { (timeline: PhotosTimelineTask) -> Promise<PhotosTimelineTask> in
+			self.render(timeline: timeline, task: task);
+		}
+		.then { _ in
+			self.stitch(task: task);
+		}
+		.then {
+			print("Rendered in \(CACurrentMediaTime() - start)");
+		}
+		.catch { error in
+			print("Rendered \(error)");
+		}
+	
+		
+//		let url = try! generateURL(with: ".mp4", taskId: task.id!);
+//
+//		firstly {
+//			db.fetchMediaUnits([.video], for: task).then{ $0.first! }
+//		}
+//		.then {
+//			self.fetchSnapshot(from: $0, at: .first)
+//		}
+//		.then{ result -> Promise<([MediaUnit], ThumbnailFetchResult)> in
+//			self.db.fetchMediaUnits([.cover, .photo], for: task).then { ($0, result) }
+//		}
+//		.then { res -> Promise<Void> in
+//			var sorted = res.0.sorted(by: renderOrder).map{ $0.url }
+//			sorted.append(res.1.url);
+//			let container = Container(frames: sorted, size: task.renderSize);
+//			return self.renderer.render(asset: container, to: url);
+//		}
+////		.then { units -> Promise<Void> in
+////			let sorted = units.sorted(by: renderOrder).map{ $0.url }
+//
+////		}
+//		.then {
+//			print("Rendered transitions in \(CACurrentMediaTime() - start)");
+//		}
+		
+//		generateSubtasks(for: task)
+//			.then {
+//				self.db.motions(for: task);
+//			}
+//			.then {
+//				self.render(motions: $0, task: task);
+//			}
+//			.then {
+//				self.db.transitions(for: task);
+//			}
+//			.then {
+//				self.render(transitions: $0, task: task)
+//			}
+//			.then {
+//				print("Rendered transitions in \(CACurrentMediaTime() - start)");
+//				return self.stitch(task: task);
+//			}
+//			.then {
+//				print("Rendered in \(CACurrentMediaTime() - start)");
+//			}
+//			.catch { error in
+//				print("Rendered \(error)");
+//			}
 	}
 	
 	
@@ -138,6 +173,54 @@ final class VisheoRenderer
 	}
 	
 	
+	private func render(timeline: PhotosTimelineTask, task: RenderTask) -> Promise<PhotosTimelineTask>
+	{
+		if timeline.state == .finished {
+			return Promise(value: timeline);
+		}
+		
+		let url = try! generateURL(with: ".mp4", taskId: task.id!);
+		
+		var timeline = timeline;
+		timeline.state = .running;
+		
+		let photos = db.fetchMediaUnits([.cover, .photo], for: task)
+						.then { (units: [MediaUnit]) -> [URL] in
+							units.sorted(by: renderOrder).map{ $0.url }
+						}
+		
+		let video = db.fetchMediaUnits([.video], for: task)
+						.then { (units: [MediaUnit]) -> Promise<ThumbnailFetchResult> in
+							self.fetchSnapshot(from: units.first!, at: .first)
+						}
+		
+		let fetchAssets = when(fulfilled: photos, video)
+							.then { (res: ([URL], ThumbnailFetchResult)) -> [URL] in
+								res.0 + [res.1.url]
+							}
+		
+		return firstly {
+			db.add(timelineTask: timeline);
+		}
+		.then { _ -> Promise<[URL]> in
+			fetchAssets
+		}
+		.then { (urls: [URL]) -> Promise<Void> in
+			let container = Container(frames: urls, size: task.renderSize);
+			return self.renderer.render(asset: container, to: url);
+		}
+		.then { _ -> Promise<PhotosTimelineTask> in
+			timeline.output = url;
+			timeline.state = .finished;
+			return self.db.add(timelineTask: timeline);
+		}
+		.recover{ (e) -> Promise<PhotosTimelineTask> in
+			timeline.state = .pending;
+			return self.db.add(timelineTask: timeline).then { _ in throw e };
+		}
+	}
+	
+	
 	private func render(motion: MotionTask, task: RenderTask) -> Promise<MotionTask>
 	{
 		if motion.state == .finished {
@@ -166,7 +249,7 @@ final class VisheoRenderer
 		}
 		.recover{ (e) -> Promise<MotionTask> in
 			motion.state = .pending;
-			return self.db.add(motion: motion)
+			return self.db.add(motion: motion).then { _ in throw e }
 		}
 	}
 	
@@ -195,7 +278,9 @@ final class VisheoRenderer
 			return Promise(value: transition);
 		}
 		.then { transition -> Promise<TransitionTask> in
-			let animation = LottieFrameTransition(animation: animationURL, size: task.renderSize, frames: [transition.fromMotionFrame!, transition.toMotionFrame!])
+			let frames = [transition.fromMotionFrame!, transition.toMotionFrame!]
+			let animation = NativeAnimation(frames: frames, size: task.renderSize, duration: 2.2);
+//			let animation = LottieFrameTransition(animation: animationURL, size: task.renderSize, frames: frames)
 			return self.renderer.render(asset: animation, to: url).then{ _ in transition };
 		}
 		.then { transition -> Promise<TransitionTask> in
@@ -254,18 +339,22 @@ final class VisheoRenderer
 	
 	typealias ThumbnailFetchResult = (url: URL, time: CMTime)
 	
-	func fetchSnapshot(from motion: MotionTask, at frame: VideoAssetFrame) -> Promise<ThumbnailFetchResult>
+	func fetchSnapshot(from file: FileURLRepresentable, at frame: VideoAssetFrame) -> Promise<ThumbnailFetchResult>
 	{
 		return Promise { fl, rj in
 			
-			guard let url = motion.output else {
+			guard let url = file.fileURL else {
 				rj(VideoConvertibleError.error);
 				return;
 			}
 			
 			let asset = AVURLAsset(url: url);
 			
-			extractor.generateThumbnails(asset: asset, frames: [frame], completion: { (result) in
+			let track = asset.tracks(withMediaType: .video).first!;
+			
+			let frame1 = VideoAssetFrame.time(CMTime(value: 1, timescale: CMTimeScale(track.nominalFrameRate)));
+			
+			extractor.generateThumbnails(asset: asset, frames: [frame, frame1], completion: { (result) in
 				if case .failure(let error) = result {
 					print("Failed to generate thumbnails for \(url)");
 					rj(error);
@@ -282,7 +371,7 @@ final class VisheoRenderer
 						return;
 					}
 					
-					let url = try self.generateURL(with: ".jpg", taskId: motion.taskId!)//folder.appendingPathComponent(filename);
+					let url = try self.generateURL(with: ".jpg", taskId: file.taskId!)//folder.appendingPathComponent(filename);
 					
 					try imageData.write(to: url, options: .atomic);
 					
@@ -301,13 +390,19 @@ final class VisheoRenderer
 		let url = try! generateURL(with: ".mp4", taskId: task.id!);
 		
 		return firstly {
-			when(fulfilled: db.motions(for: task), db.transitions(for: task), db.fetchMediaUnits([.audio], for: task));
+			when(fulfilled: db.fetchTimelineTasks(for: task), db.fetchMediaUnits([.video, .audio], for: task));
 		}
-		.then { (motions, transitions, audio) -> Promise<Void> in
-			guard let audioURL = audio.first?.url, !motions.isEmpty, !transitions.isEmpty else {
+		.then { (timeline, media) -> Promise<Void> in
+			
+			let audioURL = media.filter{ $0.type == .audio }.first?.url;
+			let videoURL = media.filter{ $0.type == .video }.first?.url;
+			let timelineURL = timeline.first?.output;
+			
+			guard let _ = audioURL, let _ = videoURL, let _ = timelineURL else {
 				throw VideoConvertibleError.error;
 			}
-			let video = VisheoVideo(motions: motions, transitions: transitions, audio: audioURL, size: task.renderSize);
+			
+			let video = VisheoVideo(timeline: timelineURL!, video: videoURL!, audio: audioURL!, size: task.renderSize);
 			return self.renderer.render(asset: video, to: url);
 		}
 	}

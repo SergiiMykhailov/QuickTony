@@ -8,7 +8,7 @@
 
 import GRDB
 
-struct MotionTask: StatefulTask
+struct MotionTask: StatefulTask, FileURLRepresentable
 {
 	var state: TaskState;
 	var taskId: Int64?;
@@ -33,6 +33,10 @@ struct MotionTask: StatefulTask
 			state = .pending;
 			hasAudio = false;
 		}
+	}
+	
+	var fileURL: URL? {
+		return output;
 	}
 }
 

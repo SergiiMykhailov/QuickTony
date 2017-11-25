@@ -10,28 +10,27 @@ import UIKit
 import AVFoundation
 
 class VisheoPreviewViewController: UIViewController {
-
-    @IBOutlet weak var videoContainer: UIView!
+	
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet weak var playButton: UIButton!
+	@IBOutlet weak var statusLabel: UILabel!
+	@IBOutlet weak var videoContainer: VisheoPreviewView!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		viewModel.previewRenderCallback = { [weak self] status in
+			DispatchQueue.main.async {
+				self?.handle(renderStatus: status);
+			}
+		}
+		
+		viewModel.renderPreview()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        let playerAsset = AVAsset(url: viewModel.assets.videoUrl)
-        let playerItem = AVPlayerItem(asset: playerAsset)
-        let player = AVPlayer(playerItem: playerItem)
-        let layer = AVPlayerLayer(player: player)
-        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        
-        layer.backgroundColor = UIColor.white.cgColor
-        layer.frame = CGRect(x: 0, y: 0, width: videoContainer.frame.width, height: videoContainer.frame.height)
-        
-        videoContainer.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
-        videoContainer.layer.addSublayer(layer)
-        player.play()
+	
+	
+    override func viewDidAppear(_ animated: Bool) {
+		
     }
 
     //MARK: - VM+Router init
@@ -45,6 +44,11 @@ class VisheoPreviewViewController: UIViewController {
         self.viewModel = viewModel
         self.router    = router
     }
+	
+	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+		videoContainer.pause();
+		navigationController?.popViewController(animated: true);
+	}
     
     @IBAction func editCover(_ sender: Any) {
         viewModel.editCover()
@@ -63,6 +67,33 @@ class VisheoPreviewViewController: UIViewController {
     @IBAction func sendPressed(_ sender: Any) {
         viewModel.sendVisheo()
     }
+	
+	@IBAction func togglePlayback() {
+		videoContainer.togglePlayback();
+	}
+	
+	private func handle(renderStatus status: PreviewRenderStatus)
+	{
+		statusLabel.text = viewModel.statusText(for: status);
+		
+		if case .rendering = status {
+			activityIndicator.startAnimating();
+			statusLabel.isHidden = false;
+		} else {
+			activityIndicator.stopAnimating();
+			statusLabel.isHidden = true;
+		}
+		
+		switch status {
+			case .ready(let item):
+				videoContainer.item = item;
+				videoContainer.play();
+				playButton.isHidden = false;
+			default:
+				playButton.isHidden = true;
+				break;
+		}
+	}
 }
 
 

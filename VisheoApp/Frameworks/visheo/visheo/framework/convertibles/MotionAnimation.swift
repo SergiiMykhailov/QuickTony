@@ -24,29 +24,61 @@ extension Motion
 {
 	static func motionForAsset(sized assetSize: CGSize, inBounds boundingSize: CGSize) -> Motion
 	{
-		if assetSize.isLess(than: boundingSize) {
+		if assetSize.isLessOrClose(to: boundingSize) {
 			return .zoom;
 		}
 		
-		if (assetSize.width > assetSize.height)
-		{
-			return .left;
+		let side = arc4random_uniform(2);
+		
+		if (assetSize.width > assetSize.height) {
+			return side > 0 ? .left : .right;
 		}
 		
 		if (assetSize.height > boundingSize.height) {
-			return .top;
+			return side > 0 ? .top : .bottom;
 		}
 		
-		return .left;
+		return .zoom;
+	}
+	
+	
+	func initialOffset(for assetSize: CGSize, inBounds boundingSize: CGSize) -> CGPoint
+	{
+		let horizontalOffset = (assetSize.width - boundingSize.width) / 2.0;
+		let verticalOffset = (assetSize.height - boundingSize.height) / 2.0;
+		
+		var point = CGPoint.zero;
+		
+		switch self
+		{
+			case .zoom:
+				return point;
+			case .left:
+				point.x = -horizontalOffset / 2.0;
+			case .right:
+				point.x = horizontalOffset / 2.0;
+			case .top:
+				point.y = -verticalOffset / 2.0;
+			case .bottom:
+				point.y = verticalOffset / 2.0;
+		}
+		
+		return point;
 	}
 }
 
 
 extension CGSize
 {
-	func isLess(than other: CGSize) -> Bool
+	func isLessOrClose(to other: CGSize, threshold: CGFloat = 3.0) -> Bool
 	{
-		return width < other.width && height < other.height;
+		if width < other.width && height < other.height {
+			return true;
+		}
+		
+		return fabs(width - height) < threshold &&
+			fabs(width - other.width) < threshold &&
+			fabs(height - other.height) < threshold;
 	}
 }
 
@@ -78,6 +110,9 @@ final class MotionAnimation: VideoConvertible
 	
 	func render(to url: URL, on queue: DispatchQueue? = nil, completion: @escaping (Result<Void>) -> Void)
 	{
+		let start = CACurrentMediaTime();
+		print("Start rendering motion \(url.lastPathComponent)")
+		
 		let frame = CGRect(origin: CGPoint.zero, size: self.bounds);
 			
 		let path = Bundle.main.path(forResource: "blank", ofType: "m4v")!;
@@ -124,7 +159,7 @@ final class MotionAnimation: VideoConvertible
 		videoComposition.frameDuration = CMTimeMake(1, 30);
 		videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer);
 		
-		guard let session = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetHighestQuality) else {
+		guard let session = AVAssetExportSession(asset: composition, presetName: AVAssetExportPreset640x480) else {
 			completion(.failure(error: VideoConvertibleError.error));
 			return;
 		}
@@ -137,6 +172,8 @@ final class MotionAnimation: VideoConvertible
 
 		session.exportAsynchronously
 		{
+			print("Finished rendering motion \(url.lastPathComponent) in \(CACurrentMediaTime() - start)")
+			
 			if let e = session.error {
 				completion(.failure(error: e));
 			} else {
@@ -145,31 +182,16 @@ final class MotionAnimation: VideoConvertible
 		}
 	}
 	
-	func scaledAssetSize(for image: UIImage) -> CGSize
-	{
-		var size = image.size;
-		
-		let horizontalScale = bounds.width / size.width;
-		let verticalScale = bounds.height / size.height;
-		
-		let scale = fmax(horizontalScale, verticalScale);
-		
-		size.width *= scale;
-		size.height *= scale;
-		
-		return size;
-	}
-	
 	
 	public func prepareMotionLayer() -> MotionLayer
 	{
 		let image = UIImage(contentsOfFile: asset.path)!;
 		
-		let assetSize = scaledAssetSize(for: image);
+		let assetSize = image.scaledSize(fitting: bounds)
 		
 		let motion = Motion.motionForAsset(sized: assetSize, inBounds: bounds);
 		
-		let offset = initialOffsetForMotion(motion, assetSize: assetSize, inBounds: bounds);
+		let offset = motion.initialOffset(for: assetSize, inBounds: bounds);
 		
 		let parentLayer = CALayer();
 		parentLayer.frame = CGRect(origin: CGPoint.zero, size: bounds);
@@ -205,30 +227,5 @@ final class MotionAnimation: VideoConvertible
 		assetLayer.add(animation, forKey: "animation");
 		
 		return (parentLayer, assetLayer, animation);
-	}
-	
-	
-	private func initialOffsetForMotion(_ motion: Motion, assetSize: CGSize, inBounds boundingSize: CGSize) -> CGPoint
-	{
-		let horizontalOffset = (assetSize.width - boundingSize.width) / 2.0;
-		let verticalOffset = (assetSize.height - boundingSize.height) / 2.0;
-		
-		var point = CGPoint.zero;
-		
-		switch motion
-		{
-			case .zoom:
-				return point;
-			case .left:
-				point.x = -horizontalOffset / 2.0;
-			case .right:
-				point.x = horizontalOffset / 2.0;
-			case .top:
-				point.y = -verticalOffset / 2.0;
-			case .bottom:
-				point.y = verticalOffset / 2.0;
-		}
-		
-		return point;
 	}
 }

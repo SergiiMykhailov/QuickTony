@@ -69,7 +69,7 @@ class VisheoRenderingAssets {
     }
     
     func replaceVideoWithTrimmed() {
-        let _ = try! FileManager.default.replaceItemAt(videoUrl, withItemAt: trimmedVideoUrl)
+		let _ = try! FileManager.default.replaceItemAt(videoUrl, withItemAt: trimmedVideoUrl, options: .usingNewMetadataOnly);
     }
     
     func removeVideo() {
