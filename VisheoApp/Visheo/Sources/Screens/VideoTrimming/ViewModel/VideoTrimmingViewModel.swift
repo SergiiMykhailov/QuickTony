@@ -230,7 +230,7 @@ func trimVideo(sourceURL: URL, destinationURL: URL, trimPoints: (CMTime, CMTime)
         completion?(false)
     }
     
-    guard let exportSession = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetPassthrough) else {
+    guard let exportSession = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetHighestQuality) else {
         completion?(false)
         return
     }
@@ -239,7 +239,6 @@ func trimVideo(sourceURL: URL, destinationURL: URL, trimPoints: (CMTime, CMTime)
     
     exportSession.outputURL = destinationURL as URL
     exportSession.outputFileType = AVFileType.mov
-    exportSession.shouldOptimizeForNetworkUse = true
     
     exportSession.exportAsynchronously {
         completion?(exportSession.error == nil)
