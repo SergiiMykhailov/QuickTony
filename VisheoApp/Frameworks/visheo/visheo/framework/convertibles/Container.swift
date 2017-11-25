@@ -9,7 +9,7 @@
 import AVFoundation
 
 
-class Container: VideoConvertible
+public final class Container: VideoConvertible
 {
 	var renderQueueSupport: ProcessingQueueType {
 		return .concurrent;
@@ -21,7 +21,7 @@ class Container: VideoConvertible
 	private let containerLayer = CALayer();
 	
 	
-	init(frames: [URL], size: CGSize)
+	public init(frames: [URL], size: CGSize)
 	{
 		self.frames = frames;
 		self.size = size;
@@ -76,7 +76,7 @@ class Container: VideoConvertible
 				
 				contentsLayer.add(fadeInAnimation, forKey: "fade_in");
 				
-				let animDuration = fadeInAnimation.duration * 0.55;
+				let animDuration = fadeInAnimation.duration * 0.45;
 				
 				beginTime += animDuration;
 				duration += animDuration;
@@ -94,7 +94,7 @@ class Container: VideoConvertible
 				
 				contentsLayer.add(motionAnimation, forKey: "motion");
 				
-				let animDuration = motionAnimation.duration * 0.55;
+				let animDuration = motionAnimation.duration * 0.45;
 				
 				beginTime += animDuration;
 				duration += animDuration;
@@ -115,7 +115,7 @@ class Container: VideoConvertible
 	}
 	
 	
-	func render(to url: URL, on queue: DispatchQueue? = nil, completion: @escaping (Result<Void>) -> Void)
+	public func render(to url: URL, on queue: DispatchQueue? = nil, completion: @escaping (Result<Void>) -> Void)
 	{
 		let start = CACurrentMediaTime();
 		print("Start rendering transition \(url.lastPathComponent)")
@@ -149,32 +149,6 @@ class Container: VideoConvertible
 		mainInstruction.layerInstructions = [trackInstruction];
 		mainInstruction.timeRange = range;
 		
-//		let transitionLayer = TransitionContainer(size: size);
-//
-//		let image1 = UIImage(contentsOfFile: frames[0].path)!
-//		let image2 = UIImage(contentsOfFile: frames[1].path)!;
-//
-//		transitionLayer.set(contents: image1, for: .from);
-//		transitionLayer.set(contents: image2, for: .to);
-//
-//
-//		let animFrom = CAKeyframeAnimation(keyPath: "opacity");
-//		animFrom.duration = self.duration;
-//		animFrom.keyTimes = [ 0.0, 0.40, 0.60, 1.0 ];
-//		animFrom.values = [ 1.0, 1.0, 0.0, 0.0 ];
-//		animFrom.beginTime = AVCoreAnimationBeginTimeAtZero;
-//		animFrom.isRemovedOnCompletion = false;
-//
-//		let animTo = CAKeyframeAnimation(keyPath: "opacity");
-//		animTo.duration = self.duration;
-//		animTo.keyTimes = [ 0.0, 0.40, 0.60, 1.0 ];
-//		animTo.values = [ 0.0, 0.0, 1.0, 1.0 ];
-//		animTo.beginTime = AVCoreAnimationBeginTimeAtZero;
-//		animTo.isRemovedOnCompletion = false;
-//
-//		transitionLayer.animate(with: [ .from : animFrom, .to : animTo ]);
-		
-		
 		let parentLayer = CALayer();
 		let videoLayer = CALayer();
 		
@@ -186,10 +160,7 @@ class Container: VideoConvertible
 		
 		let videoComposition = AVMutableVideoComposition();
 		
-		//		let width = round(self.bounds.width / 16.0) * 16.0;
-		//		let height = round(self.bounds.height * (self.bounds.width / width))
-		
-		videoComposition.renderSize = size;//CGSize(width: width, height: height);
+		videoComposition.renderSize = size;
 		videoComposition.instructions = [mainInstruction];
 		videoComposition.frameDuration = CMTimeMake(1, 30);
 		videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer);

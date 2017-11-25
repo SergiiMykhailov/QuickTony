@@ -17,7 +17,7 @@ enum VideoThumbnailExtractorError: Error
 }
 
 
-enum VideoAssetFrame
+public enum VideoAssetFrame
 {
 	case first
 	case last
@@ -26,46 +26,24 @@ enum VideoAssetFrame
 }
 
 
-struct VideoThumbnail
+public struct VideoThumbnail
 {
-	let frame: VideoAssetFrame;
-	let image: UIImage;
-	let requestedTime: CMTime;
-	let actualTime: CMTime;
-	
-	
-//	enum CodingKeys: String, CodingKey
-//	{
-//		case frame
-//		case image
-//		case requestedTime
-//		case actualTime
-//	}
-//
-//
-//	func encode(to encoder: Encoder) throws
-//	{
-//		let container = encoder.container(keyedBy: CodingKeys.self);
-//
-////		container.encodefr
-//	}
-//
-//
-//	init(from decoder: Decoder) throws
-//	{
-//
-//	}
+	public let frame: VideoAssetFrame;
+	public let image: UIImage;
+	public let requestedTime: CMTime;
+	public let actualTime: CMTime;
 }
 
 
-final class VideoThumbnailExtractor
+public final class VideoThumbnailExtractor
 {
 	typealias ExtractionResult = (frame: VideoAssetFrame, image: UIImage, time: CMTime)
 	
 	private lazy var queue = DispatchQueue(label: "com.visheo.extractor", attributes: .concurrent);
 	
+	private var generators = [URL: AVAssetImageGenerator]();
 	
-	init(){}
+	public init(){}
 	
 	
 	/// Attempts to generate thumbnails for specified frames from an asset at given url. The actual time of the generated thumbnails will be within the range [frame time - tolerance, frame time + tolerance].
@@ -75,8 +53,8 @@ final class VideoThumbnailExtractor
 	///   - frames: An array of VideoAssetFrame, specifying the asset times at which the thumbnails are requested
 	///   - tolerance: The tolerance allowed before and after frame time
 	///   - completion: A block that is called when thumbnail requests are complete.
-	func generateThumbnails(asset: AVURLAsset, frames: [VideoAssetFrame], tolerance: CMTime? = nil,
-	                        completion: @escaping (Result<[VideoThumbnail]>) -> Void)
+	public func generateThumbnails(asset: AVURLAsset, frames: [VideoAssetFrame], tolerance: CMTime? = nil,
+								   completion: @escaping (Result<[VideoThumbnail]>) -> Void)
 	{
 		queue.async { [weak self] in
 			
@@ -86,11 +64,14 @@ final class VideoThumbnailExtractor
 			{
 				let tracks = asset.tracks(withMediaType: .video);
 				
-				guard let track = tracks.first else {
+				guard asset.isReadable, !tracks.isEmpty else {
 					throw VideoThumbnailExtractorError.invalidAsset(at: asset.url);
 				}
 				
+				let track = tracks[0]
+				
 				let generator = try me.generator(for: asset, tolerance: tolerance);
+				self?.generators[asset.url] = generator;
 				
 				var results = [VideoThumbnail]()
 				
@@ -105,9 +86,12 @@ final class VideoThumbnailExtractor
 					results.append(result);
 				}
 				
+				self?.generators.removeValue(forKey: asset.url);
+				
 				completion(.success(value: results))
 			}
 			catch (let error) {
+				self?.generators.removeValue(forKey: asset.url);
 				let e = VideoThumbnailExtractorError.other(error: error);
 				completion(.failure(error: e));
 			}

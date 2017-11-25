@@ -28,13 +28,14 @@ extension Motion
 			return .zoom;
 		}
 		
-		if (assetSize.width > assetSize.height)
-		{
-			return .left;
+		let side = arc4random_uniform(2);
+		
+		if (assetSize.width > assetSize.height) {
+			return side > 0 ? .left : .right;
 		}
 		
 		if (assetSize.height > boundingSize.height) {
-			return .top;
+			return side > 0 ? .top : .bottom;
 		}
 		
 		return .left;

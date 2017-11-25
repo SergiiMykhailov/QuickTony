@@ -11,6 +11,9 @@
 		9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */; };
 		9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */; };
 		9262CBB31FBE139700F90AB3 /* CameraRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */; };
+		92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */; };
+		92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
+		92A8D30E1FC86E86001E194D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
 		92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */; };
 		92C006631FC0B4AC000AFD4E /* CameraPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */; };
 		92C006651FC0B4BE000AFD4E /* CameraPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */; };
@@ -151,6 +154,9 @@
 		9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
 		9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRecordButton.swift; sourceTree = "<group>"; };
+		92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewView.swift; sourceTree = "<group>"; };
+		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
+		92A8D30C1FC86E86001E194D /* blank.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank.m4v; sourceTree = "<group>"; };
 		92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewModel.swift; sourceTree = "<group>"; };
 		92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsRouter.swift; sourceTree = "<group>"; };
 		92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +317,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		92A8D30A1FC86E86001E194D /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				92A8D30B1FC86E86001E194D /* beginning.m4a */,
+				92A8D30C1FC86E86001E194D /* blank.m4v */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
 		B42A29871FB1F8A200A8741F /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +382,7 @@
 				B465280A1FC3467B0070FFB7 /* ViewModel */,
 				B46528091FC346740070FFB7 /* Router */,
 				B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */,
+				92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */,
 			);
 			path = VisheoPreview;
 			sourceTree = "<group>";
@@ -430,6 +446,7 @@
 		B48AAAB91FA9E58F000BB33B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92A8D30A1FC86E86001E194D /* Media */,
 				B48AAAC21FA9E650000BB33B /* Fonts */,
 				B48AAABA1FA9E58F000BB33B /* Assets.xcassets */,
 				B48AAABB1FA9E58F000BB33B /* LaunchScreen.storyboard */,
@@ -843,6 +860,7 @@
 				B43163861FBF482A00135B70 /* Localizable.stringsdict in Resources */,
 				B48AAABF1FA9E58F000BB33B /* Assets.xcassets in Resources */,
 				B46528131FC34A0F0070FFB7 /* VisheoPreview.storyboard in Resources */,
+				92A8D30E1FC86E86001E194D /* blank.m4v in Resources */,
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
 				B43163811FBF480A00135B70 /* Localizable.strings in Resources */,
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
@@ -851,6 +869,7 @@
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
 				92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */,
 				92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */,
+				92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1035,6 +1054,7 @@
 				B44450DB1FBF02D70021772F /* PhotoPickerRouter.swift in Sources */,
 				B4BCAC021FB8CC7D003EDC7F /* OnboardingViewModel.swift in Sources */,
 				B46761291FC7119D006E9CB2 /* ShareRouter.swift in Sources */,
+				92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */,
 				B4BCAC011FB8CC7D003EDC7F /* OnboardingRouter.swift in Sources */,
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,
 				B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */,
@@ -1244,7 +1264,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4M6W632NJ7;
+				DEVELOPMENT_TEAM = NW83AWMN8Z;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
@@ -1266,7 +1286,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4M6W632NJ7;
+				DEVELOPMENT_TEAM = NW83AWMN8Z;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
