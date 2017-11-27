@@ -25,6 +25,12 @@ class VisheoPreviewViewController: UIViewController {
 			}
 		}
 		
+		videoContainer.playbackStatusChanged = { [weak self] status in
+			DispatchQueue.main.async {
+				self?.handle(playbackStatus: status);
+			}
+		}
+		
 		viewModel.renderPreview()
     }
 	
@@ -88,10 +94,19 @@ class VisheoPreviewViewController: UIViewController {
 			case .ready(let item):
 				videoContainer.item = item;
 				videoContainer.play();
+			default:
+				break;
+		}
+	}
+	
+	private func handle(playbackStatus isPlaying: Bool)
+	{
+		switch (isPlaying, viewModel.renderStatus)
+		{
+			case (false, .ready):
 				playButton.isHidden = false;
 			default:
 				playButton.isHidden = true;
-				break;
 		}
 	}
 }
