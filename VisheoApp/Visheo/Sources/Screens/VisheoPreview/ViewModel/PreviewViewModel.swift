@@ -15,6 +15,7 @@ import PromiseKit
 
 enum PreviewRenderStatus
 {
+	case none
 	case rendering
 	case ready(item: AVPlayerItem)
 	case failed(error: Error)
@@ -29,6 +30,7 @@ protocol PreviewViewModel : class {
     func sendVisheo()
     
     var assets : VisheoRenderingAssets {get}
+	var renderStatus: PreviewRenderStatus { get }
 	
 	func renderPreview()
 	var previewRenderCallback: ((PreviewRenderStatus) -> Void)? { get set }
@@ -46,6 +48,12 @@ class VisheoPreviewViewModel : PreviewViewModel {
 	let extractor = VideoThumbnailExtractor();
 	var renderContainer: Container? = nil;
 	var previewRenderCallback: ((PreviewRenderStatus) -> Void)? = nil;
+	
+	private (set) var renderStatus: PreviewRenderStatus = .none {
+		didSet {
+			previewRenderCallback?(renderStatus);
+		}
+	}
 	
 	
     init(assets: VisheoRenderingAssets,
@@ -66,7 +74,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 		
 		let size = CGSize(width: 480.0, height: 480.0);
 		
-		previewRenderCallback?(.rendering)
+		renderStatus = .rendering;
 		
 		firstly {
 			fetchVideoScreenshot(url: videoURL)
@@ -85,10 +93,10 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			return item;
 		}
 		.then { [weak self] item -> Void in
-			self?.previewRenderCallback?(.ready(item: item));
+			self?.renderStatus = .ready(item: item);
 		}
 		.catch { [weak self] error in
-			self?.previewRenderCallback?(.failed(error: error));
+			self?.renderStatus = .failed(error: error);
 		}
 	}
 	

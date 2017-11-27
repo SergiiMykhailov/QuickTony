@@ -11,6 +11,30 @@ import AVFoundation
 
 class VisheoPreviewView: UIView
 {
+	var playbackStatusChanged: ((_ isPlaying: Bool) -> Void)? = nil;
+	
+	
+	override init(frame: CGRect) {
+		super.init(frame: frame);
+		commonInit();
+	}
+	
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder);
+		commonInit();
+	}
+	
+	private func commonInit() {
+		let recognizer = UITapGestureRecognizer(target: self, action: #selector(VisheoPreviewView.pausePlayback));
+		addGestureRecognizer(recognizer);
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self);
+	}
+	
+	
 	var item: AVPlayerItem? {
 		
 		willSet {
@@ -25,9 +49,6 @@ class VisheoPreviewView: UIView
 		}
 	}
 	
-	deinit {
-		NotificationCenter.default.removeObserver(self);
-	}
 	
 	override class var layerClass: Swift.AnyClass {
 		return AVPlayerLayer.self;
@@ -57,32 +78,49 @@ class VisheoPreviewView: UIView
 	}
 	
 	
-	func togglePlayback() {
+	var isPlaying: Bool {
 		guard let `player` = player else {
-			return;
+			return false;
 		}
 		
-		switch player.timeControlStatus
-		{
+		switch player.timeControlStatus {
 			case .playing:
-				pause();
+				return true;
 			default:
-				play();
+				return false;
+		}
+	}
+	
+	
+	func togglePlayback() {
+		if isPlaying {
+			pause();
+		} else {
+			play();
 		}
 	}
 	
 	
 	func play() {
 		player?.play();
+		playbackStatusChanged?(true)
 	}
 	
 	func pause() {
 		player?.pause();
+		playbackStatusChanged?(false)
 	}
 	
 	
 	@objc private func playerDidPlayToEnd() {
 		player?.seek(to: kCMTimeZero);
-		player?.play();
+		playbackStatusChanged?(false)
+	}
+	
+	
+	@objc func pausePlayback() {
+		if isPlaying {
+			pause();
+		}
 	}
 }

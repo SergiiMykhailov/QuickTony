@@ -91,6 +91,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     }
     
     func setup(trimmerView: TrimmerView) {
+		trimmerView.maxDuration = CMTimeGetSeconds(playerAsset.duration);
         trimmerView.asset = playerAsset
     }
     
