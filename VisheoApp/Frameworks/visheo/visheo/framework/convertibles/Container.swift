@@ -143,7 +143,7 @@ public final class Container: VideoConvertible
 		
 		for (index, url) in frames.enumerated()
 		{
-			let image = UIImage(contentsOfFile: url.path)!;
+			let image = UIImage(contentsOfFile: url.path)!.fixedOrientation();
 			
 			let scaledSize = image.scaledSize(fitting: size);
 			
