@@ -17,30 +17,45 @@ protocol RenderingService {
 class VisheoRenderingService : RenderingService {
     func export(creationInfo: VisheoCreationInfo, progress: ((Double)->())?, completion: ((URL?,Error?)->())?) {
         
-        let seconds = 5.0
-        for i in stride(from: 0, to: 1.0, by: 0.05) {
-            DispatchQueue.main.asyncAfter(wallDeadline: .now() + i * seconds, execute: {
-                progress?(i)
-            })
-        }
+        var task = RenderTask(quality: creationInfo.premium ? .res720 : .res480);
+
+        task.addMedia(creationInfo.coverUrl, type: .cover);
+        task.addMedia(creationInfo.photoUrls, type: .photo);
+        task.addMedia(creationInfo.videoUrl, type: .video);
         
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + seconds, execute: {
-            completion?(creationInfo.videoUrl, nil)
-        })
+        let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
+        task.addMedia(URL(fileURLWithPath: audio), type: .audio);
+
+        RenderQueue.shared.enqueue(task) { result in
+            if case .failure(let error) = result {
+                completion?(nil, error)
+            }
+            
+            if case .success(let currentTaskId) = result {
+                NotificationCenter.default.addObserver(forName: Notification.Name.renderTaskProgress, object: nil, queue: OperationQueue.main) {(notification) in
+                    guard let info = notification.userInfo,
+                        let progressNumber = info[Notification.RenderInfoKeys.progress] as? Double,
+                        let taskId = info[Notification.RenderInfoKeys.taskId] as? Int,
+                         currentTaskId == taskId else {return}
+                    
+                    progress?(progressNumber)
+                }
+                
+                NotificationCenter.default.addObserver(forName: Notification.Name.renderTaskFailed, object: nil, queue: .main) {(notification) in
+                    guard let info = notification.userInfo,
+                        let taskId = info[Notification.RenderInfoKeys.taskId] as? Int,
+                         currentTaskId == taskId  else {return}
+                    completion?(nil, info[Notification.RenderInfoKeys.error ] as? Error)
+                }
+                
+                NotificationCenter.default.addObserver(forName: Notification.Name.renderTaskSucceeded, object: nil, queue: .main) {(notification) in
+                    guard let info = notification.userInfo,
+                        let taskId = info[Notification.RenderInfoKeys.taskId] as? Int,
+                         currentTaskId == taskId else {return}
+                    
+                    completion?(info[Notification.RenderInfoKeys.output] as? URL,nil)
+                }
+            }
+        }
     }
 }
-
-//    func export(assets: VisheoRenderingAssets)
-//    {
-//        let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
-//
-//        var task = RenderTask(quality: .res720);
-//
-//        task.addMedia(assets.coverUrl!, type: .cover);
-//        task.addMedia(assets.photoUrls, type: .photo);
-//        task.addMedia(assets.videoUrl, type: .video);
-//        task.addMedia(URL(fileURLWithPath: audio), type: .audio);
-//
-//        RenderQueue.shared.enqueue(task);
-//    }
-
