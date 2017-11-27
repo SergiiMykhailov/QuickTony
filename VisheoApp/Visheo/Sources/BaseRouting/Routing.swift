@@ -30,4 +30,6 @@ struct RouterDependencies {
     let occasionsListService : OccasionsListService
     
     let purchasesInfo: UserPurchasesInfo
+    let renderingService : RenderingService
+    let creationService : CreationService
 }

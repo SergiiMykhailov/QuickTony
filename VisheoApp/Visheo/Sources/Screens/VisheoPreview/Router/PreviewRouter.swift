@@ -73,7 +73,7 @@ class VisheoPreviewRouter : PreviewRouter {
         case .showSendVisheo:
             let sendController = segue.destination as! ShareVisheoViewController
             let sendRouter = ShareVisheoRouter(dependencies: dependencies)
-            sendRouter.start(with: sendController)
+            sendRouter.start(with: sendController, assets: sender as! VisheoRenderingAssets)
         case .showRegistration: fallthrough
         case .showCardTypeSelection:
             break //TODO: Implement real initalization

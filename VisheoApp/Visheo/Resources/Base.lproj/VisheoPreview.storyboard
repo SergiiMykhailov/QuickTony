@@ -48,7 +48,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103.5" y="187" width="128.5" height="16.5"/>
+                                        <rect key="frame" x="103" y="187" width="128.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -293,18 +293,155 @@
         <!--SHARE YOUR VISHEO-->
         <scene sceneID="2Er-xZ-amW">
             <objects>
-                <viewController id="L2Y-ET-ymb" customClass="ShareVisheoViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShareVisheoViewController" id="L2Y-ET-ymb" customClass="ShareVisheoViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WVY-Wz-gyc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nq-3Z-f0C">
+                                <rect key="frame" x="20" y="20" width="335" height="335"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrE-rC-yr6">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <color key="backgroundColor" red="0.90000000000000002" green="0.52000000000000002" blue="0.089999999999999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgS-LU-4q7">
+                                        <rect key="frame" x="127" y="127" width="80" height="80"/>
+                                        <state key="normal" image="play"/>
+                                        <connections>
+                                            <action selector="press:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="UpW-nT-bkr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ZrE-rC-yr6" firstAttribute="leading" secondItem="5Nq-3Z-f0C" secondAttribute="leading" id="4jY-3I-UNv"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZrE-rC-yr6" secondAttribute="trailing" id="DHS-ID-dsr"/>
+                                    <constraint firstItem="ZrE-rC-yr6" firstAttribute="top" secondItem="5Nq-3Z-f0C" secondAttribute="top" id="KSM-K4-Ql5"/>
+                                    <constraint firstItem="OgS-LU-4q7" firstAttribute="centerX" secondItem="5Nq-3Z-f0C" secondAttribute="centerX" id="flz-dn-BUR"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZrE-rC-yr6" secondAttribute="bottom" id="okc-MH-le9"/>
+                                    <constraint firstItem="OgS-LU-4q7" firstAttribute="centerY" secondItem="5Nq-3Z-f0C" secondAttribute="centerY" id="rOt-G2-4Ks"/>
+                                    <constraint firstAttribute="width" secondItem="5Nq-3Z-f0C" secondAttribute="height" id="te4-ZS-B9f"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tK-Zx-gw7" customClass="LabeledProgressView" customModule="Visheo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="38"/>
+                                <color key="backgroundColor" red="0.69019607843137254" green="0.80000000000000004" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="30d-BK-FfB"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="title"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LYL-aZ-IVe">
+                                <rect key="frame" x="20" y="375" width="335" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="dVa-hJ-hfR"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Send Now"/>
+                                    <segment title="Send Later"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbX-PK-2AN">
+                                <rect key="frame" x="20" y="523" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoA-F2-OsI">
+                                        <rect key="frame" x="225" y="0.0" width="110" height="60"/>
+                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="mlI-U4-9Cg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                        <state key="normal" title="Share">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="BoA-F2-OsI" firstAttribute="top" secondItem="wbX-PK-2AN" secondAttribute="top" id="FFb-DL-1Iv"/>
+                                    <constraint firstAttribute="bottom" secondItem="BoA-F2-OsI" secondAttribute="bottom" id="Gwi-hW-kBR"/>
+                                    <constraint firstAttribute="trailing" secondItem="BoA-F2-OsI" secondAttribute="trailing" id="IWU-Q3-yFZ"/>
+                                    <constraint firstAttribute="height" constant="60" id="V33-Dn-Dhe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuK-eZ-TXQ">
+                                <rect key="frame" x="20" y="443" width="335" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="plN-9q-Nvt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <color key="tintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Download to gallery" image="group9Copy">
+                                    <color key="titleColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TuK-eZ-TXQ" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" constant="20" id="7vb-jb-KaK"/>
+                            <constraint firstItem="LYL-aZ-IVe" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" constant="20" id="Add-uL-dY4"/>
+                            <constraint firstItem="7tK-Zx-gw7" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="QHC-FR-wq1"/>
+                            <constraint firstItem="wbX-PK-2AN" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" constant="20" id="RLe-XC-rxz"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="7tK-Zx-gw7" secondAttribute="trailing" id="SJf-L3-HjA"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="LYL-aZ-IVe" secondAttribute="trailing" constant="20" id="SX0-kn-PQ8"/>
+                            <constraint firstItem="7tK-Zx-gw7" firstAttribute="top" secondItem="mpf-wC-7hc" secondAttribute="top" id="aMc-ii-qWO"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="bottom" secondItem="wbX-PK-2AN" secondAttribute="bottom" constant="20" id="beD-dO-sUy"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="TuK-eZ-TXQ" secondAttribute="trailing" constant="20" id="cN7-GZ-WUd"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="wbX-PK-2AN" secondAttribute="trailing" constant="20" id="eRx-WK-4ym"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="5Nq-3Z-f0C" secondAttribute="trailing" constant="20" id="k98-e3-X36"/>
+                            <constraint firstItem="wbX-PK-2AN" firstAttribute="top" secondItem="TuK-eZ-TXQ" secondAttribute="bottom" constant="20" id="prs-F8-mT8"/>
+                            <constraint firstItem="5Nq-3Z-f0C" firstAttribute="top" secondItem="mpf-wC-7hc" secondAttribute="top" constant="20" id="qZr-rV-Spy"/>
+                            <constraint firstItem="LYL-aZ-IVe" firstAttribute="top" secondItem="ZrE-rC-yr6" secondAttribute="bottom" constant="20" id="wSK-uk-yNd"/>
+                            <constraint firstItem="5Nq-3Z-f0C" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" constant="20" id="xmN-pt-FUm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mpf-wC-7hc"/>
                     </view>
                     <navigationItem key="navigationItem" title="SHARE YOUR VISHEO" id="gn6-b8-TgL"/>
+                    <connections>
+                        <outlet property="progressBar" destination="7tK-Zx-gw7" id="Dtx-fy-EOb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECA-Rw-rYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3210" y="208"/>
+            <point key="canvasLocation" x="3208.8000000000002" y="207.34632683658174"/>
         </scene>
         <!--SEND VISHEO CARDS-->
         <scene sceneID="Sh8-hc-egi">
@@ -323,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfq-Dt-ZNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2233" y="626"/>
+            <point key="canvasLocation" x="2015" y="573"/>
         </scene>
         <!--SelectCoverViewController-->
         <scene sceneID="hVs-3M-mrA">
@@ -365,6 +502,7 @@
     <resources>
         <image name="arrow" width="20" height="20"/>
         <image name="cover" width="50" height="52"/>
+        <image name="group9Copy" width="24" height="24"/>
         <image name="music" width="50" height="52"/>
         <image name="play" width="80" height="80"/>
         <image name="slideshow" width="50" height="52"/>

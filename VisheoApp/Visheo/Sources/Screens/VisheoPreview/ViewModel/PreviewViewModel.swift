@@ -154,7 +154,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 	
 	private func renderTimeLine(videoSnapshot: URL) -> Promise<URL>
 	{
-		let frames = [assets.coverUrl!] + assets.photoUrls + [videoSnapshot];
+		let frames = [assets.coverUrl] + assets.photoUrls + [videoSnapshot];
 		
 		renderContainer = Container(frames: frames, size: CGSize(width: 480.0, height: 480.0));
 		

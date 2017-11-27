@@ -94,8 +94,11 @@
 		B4BCAC0B1FB8CE18003EDC7F /* SelectCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC0A1FB8CE18003EDC7F /* SelectCoverViewModel.swift */; };
 		B4BCAC0D1FB8D59A003EDC7F /* CoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC0C1FB8D599003EDC7F /* CoverCollectionViewCell.swift */; };
 		B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC0E1FB8D5D0003EDC7F /* CoverCellViewModel.swift */; };
+		B4CF320F1FC87E540063AA52 /* VisheoCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */; };
 		B4CFB7711FAB4A7900D6E73A /* Authentification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */; };
 		B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */; };
+		B4F63DBC1FC83D4100E05B90 /* LabeledProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */; };
+		B4F63DC01FC85FDB00E05B90 /* VisheoRenderingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F63DBF1FC85FDA00E05B90 /* VisheoRenderingService.swift */; };
 		B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */; };
 		B4F666271FC1C9FB00B68055 /* VideoTrimmingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */; };
 		B4F666291FC1CA1200B68055 /* VideoTrimmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */; };
@@ -238,8 +241,11 @@
 		B4BCAC0A1FB8CE18003EDC7F /* SelectCoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCoverViewModel.swift; sourceTree = "<group>"; };
 		B4BCAC0C1FB8D599003EDC7F /* CoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4BCAC0E1FB8D5D0003EDC7F /* CoverCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverCellViewModel.swift; sourceTree = "<group>"; };
+		B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoCreationService.swift; sourceTree = "<group>"; };
 		B4CFB7701FAB4A7900D6E73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentification.storyboard; sourceTree = "<group>"; };
 		B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateService.swift; sourceTree = "<group>"; };
+		B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressView.swift; sourceTree = "<group>"; };
+		B4F63DBF1FC85FDA00E05B90 /* VisheoRenderingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoRenderingService.swift; sourceTree = "<group>"; };
 		B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingRouter.swift; sourceTree = "<group>"; };
 		B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingViewModel.swift; sourceTree = "<group>"; };
 		B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +340,7 @@
 				9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */,
 				92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */,
 				B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */,
+				B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -342,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				B44450CF1FBEDA7B0021772F /* VisheoRenderingAssets.swift */,
+				B4F63DBF1FC85FDA00E05B90 /* VisheoRenderingService.swift */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -728,6 +736,7 @@
 				B48259021FB3060800A7F5B0 /* OccasionsListService.swift */,
 				B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */,
 				B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */,
+				B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1039,7 +1048,9 @@
 				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4BCABF11FB8CC7D003EDC7F /* AuthorizationViewModel.swift in Sources */,
 				9262CBB31FBE139700F90AB3 /* CameraRecordButton.swift in Sources */,
+				B4CF320F1FC87E540063AA52 /* VisheoCreationService.swift in Sources */,
 				9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */,
+				B4F63DBC1FC83D4100E05B90 /* LabeledProgressView.swift in Sources */,
 				B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */,
@@ -1047,6 +1058,7 @@
 				B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */,
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
+				B4F63DC01FC85FDB00E05B90 /* VisheoRenderingService.swift in Sources */,
 				B4BCABF01FB8CC7D003EDC7F /* SignUpViewController.swift in Sources */,
 				B44450D01FBEDA7B0021772F /* VisheoRenderingAssets.swift in Sources */,
 				B4BCABEF1FB8CC7D003EDC7F /* SignInViewController.swift in Sources */,
@@ -1264,7 +1276,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NW83AWMN8Z;
+				DEVELOPMENT_TEAM = 4M6W632NJ7;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
@@ -1286,7 +1298,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NW83AWMN8Z;
+				DEVELOPMENT_TEAM = 4M6W632NJ7;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";

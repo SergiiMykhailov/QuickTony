@@ -13,37 +13,52 @@ import AVFoundation
 class VisheoRenderingAssets {
     let originalOccasion: OccasionRecord
     let assetsFolderUrl : URL
+    var assetsFolderRelUrl : URL {
+        return URL(string: id)!
+    }
+    private var docs: URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    }
+    private let id : String
     
     init(originalOccasion: OccasionRecord) {
         self.originalOccasion = originalOccasion
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let folderUUID = UUID().uuidString
-        assetsFolderUrl = documentsUrl.appendingPathComponent(folderUUID)
+        id = UUID().uuidString
+        assetsFolderUrl = documentsUrl.appendingPathComponent(id)
         try! FileManager.default.createDirectory(at: assetsFolderUrl, withIntermediateDirectories: false, attributes: nil)
     }
     
     // MARK: Cover
-    private(set) var coverUrl : URL?
+    var coverRelPath : String {
+        return assetsFolderRelUrl.appendingPathComponent("cover").absoluteString
+    }
+    var coverUrl : URL {
+        return docs.appendingPathComponent(coverRelPath)
+    }
     private(set) var coverIndex: Int?
     
     func setCover(with data: Data, at index: Int) {
         coverIndex = index
-        coverUrl = assetsFolderUrl.appendingPathComponent("cover")
-        try! data.write(to: coverUrl!)
+        try! data.write(to: coverUrl)
     }
     
     // MARK: Photos
     
-    private var  photoUrlsDict : [Int: URL] = [:]
+    private var  photoUrlsDict : [Int: String] = [:]
     
     var photosLocalIds : [String] = []
     
     var photoUrls : [URL] {
+        return photoUrlsDict.sorted {$0.0 < $1.0}.map {docs.appendingPathComponent($0.value)}
+    }
+    
+    var photoRelPaths : [String] {
         return photoUrlsDict.sorted {$0.0 < $1.0}.map {$0.value}
     }
     
     func removePhotos() {
-        photoUrlsDict.forEach { (number, photoUrl) in
+        photoUrls.forEach { (photoUrl) in
             try? FileManager.default.removeItem(at: photoUrl)
         }
         photosLocalIds.removeAll()
@@ -51,8 +66,9 @@ class VisheoRenderingAssets {
     }
     
     func addPhoto(data: Data, at index: Int) {
-        let photoUrl = assetsFolderUrl.appendingPathComponent("photo\(index)")
-        photoUrlsDict[index] = photoUrl
+        let relPath = assetsFolderRelUrl.appendingPathComponent("photo\(index)").absoluteString
+        let photoUrl = docs.appendingPathComponent(relPath)
+        photoUrlsDict[index] = relPath
         try! data.write(to: photoUrl)
     }
     
@@ -60,8 +76,12 @@ class VisheoRenderingAssets {
     
     var trimPoints : (CMTime, CMTime)?
     
+    var videoRelPath : String {
+        return assetsFolderRelUrl.appendingPathComponent("video.mov").absoluteString
+    }
+    
     var videoUrl : URL {
-        return assetsFolderUrl.appendingPathComponent("video.mov")
+        return docs.appendingPathComponent(videoRelPath)
     }
     
     var trimmedVideoUrl : URL {
@@ -74,5 +94,26 @@ class VisheoRenderingAssets {
     
     func removeVideo() {
         try? FileManager.default.removeItem(at: videoUrl)
+    }
+    
+    // MARK: Final visheo
+    
+    var visheoRelPath : String {
+        return assetsFolderRelUrl.appendingPathComponent("visheo.mov").absoluteString
+    }
+}
+
+extension VisheoRenderingAssets {
+    var creationInfo : VisheoCreationInfo {
+        return VisheoCreationInfo(visheoId: id,
+                                  coverId: 2,
+                                  picturesCount: photoUrls.count,
+                                  soundtrackId: 23,
+                                  premium: false,
+                                  coverRelPath: coverRelPath,
+                                  soundtrackRelPath: "", //TODO: Add correct soundtrack relative path
+                                  videoRelPath: videoRelPath,
+                                  photoRelPaths: photoRelPaths,
+                                  visheoRelPath: visheoRelPath)
     }
 }

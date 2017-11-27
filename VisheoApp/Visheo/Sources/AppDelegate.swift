@@ -23,20 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Database.database().isPersistenceEnabled = true
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        setupAppearance()
+        
         if let launchProxyController = self.window?.rootViewController as? LaunchProxyViewController {            
-            let appState           = VisheoAppStateService()
-            let authService        = VisheoAuthorizationService()
-            let inputValidator     = VisheoUserInputValidator()
-            let occasionsList      = VisheoOccasionsListService()
-            let permissionsService = VisheoAppPermissionsService()
-            let dependencies   = RouterDependencies(appStateService: appState,
-                                                appPermissionsService: permissionsService,
-                                                  authorizationService: authService,
-                                                  userInputValidator: inputValidator,
-                                                  occasionsListService: occasionsList,
-                                                  purchasesInfo: DummyUserPurchasesInfo(premiumCardsNumber: 2) )
-            
-            let launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies)
+            let launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies())
             launchProxyRouter.start(with: launchProxyController)
         }
         
@@ -74,6 +64,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: Routing dependencies
+    
+    func dependencies() -> RouterDependencies {
+        NotificationCenter.default.addObserver(forName: Notification.Name.visheoRenderingProgress, object: nil, queue: OperationQueue.main) { (notification) in
+            let info = notification.userInfo!
+            print("Render Visheo - \(info[Notification.Keys.visheoId]), progress \(info[Notification.Keys.progress] as! Double * 100)")
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.visheoUploadingProgress, object: nil, queue: OperationQueue.main) { (notification) in
+            let info = notification.userInfo!
+            print("upload Visheo - \(info[Notification.Keys.visheoId]), progress \(info[Notification.Keys.progress] as! Double * 100)")
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationFailed, object: nil, queue: .main) { (notification) in
+            let info = notification.userInfo!
+            print("CREATE FAILED Visheo - \(info[Notification.Keys.visheoId]), error \(info[Notification.Keys.error])")
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationSuccess, object: nil, queue: .main) { (notification) in
+            let info = notification.userInfo!
+            print("CREATE SUCCESS Visheo - \(info[Notification.Keys.visheoId])")
+        }
+        
+        
+        let appState           = VisheoAppStateService()
+        let authService        = VisheoAuthorizationService()
+        let inputValidator     = VisheoUserInputValidator()
+        let occasionsList      = VisheoOccasionsListService()
+        let permissionsService = VisheoAppPermissionsService()
+        let renderingService   = VisheoRenderingService()
+        let creationService    = VisheoCreationService(userInfoProvider: authService,
+                                                       rendererService: renderingService)
+        
+        let purchasesInfo = DummyUserPurchasesInfo(premiumCardsNumber: 2)
+        return RouterDependencies(appStateService: appState,
+                                                appPermissionsService: permissionsService,
+                                                authorizationService: authService,
+                                                userInputValidator: inputValidator,
+                                                occasionsListService: occasionsList,
+                                                purchasesInfo:  purchasesInfo,
+                                                renderingService: renderingService,
+                                                creationService: creationService)
+    }
+    
+    // MARK: Appearance setup
+    
+    func setupAppearance() {
+        let segmentFont = UIFont(name: "Roboto-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedStringKey.font: segmentFont], for: .normal)
+    }
 
 }
 

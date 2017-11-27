@@ -8,7 +8,6 @@
 
 import AVFoundation
 import PryntTrimmerView
-import VisheoVideo
 
 enum PlaybackStatus {
     case playing
@@ -121,7 +120,6 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
             DispatchQueue.main.async {
                 self.showProgressCallback?(false)
                 if success {
-//self.export(assets: self.assets);
                     self.assets.replaceVideoWithTrimmed()
                     self.player.pause()
                     if self.editMode {
@@ -243,22 +241,4 @@ func trimVideo(sourceURL: URL, destinationURL: URL, trimPoints: (CMTime, CMTime)
     exportSession.exportAsynchronously {
         completion?(exportSession.error == nil)
     }
-}
-
-
-extension VideoTrimmingViewModel
-{
-	func export(assets: VisheoRenderingAssets)
-	{
-		let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
-		
-		var task = RenderTask(quality: .res720);
-		
-		task.addMedia(assets.coverUrl!, type: .cover);
-		task.addMedia(assets.photoUrls, type: .photo);
-		task.addMedia(assets.videoUrl, type: .video);
-		task.addMedia(URL(fileURLWithPath: audio), type: .audio);
-		
-		RenderQueue.shared.enqueue(task);
-	}
 }

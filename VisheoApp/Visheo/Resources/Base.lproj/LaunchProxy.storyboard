@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="-25" y="106"/>
         </scene>
-        <!--VisheoPreview-->
+        <!--ShareVisheoViewController-->
         <scene sceneID="1dx-iE-93A">
             <objects>
-                <viewControllerPlaceholder storyboardName="VisheoPreview" id="fRP-bx-fCa" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="VisheoPreview" referencedIdentifier="ShareVisheoViewController" id="fRP-bx-fCa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rI-K5-GTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1174" y="-291"/>

@@ -25,6 +25,10 @@ protocol AuthorizationService {
     func sendResetPassword(for email: String, completion : ((AuthError?) -> ())?)
 }
 
+protocol UserInfoProvider {
+    var userId: String? {get}
+}
+
 extension Notification.Name {
     static let userLoggedIn = Notification.Name("userLoggedIn")
     static let userLoginFailed = Notification.Name("userLoginFailed")
@@ -41,12 +45,17 @@ enum AuthError: Error {
     case unknownError(description : String)
 }
 
-class VisheoAuthorizationService : NSObject, AuthorizationService {
+class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvider {
+    var userId: String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
     var isAuthorized: Bool  {        
         return Auth.auth().currentUser != nil
     }
     
     var isAnonymous: Bool  {
+        return false
         return Auth.auth().currentUser?.isAnonymous ?? true
     }
     

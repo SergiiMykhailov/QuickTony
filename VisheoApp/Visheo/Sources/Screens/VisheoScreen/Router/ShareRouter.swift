@@ -24,12 +24,13 @@ class ShareVisheoRouter : ShareRouter {
         self.dependencies = dependencies
     }
     
-    func start(with viewController: ShareVisheoViewController) {
-        let vm = ShareVisheoViewModel()
+    func start(with viewController: ShareVisheoViewController, assets: VisheoRenderingAssets) {
+        let vm = ShareVisheoViewModel(assets: assets, renderingService: dependencies.renderingService, creationService: dependencies.creationService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
-        viewController.configure(viewModel: vm, router: self)
+        viewController.configure(viewModel: vm, router: self)        
+        vm.startRendering()
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
