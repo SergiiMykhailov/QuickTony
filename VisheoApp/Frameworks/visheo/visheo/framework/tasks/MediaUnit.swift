@@ -65,8 +65,6 @@ extension MediaUnit: Codable, RowConvertible, MutablePersistable
 	{
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		
-//		let relativePath = url.relativePath;
-		
 		try container.encode(type.rawValue, forKey: .type);
 		try container.encode(renderOrder, forKey: .renderOrder);
 		try container.encode(url, forKey: .url);
@@ -81,8 +79,6 @@ extension MediaUnit: Codable, RowConvertible, MutablePersistable
 		
 		let rawType = try container.decode(String.self, forKey: .type);
 		type = MediaType(rawValue: rawType)!;
-		
-//		let relativeURL = try container.decode(String.self, forKey: .url);
 		
 		id = try container.decodeIfPresent(Int64.self, forKey: .id);
 		taskId = try container.decodeIfPresent(Int64.self, forKey: .taskId);

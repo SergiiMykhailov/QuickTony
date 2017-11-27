@@ -59,7 +59,7 @@ extension PhotosTimelineTask: Codable, RowConvertible, MutablePersistable
 		let container = try decoder.container(keyedBy: CodingKeys.self);
 		
 		let rawState = try container.decode(Int.self, forKey: .state);
-		state = TaskState(rawValue: rawState)!;
+		state = TaskState(rawValue: rawState) ?? .pending;
 		
 		id = try container.decodeIfPresent(Int64.self, forKey: .id);
 		taskId = try container.decode(Int64.self, forKey: .taskId);
