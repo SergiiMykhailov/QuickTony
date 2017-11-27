@@ -73,7 +73,7 @@ class VideoTrimmingViewController: UIViewController {
     }
     
     @IBAction func retakePressed(_ sender: Any) {
-        confirmGoingBack()
+        confirmGoingBack(retake: true)
     }
     
     @IBAction func videoTapped(_ sender: Any) {
@@ -85,15 +85,20 @@ class VideoTrimmingViewController: UIViewController {
     }
     
     @IBAction func backPressed(_ sender: Any) {
-        confirmGoingBack()
+        confirmGoingBack(retake: false)
     }
     
-    private func confirmGoingBack() {
+    private func confirmGoingBack(retake: Bool) {
         let alertController = UIAlertController(title: NSLocalizedString("Notification", comment: "Notification alert title"),
                                                 message: NSLocalizedString("Existing video wish will be replaced with the new one", comment: "New video recording notification text"), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: NSLocalizedString("OK, Сontinue", comment: "OK, Сontinue button text"), style: .default, handler: {_ in
-            self.viewModel.retakeVideo()
+            if retake {
+                self.viewModel.retakeVideo()
+            } else {
+                self.viewModel.goBack()
+            }
+            
         }))
         
         self.present(alertController, animated: true, completion: nil)

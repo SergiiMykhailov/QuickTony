@@ -9,7 +9,8 @@
 import UIKit
 
 protocol VideoTrimmingRouter: FlowRouter {
-    func goBack()
+    func goBackToPhotos()
+    func goBackToCapture()
     func showPreview(with assets: VisheoRenderingAssets)
     func goBackFromEdit(with assets: VisheoRenderingAssets?)
     func showRetake(with assets: VisheoRenderingAssets)
@@ -61,8 +62,33 @@ class VisheoVideoTrimmingRouter : VideoTrimmingRouter {
 }
 
 extension VisheoVideoTrimmingRouter {
-    func goBack() {
+    
+    func goBackToCapture() {
         controller?.navigationController?.popViewController(animated: true)
+    }
+    
+    func goBackToPhotos() {
+        var backScreen : UIViewController?
+        
+        if let photoPickerIndex = controller?.navigationController?.viewControllers.index(where: { (controller) -> Bool in
+            controller is PhotoPickerViewController
+        }) {
+            backScreen = controller?.navigationController?.viewControllers[photoPickerIndex]
+        }
+        
+        if backScreen == nil {
+            if let photoPermissionsIndex = controller?.navigationController?.viewControllers.index(where: { (controller) -> Bool in
+                controller is PhotoPermissionsViewController
+            }) {
+                backScreen = controller?.navigationController?.viewControllers[photoPermissionsIndex]
+            }
+        }
+        
+        if let screenToPop = backScreen {
+            controller?.navigationController?.popToViewController(screenToPop, animated: true)
+        } else {
+            controller?.navigationController?.popViewController(animated: true)
+        }
     }
     
     func showPreview(with assets: VisheoRenderingAssets) {

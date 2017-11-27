@@ -28,6 +28,7 @@ protocol VideoTrimmingViewModel : LongFailableActionViewModel {
     func didChange(startTime: CMTime?, endTime: CMTime?, at time: CMTime?, stopMoving: Bool)
     
     func retakeVideo()
+    func goBack()
     func confirmTrimming()
 }
 
@@ -78,6 +79,10 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func goBack() {
+        router?.goBackToPhotos()
+    }
+    
     func retakeVideo() {
         player.pause()
         stopPlaybackTimeChecker()
@@ -86,7 +91,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
             router?.showRetake(with: assets)
         } else {
             assets.removeVideo()
-            router?.goBack()
+            router?.goBackToCapture()
         }
     }
     
