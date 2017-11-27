@@ -7,19 +7,11 @@
 //
 
 import UIKit
-import AVFoundation
-import AVKit
 import VisheoVideo
-import Lottie
 
 class ViewController: UIViewController
 {
-	let renderQueue = VisheoVideo.RenderQueue();
-	var lotView: LOTAnimationView!;
-	var writer: AVAssetWriter!;
-	var input: AVAssetWriterInput!;
-	var adapter: AVAssetWriterInputPixelBufferAdaptor!;
-	let queue = DispatchQueue(label: "queue", qos: DispatchQoS.default);
+	let renderQueue = RenderQueue()
 	
 	@IBOutlet weak var statusLabel: UILabel!
 	
@@ -59,27 +51,6 @@ class ViewController: UIViewController
 		}
 	}
 	
-	enum BufferFetchResult
-	{
-		case finish
-		case skip
-		case buffer(buffer: CVPixelBuffer, time: CMTime)
-	}
-	
-	
-	func animate()
-	{
-		let frame = CGRect(origin: .zero, size: CGSize(width: 480.0, height: 480.0));
-		
-		let path =  Bundle.main.path(forResource: "data1", ofType: "json");
-		lotView = LOTAnimationView(filePath: path!)
-		lotView.frame = frame;
-		
-		view.insertSubview(lotView, at: 0);
-		
-		lotView.play();
-	}
-	
 	
 	func render()
 	{
@@ -102,16 +73,6 @@ class ViewController: UIViewController
 		task.addMedia(photos, type: .photo);
 		task.addMedia(URL(fileURLWithPath: video), type: .video);
 		task.addMedia(URL(fileURLWithPath: audio), type: .audio);
-		
-//		let task = VisheoRenderTask(cover: URL(fileURLWithPath: cover),
-//		                            photos: photos,
-//		                            video: URL(fileURLWithPath: video),
-//		                            audio: URL(fileURLWithPath: audio),
-//		                            quality: .res480);
-
-		
-		
-//		renderer.render(task: task);
 		
 		renderQueue.enqueue(task);
 	}

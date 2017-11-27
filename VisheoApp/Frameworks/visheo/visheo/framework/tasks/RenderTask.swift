@@ -18,16 +18,19 @@ public enum RenderQuality: Int
 }
 
 
-public struct RenderTask
+public struct RenderTask: StatefulTask
 {
 	var media: [MediaUnit] = [];
 	var id: Int64?;
+	var output: URL?;
 	let quality: RenderQuality;
+	var state: TaskState;
 	
 	
 	public init(quality: RenderQuality = .res480)
 	{
 		self.quality = quality;
+		self.state = .pending;
 	}
 	
 	
@@ -70,6 +73,8 @@ extension RenderTask: Codable, MutablePersistable, RowConvertible
 	{
 		case id
 		case quality
+		case output
+		case state
 	}
 	
 	
@@ -78,9 +83,17 @@ extension RenderTask: Codable, MutablePersistable, RowConvertible
 		let container = try decoder.container(keyedBy: CodingKeys.self);
 		
 		id = try container.decodeIfPresent(Int64.self, forKey: .id);
+		
+		let rawOutput = try container.decodeIfPresent(String.self, forKey: .output);
+		if let _ = rawOutput {
+			output = URL(fileURLWithPath: rawOutput!);
+		}
 
 		let rawQuality = try container.decode(Int.self, forKey: .quality)
 		quality = RenderQuality(rawValue: rawQuality) ?? .res480;
+		
+		let rawState = try container.decode(Int.self, forKey: .state);
+		state = TaskState(rawValue: rawState) ?? .pending;
 	}
 	
 	
@@ -90,6 +103,8 @@ extension RenderTask: Codable, MutablePersistable, RowConvertible
 		
 		try container.encode(id, forKey: .id);
 		try container.encode(quality.rawValue, forKey: .quality);
+		try container.encode(output?.path, forKey: .output);
+		try container.encode(state.rawValue, forKey: .state);
 	}
 	
 	
