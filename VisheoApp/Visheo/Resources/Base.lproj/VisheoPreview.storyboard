@@ -48,7 +48,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103" y="187" width="128.5" height="16.5"/>
+                                        <rect key="frame" x="103.5" y="187" width="128.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -440,9 +440,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LYL-aZ-IVe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5Nq-3Z-f0C" secondAttribute="bottom" constant="8" id="1US-6B-YJu"/>
                             <constraint firstItem="TuK-eZ-TXQ" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" constant="20" id="7vb-jb-KaK"/>
                             <constraint firstItem="LYL-aZ-IVe" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" constant="20" id="Add-uL-dY4"/>
+                            <constraint firstItem="5Nq-3Z-f0C" firstAttribute="top" secondItem="mpf-wC-7hc" secondAttribute="top" priority="750" constant="20" id="IdO-Tp-Eod"/>
                             <constraint firstItem="7tK-Zx-gw7" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="QHC-FR-wq1"/>
+                            <constraint firstItem="wbX-PK-2AN" firstAttribute="top" secondItem="TuK-eZ-TXQ" secondAttribute="bottom" priority="750" constant="20" id="QM6-hr-8Yb"/>
+                            <constraint firstItem="TuK-eZ-TXQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LYL-aZ-IVe" secondAttribute="bottom" constant="8" id="QaX-e2-fWG"/>
                             <constraint firstItem="wbX-PK-2AN" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" constant="20" id="RLe-XC-rxz"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="7tK-Zx-gw7" secondAttribute="trailing" id="SJf-L3-HjA"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="LYL-aZ-IVe" secondAttribute="trailing" constant="20" id="SX0-kn-PQ8"/>
@@ -451,9 +455,9 @@
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="TuK-eZ-TXQ" secondAttribute="trailing" constant="20" id="cN7-GZ-WUd"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="wbX-PK-2AN" secondAttribute="trailing" constant="20" id="eRx-WK-4ym"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="5Nq-3Z-f0C" secondAttribute="trailing" constant="20" id="k98-e3-X36"/>
-                            <constraint firstItem="wbX-PK-2AN" firstAttribute="top" secondItem="TuK-eZ-TXQ" secondAttribute="bottom" constant="20" id="prs-F8-mT8"/>
-                            <constraint firstItem="5Nq-3Z-f0C" firstAttribute="top" secondItem="mpf-wC-7hc" secondAttribute="top" constant="20" id="qZr-rV-Spy"/>
-                            <constraint firstItem="LYL-aZ-IVe" firstAttribute="top" secondItem="ZrE-rC-yr6" secondAttribute="bottom" constant="20" id="wSK-uk-yNd"/>
+                            <constraint firstItem="wbX-PK-2AN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TuK-eZ-TXQ" secondAttribute="bottom" constant="8" id="prs-F8-mT8"/>
+                            <constraint firstItem="5Nq-3Z-f0C" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mpf-wC-7hc" secondAttribute="top" constant="8" id="qZr-rV-Spy"/>
+                            <constraint firstItem="LYL-aZ-IVe" firstAttribute="top" secondItem="ZrE-rC-yr6" secondAttribute="bottom" priority="750" constant="20" id="wSK-uk-yNd"/>
                             <constraint firstItem="5Nq-3Z-f0C" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" constant="20" id="xmN-pt-FUm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mpf-wC-7hc"/>
