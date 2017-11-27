@@ -31,6 +31,7 @@
 		924ECFD51FC6C52D00C6653B /* blank_5.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 924ECFD41FC6C52D00C6653B /* blank_5.m4v */; };
 		92501EA01FC2BAAA0054F314 /* RenderDatabase+Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92501E9E1FC2BAA70054F314 /* RenderDatabase+Promises.swift */; };
 		92522F661FB0B909008B0347 /* CustomAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92522F641FB0B776008B0347 /* CustomAnimatable.swift */; };
+		9268DD2A1FCC891000CC4F97 /* UIImageFixedOrientationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9268DD281FCC88EE00CC4F97 /* UIImageFixedOrientationExtension.swift */; };
 		926CA3B31FB9616000106EE3 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */; };
 		928B4ADB1FA7897B001499F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B4ADA1FA7897B001499F4 /* AppDelegate.swift */; };
 		928B4ADD1FA7897B001499F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B4ADC1FA7897B001499F4 /* ViewController.swift */; };
@@ -124,6 +125,7 @@
 		924ECFD41FC6C52D00C6653B /* blank_5.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank_5.m4v; sourceTree = "<group>"; };
 		92501E9E1FC2BAA70054F314 /* RenderDatabase+Promises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RenderDatabase+Promises.swift"; sourceTree = "<group>"; };
 		92522F641FB0B776008B0347 /* CustomAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimatable.swift; sourceTree = "<group>"; };
+		9268DD281FCC88EE00CC4F97 /* UIImageFixedOrientationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageFixedOrientationExtension.swift; sourceTree = "<group>"; };
 		926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		928B4AD71FA7897B001499F4 /* visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928B4ADA1FA7897B001499F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 		92AC95AB1FA8E00A003B973B /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				9268DD281FCC88EE00CC4F97 /* UIImageFixedOrientationExtension.swift */,
 				92AC95AC1FA8E00A003B973B /* Result.swift */,
 				92004BE71FAB76180011CC54 /* Utils.swift */,
 				926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */,
@@ -651,6 +654,7 @@
 				92F6D66A1FC14DB400AA1DF9 /* Migrations.swift in Sources */,
 				92472F011FAB3ECB002F1887 /* RenderQueue.swift in Sources */,
 				924E41751FBB763A00117FEF /* VideoConvertibleRenderOperation.swift in Sources */,
+				9268DD2A1FCC891000CC4F97 /* UIImageFixedOrientationExtension.swift in Sources */,
 				92EBEE251FB4A27000B9237C /* CustomAnimatable.swift in Sources */,
 				92501EA01FC2BAAA0054F314 /* RenderDatabase+Promises.swift in Sources */,
 				92A491301FC7595F00545CE8 /* PhotosTimelineTask.swift in Sources */,
