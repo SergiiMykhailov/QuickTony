@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
+        Storage.storage().maxUploadRetryTime = 60
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         setupAppearance()

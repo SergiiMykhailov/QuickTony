@@ -76,10 +76,18 @@ extension Notification.Name {
 extension Notification.Keys {
     static let visheoId = "visheoId"
     static let progress = "progress"
+    static let visheoUrl = "visheoUrl"
+    static let visheoShortLink = "visheoShortLink"
+}
+
+enum CreationError : Error {
+    case uploadFailed
+    case renderFailed
 }
 
 protocol CreationService {
     func createVisheo(from assets:VisheoRenderingAssets, premium: Bool)
+    func retryCreation(for visheoId: String)
 }
 
 class VisheoCreationService : CreationService {
@@ -109,13 +117,17 @@ class VisheoCreationService : CreationService {
         
         for (_, value) in unfinishedRecords {
             if let creationInfo = try? PropertyListDecoder().decode(VisheoCreationInfo.self, from: value as! Data) {
-                if creationInfo.visheoCreated {
-                    upload(creationInfo: creationInfo)
-                } else {
-                    render(creationInfo: creationInfo)
-                }
+                retry(creationInfo: creationInfo)
             }
         }
+    }
+    
+    func unfinishedInfo(with id: String) -> VisheoCreationInfo? {
+        let defaults = UserDefaults.standard
+        guard let unfinishedRecords = defaults.object(forKey: unfinishedRecordsKey) as? Record,
+        let infoData = unfinishedRecords[id] as? Data else {return nil}
+        let creationInfo = try? PropertyListDecoder().decode(VisheoCreationInfo.self, from: infoData)        
+        return creationInfo
     }
     
     func createVisheo(from assets: VisheoRenderingAssets, premium: Bool) {
@@ -126,6 +138,20 @@ class VisheoCreationService : CreationService {
         self.cardsRef.child(info.visheoId).setValue(visheoRecord)
         save(unfinished: info)
         render(creationInfo: info)
+    }
+    
+    func retryCreation(for visheoId: String) {
+        if let info = unfinishedInfo(with: visheoId) {
+            retry(creationInfo: info)
+        }
+    }
+    
+    func retry(creationInfo: VisheoCreationInfo) {
+        if creationInfo.visheoCreated {
+            upload(creationInfo: creationInfo)
+        } else {
+            render(creationInfo: creationInfo)
+        }
     }
     
     private func save(unfinished creationInfo: VisheoCreationInfo) {
@@ -160,13 +186,13 @@ class VisheoCreationService : CreationService {
                 let error = self.save(visheo: url, for: creationInfo)
                 
                 if error != nil {
-                    self.notifyError(error: error, for: creationInfo.visheoId)
+                    self.notifyError(error: CreationError.renderFailed, for: creationInfo.visheoId)
                 } else {
                     self.cleanup(creationInfo: creationInfo)
                     self.upload(creationInfo: creationInfo)
                 }
             } else {
-                self.notifyError(error: error, for: creationInfo.visheoId)
+                self.notifyError(error: CreationError.renderFailed, for: creationInfo.visheoId)
             }
         }
     }
@@ -182,6 +208,7 @@ class VisheoCreationService : CreationService {
     private func upload(creationInfo: VisheoCreationInfo) {
         let videoRef = Storage.storage().reference().child(refPath(for: creationInfo.visheoId, premium: true))
 
+        self.notifyUploading(progress: 0.0, for: creationInfo.visheoId)
         let uploadTask = videoRef.putFile(from: creationInfo.visheoURL, metadata: nil)
 
         uploadTask.observe(.progress) { (snapshot) in
@@ -196,7 +223,7 @@ class VisheoCreationService : CreationService {
         }
 
         uploadTask.observe(.failure) { snapshot in
-            self.notifyError(error: snapshot.error, for: creationInfo.visheoId)
+            self.notifyError(error: CreationError.uploadFailed, for: creationInfo.visheoId)
         }
     }
     
@@ -206,7 +233,7 @@ class VisheoCreationService : CreationService {
         }
         self.cardsRef.child(creationInfo.visheoId).child("visheoUrl").setValue(shortUrl(for: creationInfo.visheoId))
         remove(unfinished: creationInfo)
-        notifySuccess(for: creationInfo.visheoId)
+        notifySuccess(for: creationInfo.visheoId, visheoUrl: creationInfo.visheoURL, visheoLink: shortUrl(for: creationInfo.visheoId))
     }
     
     // MARK: Private
@@ -223,8 +250,12 @@ class VisheoCreationService : CreationService {
         NotificationCenter.default.post(name: .visheoRenderingProgress, object: self, userInfo: info)
     }
     
-    private func notifySuccess(for visheoId: String) {
-        NotificationCenter.default.post(name: .visheoCreationSuccess, object: self, userInfo: [Notification.Keys.visheoId : visheoId])
+    private func notifySuccess(for visheoId: String, visheoUrl: URL, visheoLink: String) {
+        let info = [Notification.Keys.visheoUrl : visheoUrl,
+                    Notification.Keys.visheoShortLink : visheoLink,
+                    Notification.Keys.visheoId : visheoId] as [String : Any]
+        
+        NotificationCenter.default.post(name: .visheoCreationSuccess, object: self, userInfo: info)
     }
     
     private func notifyError(error: Error?, for visheoId: String) {
@@ -253,7 +284,8 @@ class VisheoCreationService : CreationService {
     }
     
     private func shortUrl(for id: String) -> String {
-        return "http://visheo.com/\(id)/"
+        return "https://visheo42.firebaseapp.com/?id=\(id)&cover=New%20Year/15684417_xxl"
+//        return "http://visheo.com/\(id)/"
     }
 }
 

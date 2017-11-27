@@ -15,6 +15,10 @@ enum VisheoCreationStatus {
 }
 
 protocol ShareViewModel : class {
+    var coverImageUrl : URL {get}
+    var visheoUrl : URL? {get}
+    var visheoLink : String? {get}
+    
     var renderingTitle : String {get}
     var uploadingTitle : String {get}
     
@@ -22,9 +26,22 @@ protocol ShareViewModel : class {
     var creationStatus : VisheoCreationStatus {get}
     
     func startRendering()
+    
+    var showRetryLaterError : ((String)->())? {get set}
+    func retry()
+    func tryLater()
 }
 
 class ShareVisheoViewModel : ShareViewModel {
+    var showRetryLaterError: ((String) -> ())?
+    
+    var visheoUrl: URL?
+    var visheoLink: String?
+    
+    var coverImageUrl: URL {
+        return assets.coverUrl
+    }
+    
     var creationStatusChanged: (() -> ())? {
         didSet {
             creationStatusChanged?()
@@ -52,8 +69,15 @@ class ShareVisheoViewModel : ShareViewModel {
         self.creationService = creationService
     }
     
+    func retry() {
+        creationService.retryCreation(for: assets.creationInfo.visheoId)
+    }
+    
+    func tryLater() {
+        router?.goToRoot()
+    }
+    
     func startRendering() {
-        
         NotificationCenter.default.addObserver(forName: Notification.Name.visheoRenderingProgress, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
             guard let strongSelf = self,
                 let info = notification.userInfo,
@@ -74,7 +98,18 @@ class ShareVisheoViewModel : ShareViewModel {
             self?.creationStatus = .uploading(progress: progress)        }
         
         NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationFailed, object: nil, queue: .main) {[weak self] (notification) in
-            //TODO: Add processing
+            guard let strongSelf = self,
+                let info = notification.userInfo,
+                let visheoId = info[Notification.Keys.visheoId] as? String,
+                strongSelf.assets.creationInfo.visheoId == visheoId,
+                let error = info[Notification.Keys.error] as? CreationError else {return}
+            
+            switch error {
+            case .uploadFailed:
+                strongSelf.showRetryLaterError?(NSLocalizedString("Upload error. Retry?", comment: "Upload visheo error"))
+            case .renderFailed:
+                strongSelf.showRetryLaterError?(NSLocalizedString("Render error. Retry?", comment: "Render visheo error"))
+            }
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationSuccess, object: nil, queue: .main) {[weak self] (notification) in
@@ -82,6 +117,9 @@ class ShareVisheoViewModel : ShareViewModel {
                 let info = notification.userInfo,
                 let visheoId = info[Notification.Keys.visheoId] as? String,
                 strongSelf.assets.creationInfo.visheoId == visheoId else {return}
+            
+            strongSelf.visheoUrl = info[Notification.Keys.visheoUrl] as? URL
+            strongSelf.visheoLink = info[Notification.Keys.visheoShortLink] as? String
             strongSelf.creationStatus = .ready
         }
         

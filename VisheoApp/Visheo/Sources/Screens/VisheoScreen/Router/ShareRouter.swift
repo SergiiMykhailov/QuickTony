@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ShareRouter: FlowRouter {
+    func goToRoot()
 }
 
 class ShareVisheoRouter : ShareRouter {
@@ -45,5 +46,8 @@ class ShareVisheoRouter : ShareRouter {
 }
 
 extension ShareVisheoRouter {
+    func goToRoot() {
+        controller?.navigationController?.popToRootViewController(animated: true)
+    }
 }
 

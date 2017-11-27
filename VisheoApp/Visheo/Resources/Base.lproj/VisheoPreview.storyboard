@@ -301,7 +301,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nq-3Z-f0C">
                                 <rect key="frame" x="20" y="20" width="335" height="335"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrE-rC-yr6">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrE-rC-yr6" userLabel="Video Container">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
                                         <color key="backgroundColor" red="0.90000000000000002" green="0.52000000000000002" blue="0.089999999999999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
@@ -309,16 +309,25 @@
                                         <rect key="frame" x="127" y="127" width="80" height="80"/>
                                         <state key="normal" image="play"/>
                                         <connections>
-                                            <action selector="press:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="UpW-nT-bkr"/>
+                                            <action selector="playButtonPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="voO-VA-gbN"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JUY-Yl-B80">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="ZrE-rC-yr6" firstAttribute="leading" secondItem="5Nq-3Z-f0C" secondAttribute="leading" id="4jY-3I-UNv"/>
                                     <constraint firstAttribute="trailing" secondItem="ZrE-rC-yr6" secondAttribute="trailing" id="DHS-ID-dsr"/>
+                                    <constraint firstItem="JUY-Yl-B80" firstAttribute="leading" secondItem="5Nq-3Z-f0C" secondAttribute="leading" id="KAD-Vf-F9u"/>
                                     <constraint firstItem="ZrE-rC-yr6" firstAttribute="top" secondItem="5Nq-3Z-f0C" secondAttribute="top" id="KSM-K4-Ql5"/>
+                                    <constraint firstAttribute="bottom" secondItem="JUY-Yl-B80" secondAttribute="bottom" id="RoM-wT-HwC"/>
+                                    <constraint firstAttribute="trailing" secondItem="JUY-Yl-B80" secondAttribute="trailing" id="bmE-M3-oZO"/>
                                     <constraint firstItem="OgS-LU-4q7" firstAttribute="centerX" secondItem="5Nq-3Z-f0C" secondAttribute="centerX" id="flz-dn-BUR"/>
+                                    <constraint firstItem="JUY-Yl-B80" firstAttribute="top" secondItem="5Nq-3Z-f0C" secondAttribute="top" id="fnb-aJ-wZy"/>
                                     <constraint firstAttribute="bottom" secondItem="ZrE-rC-yr6" secondAttribute="bottom" id="okc-MH-le9"/>
                                     <constraint firstItem="OgS-LU-4q7" firstAttribute="centerY" secondItem="5Nq-3Z-f0C" secondAttribute="centerY" id="rOt-G2-4Ks"/>
                                     <constraint firstAttribute="width" secondItem="5Nq-3Z-f0C" secondAttribute="height" id="te4-ZS-B9f"/>
@@ -328,6 +337,9 @@
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ndl-k9-yKy" appends="YES" id="CgF-tU-8IH"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tK-Zx-gw7" customClass="LabeledProgressView" customModule="Visheo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="38"/>
@@ -369,14 +381,26 @@
                                         <state key="normal" title="Share">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sharePressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="Auq-yn-sRr"/>
+                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyp-in-Hpa">
+                                        <rect key="frame" x="20" y="30" width="190" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="BoA-F2-OsI" firstAttribute="leading" secondItem="fyp-in-Hpa" secondAttribute="trailing" constant="15" id="1qD-3q-MkA"/>
+                                    <constraint firstItem="fyp-in-Hpa" firstAttribute="leading" secondItem="wbX-PK-2AN" secondAttribute="leading" constant="20" id="6fy-eC-4Hw"/>
                                     <constraint firstItem="BoA-F2-OsI" firstAttribute="top" secondItem="wbX-PK-2AN" secondAttribute="top" id="FFb-DL-1Iv"/>
                                     <constraint firstAttribute="bottom" secondItem="BoA-F2-OsI" secondAttribute="bottom" id="Gwi-hW-kBR"/>
                                     <constraint firstAttribute="trailing" secondItem="BoA-F2-OsI" secondAttribute="trailing" id="IWU-Q3-yFZ"/>
                                     <constraint firstAttribute="height" constant="60" id="V33-Dn-Dhe"/>
+                                    <constraint firstItem="fyp-in-Hpa" firstAttribute="centerY" secondItem="wbX-PK-2AN" secondAttribute="centerY" id="vT9-IM-15b"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -436,10 +460,23 @@
                     </view>
                     <navigationItem key="navigationItem" title="SHARE YOUR VISHEO" id="gn6-b8-TgL"/>
                     <connections>
+                        <outlet property="coverImage" destination="JUY-Yl-B80" id="mhg-IF-Q9h"/>
+                        <outlet property="downloadButton" destination="TuK-eZ-TXQ" id="vKy-vf-B5A"/>
+                        <outlet property="linkText" destination="fyp-in-Hpa" id="3Jz-dz-tYS"/>
+                        <outlet property="playButton" destination="OgS-LU-4q7" id="ubv-Oc-xIN"/>
                         <outlet property="progressBar" destination="7tK-Zx-gw7" id="Dtx-fy-EOb"/>
+                        <outlet property="shareButton" destination="BoA-F2-OsI" id="mlf-gB-ae4"/>
+                        <outlet property="shareTypeSegment" destination="LYL-aZ-IVe" id="5HE-xS-D8p"/>
+                        <outlet property="shareView" destination="wbX-PK-2AN" id="mOG-cZ-3Nu"/>
+                        <outlet property="videoContainer" destination="ZrE-rC-yr6" id="A8E-Ym-dzO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECA-Rw-rYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ndl-k9-yKy">
+                    <connections>
+                        <action selector="playerTapped:" destination="L2Y-ET-ymb" id="rME-yL-3It"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3208.8000000000002" y="207.34632683658174"/>
         </scene>
