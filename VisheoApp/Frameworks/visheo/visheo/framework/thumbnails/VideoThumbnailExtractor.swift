@@ -39,7 +39,7 @@ public final class VideoThumbnailExtractor
 {
 	typealias ExtractionResult = (frame: VideoAssetFrame, image: UIImage, time: CMTime)
 	
-	private lazy var queue = DispatchQueue(label: "com.visheo.extractor", attributes: .concurrent);
+	private lazy var queue = DispatchQueue(label: "com.visheo.extractor", qos: DispatchQoS.userInitiated, attributes: .concurrent);
 	
 	private var generators = [URL: AVAssetImageGenerator]();
 	

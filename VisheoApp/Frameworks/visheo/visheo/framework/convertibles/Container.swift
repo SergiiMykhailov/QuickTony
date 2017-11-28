@@ -158,8 +158,6 @@ public final class Container: VideoConvertible
 			contentsLayer.backgroundColor = UIColor.clear.cgColor;
 			contentsLayer.opacity = (index > 0) ? 0.0 : 1.0;
 			
-			
-			
 			containerLayer.insertSublayer(contentsLayer, at: 0);
 			
 			if (index > 0)

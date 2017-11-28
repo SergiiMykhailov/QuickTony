@@ -117,10 +117,14 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
                                                           resultHandler: { (data, mimetype, orientation, options) in
                                                             if let photoData = data {
                                                                 self.assets.addPhoto(data: photoData, at: index)
-                                                            }
+															} else {
+																print("Failed to load data for asset \(assetLocalId) \(String(describing: options))");
+															}
                                                             group.leave()
                 })
-            }
+			} else {
+				print("Failed to load asset \(assetLocalId)");
+			}
         }
         
         group.notify(queue: DispatchQueue.main) {

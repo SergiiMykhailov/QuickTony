@@ -15,7 +15,7 @@ import PromiseKit
 
 enum PreviewRenderStatus
 {
-	case none
+	case pending
 	case rendering
 	case ready(item: AVPlayerItem)
 	case failed(error: Error)
@@ -36,11 +36,13 @@ protocol PreviewViewModel : class {
 	var previewRenderCallback: ((PreviewRenderStatus) -> Void)? { get set }
 	
 	func statusText(for status: PreviewRenderStatus) -> String?;
+	
+	func handleAssetsUpdate(_ assets: VisheoRenderingAssets);
 }
 
 class VisheoPreviewViewModel : PreviewViewModel {
     weak var router: PreviewRouter?
-    let assets: VisheoRenderingAssets
+    private (set) var assets: VisheoRenderingAssets
     let permissionsService : AppPermissionsService
     let authService: AuthorizationService
     let purchasesInfo: UserPurchasesInfo
@@ -49,7 +51,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 	var renderContainer: Container? = nil;
 	var previewRenderCallback: ((PreviewRenderStatus) -> Void)? = nil;
 	
-	private (set) var renderStatus: PreviewRenderStatus = .none {
+	private (set) var renderStatus: PreviewRenderStatus = .pending {
 		didSet {
 			previewRenderCallback?(renderStatus);
 		}
@@ -68,6 +70,10 @@ class VisheoPreviewViewModel : PreviewViewModel {
 	
 	func renderPreview()
 	{
+		guard case .pending = renderStatus else {
+			return;
+		}
+		
 		let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a");
 		let audioURL = URL(fileURLWithPath: audio!);
 		let videoURL = assets.videoUrl//URL(fileURLWithPath: video!);
@@ -110,6 +116,11 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			default:
 				return nil;
 		}
+	}
+	
+	func handleAssetsUpdate(_ assets: VisheoRenderingAssets) {
+		self.assets = assets;
+		renderStatus = .pending;
 	}
     
     func editCover() {

@@ -70,11 +70,11 @@ class VisheoPreviewView: UIView
 	}
 	
 	private func updatePlayerItem() {
-		guard let _ = item else {
-			return;
+		if let playerItem = item {
+			player = AVPlayer(playerItem: playerItem);
+		} else {
+			player = nil;
 		}
-
-		player = AVPlayer(playerItem: item!)
 	}
 	
 	

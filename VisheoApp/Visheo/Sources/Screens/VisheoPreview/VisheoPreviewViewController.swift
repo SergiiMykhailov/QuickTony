@@ -31,13 +31,22 @@ class VisheoPreviewViewController: UIViewController {
 			}
 		}
 		
-		viewModel.renderPreview()
+//		viewModel.renderPreview()
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated);
+		viewModel.renderPreview();
+	}
 	
     override func viewDidAppear(_ animated: Bool) {
-		
+		super.viewDidAppear(animated);
     }
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated);
+		videoContainer.pause();
+	}
 
     //MARK: - VM+Router init
     
@@ -52,7 +61,6 @@ class VisheoPreviewViewController: UIViewController {
     }
 	
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-		videoContainer.pause();
 		navigationController?.popViewController(animated: true);
 	}
     
@@ -82,20 +90,21 @@ class VisheoPreviewViewController: UIViewController {
 	{
 		statusLabel.text = viewModel.statusText(for: status);
 		
+		switch status {
+			case .ready(let item):
+				videoContainer.item = item;
+				videoContainer.play();
+			default:
+				videoContainer.pause();
+				videoContainer.item = nil;
+		}
+		
 		if case .rendering = status {
 			activityIndicator.startAnimating();
 			statusLabel.isHidden = false;
 		} else {
 			activityIndicator.stopAnimating();
 			statusLabel.isHidden = true;
-		}
-		
-		switch status {
-			case .ready(let item):
-				videoContainer.item = item;
-				videoContainer.play();
-			default:
-				break;
 		}
 	}
 	
