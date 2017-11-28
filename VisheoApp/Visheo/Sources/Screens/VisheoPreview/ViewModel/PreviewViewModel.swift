@@ -86,7 +86,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			fetchVideoScreenshot(url: videoURL)
 		}
 		.then { url in
-			self.renderTimeLine(videoSnapshot: url)
+			self.renderTimeLine(videoSnapshot: url, exportSize: size);
 		}
 		.then { url -> VisheoVideoComposition in
 			let video = VisheoVideo(timeline: url, video: videoURL, audio: audioURL, size: size);
@@ -171,11 +171,11 @@ class VisheoPreviewViewModel : PreviewViewModel {
 		}
 	}
 	
-	private func renderTimeLine(videoSnapshot: URL) -> Promise<URL>
+	private func renderTimeLine(videoSnapshot: URL, exportSize size: CGSize) -> Promise<URL>
 	{
 		let frames = [assets.coverUrl] + assets.photoUrls + [videoSnapshot];
 		
-		renderContainer = Container(frames: frames, size: CGSize(width: 480.0, height: 480.0));
+		renderContainer = Container(frames: frames, size: size);
 		
 		return Promise { fl, rj in
 			do {
