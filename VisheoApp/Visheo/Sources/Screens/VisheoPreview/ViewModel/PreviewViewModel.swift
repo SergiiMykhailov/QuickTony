@@ -48,7 +48,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
     let purchasesInfo: UserPurchasesInfo
 	
 	let extractor = VideoThumbnailExtractor();
-	var renderContainer: Container? = nil;
+	var renderContainer: PhotosAnimation? = nil;
 	var previewRenderCallback: ((PreviewRenderStatus) -> Void)? = nil;
 	
 	private (set) var renderStatus: PreviewRenderStatus = .pending {
@@ -78,7 +78,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 		let audioURL = URL(fileURLWithPath: audio!);
 		let videoURL = assets.videoUrl//URL(fileURLWithPath: video!);
 		
-		let size = CGSize(width: 480.0, height: 480.0);
+		let quality = RenderQuality.res480;
 		
 		renderStatus = .rendering;
 		
@@ -86,10 +86,10 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			fetchVideoScreenshot(url: videoURL)
 		}
 		.then { url in
-			self.renderTimeLine(videoSnapshot: url, exportSize: size);
+			self.renderTimeLine(videoSnapshot: url, quality: quality);
 		}
 		.then { url -> VisheoVideoComposition in
-			let video = VisheoVideo(timeline: url, video: videoURL, audio: audioURL, size: size);
+			let video = VisheoVideo(timeline: url, video: videoURL, audio: audioURL, quality: quality);
 			return try video.prepareComposition()
 		}
 		.then { composition -> AVPlayerItem in
@@ -171,11 +171,11 @@ class VisheoPreviewViewModel : PreviewViewModel {
 		}
 	}
 	
-	private func renderTimeLine(videoSnapshot: URL, exportSize size: CGSize) -> Promise<URL>
+	private func renderTimeLine(videoSnapshot: URL, quality: RenderQuality) -> Promise<URL>
 	{
 		let frames = [assets.coverUrl] + assets.photoUrls + [videoSnapshot];
 		
-		renderContainer = Container(frames: frames, size: size);
+		renderContainer = PhotosAnimation(frames: frames, quality: quality);
 		
 		return Promise { fl, rj in
 			do {

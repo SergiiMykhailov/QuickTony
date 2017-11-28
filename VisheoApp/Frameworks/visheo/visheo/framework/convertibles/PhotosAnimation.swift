@@ -1,5 +1,5 @@
 //
-//  Container.swift
+//  PhotosAnimation.swift
 //  VisheoVideo
 //
 //  Created by Nikita Ivanchikov on 11/23/17.
@@ -8,97 +8,22 @@
 
 import AVFoundation
 
-
-enum Motion
-{
-	case left
-	case right
-	case top
-	case bottom
-	case zoom
-}
-
-
-extension Motion
-{
-	static func motionForAsset(sized assetSize: CGSize, inBounds boundingSize: CGSize) -> Motion
-	{
-		if assetSize.isLessOrClose(to: boundingSize) {
-			return .zoom;
-		}
-		
-		let side = arc4random_uniform(2);
-		
-		if (assetSize.width > assetSize.height) {
-			return side > 0 ? .left : .right;
-		}
-		
-		if (assetSize.height > boundingSize.height) {
-			return side > 0 ? .top : .bottom;
-		}
-		
-		return .zoom;
-	}
-	
-	
-	func initialOffset(for assetSize: CGSize, inBounds boundingSize: CGSize) -> CGPoint
-	{
-		let horizontalOffset = (assetSize.width - boundingSize.width) / 2.0;
-		let verticalOffset = (assetSize.height - boundingSize.height) / 2.0;
-		
-		var point = CGPoint.zero;
-		
-		switch self
-		{
-		case .zoom:
-			return point;
-		case .left:
-			point.x = -horizontalOffset / 2.0;
-		case .right:
-			point.x = horizontalOffset / 2.0;
-		case .top:
-			point.y = -verticalOffset / 2.0;
-		case .bottom:
-			point.y = verticalOffset / 2.0;
-		}
-		
-		return point;
-	}
-}
-
-
-extension CGSize
-{
-	func isLessOrClose(to other: CGSize, threshold: CGFloat = 3.0) -> Bool
-	{
-		if width < other.width && height < other.height {
-			return true;
-		}
-		
-		return fabs(width - height) < threshold &&
-			fabs(width - other.width) < threshold &&
-			fabs(height - other.height) < threshold;
-	}
-}
-
-
-
-public final class Container: VideoConvertible
+public final class PhotosAnimation: VideoConvertible
 {
 	var renderQueueSupport: ProcessingQueueType {
 		return .concurrent;
 	}
 	
 	private let frames: [URL];
-	private let size: CGSize;
+	private let quality: RenderQuality;
 	
 	private let containerLayer = CALayer();
 	
 	
-	public init(frames: [URL], size: CGSize)
+	public init(frames: [URL], quality: RenderQuality)
 	{
 		self.frames = frames;
-		self.size = size;
+		self.quality = quality;
 	}
 	
 	
@@ -134,7 +59,9 @@ public final class Container: VideoConvertible
 	
 	func prepare() -> (layer: CALayer, duration: TimeInterval)
 	{
-		let frame = CGRect(origin: .zero, size: size);
+		let renderSize = quality.renderSize;
+		
+		let frame = CGRect(origin: .zero, size: renderSize);
 		containerLayer.frame = frame;
 		containerLayer.backgroundColor = UIColor.clear.cgColor;
 		
@@ -145,10 +72,10 @@ public final class Container: VideoConvertible
 		{
 			let image = UIImage(contentsOfFile: url.path)!.fixedOrientation();
 			
-			let scaledSize = image.scaledSize(fitting: size);
+			let scaledSize = image.scaledSize(fitting: renderSize);
 			
-			let motion = Motion.motionForAsset(sized: scaledSize, inBounds: size);
-			let offset = motion.initialOffset(for: scaledSize, inBounds: size);
+			let motion = Motion.motionForAsset(sized: scaledSize, inBounds: renderSize);
+			let offset = motion.initialOffset(for: scaledSize, inBounds: renderSize);
 			
 			let contentsLayer = CALayer();
 			
@@ -212,7 +139,9 @@ public final class Container: VideoConvertible
 		let start = CACurrentMediaTime();
 		print("Start rendering transition \(url.lastPathComponent)")
 		
-		let frame = CGRect(origin: CGPoint.zero, size: size);
+		let renderSize = quality.renderSize;
+		
+		let frame = CGRect(origin: CGPoint.zero, size: renderSize);
 		
 		let path = Bundle.main.path(forResource: "blank", ofType: "m4v")!;
 		let blankURL = URL.init(fileURLWithPath: path);
@@ -252,7 +181,7 @@ public final class Container: VideoConvertible
 		
 		let videoComposition = AVMutableVideoComposition();
 		
-		videoComposition.renderSize = size;
+		videoComposition.renderSize = renderSize;
 		videoComposition.instructions = [mainInstruction];
 		videoComposition.frameDuration = CMTimeMake(1, 30);
 		videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer);

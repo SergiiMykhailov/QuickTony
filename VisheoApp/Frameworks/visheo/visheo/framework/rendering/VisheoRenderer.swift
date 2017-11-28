@@ -158,7 +158,7 @@ final class VisheoRenderer
 			fetchAssets
 		}
 		.then { (urls: [URL]) -> Promise<Void> in
-			let container = Container(frames: urls, size: task.renderSize);
+			let container = PhotosAnimation(frames: urls, quality: task.quality);
 			return self.renderer.render(asset: container, to: url);
 		}
 		.then { _ -> Promise<PhotosTimelineTask> in
@@ -248,7 +248,7 @@ final class VisheoRenderer
 				throw VideoConvertibleError.error;
 			}
 			
-			let video = VisheoVideo(timeline: timelineURL!, video: videoURL!, audio: audioURL!, size: task.renderSize);
+			let video = VisheoVideo(timeline: timelineURL!, video: videoURL!, audio: audioURL!, quality: task.quality);
 			return self.renderer.render(asset: video, to: url);
 		}
 		.then {
