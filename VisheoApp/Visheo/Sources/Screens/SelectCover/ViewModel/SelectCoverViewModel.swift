@@ -71,7 +71,11 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
             if let coverData = data {
                 self.assets.setCover(with: coverData, at: self.preselectedCoverIndex)
                 self.navigateFurther(with: self.assets)
-            } else if let error = error {
+            } else if let image = image, let coverData = UIImageJPEGRepresentation(image, 1.0) {
+                self.assets.setCover(with: coverData, at: self.preselectedCoverIndex)
+                self.navigateFurther(with: self.assets)
+            }
+            else if let error = error {
                 self.warningAlertHandler?(error.localizedDescription)
             }
             SDImageCache.shared().config.shouldCacheImagesInMemory = true
