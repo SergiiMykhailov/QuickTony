@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>selectable_photos</key>
+	<integer>8</integer>
+	<key>animation_settings</key>
+	<array>
+		<dict>
+			<key>assets</key>
+			<integer>0</integer>
+			<key>cover_duration</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>assets</key>
+			<integer>1</integer>
+			<key>cover_duration</key>
+			<real>3.5</real>
+			<key>asset_duration</key>
+			<real>3.2</real>
+		</dict>
+		<dict>
+			<key>assets</key>
+			<integer>2</integer>
+			<key>cover_duration</key>
+			<integer>3</integer>
+			<key>asset_duration</key>
+			<real>2.8</real>
+		</dict>
+		<dict>
+			<key>assets</key>
+			<integer>3</integer>
+			<key>cover_duration</key>
+			<integer>3</integer>
+			<key>asset_duration</key>
+			<real>2.5</real>
+		</dict>
+		<dict>
+			<key>assets</key>
+			<integer>6</integer>
+			<key>cover_duration</key>
+			<integer>4</integer>
+			<key>asset_duration</key>
+			<real>2.2</real>
+		</dict>
+	</array>
+</dict>
+</plist>

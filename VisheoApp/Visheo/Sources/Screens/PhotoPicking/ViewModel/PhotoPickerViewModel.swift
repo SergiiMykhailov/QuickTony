@@ -47,14 +47,18 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     
     weak var router: PhotoPickerRouter?
     var selectedPhotos : [String] = []
-    private let maxPhotos = 5
     let assets: VisheoRenderingAssets
     let permissionsService: AppPermissionsService
+	let appStateService: AppStateService
     let editMode : Bool
     
-    init(assets: VisheoRenderingAssets, permissionsService: AppPermissionsService, editMode: Bool = false) {
+	init(assets: VisheoRenderingAssets,
+		 permissionsService: AppPermissionsService,
+		 appStateService: AppStateService,
+		 editMode: Bool = false) {
         self.assets = assets
         self.permissionsService = permissionsService
+		self.appStateService = appStateService;
         selectedPhotos = assets.photosLocalIds
         self.editMode = editMode
     }
@@ -88,6 +92,10 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     }
     
     // MARK: Private
+	
+	private var maxPhotos: Int {
+		return appStateService.appSettings.maxSelectablePhotos;
+	}
     
     private func showVideoScreen(with assets: VisheoRenderingAssets) {
         if editMode {

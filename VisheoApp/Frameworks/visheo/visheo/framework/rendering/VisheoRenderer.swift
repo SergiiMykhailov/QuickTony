@@ -83,7 +83,7 @@ final class VisheoRenderer
 	}
 	
 	
-	func render(task: RenderTask)
+	func render(task: RenderTask, settings: [AnimationSettings])
 	{
 		var task = task;
 		task.state = .running;
@@ -99,7 +99,7 @@ final class VisheoRenderer
 		}
 		.then { [weak self] (timeline: PhotosTimelineTask) -> Promise<PhotosTimelineTask> in
 			guard let `self` = self else { throw VisheoRenderError.unableToFinish }
-			return self.render(timeline: timeline, task: task);
+			return self.render(timeline: timeline, task: task, settings: settings);
 		}
 		.then { [weak self] _ -> Promise<URL> in
 			guard let `self` = self else { throw VisheoRenderError.unableToFinish }
@@ -125,7 +125,7 @@ final class VisheoRenderer
 	}
 	
 	
-	private func render(timeline: PhotosTimelineTask, task: RenderTask) -> Promise<PhotosTimelineTask>
+	private func render(timeline: PhotosTimelineTask, task: RenderTask, settings: [AnimationSettings]) -> Promise<PhotosTimelineTask>
 	{
 		if timeline.state == .finished {
 			return Promise(value: timeline);
@@ -136,29 +136,35 @@ final class VisheoRenderer
 		var timeline = timeline;
 		timeline.state = .running;
 		
-		let photos = db.fetchMediaUnits([.cover, .photo], for: task)
-						.then { (units: [MediaUnit]) -> [URL] in
-							units.sorted(by: renderOrder).map{ $0.url }
+		let cover = db.fetchMediaUnits([.cover], for: task)
+						.then { units -> AssetRepresentation in (units[0].url, .cover) }
+		
+		let photos = db.fetchMediaUnits([.photo], for: task)
+						.then { units -> [AssetRepresentation] in units.map{ ($0.url, .photo) } }
+		
+		let sett = photos.then {
+							settings.withAssetsCount($0.count) ?? AnimationSettings()
 						}
 		
 		let video = db.fetchMediaUnits([.video], for: task)
-						.then { (units: [MediaUnit]) -> Promise<ThumbnailFetchResult> in
-							self.fetchSnapshot(from: units.first!, at: .first)
+						.then { (units: [MediaUnit]) -> Promise<AssetRepresentation> in
+							self.fetchSnapshot(from: units.first!, at: .first).then { ($0.url, .video) }
 						}
 		
-		let fetchAssets = when(fulfilled: photos, video)
-							.then { (res: ([URL], ThumbnailFetchResult)) -> [URL] in
-								res.0 + [res.1.url]
+		let fetchAssets = when(fulfilled: cover, photos, video, sett)
+							.then { (res: (cover: AssetRepresentation, photos: [AssetRepresentation], video: AssetRepresentation, settings: AnimationSettings)) -> ([AssetRepresentation], AnimationSettings) in
+								let urls = [res.cover] + res.photos + [res.video];
+								return (urls, res.settings)
 							}
 		
 		return firstly {
 			db.add(timelineTask: timeline);
 		}
-		.then { _ -> Promise<[URL]> in
+		.then { _ -> Promise<([AssetRepresentation], AnimationSettings)> in
 			fetchAssets
 		}
-		.then { (urls: [URL]) -> Promise<Void> in
-			let container = PhotosAnimation(frames: urls, quality: task.quality);
+		.then { (res: (urls: [AssetRepresentation], settings: AnimationSettings)) -> Promise<Void> in
+			let container = PhotosAnimation(frames: res.urls, quality: task.quality, settings: res.settings);
 			return self.renderer.render(asset: container, to: url);
 		}
 		.then { _ -> Promise<PhotosTimelineTask> in
