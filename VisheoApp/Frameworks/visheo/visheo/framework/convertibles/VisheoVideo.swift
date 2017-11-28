@@ -16,15 +16,15 @@ public final class VisheoVideo: VideoConvertible
 	private let timeline: URL;
 	private let video: URL;
 	private let audio: URL;
-	private let renderSize: CGSize;
+	private let quality: RenderQuality;
 	
 	
-	public init(timeline: URL, video: URL, audio: URL, size: CGSize)
+	public init(timeline: URL, video: URL, audio: URL, quality: RenderQuality)
 	{
 		self.timeline = timeline;
 		self.video = video;
 		self.audio = audio;
-		self.renderSize = size;
+		self.quality = quality;
 	}
 	
 	
@@ -35,6 +35,8 @@ public final class VisheoVideo: VideoConvertible
 	
 	public func prepareComposition() throws -> VisheoVideoComposition
 	{
+		let renderSize = quality.renderSize;
+		
 		let composition = AVMutableComposition();
 		
 		let audio = AVURLAsset(url: self.audio);
@@ -138,7 +140,7 @@ public final class VisheoVideo: VideoConvertible
 		{
 			let results = try prepareComposition();
 
-			guard let session = AVAssetExportSession(asset: results.mainComposition, presetName: AVAssetExportPreset640x480) else {
+			guard let session = AVAssetExportSession(asset: results.mainComposition, presetName: quality.exportSessionPreset) else {
 				throw VideoConvertibleError.error;
 			}
 			

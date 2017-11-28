@@ -10,14 +10,6 @@ import Foundation
 import GRDB
 
 
-public enum RenderQuality: Int
-{
-	case res480 = 480
-	case res720 = 720
-	case res1080 = 1080
-}
-
-
 public struct RenderTask: StatefulTask
 {
 	var media: [MediaUnit] = [];
@@ -26,35 +18,18 @@ public struct RenderTask: StatefulTask
 	let quality: RenderQuality;
 	var state: TaskState;
 	
-	
-	public init(quality: RenderQuality = .res480)
-	{
+	public init(quality: RenderQuality = .res480) {
 		self.quality = quality;
 		self.state = .pending;
 	}
 	
-	
-	var renderSize: CGSize
-	{
-		return CGSize(width: quality.rawValue, height: quality.rawValue);
-	}
-	
-	
-	var maxRenderSize: CGSize
-	{
-		return CGSize(width: RenderQuality.res1080.rawValue, height: RenderQuality.res1080.rawValue);
-	}
-	
-	
-	public mutating func addMedia(_ url: URL, type: MediaType)
-	{
+	public mutating func addMedia(_ url: URL, type: MediaType) {
 		let unit = MediaUnit(type: type, url: url);
 		self.media.append(unit);
 	}
 	
 	
-	public mutating func addMedia(_ media: [URL], type: MediaType)
-	{
+	public mutating func addMedia(_ media: [URL], type: MediaType) {
 		for (index, url) in media.enumerated() {
 			let unit = MediaUnit(type: type, renderOrder: index, url: url);
 			self.media.append(unit);
