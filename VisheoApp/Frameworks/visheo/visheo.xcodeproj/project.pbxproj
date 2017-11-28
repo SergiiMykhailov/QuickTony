@@ -23,7 +23,6 @@
 		9224A83F1FBCCC9200304905 /* MediaUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224A83E1FBCCC9200304905 /* MediaUnit.swift */; };
 		92472EFD1FAB3E81002F1887 /* RenderTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92472EFC1FAB3E81002F1887 /* RenderTask.swift */; };
 		92472EFE1FAB3E8B002F1887 /* VisheoRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92472EF51FAB398E002F1887 /* VisheoRenderer.swift */; };
-		92472F011FAB3ECB002F1887 /* RenderQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92472EFF1FAB3EA8002F1887 /* RenderQueue.swift */; };
 		924E41731FBB74A400117FEF /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924E41721FBB74A400117FEF /* AsyncOperation.swift */; };
 		924E41751FBB763A00117FEF /* VideoConvertibleRenderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924E41741FBB763A00117FEF /* VideoConvertibleRenderOperation.swift */; };
 		924ECFD11FC6C46600C6653B /* blank_720.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 924ECFD01FC6C46600C6653B /* blank_720.m4v */; };
@@ -31,6 +30,9 @@
 		924ECFD51FC6C52D00C6653B /* blank_5.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 924ECFD41FC6C52D00C6653B /* blank_5.m4v */; };
 		92501EA01FC2BAAA0054F314 /* RenderDatabase+Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92501E9E1FC2BAA70054F314 /* RenderDatabase+Promises.swift */; };
 		92522F661FB0B909008B0347 /* CustomAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92522F641FB0B776008B0347 /* CustomAnimatable.swift */; };
+		9255DF051FCD967B00F9815F /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF041FCD967B00F9815F /* Motion.swift */; };
+		9255DF061FCD96C500F9815F /* RenderQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF021FCD962E00F9815F /* RenderQueue.swift */; };
+		9255DF081FCD978500F9815F /* RenderQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF071FCD978500F9815F /* RenderQuality.swift */; };
 		9268DD2A1FCC891000CC4F97 /* UIImageFixedOrientationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9268DD281FCC88EE00CC4F97 /* UIImageFixedOrientationExtension.swift */; };
 		926CA3B31FB9616000106EE3 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */; };
 		928B4ADB1FA7897B001499F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B4ADA1FA7897B001499F4 /* AppDelegate.swift */; };
@@ -43,7 +45,7 @@
 		929A192A1FA8D46900363CC9 /* VisheoVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 929A19281FA8D46900363CC9 /* VisheoVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		929A192D1FA8D46900363CC9 /* VisheoVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929A19261FA8D46800363CC9 /* VisheoVideo.framework */; };
 		929A192F1FA8D46900363CC9 /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 929A19261FA8D46800363CC9 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		92A4912E1FC71CC800545CE8 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A4912D1FC71CC800545CE8 /* Container.swift */; };
+		92A4912E1FC71CC800545CE8 /* PhotosAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A4912D1FC71CC800545CE8 /* PhotosAnimation.swift */; };
 		92A491301FC7595F00545CE8 /* PhotosTimelineTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A4912F1FC7595F00545CE8 /* PhotosTimelineTask.swift */; };
 		92AC95B01FA8E00A003B973B /* VideoThumbnailExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC95A71FA8E00A003B973B /* VideoThumbnailExtractor.swift */; };
 		92AC95B31FA8E00A003B973B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC95AC1FA8E00A003B973B /* Result.swift */; };
@@ -117,7 +119,6 @@
 		9224A83E1FBCCC9200304905 /* MediaUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUnit.swift; sourceTree = "<group>"; };
 		92472EF51FAB398E002F1887 /* VisheoRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoRenderer.swift; sourceTree = "<group>"; };
 		92472EFC1FAB3E81002F1887 /* RenderTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderTask.swift; sourceTree = "<group>"; };
-		92472EFF1FAB3EA8002F1887 /* RenderQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderQueue.swift; sourceTree = "<group>"; };
 		924E41721FBB74A400117FEF /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		924E41741FBB763A00117FEF /* VideoConvertibleRenderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConvertibleRenderOperation.swift; sourceTree = "<group>"; };
 		924ECFD01FC6C46600C6653B /* blank_720.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank_720.m4v; sourceTree = "<group>"; };
@@ -125,6 +126,9 @@
 		924ECFD41FC6C52D00C6653B /* blank_5.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank_5.m4v; sourceTree = "<group>"; };
 		92501E9E1FC2BAA70054F314 /* RenderDatabase+Promises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RenderDatabase+Promises.swift"; sourceTree = "<group>"; };
 		92522F641FB0B776008B0347 /* CustomAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimatable.swift; sourceTree = "<group>"; };
+		9255DF021FCD962E00F9815F /* RenderQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderQueue.swift; sourceTree = "<group>"; };
+		9255DF041FCD967B00F9815F /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
+		9255DF071FCD978500F9815F /* RenderQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderQuality.swift; sourceTree = "<group>"; };
 		9268DD281FCC88EE00CC4F97 /* UIImageFixedOrientationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageFixedOrientationExtension.swift; sourceTree = "<group>"; };
 		926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		928B4AD71FA7897B001499F4 /* visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,7 +145,7 @@
 		929A19261FA8D46800363CC9 /* VisheoVideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VisheoVideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		929A19281FA8D46900363CC9 /* VisheoVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisheoVideo.h; sourceTree = "<group>"; };
 		929A19291FA8D46900363CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92A4912D1FC71CC800545CE8 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		92A4912D1FC71CC800545CE8 /* PhotosAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosAnimation.swift; sourceTree = "<group>"; };
 		92A4912F1FC7595F00545CE8 /* PhotosTimelineTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTimelineTask.swift; sourceTree = "<group>"; };
 		92AC95A71FA8E00A003B973B /* VideoThumbnailExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoThumbnailExtractor.swift; sourceTree = "<group>"; };
 		92AC95AC1FA8E00A003B973B /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -198,12 +202,13 @@
 		92068FA81FA8D74B00688EE9 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				929126AE1FC14A19000E9D24 /* db */,
-				92472EFB1FAB3E81002F1887 /* tasks */,
 				92AC95A81FA8E00A003B973B /* convertibles */,
+				929126AE1FC14A19000E9D24 /* db */,
 				92AC95AD1FA8E00A003B973B /* rendering */,
+				92472EFB1FAB3E81002F1887 /* tasks */,
 				92AC95A61FA8E00A003B973B /* thumbnails */,
 				92AC95AB1FA8E00A003B973B /* utils */,
+				9255DF041FCD967B00F9815F /* Motion.swift */,
 			);
 			path = framework;
 			sourceTree = "<group>";
@@ -239,10 +244,10 @@
 			isa = PBXGroup;
 			children = (
 				9224A83E1FBCCC9200304905 /* MediaUnit.swift */,
-				92472EFF1FAB3EA8002F1887 /* RenderQueue.swift */,
+				92A4912F1FC7595F00545CE8 /* PhotosTimelineTask.swift */,
 				92472EFC1FAB3E81002F1887 /* RenderTask.swift */,
 				92F6D66F1FC1529600AA1DF9 /* StatefulTask.swift */,
-				92A4912F1FC7595F00545CE8 /* PhotosTimelineTask.swift */,
+				9255DF071FCD978500F9815F /* RenderQuality.swift */,
 			);
 			path = tasks;
 			sourceTree = "<group>";
@@ -324,8 +329,8 @@
 		92AC95A81FA8E00A003B973B /* convertibles */ = {
 			isa = PBXGroup;
 			children = (
+				92A4912D1FC71CC800545CE8 /* PhotosAnimation.swift */,
 				92AFAD801FC372FC0086262E /* VisheoVideo.swift */,
-				92A4912D1FC71CC800545CE8 /* Container.swift */,
 			);
 			path = convertibles;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 		92AC95AD1FA8E00A003B973B /* rendering */ = {
 			isa = PBXGroup;
 			children = (
+				9255DF021FCD962E00F9815F /* RenderQueue.swift */,
 				92AC95AE1FA8E00A003B973B /* VideoConvertibleRenderer.swift */,
 				924E41741FBB763A00117FEF /* VideoConvertibleRenderOperation.swift */,
 				92472EF51FAB398E002F1887 /* VisheoRenderer.swift */,
@@ -652,19 +658,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				92F6D66A1FC14DB400AA1DF9 /* Migrations.swift in Sources */,
-				92472F011FAB3ECB002F1887 /* RenderQueue.swift in Sources */,
+				9255DF081FCD978500F9815F /* RenderQuality.swift in Sources */,
 				924E41751FBB763A00117FEF /* VideoConvertibleRenderOperation.swift in Sources */,
 				9268DD2A1FCC891000CC4F97 /* UIImageFixedOrientationExtension.swift in Sources */,
 				92EBEE251FB4A27000B9237C /* CustomAnimatable.swift in Sources */,
 				92501EA01FC2BAAA0054F314 /* RenderDatabase+Promises.swift in Sources */,
 				92A491301FC7595F00545CE8 /* PhotosTimelineTask.swift in Sources */,
+				9255DF061FCD96C500F9815F /* RenderQueue.swift in Sources */,
 				92AC95B01FA8E00A003B973B /* VideoThumbnailExtractor.swift in Sources */,
 				92AC95B41FA8E00A003B973B /* VideoConvertibleRenderer.swift in Sources */,
 				92472EFD1FAB3E81002F1887 /* RenderTask.swift in Sources */,
-				92A4912E1FC71CC800545CE8 /* Container.swift in Sources */,
+				92A4912E1FC71CC800545CE8 /* PhotosAnimation.swift in Sources */,
 				92472EFE1FAB3E8B002F1887 /* VisheoRenderer.swift in Sources */,
 				9224A83F1FBCCC9200304905 /* MediaUnit.swift in Sources */,
 				924E41731FBB74A400117FEF /* AsyncOperation.swift in Sources */,
+				9255DF051FCD967B00F9815F /* Motion.swift in Sources */,
 				926CA3B31FB9616000106EE3 /* UIImage+Utils.swift in Sources */,
 				929126B01FC14A38000E9D24 /* RenderDatabase.swift in Sources */,
 				92AC95B31FA8E00A003B973B /* Result.swift in Sources */,

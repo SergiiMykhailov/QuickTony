@@ -16,3 +16,19 @@ func documentsDirectory() -> URL?
 	
 	return URL(fileURLWithPath: path);
 }
+
+
+
+extension CGSize
+{
+	func isLessOrClose(to other: CGSize, threshold: CGFloat = 3.0) -> Bool
+	{
+		if width < other.width && height < other.height {
+			return true;
+		}
+		
+		return fabs(width - height) < threshold &&
+			fabs(width - other.width) < threshold &&
+			fabs(height - other.height) < threshold;
+	}
+}
