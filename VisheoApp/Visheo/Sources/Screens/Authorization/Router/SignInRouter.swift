@@ -20,8 +20,11 @@ class VisheoSignInRouter : SignInRouter {
     private(set) weak var controller: UIViewController?
     private(set) weak var viewModel: SignInViewModel?
     
-    public init(dependencies: RouterDependencies) {
+    let finishAuthCallback : (()->())?
+    
+    public init(dependencies: RouterDependencies, finishCallback: (()->())? = nil) {
         self.dependencies = dependencies
+        self.finishAuthCallback = finishCallback
     }
     
     func start(with viewController: SignInViewController) {
@@ -47,7 +50,11 @@ class VisheoSignInRouter : SignInRouter {
 
 extension VisheoSignInRouter {
     func showMainScreen() {
-        controller?.performSegue(SegueList.showMainScreen, sender: nil)
+        if finishAuthCallback != nil {
+            finishAuthCallback?()
+        } else {
+            controller?.performSegue(SegueList.showMainScreen, sender: nil)
+        }
     }
 }
 

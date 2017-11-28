@@ -9,6 +9,8 @@
 import Foundation
 
 protocol AppStateService {
+    var firstLaunch : Bool { get }
+    
     var shouldShowOnboarding : Bool { get }
     func onboarding(wasSeen seen: Bool)
 	
@@ -17,17 +19,24 @@ protocol AppStateService {
 }
 
 class VisheoAppStateService: AppStateService {
-	
     private static let onboardingShownKey = "OnboardingScreenWasShown"
-	private static let cameraTipsShownKey = "CameraTipsWasShown"
-
+    private static let cameraTipsShownKey = "CameraTipsWasShown"
+    private static let appWasLaunchedKey = "appWasLaunchedKey"
+    
+    let firstLaunch: Bool
+    
+    init() {
+        firstLaunch = !(UserDefaults.standard.bool(forKey: VisheoAppStateService.appWasLaunchedKey) ?? false)
+        UserDefaults.standard.set(true, forKey: VisheoAppStateService.appWasLaunchedKey)
+        UserDefaults.standard.synchronize()
+    }
+    
     var shouldShowOnboarding: Bool {
         return !UserDefaults.standard.bool(forKey: VisheoAppStateService.onboardingShownKey)
     }
     
     func onboarding(wasSeen seen: Bool) {
-        UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingShownKey)
-        UserDefaults.standard.synchronize()
+        UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingShownKey)        
     }
 	
 	var shouldShowCameraTips: Bool {

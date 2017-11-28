@@ -16,8 +16,21 @@ class AuthorizationViewController: UIViewController, RouterProxy {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextViewLinks()
+        
+        if !viewModel.anonymousAllowed {
+            skipRegistrationBottomConstraint.constant = 0
+            skipRegistrationHeightConstraint.constant = 0
+            signInBottomConstraint.constant = 31
+        } else {
+            signUpMandatoryLabel.isHidden = true
+            signUpMandatoryLabel.text = ""
+        }
     }
     
+    @IBOutlet weak var signUpMandatoryLabel: UILabel!
+    @IBOutlet weak var signInBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var skipRegistrationHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var skipRegistrationBottomConstraint: NSLayoutConstraint!
     //MARK: - VM+Router init
     
     private(set) var viewModel: AuthorizationViewModel!

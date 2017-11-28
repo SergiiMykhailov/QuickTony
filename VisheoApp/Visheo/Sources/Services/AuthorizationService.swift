@@ -46,6 +46,19 @@ enum AuthError: Error {
 }
 
 class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvider {
+    
+    private let appState : AppStateService
+    
+    init(appState: AppStateService) {
+        self.appState = appState
+        super.init()
+        setupGoogleDependencies()
+
+        if appState.firstLaunch {
+            try? Auth.auth().signOut()
+        }
+    }
+    
     var userId: String? {
         return Auth.auth().currentUser?.uid
     }
@@ -55,16 +68,10 @@ class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvi
     }
     
     var isAnonymous: Bool  {
-        return false
         return Auth.auth().currentUser?.isAnonymous ?? true
     }
     
     weak var presentationViewController : UIViewController?
-    
-    override init() {
-        super.init()
-        setupGoogleDependencies()
-    }
     
     func notifyLogin() {
         NotificationCenter.default.post(name: .userLoggedIn, object: self)
@@ -109,13 +116,8 @@ extension VisheoAuthorizationService {
     }
     
     func signIn(with email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if let error = error {
-                self.notifyLoginFail(error: .unknownError(description: error.localizedDescription))
-            } else {
-                self.notifyLogin()
-            }
-        }
+        let credentials =  EmailAuthProvider.credential(withEmail: email, password: password)
+        firebaseSignIn(with: credentials)
     }
     
     func sendResetPassword(for email: String, completion: ((AuthError?) -> ())?) {
@@ -125,6 +127,34 @@ extension VisheoAuthorizationService {
             } else {
                 completion?(nil)
             }
+        }
+    }
+    
+    private func firebaseSignIn(with credentials: AuthCredential) {
+        var oldAnonymous : User? = nil
+        if Auth.auth().currentUser?.isAnonymous ?? false {
+            oldAnonymous = Auth.auth().currentUser
+        }
+        
+        let signInCallback : ((User?, Error?)->()) = { (user, error) in
+            if let error = error {
+                oldAnonymous?.delete(completion: nil)
+                self.notifyLoginFail(error: .unknownError(description: error.localizedDescription))
+            } else {
+                self.notifyLogin()
+            }
+        }
+        
+        if let currentUser = Auth.auth().currentUser {
+            currentUser.link(with: credentials) { (user, error) in
+                if let _ = error {
+                    Auth.auth().signIn(with: credentials, completion: signInCallback)
+                } else {
+                    self.notifyLogin()
+                }
+            }
+        } else {
+            Auth.auth().signIn(with: credentials, completion: signInCallback)
         }
     }
     
@@ -149,13 +179,7 @@ extension VisheoAuthorizationService {
                                 return
                             }
                             let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                            Auth.auth().signIn(with: credential) { (user, error) in
-                                if let error = error {
-                                    self.notifyLoginFail(error: .unknownError(description: error.localizedDescription))
-                                } else {
-                                    self.notifyLogin()
-                                }
-                            }
+                            self.firebaseSignIn(with: credential)
                         }
         }
     }
@@ -192,13 +216,8 @@ extension VisheoAuthorizationService : GIDSignInDelegate, GIDSignInUIDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                self.notifyLoginFail(error: .unknownError(description: error.localizedDescription))
-            } else {
-                self.notifyLogin()
-            }
-        }
+        
+        firebaseSignIn(with :credential)
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {

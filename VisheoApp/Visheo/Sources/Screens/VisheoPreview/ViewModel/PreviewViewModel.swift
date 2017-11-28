@@ -141,7 +141,9 @@ class VisheoPreviewViewModel : PreviewViewModel {
     
     func sendVisheo() {
         if authService.isAnonymous {
-            router?.showRegistration(with: assets)
+            router?.showRegistration {
+                self.sendVisheo()
+            }
         } else if purchasesInfo.premiumCardsNumber == 0 {
             router?.showCardTypeSelection(with: assets)
         } else {

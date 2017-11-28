@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func dependencies() -> RouterDependencies {
         let appState           = VisheoAppStateService()
-        let authService        = VisheoAuthorizationService()
+        let authService        = VisheoAuthorizationService(appState: appState)
         let inputValidator     = VisheoUserInputValidator()
         let occasionsList      = VisheoOccasionsListService()
         let permissionsService = VisheoAppPermissionsService()

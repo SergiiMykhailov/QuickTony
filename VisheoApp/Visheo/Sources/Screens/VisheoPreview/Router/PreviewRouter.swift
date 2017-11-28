@@ -15,7 +15,7 @@ protocol PreviewRouter: FlowRouter {
     func showVideoEdit(with assets: VisheoRenderingAssets)
     
     func sendVisheo(with assets: VisheoRenderingAssets)
-    func showRegistration(with assets: VisheoRenderingAssets)
+    func showRegistration(with callback: (()->())?)
     func showCardTypeSelection(with assets: VisheoRenderingAssets)
 }
 
@@ -79,7 +79,16 @@ class VisheoPreviewRouter : PreviewRouter {
             let sendController = segue.destination as! ShareVisheoViewController
             let sendRouter = ShareVisheoRouter(dependencies: dependencies)
             sendRouter.start(with: sendController, assets: sender as! VisheoRenderingAssets)
-        case .showRegistration: fallthrough
+        case .showRegistration: 
+            let authController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
+            let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) {
+                self.controller?.dismiss(animated: true, completion: {
+                    if let callback = sender as? (()->()) {
+                        callback()
+                    }
+                })
+            }
+            authRouter.start(with: authController, anonymousAllowed: false)
         case .showCardTypeSelection:
             break //TODO: Implement real initalization
         }
@@ -107,8 +116,8 @@ extension VisheoPreviewRouter {
         controller?.performSegue(SegueList.showSendVisheo, sender: assets)
     }
     
-    func showRegistration(with assets: VisheoRenderingAssets) {
-        controller?.performSegue(SegueList.showRegistration, sender: assets)
+    func showRegistration(with callback: (()->())?) {
+        controller?.performSegue(SegueList.showRegistration, sender: callback)
     }
     
     func showCardTypeSelection(with assets: VisheoRenderingAssets) {

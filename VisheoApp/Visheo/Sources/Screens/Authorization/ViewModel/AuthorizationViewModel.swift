@@ -13,6 +13,8 @@ protocol AuthorizationViewModel : LongFailableActionViewModel {
     func loginWithFacebook()
     func loginAsAnonymous()
     
+    var anonymousAllowed : Bool { get }
+    
     func signIn()
     func signUp()
     
@@ -23,12 +25,14 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     var warningAlertHandler: ((String) -> ())?
     var getPresentationViewController: (() -> (UIViewController?))?
     var showProgressCallback: ((Bool) -> ())?
+    let anonymousAllowed : Bool
     
     weak var router: AuthorizationRouter?
     var authService : AuthorizationService
     
-    init(authService: AuthorizationService) {
+    init(authService: AuthorizationService, anonymousAllowed: Bool) {
         self.authService = authService
+        self.anonymousAllowed = anonymousAllowed
     }
     
     deinit {

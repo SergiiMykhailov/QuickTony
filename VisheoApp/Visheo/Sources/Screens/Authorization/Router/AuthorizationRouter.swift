@@ -25,12 +25,15 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
     private(set) weak var controller: UIViewController?
     private(set) weak var viewModel: AuthorizationViewModel?
     
-    public init(dependencies: RouterDependencies) {
+    let finishAuthCallback : (()->())?
+    
+    public init(dependencies: RouterDependencies, finishCallback: (()->())? = nil) {
         self.dependencies = dependencies
+        self.finishAuthCallback = finishCallback
     }
     
-    func start(with viewController: AuthorizationViewController) {
-        let vm = VisheoAutorizationViewModel(authService: dependencies.authorizationService)
+    func start(with viewController: AuthorizationViewController, anonymousAllowed: Bool = true) {
+        let vm = VisheoAutorizationViewModel(authService: dependencies.authorizationService, anonymousAllowed: anonymousAllowed)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -44,11 +47,11 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
         switch segueList {
         case .showSignIn:
             let signInController = segue.destination as! SignInViewController
-            let router = VisheoSignInRouter(dependencies: dependencies)
+            let router = VisheoSignInRouter(dependencies: dependencies, finishCallback: finishAuthCallback)
             router.start(with: signInController)
         case .showSignUp:
             let signUpController = segue.destination as! SignUpViewController
-            let router = VisheoSignUpRouter(dependencies: dependencies)
+            let router = VisheoSignUpRouter(dependencies: dependencies, finishCallback: finishAuthCallback)
             router.start(with: signUpController)
         case .showMainScreen:
             let mainScreenController = (segue.destination as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
@@ -60,7 +63,11 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
 
 extension VisheoAuthorizationRouter {
     func showMainScreen() {
-        controller?.performSegue(SegueList.showMainScreen, sender: nil)
+        if finishAuthCallback != nil {
+            finishAuthCallback?()
+        } else {
+            controller?.performSegue(SegueList.showMainScreen, sender: nil)
+        }
     }
     
     func showSignIn() {
