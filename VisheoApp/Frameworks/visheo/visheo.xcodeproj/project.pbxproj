@@ -33,6 +33,7 @@
 		9255DF051FCD967B00F9815F /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF041FCD967B00F9815F /* Motion.swift */; };
 		9255DF061FCD96C500F9815F /* RenderQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF021FCD962E00F9815F /* RenderQueue.swift */; };
 		9255DF081FCD978500F9815F /* RenderQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF071FCD978500F9815F /* RenderQuality.swift */; };
+		9255DF0C1FCD9D9E00F9815F /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF0B1FCD9D9E00F9815F /* AnimationSettings.swift */; };
 		9268DD2A1FCC891000CC4F97 /* UIImageFixedOrientationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9268DD281FCC88EE00CC4F97 /* UIImageFixedOrientationExtension.swift */; };
 		926CA3B31FB9616000106EE3 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */; };
 		928B4ADB1FA7897B001499F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B4ADA1FA7897B001499F4 /* AppDelegate.swift */; };
@@ -129,6 +130,7 @@
 		9255DF021FCD962E00F9815F /* RenderQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderQueue.swift; sourceTree = "<group>"; };
 		9255DF041FCD967B00F9815F /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
 		9255DF071FCD978500F9815F /* RenderQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderQuality.swift; sourceTree = "<group>"; };
+		9255DF0B1FCD9D9E00F9815F /* AnimationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettings.swift; sourceTree = "<group>"; };
 		9268DD281FCC88EE00CC4F97 /* UIImageFixedOrientationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageFixedOrientationExtension.swift; sourceTree = "<group>"; };
 		926CA3B21FB9616000106EE3 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		928B4AD71FA7897B001499F4 /* visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,7 @@
 				92AC95A61FA8E00A003B973B /* thumbnails */,
 				92AC95AB1FA8E00A003B973B /* utils */,
 				9255DF041FCD967B00F9815F /* Motion.swift */,
+				9255DF0B1FCD9D9E00F9815F /* AnimationSettings.swift */,
 			);
 			path = framework;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				924E41731FBB74A400117FEF /* AsyncOperation.swift in Sources */,
 				9255DF051FCD967B00F9815F /* Motion.swift in Sources */,
 				926CA3B31FB9616000106EE3 /* UIImage+Utils.swift in Sources */,
+				9255DF0C1FCD9D9E00F9815F /* AnimationSettings.swift in Sources */,
 				929126B01FC14A38000E9D24 /* RenderDatabase.swift in Sources */,
 				92AC95B31FA8E00A003B973B /* Result.swift in Sources */,
 				92AFAD811FC372FC0086262E /* VisheoVideo.swift in Sources */,

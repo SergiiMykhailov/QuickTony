@@ -47,7 +47,9 @@ class VisheoPreviewRouter : PreviewRouter {
     func start(with viewController: VisheoPreviewViewController) {
         let vm = VisheoPreviewViewModel(assets: assets,
                                         permissionsService: dependencies.appPermissionsService,
-                                        authService: dependencies.authorizationService, purchasesInfo: dependencies.purchasesInfo)
+                                        authService: dependencies.authorizationService,
+										purchasesInfo: dependencies.purchasesInfo,
+										appStateService: dependencies.appStateService)
         viewModel = vm
         vm.router = self
         self.controller = viewController

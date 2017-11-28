@@ -46,6 +46,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
     let permissionsService : AppPermissionsService
     let authService: AuthorizationService
     let purchasesInfo: UserPurchasesInfo
+	let appStateService: AppStateService;
 	
 	let extractor = VideoThumbnailExtractor();
 	var renderContainer: PhotosAnimation? = nil;
@@ -61,11 +62,13 @@ class VisheoPreviewViewModel : PreviewViewModel {
     init(assets: VisheoRenderingAssets,
          permissionsService: AppPermissionsService,
          authService: AuthorizationService,
-         purchasesInfo: UserPurchasesInfo) {
+         purchasesInfo: UserPurchasesInfo,
+		 appStateService: AppStateService) {
         self.assets = assets
         self.permissionsService = permissionsService
         self.authService = authService
         self.purchasesInfo = purchasesInfo
+		self.appStateService = appStateService;
     }
 	
 	func renderPreview()
@@ -173,9 +176,16 @@ class VisheoPreviewViewModel : PreviewViewModel {
 	
 	private func renderTimeLine(videoSnapshot: URL, quality: RenderQuality) -> Promise<URL>
 	{
-		let frames = [assets.coverUrl] + assets.photoUrls + [videoSnapshot];
+		let settings = appStateService.appSettings.animationSettings;
+		let animationSettings = settings.withAssetsCount(assets.photoUrls.count) ?? AnimationSettings();
 		
-		renderContainer = PhotosAnimation(frames: frames, quality: quality);
+		let cover = AssetRepresentation(assets.coverUrl, .cover);
+		let photos = assets.photoUrls.map{ AssetRepresentation($0, .photo) }
+		let video = AssetRepresentation(videoSnapshot, .video);
+		
+		let frames = [cover] + photos + [video];
+		
+		renderContainer = PhotosAnimation(frames: frames, quality: quality, settings: animationSettings);
 		
 		return Promise { fl, rj in
 			do {

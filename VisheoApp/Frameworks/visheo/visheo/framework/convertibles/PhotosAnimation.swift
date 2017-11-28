@@ -8,22 +8,28 @@
 
 import AVFoundation
 
+
+public typealias AssetRepresentation = (url: URL, type: MediaType)
+
+
 public final class PhotosAnimation: VideoConvertible
 {
 	var renderQueueSupport: ProcessingQueueType {
 		return .concurrent;
 	}
 	
-	private let frames: [URL];
+	private let frames: [AssetRepresentation];
 	private let quality: RenderQuality;
+	private let settings: AnimationSettings;
 	
 	private let containerLayer = CALayer();
 	
 	
-	public init(frames: [URL], quality: RenderQuality)
+	public init(frames: [AssetRepresentation], quality: RenderQuality, settings: AnimationSettings)
 	{
 		self.frames = frames;
 		self.quality = quality;
+		self.settings = settings;
 	}
 	
 	
@@ -61,16 +67,16 @@ public final class PhotosAnimation: VideoConvertible
 	{
 		let renderSize = quality.renderSize;
 		
-		let frame = CGRect(origin: .zero, size: renderSize);
-		containerLayer.frame = frame;
+		let renderFrame = CGRect(origin: .zero, size: renderSize);
+		containerLayer.frame = renderFrame;
 		containerLayer.backgroundColor = UIColor.clear.cgColor;
 		
 		var beginTime = AVCoreAnimationBeginTimeAtZero;
 		var duration = 0.0;
 		
-		for (index, url) in frames.enumerated()
+		for (index, asset) in frames.enumerated()
 		{
-			let image = UIImage(contentsOfFile: url.path)!.fixedOrientation();
+			let image = UIImage(contentsOfFile: asset.url.path)!.fixedOrientation();
 			
 			let scaledSize = image.scaledSize(fitting: renderSize);
 			
@@ -81,19 +87,21 @@ public final class PhotosAnimation: VideoConvertible
 			
 			contentsLayer.contents = image.cgImage;
 			contentsLayer.frame = CGRect(origin: .zero, size: scaledSize);
-			contentsLayer.position = CGPoint(x: frame.midX, y: frame.midY);
+			contentsLayer.position = CGPoint(x: renderFrame.midX, y: renderFrame.midY);
 			contentsLayer.backgroundColor = UIColor.clear.cgColor;
 			contentsLayer.opacity = (index > 0) ? 0.0 : 1.0;
 			
 			containerLayer.insertSublayer(contentsLayer, at: 0);
 			
-			if (index > 0)
+			let transitionAnimationDuration = 2.2;
+			
+			if asset.type == .photo || asset.type == .video
 			{
 				let fadeInAnimation = CAKeyframeAnimation(keyPath: "opacity");
 				fadeInAnimation.beginTime = beginTime;
 				fadeInAnimation.values = [ 1.0, 1.0, 0.0, 0.0 ];
 				fadeInAnimation.keyTimes = [ 0.0, 0.4, 0.6, 1.0 ];
-				fadeInAnimation.duration = 2.2;
+				fadeInAnimation.duration = transitionAnimationDuration;
 				fadeInAnimation.isRemovedOnCompletion = false;
 				fadeInAnimation.fillMode = kCAFillModeBoth;
 				
@@ -105,15 +113,23 @@ public final class PhotosAnimation: VideoConvertible
 				duration += animDuration;
 			}
 			
-			if index < frames.count - 1
+			if asset.type == .cover || asset.type == .photo
 			{
 				let motionAnimation = animation(for: motion, in: contentsLayer, initialOffset: offset);
 				motionAnimation.beginTime = beginTime;
-				motionAnimation.duration = 2.2;
 				
+				switch asset.type {
+					case .photo:
+						motionAnimation.duration = settings.assetAnimationDuration;
+					case .cover:
+						motionAnimation.duration = settings.coverAnimationDuration;
+					default:
+						break;
+				}
+			
 				contentsLayer.add(motionAnimation, forKey: "motion");
 				
-				let animDuration = motionAnimation.duration * 0.45;
+				let animDuration = (motionAnimation.duration - 0.55 * transitionAnimationDuration);
 				
 				beginTime += animDuration;
 				duration += animDuration;
@@ -122,7 +138,7 @@ public final class PhotosAnimation: VideoConvertible
 				fadeOutAnimation.beginTime = beginTime;
 				fadeOutAnimation.values = [ 1.0, 1.0, 0.0, 0.0 ];
 				fadeOutAnimation.keyTimes = [ 0.0, 0.4, 0.6, 1.0 ];
-				fadeOutAnimation.duration = 2.2;
+				fadeOutAnimation.duration = transitionAnimationDuration;
 				fadeOutAnimation.isRemovedOnCompletion = false;
 				fadeOutAnimation.fillMode = kCAFillModeBoth;
 				
