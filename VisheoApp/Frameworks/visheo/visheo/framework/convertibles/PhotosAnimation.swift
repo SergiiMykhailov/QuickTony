@@ -186,7 +186,7 @@ public final class PhotosAnimation: VideoConvertible
 		videoComposition.frameDuration = CMTimeMake(1, 30);
 		videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer);
 		
-		guard let session = AVAssetExportSession(asset: composition, presetName: AVAssetExportPreset640x480) else {
+		guard let session = AVAssetExportSession(asset: composition, presetName: quality.exportSessionPreset) else {
 			completion(.failure(error: VideoConvertibleError.error));
 			return;
 		}

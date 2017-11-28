@@ -140,7 +140,7 @@ public final class VisheoVideo: VideoConvertible
 		{
 			let results = try prepareComposition();
 
-			guard let session = AVAssetExportSession(asset: results.mainComposition, presetName: AVAssetExportPreset640x480) else {
+			guard let session = AVAssetExportSession(asset: results.mainComposition, presetName: quality.exportSessionPreset) else {
 				throw VideoConvertibleError.error;
 			}
 			

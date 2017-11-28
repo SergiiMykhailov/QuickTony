@@ -8,6 +8,7 @@
 
 
 import Foundation
+import AVFoundation
 
 
 public enum RenderQuality: Int
@@ -27,5 +28,22 @@ extension RenderQuality
 	
 	static var maxRenderSize: CGSize {
 		return CGSize(width: RenderQuality.res1080.rawValue, height: RenderQuality.res1080.rawValue);
+	}
+}
+
+
+extension RenderQuality {
+	
+	var exportSessionPreset: String
+	{
+		switch self
+		{
+			case .res480:
+				return AVAssetExportPreset640x480;
+			case .res720:
+				return AVAssetExportPreset1280x720;
+			case .res1080:
+				return AVAssetExportPreset1920x1080;
+		}
 	}
 }
