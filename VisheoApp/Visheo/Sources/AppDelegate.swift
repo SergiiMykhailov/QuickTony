@@ -69,27 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Routing dependencies
     
     func dependencies() -> RouterDependencies {
-        NotificationCenter.default.addObserver(forName: Notification.Name.visheoRenderingProgress, object: nil, queue: OperationQueue.main) { (notification) in
-            let info = notification.userInfo!
-            print("Render Visheo - \(info[Notification.Keys.visheoId]), progress \(info[Notification.Keys.progress] as! Double * 100)")
-        }
-        
-        NotificationCenter.default.addObserver(forName: Notification.Name.visheoUploadingProgress, object: nil, queue: OperationQueue.main) { (notification) in
-            let info = notification.userInfo!
-            print("upload Visheo - \(info[Notification.Keys.visheoId]), progress \(info[Notification.Keys.progress] as! Double * 100)")
-        }
-        
-        NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationFailed, object: nil, queue: .main) { (notification) in
-            let info = notification.userInfo!
-            print("CREATE FAILED Visheo - \(info[Notification.Keys.visheoId]), error \(info[Notification.Keys.error])")
-        }
-        
-        NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationSuccess, object: nil, queue: .main) { (notification) in
-            let info = notification.userInfo!
-            print("CREATE SUCCESS Visheo - \(info[Notification.Keys.visheoId])")
-        }
-        
-        
         let appState           = VisheoAppStateService()
         let authService        = VisheoAuthorizationService()
         let inputValidator     = VisheoUserInputValidator()
