@@ -56,10 +56,7 @@ class CameraViewController: UIViewController
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated);
-		
-		if isMovingToParentViewController {
-			viewModel.startCapture();
-		}
+		viewModel.startCapture();
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -71,10 +68,7 @@ class CameraViewController: UIViewController
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
-		if isMovingFromParentViewController {
-			viewModel.stopCapture();
-		}
-		
+		viewModel.stopCapture(teardown: isMovingFromParentViewController)
 		super.viewWillDisappear(animated);
 	}
 	

@@ -39,7 +39,7 @@ protocol CameraViewModel: class
 	
 	func addPreviewOutput(_ output: GPUImageInput)
 	func startCapture()
-	func stopCapture();
+	func stopCapture(teardown: Bool);
 	func toggleRecording()
 	func toggleCameraFace();
 }
@@ -98,11 +98,17 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	}
 	
 	
-	func stopCapture() {
+	func stopCapture(teardown: Bool) {
 		if isRecording {
 			finishRecording(error: RecordingError.userStopped);
 		}
+		
+		if (teardown) {
+			camera?.delegate = nil;
+		}
+		
 		camera?.stopCapture();
+		camera?.removeAllTargets();
 	}
 	
 	

@@ -32,7 +32,12 @@ class VisheoPreviewRouter : PreviewRouter {
     let dependencies: RouterDependencies
     private(set) weak var controller: VisheoPreviewViewController?
     private(set) weak var viewModel: PreviewViewModel?
-    private(set) var assets : VisheoRenderingAssets
+	
+	private(set) var assets : VisheoRenderingAssets {
+		didSet {
+			viewModel?.handleAssetsUpdate(assets);
+		}
+	}
     
     public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets) {
         self.dependencies = dependencies
