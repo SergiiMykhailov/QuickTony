@@ -15,6 +15,14 @@ protocol RenderingService {
 }
 
 class VisheoRenderingService : RenderingService {
+	
+	private let renderQueue: RenderQueue;
+	
+	init(appStateService: AppStateService) {
+		let animationSettings = appStateService.appSettings.animationSettings;
+		renderQueue = RenderQueue(settings: animationSettings);
+	}
+	
     func export(creationInfo: VisheoCreationInfo, progress: ((Double)->())?, completion: ((URL?,Error?)->())?) {
         
         var task = RenderTask(quality: creationInfo.premium ? .res720 : .res480);
@@ -26,7 +34,7 @@ class VisheoRenderingService : RenderingService {
         let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
         task.addMedia(URL(fileURLWithPath: audio), type: .audio);
 
-        RenderQueue.shared.enqueue(task) { result in
+        renderQueue.enqueue(task) { result in
             if case .failure(let error) = result {
                 completion?(nil, error)
             }

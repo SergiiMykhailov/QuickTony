@@ -105,10 +105,10 @@ public final class VisheoVideo: VideoConvertible
 			let duration = CMTimeMakeWithSeconds(1.0, timelineAsset.duration.timescale);
 			
 			let start = CMTimeRangeMake(CMTimeSubtract(time, duration), duration);
-			audioInputParams.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.1, timeRange: start);
+			audioInputParams.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.05, timeRange: start);
 			
 			let end = CMTimeRangeMake(CMTimeAdd(time, videoAsset.duration), duration)
-			audioInputParams.setVolumeRamp(fromStartVolume: 0.1, toEndVolume: 1.0, timeRange: end);
+			audioInputParams.setVolumeRamp(fromStartVolume: 0.05, toEndVolume: 1.0, timeRange: end);
 		}
 		
 		guard let audioTrack = audio.tracks(withMediaType: .audio).first else {

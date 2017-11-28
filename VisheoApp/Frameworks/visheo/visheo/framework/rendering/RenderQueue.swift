@@ -15,9 +15,11 @@ public final class RenderQueue
 	
 	private let database: RenderDatabase;
 	private lazy var renderer = VisheoRenderer(db: self.database)
+	private let settings: [AnimationSettings];
 	
 	
-	public init() {
+	public init(settings: [AnimationSettings] = []) {
+		self.settings = settings;
 		database = try! VisheoRenderDatabase();
 	}
 	
@@ -27,7 +29,7 @@ public final class RenderQueue
 		database.add(task: task) { result in
 			switch result {
 				case .success(let task):
-					self.renderer.render(task: task);
+					self.renderer.render(task: task, settings: self.settings);
 					handler?(.success(value: task.id!));
 				case .failure(let error):
 					handler?(.failure(error: error));
@@ -43,7 +45,7 @@ public final class RenderQueue
 		database.fetch(taskId: id) { result in
 			switch result {
 				case .success(let task):
-					self.renderer.render(task: task);
+					self.renderer.render(task: task, settings: self.settings);
 					handler?(.success(value: id));
 				case .failure(let error):
 					handler?(.failure(error: error));

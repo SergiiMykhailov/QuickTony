@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let inputValidator     = VisheoUserInputValidator()
         let occasionsList      = VisheoOccasionsListService()
         let permissionsService = VisheoAppPermissionsService()
-        let renderingService   = VisheoRenderingService()
+		let renderingService   = VisheoRenderingService(appStateService: appState);
         let creationService    = VisheoCreationService(userInfoProvider: authService,
                                                        rendererService: renderingService)
         

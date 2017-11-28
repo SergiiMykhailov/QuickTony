@@ -16,6 +16,8 @@ protocol AppStateService {
 	
 	var shouldShowCameraTips: Bool { get }
 	func cameraTips(wereSeen seen: Bool);
+	
+	var appSettings: AppSettings { get }
 }
 
 class VisheoAppStateService: AppStateService {
@@ -46,5 +48,23 @@ class VisheoAppStateService: AppStateService {
 	func cameraTips(wereSeen seen: Bool) {
 		UserDefaults.standard.set(seen, forKey: VisheoAppStateService.cameraTipsShownKey);
 		UserDefaults.standard.synchronize();
+	}
+	
+	var appSettings: AppSettings {
+		let defaults = AppSettings();
+		
+		guard let settingsPath = Bundle.main.path(forResource: "app_settings", ofType: "plist") else {
+			return defaults;
+		}
+		
+		let settingsURL = URL(fileURLWithPath: settingsPath);
+		
+		guard let data = try? Data(contentsOf: settingsURL) else {
+			return defaults;
+		}
+		
+		let settings = try? PropertyListDecoder().decode(AppSettings.self, from: data);
+		
+		return settings ?? defaults;
 	}
 }
