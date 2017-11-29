@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Photos
 
 enum VisheoCreationStatus {
     case rendering(progress: Double)
@@ -14,7 +15,7 @@ enum VisheoCreationStatus {
     case ready
 }
 
-protocol ShareViewModel : class {
+protocol ShareViewModel : class, AlertGenerating {
     var coverImageUrl : URL {get}
     var visheoUrl : URL? {get}
     var visheoLink : String? {get}
@@ -30,9 +31,15 @@ protocol ShareViewModel : class {
     var showRetryLaterError : ((String)->())? {get set}
     func retry()
     func tryLater()
+    
+    func saveVisheo()
 }
 
 class ShareVisheoViewModel : ShareViewModel {
+    var successAlertHandler: ((String) -> ())?
+    
+    var warningAlertHandler: ((String) -> ())?
+    
     var showRetryLaterError: ((String) -> ())?
     
     var visheoUrl: URL?
@@ -75,6 +82,20 @@ class ShareVisheoViewModel : ShareViewModel {
     
     func tryLater() {
         router?.goToRoot()
+    }
+    
+    func saveVisheo() {
+        if let visheoUrl = visheoUrl {
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: visheoUrl)
+            }) {[weak self] (success, error) in
+                if success {
+                    self?.successAlertHandler?(NSLocalizedString("Your visheo was saved to the gallery.", comment: "Successfully save visheo to gallery text"))
+                } else {
+                    self?.warningAlertHandler?(NSLocalizedString("Oops... Something went wrong.", comment: "Failed to save visheo to gallery text"))
+                }
+            }
+        }
     }
     
     func startRendering() {

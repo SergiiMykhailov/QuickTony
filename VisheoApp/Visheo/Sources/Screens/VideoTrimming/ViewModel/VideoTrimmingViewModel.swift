@@ -14,7 +14,7 @@ enum PlaybackStatus {
     case paused
 }
 
-protocol VideoTrimmingViewModel : LongFailableActionViewModel {
+protocol VideoTrimmingViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func togglePlayback()
     func createPlayerLayer() -> CALayer
     func setup(trimmerView: TrimmerView)

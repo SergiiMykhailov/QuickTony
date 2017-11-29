@@ -9,7 +9,7 @@
 import Foundation
 import Photos
 
-protocol PhotoPickerViewModel : LongFailableActionViewModel {
+protocol PhotoPickerViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func checkPhoto(id: String)
     func photoSelectionIndex(for id: String) -> Int?
     

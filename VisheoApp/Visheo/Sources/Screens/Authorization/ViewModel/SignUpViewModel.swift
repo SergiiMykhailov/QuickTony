@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SignUpViewModel : LongFailableActionViewModel {
+protocol SignUpViewModel : class, ProgressGenerating, WarningAlertGenerating {
     var email : String {get set}
     var fullName : String {get set}
     var password : String {get set}

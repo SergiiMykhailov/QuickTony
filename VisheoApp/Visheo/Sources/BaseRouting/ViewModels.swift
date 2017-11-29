@@ -8,8 +8,19 @@
 
 import Foundation
 
-
-protocol LongFailableActionViewModel: class {
+protocol ProgressGenerating {
     var showProgressCallback : ((Bool) -> ())? {get set}
+}
+
+protocol AlertGenerating : SuccessAlertGenerating, WarningAlertGenerating {
+}
+
+protocol SuccessAlertGenerating {
+    var successAlertHandler : ((String) -> ())? {get set}
+}
+
+protocol WarningAlertGenerating {
     var warningAlertHandler : ((String) -> ())? {get set}
 }
+
+

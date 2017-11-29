@@ -22,6 +22,14 @@ class ShareVisheoViewController: UIViewController {
             self?.showRetryError(text: $0)
         }
         
+        viewModel.warningAlertHandler = {[weak self] in
+            self?.showWarningAlertWithText(text: $0)
+        }
+        
+        viewModel.successAlertHandler = {[weak self] in
+            self?.showSuccessAlertWithText(text: $0)
+        }
+        
         coverImage.image = UIImage(contentsOfFile: viewModel.coverImageUrl.path)
     }
     
@@ -139,6 +147,10 @@ class ShareVisheoViewController: UIViewController {
         if let link = viewModel.visheoLink, let visheoUrl = URL(string: link) {
             UIApplication.shared.open(visheoUrl, options: [:], completionHandler: nil)
         }
+    }
+    
+    @IBAction func downloadPressed(_ sender: Any) {
+        viewModel.saveVisheo()
     }
     
     @IBAction func playerTapped(_ sender: Any) {

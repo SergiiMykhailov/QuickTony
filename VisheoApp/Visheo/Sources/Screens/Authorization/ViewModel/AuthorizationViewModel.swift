@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AuthorizationViewModel : LongFailableActionViewModel {
+protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func loginWithGoogle()
     func loginWithFacebook()
     func loginAsAnonymous()

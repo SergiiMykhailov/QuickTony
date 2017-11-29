@@ -13,7 +13,7 @@ extension Notification.Name {
     static let preselectedCoverChanged = Notification.Name("preselectedCoverChanged")
 }
 
-protocol SelectCoverViewModel : LongFailableActionViewModel {
+protocol SelectCoverViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func coverViewModel(at index: Int) -> CoverCellViewModel
     var coversNumber : Int {get}
     var hideBackButton: Bool {get}
