@@ -26,7 +26,8 @@ protocol PreviewViewModel : class {
     func editCover()
     func editPhotos()
     func editVideo()
-    
+	func editSoundtrack();
+	
     func sendVisheo()
     
     var assets : VisheoRenderingAssets {get}
@@ -141,6 +142,10 @@ class VisheoPreviewViewModel : PreviewViewModel {
     func editVideo() {
         router?.showVideoEdit(with: assets)
     }
+	
+	func editSoundtrack() {
+		router?.showSoundtrackEdit(with: assets);
+	}
     
     func sendVisheo() {
         if authService.isAnonymous {

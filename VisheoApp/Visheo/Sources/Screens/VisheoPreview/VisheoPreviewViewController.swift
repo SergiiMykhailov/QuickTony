@@ -76,6 +76,7 @@ class VisheoPreviewViewController: UIViewController {
     }
     
     @IBAction func editSoundtrack(_ sender: Any) {
+		viewModel.editSoundtrack();
     }
     
     @IBAction func sendPressed(_ sender: Any) {
