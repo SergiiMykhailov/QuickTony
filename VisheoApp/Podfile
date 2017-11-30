@@ -28,6 +28,7 @@ target 'Visheo' do
   
   pod 'GPUImage'
   pod 'PryntTrimmerView'
+  pod 'LGSideMenuController'
   
    pod 'Reveal-SDK', :configurations => ['Debug']
 end

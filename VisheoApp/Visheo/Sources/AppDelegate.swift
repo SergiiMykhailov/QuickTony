@@ -77,16 +77,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let renderingService   = VisheoRenderingService(appStateService: appState);
         let creationService    = VisheoCreationService(userInfoProvider: authService,
                                                        rendererService: renderingService)
+        let assembly = VisheoRouterAssembly()
         
         let purchasesInfo = DummyUserPurchasesInfo(premiumCardsNumber: 2)
         return RouterDependencies(appStateService: appState,
                                                 appPermissionsService: permissionsService,
                                                 authorizationService: authService,
+                                                userInfoProvider : authService,
                                                 userInputValidator: inputValidator,
                                                 occasionsListService: occasionsList,
                                                 purchasesInfo:  purchasesInfo,
                                                 renderingService: renderingService,
-                                                creationService: creationService)
+                                                creationService: creationService,
+                                                routerAssembly: assembly)
     }
     
     // MARK: Appearance setup

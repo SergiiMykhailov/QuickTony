@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol AuthorizationRouter: FlowRouter {
     func showMainScreen()
     func showSignIn()
@@ -54,9 +53,7 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
             let router = VisheoSignUpRouter(dependencies: dependencies, finishCallback: finishAuthCallback)
             router.start(with: signUpController)
         case .showMainScreen:
-            let mainScreenController = (segue.destination as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
-            let router = VisheoChooseOccasionRouter(dependencies: dependencies)
-            router.start(with: mainScreenController)
+            dependencies.routerAssembly.assembleMainScreen(on: segue.destination, with: dependencies)
         }
     }
 }

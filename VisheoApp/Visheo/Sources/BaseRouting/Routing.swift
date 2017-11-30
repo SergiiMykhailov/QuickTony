@@ -26,10 +26,13 @@ struct RouterDependencies {
     let appStateService : AppStateService
     let appPermissionsService : AppPermissionsService
     let authorizationService : AuthorizationService
+    let userInfoProvider : UserInfoProvider
     let userInputValidator : UserInputValidator
     let occasionsListService : OccasionsListService
     
     let purchasesInfo: UserPurchasesInfo
     let renderingService : RenderingService
     let creationService : CreationService
+    
+    let routerAssembly: RouterAssembly
 }

@@ -19,6 +19,8 @@ protocol ChooseOccasionViewModel : class {
     func selectOccasion(at index: Int)
     
     var didChangeCallback: (()->())? {get set}
+    
+    func showMenu()
 }
 
 class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
@@ -55,6 +57,10 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func showMenu() {
+        router?.showMenu()
     }
     
     private var holidays : [OccasionRecord] {

@@ -43,6 +43,11 @@
 		B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450DE1FBF02F60021772F /* PhotoPickerViewController.swift */; };
 		B44450E11FBF0B580021772F /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450E01FBF0B580021772F /* PhotoCollectionViewCell.swift */; };
 		B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450E21FBF0F360021772F /* PhotoSelectionIndexView.swift */; };
+		B453F1D11FCF05B5003D61CB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1D01FCF05B5003D61CB /* MenuViewController.swift */; };
+		B453F1D51FCF1AB7003D61CB /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1D41FCF1AB7003D61CB /* MenuRouter.swift */; };
+		B453F1D71FCF1AC4003D61CB /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1D61FCF1AC4003D61CB /* MenuViewModel.swift */; };
+		B453F1D91FCF1AED003D61CB /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1D81FCF1AED003D61CB /* MenuTableViewCell.swift */; };
+		B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1DA1FCF1C01003D61CB /* MenuItemViewModel.swift */; };
 		B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280B1FC346960070FFB7 /* PreviewViewModel.swift */; };
 		B465280E1FC346A30070FFB7 /* PreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280D1FC346A30070FFB7 /* PreviewRouter.swift */; };
 		B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */; };
@@ -67,6 +72,7 @@
 		B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */; };
 		B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A79CEF1FAC927200C208CF /* Main.storyboard */; };
 		B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */; };
+		B4AEE0E21FD01F1B0043A39A /* RouterAsembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0E11FD01F1B0043A39A /* RouterAsembly.swift */; };
 		B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */; };
 		B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABC71FB8CC7C003EDC7F /* AuthorizationViewController.swift */; };
 		B4BCABEC1FB8CC7D003EDC7F /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABC91FB8CC7C003EDC7F /* AuthorizationRouter.swift */; };
@@ -190,6 +196,11 @@
 		B44450DE1FBF02F60021772F /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		B44450E01FBF0B580021772F /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B44450E21FBF0F360021772F /* PhotoSelectionIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionIndexView.swift; sourceTree = "<group>"; };
+		B453F1D01FCF05B5003D61CB /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		B453F1D41FCF1AB7003D61CB /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
+		B453F1D61FCF1AC4003D61CB /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		B453F1D81FCF1AED003D61CB /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		B453F1DA1FCF1C01003D61CB /* MenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewModel.swift; sourceTree = "<group>"; };
 		B465280B1FC346960070FFB7 /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
 		B465280D1FC346A30070FFB7 /* PreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRouter.swift; sourceTree = "<group>"; };
 		B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +226,7 @@
 		B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		B4A79CF01FAC927200C208CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		B4AEE0E11FD01F1B0043A39A /* RouterAsembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAsembly.swift; sourceTree = "<group>"; };
 		B4B9D1961FA8A52300CBD7DB /* Visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B9D1A51FA8A52300CBD7DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -390,6 +402,34 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B453F1CD1FCF058F003D61CB /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B453F1D31FCF1AA4003D61CB /* ViewModel */,
+				B453F1D21FCF1A99003D61CB /* Router */,
+				B453F1D01FCF05B5003D61CB /* MenuViewController.swift */,
+				B453F1D81FCF1AED003D61CB /* MenuTableViewCell.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		B453F1D21FCF1A99003D61CB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B453F1D41FCF1AB7003D61CB /* MenuRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B453F1D31FCF1AA4003D61CB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B453F1D61FCF1AC4003D61CB /* MenuViewModel.swift */,
+				B453F1DA1FCF1C01003D61CB /* MenuItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B46528081FC346650070FFB7 /* VisheoPreview */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,6 +569,7 @@
 				B48AAAD71FAA0AE2000BB33B /* Routing.swift */,
 				B48AAAD61FAA0AE1000BB33B /* SegueList.swift */,
 				B409B3A41FADBC2100FE43F1 /* ViewModels.swift */,
+				B4AEE0E11FD01F1B0043A39A /* RouterAsembly.swift */,
 			);
 			path = BaseRouting;
 			sourceTree = "<group>";
@@ -566,6 +607,7 @@
 		B4BCABC51FB8CC7C003EDC7F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B453F1CD1FCF058F003D61CB /* Menu */,
 				B46761231FC70E33006E9CB2 /* VisheoScreen */,
 				B46528081FC346650070FFB7 /* VisheoPreview */,
 				B4F666201FC1C96C00B68055 /* VideoTrimming */,
@@ -942,6 +984,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-11/iOS/RevealServer.framework",
@@ -963,6 +1006,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
@@ -1026,6 +1070,7 @@
 				B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */,
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
 				B467612D1FC7367A006E9CB2 /* UserPurchasesInfo.swift in Sources */,
+				B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */,
 				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
 				B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */,
 				B4BCABF51FB8CC7D003EDC7F /* OccassionCollectionViewCell.swift in Sources */,
@@ -1056,6 +1101,7 @@
 				B4BCABF31FB8CC7D003EDC7F /* SignUpViewModel.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
 				B4BCABF61FB8CC7D003EDC7F /* ChooseOccasionViewController.swift in Sources */,
+				B453F1D91FCF1AED003D61CB /* MenuTableViewCell.swift in Sources */,
 				B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */,
 				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4BCABF11FB8CC7D003EDC7F /* AuthorizationViewModel.swift in Sources */,
@@ -1064,17 +1110,21 @@
 				9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */,
 				B4F63DBC1FC83D4100E05B90 /* LabeledProgressView.swift in Sources */,
 				B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */,
+				B4AEE0E21FD01F1B0043A39A /* RouterAsembly.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */,
 				B44450E11FBF0B580021772F /* PhotoCollectionViewCell.swift in Sources */,
 				B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */,
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
+				B453F1D51FCF1AB7003D61CB /* MenuRouter.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
 				B4F63DC01FC85FDB00E05B90 /* VisheoRenderingService.swift in Sources */,
 				B4BCABF01FB8CC7D003EDC7F /* SignUpViewController.swift in Sources */,
 				B44450D01FBEDA7B0021772F /* VisheoRenderingAssets.swift in Sources */,
 				B4BCABEF1FB8CC7D003EDC7F /* SignInViewController.swift in Sources */,
 				B4BCABFC1FB8CC7D003EDC7F /* OccasionCellViewModel.swift in Sources */,
+				B453F1D11FCF05B5003D61CB /* MenuViewController.swift in Sources */,
+				B453F1D71FCF1AC4003D61CB /* MenuViewModel.swift in Sources */,
 				B44450DB1FBF02D70021772F /* PhotoPickerRouter.swift in Sources */,
 				B4BCAC021FB8CC7D003EDC7F /* OnboardingViewModel.swift in Sources */,
 				B46761291FC7119D006E9CB2 /* ShareRouter.swift in Sources */,
@@ -1288,7 +1338,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NW83AWMN8Z;
+				DEVELOPMENT_TEAM = 4M6W632NJ7;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
@@ -1310,7 +1360,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NW83AWMN8Z;
+				DEVELOPMENT_TEAM = 4M6W632NJ7;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";

@@ -28,7 +28,7 @@ class VisheoAppStateService: AppStateService {
     let firstLaunch: Bool
     
     init() {
-        firstLaunch = !(UserDefaults.standard.bool(forKey: VisheoAppStateService.appWasLaunchedKey) ?? false)
+        firstLaunch = !UserDefaults.standard.bool(forKey: VisheoAppStateService.appWasLaunchedKey)
         UserDefaults.standard.set(true, forKey: VisheoAppStateService.appWasLaunchedKey)
         UserDefaults.standard.synchronize()
     }

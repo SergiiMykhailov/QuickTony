@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KuW-zR-yAk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VJ7-X9-CPT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,6 +23,150 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Side Menu Controller-->
+        <scene sceneID="3Ie-fl-48c">
+            <objects>
+                <viewController id="VJ7-X9-CPT" customClass="LGSideMenuController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tln-9u-ogq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="smx-xQ-yym"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftViewSwipeGestureEnabled" value="NO"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="leftViewWidth">
+                            <real key="value" value="284"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="RZd-R4-Nqo" kind="custom" identifier="left" customClass="LGSideMenuSegue" id="uck-bj-133"/>
+                        <segue destination="KuW-zR-yAk" kind="custom" identifier="root" customClass="LGSideMenuSegue" id="GLc-3v-ztY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sH3-MS-BPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1724" y="-214"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="fez-em-gqL">
+            <objects>
+                <viewController id="RZd-R4-Nqo" customClass="MenuViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Shp-Xs-kVP">
+                        <rect key="frame" x="0.0" y="0.0" width="284" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hba-D1-xws">
+                                <rect key="frame" x="0.0" y="0.0" width="284" height="172"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="284" id="1Zc-H1-KcZ"/>
+                                    <constraint firstAttribute="height" constant="172" id="VkC-Um-BS9"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hBe-7I-Yuy">
+                                <rect key="frame" x="0.0" y="172" width="284" height="451"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuItem" rowHeight="48" id="FMy-SS-V7b" customClass="MenuTableViewCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="284" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FMy-SS-V7b" id="aED-7S-XVG">
+                                            <rect key="frame" x="0.0" y="0.0" width="284" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZLQ-hB-eTL">
+                                                    <rect key="frame" x="20" y="13" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="gcg-AE-6VI"/>
+                                                        <constraint firstAttribute="height" constant="22" id="gps-Ca-uGB"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4v-USr">
+                                                    <rect key="frame" x="72" y="15" width="189" height="19"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                    <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8xJ-4v-USr" firstAttribute="leading" secondItem="ZLQ-hB-eTL" secondAttribute="trailing" constant="30" id="3jp-9f-Zao"/>
+                                                <constraint firstItem="ZLQ-hB-eTL" firstAttribute="centerY" secondItem="aED-7S-XVG" secondAttribute="centerY" id="3tg-zV-F8r"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8xJ-4v-USr" secondAttribute="trailing" constant="8" id="pd5-Ue-Upx"/>
+                                                <constraint firstItem="8xJ-4v-USr" firstAttribute="centerY" secondItem="aED-7S-XVG" secondAttribute="centerY" id="tZI-S7-2pd"/>
+                                                <constraint firstItem="ZLQ-hB-eTL" firstAttribute="leading" secondItem="aED-7S-XVG" secondAttribute="leading" constant="20" id="yhq-fM-UV6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="menuItemImage" destination="ZLQ-hB-eTL" id="D4D-5b-gbv"/>
+                                            <outlet property="menuItemText" destination="8xJ-4v-USr" id="3WM-I8-O9j"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RZd-R4-Nqo" id="oXA-yC-hTs"/>
+                                    <outlet property="delegate" destination="RZd-R4-Nqo" id="wM4-n9-Seh"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomePic" translatesAutoresizingMaskIntoConstraints="NO" id="T9z-Gn-MfH">
+                                <rect key="frame" x="20" y="88" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="djx-H5-pHd"/>
+                                    <constraint firstAttribute="height" constant="64" id="lwQ-JH-BcH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="32"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elizabeth Burman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeD-pR-Sdz">
+                                <rect key="frame" x="93" y="111" width="126" height="19"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQt-N8-c2U">
+                                <rect key="frame" x="0.0" y="623" width="284" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wXA-QG-D8p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <state key="normal" title="Privacy policy">
+                                    <color key="titleColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hBe-7I-Yuy" firstAttribute="top" secondItem="hba-D1-xws" secondAttribute="bottom" id="4V0-U3-Yay"/>
+                            <constraint firstItem="hBe-7I-Yuy" firstAttribute="leading" secondItem="Jco-KM-Lgj" secondAttribute="leading" id="4oB-41-Yy9"/>
+                            <constraint firstItem="hba-D1-xws" firstAttribute="leading" secondItem="Jco-KM-Lgj" secondAttribute="leading" id="IqI-pd-dUV"/>
+                            <constraint firstItem="T9z-Gn-MfH" firstAttribute="leading" secondItem="Jco-KM-Lgj" secondAttribute="leading" constant="20" id="JoB-cy-dgL"/>
+                            <constraint firstItem="Jco-KM-Lgj" firstAttribute="trailing" secondItem="bQt-N8-c2U" secondAttribute="trailing" id="Kwu-6j-jrm"/>
+                            <constraint firstItem="hBe-7I-Yuy" firstAttribute="top" secondItem="T9z-Gn-MfH" secondAttribute="bottom" constant="20" id="V91-If-Xfa"/>
+                            <constraint firstItem="bQt-N8-c2U" firstAttribute="top" secondItem="hBe-7I-Yuy" secondAttribute="bottom" id="VFv-c3-ce0"/>
+                            <constraint firstItem="hba-D1-xws" firstAttribute="top" secondItem="Shp-Xs-kVP" secondAttribute="top" id="XFO-3W-a2a"/>
+                            <constraint firstItem="QeD-pR-Sdz" firstAttribute="leading" secondItem="T9z-Gn-MfH" secondAttribute="trailing" constant="9" id="bkB-It-w0X"/>
+                            <constraint firstItem="Jco-KM-Lgj" firstAttribute="bottom" secondItem="bQt-N8-c2U" secondAttribute="bottom" id="cvv-Id-JBe"/>
+                            <constraint firstItem="Jco-KM-Lgj" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QeD-pR-Sdz" secondAttribute="trailing" constant="9" id="lYR-s2-LSk"/>
+                            <constraint firstItem="QeD-pR-Sdz" firstAttribute="centerY" secondItem="T9z-Gn-MfH" secondAttribute="centerY" id="nk9-fR-L98"/>
+                            <constraint firstItem="bQt-N8-c2U" firstAttribute="leading" secondItem="Jco-KM-Lgj" secondAttribute="leading" id="rV0-fT-FEe"/>
+                            <constraint firstItem="Jco-KM-Lgj" firstAttribute="trailing" secondItem="hBe-7I-Yuy" secondAttribute="trailing" id="vwc-jN-suh"/>
+                            <constraint firstItem="Jco-KM-Lgj" firstAttribute="trailing" secondItem="hba-D1-xws" secondAttribute="trailing" id="wBB-2j-tdY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Jco-KM-Lgj"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="284" height="667"/>
+                    <connections>
+                        <outlet property="userPicImage" destination="T9z-Gn-MfH" id="66q-NF-yyA"/>
+                        <outlet property="usernameLabel" destination="QeD-pR-Sdz" id="QLN-Es-22R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7iQ-d3-QCn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1724.8" y="606.74662668665667"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ywM-Xk-6yu">
             <objects>
@@ -43,7 +187,7 @@
         <!--CHOOSE OCCASION-->
         <scene sceneID="Hbk-kK-BCR">
             <objects>
-                <viewController id="J8F-X6-tff" customClass="ChooseOccasionViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseOccasionViewController" id="J8F-X6-tff" customClass="ChooseOccasionViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PZA-0W-lc3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +224,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-P7-EP7" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="281" width="164" height="34"/>
+                                                    <rect key="frame" x="20" y="281" width="129.5" height="34"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="xFM-h5-j6w"/>
@@ -130,13 +274,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations on occasion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-G6-XCX">
-                                <rect key="frame" x="20" y="391" width="206" height="19"/>
+                                <rect key="frame" x="20" y="391" width="206" height="21.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-gy-rd0">
-                                <rect key="frame" x="0.0" y="418" width="375" height="126"/>
+                                <rect key="frame" x="0.0" y="420.5" width="375" height="126"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="126" id="eYd-pZ-lZ8"/>
@@ -195,7 +339,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHq-yA-6S2">
-                                <rect key="frame" x="20" y="565" width="335" height="1"/>
+                                <rect key="frame" x="20" y="567.5" width="335" height="1"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="hCE-wc-Okk"/>
@@ -224,7 +368,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zwo-40-2cB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="CHOOSE OCCASION" id="hjY-Tq-5Fw"/>
+                    <navigationItem key="navigationItem" title="CHOOSE OCCASION" id="hjY-Tq-5Fw">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="mir-q2-0eC">
+                            <connections>
+                                <action selector="menuPressed:" destination="J8F-X6-tff" id="fME-6J-lSy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="holidaysCollection" destination="iN2-6H-mSy" id="jbG-Ik-bt7"/>
                         <outlet property="occasionsCollection" destination="U4i-gy-rd0" id="9Ku-Pn-slE"/>
@@ -548,22 +698,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="bdG-sn-BZg">
-                                <rect key="frame" x="61" y="-17345.5" width="253" height="35295"/>
+                                <rect key="frame" x="0.0" y="229.5" width="0.0" height="144"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR PHOTOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-PL-lMo">
-                                        <rect key="frame" x="0.0" y="0.0" width="253" height="9566.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add memorable to your Visheo — please allow Visheo to access your photos when prompted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-CT-UNf">
-                                        <rect key="frame" x="0.0" y="9608.5" width="253" height="25584.5"/>
+                                        <rect key="frame" x="0.0" y="42" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-vf-rCc">
-                                        <rect key="frame" x="0.0" y="35235" width="253" height="60"/>
+                                        <rect key="frame" x="0.0" y="84" width="0.0" height="60"/>
                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ss-oF-nBH"/>
@@ -617,11 +766,14 @@
     </scenes>
     <resources>
         <image name="arrow" width="20" height="20"/>
+        <image name="background" width="284" height="172"/>
+        <image name="menu" width="20" height="20"/>
         <image name="rectangleCopy9" width="73" height="73"/>
+        <image name="welcomePic" width="337" height="337"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Y7f-9b-FXA"/>
         <segue reference="G1f-tY-ZBC"/>
-        <segue reference="6pg-nG-fzZ"/>
+        <segue reference="2OI-cd-wsG"/>
     </inferredMetricsTieBreakers>
 </document>

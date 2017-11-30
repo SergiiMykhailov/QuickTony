@@ -27,6 +27,9 @@ protocol AuthorizationService {
 
 protocol UserInfoProvider {
     var userId: String? {get}
+    
+    var userName: String? {get}
+    var userPicUrl: URL? {get}
 }
 
 extension Notification.Name {
@@ -46,7 +49,6 @@ enum AuthError: Error {
 }
 
 class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvider {
-    
     private let appState : AppStateService
     
     init(appState: AppStateService) {
@@ -61,6 +63,14 @@ class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvi
     
     var userId: String? {
         return Auth.auth().currentUser?.uid
+    }
+    
+    var userName: String? {
+        return Auth.auth().currentUser?.displayName
+    }
+    
+    var userPicUrl: URL? {
+        return Auth.auth().currentUser?.photoURL
     }
     
     var isAuthorized: Bool  {        

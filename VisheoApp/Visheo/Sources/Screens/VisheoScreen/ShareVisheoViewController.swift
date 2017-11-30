@@ -63,14 +63,17 @@ class ShareVisheoViewController: UIViewController {
     private func updateForRendering() {
         progressBar.title = viewModel.renderingTitle
         interface(enable: false)
+        menuBarItem.isEnabled = false
     }
     
     private func updateForUploading() {
         progressBar.title = viewModel.uploadingTitle
         interface(enable: false)
+        menuBarItem.isEnabled = true
     }
     
     private func updateForReadyState() {
+        menuBarItem.isEnabled = true
         UIView.animate(withDuration: 0.3) {
             self.progressBar.alpha = 0.0
             self.coverImage.alpha = 0.0
@@ -142,6 +145,7 @@ class ShareVisheoViewController: UIViewController {
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var videoContainer: UIView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var menuBarItem: UIBarButtonItem!
     
     @IBAction func sharePressed(_ sender: Any) {
         if let link = viewModel.visheoLink, let visheoUrl = URL(string: link) {
@@ -163,6 +167,10 @@ class ShareVisheoViewController: UIViewController {
             player.play()
             playButton.isHidden = true
         }
+    }
+    
+    @IBAction func menuPressed(_ sender: Any) {
+        viewModel.showMenu()
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {

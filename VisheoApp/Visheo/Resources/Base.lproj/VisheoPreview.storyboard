@@ -465,11 +465,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mpf-wC-7hc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SHARE YOUR VISHEO" id="gn6-b8-TgL"/>
+                    <navigationItem key="navigationItem" title="SHARE YOUR VISHEO" id="gn6-b8-TgL">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="QL0-nA-9zK">
+                            <connections>
+                                <action selector="menuPressed:" destination="L2Y-ET-ymb" id="lx9-0N-Sr1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="coverImage" destination="JUY-Yl-B80" id="mhg-IF-Q9h"/>
                         <outlet property="downloadButton" destination="TuK-eZ-TXQ" id="vKy-vf-B5A"/>
                         <outlet property="linkText" destination="fyp-in-Hpa" id="3Jz-dz-tYS"/>
+                        <outlet property="menuBarItem" destination="QL0-nA-9zK" id="dGL-9n-rhS"/>
                         <outlet property="playButton" destination="OgS-LU-4q7" id="ubv-Oc-xIN"/>
                         <outlet property="progressBar" destination="7tK-Zx-gw7" id="Dtx-fy-EOb"/>
                         <outlet property="shareButton" destination="BoA-F2-OsI" id="mlf-gB-ae4"/>
@@ -547,13 +554,14 @@
         <image name="arrow" width="20" height="20"/>
         <image name="cover" width="50" height="52"/>
         <image name="group9Copy" width="24" height="24"/>
+        <image name="menu" width="20" height="20"/>
         <image name="music" width="50" height="52"/>
         <image name="play" width="80" height="80"/>
         <image name="slideshow" width="50" height="52"/>
         <image name="video" width="50" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qxY-1U-qrq"/>
+        <segue reference="Lk5-UW-sFW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -31,6 +31,7 @@ protocol ShareViewModel : class, AlertGenerating {
     var showRetryLaterError : ((String)->())? {get set}
     func retry()
     func tryLater()
+    func showMenu()
     
     func saveVisheo()
 }
@@ -145,5 +146,9 @@ class ShareVisheoViewModel : ShareViewModel {
         }
         
         self.creationService.createVisheo(from: assets, premium: true)
+    }
+    
+    func showMenu() {
+        router?.showMenu()
     }
 }

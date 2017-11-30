@@ -10,6 +10,7 @@ import UIKit
 
 protocol ShareRouter: FlowRouter {
     func goToRoot()
+    func showMenu()
 }
 
 class ShareVisheoRouter : ShareRouter {
@@ -48,6 +49,10 @@ class ShareVisheoRouter : ShareRouter {
 extension ShareVisheoRouter {
     func goToRoot() {
         controller?.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func showMenu() {
+         controller?.showLeftViewAnimated(self)
     }
 }
 

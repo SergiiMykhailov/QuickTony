@@ -40,6 +40,10 @@ class ChooseOccasionViewController: UIViewController {
         self.viewModel = viewModel
         self.router    = router
     }
+    
+    @IBAction func menuPressed(_ sender: Any) {
+        viewModel.showMenu()
+    }
 }
 
 extension ChooseOccasionViewController {

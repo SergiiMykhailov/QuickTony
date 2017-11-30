@@ -10,6 +10,7 @@ import UIKit
 
 protocol ChooseOccasionRouter: FlowRouter {
     func showSelectCover(for occasion: OccasionRecord)
+    func showMenu()
 }
 
 class VisheoChooseOccasionRouter : ChooseOccasionRouter {
@@ -48,6 +49,10 @@ class VisheoChooseOccasionRouter : ChooseOccasionRouter {
 extension VisheoChooseOccasionRouter {
     func showSelectCover(for occasion: OccasionRecord) {
         controller?.performSegue(SegueList.showOccasion, sender: occasion)
+    }
+    
+    func showMenu() {
+        controller?.showLeftViewAnimated(self)
     }
 }
 
