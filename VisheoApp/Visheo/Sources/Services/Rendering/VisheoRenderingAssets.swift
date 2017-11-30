@@ -49,6 +49,9 @@ class VisheoRenderingAssets {
     }
 	
 	private (set) var soundtrackId: Int?;
+	var soundtrack: OccasionSoundtrack? {
+		return originalOccasion.soundtracks.filter{ $0.id == soundtrackId }.first;
+	}
     
     // MARK: Photos
     

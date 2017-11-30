@@ -31,7 +31,7 @@ class VisheoSelectSoundtrackRouter: SelectSoundtrackRouter
 	}
 	
 	func start(with viewController: SelectSoundtrackViewController) {
-		let vm = VisheoSelectSoundtrackViewModel(occasion: self.occasion, assets: assets, permissionsService: dependencies.appPermissionsService)
+		let vm = VisheoSelectSoundtrackViewModel(occasion: self.occasion, assets: assets, soundtracksService: dependencies.soundtracksService)
 		viewModel = vm
 		vm.router = self
 		self.controller = viewController

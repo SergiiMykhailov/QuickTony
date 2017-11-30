@@ -25,6 +25,7 @@
 		92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */; };
 		92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
 		92A8D30E1FC86E86001E194D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
+		92AA3CFE1FD06D5900E3C95A /* SoundtracksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */; };
 		92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */; };
 		92C006631FC0B4AC000AFD4E /* CameraPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */; };
 		92C006651FC0B4BE000AFD4E /* CameraPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */; };
@@ -182,6 +183,7 @@
 		92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewView.swift; sourceTree = "<group>"; };
 		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
 		92A8D30C1FC86E86001E194D /* blank.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank.m4v; sourceTree = "<group>"; };
+		92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtracksService.swift; sourceTree = "<group>"; };
 		92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewModel.swift; sourceTree = "<group>"; };
 		92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsRouter.swift; sourceTree = "<group>"; };
 		92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewController.swift; sourceTree = "<group>"; };
@@ -794,14 +796,15 @@
 			isa = PBXGroup;
 			children = (
 				B44450CE1FBEDA0F0021772F /* Rendering */,
+				B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */,
+				9255DF0D1FCD9EC200F9815F /* AppSettings.swift */,
 				B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */,
 				B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */,
-				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
 				B48259021FB3060800A7F5B0 /* OccasionsListService.swift */,
-				B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */,
+				92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */,
+				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
 				B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */,
 				B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */,
-				9255DF0D1FCD9EC200F9815F /* AppSettings.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1120,6 +1123,7 @@
 				B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */,
 				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4BCABF11FB8CC7D003EDC7F /* AuthorizationViewModel.swift in Sources */,
+				92AA3CFE1FD06D5900E3C95A /* SoundtracksService.swift in Sources */,
 				9262CBB31FBE139700F90AB3 /* CameraRecordButton.swift in Sources */,
 				B4CF320F1FC87E540063AA52 /* VisheoCreationService.swift in Sources */,
 				9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */,

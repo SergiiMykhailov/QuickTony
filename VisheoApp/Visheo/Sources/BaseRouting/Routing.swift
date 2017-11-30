@@ -32,4 +32,5 @@ struct RouterDependencies {
     let purchasesInfo: UserPurchasesInfo
     let renderingService : RenderingService
     let creationService : CreationService
+	let soundtracksService: SoundtracksService;
 }

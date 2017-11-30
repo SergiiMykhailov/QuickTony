@@ -48,7 +48,7 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	
 	weak var router: SelectSoundtrackRouter?
 	let occasion : OccasionRecord
-	let permissionsService : AppPermissionsService
+	let soundtracksService : SoundtracksService
 	let assets: VisheoRenderingAssets
 	
 	private lazy var player = AVPlayer();
@@ -86,9 +86,9 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	private var playbackState: PlaybackState = .fine;
 	
 	// MARK: - Lifecycle
-	init(occasion: OccasionRecord, assets: VisheoRenderingAssets, permissionsService: AppPermissionsService, editMode: Bool = false) {
+	init(occasion: OccasionRecord, assets: VisheoRenderingAssets, soundtracksService: SoundtracksService, editMode: Bool = false) {
 		self.occasion = occasion
-		self.permissionsService = permissionsService
+		self.soundtracksService = soundtracksService
 		self.assets = assets
 		selectedSoundtrackId = assets.soundtrackId;
 		
@@ -160,7 +160,7 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	}
 	
 	private func stream(soundtrack: OccasionSoundtrack?) {
-		guard let track = soundtrack, let url = track.url else {
+		guard let track = soundtrack, let url = soundtracksService.playbackURL(for: track) else {
 			playerItem = nil;
 			bufferState = .none;
 			return;
