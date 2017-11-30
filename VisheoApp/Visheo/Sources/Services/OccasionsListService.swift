@@ -30,6 +30,7 @@ protocol OccasionRecord {
     
     var previewCover: OccasionCover {get}
     var covers : [OccasionCover] {get}
+	var soundtracks: [OccasionSoundtrack] { get }
 }
 
 protocol OccasionCover {
@@ -38,7 +39,7 @@ protocol OccasionCover {
     var previewUrl : URL? {get}
 }
 
-protocol OccasionMusic {
+protocol OccasionSoundtrack {
 	var id: Int { get }
 	var url: URL? { get }
 	var title: String? { get }
@@ -119,22 +120,18 @@ class VisheoOccasionsListService : OccasionsListService {
 	
 	
 	private func observe(types: [ObserverType] = ObserverType.allTypes, for occasion: VisheoOccasionRecord, at index: Int) {
-		
 		var observers: [ ObserverType : [Int: DatabaseHandle] ] = [:]
 		
 		for type in types {
 			var currentOccasionObservers : [Int:DatabaseHandle];
-			
 			switch type {
 				case .covers:
 					currentOccasionObservers = observeCovers(for: occasion, at: index);
 				case .soundtracks:
 					currentOccasionObservers = observeSoundtracks(for: occasion, at: index);
 			}
-			
 			observers[type] = currentOccasionObservers
 		}
-		
         occasionObservers[index] = observers
     }
 	
@@ -176,7 +173,7 @@ class VisheoOccasionRecord : OccasionRecord {
     let name : String
     let date : Date?
     let category : OccasionCategory
-	let soundtracks: [OccasionMusic]
+	let soundtracks: [OccasionSoundtrack]
     
     fileprivate func cover(at index: Int) -> VisheoOccasionCover? {
         if index < covers.count {
@@ -185,9 +182,9 @@ class VisheoOccasionRecord : OccasionRecord {
         return nil
     }
 	
-	fileprivate func soundtrack(at index: Int) -> VisheoOccasionMusic? {
+	fileprivate func soundtrack(at index: Int) -> VisheoOccasionSoundtrack? {
 		if index < soundtracks.count {
-			return soundtracks[index] as? VisheoOccasionMusic
+			return soundtracks[index] as? VisheoOccasionSoundtrack
 		}
 		return nil
 	}
@@ -196,7 +193,7 @@ class VisheoOccasionRecord : OccasionRecord {
         name = dictionary["name"] as? String ?? ""
         
         covers = (dictionary["covers"] as? [Int] ?? []).map { VisheoOccasionCover(id: $0) }
-		soundtracks = (dictionary["music"] as? [Int] ?? []).map { VisheoOccasionMusic(id: $0) }
+		soundtracks = (dictionary["music"] as? [Int] ?? []).map { VisheoOccasionSoundtrack(id: $0) }
         
         date = VisheoOccasionRecord.date(from: dictionary["date"] as? String)
         priority = dictionary["priority"] as? Int ?? Int.max
@@ -237,7 +234,7 @@ class VisheoOccasionCover : OccasionCover {
     }
 }
 
-class VisheoOccasionMusic: OccasionMusic {
+class VisheoOccasionSoundtrack: OccasionSoundtrack {
 	let id: Int
 	var url: URL?
 	var title: String?

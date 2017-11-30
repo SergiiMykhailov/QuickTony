@@ -28,6 +28,17 @@ class SoundtrackCollectionMediator: NSObject, UICollectionViewDelegate, UICollec
 	}
 	
 	
+	func updateCollectionContents(at indexPath: IndexPath?) {
+		if let `indexPath` = indexPath {
+			let model = viewModel.soundtrackCellModel(at: indexPath.row);
+			let cell = collectionView.cellForItem(at: indexPath) as? SoundtrackCollectionViewCell;
+			cell?.setup(with: model);
+		} else {
+			collectionView.reloadData();
+		}
+	}
+	
+	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return viewModel.soundtracksCount;
 	}
@@ -41,5 +52,10 @@ class SoundtrackCollectionMediator: NSObject, UICollectionViewDelegate, UICollec
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: collectionView.bounds.width, height: 66.0);
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		viewModel.selectSoundtrack(at: indexPath.row);
+		collectionView.reloadData();
 	}
 }

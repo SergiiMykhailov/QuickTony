@@ -19,6 +19,12 @@ class SelectSoundtrackViewController: UIViewController {
 		soundtracksCollectionMediator = SoundtrackCollectionMediator(viewModel: viewModel,
 																	 collectionView: soundtracksCollectionView,
 																	 containerWidth: view.bounds.width);
+		
+		viewModel.bufferProgressChanged = { [weak self] indexPath in
+			DispatchQueue.main.async {
+				self?.soundtracksCollectionMediator?.updateCollectionContents(at: indexPath);
+			}
+		}
 	}
 	
 	private(set) var viewModel: SelectSoundtrackViewModel!
