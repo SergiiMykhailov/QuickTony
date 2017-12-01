@@ -37,9 +37,13 @@ class VisheoRenderingAssets {
         return docs.appendingPathComponent(coverRelPath)
     }
     private(set) var coverIndex: Int?
+    private(set) var coverId: Int?
+    private(set) var coverRemotePreviewUrl: URL?
     
-    func setCover(with data: Data, at index: Int) {
+    func setCover(with data: Data, at index: Int, id: Int, url: URL?) {
         coverIndex = index
+        coverId = id
+        coverRemotePreviewUrl = url
         try! data.write(to: coverUrl)
     }
     
@@ -106,7 +110,9 @@ class VisheoRenderingAssets {
 extension VisheoRenderingAssets {
     var creationInfo : VisheoCreationInfo {
         return VisheoCreationInfo(visheoId: id,
-                                  coverId: 2,
+                                  occasionName: originalOccasion.name,
+                                  coverId: coverId ?? -1,
+                                  coverRemotePreviewUrl: coverRemotePreviewUrl,
                                   picturesCount: photoUrls.count,
                                   soundtrackId: 23,
                                   premium: false,

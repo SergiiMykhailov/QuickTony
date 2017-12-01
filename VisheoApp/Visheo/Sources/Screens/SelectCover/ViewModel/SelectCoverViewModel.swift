@@ -69,10 +69,10 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
         SDWebImageManager.shared().loadImage(with: selectedCover.url, options: [], progress: nil) { (image, data, error, cacheType, success, url) in
             self.showProgressCallback?(false)
             if let coverData = data {
-                self.assets.setCover(with: coverData, at: self.preselectedCoverIndex)
+                self.assets.setCover(with: coverData, at: self.preselectedCoverIndex, id: selectedCover.id, url: selectedCover.previewUrl)
                 self.navigateFurther(with: self.assets)
             } else if let image = image, let coverData = UIImageJPEGRepresentation(image, 1.0) {
-                self.assets.setCover(with: coverData, at: self.preselectedCoverIndex)
+                self.assets.setCover(with: coverData, at: self.preselectedCoverIndex, id: selectedCover.id, url: selectedCover.previewUrl)
                 self.navigateFurther(with: self.assets)
             }
             else if let error = error {

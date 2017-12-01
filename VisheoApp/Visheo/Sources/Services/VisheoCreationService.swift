@@ -13,8 +13,10 @@ import FirebaseStorage
 
 struct VisheoCreationInfo : Codable {
     let visheoId : String
+    let occasionName : String
     
     let coverId : Int
+    let coverRemotePreviewUrl : URL?
     let picturesCount : Int
     let soundtrackId : Int    
     var premium: Bool = false
@@ -29,9 +31,14 @@ struct VisheoCreationInfo : Codable {
 
 extension VisheoCreationInfo {
     var firebaseRecord: VisheoCreationService.Record {
-        return ["coverId" : coverId,
-                "picturesCount" : picturesCount,
-                "soundtrackId" : soundtrackId]
+        var record = ["coverId" : coverId,
+                      "picturesCount" : picturesCount,
+                      "soundtrackId" : soundtrackId,
+                      "occasionName" : occasionName] as [String : Any]
+        if let coverPreviewUrlString = coverRemotePreviewUrl?.absoluteString {
+            record["coverPreviewUrl"] = coverPreviewUrlString
+        }
+        return record
     }
     private var docs: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -137,8 +144,10 @@ class VisheoCreationService : CreationService {
         visheoRecord["userId"] = self.userInfoProvider.userId
         
         let ref = Database.database().reference()
-        let childUpdates = ["cards/\(info.visheoId)" : visheoRecord,
-                            "users/\(self.userInfoProvider.userId!)/cards/\(info.visheoId)" : true] as [String : Any]
+        var childUpdates = ["cards/\(info.visheoId)" : visheoRecord] as [String : Any]
+        if let userId = self.userInfoProvider.userId {
+            childUpdates["users/\(userId)/cards/\(info.visheoId)"] = true
+        }
         ref.updateChildValues(childUpdates)
         
         save(unfinished: info)
