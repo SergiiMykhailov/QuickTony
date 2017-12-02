@@ -29,50 +29,6 @@ struct VisheoCreationInfo : Codable {
     var visheoRelPath : String
 }
 
-extension VisheoCreationInfo {
-    var firebaseRecord: VisheoCreationService.Record {
-        var record = ["coverId" : coverId,
-                      "picturesCount" : picturesCount,
-                      "soundtrackId" : soundtrackId,
-                      "occasionName" : occasionName,
-                      "timestamp" : Date().timeIntervalSince1970] as [String : Any]
-        if let coverPreviewUrlString = coverRemotePreviewUrl?.absoluteString {
-            record["coverPreviewUrl"] = coverPreviewUrlString
-        }
-        return record
-    }
-    private var docs: URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    }
-    
-    var coverUrl : URL {
-        return docs.appendingPathComponent(coverRelPath)
-    }
-    var soundtrackUrl : URL {
-        return docs.appendingPathComponent(soundtrackRelPath)
-    }
-    
-    var videoUrl : URL {
-        return docs.appendingPathComponent(videoRelPath)
-    }
-    
-    var photoUrls : [URL] {
-        return photoRelPaths.map {
-            docs.appendingPathComponent($0)
-        }
-    }
-    
-    var visheoURL : URL {
-        return docs.appendingPathComponent(visheoRelPath)
-    }
-}
-
-extension VisheoCreationInfo {
-    var visheoCreated: Bool {
-        return FileManager.default.fileExists(atPath: visheoURL.path)
-    }
-}
-
 extension Notification.Name {
     static let visheoRenderingProgress = Notification.Name("visheoRenderingProgress")
     static let visheoUploadingProgress = Notification.Name("visheoUploadingProgress")
@@ -96,6 +52,8 @@ enum CreationError : Error {
 protocol CreationService {
     func createVisheo(from assets:VisheoRenderingAssets, premium: Bool)
     func retryCreation(for visheoId: String)
+    func isIncomplete(visheoId: String) -> Bool
+    func uploadProgress(for visheoId: String) -> Double?
 }
 
 class VisheoCreationService : CreationService {
@@ -110,6 +68,7 @@ class VisheoCreationService : CreationService {
     private let userInfoProvider : UserInfoProvider
     private let cardsRef : DatabaseReference
     private let rendererService : RenderingService
+    private var uploadingProgress : [String: Double] = [:]
     
     init(userInfoProvider: UserInfoProvider, rendererService : RenderingService) {
         self.userInfoProvider = userInfoProvider
@@ -136,6 +95,10 @@ class VisheoCreationService : CreationService {
         let infoData = unfinishedRecords[id] as? Data else {return nil}
         let creationInfo = try? PropertyListDecoder().decode(VisheoCreationInfo.self, from: infoData)        
         return creationInfo
+    }
+    
+    func isIncomplete(visheoId: String) -> Bool {
+        return unfinishedInfo(with: visheoId) != nil
     }
     
     func createVisheo(from assets: VisheoRenderingAssets, premium: Bool) {
@@ -167,6 +130,10 @@ class VisheoCreationService : CreationService {
         } else {
             render(creationInfo: creationInfo)
         }
+    }
+    
+    func uploadProgress(for visheoId: String) -> Double? {
+        return uploadingProgress[visheoId]
     }
     
     private func save(unfinished creationInfo: VisheoCreationInfo) {
@@ -222,22 +189,26 @@ class VisheoCreationService : CreationService {
     
     private func upload(creationInfo: VisheoCreationInfo) {
         let videoRef = Storage.storage().reference().child(refPath(for: creationInfo.visheoId, premium: true))
-
+        
+        self.uploadingProgress[creationInfo.visheoId] = 0.0
         self.notifyUploading(progress: 0.0, for: creationInfo.visheoId)
         let uploadTask = videoRef.putFile(from: creationInfo.visheoURL, metadata: nil)
 
         uploadTask.observe(.progress) { (snapshot) in
             if let uploadingProgress = snapshot.progress, uploadingProgress.totalUnitCount > 0 {
                 let progress = Double(uploadingProgress.completedUnitCount) / Double(uploadingProgress.totalUnitCount)
+                self.uploadingProgress[creationInfo.visheoId] = progress
                 self.notifyUploading(progress: progress, for: creationInfo.visheoId)
             }
         }
 
         uploadTask.observe(.success) { snapshot in
+            self.uploadingProgress.removeValue(forKey: creationInfo.visheoId)
             self.finalize(creationInfo: creationInfo, downloadUrl: snapshot.metadata?.downloadURL())
         }
 
         uploadTask.observe(.failure) { snapshot in
+            self.uploadingProgress.removeValue(forKey: creationInfo.visheoId)
             self.notifyError(error: CreationError.uploadFailed, for: creationInfo.visheoId)
         }
     }
@@ -304,4 +275,46 @@ class VisheoCreationService : CreationService {
     }
 }
 
+extension VisheoCreationInfo {
+    var firebaseRecord: VisheoCreationService.Record {
+        var record = ["coverId" : coverId,
+                      "picturesCount" : picturesCount,
+                      "soundtrackId" : soundtrackId,
+                      "occasionName" : occasionName,
+                      "timestamp" : Date().timeIntervalSince1970] as [String : Any]
+        if let coverPreviewUrlString = coverRemotePreviewUrl?.absoluteString {
+            record["coverPreviewUrl"] = coverPreviewUrlString
+        }
+        return record
+    }
+    private var docs: URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    }
+    
+    var coverUrl : URL {
+        return docs.appendingPathComponent(coverRelPath)
+    }
+    var soundtrackUrl : URL {
+        return docs.appendingPathComponent(soundtrackRelPath)
+    }
+    
+    var videoUrl : URL {
+        return docs.appendingPathComponent(videoRelPath)
+    }
+    
+    var photoUrls : [URL] {
+        return photoRelPaths.map {
+            docs.appendingPathComponent($0)
+        }
+    }
+    
+    var visheoURL : URL {
+        return docs.appendingPathComponent(visheoRelPath)
+    }
+}
 
+extension VisheoCreationInfo {
+    var visheoCreated: Bool {
+        return FileManager.default.fileExists(atPath: visheoURL.path)
+    }
+}

@@ -15,6 +15,7 @@ class LabeledProgressView: UIView {
     private let titleLabel = UILabel()
     
     private let titleHeight : CGFloat = 20
+    private let titleInset : CGFloat = 8
     
     @IBInspectable var progressColor: UIColor = .red {
         didSet {
@@ -55,6 +56,8 @@ class LabeledProgressView: UIView {
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont(name: "Roboto-Medium", size: 16)
         titleLabel.textAlignment = .center
+        titleLabel.adjustsFontSizeToFitWidth = true
+        
         addSubview(titleLabel)
     }
     
@@ -64,7 +67,7 @@ class LabeledProgressView: UIView {
     
     override func layoutSubviews() {
         progressLayer.frame = progressFrame
-        titleLabel.frame = CGRect(x: 0, y: frame.height/2 - titleHeight/2, width: frame.width, height: titleHeight)
+        titleLabel.frame = CGRect(x: titleInset, y: frame.height/2 - titleHeight/2, width: frame.width - 2 * titleInset, height: titleHeight)
     }
     
     func set(progress: Double, animated: Bool) {

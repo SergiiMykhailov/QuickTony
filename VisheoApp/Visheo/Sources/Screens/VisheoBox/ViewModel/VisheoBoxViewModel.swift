@@ -12,22 +12,40 @@ protocol VisheoBoxViewModel : class {
     func showMenu()
     
     var didChangeCallback: (()->())? {get set}
+    var didChangeAt: ((Int)->())? {get set}
     
     var visheosCount : Int {get}
     func visheo(at index: Int) -> VisheoCellViewModel
 }
 
 class VisheoListViewModel : VisheoBoxViewModel {
+    var didChangeAt: ((Int) -> ())?
     var didChangeCallback: (() -> ())?
     
     weak var router: VisheoBoxRouter?
-    let visheosList : VisheosListService
+    private let visheosList : VisheosListService
+    private let creationService : CreationService
     
-    init(visheosList: VisheosListService) {
+    init(visheosList: VisheosListService, creationService : CreationService) {
         self.visheosList = visheosList
+        self.creationService = creationService
         
         NotificationCenter.default.addObserver(forName: Notification.Name.visheosChanged, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
             self?.didChangeCallback?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.visheoUploadingProgress, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
+            guard let strongSelf = self,
+                let info = notification.userInfo,
+                let visheoId = info[Notification.Keys.visheoId] as? String else {return}
+            strongSelf.update(with: visheoId)
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationSuccess, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
+            guard let strongSelf = self,
+                let info = notification.userInfo,
+                let visheoId = info[Notification.Keys.visheoId] as? String else {return}
+            strongSelf.update(with: visheoId)
         }
     }
     
@@ -40,15 +58,25 @@ class VisheoListViewModel : VisheoBoxViewModel {
     }
     
     func visheo(at index: Int) -> VisheoCellViewModel {
-        let record = visheos[index]
-        return VisheoCellViewModel(coverUrl: record.coverUrl, visheoTitle: record.name)
+        return cell(from: visheos[index])
     }
     
     func showMenu() {
         router?.showMenu()
     }
     
-    var visheos : [VisheoRecord] {
+    // MARK: Private
+    
+    private func update(with id: String) {
+        let index = visheos.index {
+            $0.id == id
+        }
+        if let index = index {
+            didChangeAt?(index)
+        }
+    }
+    
+    private var visheos : [VisheoRecord] {
         return visheosList.visheosRecords.filter {_ in
             return true
             }.sorted(by: { (left, right) -> Bool in
@@ -63,6 +91,15 @@ class VisheoListViewModel : VisheoBoxViewModel {
                     return leftTimestamp > rightTimestamp
                 }
             })
+    }
+    
+    private func cell(from record: VisheoRecord) -> VisheoCellViewModel {
+        let isUploading = creationService.isIncomplete(visheoId: record.id)
+        let progress = creationService.uploadProgress(for: record.id) ?? 0.0
         
+        return VisheoCellViewModel(coverUrl: record.coverUrl,
+                                   visheoTitle: record.name,
+                                   isUploading: isUploading,
+                                   uploadProgress : progress)
     }
 }

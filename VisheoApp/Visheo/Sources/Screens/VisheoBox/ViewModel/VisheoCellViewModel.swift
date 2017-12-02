@@ -12,4 +12,7 @@ import Foundation
 struct VisheoCellViewModel {
     let coverUrl : URL?
     let visheoTitle : String?
+    
+    let isUploading : Bool
+    let uploadProgress : Double
 }

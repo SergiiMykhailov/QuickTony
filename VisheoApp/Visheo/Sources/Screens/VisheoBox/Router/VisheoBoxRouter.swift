@@ -25,7 +25,7 @@ class VisheoListRouter : VisheoBoxRouter {
     }
     
     func start(with viewController: VisheoBoxViewController) {
-        let vm = VisheoListViewModel(visheosList: dependencies.visheosListService)
+        let vm = VisheoListViewModel(visheosList: dependencies.visheosListService, creationService: dependencies.creationService)
         viewModel = vm
         vm.router = self
         self.controller = viewController

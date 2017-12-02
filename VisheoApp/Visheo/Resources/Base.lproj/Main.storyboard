@@ -82,7 +82,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4v-USr">
-                                                    <rect key="frame" x="72" y="15.5" width="189" height="19"/>
+                                                    <rect key="frame" x="72" y="15" width="189" height="19"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                     <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elizabeth Burman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeD-pR-Sdz">
-                                <rect key="frame" x="93" y="111.5" width="126" height="19"/>
+                                <rect key="frame" x="93" y="111" width="126" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -393,7 +393,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEb-Z8-Bl4">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEb-Z8-Bl4">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iVC-ms-t1X">
@@ -410,10 +410,50 @@
                                             <rect key="frame" x="0.0" y="0.0" width="189" height="239"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomePic" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-lT-mcV">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHn-5B-uh9" userLabel="Image Container">
                                                     <rect key="frame" x="0.0" y="0.0" width="189" height="189"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomePic" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-lT-mcV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="189" height="189"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="rh8-lT-mcV" secondAttribute="height" id="iQt-eB-FoN"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1g0-Ji-lSw" customClass="LabeledProgressView" customModule="Visheo" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="151" width="189" height="38"/>
+                                                            <color key="backgroundColor" red="0.69019607843137254" green="0.80000000000000004" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="sWv-9g-GMI"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                                    <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                                                    <real key="value" value="0.5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Uploading to Cloud"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="rh8-lT-mcV" secondAttribute="height" id="iQt-eB-FoN"/>
+                                                        <constraint firstAttribute="width" secondItem="BHn-5B-uh9" secondAttribute="height" id="5A1-1v-k2o"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1g0-Ji-lSw" secondAttribute="trailing" id="8nW-Mt-TD6"/>
+                                                        <constraint firstAttribute="bottom" secondItem="1g0-Ji-lSw" secondAttribute="bottom" id="Aag-pL-6aG"/>
+                                                        <constraint firstAttribute="bottom" secondItem="rh8-lT-mcV" secondAttribute="bottom" id="Khx-Ny-enV"/>
+                                                        <constraint firstItem="1g0-Ji-lSw" firstAttribute="leading" secondItem="BHn-5B-uh9" secondAttribute="leading" id="aVG-aW-mc1"/>
+                                                        <constraint firstItem="rh8-lT-mcV" firstAttribute="leading" secondItem="BHn-5B-uh9" secondAttribute="leading" id="eGR-fZ-XYA"/>
+                                                        <constraint firstItem="rh8-lT-mcV" firstAttribute="top" secondItem="BHn-5B-uh9" secondAttribute="top" id="eJf-76-TLZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="rh8-lT-mcV" secondAttribute="trailing" id="kf7-vJ-XY6"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -426,7 +466,7 @@
                                                             <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                </imageView>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq2-vC-p50">
                                                     <rect key="frame" x="0.0" y="189" width="189" height="21"/>
                                                     <constraints>
@@ -441,14 +481,15 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Nq2-vC-p50" secondAttribute="trailing" id="28H-do-jN8"/>
-                                            <constraint firstItem="rh8-lT-mcV" firstAttribute="top" secondItem="Ins-MC-FnG" secondAttribute="top" id="H7D-9t-Ezy"/>
-                                            <constraint firstAttribute="trailing" secondItem="rh8-lT-mcV" secondAttribute="trailing" id="TjS-SS-5mX"/>
-                                            <constraint firstItem="Nq2-vC-p50" firstAttribute="top" secondItem="rh8-lT-mcV" secondAttribute="bottom" id="e5X-RO-pIu"/>
-                                            <constraint firstItem="rh8-lT-mcV" firstAttribute="leading" secondItem="Ins-MC-FnG" secondAttribute="leading" id="m1e-Xz-efc"/>
+                                            <constraint firstItem="Nq2-vC-p50" firstAttribute="top" secondItem="BHn-5B-uh9" secondAttribute="bottom" id="E86-IS-Qgt"/>
+                                            <constraint firstItem="BHn-5B-uh9" firstAttribute="top" secondItem="Ins-MC-FnG" secondAttribute="top" id="JnP-NB-edh"/>
+                                            <constraint firstItem="BHn-5B-uh9" firstAttribute="leading" secondItem="Ins-MC-FnG" secondAttribute="leading" id="KoI-kP-una"/>
+                                            <constraint firstAttribute="trailing" secondItem="BHn-5B-uh9" secondAttribute="trailing" id="KrC-J6-PNt"/>
                                             <constraint firstItem="Nq2-vC-p50" firstAttribute="leading" secondItem="Ins-MC-FnG" secondAttribute="leading" id="ova-uq-0l6"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="coverImage" destination="rh8-lT-mcV" id="Tpj-kQ-iyR"/>
+                                            <outlet property="labeledProgress" destination="1g0-Ji-lSw" id="2Kb-lf-ntZ"/>
                                             <outlet property="titleLabel" destination="Nq2-vC-p50" id="rFI-hK-U9M"/>
                                         </connections>
                                     </collectionViewCell>
@@ -796,22 +837,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="bdG-sn-BZg">
-                                <rect key="frame" x="61" y="-17346" width="253" height="35295"/>
+                                <rect key="frame" x="0.0" y="229.5" width="0.0" height="144"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR PHOTOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-PL-lMo">
-                                        <rect key="frame" x="0.0" y="0.0" width="253" height="9566.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add memorable to your Visheo — please allow Visheo to access your photos when prompted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-CT-UNf">
-                                        <rect key="frame" x="0.0" y="9608.5" width="253" height="25584.5"/>
+                                        <rect key="frame" x="0.0" y="42" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-vf-rCc">
-                                        <rect key="frame" x="0.0" y="35235" width="253" height="60"/>
+                                        <rect key="frame" x="0.0" y="84" width="0.0" height="60"/>
                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ss-oF-nBH"/>

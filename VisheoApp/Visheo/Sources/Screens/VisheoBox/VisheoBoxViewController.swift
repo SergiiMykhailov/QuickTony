@@ -16,6 +16,10 @@ class VisheoBoxViewController: UIViewController {
         viewModel.didChangeCallback = {[weak self] in
             self?.collectionView.reloadData()
         }
+        
+        viewModel.didChangeAt = {[weak self] in
+            self?.updateCell(at: $0)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +72,12 @@ extension VisheoBoxViewController : UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     
+    func updateCell(at row: Int) {
+        if let cell = collectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? VisheoCollectionViewCell {
+            let cellVm = viewModel.visheo(at: row)
+            cell.configure(with: cellVm, animateProgress: true)
+        }
+    }
     
 }
 
