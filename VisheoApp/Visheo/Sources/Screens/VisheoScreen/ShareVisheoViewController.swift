@@ -107,6 +107,7 @@ class ShareVisheoViewController: UIViewController {
     }
     
     private var player : AVPlayer?
+    @IBOutlet weak var playerLoadingActivity: UIActivityIndicatorView!
     
     private func setupPlayer(with url: URL) {
         let playerAsset = AVAsset(url: url)
@@ -127,6 +128,19 @@ class ShareVisheoViewController: UIViewController {
         player?.play()
         playButton.isHidden = true
         
+        player?.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+        
+        playerLoadingActivity.isHidden = false
+        playerLoadingActivity.startAnimating()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let player = object as? AVPlayer {
+            if player.status == .readyToPlay {
+                playerLoadingActivity.stopAnimating()
+                playerLoadingActivity.isHidden = true
+            }
+        }
     }
     
     @objc func itemDidFinishPlaying(_ notification: Notification) {

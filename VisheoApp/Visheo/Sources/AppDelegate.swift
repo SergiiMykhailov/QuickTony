@@ -82,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
         let purchasesInfo = DummyUserPurchasesInfo(premiumCardsNumber: 2)
         let visheosListService = VisheoBoxService(userInfoProvider: authService)
+        let visheosCache = VisheosLocalCache()
         
         return RouterDependencies(appStateService: appState,
                                                 appPermissionsService: permissionsService,
@@ -94,7 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                 renderingService: renderingService,
                                                 creationService: creationService,
 												soundtracksService: soundtracksService,
-                                                routerAssembly: assembly)
+                                                routerAssembly: assembly,
+                                                visheosCache: visheosCache)
     }
     
     // MARK: Appearance setup

@@ -49,7 +49,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103.5" y="187" width="128.5" height="16.5"/>
+                                        <rect key="frame" x="103" y="187" width="128" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -340,6 +340,9 @@
                                             <action selector="playButtonPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="voO-VA-gbN"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DDL-xT-V5h">
+                                        <rect key="frame" x="157" y="157" width="20" height="20"/>
+                                    </activityIndicatorView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JUY-Yl-B80">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
                                         <gestureRecognizers/>
@@ -349,7 +352,9 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="ZrE-rC-yr6" firstAttribute="leading" secondItem="5Nq-3Z-f0C" secondAttribute="leading" id="4jY-3I-UNv"/>
+                                    <constraint firstItem="DDL-xT-V5h" firstAttribute="centerX" secondItem="5Nq-3Z-f0C" secondAttribute="centerX" id="AOM-2i-KkY"/>
                                     <constraint firstAttribute="trailing" secondItem="ZrE-rC-yr6" secondAttribute="trailing" id="DHS-ID-dsr"/>
+                                    <constraint firstItem="DDL-xT-V5h" firstAttribute="centerY" secondItem="5Nq-3Z-f0C" secondAttribute="centerY" id="JaK-Mj-8KV"/>
                                     <constraint firstItem="JUY-Yl-B80" firstAttribute="leading" secondItem="5Nq-3Z-f0C" secondAttribute="leading" id="KAD-Vf-F9u"/>
                                     <constraint firstItem="ZrE-rC-yr6" firstAttribute="top" secondItem="5Nq-3Z-f0C" secondAttribute="top" id="KSM-K4-Ql5"/>
                                     <constraint firstAttribute="bottom" secondItem="JUY-Yl-B80" secondAttribute="bottom" id="RoM-wT-HwC"/>
@@ -526,6 +531,7 @@
                         <outlet property="linkText" destination="fyp-in-Hpa" id="3Jz-dz-tYS"/>
                         <outlet property="menuBarItem" destination="QL0-nA-9zK" id="TMN-S9-TE6"/>
                         <outlet property="playButton" destination="OgS-LU-4q7" id="ubv-Oc-xIN"/>
+                        <outlet property="playerLoadingActivity" destination="DDL-xT-V5h" id="E8j-xI-MuM"/>
                         <outlet property="progressBar" destination="7tK-Zx-gw7" id="Dtx-fy-EOb"/>
                         <outlet property="shareButton" destination="BoA-F2-OsI" id="mlf-gB-ae4"/>
                         <outlet property="shareTypeSegment" destination="LYL-aZ-IVe" id="5HE-xS-D8p"/>

@@ -11,6 +11,11 @@ import AVFoundation
 
 
 class VisheoRenderingAssets {
+    private enum Constants {
+        static let videoName = "video.mov"
+        static let visheoName = "visheo.mov"
+    }
+    
     let originalOccasion: OccasionRecord
     let assetsFolderUrl : URL
     var assetsFolderRelUrl : URL {
@@ -25,6 +30,12 @@ class VisheoRenderingAssets {
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let assetsFolderUrl = documentsUrl.appendingPathComponent(id)
         try? FileManager.default.removeItem(at: assetsFolderUrl)
+    }
+    
+    static func videoRenderingUrl(for visheoId: String) -> URL {
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let assetsFolderUrl = documentsUrl.appendingPathComponent(visheoId)
+        return assetsFolderUrl.appendingPathComponent(Constants.visheoName)
     }
     
     init(originalOccasion: OccasionRecord) {
@@ -104,7 +115,7 @@ class VisheoRenderingAssets {
     var trimPoints : (CMTime, CMTime)?
     
     var videoRelPath : String {
-        return assetsFolderRelUrl.appendingPathComponent("video.mov").absoluteString
+        return assetsFolderRelUrl.appendingPathComponent(Constants.videoName).absoluteString
     }
     
     var videoUrl : URL {
@@ -126,7 +137,7 @@ class VisheoRenderingAssets {
     // MARK: Final visheo
     
     var visheoRelPath : String {
-        return assetsFolderRelUrl.appendingPathComponent("visheo.mov").absoluteString
+        return assetsFolderRelUrl.appendingPathComponent(Constants.visheoName).absoluteString
     }
 }
 

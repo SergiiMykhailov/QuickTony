@@ -36,7 +36,9 @@ class ShareVisheoRouter : ShareRouter {
     }
     
     func start(with viewController: ShareVisheoViewController, record: VisheoRecord) {
-        let vm = ExistingVisheoShareViewModel(record: record, visheoService: dependencies.creationService)
+        let vm = ExistingVisheoShareViewModel(record: record,
+                                              visheoService: dependencies.creationService,
+                                              cache: dependencies.visheosCache)
         viewModel = vm
         vm.router = self
         self.controller = viewController

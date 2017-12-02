@@ -65,6 +65,7 @@
 		B46761291FC7119D006E9CB2 /* ShareRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46761281FC7119D006E9CB2 /* ShareRouter.swift */; };
 		B467612B1FC711BD006E9CB2 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */; };
 		B467612D1FC7367A006E9CB2 /* UserPurchasesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */; };
+		B46D7FCF1FD309C40057CF08 /* VisheosCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */; };
 		B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */; };
 		B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48259021FB3060800A7F5B0 /* OccasionsListService.swift */; };
 		B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB51FA9E574000BB33B /* AppDelegate.swift */; };
@@ -233,6 +234,7 @@
 		B46761281FC7119D006E9CB2 /* ShareRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareRouter.swift; sourceTree = "<group>"; };
 		B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareViewModel.swift; path = Visheo/Sources/Screens/VisheoScreen/ViewModel/ShareViewModel.swift; sourceTree = SOURCE_ROOT; };
 		B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesInfo.swift; sourceTree = "<group>"; };
+		B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheosCache.swift; sourceTree = "<group>"; };
 		B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedCoverCollectionMediator.swift; sourceTree = "<group>"; };
 		B48259021FB3060800A7F5B0 /* OccasionsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsListService.swift; sourceTree = "<group>"; };
 		B48AAAB51FA9E574000BB33B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -889,6 +891,7 @@
 				B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */,
 				9255DF0D1FCD9EC200F9815F /* AppSettings.swift */,
 				B4AEE0E51FD195680043A39A /* VisheosListService.swift */,
+				B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1196,6 +1199,7 @@
 				B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */,
 				920EDFE21FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift in Sources */,
 				92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */,
+				B46D7FCF1FD309C40057CF08 /* VisheosCache.swift in Sources */,
 				B4AEE0EF1FD1B28B0043A39A /* VisheoBoxRouter.swift in Sources */,
 				9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */,
 				B4BCAC091FB8CE09003EDC7F /* SelectCoverRouter.swift in Sources */,

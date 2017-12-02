@@ -48,6 +48,13 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     }
     
     var visheoUrl: URL? {
+        if let localUrl = visheosCache.localUrl(for: visheoRecord.id) {
+            return localUrl
+        } else if let remoteUrl = visheoRecord.videoUrl {
+            //Here we just start download visheo to use it next time. And return remote url to be shown in AVPlayer
+            // If this will be not enough we ll be able to replace this with only one downoad to cache and than pass it to player
+            visheosCache.downloadVisheo(with: visheoRecord.id, remoteUrl: remoteUrl)
+        }
         return visheoRecord.videoUrl
     }
     
@@ -70,10 +77,12 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     weak var router: ShareRouter?
     private let visheoRecord : VisheoRecord
     private let visheoService : CreationService
+    private let visheosCache : VisheosCache
     
-    init(record: VisheoRecord, visheoService: CreationService) {
+    init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache) {
         self.visheoRecord = record
         self.visheoService = visheoService
+        self.visheosCache = cache
     }
     
     func showMenu() {}
