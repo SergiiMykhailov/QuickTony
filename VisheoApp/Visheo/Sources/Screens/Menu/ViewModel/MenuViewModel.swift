@@ -61,6 +61,8 @@ class VisheoMenuViewModel : MenuViewModel {
         switch menuItems[index].type {
         case .newVisheo:
             router?.showCreateVisheo()
+        case .visheoBox:
+            router?.showVisheoBox()
         default:
             break;
         }

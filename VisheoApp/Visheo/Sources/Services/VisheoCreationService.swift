@@ -34,7 +34,8 @@ extension VisheoCreationInfo {
         var record = ["coverId" : coverId,
                       "picturesCount" : picturesCount,
                       "soundtrackId" : soundtrackId,
-                      "occasionName" : occasionName] as [String : Any]
+                      "occasionName" : occasionName,
+                      "timestamp" : Date().timeIntervalSince1970] as [String : Any]
         if let coverPreviewUrlString = coverRemotePreviewUrl?.absoluteString {
             record["coverPreviewUrl"] = coverPreviewUrlString
         }

@@ -73,6 +73,11 @@
 		B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A79CEF1FAC927200C208CF /* Main.storyboard */; };
 		B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */; };
 		B4AEE0E21FD01F1B0043A39A /* RouterAsembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0E11FD01F1B0043A39A /* RouterAsembly.swift */; };
+		B4AEE0E61FD195680043A39A /* VisheosListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0E51FD195680043A39A /* VisheosListService.swift */; };
+		B4AEE0E91FD1B1600043A39A /* VisheoBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0E81FD1B1600043A39A /* VisheoBoxViewController.swift */; };
+		B4AEE0ED1FD1B27B0043A39A /* VisheoBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0EC1FD1B27B0043A39A /* VisheoBoxViewModel.swift */; };
+		B4AEE0EF1FD1B28B0043A39A /* VisheoBoxRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0EE1FD1B28B0043A39A /* VisheoBoxRouter.swift */; };
+		B4AEE0F11FD1C8770043A39A /* VisheoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0F01FD1C8770043A39A /* VisheoCollectionViewCell.swift */; };
 		B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */; };
 		B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABC71FB8CC7C003EDC7F /* AuthorizationViewController.swift */; };
 		B4BCABEC1FB8CC7D003EDC7F /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABC91FB8CC7C003EDC7F /* AuthorizationRouter.swift */; };
@@ -106,6 +111,7 @@
 		B4CF320F1FC87E540063AA52 /* VisheoCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */; };
 		B4CFB7711FAB4A7900D6E73A /* Authentification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */; };
 		B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */; };
+		B4EB86DB1FD1CC7B00963150 /* VisheoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EB86DA1FD1CC7B00963150 /* VisheoCellViewModel.swift */; };
 		B4F63DBC1FC83D4100E05B90 /* LabeledProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */; };
 		B4F63DC01FC85FDB00E05B90 /* VisheoRenderingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F63DBF1FC85FDA00E05B90 /* VisheoRenderingService.swift */; };
 		B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */; };
@@ -227,6 +233,11 @@
 		B4A79CF01FAC927200C208CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		B4AEE0E11FD01F1B0043A39A /* RouterAsembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAsembly.swift; sourceTree = "<group>"; };
+		B4AEE0E51FD195680043A39A /* VisheosListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheosListService.swift; sourceTree = "<group>"; };
+		B4AEE0E81FD1B1600043A39A /* VisheoBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoBoxViewController.swift; sourceTree = "<group>"; };
+		B4AEE0EC1FD1B27B0043A39A /* VisheoBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoBoxViewModel.swift; sourceTree = "<group>"; };
+		B4AEE0EE1FD1B28B0043A39A /* VisheoBoxRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoBoxRouter.swift; sourceTree = "<group>"; };
+		B4AEE0F01FD1C8770043A39A /* VisheoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4B9D1961FA8A52300CBD7DB /* Visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B9D1A51FA8A52300CBD7DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -262,6 +273,7 @@
 		B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoCreationService.swift; sourceTree = "<group>"; };
 		B4CFB7701FAB4A7900D6E73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentification.storyboard; sourceTree = "<group>"; };
 		B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateService.swift; sourceTree = "<group>"; };
+		B4EB86DA1FD1CC7B00963150 /* VisheoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoCellViewModel.swift; sourceTree = "<group>"; };
 		B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressView.swift; sourceTree = "<group>"; };
 		B4F63DBF1FC85FDA00E05B90 /* VisheoRenderingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoRenderingService.swift; sourceTree = "<group>"; };
 		B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingRouter.swift; sourceTree = "<group>"; };
@@ -574,6 +586,34 @@
 			path = BaseRouting;
 			sourceTree = "<group>";
 		};
+		B4AEE0E71FD1B1340043A39A /* VisheoBox */ = {
+			isa = PBXGroup;
+			children = (
+				B4AEE0EB1FD1B25C0043A39A /* ViewModel */,
+				B4AEE0EA1FD1B2550043A39A /* Router */,
+				B4AEE0E81FD1B1600043A39A /* VisheoBoxViewController.swift */,
+				B4AEE0F01FD1C8770043A39A /* VisheoCollectionViewCell.swift */,
+			);
+			path = VisheoBox;
+			sourceTree = "<group>";
+		};
+		B4AEE0EA1FD1B2550043A39A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B4AEE0EE1FD1B28B0043A39A /* VisheoBoxRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B4AEE0EB1FD1B25C0043A39A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B4AEE0EC1FD1B27B0043A39A /* VisheoBoxViewModel.swift */,
+				B4EB86DA1FD1CC7B00963150 /* VisheoCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B4B9D18D1FA8A52300CBD7DB = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +647,7 @@
 		B4BCABC51FB8CC7C003EDC7F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B4AEE0E71FD1B1340043A39A /* VisheoBox */,
 				B453F1CD1FCF058F003D61CB /* Menu */,
 				B46761231FC70E33006E9CB2 /* VisheoScreen */,
 				B46528081FC346650070FFB7 /* VisheoPreview */,
@@ -788,6 +829,7 @@
 				B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */,
 				B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */,
 				9255DF0D1FCD9EC200F9815F /* AppSettings.swift */,
+				B4AEE0E51FD195680043A39A /* VisheosListService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1054,6 +1096,8 @@
 				B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */,
 				9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */,
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
+				B4AEE0ED1FD1B27B0043A39A /* VisheoBoxViewModel.swift in Sources */,
+				B4AEE0E91FD1B1600043A39A /* VisheoBoxViewController.swift in Sources */,
 				B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */,
 				92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
@@ -1088,6 +1132,7 @@
 				B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */,
 				B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */,
 				92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */,
+				B4AEE0EF1FD1B28B0043A39A /* VisheoBoxRouter.swift in Sources */,
 				9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */,
 				B4BCAC091FB8CE09003EDC7F /* SelectCoverRouter.swift in Sources */,
 				B4F666291FC1CA1200B68055 /* VideoTrimmingViewController.swift in Sources */,
@@ -1097,6 +1142,7 @@
 				B4BCABFD1FB8CC7D003EDC7F /* LaunchProxyViewController.swift in Sources */,
 				B4BCAC0B1FB8CE18003EDC7F /* SelectCoverViewModel.swift in Sources */,
 				B44450D71FBEF4220021772F /* PhotoPermissionsRouter.swift in Sources */,
+				B4EB86DB1FD1CC7B00963150 /* VisheoCellViewModel.swift in Sources */,
 				B44450DD1FBF02E50021772F /* PhotoPickerViewModel.swift in Sources */,
 				B4BCABF31FB8CC7D003EDC7F /* SignUpViewModel.swift in Sources */,
 				B48AAAD91FAA0AE2000BB33B /* Routing.swift in Sources */,
@@ -1113,6 +1159,7 @@
 				B4AEE0E21FD01F1B0043A39A /* RouterAsembly.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */,
+				B4AEE0F11FD1C8770043A39A /* VisheoCollectionViewCell.swift in Sources */,
 				B44450E11FBF0B580021772F /* PhotoCollectionViewCell.swift in Sources */,
 				B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */,
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
@@ -1133,6 +1180,7 @@
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,
 				B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */,
 				B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */,
+				B4AEE0E61FD195680043A39A /* VisheosListService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

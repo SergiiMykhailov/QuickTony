@@ -82,7 +82,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4v-USr">
-                                                    <rect key="frame" x="72" y="15" width="189" height="19"/>
+                                                    <rect key="frame" x="72" y="15.5" width="189" height="19"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                     <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elizabeth Burman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeD-pR-Sdz">
-                                <rect key="frame" x="93" y="111" width="126" height="19"/>
+                                <rect key="frame" x="93" y="111.5" width="126" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -224,7 +224,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-P7-EP7" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="281" width="129.5" height="34"/>
+                                                    <rect key="frame" x="20" y="281" width="164" height="34"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="xFM-h5-j6w"/>
@@ -274,13 +274,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations on occasion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-G6-XCX">
-                                <rect key="frame" x="20" y="391" width="206" height="21.5"/>
+                                <rect key="frame" x="20" y="391" width="206" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-gy-rd0">
-                                <rect key="frame" x="0.0" y="420.5" width="375" height="126"/>
+                                <rect key="frame" x="0.0" y="418" width="375" height="126"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="126" id="eYd-pZ-lZ8"/>
@@ -339,7 +339,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHq-yA-6S2">
-                                <rect key="frame" x="20" y="567.5" width="335" height="1"/>
+                                <rect key="frame" x="20" y="565" width="335" height="1"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="hCE-wc-Okk"/>
@@ -384,6 +384,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejo-aY-AV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="104.8" y="-213.64317841079463"/>
+        </scene>
+        <!--VISHEO BOX-->
+        <scene sceneID="GdL-Si-3u9">
+            <objects>
+                <viewController storyboardIdentifier="VisheoBoxViewController" id="Zpw-CB-0wW" customClass="VisheoBoxViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K5l-UX-6ib">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MEb-Z8-Bl4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iVC-ms-t1X">
+                                    <size key="itemSize" width="189" height="239"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="visheoCell" id="Ins-MC-FnG" customClass="VisheoCollectionViewCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="93" y="20" width="189" height="239"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="189" height="239"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomePic" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-lT-mcV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="189" height="189"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="rh8-lT-mcV" secondAttribute="height" id="iQt-eB-FoN"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq2-vC-p50">
+                                                    <rect key="frame" x="0.0" y="189" width="189" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="cfH-8F-2oB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                    <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Nq2-vC-p50" secondAttribute="trailing" id="28H-do-jN8"/>
+                                            <constraint firstItem="rh8-lT-mcV" firstAttribute="top" secondItem="Ins-MC-FnG" secondAttribute="top" id="H7D-9t-Ezy"/>
+                                            <constraint firstAttribute="trailing" secondItem="rh8-lT-mcV" secondAttribute="trailing" id="TjS-SS-5mX"/>
+                                            <constraint firstItem="Nq2-vC-p50" firstAttribute="top" secondItem="rh8-lT-mcV" secondAttribute="bottom" id="e5X-RO-pIu"/>
+                                            <constraint firstItem="rh8-lT-mcV" firstAttribute="leading" secondItem="Ins-MC-FnG" secondAttribute="leading" id="m1e-Xz-efc"/>
+                                            <constraint firstItem="Nq2-vC-p50" firstAttribute="leading" secondItem="Ins-MC-FnG" secondAttribute="leading" id="ova-uq-0l6"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="coverImage" destination="rh8-lT-mcV" id="Tpj-kQ-iyR"/>
+                                            <outlet property="titleLabel" destination="Nq2-vC-p50" id="rFI-hK-U9M"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Zpw-CB-0wW" id="COr-hN-EQb"/>
+                                    <outlet property="delegate" destination="Zpw-CB-0wW" id="dL9-Xg-Qwj"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MEb-Z8-Bl4" firstAttribute="leading" secondItem="Zda-MT-gWY" secondAttribute="leading" id="Swv-IH-T4T"/>
+                            <constraint firstItem="MEb-Z8-Bl4" firstAttribute="top" secondItem="Zda-MT-gWY" secondAttribute="top" id="aWZ-9Y-86s"/>
+                            <constraint firstItem="Zda-MT-gWY" firstAttribute="bottom" secondItem="MEb-Z8-Bl4" secondAttribute="bottom" id="afN-io-Avr"/>
+                            <constraint firstItem="Zda-MT-gWY" firstAttribute="trailing" secondItem="MEb-Z8-Bl4" secondAttribute="trailing" id="yBZ-H4-dfq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zda-MT-gWY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="VISHEO BOX" id="dEI-6J-amM">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="SWu-hi-sea">
+                            <connections>
+                                <action selector="menuPressed:" destination="Zpw-CB-0wW" id="wJO-no-QqD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="MEb-Z8-Bl4" id="OoG-jl-ro2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VdU-Da-ljL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="104.8" y="528.48575712143929"/>
         </scene>
         <!--SELECT COVER-->
         <scene sceneID="1Tb-hG-HqO">
@@ -698,21 +796,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="bdG-sn-BZg">
-                                <rect key="frame" x="0.0" y="229.5" width="0.0" height="144"/>
+                                <rect key="frame" x="61" y="-17346" width="253" height="35295"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR PHOTOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-PL-lMo">
+                                        <rect key="frame" x="0.0" y="0.0" width="253" height="9566.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add memorable to your Visheo — please allow Visheo to access your photos when prompted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-CT-UNf">
-                                        <rect key="frame" x="0.0" y="42" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="9608.5" width="253" height="25584.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-vf-rCc">
-                                        <rect key="frame" x="0.0" y="84" width="0.0" height="60"/>
+                                        <rect key="frame" x="0.0" y="35235" width="253" height="60"/>
                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ss-oF-nBH"/>

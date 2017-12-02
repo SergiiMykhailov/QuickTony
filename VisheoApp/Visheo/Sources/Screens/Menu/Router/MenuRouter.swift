@@ -10,6 +10,7 @@ import UIKit
 
 protocol MenuRouter: FlowRouter {
     func showCreateVisheo()
+    func showVisheoBox()
 }
 
 class VisheoMenuRouter : MenuRouter {
@@ -45,13 +46,25 @@ class VisheoMenuRouter : MenuRouter {
 
 extension VisheoMenuRouter {
     func showCreateVisheo() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let chooseOccasionController = storyboard.instantiateViewController(withIdentifier: "ChooseOccasionViewController") as! ChooseOccasionViewController
-        let mainRouter = VisheoChooseOccasionRouter(dependencies: dependencies)
-        mainRouter.start(with: chooseOccasionController)
-        
+        showController(with: "ChooseOccasionViewController") { (controller) in
+            let mainRouter = VisheoChooseOccasionRouter(dependencies: dependencies)
+            mainRouter.start(with: controller as! ChooseOccasionViewController)
+        }
+    }
+    
+    func showVisheoBox() {
+        showController(with: "VisheoBoxViewController") { (controller) in
+            let router = VisheoListRouter(dependencies : dependencies)
+            router.start(with: controller as! VisheoBoxViewController)
+        }
+    }
+    
+    
+    private func showController(with id: String, storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil), setup: (UIViewController) -> ()) {
+        let shownController = storyboard.instantiateViewController(withIdentifier: id)
+        setup(shownController)        
         let navigationController = controller?.sideMenuController?.rootViewController as! UINavigationController
-        navigationController.setViewControllers([chooseOccasionController], animated: false)
+        navigationController.setViewControllers([shownController], animated: false)
         controller?.sideMenuController?.hideLeftView(animated: true, delay: 0.0, completionHandler: nil)
     }
 }

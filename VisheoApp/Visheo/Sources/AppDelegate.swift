@@ -78,14 +78,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let creationService    = VisheoCreationService(userInfoProvider: authService,
                                                        rendererService: renderingService)
         let assembly = VisheoRouterAssembly()
-        
         let purchasesInfo = DummyUserPurchasesInfo(premiumCardsNumber: 2)
+        let visheosListService = VisheoBoxService()
+        
         return RouterDependencies(appStateService: appState,
                                                 appPermissionsService: permissionsService,
                                                 authorizationService: authService,
                                                 userInfoProvider : authService,
                                                 userInputValidator: inputValidator,
                                                 occasionsListService: occasionsList,
+                                                visheosListService: visheosListService,
                                                 purchasesInfo:  purchasesInfo,
                                                 renderingService: renderingService,
                                                 creationService: creationService,
