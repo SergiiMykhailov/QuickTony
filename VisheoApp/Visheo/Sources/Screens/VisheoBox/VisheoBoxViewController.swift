@@ -72,6 +72,10 @@ extension VisheoBoxViewController : UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.select(visheo: indexPath.row)
+    }
+    
     func updateCell(at row: Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? VisheoCollectionViewCell {
             let cellVm = viewModel.visheo(at: row)

@@ -10,11 +10,12 @@ import UIKit
 
 protocol VisheoBoxRouter: FlowRouter {
     func showMenu()
+    func show(visheo : VisheoRecord)
 }
 
 class VisheoListRouter : VisheoBoxRouter {
     enum SegueList: String, SegueListType {
-        case next
+        case showVisheo = "showVisheo"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: VisheoBoxViewController?
@@ -37,8 +38,10 @@ class VisheoListRouter : VisheoBoxRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showVisheo:
+            let shareController = segue.destination as! ShareVisheoViewController
+            let shareRouter = ShareVisheoRouter(dependencies: dependencies)
+            shareRouter.start(with: shareController, record: sender as! VisheoRecord)
         }
     }
 }
@@ -46,6 +49,10 @@ class VisheoListRouter : VisheoBoxRouter {
 extension VisheoListRouter {
     func showMenu() {
         controller?.showLeftViewAnimated(self)
+    }
+    
+    func show(visheo : VisheoRecord) {
+        controller?.performSegue(SegueList.showVisheo, sender: visheo)
     }
 }
 

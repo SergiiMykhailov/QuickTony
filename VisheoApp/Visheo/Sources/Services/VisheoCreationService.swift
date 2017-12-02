@@ -50,6 +50,7 @@ enum CreationError : Error {
 }
 
 protocol CreationService {
+    func deleteVisheo(with id: String)
     func createVisheo(from assets:VisheoRenderingAssets, premium: Bool)
     func retryCreation(for visheoId: String)
     func isIncomplete(visheoId: String) -> Bool
@@ -116,6 +117,21 @@ class VisheoCreationService : CreationService {
         
         save(unfinished: info)
         render(creationInfo: info)
+    }
+    
+    func deleteVisheo(with id: String) {
+        cardsRef.child("\(id)").removeValue()
+        if let userId = self.userInfoProvider.userId {
+            Database.database().reference().child("users/\(userId)/cards/\(id)").removeValue()
+        }
+        
+        let premiumRef = Storage.storage().reference().child(refPath(for: id, premium: true))
+        let freeRef = Storage.storage().reference().child(refPath(for: id, premium: false))
+        
+        premiumRef.delete(completion: nil)
+        freeRef.delete(completion: nil)
+        
+        VisheoRenderingAssets.deleteAssets(for: id)
     }
     
     func retryCreation(for visheoId: String) {

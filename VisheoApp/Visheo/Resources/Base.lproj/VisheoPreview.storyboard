@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,7 +49,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103.5" y="187" width="128" height="18.5"/>
+                                        <rect key="frame" x="103" y="187" width="128.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -336,6 +337,12 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ndl-k9-yKy" appends="YES" id="CgF-tU-8IH"/>
@@ -466,17 +473,31 @@
                         <viewLayoutGuide key="safeArea" id="mpf-wC-7hc"/>
                     </view>
                     <navigationItem key="navigationItem" title="SHARE YOUR VISHEO" id="gn6-b8-TgL">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="QL0-nA-9zK">
+                        <leftBarButtonItems>
+                            <barButtonItem image="menu" id="QL0-nA-9zK">
+                                <connections>
+                                    <action selector="menuPressed:" destination="L2Y-ET-ymb" id="lx9-0N-Sr1"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="arrow" id="ceG-hb-vVo">
+                                <connections>
+                                    <action selector="backPressed:" destination="L2Y-ET-ymb" id="xS2-uc-T88"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="delete" id="f7b-DB-y8Z">
                             <connections>
-                                <action selector="menuPressed:" destination="L2Y-ET-ymb" id="lx9-0N-Sr1"/>
+                                <action selector="deletePressed:" destination="L2Y-ET-ymb" id="Vva-7e-HWl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backBarItem" destination="ceG-hb-vVo" id="ap4-Va-n73"/>
                         <outlet property="coverImage" destination="JUY-Yl-B80" id="mhg-IF-Q9h"/>
+                        <outlet property="deleteBarItem" destination="f7b-DB-y8Z" id="qct-qe-jXq"/>
                         <outlet property="downloadButton" destination="TuK-eZ-TXQ" id="vKy-vf-B5A"/>
                         <outlet property="linkText" destination="fyp-in-Hpa" id="3Jz-dz-tYS"/>
-                        <outlet property="menuBarItem" destination="QL0-nA-9zK" id="dGL-9n-rhS"/>
+                        <outlet property="menuBarItem" destination="QL0-nA-9zK" id="TMN-S9-TE6"/>
                         <outlet property="playButton" destination="OgS-LU-4q7" id="ubv-Oc-xIN"/>
                         <outlet property="progressBar" destination="7tK-Zx-gw7" id="Dtx-fy-EOb"/>
                         <outlet property="shareButton" destination="BoA-F2-OsI" id="mlf-gB-ae4"/>
@@ -553,6 +574,7 @@
     <resources>
         <image name="arrow" width="20" height="20"/>
         <image name="cover" width="50" height="52"/>
+        <image name="delete" width="20" height="20"/>
         <image name="group9Copy" width="24" height="24"/>
         <image name="menu" width="20" height="20"/>
         <image name="music" width="50" height="52"/>

@@ -21,6 +21,12 @@ class VisheoRenderingAssets {
     }
     private let id : String
     
+    static func deleteAssets(for id: String) {
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let assetsFolderUrl = documentsUrl.appendingPathComponent(id)
+        try? FileManager.default.removeItem(at: assetsFolderUrl)
+    }
+    
     init(originalOccasion: OccasionRecord) {
         self.originalOccasion = originalOccasion
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

@@ -30,20 +30,37 @@ protocol VisheoRecord {
 class VisheoBoxService : VisheosListService {
     var visheosRecords: [VisheoRecord] = []
 
-    let userVisheosRef : DatabaseReference
+    var userVisheosRef : DatabaseReference?
     let visheosRef : DatabaseReference
     var occasionObservers : [String : DatabaseHandle] = [:]
+    private let userProvider : UserInfoProvider
     
-    init() {
-        let userID = "b35uvXsR1ZTNmN4yVoc71c5zuCL2"
-        userVisheosRef = Database.database().reference().child("users/\(userID)/cards")
+    init(userInfoProvider : UserInfoProvider) {
         visheosRef = Database.database().reference().child("cards")
-        loadVisheos()
+        self.userProvider = userInfoProvider
+        startObserving(user: userProvider.userId)
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.authStateChanged, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
+            self?.startObserving(user: self?.userProvider.userId)
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func startObserving(user userId: String?) {
+        visheosRecords.removeAll()
+        if let id = userId {
+            userVisheosRef = Database.database().reference().child("users/\(id)/cards")
+            loadVisheos()
+        }
     }
     
     func loadVisheos() {
-        userVisheosRef.observe(.value) { (snapshot) in
+        userVisheosRef?.observe(.value) { (snapshot) in
             self.stopObservingVisheos()
+            self.visheosRecords.removeAll()
             guard let visheos = snapshot.value as? [String: Any] else {return}
             
             self.visheosRecords =  visheos.map { $0.key }
@@ -93,7 +110,7 @@ class VisheoCardRecord : VisheoRecord {
         videoUrl   = URL(string: snapshot["downloadUrl"] as? String ?? "")
         coverUrl   = URL(string: snapshot["coverPreviewUrl"] as? String ?? "")
         name       = snapshot["occasionName"] as? String
-        visheoLink = snapshot["occasionName"] as? String
+        visheoLink = snapshot["visheoUrl"] as? String
         timestamp  = snapshot["timestamp"] as? Double
     }
 }

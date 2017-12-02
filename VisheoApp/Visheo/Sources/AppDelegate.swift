@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                        rendererService: renderingService)
         let assembly = VisheoRouterAssembly()
         let purchasesInfo = DummyUserPurchasesInfo(premiumCardsNumber: 2)
-        let visheosListService = VisheoBoxService()
+        let visheosListService = VisheoBoxService(userInfoProvider: authService)
         
         return RouterDependencies(appStateService: appState,
                                                 appPermissionsService: permissionsService,

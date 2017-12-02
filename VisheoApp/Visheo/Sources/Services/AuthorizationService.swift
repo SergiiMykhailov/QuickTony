@@ -35,6 +35,7 @@ protocol UserInfoProvider {
 extension Notification.Name {
     static let userLoggedIn = Notification.Name("userLoggedIn")
     static let userLoginFailed = Notification.Name("userLoginFailed")
+    static let authStateChanged = Notification.Name("authStateChanged")
 }
 
 extension Notification {
@@ -58,6 +59,12 @@ class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvi
 
         if appState.firstLaunch {
             try? Auth.auth().signOut()
+        }
+        
+        Auth.auth().addStateDidChangeListener {[weak self] (auth, user) in
+            if let `self` = self {
+                NotificationCenter.default.post(name: .authStateChanged, object: self)
+            }
         }
     }
     

@@ -35,6 +35,14 @@ class ShareVisheoRouter : ShareRouter {
         vm.startRendering()
     }
     
+    func start(with viewController: ShareVisheoViewController, record: VisheoRecord) {
+        let vm = ExistingVisheoShareViewModel(record: record, visheoService: dependencies.creationService)
+        viewModel = vm
+        vm.router = self
+        self.controller = viewController
+        viewController.configure(viewModel: vm, router: self)
+    }
+    
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let segueList = SegueList(segue: segue) else {
             return

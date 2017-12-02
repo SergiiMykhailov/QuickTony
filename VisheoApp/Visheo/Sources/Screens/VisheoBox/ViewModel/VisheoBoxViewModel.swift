@@ -16,6 +16,7 @@ protocol VisheoBoxViewModel : class {
     
     var visheosCount : Int {get}
     func visheo(at index: Int) -> VisheoCellViewModel
+    func select(visheo at: Int)
 }
 
 class VisheoListViewModel : VisheoBoxViewModel {
@@ -63,6 +64,13 @@ class VisheoListViewModel : VisheoBoxViewModel {
     
     func showMenu() {
         router?.showMenu()
+    }
+    
+    func select(visheo at: Int)  {
+        let record = visheos[at]
+        if !creationService.isIncomplete(visheoId: record.id) {
+            router?.show(visheo: record)
+        }
     }
     
     // MARK: Private

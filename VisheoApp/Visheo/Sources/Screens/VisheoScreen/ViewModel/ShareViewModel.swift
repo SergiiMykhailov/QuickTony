@@ -16,9 +16,10 @@ enum VisheoCreationStatus {
 }
 
 protocol ShareViewModel : class, AlertGenerating {
-    var coverImageUrl : URL {get}
+    var coverImageUrl : URL? {get}
     var visheoUrl : URL? {get}
     var visheoLink : String? {get}
+    var showBackButton : Bool {get}
     
     var renderingTitle : String {get}
     var uploadingTitle : String {get}
@@ -34,6 +35,67 @@ protocol ShareViewModel : class, AlertGenerating {
     func showMenu()
     
     func saveVisheo()
+    func deleteVisheo()
+}
+
+class ExistingVisheoShareViewModel: ShareViewModel {
+    var showBackButton: Bool {
+        return true
+    }
+    
+    var coverImageUrl: URL? {
+        return visheoRecord.coverUrl
+    }
+    
+    var visheoUrl: URL? {
+        return visheoRecord.videoUrl
+    }
+    
+    var visheoLink: String? {
+        return visheoRecord.visheoLink
+    }
+    
+    var renderingTitle: String = ""
+    var uploadingTitle: String = ""
+    var creationStatus: VisheoCreationStatus = .ready
+    func startRendering() {}
+    func retry() {}
+    func tryLater() {}
+    
+    var creationStatusChanged: (() -> ())?
+    var successAlertHandler: ((String) -> ())?
+    var warningAlertHandler: ((String) -> ())?
+    var showRetryLaterError: ((String) -> ())?
+    
+    weak var router: ShareRouter?
+    private let visheoRecord : VisheoRecord
+    private let visheoService : CreationService
+    
+    init(record: VisheoRecord, visheoService: CreationService) {
+        self.visheoRecord = record
+        self.visheoService = visheoService
+    }
+    
+    func showMenu() {}
+    
+    func deleteVisheo() {
+        self.visheoService.deleteVisheo(with: visheoRecord.id)
+        router?.goToRoot()
+    }
+    
+    func saveVisheo() {
+        if let visheoUrl = visheoUrl {
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: visheoUrl)
+            }) {[weak self] (success, error) in
+                if success {
+                    self?.successAlertHandler?(NSLocalizedString("Your visheo was saved to the gallery.", comment: "Successfully save visheo to gallery text"))
+                } else {
+                    self?.warningAlertHandler?(NSLocalizedString("Oops... Something went wrong.", comment: "Failed to save visheo to gallery text"))
+                }
+            }
+        }
+    }
 }
 
 class ShareVisheoViewModel : ShareViewModel {
@@ -46,7 +108,11 @@ class ShareVisheoViewModel : ShareViewModel {
     var visheoUrl: URL?
     var visheoLink: String?
     
-    var coverImageUrl: URL {
+    var showBackButton: Bool {
+        return false
+    }    
+    
+    var coverImageUrl: URL? {
         return assets.coverUrl
     }
     
@@ -82,6 +148,11 @@ class ShareVisheoViewModel : ShareViewModel {
     }
     
     func tryLater() {
+        router?.goToRoot()
+    }
+    
+    func deleteVisheo() {
+        self.creationService.deleteVisheo(with: assets.creationInfo.visheoId)
         router?.goToRoot()
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import SDWebImage
 
 class ShareVisheoViewController: UIViewController {
 
@@ -30,7 +31,15 @@ class ShareVisheoViewController: UIViewController {
             self?.showSuccessAlertWithText(text: $0)
         }
         
-        coverImage.image = UIImage(contentsOfFile: viewModel.coverImageUrl.path)
+        coverImage.sd_setImage(with: viewModel.coverImageUrl, completed: nil)
+        
+        updateProgress()
+        
+        if viewModel.showBackButton {
+            navigationItem.leftBarButtonItems = [backBarItem]
+        } else {
+            navigationItem.leftBarButtonItems = [menuBarItem]
+        }
     }
     
     private func showRetryError(text : String) {
@@ -64,16 +73,19 @@ class ShareVisheoViewController: UIViewController {
         progressBar.title = viewModel.renderingTitle
         interface(enable: false)
         menuBarItem.isEnabled = false
+        deleteBarItem.isEnabled = false
     }
     
     private func updateForUploading() {
         progressBar.title = viewModel.uploadingTitle
         interface(enable: false)
         menuBarItem.isEnabled = true
+        deleteBarItem.isEnabled = false
     }
     
     private func updateForReadyState() {
         menuBarItem.isEnabled = true
+        deleteBarItem.isEnabled = true
         UIView.animate(withDuration: 0.3) {
             self.progressBar.alpha = 0.0
             self.coverImage.alpha = 0.0
@@ -145,7 +157,10 @@ class ShareVisheoViewController: UIViewController {
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var videoContainer: UIView!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var menuBarItem: UIBarButtonItem!
+    @IBOutlet var menuBarItem: UIBarButtonItem!
+    @IBOutlet var backBarItem: UIBarButtonItem!
+    @IBOutlet weak var deleteBarItem: UIBarButtonItem!
+    
     
     @IBAction func sharePressed(_ sender: Any) {
         if let link = viewModel.visheoLink, let visheoUrl = URL(string: link) {
@@ -173,6 +188,23 @@ class ShareVisheoViewController: UIViewController {
         viewModel.showMenu()
     }
     
+    @IBAction func backPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func deletePressed(_ sender: Any) {
+        let confirmation = UIAlertController(title: NSLocalizedString("Notification", comment: "Notification alert title"),
+                                             message: NSLocalizedString("Are you sure you want to delete this Visheo? It will be deleted forever.", comment: "Visheo deletion confirmation"), preferredStyle: .alert)
+        confirmation.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel text"), style: .cancel, handler: nil))
+        
+        confirmation.addAction(UIAlertAction(title: NSLocalizedString("YES, Delete it", comment: "Visheo deletion confirm text"), style: .destructive, handler: { (action) in
+            self.viewModel.deleteVisheo()
+        }))
+        
+        present(confirmation, animated: true, completion: nil)
+    }
+    
+    @IBOutlet weak var deletePressed: UIBarButtonItem!
     @IBAction func playButtonPressed(_ sender: Any) {
         guard let player = player else {return}
         player.play()
