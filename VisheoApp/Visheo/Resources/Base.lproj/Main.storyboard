@@ -82,7 +82,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4v-USr">
-                                                    <rect key="frame" x="72" y="15.5" width="189" height="19"/>
+                                                    <rect key="frame" x="72" y="15" width="189" height="19"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                     <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elizabeth Burman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeD-pR-Sdz">
-                                <rect key="frame" x="93" y="111.5" width="126" height="19"/>
+                                <rect key="frame" x="93" y="111" width="126" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -499,12 +499,74 @@
                                     <outlet property="delegate" destination="Zpw-CB-0wW" id="dL9-Xg-Qwj"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQz-Ae-dAV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visheoboxempty" translatesAutoresizingMaskIntoConstraints="NO" id="tMv-36-jPA">
+                                        <rect key="frame" x="29.5" y="80" width="315" height="190"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="tMv-36-jPA" secondAttribute="height" multiplier="63:38" id="mqW-bV-QPI"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no Visheo cards yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tMl-ow-MWp">
+                                        <rect key="frame" x="56.5" y="309" width="263" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                        <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Visheo to deliver your care to your dear ones" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wf-9j-KvF">
+                                        <rect key="frame" x="56.5" y="344.5" width="263" height="47"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                        <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aH8-5u-Q2F">
+                                        <rect key="frame" x="20" y="567" width="335" height="60"/>
+                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="yZH-P2-euJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                        <state key="normal" title="Create Visheo Card">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createPressed:" destination="Zpw-CB-0wW" eventType="touchUpInside" id="PvG-3d-YvJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aH8-5u-Q2F" secondAttribute="bottom" constant="20" id="6F5-ub-HYw"/>
+                                    <constraint firstItem="aH8-5u-Q2F" firstAttribute="leading" secondItem="fQz-Ae-dAV" secondAttribute="leading" constant="20" id="8GW-FQ-lR8"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tMv-36-jPA" secondAttribute="trailing" constant="30" id="CRB-D2-XDc"/>
+                                    <constraint firstItem="7wf-9j-KvF" firstAttribute="top" secondItem="tMl-ow-MWp" secondAttribute="bottom" constant="12" id="Evp-8V-CPy"/>
+                                    <constraint firstItem="tMv-36-jPA" firstAttribute="top" secondItem="fQz-Ae-dAV" secondAttribute="top" constant="80" id="LDW-ha-gOA"/>
+                                    <constraint firstItem="tMv-36-jPA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fQz-Ae-dAV" secondAttribute="leading" constant="30" id="P7k-yY-Q8i"/>
+                                    <constraint firstAttribute="trailing" secondItem="aH8-5u-Q2F" secondAttribute="trailing" constant="20" id="TwM-Wx-mhj"/>
+                                    <constraint firstItem="tMl-ow-MWp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fQz-Ae-dAV" secondAttribute="leading" constant="44" id="Y2d-LO-VgD"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tMl-ow-MWp" secondAttribute="trailing" constant="44" id="aPH-fi-l8s"/>
+                                    <constraint firstItem="tMl-ow-MWp" firstAttribute="centerX" secondItem="fQz-Ae-dAV" secondAttribute="centerX" id="flC-hz-UWA"/>
+                                    <constraint firstItem="tMl-ow-MWp" firstAttribute="top" secondItem="tMv-36-jPA" secondAttribute="bottom" constant="39" id="ppW-ij-3eY"/>
+                                    <constraint firstItem="7wf-9j-KvF" firstAttribute="trailing" secondItem="tMl-ow-MWp" secondAttribute="trailing" id="qYj-OC-OPC"/>
+                                    <constraint firstItem="7wf-9j-KvF" firstAttribute="leading" secondItem="tMl-ow-MWp" secondAttribute="leading" id="teT-i4-hhk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Zda-MT-gWY" firstAttribute="bottom" secondItem="fQz-Ae-dAV" secondAttribute="bottom" id="KRl-Tl-39x"/>
                             <constraint firstItem="MEb-Z8-Bl4" firstAttribute="leading" secondItem="Zda-MT-gWY" secondAttribute="leading" id="Swv-IH-T4T"/>
                             <constraint firstItem="MEb-Z8-Bl4" firstAttribute="top" secondItem="Zda-MT-gWY" secondAttribute="top" id="aWZ-9Y-86s"/>
                             <constraint firstItem="Zda-MT-gWY" firstAttribute="bottom" secondItem="MEb-Z8-Bl4" secondAttribute="bottom" id="afN-io-Avr"/>
+                            <constraint firstItem="fQz-Ae-dAV" firstAttribute="leading" secondItem="Zda-MT-gWY" secondAttribute="leading" id="k95-En-Vef"/>
+                            <constraint firstItem="Zda-MT-gWY" firstAttribute="trailing" secondItem="fQz-Ae-dAV" secondAttribute="trailing" id="mVG-i2-Cdw"/>
+                            <constraint firstItem="fQz-Ae-dAV" firstAttribute="top" secondItem="Zda-MT-gWY" secondAttribute="top" id="nbs-i8-d6T"/>
                             <constraint firstItem="Zda-MT-gWY" firstAttribute="trailing" secondItem="MEb-Z8-Bl4" secondAttribute="trailing" id="yBZ-H4-dfq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zda-MT-gWY"/>
@@ -518,6 +580,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="MEb-Z8-Bl4" id="OoG-jl-ro2"/>
+                        <outlet property="emptyView" destination="fQz-Ae-dAV" id="qfO-at-KyZ"/>
                         <segue destination="vBl-rN-8NW" kind="show" identifier="showVisheo" id="WZQ-f6-las"/>
                     </connections>
                 </viewController>
@@ -918,6 +981,7 @@
         <image name="background" width="284" height="172"/>
         <image name="menu" width="20" height="20"/>
         <image name="rectangleCopy9" width="73" height="73"/>
+        <image name="visheoboxempty" width="315" height="190"/>
         <image name="welcomePic" width="337" height="337"/>
     </resources>
     <inferredMetricsTieBreakers>

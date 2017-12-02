@@ -10,6 +10,7 @@ import Foundation
 
 protocol VisheoBoxViewModel : class {
     func showMenu()
+    func showCreate()
     
     var didChangeCallback: (()->())? {get set}
     var didChangeAt: ((Int)->())? {get set}
@@ -64,6 +65,10 @@ class VisheoListViewModel : VisheoBoxViewModel {
     
     func showMenu() {
         router?.showMenu()
+    }
+    
+    func showCreate() {
+        router?.showCreate()
     }
     
     func select(visheo at: Int)  {

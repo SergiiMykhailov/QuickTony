@@ -10,6 +10,7 @@ import UIKit
 
 protocol VisheoBoxRouter: FlowRouter {
     func showMenu()
+    func showCreate()
     func show(visheo : VisheoRecord)
 }
 
@@ -49,6 +50,17 @@ class VisheoListRouter : VisheoBoxRouter {
 extension VisheoListRouter {
     func showMenu() {
         controller?.showLeftViewAnimated(self)
+    }
+    
+    func showCreate() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let shownController = storyboard.instantiateViewController(withIdentifier: "ChooseOccasionViewController")
+        let mainRouter = VisheoChooseOccasionRouter(dependencies: dependencies)
+        mainRouter.start(with: shownController as! ChooseOccasionViewController)
+        
+        let navigationController = controller?.sideMenuController?.rootViewController as! UINavigationController
+        navigationController.setViewControllers([shownController], animated: false)
+        controller?.sideMenuController?.hideLeftView(animated: true, delay: 0.0, completionHandler: nil)
     }
     
     func show(visheo : VisheoRecord) {

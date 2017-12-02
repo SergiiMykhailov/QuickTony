@@ -15,11 +15,14 @@ class VisheoBoxViewController: UIViewController {
 
         viewModel.didChangeCallback = {[weak self] in
             self?.collectionView.reloadData()
+            self?.emptyView.isHidden = self?.viewModel.visheosCount != 0
         }
         
         viewModel.didChangeAt = {[weak self] in
             self?.updateCell(at: $0)
         }
+        
+        self.emptyView.isHidden = self.viewModel.visheosCount != 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +36,7 @@ class VisheoBoxViewController: UIViewController {
     }
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyView: UIView!
     
     //MARK: - VM+Router init
     
@@ -45,6 +49,9 @@ class VisheoBoxViewController: UIViewController {
     }
     @IBAction func menuPressed(_ sender: Any) {
         viewModel.showMenu()
+    }
+    @IBAction func createPressed(_ sender: Any) {
+        viewModel.showCreate()
     }
 }
 

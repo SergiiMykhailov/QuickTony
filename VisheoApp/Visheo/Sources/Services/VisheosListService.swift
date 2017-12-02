@@ -61,6 +61,10 @@ class VisheoBoxService : VisheosListService {
         userVisheosRef?.observe(.value) { (snapshot) in
             self.stopObservingVisheos()
             self.visheosRecords.removeAll()
+            
+            defer {
+                self.didChangeAll()
+            }
             guard let visheos = snapshot.value as? [String: Any] else {return}
             
             self.visheosRecords =  visheos.map { $0.key }
@@ -87,6 +91,10 @@ class VisheoBoxService : VisheosListService {
     }
     
     func didChange(at id: String) {
+        NotificationCenter.default.post(name: .visheosChanged, object: self)
+    }
+    
+    func didChangeAll() {
         NotificationCenter.default.post(name: .visheosChanged, object: self)
     }
 }
