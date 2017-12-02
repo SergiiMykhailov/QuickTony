@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920EDFD21FCF059D00D121ED /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */; };
+		920EDFD71FCF064400D121ED /* SelectSoundtrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */; };
+		920EDFDC1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */; };
+		920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFDE1FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift */; };
+		920EDFE21FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE11FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift */; };
+		920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */; };
+		920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */; };
+		920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */; };
 		9255DF0E1FCD9EC200F9815F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF0D1FCD9EC200F9815F /* AppSettings.swift */; };
 		9255DF121FCDA5A200F9815F /* app_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9255DF111FCDA5A200F9815F /* app_settings.plist */; };
 		9255DF141FCDBE2900F9815F /* VisheoMovieWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF131FCDBE2800F9815F /* VisheoMovieWriter.swift */; };
@@ -17,6 +25,7 @@
 		92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */; };
 		92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
 		92A8D30E1FC86E86001E194D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
+		92AA3CFE1FD06D5900E3C95A /* SoundtracksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */; };
 		92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */; };
 		92C006631FC0B4AC000AFD4E /* CameraPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */; };
 		92C006651FC0B4BE000AFD4E /* CameraPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */; };
@@ -167,6 +176,14 @@
 
 /* Begin PBXFileReference section */
 		0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MusicSelection.storyboard; sourceTree = "<group>"; };
+		920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackViewController.swift; sourceTree = "<group>"; };
+		920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackCollectionMediator.swift; sourceTree = "<group>"; };
+		920EDFDE1FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundtrackCollectionViewCell.swift; sourceTree = "<group>"; };
+		920EDFE11FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackViewModel.swift; sourceTree = "<group>"; };
+		920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackCellModel.swift; sourceTree = "<group>"; };
+		920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackRouter.swift; sourceTree = "<group>"; };
+		920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
 		9255DF0D1FCD9EC200F9815F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		9255DF111FCDA5A200F9815F /* app_settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = app_settings.plist; sourceTree = "<group>"; };
@@ -178,6 +195,7 @@
 		92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewView.swift; sourceTree = "<group>"; };
 		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
 		92A8D30C1FC86E86001E194D /* blank.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank.m4v; sourceTree = "<group>"; };
+		92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtracksService.swift; sourceTree = "<group>"; };
 		92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewModel.swift; sourceTree = "<group>"; };
 		92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsRouter.swift; sourceTree = "<group>"; };
 		92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +331,43 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		920EDFD51FCF062900D121ED /* Soundtrack */ = {
+			isa = PBXGroup;
+			children = (
+				920EDFDD1FCF0D5C00D121ED /* Cells */,
+				920EDFE51FCF10D500D121ED /* Router */,
+				920EDFDF1FCF0D5C00D121ED /* ViewModel */,
+				920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */,
+				920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */,
+			);
+			path = Soundtrack;
+			sourceTree = "<group>";
+		};
+		920EDFDD1FCF0D5C00D121ED /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				920EDFDE1FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		920EDFDF1FCF0D5C00D121ED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				920EDFE11FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift */,
+				920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		920EDFE51FCF10D500D121ED /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		924DEB801FC3B22B00B04EE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +426,7 @@
 				92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */,
 				B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */,
 				B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */,
+				920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -525,6 +581,7 @@
 				92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */,
 				B46528111FC34A0F0070FFB7 /* VisheoPreview.storyboard */,
 				9255DF111FCDA5A200F9815F /* app_settings.plist */,
+				920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */,
 			);
 			name = Resources;
 			path = Visheo/Resources;
@@ -649,16 +706,17 @@
 			children = (
 				B4AEE0E71FD1B1340043A39A /* VisheoBox */,
 				B453F1CD1FCF058F003D61CB /* Menu */,
-				B46761231FC70E33006E9CB2 /* VisheoScreen */,
-				B46528081FC346650070FFB7 /* VisheoPreview */,
-				B4F666201FC1C96C00B68055 /* VideoTrimming */,
-				B44450D11FBEF3B70021772F /* PhotoPicking */,
-				9262CBA91FBDF71A00F90AB3 /* Camera */,
-				B4BCAC031FB8CDE0003EDC7F /* SelectCover */,
 				B4BCABC61FB8CC7C003EDC7F /* Authorization */,
+				9262CBA91FBDF71A00F90AB3 /* Camera */,
 				B4BCABD21FB8CC7C003EDC7F /* ChooseOccassion */,
 				B4BCABDF1FB8CC7C003EDC7F /* LaunchProxy */,
 				B4BCABE51FB8CC7C003EDC7F /* Onboarding */,
+				B44450D11FBEF3B70021772F /* PhotoPicking */,
+				B4BCAC031FB8CDE0003EDC7F /* SelectCover */,
+				920EDFD51FCF062900D121ED /* Soundtrack */,
+				B4F666201FC1C96C00B68055 /* VideoTrimming */,
+				B46528081FC346650070FFB7 /* VisheoPreview */,
+				B46761231FC70E33006E9CB2 /* VisheoScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -821,11 +879,12 @@
 			isa = PBXGroup;
 			children = (
 				B44450CE1FBEDA0F0021772F /* Rendering */,
+				B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */,
 				B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */,
 				B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */,
-				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
 				B48259021FB3060800A7F5B0 /* OccasionsListService.swift */,
-				B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */,
+				92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */,
+				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
 				B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */,
 				B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */,
 				9255DF0D1FCD9EC200F9815F /* AppSettings.swift */,
@@ -967,6 +1026,7 @@
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
 				B43163811FBF480A00135B70 /* Localizable.strings in Resources */,
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
+				920EDFD21FCF059D00D121ED /* MusicSelection.storyboard in Resources */,
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
 				B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
@@ -1103,9 +1163,11 @@
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B4BCABF71FB8CC7D003EDC7F /* HolidaysCollectionMediator.swift in Sources */,
 				9255DF141FCDBE2900F9815F /* VisheoMovieWriter.swift in Sources */,
+				920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */,
 				B4BCAC071FB8CDFB003EDC7F /* SelectCoverViewController.swift in Sources */,
 				B4BCABFE1FB8CC7D003EDC7F /* LaunchProxyRouter.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
+				920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */,
 				B4BCABF21FB8CC7D003EDC7F /* SignInViewModel.swift in Sources */,
 				B433DDE61FC41EBD00309974 /* EditVisheoButton.swift in Sources */,
 				B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */,
@@ -1115,6 +1177,7 @@
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
 				B467612D1FC7367A006E9CB2 /* UserPurchasesInfo.swift in Sources */,
 				B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */,
+				920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */,
 				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
 				B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */,
 				B4BCABF51FB8CC7D003EDC7F /* OccassionCollectionViewCell.swift in Sources */,
@@ -1131,6 +1194,7 @@
 				B4BCABF91FB8CC7D003EDC7F /* ChooseOccasionRouter.swift in Sources */,
 				B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */,
 				B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */,
+				920EDFE21FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift in Sources */,
 				92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */,
 				B4AEE0EF1FD1B28B0043A39A /* VisheoBoxRouter.swift in Sources */,
 				9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */,
@@ -1151,6 +1215,7 @@
 				B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */,
 				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4BCABF11FB8CC7D003EDC7F /* AuthorizationViewModel.swift in Sources */,
+				92AA3CFE1FD06D5900E3C95A /* SoundtracksService.swift in Sources */,
 				9262CBB31FBE139700F90AB3 /* CameraRecordButton.swift in Sources */,
 				B4CF320F1FC87E540063AA52 /* VisheoCreationService.swift in Sources */,
 				9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */,
@@ -1165,6 +1230,7 @@
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
 				B453F1D51FCF1AB7003D61CB /* MenuRouter.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
+				920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */,
 				B4F63DC01FC85FDB00E05B90 /* VisheoRenderingService.swift in Sources */,
 				B4BCABF01FB8CC7D003EDC7F /* SignUpViewController.swift in Sources */,
 				B44450D01FBEDA7B0021772F /* VisheoRenderingAssets.swift in Sources */,
@@ -1174,9 +1240,11 @@
 				B453F1D71FCF1AC4003D61CB /* MenuViewModel.swift in Sources */,
 				B44450DB1FBF02D70021772F /* PhotoPickerRouter.swift in Sources */,
 				B4BCAC021FB8CC7D003EDC7F /* OnboardingViewModel.swift in Sources */,
+				920EDFDC1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift in Sources */,
 				B46761291FC7119D006E9CB2 /* ShareRouter.swift in Sources */,
 				92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */,
 				B4BCAC011FB8CC7D003EDC7F /* OnboardingRouter.swift in Sources */,
+				920EDFD71FCF064400D121ED /* SelectSoundtrackViewController.swift in Sources */,
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,
 				B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */,
 				B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */,

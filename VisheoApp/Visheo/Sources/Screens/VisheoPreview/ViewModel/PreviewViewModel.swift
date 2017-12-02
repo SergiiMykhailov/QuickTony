@@ -16,6 +16,7 @@ import PromiseKit
 enum PreviewRenderStatus
 {
 	case pending
+	case waitingForResources
 	case rendering
 	case ready(item: AVPlayerItem)
 	case failed(error: Error)
@@ -26,7 +27,8 @@ protocol PreviewViewModel : class {
     func editCover()
     func editPhotos()
     func editVideo()
-    
+	func editSoundtrack();
+	
     func sendVisheo()
     
     var assets : VisheoRenderingAssets {get}
@@ -47,6 +49,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
     let authService: AuthorizationService
     let purchasesInfo: UserPurchasesInfo
 	let appStateService: AppStateService;
+	let soundtracksService: SoundtracksService
 	
 	let extractor = VideoThumbnailExtractor();
 	var renderContainer: PhotosAnimation? = nil;
@@ -63,27 +66,49 @@ class VisheoPreviewViewModel : PreviewViewModel {
          permissionsService: AppPermissionsService,
          authService: AuthorizationService,
          purchasesInfo: UserPurchasesInfo,
-		 appStateService: AppStateService) {
+		 appStateService: AppStateService,
+		 soundtracksService: SoundtracksService) {
         self.assets = assets
         self.permissionsService = permissionsService
         self.authService = authService
         self.purchasesInfo = purchasesInfo
 		self.appStateService = appStateService;
+		self.soundtracksService = soundtracksService;
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoPreviewViewModel.soundtrackDownloaded(_:)), name: .soundtrackDownloadFinished, object: nil);
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoPreviewViewModel.soundtrackDownloadFailed(_:)), name: .soundtrackDownloadFailed, object: nil);
     }
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self);
+	}
+	
 	
 	func renderPreview()
 	{
-		guard case .pending = renderStatus else {
-			return;
+		switch renderStatus {
+			case .pending, .waitingForResources:
+				break;
+			default:
+				return;
 		}
-		
-		let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a");
-		let audioURL = URL(fileURLWithPath: audio!);
-		let videoURL = assets.videoUrl//URL(fileURLWithPath: video!);
-		
-		let quality = RenderQuality.res480;
-		
+
 		renderStatus = .rendering;
+		
+		var audioURL: URL?;
+		
+		if let soundtrack = assets.selectedSoundtrack {
+			if soundtracksService.soundtrackIsCached(soundtrack: soundtrack) {
+				audioURL = soundtracksService.cacheURL(for: soundtrack)
+			} else {
+				renderStatus = .waitingForResources;
+				soundtracksService.download(soundtrack);
+				return;
+			}
+		}
+			
+		let videoURL = assets.videoUrl
+		let quality = RenderQuality.res480;
 		
 		firstly {
 			fetchVideoScreenshot(url: videoURL)
@@ -92,7 +117,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			self.renderTimeLine(videoSnapshot: url, quality: quality);
 		}
 		.then { url -> VisheoVideoComposition in
-			let video = VisheoVideo(timeline: url, video: videoURL, audio: audioURL, quality: quality);
+			let video = VisheoRender(timeline: url, video: videoURL, audio: audioURL, quality: quality);
 			return try video.prepareComposition()
 		}
 		.then { composition -> AVPlayerItem in
@@ -114,7 +139,8 @@ class VisheoPreviewViewModel : PreviewViewModel {
 		switch status {
 			case .failed:
 				return "Failed to generate preview";
-			case .rendering:
+			case .rendering,
+				 .waitingForResources:
 				return "Generating preview...";
 			default:
 				return nil;
@@ -141,6 +167,10 @@ class VisheoPreviewViewModel : PreviewViewModel {
     func editVideo() {
         router?.showVideoEdit(with: assets)
     }
+	
+	func editSoundtrack() {
+		router?.showSoundtrackEdit(with: assets);
+	}
     
     func sendVisheo() {
         if authService.isAnonymous {
@@ -155,6 +185,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
         
     }
 
+	// MARK: - Rendering
 	private func fetchVideoScreenshot(url: URL) -> Promise<URL> {
 		let asset = AVURLAsset(url: url);
 
@@ -205,6 +236,34 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			catch (let e) {
 				rj(e)
 			}
+		}
+	}
+	
+	// MARK: - Notifications
+	@objc private func soundtrackDownloaded(_ notification: Notification) {
+		let userInfo = notification.userInfo;
+		guard 	let id = userInfo?[SoundtracksServiceNotificationKeys.trackId] as? Int,
+				let url = userInfo?[SoundtracksServiceNotificationKeys.downloadLocation] as? URL, id == assets.soundtrackId else {
+			return;
+		}
+		
+		assets.setSoundtrack(id: assets.soundtrackId, url: url);
+		
+		if case .waitingForResources = renderStatus {
+			renderPreview();
+		}
+	}
+	
+	@objc private func soundtrackDownloadFailed(_ notification: Notification)
+	{
+		let userInfo = notification.userInfo;
+		guard 	let id = userInfo?[SoundtracksServiceNotificationKeys.trackId] as? Int,
+				let error = userInfo?[SoundtracksServiceNotificationKeys.error] as? Error, id == assets.soundtrackId else {
+			return;
+		}
+		
+		if case .waitingForResources = renderStatus {
+			renderStatus = .failed(error: error);
 		}
 	}
 }

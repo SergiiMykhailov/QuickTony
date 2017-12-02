@@ -13,6 +13,7 @@ protocol PreviewRouter: FlowRouter {
     func showPhotosEdit(with assets: VisheoRenderingAssets)
     func showPhotoPermissions(with assets: VisheoRenderingAssets)
     func showVideoEdit(with assets: VisheoRenderingAssets)
+	func showSoundtrackEdit(with assets: VisheoRenderingAssets)
     
     func sendVisheo(with assets: VisheoRenderingAssets)
     func showRegistration(with callback: (()->())?)
@@ -25,6 +26,7 @@ class VisheoPreviewRouter : PreviewRouter {
         case showPhotosEdit        = "showPhotosEdit"
         case showPhotoPermissions  = "showPhotoPermissions"
         case showVideoEdit         = "showVideoEdit"
+		case showSoundtrackEdit    = "showSoundtrackEdit"
         case showSendVisheo        = "showSendVisheo"
         case showRegistration      = "showRegistration"
         case showCardTypeSelection = "showCardTypeSelection"
@@ -49,7 +51,8 @@ class VisheoPreviewRouter : PreviewRouter {
                                         permissionsService: dependencies.appPermissionsService,
                                         authService: dependencies.authorizationService,
 										purchasesInfo: dependencies.purchasesInfo,
-										appStateService: dependencies.appStateService)
+										appStateService: dependencies.appStateService,
+										soundtracksService: dependencies.soundtracksService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -77,6 +80,10 @@ class VisheoPreviewRouter : PreviewRouter {
             let editVideoScreen = (segue.destination as! UINavigationController).viewControllers[0] as! VideoTrimmingViewController
             let editVideoRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets, callback: {self.assets = $0})
             editVideoRouter.start(with: editVideoScreen, editMode: true)
+		case .showSoundtrackEdit:
+			let editSoundtrackScreen = (segue.destination as! UINavigationController).viewControllers[0] as! SelectSoundtrackViewController;
+			let editSoundtrackRouter = VisheoSelectSoundtrackRouter(dependencies: dependencies, occasion: assets.originalOccasion, assets: sender as! VisheoRenderingAssets, callback: {self.assets = $0})
+			editSoundtrackRouter.start(with: editSoundtrackScreen)
         case .showSendVisheo:
             let sendController = segue.destination as! ShareVisheoViewController
             let sendRouter = ShareVisheoRouter(dependencies: dependencies)
@@ -113,6 +120,10 @@ extension VisheoPreviewRouter {
     func showVideoEdit(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showVideoEdit, sender: assets)
     }
+	
+	func showSoundtrackEdit(with assets: VisheoRenderingAssets) {
+		controller?.performSegue(SegueList.showSoundtrackEdit, sender: assets)
+	}
     
     func sendVisheo(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showSendVisheo, sender: assets)

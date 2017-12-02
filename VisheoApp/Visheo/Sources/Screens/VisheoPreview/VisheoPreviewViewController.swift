@@ -76,6 +76,7 @@ class VisheoPreviewViewController: UIViewController {
     }
     
     @IBAction func editSoundtrack(_ sender: Any) {
+		viewModel.editSoundtrack();
     }
     
     @IBAction func sendPressed(_ sender: Any) {
@@ -88,7 +89,9 @@ class VisheoPreviewViewController: UIViewController {
 	
 	private func handle(renderStatus status: PreviewRenderStatus)
 	{
-		statusLabel.text = viewModel.statusText(for: status);
+		let statusText = viewModel.statusText(for: status);
+		statusLabel.text = statusText;
+		statusLabel.isHidden = (statusText == nil);
 		
 		switch status {
 			case .ready(let item):
@@ -99,12 +102,12 @@ class VisheoPreviewViewController: UIViewController {
 				videoContainer.item = nil;
 		}
 		
-		if case .rendering = status {
-			activityIndicator.startAnimating();
-			statusLabel.isHidden = false;
-		} else {
-			activityIndicator.stopAnimating();
-			statusLabel.isHidden = true;
+		switch status {
+			case .rendering,
+				 .waitingForResources:
+				activityIndicator.startAnimating();
+			default:
+				activityIndicator.stopAnimating();
 		}
 	}
 	
