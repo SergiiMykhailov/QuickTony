@@ -131,7 +131,7 @@
                                     <outlet property="delegate" destination="Utz-9c-J4S" id="soq-dP-38b"/>
                                 </connections>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6N-Gc-4rH" userLabel="Separator">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6N-Gc-4rH" userLabel="Separator">
                                 <rect key="frame" x="129.5" y="352" width="116" height="1"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -139,7 +139,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SIGN UP TO SEND YOUR VISHEO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-eg-F0v">
-                                <rect key="frame" x="81.5" y="303.5" width="212" height="23.5"/>
+                                <rect key="frame" x="81.5" y="290" width="212" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="212" id="d2J-dY-h8L"/>
                                 </constraints>
@@ -537,6 +537,6 @@
         <image name="logo" width="182" height="204"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f4y-We-X0N"/>
+        <segue reference="n81-7H-tYm"/>
     </inferredMetricsTieBreakers>
 </document>

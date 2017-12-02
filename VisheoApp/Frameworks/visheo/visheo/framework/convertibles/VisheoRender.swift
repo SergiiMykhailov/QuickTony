@@ -1,5 +1,5 @@
 //
-//  VisheoVideo.swift
+//  VisheoRender.swift
 //  VisheoVideo
 //
 //  Created by Nikita Ivanchikov on 11/20/17.
@@ -11,15 +11,15 @@ import AVFoundation
 public typealias VisheoVideoComposition =  (mainComposition: AVComposition, videoComposition: AVVideoComposition, audioMix: AVAudioMix);
 
 
-public final class VisheoVideo: VideoConvertible
+public final class VisheoRender: VideoConvertible
 {
 	private let timeline: URL;
 	private let video: URL;
-	private let audio: URL;
+	private let audio: URL?;
 	private let quality: RenderQuality;
 	
 	
-	public init(timeline: URL, video: URL, audio: URL, quality: RenderQuality)
+	public init(timeline: URL, video: URL, audio: URL?, quality: RenderQuality)
 	{
 		self.timeline = timeline;
 		self.video = video;
@@ -39,8 +39,6 @@ public final class VisheoVideo: VideoConvertible
 		
 		let composition = AVMutableComposition();
 		
-		let audio = AVURLAsset(url: self.audio);
-		
 		let videoTrack = (composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid))!;
 		
 		let trackInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack);
@@ -48,19 +46,26 @@ public final class VisheoVideo: VideoConvertible
 		let videoID = composition.unusedTrackID();
 		let videoSoundTrack = (composition.addMutableTrack(withMediaType: .audio, preferredTrackID: videoID))!;
 		
-		let audioID = composition.unusedTrackID();
-		let musicTrack = (composition.addMutableTrack(withMediaType: .audio, preferredTrackID: audioID))!;
-		
 		var time = kCMTimeZero;
 		
 		let videoInputParams = AVMutableAudioMixInputParameters();
 		videoInputParams.trackID = videoID;
 		videoInputParams.setVolume(1.0, at: kCMTimeZero);
 		
-		let audioInputParams = AVMutableAudioMixInputParameters();
-		audioInputParams.trackID = audioID;
-		audioInputParams.setVolume(1.0, at: kCMTimeZero);
+		var audioInputParams: AVMutableAudioMixInputParameters? = nil;
+		var audio: AVURLAsset? = nil;
+		var musicTrack: AVMutableCompositionTrack? = nil;
 		
+		if let audioURL = self.audio {
+			audio = AVURLAsset(url: audioURL);
+			
+			let audioID = composition.unusedTrackID();
+			musicTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: audioID);
+			
+			audioInputParams = AVMutableAudioMixInputParameters();
+			audioInputParams?.trackID = audioID;
+			audioInputParams?.setVolume(1.0, at: kCMTimeZero);
+		}
 		
 		let timelineAsset = AVURLAsset(url: timeline);
 		
@@ -72,8 +77,7 @@ public final class VisheoVideo: VideoConvertible
 		
 		trackInstruction.setTransform(CGAffineTransform.identity, at: time);
 		
-		if (!timelineTrack.naturalSize.equalTo(renderSize))
-		{
+		if (!timelineTrack.naturalSize.equalTo(renderSize)) {
 			let scale = renderSize.width / timelineTrack.naturalSize.width;
 			let transform = CGAffineTransform(scaleX: scale, y: scale);
 			trackInstruction.setTransform(transform, at: time);
@@ -105,17 +109,18 @@ public final class VisheoVideo: VideoConvertible
 			let duration = CMTimeMakeWithSeconds(1.0, timelineAsset.duration.timescale);
 			
 			let start = CMTimeRangeMake(CMTimeSubtract(time, duration), duration);
-			audioInputParams.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.05, timeRange: start);
+			audioInputParams?.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.05, timeRange: start);
 			
 			let end = CMTimeRangeMake(CMTimeAdd(time, videoAsset.duration), duration)
-			audioInputParams.setVolumeRamp(fromStartVolume: 0.05, toEndVolume: 1.0, timeRange: end);
+			audioInputParams?.setVolumeRamp(fromStartVolume: 0.05, toEndVolume: 1.0, timeRange: end);
 		}
 		
-		guard let audioTrack = audio.tracks(withMediaType: .audio).first else {
-			throw VideoConvertibleError.error;
+		if let _ = audio, let _ = musicTrack {
+			guard let audioTrack = audio?.tracks(withMediaType: .audio).first else {
+				throw VideoConvertibleError.error;
+			}
+			try musicTrack?.insertTimeRange(videoTrack.timeRange, of: audioTrack, at: kCMTimeZero);
 		}
-		
-		try musicTrack.insertTimeRange(videoTrack.timeRange, of: audioTrack, at: kCMTimeZero);
 		
 		let mainInstruction = AVMutableVideoCompositionInstruction();
 		mainInstruction.layerInstructions = [ trackInstruction ];
@@ -127,8 +132,13 @@ public final class VisheoVideo: VideoConvertible
 		videoComposition.instructions = [mainInstruction];
 		videoComposition.frameDuration = videoTrack.minFrameDuration;
 		
+		var audioMixInputParams = [ videoInputParams ]
+		if let audioParams = audioInputParams {
+			audioMixInputParams.append(audioParams);
+		}
+		
 		let audioMix = AVMutableAudioMix();
-		audioMix.inputParameters = [ videoInputParams, audioInputParams ];
+		audioMix.inputParameters = audioMixInputParams;
 		
 		return (composition, videoComposition, audioMix);
 	}

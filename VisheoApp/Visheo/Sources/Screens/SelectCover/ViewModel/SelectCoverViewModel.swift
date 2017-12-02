@@ -41,12 +41,19 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     weak var router: SelectCoverRouter?
     let occasion : OccasionRecord
     let permissionsService : AppPermissionsService
+	let soundtracksService: SoundtracksService
     let assets: VisheoRenderingAssets
     let editMode : Bool
     
-    init(occasion: OccasionRecord, assets: VisheoRenderingAssets, permissionsService: AppPermissionsService, editMode: Bool = false) {
+	init(occasion: OccasionRecord,
+		 assets: VisheoRenderingAssets,
+		 permissionsService: AppPermissionsService,
+		 soundtracksService: SoundtracksService,
+		 editMode: Bool = false)
+	{
         self.occasion = occasion
         self.permissionsService = permissionsService
+		self.soundtracksService = soundtracksService
         self.assets = assets
         self.editMode = editMode
         
@@ -87,6 +94,10 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
             router?.goBack(wit: assets)
             return
         }
+		
+		if let soundtrack = assets.selectedSoundtrack {
+			soundtracksService.download(soundtrack)
+		}
         
         if permissionsService.galleryAccessAllowed {
             router?.showPhotoLibrary(with: assets)

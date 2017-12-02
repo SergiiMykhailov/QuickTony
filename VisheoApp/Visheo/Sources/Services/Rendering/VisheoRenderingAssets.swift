@@ -33,6 +33,11 @@ class VisheoRenderingAssets {
         id = UUID().uuidString
         assetsFolderUrl = documentsUrl.appendingPathComponent(id)
         try! FileManager.default.createDirectory(at: assetsFolderUrl, withIntermediateDirectories: false, attributes: nil)
+		
+		if !originalOccasion.soundtracks.isEmpty {
+			let index = Int(arc4random_uniform(UInt32(originalOccasion.soundtracks.count)));
+			soundtrackId = originalOccasion.soundtracks[index].id;
+		}
     }
     
     // MARK: Cover
@@ -52,6 +57,18 @@ class VisheoRenderingAssets {
         coverRemotePreviewUrl = url
         try! data.write(to: coverUrl)
     }
+	
+	private (set) var soundtrackId: Int?;
+	private (set) var soundtrackURL: URL?;
+	
+	var selectedSoundtrack: OccasionSoundtrack? {
+		return originalOccasion.soundtracks.filter{ $0.id == soundtrackId }.first;
+	}
+	
+	func setSoundtrack(id: Int?, url: URL?) {
+		soundtrackId = id;
+		soundtrackURL = url;
+	}
     
     // MARK: Photos
     
