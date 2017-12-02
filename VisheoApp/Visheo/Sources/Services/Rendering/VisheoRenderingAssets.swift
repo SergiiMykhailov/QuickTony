@@ -49,8 +49,15 @@ class VisheoRenderingAssets {
     }
 	
 	private (set) var soundtrackId: Int?;
-	var soundtrack: OccasionSoundtrack? {
+	private (set) var soundtrackURL: URL?;
+	
+	var selectedSoundtrack: OccasionSoundtrack? {
 		return originalOccasion.soundtracks.filter{ $0.id == soundtrackId }.first;
+	}
+	
+	func setSoundtrack(id: Int?, url: URL?) {
+		soundtrackId = id;
+		soundtrackURL = url;
 	}
     
     // MARK: Photos

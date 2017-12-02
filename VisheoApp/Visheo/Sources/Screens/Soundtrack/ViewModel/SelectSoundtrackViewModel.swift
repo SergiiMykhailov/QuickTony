@@ -99,13 +99,6 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 		}
 	}
 	
-	deinit {
-		for key in PlayerKVOKeys.allKeys {
-			player.removeObserver(self, forKeyPath: key.rawValue);
-		}
-	}
-	
-	
 	// MARK: - Datasource
 	var soundtracksCount: Int {
 		return occasion.soundtracks.count + 1;
@@ -142,16 +135,33 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 		stream(soundtrack: track);
 	}
 	
-	func confirmSelection() {
+	func confirmSelection(){
+		teardown();
+		
+		assets.setSoundtrack(id: selectedSoundtrackId, url: nil);
 		router?.goBack(with: assets);
 	}
 	
 	func cancelSelection() {
+		teardown();
+		
 		router?.goBack(with: assets);
 	}
 	
 	
 	// MARK: - Private
+	private func teardown() {
+		player.pause();
+		
+		for key in PlayerKVOKeys.allKeys {
+			player.removeObserver(self, forKeyPath: key.rawValue)
+		}
+		
+		for key in AssetKVOKeys.allKeys {
+			playerItem?.removeObserver(self, forKeyPath: key.rawValue);
+		}
+	}
+	
 	private func indexPath(trackId: Int?) -> IndexPath {
 		guard let index = occasion.soundtracks.index(where: { $0.id == trackId }) else {
 			return IndexPath(item: 0, section: 0);

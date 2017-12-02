@@ -51,7 +51,8 @@ class VisheoPreviewRouter : PreviewRouter {
                                         permissionsService: dependencies.appPermissionsService,
                                         authService: dependencies.authorizationService,
 										purchasesInfo: dependencies.purchasesInfo,
-										appStateService: dependencies.appStateService)
+										appStateService: dependencies.appStateService,
+										soundtracksService: dependencies.soundtracksService)
         viewModel = vm
         vm.router = self
         self.controller = viewController

@@ -95,7 +95,7 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
             return
         }
 		
-		if let soundtrack = assets.soundtrack {
+		if let soundtrack = assets.selectedSoundtrack {
 			soundtracksService.download(soundtrack)
 		}
         
