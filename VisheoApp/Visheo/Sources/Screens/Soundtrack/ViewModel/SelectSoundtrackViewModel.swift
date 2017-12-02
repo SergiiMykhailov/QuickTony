@@ -8,16 +8,29 @@
 
 import UIKit
 import AVFoundation
+import PromiseKit
+import VisheoVideo
+
+enum SoundtrackDownloadState
+{
+	case none
+	case downloading(progress: Double)
+	case done
+	case failed
+}
+
 
 protocol SelectSoundtrackViewModel: class {
 	var soundtracksCount: Int { get }
 	func soundtrackCellModel(at index: Int) -> SoundtrackCellModel
 	func selectSoundtrack(at index: Int);
+	func statusText(for state: SoundtrackDownloadState) -> String?
 	
 	func cancelSelection()
 	func confirmSelection()
 	
 	var bufferProgressChanged: ((_ indexPath: IndexPath?) -> Void)? { get set }
+	var downloadStateChanged: ((SoundtrackDownloadState) -> Void)? { get set }
 }
 
 
@@ -54,6 +67,8 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	private lazy var player = AVPlayer();
 	private var selectedSoundtrackId: Int? = nil
 	var bufferProgressChanged: ((_ indexPath: IndexPath?) -> Void)? = nil;
+	var downloadStateChanged: ((SoundtrackDownloadState) -> Void)? = nil;
+	private var observers: [ Notification.Name : Any ] = [:]
 	
 	private var playerItem: AVPlayerItem? = nil {
 		willSet {
@@ -85,6 +100,12 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	
 	private var playbackState: PlaybackState = .fine;
 	
+	private var downloadState: SoundtrackDownloadState = .none {
+		didSet {
+			downloadStateChanged?(downloadState);
+		}
+	}
+	
 	// MARK: - Lifecycle
 	init(occasion: OccasionRecord, assets: VisheoRenderingAssets, soundtracksService: SoundtracksService, editMode: Bool = false) {
 		self.occasion = occasion
@@ -96,6 +117,12 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 		
 		for key in PlayerKVOKeys.allKeys {
 			player.addObserver(self, forKeyPath: key.rawValue, options: [.new], context: nil);
+		}
+	}
+	
+	deinit {
+		for observer in observers.values {
+			NotificationCenter.default.removeObserver(observer);
 		}
 	}
 	
@@ -136,20 +163,99 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	}
 	
 	func confirmSelection(){
-		teardown();
+		player.pause();
+		bufferState = .none
 		
-		assets.setSoundtrack(id: selectedSoundtrackId, url: nil);
-		router?.goBack(with: assets);
+		let id = selectedSoundtrackId;
+		let soundtrack = occasion.soundtracks.filter{ $0.id == id }.first;
+		
+		downloadSoundtrack(soundtrack: soundtrack) { [weak self] (results) in
+			guard let `self` = self, case .success(let url) = results else {
+				return;
+			}
+
+			self.teardown();
+			self.assets.setSoundtrack(id: id, url: url);
+			self.router?.goBack(with: self.assets);
+		}
 	}
 	
 	func cancelSelection() {
-		teardown();
+		let id = selectedSoundtrackId;
+		if let soundtrack = occasion.soundtracks.filter({ $0.id == id }).first {
+			soundtracksService.cancelDownloads(except: soundtrack, completion: nil);
+		}
 		
+		teardown();
 		router?.goBack(with: assets);
+	}
+	
+	func statusText(for state: SoundtrackDownloadState) -> String? {
+		switch state {
+			case .downloading:
+				return NSLocalizedString("Downloading the Music for Visheo", comment: "");
+			case .failed:
+				return NSLocalizedString("Download failed", comment: "");
+			default:
+				return nil;
+		}
 	}
 	
 	
 	// MARK: - Private
+	private func downloadSoundtrack(soundtrack: OccasionSoundtrack?, completion: @escaping ((VisheoVideo.Result<URL?>) -> Void))
+	{
+		guard let `soundtrack` = soundtrack else {
+			completion(.success(value: nil));
+			return;
+		}
+		
+		if let url = soundtracksService.cacheURL(for: soundtrack), soundtracksService.soundtrackIsCached(soundtrack: soundtrack) {
+			completion(.success(value: url));
+			return;
+		}
+		
+		downloadState = .downloading(progress: 0.0);
+		
+		observe(.soundtrackDownloadFinished, soundtrack: soundtrack, key: .downloadLocation) { [weak self] (url: URL) in
+			self?.downloadState = .done;
+			completion(.success(value: url));
+		}
+		
+		observe(.soundtrackDownloadFailed, soundtrack: soundtrack, key: .error) { [weak self] (error: Error) in
+			self?.downloadState = .failed;
+			completion(.failure(error: error));
+		}
+		
+		observe(.soundtrackDownloadProgressed, soundtrack: soundtrack, key: .progress) { [weak self] (progress: Double) in
+			self?.downloadState = .downloading(progress: progress);
+		}
+		
+		soundtracksService.cancelDownloads(except: soundtrack) { [weak self] in
+			self?.soundtracksService.download(soundtrack);
+		}
+	}
+	
+	private func observe<T>(_ notification: Notification.Name,
+							soundtrack: OccasionSoundtrack,
+						 key: SoundtracksServiceNotificationKeys,
+						 handler: @escaping ((T) -> Void))
+	{
+		if let observer = observers[notification] {
+			NotificationCenter.default.removeObserver(observer, name: notification, object: nil);
+		}
+		
+		let observer = NotificationCenter.default.addObserver(forName: notification, object: nil, queue: OperationQueue.main) { notification in
+			let userInfo = notification.userInfo;
+			guard let id = userInfo?[SoundtracksServiceNotificationKeys.trackId] as? Int, let value = userInfo?[key] as? T, id == soundtrack.id else {
+				return;
+			}
+			handler(value);
+		}
+		
+		observers[notification] = observer;
+	}
+	
 	private func teardown() {
 		player.pause();
 		

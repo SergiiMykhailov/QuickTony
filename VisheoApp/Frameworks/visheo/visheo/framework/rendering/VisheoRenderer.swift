@@ -254,7 +254,7 @@ final class VisheoRenderer
 				throw VideoConvertibleError.error;
 			}
 			
-			let video = VisheoVideo(timeline: timelineURL!, video: videoURL!, audio: audioURL!, quality: task.quality);
+			let video = VisheoRender(timeline: timelineURL!, video: videoURL!, audio: audioURL!, quality: task.quality);
 			return self.renderer.render(asset: video, to: url);
 		}
 		.then {

@@ -1,5 +1,5 @@
 //
-//  VisheoVideo.swift
+//  VisheoRender.swift
 //  VisheoVideo
 //
 //  Created by Nikita Ivanchikov on 11/20/17.
@@ -11,7 +11,7 @@ import AVFoundation
 public typealias VisheoVideoComposition =  (mainComposition: AVComposition, videoComposition: AVVideoComposition, audioMix: AVAudioMix);
 
 
-public final class VisheoVideo: VideoConvertible
+public final class VisheoRender: VideoConvertible
 {
 	private let timeline: URL;
 	private let video: URL;

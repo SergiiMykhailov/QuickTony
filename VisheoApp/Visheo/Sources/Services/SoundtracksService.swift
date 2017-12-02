@@ -35,7 +35,7 @@ protocol SoundtracksService: class {
 	func cacheURL(for soundtrack: OccasionSoundtrack) -> URL?
 	func soundtrackIsCached(soundtrack: OccasionSoundtrack) -> Bool;
 	func download(_ soundtrack: OccasionSoundtrack);
-	func cancelDownloads(except soundtrack: OccasionSoundtrack);
+	func cancelDownloads(except soundtrack: OccasionSoundtrack, completion: (() -> Void)?);
 }
 
 
@@ -48,13 +48,14 @@ class VisheoSoundtracksService: NSObject, SoundtracksService
 		URLSession(configuration: self.sessionConfiguration, delegate: self, delegateQueue: self.sessionQueue);
 	}()
 	
+	private var soundtracksCache: [OccasionSoundtrack] = [];
 	
 	init(configuration: URLSessionConfiguration = .default) {
 		self.sessionConfiguration = configuration;
 		super.init();
 		
 		
-//		cleanup();
+		cleanup();
 	}
 	
 	func cleanup() {
@@ -89,6 +90,11 @@ class VisheoSoundtracksService: NSObject, SoundtracksService
 	
 	func download(_ soundtrack: OccasionSoundtrack)
 	{
+		let idx = soundtracksCache.index(where: { $0.id == soundtrack.id })
+		if idx == nil {
+			soundtracksCache.append(soundtrack);
+		}
+		
 		if soundtrackIsCached(soundtrack: soundtrack) {
 			return;
 		}
@@ -105,29 +111,19 @@ class VisheoSoundtracksService: NSObject, SoundtracksService
 						break;
 				}
 			}
-			
-			guard let `self` = self else { return }
-			
-			let task = self.session.downloadTask(with: soundtrack.url!, completionHandler: { (location, _, error) in
-				if let source = location {
-					self.moveToCache(source: source, soundtrack: soundtrack);
-				} else if let e = error {
-					let info: [ SoundtracksServiceNotificationKeys : Any ] = [ .trackId : soundtrack.id,
-																			   .error : e ]
-					NotificationCenter.default.post(name: .soundtrackDownloadFailed, object: self, userInfo: info);
-				}
-			})
-			
-			task.taskDescription = taskDescription
-			task.resume();
+
+			let task = self?.session.downloadTask(with: soundtrack.url!);
+			task?.taskDescription = taskDescription
+			task?.resume();
 		}
 	}
 	
-	func cancelDownloads(except soundtrack: OccasionSoundtrack) {
+	func cancelDownloads(except soundtrack: OccasionSoundtrack, completion: (() -> Void)?) {
 		let taskDescription = "\(soundtrack.id)";
 		
 		session.getAllTasks { (tasks) in
 			tasks.filter{ $0.taskDescription != taskDescription }.forEach{ $0.cancel() }
+			completion?()
 		}
 	}
 	
@@ -182,8 +178,34 @@ class VisheoSoundtracksService: NSObject, SoundtracksService
 
 extension VisheoSoundtracksService: URLSessionDownloadDelegate
 {
-	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL)
+	{
+		guard let trackId = downloadTask.taskDescription.flatMap({ Int($0) }) else {
+			return;
+		}
 		
+		guard let idx = soundtracksCache.index(where: { $0.id == trackId }) else {
+			return;
+		}
+		
+		let soundtrack = soundtracksCache[idx];
+		soundtracksCache.remove(at: idx);
+		
+		moveToCache(source: location, soundtrack: soundtrack);
+	}
+	
+	func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+		guard let trackId = task.taskDescription.flatMap({ Int($0) }), let e = error else {
+			return;
+		}
+		
+		if let idx = soundtracksCache.index(where: { $0.id == trackId }) {
+			soundtracksCache.remove(at: idx);
+		}
+		
+		let info: [ SoundtracksServiceNotificationKeys : Any ] = [ .trackId : trackId,
+																   .error : e ]
+		NotificationCenter.default.post(name: .soundtrackDownloadFailed, object: self, userInfo: info);
 	}
 	
 	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {

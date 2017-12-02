@@ -117,7 +117,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			self.renderTimeLine(videoSnapshot: url, quality: quality);
 		}
 		.then { url -> VisheoVideoComposition in
-			let video = VisheoVideo(timeline: url, video: videoURL, audio: audioURL, quality: quality);
+			let video = VisheoRender(timeline: url, video: videoURL, audio: audioURL, quality: quality);
 			return try video.prepareComposition()
 		}
 		.then { composition -> AVPlayerItem in

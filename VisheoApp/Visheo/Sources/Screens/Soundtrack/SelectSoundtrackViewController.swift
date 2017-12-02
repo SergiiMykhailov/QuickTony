@@ -9,7 +9,10 @@
 import UIKit
 
 class SelectSoundtrackViewController: UIViewController {
-
+	@IBOutlet weak var progressViewTopConstraint: NSLayoutConstraint!
+	@IBOutlet weak var progressViewBottomConstraint: NSLayoutConstraint!
+	@IBOutlet weak var downloadProgressView: LabeledProgressView!
+    
 	@IBOutlet weak var soundtracksCollectionView: UICollectionView!
 	var soundtracksCollectionMediator : SoundtrackCollectionMediator?
 	
@@ -23,6 +26,12 @@ class SelectSoundtrackViewController: UIViewController {
 		viewModel.bufferProgressChanged = { [weak self] indexPath in
 			DispatchQueue.main.async {
 				self?.soundtracksCollectionMediator?.updateCollectionContents(at: indexPath);
+			}
+		}
+		
+		viewModel.downloadStateChanged = { [weak self] state in
+			DispatchQueue.main.async {
+				self?.handleDownloadStateChange(state);
 			}
 		}
 	}
@@ -42,5 +51,33 @@ class SelectSoundtrackViewController: UIViewController {
 	
 	@IBAction func cancelSelection(_ sender: UIBarButtonItem) {
 		viewModel.cancelSelection();
+	}
+	
+	private func handleDownloadStateChange(_ state: SoundtrackDownloadState) {
+		if case .downloading(let progress) = state {
+			downloadProgressView.progress = progress;
+		}
+		
+		downloadProgressView.title = viewModel.statusText(for: state);
+		
+		UIView.animate(withDuration: 0.3, delay: 0.0, options: [.curveEaseInOut, .beginFromCurrentState],
+					   animations: {
+			self.updatePresentation(state: state);
+			self.view.layoutIfNeeded()
+		}, completion: nil);
+	}
+	
+	private func updatePresentation(state: SoundtrackDownloadState) {
+		switch state {
+			case .downloading,
+				 .failed:
+				downloadProgressView.alpha = 1.0;
+				progressViewTopConstraint.isActive = true;
+				progressViewBottomConstraint.isActive = false;
+			default:
+				downloadProgressView.alpha = 0.0;
+				progressViewTopConstraint.isActive = false;
+				progressViewBottomConstraint.isActive = true;
+		}
 	}
 }

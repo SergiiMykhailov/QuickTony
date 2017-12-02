@@ -51,7 +51,7 @@
 		92AC95B01FA8E00A003B973B /* VideoThumbnailExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC95A71FA8E00A003B973B /* VideoThumbnailExtractor.swift */; };
 		92AC95B31FA8E00A003B973B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC95AC1FA8E00A003B973B /* Result.swift */; };
 		92AC95B41FA8E00A003B973B /* VideoConvertibleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC95AE1FA8E00A003B973B /* VideoConvertibleRenderer.swift */; };
-		92AFAD811FC372FC0086262E /* VisheoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AFAD801FC372FC0086262E /* VisheoVideo.swift */; };
+		92AFAD811FC372FC0086262E /* VisheoRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AFAD801FC372FC0086262E /* VisheoRender.swift */; };
 		92AFAD831FC382190086262E /* data3.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AFAD821FC382190086262E /* data3.json */; };
 		92AFAD841FC382190086262E /* data3.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AFAD821FC382190086262E /* data3.json */; };
 		92DCBCF91FBADFE9004C0046 /* data2.json in Resources */ = {isa = PBXBuildFile; fileRef = 92DCBCF81FBADFE9004C0046 /* data2.json */; };
@@ -152,7 +152,7 @@
 		92AC95A71FA8E00A003B973B /* VideoThumbnailExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoThumbnailExtractor.swift; sourceTree = "<group>"; };
 		92AC95AC1FA8E00A003B973B /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		92AC95AE1FA8E00A003B973B /* VideoConvertibleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoConvertibleRenderer.swift; sourceTree = "<group>"; };
-		92AFAD801FC372FC0086262E /* VisheoVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoVideo.swift; sourceTree = "<group>"; };
+		92AFAD801FC372FC0086262E /* VisheoRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoRender.swift; sourceTree = "<group>"; };
 		92AFAD821FC382190086262E /* data3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data3.json; sourceTree = "<group>"; };
 		92DCBCF81FBADFE9004C0046 /* data2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data2.json; sourceTree = "<group>"; };
 		92EBEE151FB491AD00B9237C /* data1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data1.json; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				92A4912D1FC71CC800545CE8 /* PhotosAnimation.swift */,
-				92AFAD801FC372FC0086262E /* VisheoVideo.swift */,
+				92AFAD801FC372FC0086262E /* VisheoRender.swift */,
 			);
 			path = convertibles;
 			sourceTree = "<group>";
@@ -680,7 +680,7 @@
 				9255DF0C1FCD9D9E00F9815F /* AnimationSettings.swift in Sources */,
 				929126B01FC14A38000E9D24 /* RenderDatabase.swift in Sources */,
 				92AC95B31FA8E00A003B973B /* Result.swift in Sources */,
-				92AFAD811FC372FC0086262E /* VisheoVideo.swift in Sources */,
+				92AFAD811FC372FC0086262E /* VisheoRender.swift in Sources */,
 				92004BE81FAB76180011CC54 /* Utils.swift in Sources */,
 				92F6D6711FC1529900AA1DF9 /* StatefulTask.swift in Sources */,
 			);
