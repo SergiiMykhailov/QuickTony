@@ -31,8 +31,12 @@ class VisheoRenderingService : RenderingService {
         task.addMedia(creationInfo.photoUrls, type: .photo);
         task.addMedia(creationInfo.videoUrl, type: .video);
         
-        let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
-        task.addMedia(URL(fileURLWithPath: audio), type: .audio);
+        if let soundtrack = creationInfo.soundtrackUrl {
+            task.addMedia(soundtrack, type: .audio);
+        } else {
+            let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
+            task.addMedia(URL(fileURLWithPath: audio), type: .audio);
+        }
 
         renderQueue.enqueue(task) { result in
             if case .failure(let error) = result {

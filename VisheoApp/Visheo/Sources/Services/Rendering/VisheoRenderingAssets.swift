@@ -70,7 +70,21 @@ class VisheoRenderingAssets {
     }
 	
 	private (set) var soundtrackId: Int?;
-	private (set) var soundtrackURL: URL?;
+    private (set) var soundtrackName: String?
+
+    var soundtrackURL: URL? {
+        if let relPath = soundtrackRelPath {
+            return docs.appendingPathComponent(relPath)
+        }
+        return nil
+    }
+    
+    var soundtrackRelPath : String? {
+        if let name = soundtrackName {
+            return assetsFolderRelUrl.appendingPathComponent(name).absoluteString
+        }
+        return nil
+    }
 	
 	var selectedSoundtrack: OccasionSoundtrack? {
 		return originalOccasion.soundtracks.filter{ $0.id == soundtrackId }.first;
@@ -78,7 +92,10 @@ class VisheoRenderingAssets {
 	
 	func setSoundtrack(id: Int?, url: URL?) {
 		soundtrackId = id;
-		soundtrackURL = url;
+        if let soundUrl = url {
+            soundtrackName = url?.lastPathComponent
+            try! FileManager.default.copyItem(at: soundUrl, to: soundtrackURL!)
+        }
 	}
     
     // MARK: Photos
@@ -148,10 +165,10 @@ extension VisheoRenderingAssets {
                                   coverId: coverId ?? -1,
                                   coverRemotePreviewUrl: coverRemotePreviewUrl,
                                   picturesCount: photoUrls.count,
-                                  soundtrackId: 23,
+                                  soundtrackId: soundtrackId ?? -1,
                                   premium: false,
                                   coverRelPath: coverRelPath,
-                                  soundtrackRelPath: "", //TODO: Add correct soundtrack relative path
+                                  soundtrackRelPath: soundtrackRelPath,
                                   videoRelPath: videoRelPath,
                                   photoRelPaths: photoRelPaths,
                                   visheoRelPath: visheoRelPath)

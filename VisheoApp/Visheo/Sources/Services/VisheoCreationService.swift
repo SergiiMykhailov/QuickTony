@@ -22,7 +22,7 @@ struct VisheoCreationInfo : Codable {
     var premium: Bool = false
     
     var coverRelPath : String
-    var soundtrackRelPath : String
+    var soundtrackRelPath : String?
     var videoRelPath : String
     var photoRelPaths : [String]
     
@@ -197,7 +197,9 @@ class VisheoCreationService : CreationService {
     
     private func cleanup(creationInfo: VisheoCreationInfo) {
         try? FileManager.default.removeItem(at: creationInfo.coverUrl)
-//        try? FileManager.default.removeItem(at: creationInfo.soundtrackUrl)
+        if let soundtrackUrl = creationInfo.soundtrackUrl {
+            try? FileManager.default.removeItem(at: soundtrackUrl)
+        }
         creationInfo.photoUrls.forEach {
             try? FileManager.default.removeItem(at: $0)
         }
@@ -310,8 +312,11 @@ extension VisheoCreationInfo {
     var coverUrl : URL {
         return docs.appendingPathComponent(coverRelPath)
     }
-    var soundtrackUrl : URL {
-        return docs.appendingPathComponent(soundtrackRelPath)
+    var soundtrackUrl : URL? {
+        if let relPath = soundtrackRelPath {
+            return docs.appendingPathComponent(relPath)
+        }
+        return nil
     }
     
     var videoUrl : URL {
