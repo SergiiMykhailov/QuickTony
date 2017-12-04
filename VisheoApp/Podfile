@@ -38,8 +38,6 @@ abstract_target 'VisheoVideoFramework' do
 	project 'Frameworks/visheo/visheo'
 	
 	pod 'GRDB.swift'
-	pod 'lottie-ios', :git => 'https://github.com/nivanchikov/lottie-ios.git'
-	pod 'pop'
 	pod 'PromiseKit', '~> 4'
 	
 	target 'visheo' do
