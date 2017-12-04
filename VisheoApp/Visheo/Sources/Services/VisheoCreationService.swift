@@ -288,8 +288,7 @@ class VisheoCreationService : CreationService {
     }
     
     private func shortUrl(for id: String) -> String {
-        return "https://visheo42.firebaseapp.com/?id=\(id)&cover=New%20Year/15684417_xxl"
-//        return "http://visheo.com/\(id)/"
+        return "http://visheo.com/\(id)/"
     }
 }
 
@@ -299,7 +298,7 @@ extension VisheoCreationInfo {
                       "picturesCount" : picturesCount,
                       "soundtrackId" : soundtrackId,
                       "occasionName" : occasionName,
-                      "timestamp" : Date().timeIntervalSince1970] as [String : Any]
+                      "timestamp" : ServerValue.timestamp() ] as [String : Any]
         if let coverPreviewUrlString = coverRemotePreviewUrl?.absoluteString {
             record["coverPreviewUrl"] = coverPreviewUrlString
         }
