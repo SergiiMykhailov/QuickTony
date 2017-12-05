@@ -41,4 +41,7 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
+## Node.js Dependency directories
+node_modules/
+
 # End of https://www.gitignore.io/api/xcode,cocoapods
