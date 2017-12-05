@@ -8,6 +8,7 @@
 
 import Foundation
 import Photos
+import UserNotifications
 
 enum VisheoCreationStatus {
     case rendering(progress: Double)
@@ -23,9 +24,15 @@ protocol ShareViewModel : class, AlertGenerating {
     
     var renderingTitle : String {get}
     var uploadingTitle : String {get}
+	
+	var notificationsAuthorization: ((String) -> Void)? { get set }
     
     var creationStatusChanged : (()->())? {get set}
     var creationStatus : VisheoCreationStatus {get}
+	
+	var reminderDate: Date { get }
+	var minimumReminderDate: Date { get }
+	func setReminderDate(_ date: Date);
     
     func startRendering()
     
@@ -36,6 +43,28 @@ protocol ShareViewModel : class, AlertGenerating {
     
     func saveVisheo()
     func deleteVisheo()
+	
+	func openSettings()
+}
+
+extension ShareViewModel {
+	var minimumReminderDate: Date {
+		return Date();
+	}
+	
+	fileprivate var initialReminderDate: Date {
+		let calendar = Calendar(identifier: .gregorian);
+		let now = Date();
+		let components = calendar.dateComponents([.year, .month, .day], from: now);
+		let startOfToday = calendar.date(from: components) ?? now;
+		
+		var addition = DateComponents();
+		addition.day = 1;
+		addition.hour = 12;
+		
+		let final = calendar.date(byAdding: addition, to: startOfToday) ?? now;
+		return final;
+	}
 }
 
 class ExistingVisheoShareViewModel: ShareViewModel {
@@ -73,16 +102,20 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     var successAlertHandler: ((String) -> ())?
     var warningAlertHandler: ((String) -> ())?
     var showRetryLaterError: ((String) -> ())?
-    
+	var notificationsAuthorization: ((String) -> Void)?
+	
+	lazy var reminderDate: Date = initialReminderDate;
     weak var router: ShareRouter?
     private let visheoRecord : VisheoRecord
     private let visheoService : CreationService
     private let visheosCache : VisheosCache
+	private let userNotificationsService: UserNotificationsService
     
-    init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache) {
+	init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService) {
         self.visheoRecord = record
         self.visheoService = visheoService
         self.visheosCache = cache
+		self.userNotificationsService = notificationsService;
     }
     
     func showMenu() {}
@@ -105,6 +138,30 @@ class ExistingVisheoShareViewModel: ShareViewModel {
             }
         }
     }
+	
+	func setReminderDate(_ date: Date) {
+		reminderDate = date;
+		let title = NSString.localizedUserNotificationString(forKey: "Send your visheo!", arguments: nil);
+		
+		userNotificationsService.schedule(at: date, text: title, visheoId: visheoRecord.id) { [weak self] error in
+			guard let e = error else {
+				self?.successAlertHandler?(NSLocalizedString("Reminder was set.", comment: "Successfully set reminder to share visheo"));
+				return;
+			}
+			switch e {
+				case UserNotificationsServiceError.authorizationDenied:
+					self?.notificationsAuthorization?(NSLocalizedString("Please enable notifications in device settings.", comment: "Failed to set reminder"));
+				default:
+					self?.warningAlertHandler?(NSLocalizedString("Oops... Something went wrong.", comment: "Failed to set reminder"));
+			}
+		}
+	}
+	
+	func openSettings() {
+		if let url = URL(string: UIApplicationOpenSettingsURLString) {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil);
+		}
+	}
 }
 
 class ShareVisheoViewModel : ShareViewModel {
@@ -113,9 +170,11 @@ class ShareVisheoViewModel : ShareViewModel {
     var warningAlertHandler: ((String) -> ())?
     
     var showRetryLaterError: ((String) -> ())?
+	var notificationsAuthorization: ((String) -> Void)?
     
     var visheoUrl: URL?
     var visheoLink: String?
+	lazy var reminderDate: Date = initialReminderDate;
     
     var showBackButton: Bool {
         return false
@@ -144,13 +203,33 @@ class ShareVisheoViewModel : ShareViewModel {
     weak var router: ShareRouter?
     private let renderingService : RenderingService
     private let creationService : CreationService
+	private let userNotificationsService: UserNotificationsService
     private let assets: VisheoRenderingAssets
     
-    init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService) {
+    init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService) {
         self.renderingService = renderingService
         self.assets = assets
         self.creationService = creationService
+		self.userNotificationsService = notificationsService;
     }
+	
+	func setReminderDate(_ date: Date) {
+		reminderDate = date;
+		let title = NSString.localizedUserNotificationString(forKey: "Send your visheo!", arguments: nil);
+		
+		userNotificationsService.schedule(at: date, text: title, visheoId: assets.creationInfo.visheoId) { [weak self] error in
+			guard let e = error else {
+				self?.successAlertHandler?(NSLocalizedString("Reminder was set.", comment: "Successfully set reminder to share visheo"));
+				return;
+			}
+			switch e {
+				case UserNotificationsServiceError.authorizationDenied:
+					self?.notificationsAuthorization?(NSLocalizedString("Please enable notifications in device settings.", comment: "Failed to set reminder"));
+				default:
+					self?.warningAlertHandler?(NSLocalizedString("Oops... Something went wrong.", comment: "Failed to set reminder"));
+			}
+		}
+	}
     
     func retry() {
         creationService.retryCreation(for: assets.creationInfo.visheoId)
@@ -231,4 +310,10 @@ class ShareVisheoViewModel : ShareViewModel {
     func showMenu() {
         router?.showMenu()
     }
+	
+	func openSettings() {
+		if let url = URL(string: UIApplicationOpenSettingsURLString) {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil);
+		}
+	}
 }

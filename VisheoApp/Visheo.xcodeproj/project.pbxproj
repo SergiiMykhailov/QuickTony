@@ -17,7 +17,6 @@
 		920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */; };
 		9255DF0E1FCD9EC200F9815F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF0D1FCD9EC200F9815F /* AppSettings.swift */; };
 		9255DF121FCDA5A200F9815F /* app_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9255DF111FCDA5A200F9815F /* app_settings.plist */; };
-		9255DF141FCDBE2900F9815F /* VisheoMovieWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF131FCDBE2800F9815F /* VisheoMovieWriter.swift */; };
 		9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */; };
 		9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */; };
 		9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */; };
@@ -29,6 +28,7 @@
 		92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */; };
 		92C006631FC0B4AC000AFD4E /* CameraPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */; };
 		92C006651FC0B4BE000AFD4E /* CameraPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */; };
+		92C649021FD6036B00D6BC1A /* UserNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */; };
 		92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */; };
 		92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */; };
 		92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */; };
@@ -188,7 +188,6 @@
 		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
 		9255DF0D1FCD9EC200F9815F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		9255DF111FCDA5A200F9815F /* app_settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = app_settings.plist; sourceTree = "<group>"; };
-		9255DF131FCDBE2800F9815F /* VisheoMovieWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoMovieWriter.swift; sourceTree = "<group>"; };
 		9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
 		9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
@@ -200,6 +199,7 @@
 		92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewModel.swift; sourceTree = "<group>"; };
 		92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsRouter.swift; sourceTree = "<group>"; };
 		92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewController.swift; sourceTree = "<group>"; };
+		92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsService.swift; sourceTree = "<group>"; };
 		92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTipsView.swift; sourceTree = "<group>"; };
 		92DEDBAF1FC0598400C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		92DEDBB21FC0599100C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CameraTips.xib; sourceTree = "<group>"; };
@@ -612,7 +612,6 @@
 			children = (
 				B48AAACE1FAA03CC000BB33B /* Segues */,
 				B48AAAD01FAA03CC000BB33B /* UIKitExtensions */,
-				9255DF131FCDBE2800F9815F /* VisheoMovieWriter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -892,6 +891,7 @@
 				9255DF0D1FCD9EC200F9815F /* AppSettings.swift */,
 				B4AEE0E51FD195680043A39A /* VisheosListService.swift */,
 				B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */,
+				92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1161,7 +1161,6 @@
 				92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B4BCABF71FB8CC7D003EDC7F /* HolidaysCollectionMediator.swift in Sources */,
-				9255DF141FCDBE2900F9815F /* VisheoMovieWriter.swift in Sources */,
 				920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */,
 				B4BCAC071FB8CDFB003EDC7F /* SelectCoverViewController.swift in Sources */,
 				B4BCABFE1FB8CC7D003EDC7F /* LaunchProxyRouter.swift in Sources */,
@@ -1230,6 +1229,7 @@
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
 				B453F1D51FCF1AB7003D61CB /* MenuRouter.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
+				92C649021FD6036B00D6BC1A /* UserNotificationsService.swift in Sources */,
 				920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */,
 				B4F63DC01FC85FDB00E05B90 /* VisheoRenderingService.swift in Sources */,
 				B4BCABF01FB8CC7D003EDC7F /* SignUpViewController.swift in Sources */,
