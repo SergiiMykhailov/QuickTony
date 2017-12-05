@@ -11,11 +11,13 @@ import UIKit
 protocol AccountRouter: FlowRouter {
     func showMenu()
     func showEdit(userName: String)
+    func showRegistration()
 }
 
 class VisheoAccountRouter : AccountRouter {
     enum SegueList: String, SegueListType {
         case showEdit = "showEdit"
+        case showRegistration = "showRegistration"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: AccountViewController?
@@ -42,6 +44,10 @@ class VisheoAccountRouter : AccountRouter {
             let controller = segue.destination as! EditAccountViewController
             let router = VisheoEditAccountRouter(dependencies: dependencies)
             router.start(with: controller, userName: sender as! String)
+        case .showRegistration:
+            let loginController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
+            let router = VisheoAuthorizationRouter(dependencies: dependencies)
+            router.start(with: loginController)
         }
     }
 }
@@ -53,6 +59,10 @@ extension VisheoAccountRouter {
     
     func showEdit(userName: String) {
         controller?.performSegue(SegueList.showEdit, sender: userName)
+    }
+    
+    func showRegistration() {
+        controller?.performSegue(SegueList.showRegistration, sender: nil)
     }
 }
 

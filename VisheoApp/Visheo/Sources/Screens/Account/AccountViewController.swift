@@ -14,6 +14,10 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsItem.isEnabled = viewModel.allowEdit
+        
+        viewModel.warningAlertHandler = {[weak self] in
+            self?.showWarningAlertWithText(text: $0)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +48,10 @@ class AccountViewController: UIViewController {
     
     @IBAction func menuPressed(_ sender: Any) {
         viewModel.showMenu()
+    }
+    
+    @IBAction func logoutPressed(_ sender: Any) {
+        viewModel.logOut()
     }
 }
 

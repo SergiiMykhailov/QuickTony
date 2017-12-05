@@ -8,17 +8,20 @@
 
 import Foundation
 
-protocol AccountViewModel : class {
+protocol AccountViewModel : class, WarningAlertGenerating {
     var avatarUrl : URL? {get}
     var userName : String {get}
     
     var allowEdit : Bool {get}
     
     func showMenu()
+    func logOut()
     func editAccount()
 }
 
 class VisheoAccountViewModel : AccountViewModel {
+    var warningAlertHandler: ((String) -> ())?
+    
     var allowEdit: Bool {
         return !authService.isAnonymous
     }
@@ -46,5 +49,15 @@ class VisheoAccountViewModel : AccountViewModel {
     
     func editAccount() {
         router?.showEdit(userName: userName)
+    }
+    
+    func logOut() {
+        authService.signOut { (success) in
+            if success {
+                self.router?.showRegistration()
+            } else {
+                self.warningAlertHandler?(NSLocalizedString("An error occurred while signing out", comment: "Error while sign out text messaage"))
+            }
+        }
     }
 }
