@@ -192,8 +192,10 @@ class VisheoOccasionRecord : OccasionRecord {
     init?(dictionary : [String : Any]) {
         name = dictionary["name"] as? String ?? ""
         
-        covers = (dictionary["covers"] as? [Int] ?? []).map { VisheoOccasionCover(id: $0) }
-		soundtracks = (dictionary["music"] as? [Int] ?? []).map { VisheoOccasionSoundtrack(id: $0) }
+        covers = (dictionary["covers"] as? [Int?] ?? []).flatMap{$0}
+                                                        .map { VisheoOccasionCover(id: $0) }
+		soundtracks = (dictionary["music"] as? [Int?] ?? []).flatMap{$0}
+                                                            .map { VisheoOccasionSoundtrack(id: $0) }
         
         date = VisheoOccasionRecord.date(from: dictionary["date"] as? String)
         priority = dictionary["priority"] as? Int ?? Int.max

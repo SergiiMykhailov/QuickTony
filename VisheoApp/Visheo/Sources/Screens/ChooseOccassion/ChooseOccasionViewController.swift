@@ -26,7 +26,7 @@ class ChooseOccasionViewController: UIViewController {
                                                                    occasionsCollection: occasionsCollection)
         
         viewModel.didChangeCallback = {[weak self] in
-            self?.holidaysCollection.reloadData()
+            self?.holidaysCollectionMediator?.reloadData()
             self?.occasionsCollection.reloadData()
         }
     }

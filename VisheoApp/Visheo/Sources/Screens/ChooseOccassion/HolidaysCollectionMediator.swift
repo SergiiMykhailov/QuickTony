@@ -23,7 +23,14 @@ class HolidaysCollectionMediator : NSObject, UICollectionViewDelegate, UICollect
         self.containerWidth = containerWidth
         super.init()
         holidaysCollection.delegate = self
-        holidaysCollection.dataSource = self
+        holidaysCollection.dataSource = self        
+    }
+    
+    func reloadData() {
+        holidaysCollection.reloadData()
+        if let firstFutureIndex = viewModel.firstFutureHolidayIndex {
+            scrollToItem(number: firstFutureIndex)
+        }
     }
     
     var holidayPageWidth : CGFloat {
@@ -71,5 +78,9 @@ class HolidaysCollectionMediator : NSObject, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let holidayItemSide = containerWidth - 4 * itemsSpacing
         return CGSize(width: holidayItemSide, height: holidayItemSide)
+    }
+    
+    func scrollToItem(number: Int) {
+        holidaysCollection.setContentOffset(CGPoint(x: CGFloat(number) * holidayPageWidth, y: 0), animated: false)
     }
 }
