@@ -78,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let creationService    = VisheoCreationService(userInfoProvider: authService,
                                                        rendererService: renderingService)
 		let soundtracksService = VisheoSoundtracksService();
+		let userNotificationsService = VisheoUserNotificationsService();
         let assembly = VisheoRouterAssembly()
 		
         let purchasesInfo = DummyUserPurchasesInfo(premiumCardsNumber: 2)
@@ -95,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                 renderingService: renderingService,
                                                 creationService: creationService,
 												soundtracksService: soundtracksService,
+												userNotificationsService: userNotificationsService,
                                                 routerAssembly: assembly,
                                                 visheosCache: visheosCache)
     }

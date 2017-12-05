@@ -56,7 +56,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	private let cropFilter = GPUImageCropFilter();
 	
 	private var camera: GPUImageVideoCamera?;
-	private var movieWriter: VisheoMovieWriter?;
+	private var movieWriter: GPUImageMovieWriter?;
 	private (set) var isRecording = false;
 	
 	private var countdownTimer: Timer? = nil;
@@ -119,7 +119,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
         assets.removeVideo()
         let url = assets.videoUrl;
         
-        movieWriter = VisheoMovieWriter(movieURL: url, size: outputVideoSize);
+        movieWriter = GPUImageMovieWriter(movieURL: url, size: outputVideoSize);
         movieWriter?.encodingLiveVideo = true;
         movieWriter?.hasAudioTrack = true;
         

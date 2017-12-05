@@ -39,10 +39,15 @@ class VisheoMenuViewModel : MenuViewModel {
     
     weak var router: MenuRouter?
     private let userInfo: UserInfoProvider
+	private let notificationService: UserNotificationsService;
+	private let visheoListService: VisheosListService;
     private let menuItems : [VisheoMenuItemViewModel]
+	private var pendingVisheoIds = Set<String>()
     
-    init(userInfo: UserInfoProvider) {
+    init(userInfo: UserInfoProvider, notificationService: UserNotificationsService, visheoListService: VisheosListService) {
         self.userInfo = userInfo
+		self.notificationService = notificationService;
+		self.visheoListService = visheoListService;
         menuItems = [
             VisheoMenuItemViewModel(text: NSLocalizedString("New Visheo", comment: "New visheo menu item"), image: #imageLiteral(resourceName: "newVisheo"), type: .newVisheo),
             VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), type: .visheoBox),
@@ -51,7 +56,15 @@ class VisheoMenuViewModel : MenuViewModel {
             VisheoMenuItemViewModel(text: NSLocalizedString("My Account", comment: "My Account menu item"), image: #imageLiteral(resourceName: "account"), type: .account),
             VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), type: .contact)
         ]
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheoOpen(_:)), name: .openVisheoFromReminder, object: nil);
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheosListChange(_:)), name: .visheosChanged, object: nil);
     }
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self);
+	}
     
     var menuItemsCount: Int {
         return menuItems.count
@@ -73,4 +86,30 @@ class VisheoMenuViewModel : MenuViewModel {
     func menuItem(at index: Int) -> MenuItemViewModel {
         return menuItems[index]
     }
+	
+	@objc private func handleVisheoOpen(_ notification: Notification) {
+		guard let visheoId = notification.userInfo?[UserNotificationsServiceNotificationKeys.id] as? String else {
+			return;
+		}
+		
+		if let record = visheoListService.visheosRecords.filter({ $0.id == visheoId }).first {
+			router?.showVisheoScreen(with: record);
+		} else {
+			pendingVisheoIds.insert(visheoId);
+		}
+	}
+	
+	@objc private func handleVisheosListChange(_ notification: Notification)
+	{
+		var handledRecords: [String] = []
+		for visheoId in pendingVisheoIds {
+			if let record = visheoListService.visheosRecords.filter({ $0.id == visheoId }).first, let _ = record.visheoLink {
+				router?.showVisheoScreen(with: record);
+				handledRecords.append(visheoId)
+			}
+		}
+		handledRecords.forEach{
+			pendingVisheoIds.remove($0);
+		}
+	}
 }

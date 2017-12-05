@@ -12,6 +12,7 @@ protocol MenuRouter: FlowRouter {
     func showCreateVisheo()
     func showVisheoBox()
     func showAccount()
+    func showVisheoScreen(with record: VisheoRecord)
 }
 
 class VisheoMenuRouter : MenuRouter {
@@ -27,7 +28,9 @@ class VisheoMenuRouter : MenuRouter {
     }
     
     func start(with viewController: MenuViewController) {
-        let vm = VisheoMenuViewModel(userInfo: dependencies.userInfoProvider)
+		let vm = VisheoMenuViewModel(userInfo: dependencies.userInfoProvider,
+									 notificationService: dependencies.userNotificationsService,
+									 visheoListService: dependencies.visheosListService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -66,7 +69,15 @@ extension VisheoMenuRouter {
             router.start(with: controller as! AccountViewController)
         }
     }
-    
+
+	func showVisheoScreen(with record: VisheoRecord) {
+		let storyboard = UIStoryboard(name: "VisheoPreview", bundle: nil)
+		
+		pushController(with: "ShareVisheoViewController", storyboard: storyboard) { (controller) in
+			let router = ShareVisheoRouter(dependencies: dependencies);
+			router.start(with: controller as! ShareVisheoViewController, record: record);
+		}
+	}
     
     private func showController(with id: String, storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil), setup: (UIViewController) -> ()) {
         let shownController = storyboard.instantiateViewController(withIdentifier: id)
@@ -75,5 +86,13 @@ extension VisheoMenuRouter {
         navigationController.setViewControllers([shownController], animated: false)
         controller?.sideMenuController?.hideLeftView(animated: true, delay: 0.0, completionHandler: nil)
     }
+	
+	private func pushController(with id: String, storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil), setup: (UIViewController) -> ()) {
+		let shownController = storyboard.instantiateViewController(withIdentifier: id)
+		setup(shownController)
+		let navigationController = controller?.sideMenuController?.rootViewController as! UINavigationController
+		navigationController.show(shownController, sender: nil);
+		controller?.sideMenuController?.hideLeftView(animated: true, delay: 0.0, completionHandler: nil)
+	}
 }
 

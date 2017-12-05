@@ -27,7 +27,10 @@ class ShareVisheoRouter : ShareRouter {
     }
     
     func start(with viewController: ShareVisheoViewController, assets: VisheoRenderingAssets) {
-        let vm = ShareVisheoViewModel(assets: assets, renderingService: dependencies.renderingService, creationService: dependencies.creationService)
+		let vm = ShareVisheoViewModel(assets: assets,
+									  renderingService: dependencies.renderingService,
+									  creationService: dependencies.creationService,
+									  notificationsService: dependencies.userNotificationsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -38,7 +41,8 @@ class ShareVisheoRouter : ShareRouter {
     func start(with viewController: ShareVisheoViewController, record: VisheoRecord) {
         let vm = ExistingVisheoShareViewModel(record: record,
                                               visheoService: dependencies.creationService,
-                                              cache: dependencies.visheosCache)
+											  cache: dependencies.visheosCache,
+											  notificationsService: dependencies.userNotificationsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
