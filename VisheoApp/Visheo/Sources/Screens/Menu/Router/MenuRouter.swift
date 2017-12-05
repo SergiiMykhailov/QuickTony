@@ -11,6 +11,7 @@ import UIKit
 protocol MenuRouter: FlowRouter {
     func showCreateVisheo()
     func showVisheoBox()
+    func showAccount()
 }
 
 class VisheoMenuRouter : MenuRouter {
@@ -56,6 +57,13 @@ extension VisheoMenuRouter {
         showController(with: "VisheoBoxViewController") { (controller) in
             let router = VisheoListRouter(dependencies : dependencies)
             router.start(with: controller as! VisheoBoxViewController)
+        }
+    }
+    
+    func showAccount() {
+        showController(with: "AccountViewController", storyboard: UIStoryboard(name: "Account", bundle: nil)) { (controller) in
+            let router = VisheoAccountRouter(dependencies: dependencies)
+            router.start(with: controller as! AccountViewController)
         }
     }
     

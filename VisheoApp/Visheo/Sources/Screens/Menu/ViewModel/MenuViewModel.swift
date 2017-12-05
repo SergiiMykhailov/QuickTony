@@ -63,6 +63,8 @@ class VisheoMenuViewModel : MenuViewModel {
             router?.showCreateVisheo()
         case .visheoBox:
             router?.showVisheoBox()
+        case .account:
+            router?.showAccount()
         default:
             break;
         }

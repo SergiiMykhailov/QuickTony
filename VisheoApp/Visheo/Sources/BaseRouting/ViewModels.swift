@@ -23,4 +23,8 @@ protocol WarningAlertGenerating {
     var warningAlertHandler : ((String) -> ())? {get set}
 }
 
+protocol RequiredFieldAlertGenerating {
+    var requiredFieldAlertHandler : ((String) -> ())? {get set}
+}
+
 

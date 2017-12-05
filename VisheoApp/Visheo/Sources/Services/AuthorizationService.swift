@@ -22,6 +22,9 @@ protocol AuthorizationService {
     func signUp(with email: String, password: String, fullName: String)
     func signIn(with email: String, password: String)
     
+    func set(username: String, completion: ((Bool)->())?)
+    func deleteAccount(completion: ((Bool)->())?)
+    
     func sendResetPassword(for email: String, completion : ((AuthError?) -> ())?)
 }
 
@@ -97,6 +100,19 @@ class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvi
     func notifyLoginFail(error: AuthError) {
         NotificationCenter.default.post(name: .userLoginFailed, object: self, userInfo: [Notification.Keys.error : error])
     }
+    
+    func set(username: String, completion: ((Bool) -> ())?) {
+        guard let user = Auth.auth().currentUser else {
+            completion?(false)
+            return
+        }
+        
+        let changeRequest = user.createProfileChangeRequest()
+        changeRequest.displayName = username
+        changeRequest.commitChanges { (error) in
+            completion?(error == nil)
+        }
+    }
 }
 
 // MARK: Firebase auth
@@ -145,6 +161,12 @@ extension VisheoAuthorizationService {
                 completion?(nil)
             }
         }
+    }
+    
+    func deleteAccount(completion: ((Bool) -> ())?) {
+        Auth.auth().currentUser?.delete(completion: { (error) in
+            completion?(error == nil)
+        })
     }
     
     private func firebaseSignIn(with credentials: AuthCredential) {
