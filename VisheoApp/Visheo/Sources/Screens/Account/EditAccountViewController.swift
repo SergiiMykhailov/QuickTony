@@ -67,7 +67,7 @@ class EditAccountViewController: UIViewController {
     
     // MARK: Actions    
     @IBAction func deletePressed(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("Waring", comment: "warning title"), message: NSLocalizedString("Your account with all the data will be deleted without possiblity to restore. Proceed?", comment: "Confirm account deletion alert message"), preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("Warning", comment: "warning title"), message: NSLocalizedString("Your account with all the data will be deleted without possiblity to restore. Proceed?", comment: "Confirm account deletion alert message"), preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
         
