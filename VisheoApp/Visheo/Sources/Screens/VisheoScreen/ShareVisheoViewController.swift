@@ -11,9 +11,17 @@ import AVFoundation
 import SDWebImage
 
 class ShareVisheoViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	@IBOutlet weak var containerScrollView: UIScrollView!
+	@IBOutlet weak var shareNowTrailingConstraint: NSLayoutConstraint!
+	@IBOutlet weak var scrollContainer: UIView!
+	@IBOutlet weak var shareNowLeadingConstraint: NSLayoutConstraint!
+	@IBOutlet weak var shareReminderContainer: UIView!
+	@IBOutlet weak var shareNowContainer: UIView!
+	@IBOutlet weak var shareReminderBottomConstraint: NSLayoutConstraint!
+	@IBOutlet weak var shareNowBottomConstraint: NSLayoutConstraint!
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
         viewModel.creationStatusChanged = {[weak self] in
             self?.updateProgress()
@@ -30,11 +38,17 @@ class ShareVisheoViewController: UIViewController {
         viewModel.successAlertHandler = {[weak self] in
             self?.showSuccessAlertWithText(text: $0)
         }
-        
+		
+		viewModel.notificationsAuthorization = { [weak self] in
+			self?.showNotificationsAuthorizationAlertWithText(text: $0)
+		}
+		
+		reminderDatePicker.date = viewModel.reminderDate;
+		reminderDatePicker.minimumDate = viewModel.minimumReminderDate;
         coverImage.sd_setImage(with: viewModel.coverImageUrl, completed: nil)
         
         updateProgress()
-        
+		
         if viewModel.showBackButton {
             navigationItem.leftBarButtonItems = [backBarItem]
         } else {
@@ -55,6 +69,18 @@ class ShareVisheoViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+	
+	private func showNotificationsAuthorizationAlertWithText(text: String) {
+		let alert = UIAlertController(title: NSLocalizedString("Error", comment: "Eroro alert title"), message: text, preferredStyle: .alert)
+		
+		alert.addAction(UIAlertAction(title: NSLocalizedString("Open Settings", comment: ""), style: .default, handler: {[weak self] (action) in
+			self?.viewModel.openSettings()
+		}))
+		
+		alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil));
+		
+		self.present(alert, animated: true, completion: nil)
+	}
 
     private func updateProgress() {
         switch viewModel.creationStatus {
@@ -101,9 +127,13 @@ class ShareVisheoViewController: UIViewController {
         downloadButton.isEnabled = enable
         shareTypeSegment.isEnabled = enable
         shareButton.isEnabled = enable
+		remindMeButton.isEnabled = enable;
+		reminderDatePicker.isEnabled = enable;
         shareView.alpha = enable ? 1.0 : 0.2
         downloadButton.alpha = enable ? 1.0 : 0.2
         linkText.alpha = enable ? 1.0 : 0.2
+		remindMeButton.alpha = enable ? 1.0 : 0.2;
+		reminderDatePicker.alpha = enable ? 1.0 : 0.2;
     }
     
     private var player : AVPlayer?
@@ -161,7 +191,9 @@ class ShareVisheoViewController: UIViewController {
         self.viewModel = viewModel
         self.router    = router
     }
-    
+	
+	@IBOutlet weak var reminderDatePicker: UIDatePicker!
+	@IBOutlet weak var remindMeButton: UIButton!
     @IBOutlet weak var progressBar: LabeledProgressView!
     @IBOutlet weak var shareTypeSegment: UISegmentedControl!
     @IBOutlet weak var downloadButton: UIButton!
@@ -224,6 +256,41 @@ class ShareVisheoViewController: UIViewController {
         player.play()
         playButton.isHidden = true
     }
+	
+	@IBAction func shareTypeChanged(_ sender: UISegmentedControl) {
+		
+		let shareNow = (sender.selectedSegmentIndex == 0);
+		
+		shareNowTrailingConstraint.isActive = shareNow;
+		shareNowLeadingConstraint.isActive = !shareNow;
+		shareNowBottomConstraint.isActive = shareNow;
+		shareReminderBottomConstraint.isActive = !shareNow;
+		
+		UIView.animateKeyframes(withDuration: 0.35, delay: 0.0, options: [.beginFromCurrentState, .calculationModeLinear], animations: {
+			
+			if shareNow {
+				UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2, animations: {
+					self.containerScrollView.setContentOffset(.zero, animated: false);
+				})
+				UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.7, animations: {
+					self.view.layoutIfNeeded();
+				})
+			} else {
+				UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.7, animations: {
+					self.view.layoutIfNeeded();
+				})
+				UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: {
+					let frame = self.shareReminderContainer.frame;
+					self.containerScrollView.scrollRectToVisible(frame, animated: true);
+				})
+			}
+		}) { _ in
+		}
+	}
+	
+	@IBAction func setReminder(_ sender: UIButton) {
+		viewModel.setReminderDate(reminderDatePicker.date);
+	}
 }
 
 extension ShareVisheoViewController {

@@ -7,7 +7,6 @@
 //
 
 import AVFoundation
-import Lottie
 import GRDB
 import PromiseKit
 
@@ -72,7 +71,6 @@ final class VisheoRenderer
 	
 	init(db: RenderDatabase) {
 		self.db = db
-		LOTAnimationCache.shared().disableCaching();
 	}
 	
 	
