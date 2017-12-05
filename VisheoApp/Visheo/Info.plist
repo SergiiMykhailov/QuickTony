@@ -21,7 +21,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb971160783034751</string>
+				<string>fb202069387030963</string>
 			</array>
 		</dict>
 		<dict>
@@ -50,9 +50,9 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>971160783034751</string>
+	<string>202069387030963</string>
 	<key>FacebookDisplayName</key>
-	<string>Peter&apos;s first app</string>
+	<string>Visheo</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
