@@ -8,7 +8,7 @@
 
 import AVFoundation
 import GPUImage
-
+import CoreMotion
 
 enum CameraRecordingState
 {
@@ -42,6 +42,8 @@ protocol CameraViewModel: class
 	func stopCapture(teardown: Bool);
 	func toggleRecording()
 	func toggleCameraFace();
+	
+	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
 }
 
 
@@ -52,6 +54,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	weak var router: CameraRouter?
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil;
 	var recordingProgressChangedBlock: ((Double) -> Void)? = nil;
+	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? = nil;
 	
 	private let cropFilter = GPUImageCropFilter();
 	
@@ -64,6 +67,15 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	private var displayLink: CADisplayLink? = nil;
 	
     private let assets : VisheoRenderingAssets
+	private lazy var motionManager: CMMotionManager = CMMotionManager();
+	private lazy var motionQueue: OperationQueue = OperationQueue();
+	private var interfaceOrientation: UIInterfaceOrientationMask = .portrait {
+		didSet {
+			if interfaceOrientation != oldValue {
+				deviceOrientationChangeBlock?(interfaceOrientation);
+			}
+		}
+	}
 	
 	init(appState: AppStateService, assets : VisheoRenderingAssets) {
 		self.appState = appState;
@@ -79,13 +91,23 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	//MARK: - Recording
 	
 	func startCapture() {
-		camera = GPUImageVideoCamera(sessionPreset: AVCaptureSession.Preset.high.rawValue, cameraPosition: .front);
+		camera = GPUImageVideoCamera(sessionPreset: AVCaptureSession.Preset.high.rawValue, cameraPosition: .back);
 		camera?.outputImageOrientation = .portrait;
 		camera?.delegate = self;
 		camera?.horizontallyMirrorFrontFacingCamera = true;
 		
 		camera?.addTarget(cropFilter);
 		camera?.startCapture();
+		
+		guard motionManager.isDeviceMotionAvailable else {
+			return;
+		}
+		
+		motionManager.deviceMotionUpdateInterval = 0.3;
+		motionManager.startDeviceMotionUpdates(to: motionQueue) { [weak self] (motion, _) in
+			guard let `motion` = motion else { return }
+			self?.handleMotionUpdate(motion);
+		}
 	}
 	
 	
@@ -109,6 +131,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		
 		camera?.stopCapture();
 		camera?.removeAllTargets();
+		motionManager.stopDeviceMotionUpdates();
 	}
 	
 	
@@ -226,6 +249,17 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	
 	func markCameraTipsSeen() {
 		appState.cameraTips(wereSeen: true);
+	}
+	
+	
+	private func handleMotionUpdate(_ motion: CMDeviceMotion) {
+		let gravity = motion.gravity;
+		
+		if fabs(gravity.x) < fabs(gravity.y) {
+			interfaceOrientation = gravity.y < 0 ? .portrait : .portraitUpsideDown;
+		} else {
+			interfaceOrientation = gravity.x < 0 ? .landscapeRight : .landscapeLeft;
+		}
 	}
 }
 
