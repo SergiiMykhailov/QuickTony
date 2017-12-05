@@ -21,9 +21,10 @@ protocol AuthorizationService {
     
     func signUp(with email: String, password: String, fullName: String)
     func signIn(with email: String, password: String)
+    func signOut(completion: ((Bool)->())?)
     
     func set(username: String, completion: ((Bool)->())?)
-    func deleteAccount(completion: ((Bool)->())?)
+    func deleteAccount(completion: ((AuthError?)->())?)
     
     func sendResetPassword(for email: String, completion : ((AuthError?) -> ())?)
 }
@@ -48,6 +49,7 @@ extension Notification {
 }
 
 enum AuthError: Error {
+    case needSignIn
     case cancelled
     case unknownError(description : String)
 }
@@ -153,6 +155,16 @@ extension VisheoAuthorizationService {
         firebaseSignIn(with: credentials)
     }
     
+    func signOut(completion: ((Bool)->())?)
+    {
+        do {
+            try Auth.auth().signOut()
+            completion?(true)
+        } catch {
+            completion?(false)
+        }
+    }
+    
     func sendResetPassword(for email: String, completion: ((AuthError?) -> ())?) {
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
             if let error = error {
@@ -163,9 +175,17 @@ extension VisheoAuthorizationService {
         }
     }
     
-    func deleteAccount(completion: ((Bool) -> ())?) {
+    func deleteAccount(completion: ((AuthError?) -> ())?) {
         Auth.auth().currentUser?.delete(completion: { (error) in
-            completion?(error == nil)
+            if let nsError = (error as NSError?) {
+                if nsError.code == AuthErrorCode.requiresRecentLogin.rawValue {
+                    completion?(.needSignIn)
+                } else {
+                    completion?(.unknownError(description: nsError.localizedDescription))
+                }
+            } else {
+                completion?(nil)
+            }
         })
     }
     

@@ -32,8 +32,12 @@ class EditAccountViewController: UIViewController {
             self?.showSuccessAlertWithText(text: $0)
         }
         
-        viewModel?.requiredFieldAlertHandler = {[weak self] in
+        viewModel.requiredFieldAlertHandler = {[weak self] in
             self?.showAlert(with: NSLocalizedString("Required Field", comment: "required field alert title"), text: $0)
+        }
+        
+        viewModel.reloginConfirmationHandler = {[weak self] in
+            self?.confirmRelogin()
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name.UITextFieldTextDidChange, object: nameField, queue: OperationQueue.main) {[weak self] (notification) in
@@ -67,14 +71,7 @@ class EditAccountViewController: UIViewController {
     
     // MARK: Actions    
     @IBAction func deletePressed(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("Warning", comment: "warning title"), message: NSLocalizedString("Your account with all the data will be deleted without possiblity to restore. Proceed?", comment: "Confirm account deletion alert message"), preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Proceed", comment: "Confirm account deletion alert button"), style: .destructive, handler: { (action) in
-            self.viewModel.deleteAccount()
-        }))
-        present(alertController, animated: true, completion: nil)
+        confirmDelete()
     }
     
     @IBAction func backPressed(_ sender: Any) {
@@ -105,6 +102,30 @@ class EditAccountViewController: UIViewController {
         UIView.animate(withDuration: duration, animations: {
             self.deleteBottomConstraint.constant = 20
         })
+    }
+    
+    // MARK: Private
+    
+    private func confirmDelete() {
+        let alertController = UIAlertController(title: NSLocalizedString("Warning", comment: "warning title"), message: NSLocalizedString("Your account with all the data will be deleted without possiblity to restore. Proceed?", comment: "Confirm account deletion alert message"), preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Proceed", comment: "Confirm account deletion alert button"), style: .destructive, handler: { (action) in
+            self.viewModel.deleteAccount()
+        }))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func confirmRelogin() {
+        let alertController = UIAlertController(title: NSLocalizedString("Warning", comment: "warning title"), message: NSLocalizedString("This operation is sensitive and requires recent authentication. Log in again before retrying this request.", comment: "Delete account relogin alert message"), preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Login", comment: "Confirm account deletion alert button"), style: .default, handler: { (action) in
+            self.viewModel.reloginConfirmed()
+        }))
+        present(alertController, animated: true, completion: nil)
     }
 }
 

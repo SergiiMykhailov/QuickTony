@@ -11,11 +11,15 @@ import Foundation
 protocol EditAccountViewModel : class, ProgressGenerating, RequiredFieldAlertGenerating, AlertGenerating {
     func saveEditing()
     func deleteAccount()
+    func reloginConfirmed()
     
     var userName: String {get set}
+    var reloginConfirmationHandler: (()->())? {get set}
 }
 
 class VisheoEditAccountViewModel : EditAccountViewModel {
+    var reloginConfirmationHandler: (() -> ())?
+    
     var userName: String
     var showProgressCallback: ((Bool) -> ())?
     var requiredFieldAlertHandler: ((String) -> ())?
@@ -48,12 +52,25 @@ class VisheoEditAccountViewModel : EditAccountViewModel {
     
     func deleteAccount() {
         showProgressCallback?(true)
-        authService.deleteAccount { (success) in
+        authService.deleteAccount { (error) in
             self.showProgressCallback?(false)
+            switch (error) {
+            case .some(.needSignIn):
+                self.reloginConfirmationHandler?()
+            case .some(_):
+                self.warningAlertHandler?(NSLocalizedString("An error occurred while deleting account", comment: "Error while deleting account text messaage"))
+            case .none:
+                self.router?.showRegistration()
+            }
+        }
+    }
+    
+    func reloginConfirmed() {
+        authService.signOut { (success) in
             if success {
                 self.router?.showRegistration()
             } else {
-                self.warningAlertHandler?(NSLocalizedString("An error occurred while deleting account", comment: "Error while deleting account text messaage"))
+                self.warningAlertHandler?(NSLocalizedString("An error occurred while signing out", comment: "Error while sign out text messaage"))
             }
         }
     }
