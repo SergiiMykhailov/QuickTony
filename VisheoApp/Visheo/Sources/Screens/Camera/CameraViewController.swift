@@ -117,8 +117,10 @@ class CameraViewController: UIViewController
 		if case .countdown(let value) = update {
 			countdownLabel.isHidden = false;
 			countdownLabel.text = value;
+			cameraRecordButton.isEnabled = false;
 		} else {
 			countdownLabel.isHidden = true;
+			cameraRecordButton.isEnabled = true;
 		}
 		
 		rotationHintView.isHidden = false;
