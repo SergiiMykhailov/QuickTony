@@ -92,7 +92,10 @@ class VisheoRenderingAssets {
 	
 	func setSoundtrack(id: Int?, url: URL?) {
 		soundtrackId = id;
-        if let soundUrl = url {
+		
+		if soundtrackId == nil {
+			soundtrackName = nil;
+		} else if let soundUrl = url {
             soundtrackName = url?.lastPathComponent
             try! FileManager.default.copyItem(at: soundUrl, to: soundtrackURL!)
         }

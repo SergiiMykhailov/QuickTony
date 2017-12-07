@@ -33,7 +33,7 @@ class VisheoRenderingService : RenderingService {
         
         if let soundtrack = creationInfo.soundtrackUrl {
             task.addMedia(soundtrack, type: .audio);
-        } else {
+		} else if creationInfo.soundtrackId > -1 { // the soundtrack was selected but no url - fallback to pre-bundled music
             let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
             task.addMedia(URL(fileURLWithPath: audio), type: .audio);
         }
