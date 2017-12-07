@@ -130,6 +130,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			self?.renderStatus = .ready(item: item);
 		}
 		.catch { [weak self] error in
+			print("Failed to generate preview \(error)");
 			self?.renderStatus = .failed(error: error);
 		}
 	}

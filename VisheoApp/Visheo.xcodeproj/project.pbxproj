@@ -15,6 +15,8 @@
 		920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */; };
 		920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */; };
 		920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */; };
+		922B645B1FD97D5C0085F188 /* VisheoMovieWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */; };
+		922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */; };
 		9255DF0E1FCD9EC200F9815F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF0D1FCD9EC200F9815F /* AppSettings.swift */; };
 		9255DF121FCDA5A200F9815F /* app_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9255DF111FCDA5A200F9815F /* app_settings.plist */; };
 		9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */; };
@@ -192,6 +194,8 @@
 		920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackCellModel.swift; sourceTree = "<group>"; };
 		920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackRouter.swift; sourceTree = "<group>"; };
 		920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
+		922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoMovieWriter.swift; sourceTree = "<group>"; };
+		922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPixelBufferAdaptor.swift; sourceTree = "<group>"; };
 		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
 		9255DF0D1FCD9EC200F9815F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		9255DF111FCDA5A200F9815F /* app_settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = app_settings.plist; sourceTree = "<group>"; };
@@ -627,6 +631,8 @@
 			children = (
 				B48AAACE1FAA03CC000BB33B /* Segues */,
 				B48AAAD01FAA03CC000BB33B /* UIKitExtensions */,
+				922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */,
+				922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1281,6 +1287,7 @@
 				B453F1D51FCF1AB7003D61CB /* MenuRouter.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
 				92C649021FD6036B00D6BC1A /* UserNotificationsService.swift in Sources */,
+				922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */,
 				920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */,
 				B4F63DC01FC85FDB00E05B90 /* VisheoRenderingService.swift in Sources */,
 				B4C893F81FD5789800763296 /* EditAccountRouter.swift in Sources */,
@@ -1297,6 +1304,7 @@
 				92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */,
 				B4BCAC011FB8CC7D003EDC7F /* OnboardingRouter.swift in Sources */,
 				920EDFD71FCF064400D121ED /* SelectSoundtrackViewController.swift in Sources */,
+				922B645B1FD97D5C0085F188 /* VisheoMovieWriter.swift in Sources */,
 				B4DA3E7D1FAA3C1800D8F2F9 /* AppStateService.swift in Sources */,
 				B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */,
 				B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */,

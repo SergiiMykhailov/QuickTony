@@ -9,6 +9,7 @@
 import AVFoundation
 import GPUImage
 import CoreMotion
+import VisheoVideo
 
 enum CameraRecordingState
 {
@@ -59,7 +60,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	private let cropFilter = GPUImageCropFilter();
 	
 	private var camera: GPUImageVideoCamera?;
-	private var movieWriter: GPUImageMovieWriter?;
+	private var movieWriter: VisheoMovieWriter?;
 	private (set) var isRecording = false;
 	
 	private var countdownTimer: Timer? = nil;
@@ -91,7 +92,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	//MARK: - Recording
 	
 	func startCapture() {
-		camera = GPUImageVideoCamera(sessionPreset: AVCaptureSession.Preset.high.rawValue, cameraPosition: .back);
+		camera = GPUImageVideoCamera(sessionPreset: AVCaptureSession.Preset.high.rawValue, cameraPosition: .front);
 		camera?.outputImageOrientation = .portrait;
 		camera?.delegate = self;
 		camera?.horizontallyMirrorFrontFacingCamera = true;
@@ -142,7 +143,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
         assets.removeVideo()
         let url = assets.videoUrl;
         
-        movieWriter = GPUImageMovieWriter(movieURL: url, size: outputVideoSize);
+		movieWriter = VisheoMovieWriter(url: url, size: outputVideoSize);
         movieWriter?.encodingLiveVideo = true;
         movieWriter?.hasAudioTrack = true;
         
