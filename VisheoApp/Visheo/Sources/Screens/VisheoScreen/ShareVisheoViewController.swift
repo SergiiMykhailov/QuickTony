@@ -179,6 +179,7 @@ class ShareVisheoViewController: UIViewController {
     }
     
     deinit {
+		player?.removeObserver(self, forKeyPath: "status");
         NotificationCenter.default.removeObserver(self)
     }
     
