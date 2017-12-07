@@ -19,6 +19,8 @@ class SelectCoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		automaticallyAdjustsScrollViewInsets = false;
 
         pagedCoversCollectionMediator = PagedCoverCollectionMediator(viewModel: viewModel,
                                                                      coversCollection: pagedCoversCollection,
