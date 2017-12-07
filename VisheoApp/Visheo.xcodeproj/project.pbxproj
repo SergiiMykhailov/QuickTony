@@ -37,6 +37,7 @@
 		92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */; };
 		92EF8E841FC4190D005926E5 /* VisheoVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; };
 		92EF8E851FC4190D005926E5 /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92FF5F461FD9C7F9009EE6D2 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FF5F451FD9C7F9009EE6D2 /* VideoView.swift */; };
 		B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B409B3A41FADBC2100FE43F1 /* ViewModels.swift */; };
 		B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */; };
 		B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
@@ -215,6 +216,7 @@
 		92DEDBAF1FC0598400C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		92DEDBB21FC0599100C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CameraTips.xib; sourceTree = "<group>"; };
 		92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRecordIndicator.swift; sourceTree = "<group>"; };
+		92FF5F451FD9C7F9009EE6D2 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		B409B3A41FADBC2100FE43F1 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPermissionsService.swift; sourceTree = "<group>"; };
 		B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDateLabel.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */,
 				B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */,
 				920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */,
+				92FF5F451FD9C7F9009EE6D2 /* VideoView.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -1227,6 +1230,7 @@
 				B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */,
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
 				B467612D1FC7367A006E9CB2 /* UserPurchasesInfo.swift in Sources */,
+				92FF5F461FD9C7F9009EE6D2 /* VideoView.swift in Sources */,
 				B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */,
 				920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */,
 				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
