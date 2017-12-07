@@ -37,10 +37,13 @@ class CameraViewController: UIViewController
 	{
 		super.viewDidLoad()
 	
-		let tipsButton = UIButton(type: .custom);
-		tipsButton.setImage(UIImage(named: "tipsIcon"), for: .normal);
-		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
-		
+		if let icon = UIImage(named: "tipsIcon") {
+			let tipsButton = UIButton(type: .custom);
+			tipsButton.frame = CGRect(origin: .zero, size: icon.size);
+			tipsButton.setImage(icon, for: .normal);
+			navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
+		}
+
 		viewModel.addPreviewOutput(cameraPreview);
 		
 		viewModel.recordingStateChangedBlock = { [weak self] update in
