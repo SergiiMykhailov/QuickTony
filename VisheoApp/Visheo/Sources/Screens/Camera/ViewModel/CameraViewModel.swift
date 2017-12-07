@@ -82,6 +82,14 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		self.appState = appState;
         self.assets = assets
 		super.init();
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationDidEnterBackground, object: nil);
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.resumeCapture), name: Notification.Name.UIApplicationDidBecomeActive, object: nil);
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self);
 	}
 	
 	
@@ -119,7 +127,6 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 			startRecording();
 		}
 	}
-	
 	
 	func stopCapture(teardown: Bool) {
 		if isRecording {
@@ -261,6 +268,14 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		} else {
 			interfaceOrientation = gravity.x < 0 ? .landscapeRight : .landscapeLeft;
 		}
+	}
+	
+	@objc private func pauseCapture() {
+		camera?.pauseCapture();
+	}
+	
+	@objc private func resumeCapture() {
+		camera?.resumeCameraCapture();
 	}
 }
 
