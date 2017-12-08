@@ -25,8 +25,15 @@ class AuthorizationViewController: UIViewController, RouterProxy {
             signUpMandatoryLabel.isHidden = true
             signUpMandatoryLabel.text = ""
         }
+        
+        closeButton.isHidden = !viewModel.cancelAllowed
+        if let description = viewModel.descriptionString {
+            authReasonlabel.text = viewModel.descriptionString
+        }
     }
     
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var authReasonlabel: UILabel!
     @IBOutlet weak var signUpMandatoryLabel: UILabel!
     @IBOutlet weak var signInBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var skipRegistrationHeightConstraint: NSLayoutConstraint!
@@ -57,6 +64,10 @@ class AuthorizationViewController: UIViewController, RouterProxy {
     }
     
     // MARK: Actions
+    
+    @IBAction func closePressed(_ sender: Any) {
+        viewModel.cancel()
+    }
     
     @IBAction func facebookPressed(_ sender: Any) {
         viewModel.loginWithFacebook()

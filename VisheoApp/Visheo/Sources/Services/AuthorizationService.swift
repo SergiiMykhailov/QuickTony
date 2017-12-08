@@ -34,6 +34,7 @@ protocol UserInfoProvider {
     
     var userName: String? {get}
     var userPicUrl: URL? {get}
+    var isAnonymous : Bool {get}
 }
 
 extension Notification.Name {

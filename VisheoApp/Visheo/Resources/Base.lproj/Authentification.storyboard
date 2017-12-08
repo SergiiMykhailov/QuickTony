@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tel-8a-P0G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tel-8a-P0G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -71,33 +71,33 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Sign in with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxr-0m-Cd1">
-                                <rect key="frame" x="141.5" y="376" width="93.5" height="21"/>
+                                <rect key="frame" x="140" y="371" width="95" height="24"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                 <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-aV-LR4">
-                                <rect key="frame" x="117.5" y="415" width="60" height="60"/>
+                                <rect key="frame" x="117.5" y="413" width="60" height="60"/>
                                 <state key="normal" image="facebook"/>
                                 <connections>
                                     <action selector="facebookPressed:" destination="Utz-9c-J4S" eventType="touchUpInside" id="joU-sf-pKT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBX-BJ-M18">
-                                <rect key="frame" x="197.5" y="415" width="60" height="60"/>
+                                <rect key="frame" x="197.5" y="413" width="60" height="60"/>
                                 <state key="normal" image="google"/>
                                 <connections>
                                     <action selector="googlePressed:" destination="Utz-9c-J4S" eventType="touchUpInside" id="5Rl-wD-VZV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEG-HI-xW5">
-                                <rect key="frame" x="120.5" y="483" width="53" height="14"/>
+                                <rect key="frame" x="120.5" y="481" width="53" height="16"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                 <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYC-xN-UXT">
-                                <rect key="frame" x="208.5" y="483" width="39" height="14"/>
+                                <rect key="frame" x="208.5" y="481" width="39" height="16"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                 <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -138,8 +138,8 @@
                                     <constraint firstAttribute="height" constant="1" id="eRE-y4-XCW"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SIGN UP TO SEND YOUR VISHEO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-eg-F0v">
-                                <rect key="frame" x="81.5" y="290" width="212" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SIGN UP TO SEND YOUR VISHEO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-eg-F0v">
+                                <rect key="frame" x="81.5" y="290" width="212" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="212" id="d2J-dY-h8L"/>
                                 </constraints>
@@ -147,6 +147,16 @@
                                 <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3o-OS-bko">
+                                <rect key="frame" x="20" y="20" width="46" height="36"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closePressed:" destination="Utz-9c-J4S" eventType="touchUpInside" id="O9L-WY-6BA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -165,12 +175,14 @@
                             <constraint firstItem="P6N-Gc-4rH" firstAttribute="trailing" secondItem="dtD-zk-jvZ" secondAttribute="trailing" id="GP7-1e-mL3"/>
                             <constraint firstItem="6Cl-C3-lQA" firstAttribute="leading" secondItem="yff-uO-Qij" secondAttribute="leading" constant="20" id="Hls-2V-sOE"/>
                             <constraint firstItem="uBX-BJ-M18" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" constant="40" id="LZT-PC-Ins"/>
+                            <constraint firstItem="u3o-OS-bko" firstAttribute="leading" secondItem="yff-uO-Qij" secondAttribute="leading" constant="20" id="OmX-jI-ZXS"/>
                             <constraint firstItem="Ihp-aV-LR4" firstAttribute="centerX" secondItem="yff-uO-Qij" secondAttribute="centerX" constant="-40" id="PVO-zU-QSv"/>
                             <constraint firstItem="yff-uO-Qij" firstAttribute="bottom" secondItem="6Cl-C3-lQA" secondAttribute="bottom" constant="20" id="S79-IX-Of5"/>
                             <constraint firstItem="dtD-zk-jvZ" firstAttribute="top" secondItem="RYC-xN-UXT" secondAttribute="bottom" constant="21" id="XcO-LV-9A1"/>
                             <constraint firstItem="yff-uO-Qij" firstAttribute="trailing" secondItem="6Cl-C3-lQA" secondAttribute="trailing" constant="20" id="Zbv-8l-oVe"/>
                             <constraint firstItem="6Cl-C3-lQA" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" id="a8T-Er-19a"/>
                             <constraint firstItem="fxr-0m-Cd1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P6N-Gc-4rH" secondAttribute="bottom" constant="5" id="aIk-u9-Pyo"/>
+                            <constraint firstItem="u3o-OS-bko" firstAttribute="top" secondItem="yff-uO-Qij" secondAttribute="top" id="cMk-zn-azp"/>
                             <constraint firstItem="N5e-W5-xQL" firstAttribute="top" secondItem="dtD-zk-jvZ" secondAttribute="bottom" priority="750" constant="21" id="cXa-ly-sLF"/>
                             <constraint firstItem="P6N-Gc-4rH" firstAttribute="top" secondItem="FjM-eg-F0v" secondAttribute="bottom" priority="250" constant="25" id="cni-lJ-eV0"/>
                             <constraint firstItem="P6N-Gc-4rH" firstAttribute="leading" secondItem="dtD-zk-jvZ" secondAttribute="leading" id="diP-VS-hD7"/>
@@ -190,6 +202,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="n62-8n-tXr"/>
                     <connections>
+                        <outlet property="authReasonlabel" destination="FjM-eg-F0v" id="QBW-uI-vVD"/>
+                        <outlet property="closeButton" destination="u3o-OS-bko" id="e8g-jr-qFi"/>
                         <outlet property="signInBottomConstraint" destination="D6r-Di-6Qj" id="p39-jy-m8D"/>
                         <outlet property="signInUpTextView" destination="N5e-W5-xQL" id="5OW-lg-xP6"/>
                         <outlet property="signUpMandatoryLabel" destination="FjM-eg-F0v" id="uMe-GE-Saw"/>
@@ -460,7 +474,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pv7-Ny-DeB">
-                                                <rect key="frame" x="227" y="499" width="98" height="26"/>
+                                                <rect key="frame" x="228" y="499" width="97" height="28"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                 <state key="normal" title="Forgot password?">
                                                     <color key="titleColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -537,6 +551,6 @@
         <image name="logo" width="182" height="204"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="n81-7H-tYm"/>
+        <segue reference="f4y-We-X0N"/>
     </inferredMetricsTieBreakers>
 </document>

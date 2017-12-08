@@ -18,19 +18,37 @@ protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerat
     func signIn()
     func signUp()
     
+    func cancel()
+    
     var getPresentationViewController : (() -> (UIViewController?))? {get set}
+    
+    var cancelAllowed : Bool {get}
+    var descriptionString : String? {get}
 }
 
 class VisheoAutorizationViewModel : AuthorizationViewModel {
+    var cancelAllowed: Bool {
+        return authForBuyingPremium
+    }
+    
+    var descriptionString: String? {
+        if authForBuyingPremium {
+            return NSLocalizedString("Please sign in to purchase premium cards", comment: "Please sign in to purchase premium cards")
+        }
+        return nil
+    }
+    
     var warningAlertHandler: ((String) -> ())?
     var getPresentationViewController: (() -> (UIViewController?))?
     var showProgressCallback: ((Bool) -> ())?
     let anonymousAllowed : Bool
+    private let authForBuyingPremium : Bool
     
     weak var router: AuthorizationRouter?
     var authService : AuthorizationService
     
-    init(authService: AuthorizationService, anonymousAllowed: Bool) {
+    init(authService: AuthorizationService, anonymousAllowed: Bool, authForBuyingPremium: Bool) {
+        self.authForBuyingPremium = authForBuyingPremium
         self.authService = authService
         self.anonymousAllowed = anonymousAllowed
     }
@@ -63,6 +81,10 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     
     func signUp() {
         router?.showSignUp()
+    }
+    
+    func cancel() {
+        router?.close()
     }
     
     @objc func processLogin() {

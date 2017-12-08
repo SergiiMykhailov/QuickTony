@@ -12,6 +12,8 @@ protocol AuthorizationRouter: FlowRouter {
     func showMainScreen()
     func showSignIn()
     func showSignUp()
+    
+    func close()
 }
 
 class VisheoAuthorizationRouter : AuthorizationRouter {
@@ -31,8 +33,8 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
         self.finishAuthCallback = finishCallback
     }
     
-    func start(with viewController: AuthorizationViewController, anonymousAllowed: Bool = true) {
-        let vm = VisheoAutorizationViewModel(authService: dependencies.authorizationService, anonymousAllowed: anonymousAllowed)
+    func start(with viewController: AuthorizationViewController, anonymousAllowed: Bool = true, authForPremium : Bool = false) {
+        let vm = VisheoAutorizationViewModel(authService: dependencies.authorizationService, anonymousAllowed: anonymousAllowed, authForBuyingPremium : authForPremium)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -73,6 +75,12 @@ extension VisheoAuthorizationRouter {
     
     func showSignUp() {
         controller?.performSegue(SegueList.showSignUp, sender: nil)
+    }
+    
+    func close() {
+        if finishAuthCallback != nil {
+            finishAuthCallback?()
+        }
     }
 }
 

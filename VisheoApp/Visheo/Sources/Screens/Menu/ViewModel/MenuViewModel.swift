@@ -79,7 +79,11 @@ class VisheoMenuViewModel : MenuViewModel {
         case .account:
             router?.showAccount()
         case .premiumCards:
-            router?.showPremiumCards()
+            if userInfo.isAnonymous {
+                router?.showRegistration()
+            } else {
+                router?.showPremiumCards()
+            }
         default:
             break;
         }

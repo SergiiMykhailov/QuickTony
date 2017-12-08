@@ -14,11 +14,13 @@ protocol MenuRouter: FlowRouter {
     func showAccount()
     func showPremiumCards()
     func showVisheoScreen(with record: VisheoRecord)
+    
+    func showRegistration()
 }
 
 class VisheoMenuRouter : MenuRouter {
     enum SegueList: String, SegueListType {
-        case showCreateScreen
+        case showRegistration = "showRegistration"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: MenuViewController?
@@ -43,13 +45,21 @@ class VisheoMenuRouter : MenuRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showRegistration:
+            let authController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
+            let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) {
+                self.controller?.dismiss(animated: true, completion: nil)
+            }
+            authRouter.start(with: authController, anonymousAllowed: false, authForPremium: true)
         }
     }
 }
 
 extension VisheoMenuRouter {
+    func showRegistration() {
+        controller?.performSegue(SegueList.showRegistration, sender: nil)
+    }
+    
     func showCreateVisheo() {
         showController(with: "ChooseOccasionViewController") { (controller) in
             let mainRouter = VisheoChooseOccasionRouter(dependencies: dependencies)
