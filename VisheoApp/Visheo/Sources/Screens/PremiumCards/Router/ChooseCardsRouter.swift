@@ -10,11 +10,13 @@ import UIKit
 
 protocol ChooseCardsRouter: FlowRouter {
     func showMenu()
+    func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool)
+    func showCreateVisheo()
 }
 
 class VisheoChooseCardsRouter : ChooseCardsRouter {
     enum SegueList: String, SegueListType {
-        case next
+        case showShareVisheo = "showShareVisheo"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: ChooseCardsViewController?
@@ -24,8 +26,8 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
         self.dependencies = dependencies
     }
     
-    func start(with viewController: ChooseCardsViewController, fromMenu: Bool) {
-        let vm = VisheoChooseCardsViewModel(fromMenu: fromMenu, purchasesService: dependencies.premiumCardsService, purchasesInfo: dependencies.purchasesInfo)
+    func start(with viewController: ChooseCardsViewController, fromMenu: Bool, with assets: VisheoRenderingAssets? = nil) {
+        let vm = VisheoChooseCardsViewModel(fromMenu: fromMenu, purchasesService: dependencies.premiumCardsService, purchasesInfo: dependencies.purchasesInfo, assets: assets)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -37,15 +39,33 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
             return
         }
         switch segueList {
-        default:
-            break
+        case .showShareVisheo:
+            let sendController = segue.destination as! ShareVisheoViewController
+            let sendRouter = ShareVisheoRouter(dependencies: dependencies)
+            let userInfo = sender as! [String : Any]
+            sendRouter.start(with: sendController,
+                             assets: userInfo[Constants.assets] as! VisheoRenderingAssets,
+                             sharePremium : userInfo[Constants.premium] as! Bool)
         }
     }
 }
 
 extension VisheoChooseCardsRouter {
+    private enum Constants {
+        static let assets = "assets"
+        static let premium = "premium"
+    }
+    
     func showMenu() {
         controller?.showLeftViewAnimated(self)
+    }
+    
+    func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool) {
+        controller?.performSegue(SegueList.showShareVisheo, sender: [Constants.assets : assets, Constants.premium : premium])
+    }
+    
+    func showCreateVisheo() {
+        dependencies.routerAssembly.assembleCreateVisheoScreen(on: controller?.sideMenuController?.rootViewController as! UINavigationController, with: dependencies)
     }
 }
 

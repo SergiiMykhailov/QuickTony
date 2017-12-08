@@ -265,11 +265,20 @@
                         <outlet property="menuBarItem" destination="Ndy-qK-zPh" id="V0t-9T-KyF"/>
                         <outlet property="noPremCardslabel" destination="Ivz-Yv-nNX" id="ndH-cH-8h4"/>
                         <outlet property="premiumCardsLabel" destination="p7s-pt-pbh" id="AhU-XQ-Hy3"/>
+                        <segue destination="1yE-Np-pVF" kind="show" identifier="showShareVisheo" id="Jcu-CK-hCv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5W-z1-1Jd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-154.5" y="121.5"/>
+        </scene>
+        <!--ShareVisheoViewController-->
+        <scene sceneID="LZb-dO-9qA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VisheoPreview" referencedIdentifier="ShareVisheoViewController" id="1yE-Np-pVF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Lx-VA-bca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="691" y="121"/>
         </scene>
     </scenes>
     <resources>

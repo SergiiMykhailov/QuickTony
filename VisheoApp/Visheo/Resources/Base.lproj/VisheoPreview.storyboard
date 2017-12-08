@@ -52,7 +52,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103" y="187" width="128.5" height="16.5"/>
+                                        <rect key="frame" x="103.5" y="187" width="128" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -211,8 +211,8 @@
                         <segue destination="tA6-hS-3QI" kind="presentation" identifier="showVideoEdit" id="kyV-qm-SYP"/>
                         <segue destination="L2Y-ET-ymb" kind="show" identifier="showSendVisheo" id="qxY-1U-qrq"/>
                         <segue destination="ScI-5d-mqh" kind="presentation" identifier="showRegistration" id="rs3-wO-P6I"/>
-                        <segue destination="6UL-HJ-Leg" kind="show" identifier="showCardTypeSelection" id="eFQ-jm-mFU"/>
                         <segue destination="0ZU-xD-YwL" kind="presentation" identifier="showSoundtrackEdit" id="CIi-8Y-uCc"/>
+                        <segue destination="KjW-nB-Qsh" kind="show" identifier="showCardTypeSelection" id="cw0-JJ-Ga1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGZ-T9-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -303,7 +303,7 @@
                 <viewControllerPlaceholder storyboardName="Authentification" id="ScI-5d-mqh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESG-wG-bsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="910" y="255"/>
+            <point key="canvasLocation" x="880" y="301"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DXk-3B-qZj">
@@ -660,24 +660,13 @@
             </objects>
             <point key="canvasLocation" x="3208.8000000000002" y="207.34632683658174"/>
         </scene>
-        <!--SEND VISHEO CARDS-->
-        <scene sceneID="Sh8-hc-egi">
+        <!--Purchases-->
+        <scene sceneID="dbk-t7-AXk">
             <objects>
-                <viewController id="6UL-HJ-Leg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="liW-6o-MC3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="3HU-aQ-Kdx"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="SEND VISHEO CARDS" id="Hhq-5k-nKh"/>
-                    <connections>
-                        <segue destination="L2Y-ET-ymb" kind="show" identifier="showSendVisheo" id="Lk5-UW-sFW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mfq-Dt-ZNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Purchases" id="KjW-nB-Qsh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s7s-eu-bUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015" y="573"/>
+            <point key="canvasLocation" x="2205" y="408"/>
         </scene>
         <!--SelectCoverViewController-->
         <scene sceneID="hVs-3M-mrA">
@@ -727,8 +716,5 @@
         <image name="slideshow" width="50" height="52"/>
         <image name="video" width="50" height="52"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Lk5-UW-sFW"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

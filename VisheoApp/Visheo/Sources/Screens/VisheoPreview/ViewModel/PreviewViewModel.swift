@@ -40,20 +40,24 @@ protocol PreviewViewModel : class {
 	func statusText(for status: PreviewRenderStatus) -> String?;
 	
 	func handleAssetsUpdate(_ assets: VisheoRenderingAssets);
+    
+    var premiumUsageFailedHandler : (()->())? {get set}
 }
 
 class VisheoPreviewViewModel : PreviewViewModel {
     weak var router: PreviewRouter?
     private (set) var assets: VisheoRenderingAssets
-    let permissionsService : AppPermissionsService
-    let authService: AuthorizationService
-    let purchasesInfo: UserPurchasesInfo
-	let appStateService: AppStateService;
-	let soundtracksService: SoundtracksService
+    private let permissionsService : AppPermissionsService
+    private let authService: AuthorizationService
+    private let purchasesInfo: UserPurchasesInfo
+	private let appStateService: AppStateService;
+	private let soundtracksService: SoundtracksService
+    private let premCardsService : PremiumCardsService
 	
 	let extractor = VideoThumbnailExtractor();
 	var renderContainer: PhotosAnimation? = nil;
 	var previewRenderCallback: ((PreviewRenderStatus) -> Void)? = nil;
+    var premiumUsageFailedHandler: (() -> ())?
 	
 	private (set) var renderStatus: PreviewRenderStatus = .pending {
 		didSet {
@@ -67,13 +71,15 @@ class VisheoPreviewViewModel : PreviewViewModel {
          authService: AuthorizationService,
          purchasesInfo: UserPurchasesInfo,
 		 appStateService: AppStateService,
-		 soundtracksService: SoundtracksService) {
+		 soundtracksService: SoundtracksService,
+         premCardsService: PremiumCardsService) {
         self.assets = assets
         self.permissionsService = permissionsService
         self.authService = authService
         self.purchasesInfo = purchasesInfo
 		self.appStateService = appStateService;
 		self.soundtracksService = soundtracksService;
+        self.premCardsService = premCardsService
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoPreviewViewModel.soundtrackDownloaded(_:)), name: .soundtrackDownloadFinished, object: nil);
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoPreviewViewModel.soundtrackDownloadFailed(_:)), name: .soundtrackDownloadFailed, object: nil);
@@ -181,7 +187,13 @@ class VisheoPreviewViewModel : PreviewViewModel {
         } else if purchasesInfo.currentUserPremiumCards == 0 {
             router?.showCardTypeSelection(with: assets)
         } else {
-            router?.sendVisheo(with: assets)
+            premCardsService.usePremiumCard(completion: { (success) in
+                if success {
+                    self.router?.sendVisheo(with: self.assets, premium: true)
+                } else {
+                    self.premiumUsageFailedHandler?()
+                }
+            })
         }
         
     }

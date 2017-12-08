@@ -47,6 +47,10 @@ class ChooseCardsViewController: UIViewController {
             }
         }
         
+        viewModel.premiumUsageFailedHandler = {[weak self] in
+            self?.handlePremiumCardUsageError()
+        }
+        
         if viewModel.showBackButton {
             navigationItem.leftBarButtonItems = [backBarItem]
         } else {
@@ -65,6 +69,17 @@ class ChooseCardsViewController: UIViewController {
         noPremCardslabel.isHidden = hasCards
         haspremiumCardsContainer.isHidden = !hasCards
         premiumCardsLabel.text = "\(viewModel.premiumCardsNumber)"
+    }
+    
+    private func handlePremiumCardUsageError() {
+        let alertController = UIAlertController(title: NSLocalizedString("Oops…", comment: "error using premium card title"), message: NSLocalizedString("Something went wrong. Please check your Internet connection and try again.", comment: "something went wrong while suing premium card"), preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Try Again", comment: "Try again button text"), style: .default, handler: { (action) in
+            self.viewModel.retryPremiumUse()
+        }))
+        
+        present(alertController, animated: true, completion: nil)
     }
 
     //MARK: - VM+Router init

@@ -15,7 +15,7 @@ protocol PreviewRouter: FlowRouter {
     func showVideoEdit(with assets: VisheoRenderingAssets)
 	func showSoundtrackEdit(with assets: VisheoRenderingAssets)
     
-    func sendVisheo(with assets: VisheoRenderingAssets)
+    func sendVisheo(with assets: VisheoRenderingAssets, premium: Bool)
     func showRegistration(with callback: (()->())?)
     func showCardTypeSelection(with assets: VisheoRenderingAssets)
 }
@@ -52,7 +52,8 @@ class VisheoPreviewRouter : PreviewRouter {
                                         authService: dependencies.authorizationService,
 										purchasesInfo: dependencies.purchasesInfo,
 										appStateService: dependencies.appStateService,
-										soundtracksService: dependencies.soundtracksService)
+										soundtracksService: dependencies.soundtracksService,
+                                        premCardsService: dependencies.premiumCardsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -87,7 +88,10 @@ class VisheoPreviewRouter : PreviewRouter {
         case .showSendVisheo:
             let sendController = segue.destination as! ShareVisheoViewController
             let sendRouter = ShareVisheoRouter(dependencies: dependencies)
-            sendRouter.start(with: sendController, assets: sender as! VisheoRenderingAssets)
+            let userInfo = sender as! [String : Any]
+            sendRouter.start(with: sendController,
+                             assets: userInfo[Constants.assets] as! VisheoRenderingAssets,
+                             sharePremium : userInfo[Constants.premium] as! Bool)
         case .showRegistration: 
             let authController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
             let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) {
@@ -99,12 +103,19 @@ class VisheoPreviewRouter : PreviewRouter {
             }
             authRouter.start(with: authController, anonymousAllowed: false)
         case .showCardTypeSelection:
-            break //TODO: Implement real initalization
+            let purchaseController = segue.destination as! ChooseCardsViewController
+            let purchaseRouter = VisheoChooseCardsRouter(dependencies: dependencies)
+            purchaseRouter.start(with: purchaseController, fromMenu: false, with: (sender as! VisheoRenderingAssets))
         }
     }
 }
 
 extension VisheoPreviewRouter {
+    private enum Constants {
+        static let assets = "assets"
+        static let premium = "premium"
+    }
+    
     func showCoverEdit(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showCoverEdit, sender: assets)
     }
@@ -125,8 +136,8 @@ extension VisheoPreviewRouter {
 		controller?.performSegue(SegueList.showSoundtrackEdit, sender: assets)
 	}
     
-    func sendVisheo(with assets: VisheoRenderingAssets) {
-        controller?.performSegue(SegueList.showSendVisheo, sender: assets)
+    func sendVisheo(with assets: VisheoRenderingAssets, premium: Bool) {
+        controller?.performSegue(SegueList.showSendVisheo, sender: [Constants.assets : assets, Constants.premium : premium])
     }
     
     func showRegistration(with callback: (()->())?) {

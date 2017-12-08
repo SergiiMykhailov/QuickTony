@@ -26,9 +26,14 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     func showMenu()
     
     var didChange : (()->())? {get set}
+    var premiumUsageFailedHandler : (()->())? {get set}
+    
+    func retryPremiumUse()
 }
 
 class VisheoChooseCardsViewModel : ChooseCardsViewModel {
+    var premiumUsageFailedHandler: (() -> ())?
+    
     var showBackButton: Bool {
         return !shownFromMenu
     }
@@ -82,11 +87,13 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     private let purchasesService : PremiumCardsService
     private let purchasesInfo : UserPurchasesInfo
     private let shownFromMenu : Bool
+    private let visheoAssets : VisheoRenderingAssets?
     
-    init(fromMenu: Bool, purchasesService: PremiumCardsService, purchasesInfo: UserPurchasesInfo) {
+    init(fromMenu: Bool, purchasesService: PremiumCardsService, purchasesInfo: UserPurchasesInfo, assets: VisheoRenderingAssets?) {
         self.purchasesService = purchasesService
         self.purchasesInfo = purchasesInfo
         self.shownFromMenu = fromMenu
+        self.visheoAssets = assets
         
         if purchasesService.smallBundle == nil || purchasesService.bigBundle == nil {
             purchasesService.reloadPurchases()
@@ -111,11 +118,8 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
             self?.didChange?()
         }
         
-        NotificationCenter.default.addObserver(forName: Notification.Name.bundlePurchaseSucceded, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
-            self?.showProgressCallback?(false)
-            print("SUCESSS!!!!!")
-        }
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(VisheoChooseCardsViewModel.purchaseSucceded), name: Notification.Name.bundlePurchaseSucceded, object: nil)
+                
         NotificationCenter.default.addObserver(forName: Notification.Name.bundlePurchaseCancelled, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
             self?.showProgressCallback?(false)
         }
@@ -128,9 +132,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     func sendRegular() {
-        //TODO: remove
-        purchasesService.usePremiumCard { (success) in
-            print(success ? "PREMIUM CARD USED" : "FAILED TO USE PREMIUM CARD")
+        if let assets = visheoAssets {
+            router?.showShareVisheo(with: assets, premium: false)
+        } else {
+            router?.showCreateVisheo()
         }
     }
     
@@ -152,9 +157,32 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         router?.showMenu()
     }
     
+    func retryPremiumUse() {
+        usePremCard()
+    }
+    
+    private func usePremCard() {
+        if let assets = visheoAssets {
+            showProgressCallback?(true)
+            purchasesService.usePremiumCard(completion: { (success) in
+                self.showProgressCallback?(false)
+                if success {
+                    self.router?.showShareVisheo(with: assets, premium: true)
+                } else {
+                    self.premiumUsageFailedHandler?()
+                }
+            })
+        }
+    }
+    
     // MARK: Notifications
     
     @objc func updatePremCardsNumber() {
         self.didChange?()
+    }
+    
+    @objc func purchaseSucceded() {
+        self.showProgressCallback?(false)
+        usePremCard()
     }
 }

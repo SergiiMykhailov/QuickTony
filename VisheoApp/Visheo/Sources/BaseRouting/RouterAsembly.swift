@@ -11,6 +11,8 @@ import LGSideMenuController
 
 protocol RouterAssembly {
     func assembleMainScreen(on destination: UIViewController, with dependencies: RouterDependencies)
+    
+    func assembleCreateVisheoScreen(on navigation: UINavigationController, with dependencies: RouterDependencies)
 }
 
 class VisheoRouterAssembly: RouterAssembly {
@@ -24,5 +26,13 @@ class VisheoRouterAssembly: RouterAssembly {
         let menuController = sideController.leftViewController as! MenuViewController
         let menuRouter = VisheoMenuRouter(dependencies: dependencies)
         menuRouter.start(with: menuController)
+    }
+    
+    func assembleCreateVisheoScreen(on navigation: UINavigationController, with dependencies: RouterDependencies) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let shownController = storyboard.instantiateViewController(withIdentifier: "ChooseOccasionViewController")
+        let mainRouter = VisheoChooseOccasionRouter(dependencies: dependencies)
+        mainRouter.start(with: shownController as! ChooseOccasionViewController)
+        navigation.setViewControllers([shownController], animated: false)
     }
 }

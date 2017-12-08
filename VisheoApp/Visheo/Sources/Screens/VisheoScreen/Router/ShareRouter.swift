@@ -26,11 +26,12 @@ class ShareVisheoRouter : ShareRouter {
         self.dependencies = dependencies
     }
     
-    func start(with viewController: ShareVisheoViewController, assets: VisheoRenderingAssets) {
+    func start(with viewController: ShareVisheoViewController, assets: VisheoRenderingAssets, sharePremium: Bool) {
 		let vm = ShareVisheoViewModel(assets: assets,
 									  renderingService: dependencies.renderingService,
 									  creationService: dependencies.creationService,
-									  notificationsService: dependencies.userNotificationsService)
+                                      notificationsService: dependencies.userNotificationsService,
+                                      sharePremium : sharePremium)
         viewModel = vm
         vm.router = self
         self.controller = viewController

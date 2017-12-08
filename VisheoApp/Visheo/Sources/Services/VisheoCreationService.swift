@@ -206,7 +206,7 @@ class VisheoCreationService : CreationService {
     }
     
     private func upload(creationInfo: VisheoCreationInfo) {
-        let videoRef = Storage.storage().reference().child(refPath(for: creationInfo.visheoId, premium: true))
+        let videoRef = Storage.storage().reference().child(refPath(for: creationInfo.visheoId, premium: creationInfo.premium))
         
         self.uploadingProgress[creationInfo.visheoId] = 0.0
         self.notifyUploading(progress: 0.0, for: creationInfo.visheoId)

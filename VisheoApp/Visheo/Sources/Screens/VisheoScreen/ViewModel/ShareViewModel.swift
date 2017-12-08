@@ -205,12 +205,14 @@ class ShareVisheoViewModel : ShareViewModel {
     private let creationService : CreationService
 	private let userNotificationsService: UserNotificationsService
     private let assets: VisheoRenderingAssets
+    private let sharePremium : Bool
     
-    init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService) {
+    init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, sharePremium: Bool) {
         self.renderingService = renderingService
         self.assets = assets
         self.creationService = creationService
 		self.userNotificationsService = notificationsService;
+        self.sharePremium = sharePremium
     }
 	
 	func setReminderDate(_ date: Date) {
@@ -304,7 +306,7 @@ class ShareVisheoViewModel : ShareViewModel {
             strongSelf.creationStatus = .ready
         }
         
-        self.creationService.createVisheo(from: assets, premium: true)
+        self.creationService.createVisheo(from: assets, premium: sharePremium)
     }
     
     func showMenu() {
