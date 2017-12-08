@@ -107,6 +107,7 @@ class VisheoCreationService : CreationService {
         info.premium = premium
         var visheoRecord = info.firebaseRecord
         visheoRecord["userId"] = self.userInfoProvider.userId
+        visheoRecord["userName"] = self.userInfoProvider.userName ?? "Guest"
         
         let ref = Database.database().reference()
         var childUpdates = ["cards/\(info.visheoId)" : visheoRecord] as [String : Any]
