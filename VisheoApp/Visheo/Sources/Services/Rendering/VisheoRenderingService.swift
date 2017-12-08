@@ -37,6 +37,10 @@ class VisheoRenderingService : RenderingService {
             let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
             task.addMedia(URL(fileURLWithPath: audio), type: .audio);
         }
+		
+		let path = Bundle.main.path(forResource: "default_outro", ofType: "mov")!;
+		let outro = URL(fileURLWithPath: path);
+		task.addMedia(outro, type: .outro);
 
         renderQueue.enqueue(task) { result in
             if case .failure(let error) = result {

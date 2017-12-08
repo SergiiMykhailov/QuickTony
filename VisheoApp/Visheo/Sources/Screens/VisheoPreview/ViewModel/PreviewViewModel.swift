@@ -101,6 +101,9 @@ class VisheoPreviewViewModel : PreviewViewModel {
 
 		renderStatus = .rendering;
 		
+		let path = Bundle.main.path(forResource: "default_outro", ofType: "mov")!;
+		let outro = URL(fileURLWithPath: path);
+		
 		var audioURL: URL?;
 		
 		if let soundtrack = assets.selectedSoundtrack {
@@ -123,7 +126,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			self.renderTimeLine(videoSnapshot: url, quality: quality);
 		}
 		.then { url -> VisheoVideoComposition in
-			let video = VisheoRender(timeline: url, video: videoURL, audio: audioURL, quality: quality);
+			let video = VisheoRender(timeline: url, video: videoURL, audio: audioURL, outro: outro, quality: quality);
 			return try video.prepareComposition()
 		}
 		.then { composition -> AVPlayerItem in

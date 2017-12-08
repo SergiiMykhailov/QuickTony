@@ -35,6 +35,7 @@
 		92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */; };
 		92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */; };
 		92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */; };
+		92ED8EEB1FDA946D00EBB15E /* default_outro.mov in Resources */ = {isa = PBXBuildFile; fileRef = 92ED8EE81FDA946D00EBB15E /* default_outro.mov */; };
 		92EF8E841FC4190D005926E5 /* VisheoVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; };
 		92EF8E851FC4190D005926E5 /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A60CE64BD0494E69FA9B83C5 /* ChooseCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE8FDBAFB65873040CDC5 /* ChooseCardsViewController.swift */; };
@@ -226,6 +227,7 @@
 		A60CE8FDBAFB65873040CDC5 /* ChooseCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCardsViewController.swift; sourceTree = "<group>"; };
 		A60CE970E2C964F6349018A6 /* ChooseCardsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCardsRouter.swift; sourceTree = "<group>"; };
 		B40447C81FD8030A00CD87BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Purchases.storyboard; sourceTree = "<group>"; };
+		92ED8EE81FDA946D00EBB15E /* default_outro.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = default_outro.mov; sourceTree = "<group>"; };
 		92FF5F451FD9C7F9009EE6D2 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		B409B3A41FADBC2100FE43F1 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPermissionsService.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 		92A8D30A1FC86E86001E194D /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				92ED8EE81FDA946D00EBB15E /* default_outro.mov */,
 				92A8D30B1FC86E86001E194D /* beginning.m4a */,
 				92A8D30C1FC86E86001E194D /* blank.m4v */,
 			);
@@ -1128,6 +1131,7 @@
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
 				B40447C91FD8030A00CD87BA /* Purchases.storyboard in Resources */,
 				B43163811FBF480A00135B70 /* Localizable.strings in Resources */,
+				92ED8EEB1FDA946D00EBB15E /* default_outro.mov in Resources */,
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
 				920EDFD21FCF059D00D121ED /* MusicSelection.storyboard in Resources */,
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
