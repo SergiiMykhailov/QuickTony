@@ -45,17 +45,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V01-yZ-NSN">
-                                        <rect key="frame" x="273" y="15" width="47" height="19"/>
+                                        <rect key="frame" x="273.5" y="15" width="46.5" height="19"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-DV-gPA" customClass="CameraRecordIndicator" customModule="Visheo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="9.5" height="9.5"/>
+                                                <rect key="frame" x="0.0" y="5" width="9" height="9.5"/>
                                                 <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pSM-DV-gPA" secondAttribute="height" multiplier="1:1" id="9sA-Ik-ddr"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="REC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct7-4F-cZX">
-                                                <rect key="frame" x="14.5" y="0.0" width="32.5" height="19"/>
+                                                <rect key="frame" x="14" y="0.0" width="32.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -79,16 +79,42 @@
                                             <action selector="toggleCameraFace" destination="Isd-d2-FNo" eventType="touchUpInside" id="8Hz-Ac-sHb"/>
                                         </connections>
                                     </button>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNF-hk-vTk">
+                                        <rect key="frame" x="115" y="138.5" width="220" height="57.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your device to portrait orientation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="Srt-Bl-ce3">
+                                                <rect key="frame" x="10" y="10" width="200" height="37.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Srt-Bl-ce3" secondAttribute="bottom" constant="10" id="bUM-Z5-6qC"/>
+                                            <constraint firstAttribute="trailing" secondItem="Srt-Bl-ce3" secondAttribute="trailing" constant="10" id="qJv-xJ-36J"/>
+                                            <constraint firstItem="Srt-Bl-ce3" firstAttribute="top" secondItem="BNF-hk-vTk" secondAttribute="top" constant="10" id="voK-YZ-ife"/>
+                                            <constraint firstItem="Srt-Bl-ce3" firstAttribute="leading" secondItem="BNF-hk-vTk" secondAttribute="leading" constant="10" id="ypb-cn-IuG"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gjS-Wn-L8J" secondAttribute="height" multiplier="1:1" id="2a4-3m-htd"/>
+                                    <constraint firstItem="BNF-hk-vTk" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="4vp-iT-01D"/>
                                     <constraint firstAttribute="bottom" secondItem="Gnp-BU-IW8" secondAttribute="bottom" constant="20" id="BoB-jS-RV0"/>
                                     <constraint firstItem="MjJ-FK-D1Y" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="GdU-xW-uYi"/>
                                     <constraint firstItem="Gnp-BU-IW8" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" constant="20" id="HtJ-oO-Ap7"/>
+                                    <constraint firstAttribute="trailing" secondItem="BNF-hk-vTk" secondAttribute="trailing" id="IPp-zm-MPp"/>
                                     <constraint firstAttribute="bottom" secondItem="MjJ-FK-D1Y" secondAttribute="bottom" id="OEO-Hr-tBO"/>
                                     <constraint firstItem="MjJ-FK-D1Y" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="Sgq-Bv-hsv"/>
                                     <constraint firstAttribute="trailing" secondItem="MjJ-FK-D1Y" secondAttribute="trailing" id="dMy-Xf-wQX"/>
+                                    <constraint firstItem="BNF-hk-vTk" firstAttribute="centerY" secondItem="gjS-Wn-L8J" secondAttribute="centerY" id="jjR-pb-Ukh"/>
                                     <constraint firstItem="4kz-0E-zHu" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="o7w-15-9xD"/>
                                     <constraint firstAttribute="trailing" secondItem="4kz-0E-zHu" secondAttribute="trailing" id="oNb-hM-Axo"/>
                                     <constraint firstAttribute="trailing" secondItem="V01-yZ-NSN" secondAttribute="trailing" constant="15" id="qbn-rt-J7k"/>
@@ -107,6 +133,11 @@
                                         <color key="value" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4vp-iT-01D"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWJ-0h-vua" customClass="CameraRecordButton" customModule="Visheo" customModuleProvider="target">
                                 <rect key="frame" x="142.5" y="493" width="90" height="90"/>
@@ -151,6 +182,9 @@
                         <outlet property="countdownLabel" destination="MjJ-FK-D1Y" id="MU7-ak-MSh"/>
                         <outlet property="recordingIndicator" destination="pSM-DV-gPA" id="Zai-iO-14U"/>
                         <outlet property="recordingStatusView" destination="V01-yZ-NSN" id="5Qh-Qh-zKq"/>
+                        <outlet property="rotationHintLeading" destination="4vp-iT-01D" id="auR-SL-lXn"/>
+                        <outlet property="rotationHintTrailing" destination="IPp-zm-MPp" id="LAn-JW-poI"/>
+                        <outlet property="rotationHintView" destination="BNF-hk-vTk" id="Pdd-Gu-CWn"/>
                         <segue destination="UoZ-eD-0S2" kind="show" identifier="showTrimScreen" id="0eb-1U-Z0s"/>
                     </connections>
                 </viewController>
@@ -317,10 +351,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qa-yL-bpA">
-                                <rect key="frame" x="0.0" y="176.5" width="375" height="314.5"/>
+                                <rect key="frame" x="0.0" y="181.5" width="375" height="305.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJk-8Q-bOw">
-                                        <rect key="frame" x="60" y="0.0" width="255" height="79.5"/>
+                                        <rect key="frame" x="60" y="0.0" width="255" height="70.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -331,13 +365,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-i9-Wr9">
-                                        <rect key="frame" x="65.5" y="124.5" width="244" height="95"/>
+                                        <rect key="frame" x="65.5" y="115.5" width="244" height="95"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-tb-5X6">
-                                        <rect key="frame" x="87.5" y="254.5" width="200" height="60"/>
+                                        <rect key="frame" x="87.5" y="245.5" width="200" height="60"/>
                                         <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="xJm-ZU-Tct"/>

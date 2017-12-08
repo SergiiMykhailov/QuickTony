@@ -11,7 +11,10 @@ import GPUImage
 
 class CameraViewController: UIViewController
 {
+	@IBOutlet weak var rotationHintView: UIView!
 	@IBOutlet weak var cameraPreview: GPUImageView!
+	@IBOutlet weak var rotationHintTrailing: NSLayoutConstraint!
+	@IBOutlet weak var rotationHintLeading: NSLayoutConstraint!
 	@IBOutlet weak var cameraRecordButton: CameraRecordButton!
 	@IBOutlet weak var cameraToggleButton: UIButton!
 	@IBOutlet weak var recordingStatusView: UIView!
@@ -34,10 +37,13 @@ class CameraViewController: UIViewController
 	{
 		super.viewDidLoad()
 	
-		let tipsButton = UIButton(type: .custom);
-		tipsButton.setImage(UIImage(named: "tipsIcon"), for: .normal);
-		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
-		
+		if let icon = UIImage(named: "tipsIcon") {
+			let tipsButton = UIButton(type: .custom);
+			tipsButton.frame = CGRect(origin: .zero, size: icon.size);
+			tipsButton.setImage(icon, for: .normal);
+			navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
+		}
+
 		viewModel.addPreviewOutput(cameraPreview);
 		
 		viewModel.recordingStateChangedBlock = { [weak self] update in
@@ -51,6 +57,16 @@ class CameraViewController: UIViewController
 				self?.cameraRecordButton.progress = update;
 			}
 		}
+		
+		viewModel.deviceOrientationChangeBlock = { [weak self] orientation in
+			DispatchQueue.main.async {
+				self?.handleDeviceRotation(orientation)
+			}
+		}
+		
+		let mask = CAShapeLayer();
+		rotationHintView.layer.mask = mask;
+		rotationHintView.alpha = 0.0;
 	}
 	
 	
@@ -70,6 +86,15 @@ class CameraViewController: UIViewController
 	override func viewWillDisappear(_ animated: Bool) {
 		viewModel.stopCapture(teardown: isMovingFromParentViewController)
 		super.viewWillDisappear(animated);
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews();
+		guard let mask = rotationHintView.layer.mask as? CAShapeLayer, !mask.frame.equalTo(rotationHintView.bounds) else {
+			return;
+		}
+		mask.frame = rotationHintView.bounds;
+		mask.path = UIBezierPath(roundedRect: rotationHintView.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 6.0, height: 6.0)).cgPath;
 	}
 	
 	
@@ -95,17 +120,75 @@ class CameraViewController: UIViewController
 		if case .countdown(let value) = update {
 			countdownLabel.isHidden = false;
 			countdownLabel.text = value;
+			cameraRecordButton.isEnabled = false;
 		} else {
 			countdownLabel.isHidden = true;
+			cameraRecordButton.isEnabled = true;
 		}
+		
+		rotationHintView.isHidden = false;
 		
 		if case .stopped = update {
 			cameraRecordButton.isRecording = false;
 			cameraToggleButton.isHidden = false;
+			rotationHintView.isHidden = true;
 		} else {
 			cameraRecordButton.isRecording = true;
 			cameraToggleButton.isHidden = true;
+			rotationHintView.isHidden = false;
 		}
+	}
+	
+	private func handleDeviceRotation(_ orientation: UIInterfaceOrientationMask)
+	{
+		let translationX = (rotationHintView.bounds.width - rotationHintView.bounds.height) / 2.0;
+		
+//		var animations:
+		
+		var fromConstraint: NSLayoutConstraint?;
+		var toLayoutConstraint: NSLayoutConstraint?;
+		var transform: CGAffineTransform = .identity;
+		
+		switch orientation {
+			case .landscapeLeft:
+//				rotationHintView.alpha = 1;
+				fromConstraint = rotationHintTrailing;
+				toLayoutConstraint = rotationHintLeading;
+				toLayoutConstraint?.constant = -view.bounds.width;
+				let rotation = CGAffineTransform(rotationAngle: -.pi/2);
+				let translation = CGAffineTransform(translationX: -translationX, y: 0.0);
+				transform = rotation.concatenating(translation);
+			case .landscapeRight:
+//				rotationHintView.alpha = 1;
+				fromConstraint = rotationHintLeading;
+				toLayoutConstraint = rotationHintTrailing;
+				toLayoutConstraint?.constant = -view.bounds.width;
+				let rotation = CGAffineTransform(rotationAngle: .pi/2);
+				let translation = CGAffineTransform(translationX: translationX, y: 0.0);
+				transform = rotation.concatenating(translation);
+			default:
+				break;
+		}
+		
+		guard let _ = fromConstraint, let _ = toLayoutConstraint else {
+			UIView.animate(withDuration: 0.05, delay: 0.0, options: [.beginFromCurrentState, .curveEaseInOut], animations: {
+				self.rotationHintView.alpha = 0.0;
+			}, completion: nil);
+			return;
+		}
+		
+		self.rotationHintView.alpha = 0.0;
+		self.rotationHintView.transform = transform;
+		fromConstraint?.isActive = false;
+		toLayoutConstraint?.isActive = true;
+		self.view.layoutIfNeeded();
+		
+		UIView.animate(withDuration: 0.3, delay: 0.0, options: [.beginFromCurrentState, .curveEaseInOut], animations: {
+			toLayoutConstraint?.constant = 0.0;
+			fromConstraint?.constant = 0.0;
+			self.rotationHintView.alpha = 1.0;
+			self.view.layoutIfNeeded();
+		}, completion: nil)
 	}
 }
 

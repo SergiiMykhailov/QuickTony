@@ -153,4 +153,12 @@ class CameraRecordButton: UIControl
 			updateStatusKnobPath(animated: true);
 		}
 	}
+	
+	override var isEnabled: Bool {
+		didSet {
+			UIView.animate(withDuration: 0.2, delay: 0.0, options: [.beginFromCurrentState, .curveEaseInOut], animations: {
+				self.alpha = self.isEnabled ? 1.0 : 0.3;
+			}, completion: nil);
+		}
+	}
 }

@@ -248,11 +248,11 @@ final class VisheoRenderer
 			let videoURL = media.filter{ $0.type == .video }.first?.url;
 			let timelineURL = timeline.first?.output;
 			
-			guard let _ = audioURL, let _ = videoURL, let _ = timelineURL else {
+			guard let _ = videoURL, let _ = timelineURL else {
 				throw VideoConvertibleError.error;
 			}
 			
-			let video = VisheoRender(timeline: timelineURL!, video: videoURL!, audio: audioURL!, quality: task.quality);
+			let video = VisheoRender(timeline: timelineURL!, video: videoURL!, audio: audioURL, quality: task.quality);
 			return self.renderer.render(asset: video, to: url);
 		}
 		.then {

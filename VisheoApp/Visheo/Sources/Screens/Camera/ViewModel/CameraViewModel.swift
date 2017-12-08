@@ -8,7 +8,8 @@
 
 import AVFoundation
 import GPUImage
-
+import CoreMotion
+import VisheoVideo
 
 enum CameraRecordingState
 {
@@ -42,6 +43,8 @@ protocol CameraViewModel: class
 	func stopCapture(teardown: Bool);
 	func toggleRecording()
 	func toggleCameraFace();
+	
+	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
 }
 
 
@@ -52,11 +55,12 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	weak var router: CameraRouter?
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil;
 	var recordingProgressChangedBlock: ((Double) -> Void)? = nil;
+	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? = nil;
 	
 	private let cropFilter = GPUImageCropFilter();
 	
 	private var camera: GPUImageVideoCamera?;
-	private var movieWriter: GPUImageMovieWriter?;
+	private var movieWriter: VisheoMovieWriter?;
 	private (set) var isRecording = false;
 	
 	private var countdownTimer: Timer? = nil;
@@ -64,11 +68,28 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	private var displayLink: CADisplayLink? = nil;
 	
     private let assets : VisheoRenderingAssets
+	private lazy var motionManager: CMMotionManager = CMMotionManager();
+	private lazy var motionQueue: OperationQueue = OperationQueue();
+	private var interfaceOrientation: UIInterfaceOrientationMask = .portrait {
+		didSet {
+			if interfaceOrientation != oldValue {
+				deviceOrientationChangeBlock?(interfaceOrientation);
+			}
+		}
+	}
 	
 	init(appState: AppStateService, assets : VisheoRenderingAssets) {
 		self.appState = appState;
         self.assets = assets
 		super.init();
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationDidEnterBackground, object: nil);
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.resumeCapture), name: Notification.Name.UIApplicationDidBecomeActive, object: nil);
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self);
 	}
 	
 	
@@ -86,6 +107,16 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		
 		camera?.addTarget(cropFilter);
 		camera?.startCapture();
+		
+		guard motionManager.isDeviceMotionAvailable else {
+			return;
+		}
+		
+		motionManager.deviceMotionUpdateInterval = 0.3;
+		motionManager.startDeviceMotionUpdates(to: motionQueue) { [weak self] (motion, _) in
+			guard let `motion` = motion else { return }
+			self?.handleMotionUpdate(motion);
+		}
 	}
 	
 	
@@ -96,7 +127,6 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 			startRecording();
 		}
 	}
-	
 	
 	func stopCapture(teardown: Bool) {
 		if isRecording {
@@ -109,6 +139,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		
 		camera?.stopCapture();
 		camera?.removeAllTargets();
+		motionManager.stopDeviceMotionUpdates();
 	}
 	
 	
@@ -119,7 +150,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
         assets.removeVideo()
         let url = assets.videoUrl;
         
-        movieWriter = GPUImageMovieWriter(movieURL: url, size: outputVideoSize);
+		movieWriter = VisheoMovieWriter(url: url, size: outputVideoSize);
         movieWriter?.encodingLiveVideo = true;
         movieWriter?.hasAudioTrack = true;
         
@@ -226,6 +257,25 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	
 	func markCameraTipsSeen() {
 		appState.cameraTips(wereSeen: true);
+	}
+	
+	
+	private func handleMotionUpdate(_ motion: CMDeviceMotion) {
+		let gravity = motion.gravity;
+		
+		if fabs(gravity.x) < fabs(gravity.y) {
+			interfaceOrientation = gravity.y < 0 ? .portrait : .portraitUpsideDown;
+		} else {
+			interfaceOrientation = gravity.x < 0 ? .landscapeRight : .landscapeLeft;
+		}
+	}
+	
+	@objc private func pauseCapture() {
+		camera?.pauseCapture();
+	}
+	
+	@objc private func resumeCapture() {
+		camera?.resumeCameraCapture();
 	}
 }
 

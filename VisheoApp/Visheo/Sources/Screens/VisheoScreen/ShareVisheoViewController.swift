@@ -143,15 +143,10 @@ class ShareVisheoViewController: UIViewController {
         let playerAsset = AVAsset(url: url)
         let playerItem = AVPlayerItem(asset: playerAsset)
         player = AVPlayer(playerItem: playerItem)
-        
-        let layer = AVPlayerLayer(player: player)
-        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        layer.backgroundColor = UIColor.white.cgColor
-        layer.frame = CGRect(x: 0, y: 0, width: videoContainer.frame.width, height: videoContainer.frame.height)
-        
-        videoContainer.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
-        videoContainer.layer.addSublayer(layer)
-        
+		
+		videoContainer?.player = player;
+		videoContainer?.playerLayer.backgroundColor = UIColor.white.cgColor;
+		
         NotificationCenter.default.addObserver(self, selector: #selector(ShareVisheoViewController.itemDidFinishPlaying(_:)),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         
@@ -179,6 +174,7 @@ class ShareVisheoViewController: UIViewController {
     }
     
     deinit {
+		player?.removeObserver(self, forKeyPath: "status");
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -201,7 +197,7 @@ class ShareVisheoViewController: UIViewController {
     @IBOutlet weak var shareView: UIView!
     @IBOutlet weak var linkText: UILabel!
     @IBOutlet weak var coverImage: UIImageView!
-    @IBOutlet weak var videoContainer: UIView!
+    @IBOutlet weak var videoContainer: VideoView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet var menuBarItem: UIBarButtonItem!
     @IBOutlet var backBarItem: UIBarButtonItem!
