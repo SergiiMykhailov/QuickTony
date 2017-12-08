@@ -51,6 +51,10 @@ class ChooseCardsViewController: UIViewController {
             self?.handlePremiumCardUsageError()
         }
         
+        viewModel?.confirmFreeSendHandler = { [weak self] in
+            self?.confirmFreeSending()
+        }
+        
         if viewModel.showBackButton {
             navigationItem.leftBarButtonItems = [backBarItem]
         } else {
@@ -69,6 +73,17 @@ class ChooseCardsViewController: UIViewController {
         noPremCardslabel.isHidden = hasCards
         haspremiumCardsContainer.isHidden = !hasCards
         premiumCardsLabel.text = "\(viewModel.premiumCardsNumber)"
+    }
+    
+    private func confirmFreeSending() {
+        let alertController = UIAlertController(title: NSLocalizedString("Warning", comment: "warning title"), message: NSLocalizedString("Your video will be rendered in 480p resolution.", comment: "480 p confirmation"), preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: "Confirm button text"), style: .default, handler: { (action) in
+            self.viewModel.sendRegularConfirmed()
+        }))
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     private func handlePremiumCardUsageError() {

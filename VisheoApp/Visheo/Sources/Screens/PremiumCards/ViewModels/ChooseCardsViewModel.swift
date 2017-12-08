@@ -29,9 +29,13 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     var premiumUsageFailedHandler : (()->())? {get set}
     
     func retryPremiumUse()
+    
+    var confirmFreeSendHandler : (()->())? {get set}
+    func sendRegularConfirmed()
 }
 
 class VisheoChooseCardsViewModel : ChooseCardsViewModel {
+    var confirmFreeSendHandler: (() -> ())?
     var premiumUsageFailedHandler: (() -> ())?
     
     var showBackButton: Bool {
@@ -133,10 +137,19 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     
     func sendRegular() {
         if let assets = visheoAssets {
+            confirmFreeSendHandler?()
+        } else {
+            router?.showCreateVisheo()
+        }
+    }
+    
+    func sendRegularConfirmed() {
+        if let assets = visheoAssets {
             router?.showShareVisheo(with: assets, premium: false)
         } else {
             router?.showCreateVisheo()
         }
+
     }
     
     func buyBigBundle() {
