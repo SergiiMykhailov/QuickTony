@@ -27,4 +27,8 @@ protocol RequiredFieldAlertGenerating {
     var requiredFieldAlertHandler : ((String) -> ())? {get set}
 }
 
+protocol CustomAlertGenerating {
+    var customAlertHandler : ((String, String) -> ())? {get set}
+}
+
 

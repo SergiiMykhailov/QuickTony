@@ -35,6 +35,11 @@
 		92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */; };
 		92EF8E841FC4190D005926E5 /* VisheoVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; };
 		92EF8E851FC4190D005926E5 /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A60CE64BD0494E69FA9B83C5 /* ChooseCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE8FDBAFB65873040CDC5 /* ChooseCardsViewController.swift */; };
+		A60CE8B0E019D486EF4AF0AF /* ChooseCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE3E66D78FE9CD21340B2 /* ChooseCardsViewModel.swift */; };
+		A60CEA5564DA671DBD7D12E6 /* PremiumCardsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE6EB830286290C669520 /* PremiumCardsService.swift */; };
+		A60CEED5790033806C175466 /* ChooseCardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE970E2C964F6349018A6 /* ChooseCardsRouter.swift */; };
+		B40447C91FD8030A00CD87BA /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B40447C71FD8030A00CD87BA /* Purchases.storyboard */; };
 		B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B409B3A41FADBC2100FE43F1 /* ViewModels.swift */; };
 		B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */; };
 		B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
@@ -64,8 +69,8 @@
 		B46761271FC7118F006E9CB2 /* ShareVisheoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46761261FC7118F006E9CB2 /* ShareVisheoViewController.swift */; };
 		B46761291FC7119D006E9CB2 /* ShareRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46761281FC7119D006E9CB2 /* ShareRouter.swift */; };
 		B467612B1FC711BD006E9CB2 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */; };
-		B467612D1FC7367A006E9CB2 /* UserPurchasesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */; };
 		B46D7FCF1FD309C40057CF08 /* VisheosCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */; };
+		B474271B1FD8464700FB6223 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B474271A1FD8464700FB6223 /* StoreKit.framework */; };
 		B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */; };
 		B4775FFF1FD57EAA00A02BEF /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4775FFD1FD57EAA00A02BEF /* Account.storyboard */; };
 		B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48259021FB3060800A7F5B0 /* OccasionsListService.swift */; };
@@ -211,6 +216,11 @@
 		92DEDBAF1FC0598400C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		92DEDBB21FC0599100C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CameraTips.xib; sourceTree = "<group>"; };
 		92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRecordIndicator.swift; sourceTree = "<group>"; };
+		A60CE3E66D78FE9CD21340B2 /* ChooseCardsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCardsViewModel.swift; sourceTree = "<group>"; };
+		A60CE6EB830286290C669520 /* PremiumCardsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumCardsService.swift; sourceTree = "<group>"; };
+		A60CE8FDBAFB65873040CDC5 /* ChooseCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCardsViewController.swift; sourceTree = "<group>"; };
+		A60CE970E2C964F6349018A6 /* ChooseCardsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCardsRouter.swift; sourceTree = "<group>"; };
+		B40447C81FD8030A00CD87BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Purchases.storyboard; sourceTree = "<group>"; };
 		B409B3A41FADBC2100FE43F1 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPermissionsService.swift; sourceTree = "<group>"; };
 		B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDateLabel.swift; sourceTree = "<group>"; };
@@ -240,8 +250,8 @@
 		B46761261FC7118F006E9CB2 /* ShareVisheoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVisheoViewController.swift; sourceTree = "<group>"; };
 		B46761281FC7119D006E9CB2 /* ShareRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareRouter.swift; sourceTree = "<group>"; };
 		B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareViewModel.swift; path = Visheo/Sources/Screens/VisheoScreen/ViewModel/ShareViewModel.swift; sourceTree = SOURCE_ROOT; };
-		B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesInfo.swift; sourceTree = "<group>"; };
 		B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheosCache.swift; sourceTree = "<group>"; };
+		B474271A1FD8464700FB6223 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedCoverCollectionMediator.swift; sourceTree = "<group>"; };
 		B4775FFE1FD57EAA00A02BEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
 		B48259021FB3060800A7F5B0 /* OccasionsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsListService.swift; sourceTree = "<group>"; };
@@ -322,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B474271B1FD8464700FB6223 /* StoreKit.framework in Frameworks */,
 				92EF8E841FC4190D005926E5 /* VisheoVideo.framework in Frameworks */,
 				D4D60DB38EDB3A168B57C72A /* Pods_Visheo.framework in Frameworks */,
 			);
@@ -333,6 +344,7 @@
 		3A25D211DE89E6E80DEC2011 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B474271A1FD8464700FB6223 /* StoreKit.framework */,
 				0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */,
 			);
 			name = Frameworks;
@@ -431,6 +443,32 @@
 				92A8D30C1FC86E86001E194D /* blank.m4v */,
 			);
 			path = Media;
+			sourceTree = "<group>";
+		};
+		A60CE707FAB15D86C7FB5ABE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				A60CE970E2C964F6349018A6 /* ChooseCardsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		A60CE9608FE017DDDE1C1D99 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A60CE3E66D78FE9CD21340B2 /* ChooseCardsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A60CED5DE67DC02623C3F403 /* PremiumCards */ = {
+			isa = PBXGroup;
+			children = (
+				A60CE707FAB15D86C7FB5ABE /* Router */,
+				A60CE9608FE017DDDE1C1D99 /* ViewModels */,
+				A60CE8FDBAFB65873040CDC5 /* ChooseCardsViewController.swift */,
+			);
+			path = PremiumCards;
 			sourceTree = "<group>";
 		};
 		B42A29871FB1F8A200A8741F /* CustomUI */ = {
@@ -599,6 +637,7 @@
 				9255DF111FCDA5A200F9815F /* app_settings.plist */,
 				920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */,
 				B4775FFD1FD57EAA00A02BEF /* Account.storyboard */,
+				B40447C71FD8030A00CD87BA /* Purchases.storyboard */,
 			);
 			name = Resources;
 			path = Visheo/Resources;
@@ -720,6 +759,7 @@
 		B4BCABC51FB8CC7C003EDC7F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				A60CED5DE67DC02623C3F403 /* PremiumCards */,
 				B4C893EC1FD5782B00763296 /* Account */,
 				B4AEE0E71FD1B1340043A39A /* VisheoBox */,
 				B453F1CD1FCF058F003D61CB /* Menu */,
@@ -931,12 +971,12 @@
 				B48259021FB3060800A7F5B0 /* OccasionsListService.swift */,
 				92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */,
 				B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */,
-				B467612C1FC7367A006E9CB2 /* UserPurchasesInfo.swift */,
 				B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */,
 				9255DF0D1FCD9EC200F9815F /* AppSettings.swift */,
 				B4AEE0E51FD195680043A39A /* VisheosListService.swift */,
 				B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */,
 				92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */,
+				A60CE6EB830286290C669520 /* PremiumCardsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1007,6 +1047,11 @@
 						CreatedOnToolsVersion = 9.0.1;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1072,6 +1117,7 @@
 				B46528131FC34A0F0070FFB7 /* VisheoPreview.storyboard in Resources */,
 				92A8D30E1FC86E86001E194D /* blank.m4v in Resources */,
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
+				B40447C91FD8030A00CD87BA /* Purchases.storyboard in Resources */,
 				B43163811FBF480A00135B70 /* Localizable.strings in Resources */,
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
 				920EDFD21FCF059D00D121ED /* MusicSelection.storyboard in Resources */,
@@ -1127,6 +1173,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BadgeSwift/BadgeSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -1147,6 +1194,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BadgeSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -1220,7 +1268,6 @@
 				B4BCAC001FB8CC7D003EDC7F /* OnboardingViewController.swift in Sources */,
 				B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */,
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
-				B467612D1FC7367A006E9CB2 /* UserPurchasesInfo.swift in Sources */,
 				B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */,
 				920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */,
 				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
@@ -1301,6 +1348,10 @@
 				B420ADC11FC1A2D500ECA590 /* AppPermissionsService.swift in Sources */,
 				B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */,
 				B4AEE0E61FD195680043A39A /* VisheosListService.swift in Sources */,
+				A60CEED5790033806C175466 /* ChooseCardsRouter.swift in Sources */,
+				A60CE8B0E019D486EF4AF0AF /* ChooseCardsViewModel.swift in Sources */,
+				A60CE64BD0494E69FA9B83C5 /* ChooseCardsViewController.swift in Sources */,
+				A60CEA5564DA671DBD7D12E6 /* PremiumCardsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,6 +1380,14 @@
 				92DEDBB21FC0599100C7FBB1 /* Base */,
 			);
 			name = CameraTips.xib;
+			sourceTree = "<group>";
+		};
+		B40447C71FD8030A00CD87BA /* Purchases.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B40447C81FD8030A00CD87BA /* Base */,
+			);
+			name = Purchases.storyboard;
 			sourceTree = "<group>";
 		};
 		B43163831FBF480A00135B70 /* Localizable.strings */ = {
@@ -1514,10 +1573,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4M6W632NJ7;
+				DEVELOPMENT_TEAM = V6NPSSGKMC;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visheo.visheo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Visheo/Sources/Visheo-Bridging-Header.h";
@@ -1536,10 +1595,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4M6W632NJ7;
+				DEVELOPMENT_TEAM = V6NPSSGKMC;
 				INFOPLIST_FILE = Visheo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.olearis.visheo-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visheo.visheo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Visheo/Sources/Visheo-Bridging-Header.h";

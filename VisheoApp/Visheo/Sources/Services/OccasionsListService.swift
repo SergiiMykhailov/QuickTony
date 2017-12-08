@@ -70,6 +70,10 @@ class VisheoOccasionsListService : OccasionsListService {
         coversRef = Database.database().reference().child("covers")
 		soundtracksRef = Database.database().reference().child("music");
         loadOccasions()
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.authStateChanged, object: nil, queue: OperationQueue.main) { (notitication) in
+            self.loadOccasions()
+        }
     }
     
     func loadOccasions() {

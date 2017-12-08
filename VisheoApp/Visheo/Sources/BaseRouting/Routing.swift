@@ -39,4 +39,6 @@ struct RouterDependencies {
 
     let routerAssembly: RouterAssembly
     let visheosCache : VisheosCache
+    
+    let premiumCardsService: PremiumCardsService
 }

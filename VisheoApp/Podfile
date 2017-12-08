@@ -25,6 +25,7 @@ target 'Visheo' do
   pod 'Validator'
   
   pod 'SDWebImage', '~> 4.0'
+  pod 'BadgeSwift', '~> 5.0'
   
   pod 'GPUImage'
   pod 'PryntTrimmerView'

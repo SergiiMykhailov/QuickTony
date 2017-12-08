@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RvU-ey-AzR">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--CHOOSE CARD TYPE-->
+        <scene sceneID="uAN-7k-CY7">
+            <objects>
+                <viewController storyboardIdentifier="ChooseCardsViewController" id="RvU-ey-AzR" customClass="ChooseCardsViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bOp-Ze-3yt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regular cards " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRy-E8-Q4t">
+                                <rect key="frame" x="20" y="96" width="187.5" height="34"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="29"/>
+                                <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Always FREE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8N-79-bjX">
+                                <rect key="frame" x="20" y="133" width="104.5" height="21.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="480p quality (for phones &amp; tablets)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAN-KY-eV3">
+                                <rect key="frame" x="20" y="165.5" width="217.5" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stored in cloud for 30 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFb-ms-o2E">
+                                <rect key="frame" x="20" y="184" width="169" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yB-Sa-Lkz">
+                                <rect key="frame" x="20" y="221.5" width="335" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="A8S-9U-Rcr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Send Regular card for FREE">
+                                    <color key="titleColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendFreePressed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="F4A-6W-O4t"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8O7-xi-9IH">
+                                <rect key="frame" x="20" y="325.5" width="198" height="34"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="29"/>
+                                <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Care deserves the Best Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-Yv-nNX">
+                                <rect key="frame" x="20" y="362.5" width="290.5" height="21.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                <color key="textColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="720 HD quality (for big screens)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxh-yJ-riv">
+                                <rect key="frame" x="20" y="395" width="199" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stored in cloud forever" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcX-f5-r5o">
+                                <rect key="frame" x="20" y="413" width="142.5" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4z-hM-rC8">
+                                <rect key="frame" x="20" y="450.5" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="FTF-o3-9KA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Buy 5 premium cards for $3.99">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buySmallPressed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="IJ8-9W-n1Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohR-X9-YCi">
+                                <rect key="frame" x="20" y="520.5" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="T44-5d-uSE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Buy 15 premium cards for $3.99">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buyBigPressed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="B08-86-ZOG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sC-0k-H1S">
+                                <rect key="frame" x="110" y="604" width="154" height="33"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Have a coupon code?">
+                                            <attributes>
+                                                <color key="NSColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="16" name="Roboto-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbu-1b-r7v">
+                                <rect key="frame" x="20" y="362.5" width="234.5" height="21.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWf-2c-nQv">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                        <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7s-pt-pbh" customClass="BadgeSwift" customModule="BadgeSwift">
+                                        <rect key="frame" x="80" y="-2" width="25.5" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="badgeColor">
+                                                <color key="value" red="0.8980392157" green="0.27450980390000002" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUh-YY-ADx">
+                                        <rect key="frame" x="111.5" y="0.0" width="123" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                        <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="OWf-2c-nQv" firstAttribute="top" secondItem="Xbu-1b-r7v" secondAttribute="top" id="20K-CR-ggr"/>
+                                    <constraint firstItem="OWf-2c-nQv" firstAttribute="leading" secondItem="Xbu-1b-r7v" secondAttribute="leading" id="29O-6K-pgz"/>
+                                    <constraint firstItem="rUh-YY-ADx" firstAttribute="leading" secondItem="p7s-pt-pbh" secondAttribute="trailing" constant="6" id="JAO-oY-Rjo"/>
+                                    <constraint firstAttribute="bottom" secondItem="OWf-2c-nQv" secondAttribute="bottom" id="LP6-cD-C5Y"/>
+                                    <constraint firstItem="p7s-pt-pbh" firstAttribute="leading" secondItem="OWf-2c-nQv" secondAttribute="trailing" constant="6" id="SkG-nW-Xuf"/>
+                                    <constraint firstAttribute="trailing" secondItem="rUh-YY-ADx" secondAttribute="trailing" id="ZTb-ad-oHc"/>
+                                    <constraint firstItem="p7s-pt-pbh" firstAttribute="centerY" secondItem="OWf-2c-nQv" secondAttribute="centerY" id="tUs-Jm-gNJ"/>
+                                    <constraint firstItem="rUh-YY-ADx" firstAttribute="centerY" secondItem="p7s-pt-pbh" secondAttribute="centerY" id="xFm-tf-p5l"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zAN-KY-eV3" secondAttribute="trailing" constant="20" symbolic="YES" id="0Dv-lV-9QY"/>
+                            <constraint firstItem="zAN-KY-eV3" firstAttribute="leading" secondItem="N8N-79-bjX" secondAttribute="leading" id="1gq-Vy-RcR"/>
+                            <constraint firstItem="ttk-eu-Cya" firstAttribute="bottom" secondItem="5sC-0k-H1S" secondAttribute="bottom" priority="250" constant="30" id="3MD-Dr-Uew"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lcX-f5-r5o" secondAttribute="trailing" constant="20" symbolic="YES" id="3QU-R7-4OG"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iRy-E8-Q4t" secondAttribute="trailing" constant="20" symbolic="YES" id="3o8-0W-nTp"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8O7-xi-9IH" secondAttribute="trailing" constant="20" symbolic="YES" id="5y2-91-RDe"/>
+                            <constraint firstItem="8O7-xi-9IH" firstAttribute="leading" secondItem="iRy-E8-Q4t" secondAttribute="leading" id="6dv-LT-6o4"/>
+                            <constraint firstItem="ttk-eu-Cya" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xbu-1b-r7v" secondAttribute="trailing" constant="20" id="7CD-bw-iUH"/>
+                            <constraint firstItem="iRy-E8-Q4t" firstAttribute="leading" secondItem="ttk-eu-Cya" secondAttribute="leading" constant="20" id="7MC-lD-Wh0"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fxh-yJ-riv" secondAttribute="trailing" constant="20" symbolic="YES" id="BOc-Iv-OXb"/>
+                            <constraint firstItem="N8N-79-bjX" firstAttribute="leading" secondItem="iRy-E8-Q4t" secondAttribute="leading" id="BtF-Ss-Xcc"/>
+                            <constraint firstItem="lcX-f5-r5o" firstAttribute="leading" secondItem="Fxh-yJ-riv" secondAttribute="leading" id="Bxl-JX-Nca"/>
+                            <constraint firstItem="pFb-ms-o2E" firstAttribute="leading" secondItem="zAN-KY-eV3" secondAttribute="leading" id="CWo-uu-2nW"/>
+                            <constraint firstItem="W4z-hM-rC8" firstAttribute="leading" secondItem="ttk-eu-Cya" secondAttribute="leading" constant="20" id="CmS-C1-Ryc"/>
+                            <constraint firstItem="pFb-ms-o2E" firstAttribute="top" secondItem="zAN-KY-eV3" secondAttribute="bottom" id="Ezu-ue-lrU"/>
+                            <constraint firstItem="ttk-eu-Cya" firstAttribute="trailing" secondItem="ohR-X9-YCi" secondAttribute="trailing" constant="20" id="F1p-8J-d0g"/>
+                            <constraint firstItem="5sC-0k-H1S" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ohR-X9-YCi" secondAttribute="bottom" constant="8" id="FBV-ct-BR7"/>
+                            <constraint firstItem="ttk-eu-Cya" firstAttribute="trailing" secondItem="0yB-Sa-Lkz" secondAttribute="trailing" constant="20" id="FgE-wn-2ij"/>
+                            <constraint firstItem="Ivz-Yv-nNX" firstAttribute="top" secondItem="8O7-xi-9IH" secondAttribute="bottom" constant="3" id="FzC-0B-huL"/>
+                            <constraint firstItem="iRy-E8-Q4t" firstAttribute="top" secondItem="ttk-eu-Cya" secondAttribute="top" priority="250" constant="32" id="GSp-Ay-ZM5"/>
+                            <constraint firstItem="Ivz-Yv-nNX" firstAttribute="leading" secondItem="8O7-xi-9IH" secondAttribute="leading" id="GhS-QQ-45S"/>
+                            <constraint firstItem="ttk-eu-Cya" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5sC-0k-H1S" secondAttribute="bottom" constant="10" id="Iaz-cS-qi8"/>
+                            <constraint firstItem="Xbu-1b-r7v" firstAttribute="top" secondItem="8O7-xi-9IH" secondAttribute="bottom" constant="3" id="IgC-Fv-aTP"/>
+                            <constraint firstItem="8O7-xi-9IH" firstAttribute="top" secondItem="0yB-Sa-Lkz" secondAttribute="bottom" priority="250" constant="44" id="J4C-k0-18Z"/>
+                            <constraint firstItem="0yB-Sa-Lkz" firstAttribute="leading" secondItem="ttk-eu-Cya" secondAttribute="leading" constant="20" id="QRQ-wb-xJi"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="N8N-79-bjX" secondAttribute="trailing" constant="20" symbolic="YES" id="Qx8-xO-YxV"/>
+                            <constraint firstItem="ohR-X9-YCi" firstAttribute="top" secondItem="W4z-hM-rC8" secondAttribute="bottom" constant="10" id="R7L-Jh-ph5"/>
+                            <constraint firstItem="W4z-hM-rC8" firstAttribute="top" secondItem="lcX-f5-r5o" secondAttribute="bottom" constant="19" id="RSO-Cd-6I5"/>
+                            <constraint firstItem="lcX-f5-r5o" firstAttribute="top" secondItem="Fxh-yJ-riv" secondAttribute="bottom" id="VWQ-df-ccF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ivz-Yv-nNX" secondAttribute="trailing" constant="20" symbolic="YES" id="X6Z-RB-7An"/>
+                            <constraint firstItem="zAN-KY-eV3" firstAttribute="top" secondItem="N8N-79-bjX" secondAttribute="bottom" constant="11" id="a5Q-On-qGa"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pFb-ms-o2E" secondAttribute="trailing" constant="20" symbolic="YES" id="aSM-zp-bJj"/>
+                            <constraint firstItem="N8N-79-bjX" firstAttribute="top" secondItem="iRy-E8-Q4t" secondAttribute="bottom" constant="3" id="asZ-lp-DRC"/>
+                            <constraint firstItem="5sC-0k-H1S" firstAttribute="centerX" secondItem="bOp-Ze-3yt" secondAttribute="centerX" id="cdc-i3-scz"/>
+                            <constraint firstItem="ohR-X9-YCi" firstAttribute="leading" secondItem="ttk-eu-Cya" secondAttribute="leading" constant="20" id="d5g-L6-afO"/>
+                            <constraint firstItem="ttk-eu-Cya" firstAttribute="trailing" secondItem="W4z-hM-rC8" secondAttribute="trailing" constant="20" id="f23-w0-BQK"/>
+                            <constraint firstItem="Xbu-1b-r7v" firstAttribute="leading" secondItem="8O7-xi-9IH" secondAttribute="leading" id="hdw-4e-jfO"/>
+                            <constraint firstItem="Fxh-yJ-riv" firstAttribute="leading" secondItem="Ivz-Yv-nNX" secondAttribute="leading" id="hkc-cw-Zd5"/>
+                            <constraint firstItem="iRy-E8-Q4t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ttk-eu-Cya" secondAttribute="top" constant="10" id="mvN-sc-IMM"/>
+                            <constraint firstItem="0yB-Sa-Lkz" firstAttribute="top" secondItem="pFb-ms-o2E" secondAttribute="bottom" constant="19" id="oLp-7O-0iH"/>
+                            <constraint firstItem="8O7-xi-9IH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0yB-Sa-Lkz" secondAttribute="bottom" constant="10" id="peV-ZQ-6VP"/>
+                            <constraint firstItem="Fxh-yJ-riv" firstAttribute="leading" secondItem="Ivz-Yv-nNX" secondAttribute="leading" id="pqJ-Rt-v5a"/>
+                            <constraint firstItem="Fxh-yJ-riv" firstAttribute="top" secondItem="Ivz-Yv-nNX" secondAttribute="bottom" constant="11" id="yah-c3-Cyh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ttk-eu-Cya"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="CHOOSE CARD TYPE" id="F0I-PB-dgM">
+                        <leftBarButtonItems>
+                            <barButtonItem image="menu" id="Ndy-qK-zPh">
+                                <connections>
+                                    <action selector="menuPressed:" destination="RvU-ey-AzR" id="Wdr-zV-7nQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="arrow" id="Jbc-Mf-nNm">
+                                <connections>
+                                    <action selector="backPressed:" destination="RvU-ey-AzR" id="mO5-cq-gyo"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="backBarItem" destination="Jbc-Mf-nNm" id="HYP-vj-UUI"/>
+                        <outlet property="buyFifteenButton" destination="ohR-X9-YCi" id="UrR-Gw-zri"/>
+                        <outlet property="buyFiveButton" destination="W4z-hM-rC8" id="a3E-SD-T79"/>
+                        <outlet property="coupoButton" destination="5sC-0k-H1S" id="jIe-UD-6KA"/>
+                        <outlet property="haspremiumCardsContainer" destination="Xbu-1b-r7v" id="sOT-Nd-5Ps"/>
+                        <outlet property="menuBarItem" destination="Ndy-qK-zPh" id="V0t-9T-KyF"/>
+                        <outlet property="noPremCardslabel" destination="Ivz-Yv-nNX" id="ndH-cH-8h4"/>
+                        <outlet property="premiumCardsLabel" destination="p7s-pt-pbh" id="AhU-XQ-Hy3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m5W-z1-1Jd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-154.5" y="121.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow" width="20" height="20"/>
+        <image name="menu" width="20" height="20"/>
+    </resources>
+</document>

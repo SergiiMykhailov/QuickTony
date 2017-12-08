@@ -12,6 +12,7 @@ protocol MenuRouter: FlowRouter {
     func showCreateVisheo()
     func showVisheoBox()
     func showAccount()
+    func showPremiumCards()
     func showVisheoScreen(with record: VisheoRecord)
 }
 
@@ -78,6 +79,13 @@ extension VisheoMenuRouter {
 			router.start(with: controller as! ShareVisheoViewController, record: record);
 		}
 	}
+    
+    func showPremiumCards() {
+        showController(with: "ChooseCardsViewController", storyboard: UIStoryboard(name: "Purchases", bundle: nil)) { (controller) in
+            let router = VisheoChooseCardsRouter(dependencies: dependencies)
+            router.start(with: controller as! ChooseCardsViewController, fromMenu: true)
+        }
+    }
     
     private func showController(with id: String, storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil), setup: (UIViewController) -> ()) {
         let shownController = storyboard.instantiateViewController(withIdentifier: id)

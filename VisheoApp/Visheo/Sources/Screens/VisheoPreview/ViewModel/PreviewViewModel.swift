@@ -177,7 +177,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
             router?.showRegistration {
                 self.sendVisheo()
             }
-        } else if purchasesInfo.premiumCardsNumber == 0 {
+        } else if purchasesInfo.currentUserPremiumCards == 0 {
             router?.showCardTypeSelection(with: assets)
         } else {
             router?.sendVisheo(with: assets)

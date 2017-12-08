@@ -80,11 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let soundtracksService = VisheoSoundtracksService();
 		let userNotificationsService = VisheoUserNotificationsService();
         let assembly = VisheoRouterAssembly()
-		
-        let purchasesInfo = DummyUserPurchasesInfo(premiumCardsNumber: 2)
+
         let visheosListService = VisheoBoxService(userInfoProvider: authService)
         let visheosCache = VisheosLocalCache()
         
+        let premiumService = VisheoPremiumCardsService(userInfoProvider: authService)
         return RouterDependencies(appStateService: appState,
                                                 appPermissionsService: permissionsService,
                                                 authorizationService: authService,
@@ -92,13 +92,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                 userInputValidator: inputValidator,
                                                 occasionsListService: occasionsList,
                                                 visheosListService: visheosListService,
-                                                purchasesInfo:  purchasesInfo,
+                                                purchasesInfo:  premiumService,
                                                 renderingService: renderingService,
                                                 creationService: creationService,
 												soundtracksService: soundtracksService,
 												userNotificationsService: userNotificationsService,
                                                 routerAssembly: assembly,
-                                                visheosCache: visheosCache)
+                                                visheosCache: visheosCache,
+                                                premiumCardsService: premiumService)
     }
     
     // MARK: Appearance setup

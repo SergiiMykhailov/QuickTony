@@ -1,4 +1,5 @@
 PODS:
+  - BadgeSwift (5.0.1)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -95,6 +96,7 @@ PODS:
   - Validator (3.0)
 
 DEPENDENCIES:
+  - BadgeSwift (~> 5.0)
   - Crashlytics
   - Fabric
   - FBSDKCoreKit
@@ -116,6 +118,7 @@ DEPENDENCIES:
   - Validator
 
 SPEC CHECKSUMS:
+  BadgeSwift: 3defa56f504bfb46f2300122c4a565ec9e405c1e
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
@@ -144,6 +147,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
 
-PODFILE CHECKSUM: c073a80bdbf49c3794db542b472a8d977d7e2549
+PODFILE CHECKSUM: 9714916b166ec4f6edfa70c8830a2a323c2f1855
 
 COCOAPODS: 1.3.1
