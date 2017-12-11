@@ -223,8 +223,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 		}
 	}
 	
-	private func renderTimeLine(videoSnapshot: URL, quality: RenderQuality) -> Promise<URL>
-	{
+	private func renderTimeLine(videoSnapshot: URL, quality: RenderQuality) -> Promise<URL> {
 		let settings = appStateService.appSettings.animationSettings;
 		let animationSettings = settings.withAssetsCount(assets.photoUrls.count) ?? AnimationSettings();
 		
@@ -283,3 +282,4 @@ class VisheoPreviewViewModel : PreviewViewModel {
 		}
 	}
 }
+

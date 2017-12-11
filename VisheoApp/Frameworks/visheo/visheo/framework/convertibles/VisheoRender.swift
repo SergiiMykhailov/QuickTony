@@ -8,7 +8,31 @@
 
 import AVFoundation
 
-public typealias VisheoVideoComposition =  (mainComposition: AVComposition, videoComposition: AVVideoComposition, audioMix: AVAudioMix);
+public typealias VisheoVideoComposition = (mainComposition: AVComposition, videoComposition: AVVideoComposition, audioMix: AVAudioMix);
+
+
+enum RenderError: Error {
+	case missingVideoTrack(url: URL);
+	case missingAudioTrack(url: URL);
+}
+
+
+enum VideoEffects {
+	case resize(with: ResizeEffect)
+	case opacityRamp(from: OpacityRamp, to: OpacityRamp)
+}
+
+
+struct OpacityRamp {
+	let track: AVAssetTrack;
+	let from: Double;
+	let to: Double;
+}
+
+struct ResizeEffect {
+	let size: CGSize;
+	let track: AVAssetTrack;
+}
 
 
 public final class VisheoRender: VideoConvertible
@@ -65,146 +89,109 @@ public final class VisheoRender: VideoConvertible
 		
 		let composition = AVMutableComposition();
 		
-		let videoTrack = (composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid))!;
-		
 		let videoID = composition.unusedTrackID();
-		let videoSoundTrack = (composition.addMutableTrack(withMediaType: .audio, preferredTrackID: videoID))!;
-		
-		var time = kCMTimeZero;
+		let videoCompositionSoundtrack = (composition.addMutableTrack(withMediaType: .audio, preferredTrackID: videoID))!;
 		
 		let videoInputParams = AVMutableAudioMixInputParameters();
 		videoInputParams.trackID = videoID;
-		videoInputParams.setVolume(1.0, at: kCMTimeZero);
+		videoInputParams.setVolume(1.5, at: kCMTimeZero);
 		
 		var audioInputParams: AVMutableAudioMixInputParameters? = nil;
-		var audio: AVURLAsset? = nil;
-		var musicTrack: AVMutableCompositionTrack? = nil;
+		var musicCompositionTrack: AVMutableCompositionTrack? = nil;
 		
-		if let audioURL = self.audio {
-			audio = AVURLAsset(url: audioURL);
-			
+		if let _ = audio {
 			let audioID = composition.unusedTrackID();
-			musicTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: audioID);
+			musicCompositionTrack = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: audioID);
 			
 			audioInputParams = AVMutableAudioMixInputParameters();
 			audioInputParams?.trackID = audioID;
 			audioInputParams?.setVolume(1.0, at: kCMTimeZero);
 		}
 		
-		var instructions: [ AVMutableVideoCompositionInstruction ] = []
+		let timelineAsset = AVURLAsset(url: timeline, options: [ AVURLAssetPreferPreciseDurationAndTimingKey : true ]);
 		
+		guard let timelineVideoTrack = timelineAsset.tracks(withMediaType: .video).first else {
+			throw RenderError.missingVideoTrack(url: timeline);
+		}
 		
-		let timelineAsset = AVURLAsset(url: timeline);
+		let mainVideoAsset = AVURLAsset(url: video, options: [ AVURLAssetPreferPreciseDurationAndTimingKey : true ]);
 		
-		let timelineInfo = try appendPassthroughVideo(from: timelineAsset, to: videoTrack, size: renderSize, at: kCMTimeZero);
-		instructions.append(contentsOf: timelineInfo.instructions);
-	
+		guard let mainVideoTrack = mainVideoAsset.tracks(withMediaType: .video).first else {
+			throw RenderError.missingVideoTrack(url: video);
+		}
 		
-		let timelineEnd = timelineAsset.duration;
-		let frameDuration = CMTime(value: 1, timescale: CMTimeScale(timelineInfo.track.nominalFrameRate));
-		let videoStartTime = CMTimeSubtract(timelineEnd, frameDuration);
+		let outroCompositionTrack = (composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid))!;
+
+		var timeRanges: CompositionTimes;
 		
-		let videoAsset = AVURLAsset(url: video);
-		let videoCompositionInstruction = try appendPassthroughVideo(from: videoAsset, to: videoTrack, size: renderSize, at: videoStartTime);
+		if let outroURL = outro {
+			let outroAsset = AVURLAsset(url: outroURL, options: [ AVURLAssetPreferPreciseDurationAndTimingKey : true ]);
+			
+			guard let track = outroAsset.tracks(withMediaType: .video).first else {
+				throw RenderError.missingVideoTrack(url: outroURL);
+			}
+			
+			timeRanges = calculateTimeRanges(timeline: timelineVideoTrack, video: mainVideoTrack, outro: track, crossfadeDuration: 0.7);
+			try outroCompositionTrack.insertTimeRange(track.timeRange, of: track, at: timeRanges.outroStart);
+			
+			let fadeInDuration = CMTimeMakeWithSeconds(1.5, outroAsset.duration.timescale);
+			let fadeInStart = CMTimeSubtract(timeRanges.outroStart, fadeInDuration);
+			
+			audioInputParams?.setVolumeRamp(fromStartVolume: 0.01, toEndVolume: 0.2, timeRange: CMTimeRangeMake(fadeInStart, fadeInDuration));
+			audioInputParams?.setVolumeRamp(fromStartVolume: 0.2, toEndVolume: 0.0, timeRange: CMTimeRangeMake(timeRanges.outroStart, outroAsset.duration));
+		} else {
+			timeRanges = calculateTimeRanges(timeline: timelineVideoTrack, video: mainVideoTrack, outro: nil, crossfadeDuration: 0.0);
+		}
 		
-//		guard let timelineTrack = timelineAsset.tracks(withMediaType: .video).first else {
-//			throw VideoConvertibleError.error;
-//		}
-//
-//		try videoTrack.insertTimeRange(timelineTrack.timeRange, of: timelineTrack, at: time);
-//
-//		if (!timelineTrack.naturalSize.equalTo(renderSize)) {
-//			let timelineInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: timelineTrack);
-////			instructions.append(timelineInstruction);
-//
-//			let scale = renderSize.width / timelineTrack.naturalSize.width;
-//			let transform = CGAffineTransform(scaleX: scale, y: scale);
-//			timelineInstruction.setTransform(transform, at: kCMTimeZero);
-//		}
+		let timelineCompositionTrack = (composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid))!;
+		try timelineCompositionTrack.insertTimeRange(timelineVideoTrack.timeRange, of: timelineVideoTrack, at: kCMTimeZero);
 		
+		let mainVideoCompositionTrack = (composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid))!;
+		try mainVideoCompositionTrack.insertTimeRange(mainVideoTrack.timeRange, of: mainVideoTrack, at: timeRanges.mainVideoStart);
 		
-		// video asset
-//		let videoAsset = AVURLAsset(url: video);
-//
-//		guard let videoAssetTrack = videoAsset.tracks(withMediaType: .video).first else {
-//			throw VideoConvertibleError.error;
-//		}
-//
-//		time = CMTimeSubtract(timelineTrack.timeRange.end, CMTime(value: 1, timescale: CMTimeScale(videoAssetTrack.nominalFrameRate)));
-//
-//		try videoTrack.insertTimeRange(videoAssetTrack.timeRange, of: videoAssetTrack, at: time);
-//
-//		let videoTrackInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoAssetTrack)
-////		instructions.append(videoTrackInstruction);
-//
-//		if (!videoAssetTrack.naturalSize.equalTo(renderSize)) {
-//			let scale = renderSize.width / videoAssetTrack.naturalSize.width;
-//			let transform = CGAffineTransform(scaleX: scale, y: scale);
-//			videoTrackInstruction.setTransform(transform, at: kCMTimeZero);
-//		}
-//
-//		if let videoSound = videoAsset.tracks(withMediaType: .audio).first {
-//			try videoSoundTrack.insertTimeRange(videoSound.timeRange, of: videoSound, at: time);
-//
-//			let duration = CMTimeMakeWithSeconds(1.0, timelineAsset.duration.timescale);
-//
-//			let start = CMTimeRangeMake(CMTimeSubtract(time, duration), duration);
-//			audioInputParams?.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.05, timeRange: start);
-//		}
-//
-//
-//		// outro
-//		if let outroURL = outro
-//		{
-//			let outroAsset = AVURLAsset(url: outroURL);
-//
-//			guard let outroVideoTrack = outroAsset.tracks(withMediaType: .video).first else {
-//				throw VideoConvertibleError.error;
-//			}
-//
-//			let crossfadeDuration = CMTimeMakeWithSeconds(2.0, videoAsset.duration.timescale);
-//			let crossfadeStart = CMTimeSubtract(videoTrack.timeRange.end, crossfadeDuration);
-//			let crossfadeRange = CMTimeRangeMake(crossfadeStart, crossfadeDuration);
-//
-//			let outroRange = CMTimeRangeMake(crossfadeStart, outroAsset.duration);
-//
-//			try videoTrack.insertTimeRange(outroVideoTrack.timeRange, of: outroVideoTrack, at: crossfadeStart);
-//
-//			videoTrackInstruction.setOpacityRamp(fromStartOpacity: 1.0, toEndOpacity: 0.0, timeRange: crossfadeRange);
-//
-//			let outroTrackInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: outroVideoTrack);
-////			instructions.append(outroTrackInstruction);
-//
-//			if (!outroVideoTrack.naturalSize.equalTo(renderSize)) {
-//				let scale = renderSize.width / outroVideoTrack.naturalSize.width;
-//				let transform = CGAffineTransform(scaleX: scale, y: scale);
-//				outroTrackInstruction.setTransform(transform, at: kCMTimeZero);
-//			}
-//
-//			let duration = CMTimeMakeWithSeconds(2.0, videoTrack.naturalTimeScale);
-//			let rampStart = CMTimeSubtract(crossfadeStart, duration);
-//			let rampRange = CMTimeRangeMake(rampStart, duration);
-//
-//			audioInputParams?.setVolumeRamp(fromStartVolume: 0.05, toEndVolume: 0.2, timeRange: rampRange);
-//			audioInputParams?.setVolumeRamp(fromStartVolume: 0.2, toEndVolume: 0.0, timeRange: outroRange);
-//		}
-//
-//		if let _ = audio, let _ = musicTrack {
-//			guard let audioTrack = audio?.tracks(withMediaType: .audio).first else {
-//				throw VideoConvertibleError.error;
-//			}
-//			try musicTrack?.insertTimeRange(videoTrack.timeRange, of: audioTrack, at: kCMTimeZero);
-//		}
-//
-////		let mainInstruction = AVMutableVideoCompositionInstruction();
-////		mainInstruction.layerInstructions = instructions;
-////		mainInstruction.timeRange = videoTrack.timeRange;
+		let duration = CMTimeMakeWithSeconds(1.5, timelineAsset.duration.timescale);
+		let start = CMTimeRangeMake(CMTimeSubtract(timeRanges.mainVideoStart, duration), duration);
+		audioInputParams?.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.01, timeRange: start);
+		
+		if let videoSound = mainVideoAsset.tracks(withMediaType: .audio).first {
+			try videoCompositionSoundtrack.insertTimeRange(videoSound.timeRange, of: videoSound, at: timeRanges.mainVideoStart);
+		}
+		
+		if let audioURL = audio {
+			let audioAsset = AVURLAsset(url: audioURL, options: [ AVURLAssetPreferPreciseDurationAndTimingKey : true ]);
+			
+			guard let audioTrack = audioAsset.tracks(withMediaType: .audio).first else {
+				throw RenderError.missingAudioTrack(url: audioURL);
+			}
+			try musicCompositionTrack?.insertTimeRange(CMTimeRangeMake(kCMTimeZero, timeRanges.totalDuration), of: audioTrack, at: kCMTimeZero);
+		}
+
+		
+		let timelineResize = VideoEffects.resize(with: ResizeEffect(size: renderSize, track: timelineCompositionTrack));
+		let mainVideoResize = VideoEffects.resize(with: ResizeEffect(size: renderSize, track: mainVideoCompositionTrack));
+		let outroResize = VideoEffects.resize(with: ResizeEffect(size: renderSize, track: outroCompositionTrack));
+
+		let rampFrom = OpacityRamp(track: mainVideoCompositionTrack, from: 1.0, to: 0.0);
+		let rampTo = OpacityRamp(track: outroCompositionTrack, from: 0.0, to: 1.0);
+		
+		let crossfade = VideoEffects.opacityRamp(from: rampFrom, to: rampTo);
+		
+		var compositionInstructions: [AVMutableVideoCompositionInstruction] = [];
+		
+		let i1 = add(effects: [ timelineResize ], in: timeRanges.timelinePassthrough);
+		let i2 = add(effects: [ mainVideoResize, timelineResize ], in: timeRanges.overlap);
+		let i3 = add(effects: [ mainVideoResize ], in: timeRanges.videoPassthrough);
+		let i4 = add(effects: [ crossfade, mainVideoResize, outroResize ], in: timeRanges.crossfade);
+		let i5 = add(effects: [ outroResize ], in: timeRanges.outroPassthrough);
+		
+		compositionInstructions = [ i1, i2, i3, i4, i5 ];
+		
 		
 		let videoComposition = AVMutableVideoComposition();
 		
 		videoComposition.renderSize = renderSize;
-		videoComposition.instructions = instructions;
-		videoComposition.frameDuration = videoTrack.minFrameDuration;
+		videoComposition.instructions = compositionInstructions;
+		videoComposition.frameDuration = timelineVideoTrack.minFrameDuration;
 		
 		var audioMixInputParams = [ videoInputParams ]
 		if let audioParams = audioInputParams {
@@ -218,30 +205,119 @@ public final class VisheoRender: VideoConvertible
 	}
 	
 	
-	typealias VideoInfo = (track: AVAssetTrack, instructions: [AVMutableVideoCompositionInstruction]);
+	typealias LayerInstructions = [AVMutableVideoCompositionLayerInstruction];
 	
 	
-	func appendPassthroughVideo(from asset: AVAsset, to compositionTrack: AVMutableCompositionTrack, size: CGSize, at time: CMTime) throws -> VideoInfo {
-		guard let videoTrack = asset.tracks(withMediaType: .video).first else {
-			throw VideoConvertibleError.error;
+	func add(effects: [VideoEffects], in range: CMTimeRange) -> AVMutableVideoCompositionInstruction {
+		let compositionInstruction = AVMutableVideoCompositionInstruction();
+		compositionInstruction.timeRange = range;
+		
+		var layerInstructions: LayerInstructions = []
+		
+		for effect in effects {
+			switch effect
+			{
+				case .resize(let effect):
+					layerInstructions = resize(with: effect, in: range, instructions: layerInstructions);
+				case .opacityRamp(let from, let to):
+					layerInstructions = opacityRamp(from: from, to: to, in: range, instructions: layerInstructions);
+				default:
+					break;
+			}
 		}
 		
-		try compositionTrack.insertTimeRange(videoTrack.timeRange, of: videoTrack, at: time);
-		
-		let instruction = AVMutableVideoCompositionInstruction();
-		instruction.timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration);
-		
-		let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack);
-		layerInstruction.setTransform(.identity, at: kCMTimeZero);
-		
-		if (!videoTrack.naturalSize.equalTo(size)) {
-			let scale = size.width / videoTrack.naturalSize.width;
-			let transform = CGAffineTransform(scaleX: scale, y: scale);
-			layerInstruction.setTransform(transform, at: kCMTimeZero);
-		}
-		
-		instruction.layerInstructions = [ layerInstruction ];
-		return (videoTrack, [ instruction ]);
+		compositionInstruction.layerInstructions = layerInstructions;
+		return compositionInstruction;
 	}
 	
+	
+	func resize(with effect: ResizeEffect, in range: CMTimeRange, instructions: LayerInstructions) -> LayerInstructions
+	{
+		var layerInstruction: AVMutableVideoCompositionLayerInstruction;
+		var mutInstructions = instructions;
+		
+		if let idx = instructions.index(where: { $0.trackID == effect.track.trackID }) {
+			layerInstruction = instructions[idx];
+		} else {
+			layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: effect.track);
+			mutInstructions.append(layerInstruction);
+		}
+	
+		var transform = CGAffineTransform.identity;
+		if !effect.track.naturalSize.equalTo(effect.size) {
+			let scale = effect.size.width / effect.track.naturalSize.width;
+			transform = CGAffineTransform(scaleX: scale, y: scale);
+		}
+		
+		layerInstruction.setTransform(transform, at: kCMTimeZero);
+		return mutInstructions;
+	}
+	
+	
+	func opacityRamp(from: OpacityRamp, to: OpacityRamp, in range: CMTimeRange, instructions: LayerInstructions) -> LayerInstructions {
+		var mutInstructions = instructions;
+		
+		for ramp in [ from, to ] {
+			var layerInstruction: AVMutableVideoCompositionLayerInstruction;
+			
+			if let idx = instructions.index(where: { $0.trackID == ramp.track.trackID }) {
+				layerInstruction = instructions[idx];
+			} else {
+				layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: ramp.track);
+				mutInstructions.append(layerInstruction);
+			}
+			
+			layerInstruction.setOpacityRamp(fromStartOpacity: Float(ramp.from), toEndOpacity: Float(ramp.to), timeRange: range);
+		}
+
+		return mutInstructions;
+	}
+	
+	struct CompositionTimes {
+		var timelinePassthrough = CMTimeRange();
+		var overlap = CMTimeRange();
+		var videoPassthrough = CMTimeRange();
+		var crossfade = CMTimeRange();
+		var outroPassthrough = CMTimeRange();
+		
+		
+		var timelineStart: CMTime {
+			return kCMTimeZero;
+		}
+		
+		var mainVideoStart: CMTime {
+			return timelinePassthrough.end;
+		}
+		
+		var outroStart: CMTime {
+			return crossfade.start;
+		}
+		
+		var totalDuration: CMTime {
+			return outroPassthrough.end;
+		}
+	}
+	
+	func calculateTimeRanges(timeline: AVAssetTrack, video: AVAssetTrack, outro: AVAssetTrack?, crossfadeDuration: Double) -> CompositionTimes {
+		var times = CompositionTimes();
+		
+		let overlapDuration = CMTimeMake(1, CMTimeScale(timeline.nominalFrameRate));
+		let overlapStart = CMTimeSubtract(timeline.timeRange.end, overlapDuration);
+		
+		times.timelinePassthrough = CMTimeRangeMake(kCMTimeZero, overlapStart);
+		times.overlap = CMTimeRangeMake(overlapStart, overlapDuration);
+		
+		let videoEnd = CMTimeAdd(overlapStart, video.timeRange.duration);
+		let crossfade = CMTimeMakeWithSeconds(crossfadeDuration, video.timeRange.start.timescale);
+		let crossfadeStart = CMTimeSubtract(videoEnd, crossfade);
+		
+		times.videoPassthrough = CMTimeRangeMake(times.overlap.end, CMTimeSubtract(crossfadeStart, times.overlap.end));
+		times.crossfade = CMTimeRangeMake(crossfadeStart, crossfade);
+		
+		if let `outro` = outro {
+			times.outroPassthrough = CMTimeRangeMake(times.crossfade.end, CMTimeSubtract(outro.timeRange.duration, crossfade));
+		}
+
+		return times;
+	}
 }
