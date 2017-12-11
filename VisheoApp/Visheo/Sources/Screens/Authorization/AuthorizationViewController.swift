@@ -28,7 +28,7 @@ class AuthorizationViewController: UIViewController, RouterProxy {
         
         closeButton.isHidden = !viewModel.cancelAllowed
         if let description = viewModel.descriptionString {
-            authReasonlabel.text = viewModel.descriptionString
+            authReasonlabel.text = description
         }
     }
     

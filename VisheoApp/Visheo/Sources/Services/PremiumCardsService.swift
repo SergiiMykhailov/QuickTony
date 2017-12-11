@@ -19,6 +19,14 @@ extension Notification.Name {
     static let userPremiumCardsCountChanged = Notification.Name("userPremiumCardsCountChanged")
 }
 
+enum RedeemError : Error {
+    case unknown
+    case invalidCoupon
+    case expired
+    case exceededLimit
+    case alreadyRedeemed
+}
+
 protocol UserPurchasesInfo {
     var currentUserPremiumCards : Int {get}
 }
@@ -29,6 +37,7 @@ protocol PremiumCardsService {
     var bigBundle : PremiumCardsBundle? {get}
     
     func buy(bundle: PremiumCardsBundle)
+    func redeem(coupon: String, completion: @escaping (RedeemError?)->())
     
     func usePremiumCard(completion: @escaping (Bool)->())
 }
@@ -133,7 +142,76 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         spendCard(for: userId, completion: completion)
     }
     
+    func redeem(coupon couponCode: String, completion: @escaping (RedeemError?)->()) {
+        guard let userId = userInfoProvider.userId else {
+            completion(.unknown)
+            return
+        }
+        
+        let couponId = couponCode.uppercased()
+        var cardsToAdd = 0
+        var redeemError : RedeemError? = nil
+        
+        Database.database().reference(withPath: "coupons/\(couponId)/").keepSynced(true)
+        
+        Database.database().reference(withPath: "coupons/\(couponId)/").observeSingleEvent(of: .value) { (_) in
+            Database.database().reference(withPath: "coupons/\(couponId)/").runTransactionBlock({ (currentData) -> TransactionResult in
+                if var coupon = currentData.value as? [String : Any] {
+                    cardsToAdd = coupon["cards_amount"] as? Int ?? 0
+                    
+                    if !self.validate(date: coupon["expires"] as? String) {
+                        redeemError = .expired
+                        var lateRedeems = coupon["late_redeems"] as? [String: Any] ?? [String: Any]()
+                        lateRedeems[userId] = true
+                        coupon["late_redeems"] = lateRedeems
+                        currentData.value = coupon
+                        return TransactionResult.success(withValue: currentData)
+                    }
+                    
+                    var redeemed = coupon["redeemed"] as? [String: Any] ?? [String: Any]()
+                    
+                    if redeemed[userId] != nil {
+                        redeemError = .alreadyRedeemed
+                        return TransactionResult.abort()
+                    }
+                    
+                    if let maxUsers = coupon["max_users"] as? Int, redeemed.count >= maxUsers {
+                        redeemError = .exceededLimit
+                        return TransactionResult.abort()
+                    }
+                    redeemed[userId] = true
+                    coupon["redeemed"] = redeemed
+                    currentData.value = coupon
+                    return TransactionResult.success(withValue: currentData)
+                } else {
+                    redeemError = .invalidCoupon
+                    return TransactionResult.abort()
+                }
+            }, andCompletionBlock: { (error, commited, snapshot) in
+                if let redeemError = redeemError {
+                    completion(redeemError)
+                } else if error != nil {
+                    completion(.unknown)
+                } else {
+                    self.processBuying(cards: cardsToAdd, for: userId, completion: { (success) in
+                        completion(success ? nil : .unknown)
+                    })
+                }
+            } , withLocalEvents: false)
+        }
+    }
+    
     // MARK: Private
+    
+    private func validate(date string: String?) -> Bool {
+        guard let dateString = string else { return false }
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = .withFullDate
+        
+        guard let date = formatter.date(from: dateString) else { return false }
+        
+        return date.daysFromNow >= 0
+    }
     
     private func loadPurchases() {
         Database.database().reference(withPath: "availablePurchases").observe(.value) { (snapshot) in
@@ -161,6 +239,26 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
             return self.smallBundle
         }
         return nil
+    }
+    
+    private func spendCard(for user: String, completion: @escaping (Bool)->()) {
+        Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
+            if var purchases = currentData.value as? [String : Any] {
+                var premCards = purchases["premiumCards"] as? Int ?? 0
+                if premCards <= 0 {
+                    return TransactionResult.abort()
+                } else {
+                    premCards -= 1
+                    purchases["premiumCards"] = premCards
+                    currentData.value = purchases
+                    return TransactionResult.success(withValue: currentData)
+                }
+            } else {
+                return TransactionResult.abort()
+            }
+        }, andCompletionBlock: { (error, commited, snapshot) in
+            completion(commited)
+        }, withLocalEvents: false)
     }
     
     // MARK: Products request delegate
@@ -210,7 +308,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         guard let bundle = bundle(for: transaction.payment.productIdentifier),
                 let userId = userInfoProvider.userId else { return }
         
-        processBuying(bundle: bundle, for: userId) {
+        processBuying(cards: bundle.cardsCount, for: userId) {
             if $0 {
                 SKPaymentQueue.default().finishTransaction(transaction)
                 NotificationCenter.default.post(name: Notification.Name.bundlePurchaseSucceded, object: self)
@@ -223,7 +321,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
             let bundle = bundle(for: productId),
             let userId = userInfoProvider.userId else { return }
         
-        processBuying(bundle: bundle, for: userId) {
+        processBuying(cards: bundle.cardsCount, for: userId) {
             if $0 {
                 SKPaymentQueue.default().finishTransaction(transaction)
                 NotificationCenter.default.post(name: Notification.Name.bundlePurchaseSucceded, object: self)
@@ -235,37 +333,17 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         NotificationCenter.default.post(name: Notification.Name.bundlePurchaseDeferred, object: self)
     }
     
-    private func processBuying(bundle: PremiumCardsBundle, for user: String, completion: @escaping (Bool)->()) {
+    private func processBuying(cards count: Int, for user: String, completion: @escaping (Bool)->()) {
         Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
             if var purchases = currentData.value as? [String : Any] {
                 var premCards = purchases["premiumCards"] as? Int ?? 0
-                premCards += bundle.cardsCount
+                premCards += count
                 purchases["premiumCards"] = premCards
                 currentData.value = purchases
                 return TransactionResult.success(withValue: currentData)
             } else {
-                currentData.value = ["premiumCards" : bundle.cardsCount]
+                currentData.value = ["premiumCards" : count]
                 return TransactionResult.success(withValue: currentData)
-            }
-        }, andCompletionBlock: { (error, commited, snapshot) in
-            completion(commited)
-        }, withLocalEvents: false)
-    }
-    
-    private func spendCard(for user: String, completion: @escaping (Bool)->()) {
-        Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
-            if var purchases = currentData.value as? [String : Any] {
-                var premCards = purchases["premiumCards"] as? Int ?? 0
-                if premCards <= 0 {
-                    return TransactionResult.abort()
-                } else {
-                    premCards -= 1
-                    purchases["premiumCards"] = premCards
-                    currentData.value = purchases
-                    return TransactionResult.success(withValue: currentData)
-                }
-            } else {
-                return TransactionResult.abort()
             }
         }, andCompletionBlock: { (error, commited, snapshot) in
             completion(commited)

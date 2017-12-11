@@ -102,11 +102,4 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     }
 }
 
-extension Date {
-    var daysFromNow : Int {
-        let today = Calendar.current.startOfDay(for: Date())
-        let date = Calendar.current.startOfDay(for: self)
-        let components = Calendar.current.dateComponents([.day], from: today, to: date)
-        return components.day ?? 0
-    }
-}
+
