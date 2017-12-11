@@ -84,6 +84,8 @@ class VisheoMenuViewModel : MenuViewModel {
             } else {
                 router?.showPremiumCards()
             }
+        case .redeem:
+            router?.showCoupons()
         default:
             break;
         }

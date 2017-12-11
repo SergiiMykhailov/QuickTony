@@ -37,7 +37,7 @@ protocol PremiumCardsService {
     var bigBundle : PremiumCardsBundle? {get}
     
     func buy(bundle: PremiumCardsBundle)
-    func redeem(coupon: String, completion: @escaping (RedeemError?)->())
+    func redeem(coupon: String, completion: @escaping (Int?, RedeemError?)->())
     
     func usePremiumCard(completion: @escaping (Bool)->())
 }
@@ -142,9 +142,9 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         spendCard(for: userId, completion: completion)
     }
     
-    func redeem(coupon couponCode: String, completion: @escaping (RedeemError?)->()) {
+    func redeem(coupon couponCode: String, completion: @escaping (Int?, RedeemError?)->()) {
         guard let userId = userInfoProvider.userId else {
-            completion(.unknown)
+            completion(nil, .unknown)
             return
         }
         
@@ -189,12 +189,16 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
                 }
             }, andCompletionBlock: { (error, commited, snapshot) in
                 if let redeemError = redeemError {
-                    completion(redeemError)
+                    completion(nil, redeemError)
                 } else if error != nil {
-                    completion(.unknown)
+                    completion(nil, .unknown)
                 } else {
                     self.processBuying(cards: cardsToAdd, for: userId, completion: { (success) in
-                        completion(success ? nil : .unknown)
+                        if success {
+                            completion(cardsToAdd, nil)
+                        } else {
+                            completion(nil, .unknown)
+                        }                        
                     })
                 }
             } , withLocalEvents: false)

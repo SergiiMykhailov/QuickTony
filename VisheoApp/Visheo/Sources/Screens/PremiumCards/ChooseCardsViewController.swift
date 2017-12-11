@@ -136,6 +136,10 @@ class ChooseCardsViewController: UIViewController {
         viewModel.showMenu()
     }
     
+    @IBAction func showCoupon(_ sender: Any) {
+        viewModel.showCoupon()
+    }
+    
     @IBAction func backPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

@@ -32,6 +32,8 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     
     var confirmFreeSendHandler : (()->())? {get set}
     func sendRegularConfirmed()
+    
+    func showCoupon()
 }
 
 class VisheoChooseCardsViewModel : ChooseCardsViewModel {
@@ -136,7 +138,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     func sendRegular() {
-        if let assets = visheoAssets {
+        if visheoAssets != nil {
             confirmFreeSendHandler?()
         } else {
             router?.showCreateVisheo()
@@ -168,6 +170,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     
     func showMenu() {
         router?.showMenu()
+    }
+    
+    func showCoupon() {
+        router?.showCoupon(with: visheoAssets)
     }
     
     func retryPremiumUse() {

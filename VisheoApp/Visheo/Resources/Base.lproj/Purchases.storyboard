@@ -152,6 +152,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="showCoupon:" destination="RvU-ey-AzR" eventType="touchUpInside" id="C62-q0-UVx"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbu-1b-r7v">
                                 <rect key="frame" x="20" y="362.5" width="234.5" height="21.5"/>
@@ -266,11 +269,174 @@
                         <outlet property="noPremCardslabel" destination="Ivz-Yv-nNX" id="ndH-cH-8h4"/>
                         <outlet property="premiumCardsLabel" destination="p7s-pt-pbh" id="AhU-XQ-Hy3"/>
                         <segue destination="1yE-Np-pVF" kind="show" identifier="showShareVisheo" id="Jcu-CK-hCv"/>
+                        <segue destination="ksx-Ka-Sj9" kind="show" identifier="showCoupon" id="Pwu-Oq-DYp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5W-z1-1Jd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-154.5" y="121.5"/>
+        </scene>
+        <!--ENTER COUPON CODE-->
+        <scene sceneID="h3I-Mu-CvB">
+            <objects>
+                <viewController storyboardIdentifier="RedeemViewController" id="ksx-Ka-Sj9" customClass="RedeemViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xyb-xY-RCH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVb-go-Ocm">
+                                <rect key="frame" x="50" y="198" width="275" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Y1B-je-GmX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Redeem Coupon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buyBigPressed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="vN0-h8-JWH"/>
+                                    <action selector="redeemPressed:" destination="ksx-Ka-Sj9" eventType="touchUpInside" id="oRE-yA-Wu1"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eL-0S-rwj">
+                                <rect key="frame" x="50" y="116" width="275" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="NJl-6q-feN"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" spellCheckingType="no" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ksx-Ka-Sj9" id="N5Q-l8-Hr2"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oo2-by-q1L">
+                                <rect key="frame" x="50" y="177" width="275" height="1"/>
+                                <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bpu-Ji-RJm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oo2-by-q1L" firstAttribute="trailing" secondItem="2eL-0S-rwj" secondAttribute="trailing" id="0VS-91-6da"/>
+                            <constraint firstItem="2eL-0S-rwj" firstAttribute="leading" secondItem="aHe-DC-cbs" secondAttribute="leading" constant="50" id="6hJ-4l-5iA"/>
+                            <constraint firstItem="2eL-0S-rwj" firstAttribute="top" secondItem="aHe-DC-cbs" secondAttribute="top" constant="52" id="P4a-xa-tbv"/>
+                            <constraint firstItem="aHe-DC-cbs" firstAttribute="trailing" secondItem="2eL-0S-rwj" secondAttribute="trailing" constant="50" id="VN6-bg-L8g"/>
+                            <constraint firstItem="oo2-by-q1L" firstAttribute="top" secondItem="2eL-0S-rwj" secondAttribute="bottom" constant="1" id="Z0a-DD-gph"/>
+                            <constraint firstItem="oo2-by-q1L" firstAttribute="leading" secondItem="2eL-0S-rwj" secondAttribute="leading" id="l3g-CJ-XzM"/>
+                            <constraint firstItem="DVb-go-Ocm" firstAttribute="trailing" secondItem="2eL-0S-rwj" secondAttribute="trailing" id="lyf-1V-n9Y"/>
+                            <constraint firstItem="DVb-go-Ocm" firstAttribute="leading" secondItem="2eL-0S-rwj" secondAttribute="leading" id="nzZ-Qj-7kk"/>
+                            <constraint firstItem="DVb-go-Ocm" firstAttribute="top" secondItem="oo2-by-q1L" secondAttribute="bottom" constant="20" id="uCq-mx-dhN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aHe-DC-cbs"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ENTER COUPON CODE" id="WDc-nz-Yfg">
+                        <leftBarButtonItems>
+                            <barButtonItem image="menu" id="nVQ-hb-8pL">
+                                <connections>
+                                    <action selector="menuPressed:" destination="ksx-Ka-Sj9" id="HjR-cY-k5I"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="arrow" id="6f7-md-CjE">
+                                <connections>
+                                    <action selector="backPressed:" destination="ksx-Ka-Sj9" id="4sG-DG-49i"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backItem" destination="6f7-md-CjE" id="bgu-0U-htc"/>
+                        <outlet property="couponCodeField" destination="2eL-0S-rwj" id="JSs-cb-8R0"/>
+                        <outlet property="menuItem" destination="nVQ-hb-8pL" id="nR4-7B-Hny"/>
+                        <segue destination="sOC-hj-pv5" kind="show" identifier="showSuccess" id="a6c-V9-HhA"/>
+                        <segue destination="1yE-Np-pVF" kind="show" identifier="showShareVisheo" id="hes-jD-Qfy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghr-i1-M4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-156" y="862.21889055472275"/>
+        </scene>
+        <!--ENTER COUPON CODE-->
+        <scene sceneID="DEO-jG-pQv">
+            <objects>
+                <viewController id="sOC-hj-pv5" customClass="RedeemSuccessViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N8O-nP-XCd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hDpic" translatesAutoresizingMaskIntoConstraints="NO" id="F0F-O7-nvU">
+                                <rect key="frame" x="87.5" y="131" width="200" height="200"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXH-Ce-smB">
+                                <rect key="frame" x="20" y="587" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ode-Lf-Kj1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Create Visheo Card">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buyBigPressed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="VzB-bN-Mes"/>
+                                    <action selector="createPressed:" destination="sOC-hj-pv5" eventType="touchUpInside" id="Gko-6P-Voh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2x-Fj-DKq">
+                                <rect key="frame" x="113" y="392" width="149.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 premium card(s) added to your account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J89-fj-SIE">
+                                <rect key="frame" x="50" y="427.5" width="275" height="26.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6lt-aU-IjJ" firstAttribute="bottom" secondItem="iXH-Ce-smB" secondAttribute="bottom" constant="20" id="0VA-xs-xgF"/>
+                            <constraint firstItem="iXH-Ce-smB" firstAttribute="leading" secondItem="6lt-aU-IjJ" secondAttribute="leading" constant="20" id="2n5-XR-vlX"/>
+                            <constraint firstItem="F2x-Fj-DKq" firstAttribute="top" secondItem="F0F-O7-nvU" secondAttribute="bottom" constant="61" id="893-lA-ySp"/>
+                            <constraint firstItem="F2x-Fj-DKq" firstAttribute="centerX" secondItem="N8O-nP-XCd" secondAttribute="centerX" id="9Bc-j9-O1y"/>
+                            <constraint firstItem="F0F-O7-nvU" firstAttribute="centerX" secondItem="N8O-nP-XCd" secondAttribute="centerX" id="MUC-z4-jmR"/>
+                            <constraint firstItem="6lt-aU-IjJ" firstAttribute="trailing" secondItem="iXH-Ce-smB" secondAttribute="trailing" constant="20" id="UOW-hG-Cbk"/>
+                            <constraint firstItem="F0F-O7-nvU" firstAttribute="top" secondItem="6lt-aU-IjJ" secondAttribute="top" constant="67" id="Zeb-eD-3FC"/>
+                            <constraint firstItem="6lt-aU-IjJ" firstAttribute="trailing" secondItem="J89-fj-SIE" secondAttribute="trailing" constant="50" id="ZyW-wD-82V"/>
+                            <constraint firstItem="J89-fj-SIE" firstAttribute="leading" secondItem="6lt-aU-IjJ" secondAttribute="leading" constant="50" id="eQp-zI-UPR"/>
+                            <constraint firstItem="J89-fj-SIE" firstAttribute="top" secondItem="F2x-Fj-DKq" secondAttribute="bottom" constant="12" id="uZR-p8-6JB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6lt-aU-IjJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ENTER COUPON CODE" id="QS2-jm-n4R">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="3vc-pN-aZR">
+                            <connections>
+                                <action selector="menuPressed:" destination="sOC-hj-pv5" id="npn-w8-CrZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="couponAddedDescriptionLabel" destination="J89-fj-SIE" id="iDv-ml-jaZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1p3-HT-zrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="862"/>
         </scene>
         <!--ShareVisheoViewController-->
         <scene sceneID="LZb-dO-9qA">
@@ -283,6 +449,10 @@
     </scenes>
     <resources>
         <image name="arrow" width="20" height="20"/>
+        <image name="hDpic" width="200" height="200"/>
         <image name="menu" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hes-jD-Qfy"/>
+    </inferredMetricsTieBreakers>
 </document>

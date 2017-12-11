@@ -12,11 +12,13 @@ protocol ChooseCardsRouter: FlowRouter {
     func showMenu()
     func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool)
     func showCreateVisheo()
+    func showCoupon(with assets: VisheoRenderingAssets?)
 }
 
 class VisheoChooseCardsRouter : ChooseCardsRouter {
     enum SegueList: String, SegueListType {
         case showShareVisheo = "showShareVisheo"
+        case showCoupon = "showCoupon"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: ChooseCardsViewController?
@@ -46,6 +48,11 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
             sendRouter.start(with: sendController,
                              assets: userInfo[Constants.assets] as! VisheoRenderingAssets,
                              sharePremium : userInfo[Constants.premium] as! Bool)
+        case .showCoupon:
+            let couponController = segue.destination as! RedeemViewController
+            let router = VisheoRedeemRouter(dependencies: dependencies)
+            let assets = sender as? VisheoRenderingAssets
+            router.start(with: couponController, assets: assets, showBack: assets != nil)
         }
     }
 }
@@ -66,6 +73,10 @@ extension VisheoChooseCardsRouter {
     
     func showCreateVisheo() {
         dependencies.routerAssembly.assembleCreateVisheoScreen(on: controller?.sideMenuController?.rootViewController as! UINavigationController, with: dependencies)
+    }
+    
+    func showCoupon(with assets: VisheoRenderingAssets?) {
+        controller?.performSegue(SegueList.showCoupon, sender: assets)
     }
 }
 
