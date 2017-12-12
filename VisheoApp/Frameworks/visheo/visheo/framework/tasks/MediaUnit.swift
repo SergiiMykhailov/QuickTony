@@ -14,6 +14,7 @@ public enum MediaType: String
 	case video
 	case cover
 	case audio
+	case outro
 }
 
 

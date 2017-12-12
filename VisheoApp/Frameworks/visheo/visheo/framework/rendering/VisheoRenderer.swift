@@ -240,19 +240,20 @@ final class VisheoRenderer
 		let url = try! generateURL(with: ".mp4", taskId: task.id!);
 		
 		return firstly {
-			when(fulfilled: db.fetchTimelineTasks(for: task), db.fetchMediaUnits([.video, .audio], for: task));
+			when(fulfilled: db.fetchTimelineTasks(for: task), db.fetchMediaUnits([.video, .audio, .outro], for: task));
 		}
 		.then { (timeline, media) -> Promise<Void> in
 			
 			let audioURL = media.filter{ $0.type == .audio }.first?.url;
 			let videoURL = media.filter{ $0.type == .video }.first?.url;
+			let outroURL = media.filter{ $0.type == .outro }.first?.url;
 			let timelineURL = timeline.first?.output;
 			
 			guard let _ = videoURL, let _ = timelineURL else {
 				throw VideoConvertibleError.error;
 			}
 			
-			let video = VisheoRender(timeline: timelineURL!, video: videoURL!, audio: audioURL, quality: task.quality);
+			let video = VisheoRender(timeline: timelineURL!, video: videoURL!, audio: audioURL, outro: outroURL, quality: task.quality);
 			return self.renderer.render(asset: video, to: url);
 		}
 		.then {
