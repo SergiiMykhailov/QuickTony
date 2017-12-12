@@ -262,7 +262,8 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	
 	
 	var shouldPresentCameraTips: Bool {
-		return appState.shouldShowCameraTips;
+        return false // Temporary disabled until Tips screen implemented
+//        return appState.shouldShowCameraTips;
 	}
 	
 	

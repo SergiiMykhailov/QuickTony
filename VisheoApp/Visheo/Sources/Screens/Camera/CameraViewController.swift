@@ -37,12 +37,13 @@ class CameraViewController: UIViewController
 	{
 		super.viewDidLoad()
 	
-		if let icon = UIImage(named: "tipsIcon") {
-			let tipsButton = UIButton(type: .custom);
-			tipsButton.frame = CGRect(origin: .zero, size: icon.size);
-			tipsButton.setImage(icon, for: .normal);
-			navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
-		}
+        // Temporary disabled until Tips screen implemented
+//        if let icon = UIImage(named: "tipsIcon") {
+//            let tipsButton = UIButton(type: .custom);
+//            tipsButton.frame = CGRect(origin: .zero, size: icon.size);
+//            tipsButton.setImage(icon, for: .normal);
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
+//        }
 
 		viewModel.addPreviewOutput(cameraPreview);
 		
