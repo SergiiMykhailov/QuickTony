@@ -152,7 +152,18 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
         
 		movieWriter = VisheoMovieWriter(url: url, size: outputVideoSize);
         movieWriter?.encodingLiveVideo = true;
-        movieWriter?.hasAudioTrack = true;
+		
+		var channelLayout: AudioChannelLayout = AudioChannelLayout();
+		memset(&channelLayout, 0, MemoryLayout<AudioChannelLayout>.size);
+		channelLayout.mChannelLayoutTag = kAudioChannelLayoutTag_Stereo;
+		
+		let outputSettings: [String : Any] = [ AVFormatIDKey : kAudioFormatMPEG4AAC,
+											   AVSampleRateKey : 44100.0,
+											   AVNumberOfChannelsKey : 2,
+											   AVEncoderBitRateKey : 128000,
+											   AVChannelLayoutKey : Data(bytes: &channelLayout, count: MemoryLayout<AudioChannelLayout>.size) ]
+		
+		movieWriter?.setHasAudioTrack(true, audioSettings: outputSettings);
         
         camera?.audioEncodingTarget = movieWriter
 
