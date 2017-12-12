@@ -7,12 +7,13 @@
 //
 
 import Foundation
-
+import AVFoundation
 
 enum SoundtracksServiceError: Error
 {
 	case missingDownloadURL(soundtrack: OccasionSoundtrack)
 	case missingFileExtension(soundtrack: OccasionSoundtrack)
+	case hasFaultyAudioFile(soundtrack: OccasionSoundtrack)
 }
 
 
@@ -36,6 +37,7 @@ protocol SoundtracksService: class {
 	func soundtrackIsCached(soundtrack: OccasionSoundtrack) -> Bool;
 	func download(_ soundtrack: OccasionSoundtrack);
 	func cancelDownloads(except soundtrack: OccasionSoundtrack, completion: (() -> Void)?);
+	func cancelAllDownloads();
 }
 
 
@@ -127,6 +129,11 @@ class VisheoSoundtracksService: NSObject, SoundtracksService
 		}
 	}
 	
+	func cancelAllDownloads() {
+		session.getAllTasks { (tasks) in
+			tasks.forEach{ $0.cancel() }
+		}
+	}
 	
 	// MARK: - Private
 	private func _cacheURL(for soundtrack: OccasionSoundtrack) throws -> URL
@@ -156,7 +163,14 @@ class VisheoSoundtracksService: NSObject, SoundtracksService
 	
 	
 	private func moveToCache(source: URL, soundtrack: OccasionSoundtrack) {
-		do {
+		do
+		{
+			let asset = AVURLAsset(url: source);
+			
+			guard let _ = asset.tracks(withMediaType: .audio).first else {
+				throw SoundtracksServiceError.hasFaultyAudioFile(soundtrack: soundtrack);
+			}
+			
 			let url = try _cacheURL(for: soundtrack);
 			_ = try filemanager.replaceItemAt(url, withItemAt: source, backupItemName: nil, options: .usingNewMetadataOnly);
 			

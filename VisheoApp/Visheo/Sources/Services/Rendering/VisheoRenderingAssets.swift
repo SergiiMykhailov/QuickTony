@@ -47,7 +47,8 @@ class VisheoRenderingAssets {
 		
 		if !originalOccasion.soundtracks.isEmpty {
 			let index = Int(arc4random_uniform(UInt32(originalOccasion.soundtracks.count)));
-			soundtrackId = originalOccasion.soundtracks[index].id;
+			let soundtrackId = originalOccasion.soundtracks[index].id;
+			setSoundtrack(.cached(id: soundtrackId, url: nil));
 		}
     }
     
@@ -69,8 +70,17 @@ class VisheoRenderingAssets {
         try! data.write(to: coverUrl)
     }
 	
+	enum SoundtrackSelection
+	{
+		case none
+		case fallback(url: URL?)
+		case cached(id: Int, url: URL?)
+	}
+	
 	private (set) var soundtrackId: Int?;
     private (set) var soundtrackName: String?
+	
+	private (set) var soundtrackSelection: SoundtrackSelection = .none;
 
     var soundtrackURL: URL? {
         if let relPath = soundtrackRelPath {
@@ -90,15 +100,26 @@ class VisheoRenderingAssets {
 		return originalOccasion.soundtracks.filter{ $0.id == soundtrackId }.first;
 	}
 	
-	func setSoundtrack(id: Int?, url: URL?) {
-		soundtrackId = id;
+	func setSoundtrack(_ soundtrack: SoundtrackSelection) {
+		soundtrackSelection = soundtrack;
 		
-		if soundtrackId == nil {
-			soundtrackName = nil;
-		} else if let soundUrl = url {
-            soundtrackName = url?.lastPathComponent
-            try! FileManager.default.copyItem(at: soundUrl, to: soundtrackURL!)
-        }
+		switch soundtrack {
+			case .none:
+				soundtrackId = nil;
+				soundtrackName = nil;
+			case .fallback(let url):
+				soundtrackId = nil;
+				soundtrackName = url?.lastPathComponent;
+				if let soundUrl = url {
+					try! FileManager.default.copyItem(at: soundUrl, to: soundtrackURL!)
+				}
+			case .cached(let id, let url):
+				soundtrackId = id;
+				soundtrackName = url?.lastPathComponent;
+				if let soundUrl = url {
+					try! FileManager.default.copyItem(at: soundUrl, to: soundtrackURL!)
+				}
+		}
 	}
     
     // MARK: Photos

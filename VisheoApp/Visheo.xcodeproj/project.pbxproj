@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */; };
 		920EDFD21FCF059D00D121ED /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */; };
 		920EDFD71FCF064400D121ED /* SelectSoundtrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */; };
 		920EDFDC1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */; };
@@ -15,6 +16,7 @@
 		920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */; };
 		920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */; };
 		920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */; };
+		921E0CEC1FDF1BF4000A4EBC /* APLCompositionDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */; };
 		922B645B1FD97D5C0085F188 /* VisheoMovieWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */; };
 		922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */; };
 		9255DF0E1FCD9EC200F9815F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF0D1FCD9EC200F9815F /* AppSettings.swift */; };
@@ -35,6 +37,7 @@
 		92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */; };
 		92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */; };
 		92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */; };
+		92ED8EEB1FDA946D00EBB15E /* default_outro.mov in Resources */ = {isa = PBXBuildFile; fileRef = 92ED8EE81FDA946D00EBB15E /* default_outro.mov */; };
 		92EF8E841FC4190D005926E5 /* VisheoVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; };
 		92EF8E851FC4190D005926E5 /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92FF5F461FD9C7F9009EE6D2 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FF5F451FD9C7F9009EE6D2 /* VideoView.swift */; };
@@ -51,7 +54,6 @@
 		B433DDE61FC41EBD00309974 /* EditVisheoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */; };
 		B437CF721FDEAC1900E28C20 /* Date+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF711FDEAC1900E28C20 /* Date+Calendar.swift */; };
 		B437CF761FDEE35900E28C20 /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF751FDEE35900E28C20 /* RedeemViewController.swift */; };
-		B437CF781FDEE37700E28C20 /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF771FDEE37700E28C20 /* RedeemSuccessViewController.swift */; };
 		B437CF7A1FDEE3B100E28C20 /* RedeemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF791FDEE3B100E28C20 /* RedeemRouter.swift */; };
 		B437CF7C1FDEE3C400E28C20 /* RedeemSuccessRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF7B1FDEE3C400E28C20 /* RedeemSuccessRouter.swift */; };
 		B437CF7E1FDEE3D300E28C20 /* RedeemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF7D1FDEE3D300E28C20 /* RedeemViewModel.swift */; };
@@ -199,6 +201,7 @@
 
 /* Begin PBXFileReference section */
 		0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemSuccessViewController.swift; sourceTree = "<group>"; };
 		920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MusicSelection.storyboard; sourceTree = "<group>"; };
 		920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackViewController.swift; sourceTree = "<group>"; };
 		920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackCollectionMediator.swift; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 		920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackCellModel.swift; sourceTree = "<group>"; };
 		920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackRouter.swift; sourceTree = "<group>"; };
 		920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
+		921E0CEA1FDF1BF4000A4EBC /* APLCompositionDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLCompositionDebugView.h; sourceTree = "<group>"; };
+		921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLCompositionDebugView.m; sourceTree = "<group>"; };
 		922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoMovieWriter.swift; sourceTree = "<group>"; };
 		922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPixelBufferAdaptor.swift; sourceTree = "<group>"; };
 		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
@@ -228,6 +233,7 @@
 		92DEDBAF1FC0598400C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		92DEDBB21FC0599100C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CameraTips.xib; sourceTree = "<group>"; };
 		92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRecordIndicator.swift; sourceTree = "<group>"; };
+		92ED8EE81FDA946D00EBB15E /* default_outro.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = default_outro.mov; sourceTree = "<group>"; };
 		92FF5F451FD9C7F9009EE6D2 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		A60CE3E66D78FE9CD21340B2 /* ChooseCardsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCardsViewModel.swift; sourceTree = "<group>"; };
 		A60CE6EB830286290C669520 /* PremiumCardsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumCardsService.swift; sourceTree = "<group>"; };
@@ -242,7 +248,6 @@
 		B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVisheoButton.swift; sourceTree = "<group>"; };
 		B437CF711FDEAC1900E28C20 /* Date+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Calendar.swift"; sourceTree = "<group>"; };
 		B437CF751FDEE35900E28C20 /* RedeemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemViewController.swift; sourceTree = "<group>"; };
-		B437CF771FDEE37700E28C20 /* RedeemSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RedeemSuccessViewController.swift; path = "/Users/ogrepet/Development/visheo-ios/VisheoApp/Visheo/Sources/Screens/PremiumCards/RedeemSuccessViewController.swift"; sourceTree = "<absolute>"; };
 		B437CF791FDEE3B100E28C20 /* RedeemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemRouter.swift; sourceTree = "<group>"; };
 		B437CF7B1FDEE3C400E28C20 /* RedeemSuccessRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemSuccessRouter.swift; sourceTree = "<group>"; };
 		B437CF7D1FDEE3D300E28C20 /* RedeemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemViewModel.swift; sourceTree = "<group>"; };
@@ -459,6 +464,7 @@
 		92A8D30A1FC86E86001E194D /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				92ED8EE81FDA946D00EBB15E /* default_outro.mov */,
 				92A8D30B1FC86E86001E194D /* beginning.m4a */,
 				92A8D30C1FC86E86001E194D /* blank.m4v */,
 			);
@@ -490,8 +496,8 @@
 			children = (
 				A60CE707FAB15D86C7FB5ABE /* Router */,
 				A60CE9608FE017DDDE1C1D99 /* ViewModels */,
+				9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */,
 				A60CE8FDBAFB65873040CDC5 /* ChooseCardsViewController.swift */,
-				B437CF771FDEE37700E28C20 /* RedeemSuccessViewController.swift */,
 				B437CF751FDEE35900E28C20 /* RedeemViewController.swift */,
 			);
 			path = PremiumCards;
@@ -691,6 +697,8 @@
 		B48AAACD1FAA03CC000BB33B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				921E0CEA1FDF1BF4000A4EBC /* APLCompositionDebugView.h */,
+				921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */,
 				B48AAACE1FAA03CC000BB33B /* Segues */,
 				B48AAAD01FAA03CC000BB33B /* UIKitExtensions */,
 				922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */,
@@ -1149,6 +1157,7 @@
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
 				B40447C91FD8030A00CD87BA /* Purchases.storyboard in Resources */,
 				B43163811FBF480A00135B70 /* Localizable.strings in Resources */,
+				92ED8EEB1FDA946D00EBB15E /* default_outro.mov in Resources */,
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
 				920EDFD21FCF059D00D121ED /* MusicSelection.storyboard in Resources */,
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
@@ -1337,7 +1346,6 @@
 				B4C893FC1FD578B700763296 /* EditAccountViewModel.swift in Sources */,
 				B4BCAC0B1FB8CE18003EDC7F /* SelectCoverViewModel.swift in Sources */,
 				B437CF721FDEAC1900E28C20 /* Date+Calendar.swift in Sources */,
-				B437CF781FDEE37700E28C20 /* RedeemSuccessViewController.swift in Sources */,
 				B44450D71FBEF4220021772F /* PhotoPermissionsRouter.swift in Sources */,
 				B4EB86DB1FD1CC7B00963150 /* VisheoCellViewModel.swift in Sources */,
 				B44450DD1FBF02E50021772F /* PhotoPickerViewModel.swift in Sources */,
@@ -1364,6 +1372,7 @@
 				B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */,
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
 				B453F1D51FCF1AB7003D61CB /* MenuRouter.swift in Sources */,
+				9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
 				92C649021FD6036B00D6BC1A /* UserNotificationsService.swift in Sources */,
 				922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */,
@@ -1381,6 +1390,7 @@
 				920EDFDC1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift in Sources */,
 				B46761291FC7119D006E9CB2 /* ShareRouter.swift in Sources */,
 				92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */,
+				921E0CEC1FDF1BF4000A4EBC /* APLCompositionDebugView.m in Sources */,
 				B4BCAC011FB8CC7D003EDC7F /* OnboardingRouter.swift in Sources */,
 				920EDFD71FCF064400D121ED /* SelectSoundtrackViewController.swift in Sources */,
 				922B645B1FD97D5C0085F188 /* VisheoMovieWriter.swift in Sources */,
@@ -1618,6 +1628,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.visheo.visheo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Visheo/Sources/Visheo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
