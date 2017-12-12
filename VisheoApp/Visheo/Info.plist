@@ -63,9 +63,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera</string>
+	<string>Visheo needs access to the camera to make video recording</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Mic</string>
+	<string>Visheo needs access to the microphone to make audio recording</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To add memorable to your Visheo — please allow Visheo to access your photos when prompted</string>
 	<key>UIAppFonts</key>
