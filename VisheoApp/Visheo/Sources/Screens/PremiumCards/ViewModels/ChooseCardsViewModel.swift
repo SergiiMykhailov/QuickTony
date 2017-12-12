@@ -18,12 +18,14 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     var premiumCardsNumber : Int {get}
     
     var showBackButton : Bool {get}
+    var showFreeSection : Bool {get}
     
     func buySmallBundle()
     func buyBigBundle()
     func sendRegular()
     
     func showMenu()
+    func showCoupon()
     
     var didChange : (()->())? {get set}
     var premiumUsageFailedHandler : (()->())? {get set}
@@ -32,8 +34,6 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     
     var confirmFreeSendHandler : (()->())? {get set}
     func sendRegularConfirmed()
-    
-    func showCoupon()
 }
 
 class VisheoChooseCardsViewModel : ChooseCardsViewModel {
@@ -42,6 +42,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     
     var showBackButton: Bool {
         return !shownFromMenu
+    }
+    
+    var showFreeSection: Bool {
+        return premiumCardsNumber == 0
     }
     
     var premiumCardsNumber: Int {

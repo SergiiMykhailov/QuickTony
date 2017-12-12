@@ -73,6 +73,19 @@ class ChooseCardsViewController: UIViewController {
         noPremCardslabel.isHidden = hasCards
         haspremiumCardsContainer.isHidden = !hasCards
         premiumCardsLabel.text = "\(viewModel.premiumCardsNumber)"
+        
+        UIView.animate(withDuration: 0.3) {
+            if !self.viewModel.showFreeSection {
+                self.freeCardsSection.isHidden = true
+                self.premiumBottomConstraint.isActive = false
+                self.premiumTopConstraint.priority = .required
+                self.premiumTopConstraint.isActive = true
+            } else {
+                self.freeCardsSection.isHidden = false
+                self.premiumTopConstraint.isActive = false
+                self.premiumBottomConstraint.isActive = true
+            }
+        }
     }
     
     private func confirmFreeSending() {
@@ -118,6 +131,9 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var noPremCardslabel: UILabel!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
     @IBOutlet weak var backBarItem: UIBarButtonItem!
+    @IBOutlet weak var freeCardsSection: UIView!
+    @IBOutlet var premiumBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var premiumTopConstraint: NSLayoutConstraint!
     
     // MARK: Actions
     @IBAction func sendFreePressed(_ sender: Any) {
