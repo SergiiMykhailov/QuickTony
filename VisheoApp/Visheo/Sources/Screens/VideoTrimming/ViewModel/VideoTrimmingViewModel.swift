@@ -76,10 +76,14 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     }
     
     deinit {
+		stopPlaybackTimeChecker();
         NotificationCenter.default.removeObserver(self)
     }
     
     func goBack() {
+		player.pause()
+		stopPlaybackTimeChecker()
+		
         router?.goBackToPhotos()
     }
     
@@ -128,6 +132,8 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
                 if success {
                     self.assets.replaceVideoWithTrimmed()
                     self.player.pause()
+					self.stopPlaybackTimeChecker();
+					
                     if self.editMode {
                         self.router?.goBackFromEdit(with: self.assets)
                     } else {
