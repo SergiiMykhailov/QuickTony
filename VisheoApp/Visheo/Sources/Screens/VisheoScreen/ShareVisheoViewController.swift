@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import SDWebImage
+import Social
 
 class ShareVisheoViewController: UIViewController {
 	@IBOutlet weak var containerScrollView: UIScrollView!
@@ -124,13 +125,13 @@ class ShareVisheoViewController: UIViewController {
     }
     
     private func interface(enable: Bool) {
-        downloadButton.isEnabled = enable
+        copyButton.isEnabled = enable
         shareTypeSegment.isEnabled = enable
         shareButton.isEnabled = enable
 		remindMeButton.isEnabled = enable;
 		reminderDatePicker.isEnabled = enable;
         shareView.alpha = enable ? 1.0 : 0.2
-        downloadButton.alpha = enable ? 1.0 : 0.2
+        copyButton.alpha = enable ? 1.0 : 0.2
         linkText.alpha = enable ? 1.0 : 0.2
 		remindMeButton.alpha = enable ? 1.0 : 0.2;
 		reminderDatePicker.alpha = enable ? 1.0 : 0.2;
@@ -192,8 +193,6 @@ class ShareVisheoViewController: UIViewController {
 	@IBOutlet weak var remindMeButton: UIButton!
     @IBOutlet weak var progressBar: LabeledProgressView!
     @IBOutlet weak var shareTypeSegment: UISegmentedControl!
-    @IBOutlet weak var downloadButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var shareView: UIView!
     @IBOutlet weak var linkText: UILabel!
     @IBOutlet weak var coverImage: UIImageView!
@@ -202,16 +201,21 @@ class ShareVisheoViewController: UIViewController {
     @IBOutlet var menuBarItem: UIBarButtonItem!
     @IBOutlet var backBarItem: UIBarButtonItem!
     @IBOutlet weak var deleteBarItem: UIBarButtonItem!
+    @IBOutlet weak var copyButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
-    
-    @IBAction func sharePressed(_ sender: Any) {
-        if let link = viewModel.visheoLink, let visheoUrl = URL(string: link) {
-            UIApplication.shared.open(visheoUrl, options: [:], completionHandler: nil)
+    @IBAction func copyPressed(_ sender: Any) {
+        if let link = viewModel.visheoLink {
+            UIPasteboard.general.string = link
         }
     }
     
-    @IBAction func downloadPressed(_ sender: Any) {
-        viewModel.saveVisheo()
+    @IBAction func sharePressed(_ sender: Any) {
+        if let link = viewModel.visheoLink, let visheoUrl = URL(string: link) {
+            let interaction = UIActivityViewController(activityItems: [visheoUrl], applicationActivities: nil)            
+            present(interaction, animated: true, completion: nil)
+            
+        }
     }
     
     @IBAction func playerTapped(_ sender: Any) {

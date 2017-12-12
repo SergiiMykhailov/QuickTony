@@ -333,7 +333,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="936"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFw-rC-b54">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="569"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nq-3Z-f0C">
                                                 <rect key="frame" x="20" y="20" width="335" height="335"/>
@@ -404,36 +404,10 @@
                                                 </connections>
                                             </segmentedControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2II-fv-hQX">
-                                                <rect key="frame" x="0.0" y="429" width="375" height="140"/>
+                                                <rect key="frame" x="0.0" y="429" width="375" height="170"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuK-eZ-TXQ">
-                                                        <rect key="frame" x="20" y="0.0" width="335" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="plN-9q-Nvt"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
-                                                        <color key="tintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Download to gallery" image="group9Copy">
-                                                            <color key="titleColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="downloadPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="Oth-4U-Way"/>
-                                                        </connections>
-                                                    </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbX-PK-2AN">
-                                                        <rect key="frame" x="20" y="80" width="335" height="60"/>
+                                                        <rect key="frame" x="20" y="10" width="335" height="60"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoA-F2-OsI">
                                                                 <rect key="frame" x="225" y="0.0" width="110" height="60"/>
@@ -442,11 +416,11 @@
                                                                     <constraint firstAttribute="width" constant="110" id="mlI-U4-9Cg"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
-                                                                <state key="normal" title="Share">
+                                                                <state key="normal" title="Copy">
                                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="sharePressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="Auq-yn-sRr"/>
+                                                                    <action selector="copyPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="YZ6-EZ-xWh"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyp-in-Hpa">
@@ -478,36 +452,56 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuK-eZ-TXQ">
+                                                        <rect key="frame" x="20" y="90" width="335" height="60"/>
+                                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="plN-9q-Nvt"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                                        <color key="tintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Share Visheo Card">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="sharePressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="p8H-16-HCH"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="TuK-eZ-TXQ" firstAttribute="top" secondItem="2II-fv-hQX" secondAttribute="top" id="2hW-RA-j6G"/>
-                                                    <constraint firstItem="wbX-PK-2AN" firstAttribute="top" secondItem="TuK-eZ-TXQ" secondAttribute="bottom" constant="20" id="8Uc-Zk-ZCM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="TuK-eZ-TXQ" secondAttribute="bottom" constant="20" id="69v-ad-5TQ"/>
+                                                    <constraint firstItem="wbX-PK-2AN" firstAttribute="top" secondItem="2II-fv-hQX" secondAttribute="top" constant="10" id="7if-hT-aIq"/>
                                                     <constraint firstAttribute="trailing" secondItem="wbX-PK-2AN" secondAttribute="trailing" constant="20" id="FAV-7h-KMI"/>
-                                                    <constraint firstAttribute="bottom" secondItem="wbX-PK-2AN" secondAttribute="bottom" id="ISk-nR-N1O"/>
+                                                    <constraint firstItem="TuK-eZ-TXQ" firstAttribute="top" secondItem="wbX-PK-2AN" secondAttribute="bottom" constant="20" id="FUK-VV-I2u"/>
                                                     <constraint firstItem="wbX-PK-2AN" firstAttribute="leading" secondItem="2II-fv-hQX" secondAttribute="leading" constant="20" id="KcV-7w-S28"/>
                                                     <constraint firstAttribute="trailing" secondItem="TuK-eZ-TXQ" secondAttribute="trailing" constant="20" id="Qz3-F2-J86"/>
-                                                    <constraint firstAttribute="bottom" secondItem="wbX-PK-2AN" secondAttribute="bottom" id="cAm-dM-foR"/>
                                                     <constraint firstItem="TuK-eZ-TXQ" firstAttribute="leading" secondItem="2II-fv-hQX" secondAttribute="leading" constant="20" id="wJT-J2-fkr"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIB-gJ-Nr4">
-                                                <rect key="frame" x="375" y="429" width="375" height="389.5"/>
+                                                <rect key="frame" x="375" y="429" width="375" height="383.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Set a reminder to share your Visheo in future" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG6-eF-HPq">
-                                                        <rect key="frame" x="60" y="0.0" width="255" height="53"/>
+                                                        <rect key="frame" x="60" y="0.0" width="255" height="47"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nF5-eM-neh">
-                                                        <rect key="frame" x="0.0" y="73" width="375" height="216"/>
+                                                        <rect key="frame" x="0.0" y="67" width="375" height="216"/>
                                                         <date key="date" timeIntervalSinceReferenceDate="534110241.26562399">
                                                             <!--2017-12-04 19:57:21 +0000-->
                                                         </date>
                                                     </datePicker>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzZ-Ya-jRK">
-                                                        <rect key="frame" x="20" y="309.5" width="335" height="60"/>
+                                                        <rect key="frame" x="20" y="303.5" width="335" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="7G2-4W-8HC"/>
@@ -628,9 +622,9 @@
                     <connections>
                         <outlet property="backBarItem" destination="ceG-hb-vVo" id="ap4-Va-n73"/>
                         <outlet property="containerScrollView" destination="vBH-nG-pAk" id="IBC-FZ-r0D"/>
+                        <outlet property="copyButton" destination="BoA-F2-OsI" id="MaV-Fg-iRD"/>
                         <outlet property="coverImage" destination="JUY-Yl-B80" id="mhg-IF-Q9h"/>
                         <outlet property="deleteBarItem" destination="f7b-DB-y8Z" id="qct-qe-jXq"/>
-                        <outlet property="downloadButton" destination="TuK-eZ-TXQ" id="vKy-vf-B5A"/>
                         <outlet property="linkText" destination="fyp-in-Hpa" id="3Jz-dz-tYS"/>
                         <outlet property="menuBarItem" destination="QL0-nA-9zK" id="TMN-S9-TE6"/>
                         <outlet property="playButton" destination="OgS-LU-4q7" id="ubv-Oc-xIN"/>
@@ -639,7 +633,7 @@
                         <outlet property="remindMeButton" destination="nzZ-Ya-jRK" id="he7-RG-Pyz"/>
                         <outlet property="reminderDatePicker" destination="nF5-eM-neh" id="aR1-8j-pkq"/>
                         <outlet property="scrollContainer" destination="rFw-rC-b54" id="feu-o5-Y8o"/>
-                        <outlet property="shareButton" destination="BoA-F2-OsI" id="mlf-gB-ae4"/>
+                        <outlet property="shareButton" destination="TuK-eZ-TXQ" id="kFd-y4-kcK"/>
                         <outlet property="shareNowBottomConstraint" destination="EVJ-2I-NuZ" id="864-iR-WxU"/>
                         <outlet property="shareNowContainer" destination="2II-fv-hQX" id="4yM-Bs-7qR"/>
                         <outlet property="shareNowLeadingConstraint" destination="HC6-e9-uLr" id="cUu-8O-GAn"/>
@@ -709,7 +703,6 @@
         <image name="arrow" width="20" height="20"/>
         <image name="cover" width="50" height="52"/>
         <image name="delete" width="20" height="20"/>
-        <image name="group9Copy" width="24" height="24"/>
         <image name="menu" width="20" height="20"/>
         <image name="music" width="50" height="52"/>
         <image name="play" width="80" height="80"/>
