@@ -131,14 +131,24 @@ public final class VisheoRender: VideoConvertible
 				throw RenderError.missingVideoTrack(url: outroURL);
 			}
 			
-			timeRanges = calculateTimeRanges(timeline: timelineVideoTrack, video: mainVideoTrack, outro: track, crossfadeDuration: 0.7);
+			var crossfadeDuration = 0.7;
+			crossfadeDuration = min(crossfadeDuration, CMTimeGetSeconds(mainVideoAsset.duration) / 3);
+			
+			timeRanges = calculateTimeRanges(timeline: timelineVideoTrack, video: mainVideoTrack, outro: track, crossfadeDuration: crossfadeDuration);
 			try outroCompositionTrack.insertTimeRange(track.timeRange, of: track, at: timeRanges.outroStart);
 			
-			let fadeInDuration = CMTimeMakeWithSeconds(1.5, outroAsset.duration.timescale);
-			let fadeInStart = CMTimeSubtract(timeRanges.outroStart, fadeInDuration);
+			var fadeInDuration = CMTimeMakeWithSeconds(1.5, outroAsset.duration.timescale);
+			var fadeInStart = CMTimeSubtract(timeRanges.outroStart, fadeInDuration);
+			var outroRamp: Float = 0.2;
 			
-			audioInputParams?.setVolumeRamp(fromStartVolume: 0.02, toEndVolume: 0.2, timeRange: CMTimeRangeMake(fadeInStart, fadeInDuration));
-			audioInputParams?.setVolumeRamp(fromStartVolume: 0.2, toEndVolume: 0.0, timeRange: CMTimeRangeMake(timeRanges.outroStart, outroAsset.duration));
+			if fadeInStart < timeRanges.mainVideoStart {
+				fadeInStart = timeRanges.mainVideoStart;
+				fadeInDuration = CMTimeSubtract(timeRanges.outroStart, timeRanges.mainVideoStart);
+				outroRamp = 0.15;
+			}
+			
+			audioInputParams?.setVolumeRamp(fromStartVolume: 0.02, toEndVolume: outroRamp, timeRange: CMTimeRangeMake(fadeInStart, fadeInDuration));
+			audioInputParams?.setVolumeRamp(fromStartVolume: outroRamp, toEndVolume: 0.0, timeRange: CMTimeRangeMake(timeRanges.outroStart, outroAsset.duration));
 		} else {
 			timeRanges = calculateTimeRanges(timeline: timelineVideoTrack, video: mainVideoTrack, outro: nil, crossfadeDuration: 0.0);
 		}
