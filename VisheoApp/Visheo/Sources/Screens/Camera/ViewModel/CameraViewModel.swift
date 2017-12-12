@@ -83,7 +83,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
         self.assets = assets
 		super.init();
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationDidEnterBackground, object: nil);
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationWillResignActive, object: nil);
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.resumeCapture), name: Notification.Name.UIApplicationDidBecomeActive, object: nil);
 	}
@@ -284,6 +284,9 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	
 	@objc private func pauseCapture() {
 		camera?.pauseCapture();
+		runSynchronouslyOnVideoProcessingQueue {
+			glFinish();
+		};
 	}
 	
 	@objc private func resumeCapture() {
