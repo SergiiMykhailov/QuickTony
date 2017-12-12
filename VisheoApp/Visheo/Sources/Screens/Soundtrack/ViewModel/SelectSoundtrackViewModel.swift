@@ -28,9 +28,11 @@ protocol SelectSoundtrackViewModel: class {
 	
 	func cancelSelection()
 	func confirmSelection()
+	var canConfirmSelection: Bool { get }
 	
 	var bufferProgressChanged: ((_ indexPath: IndexPath?) -> Void)? { get set }
 	var downloadStateChanged: ((SoundtrackDownloadState) -> Void)? { get set }
+	var selectionChanged: (() -> Void)? { get set }
 }
 
 
@@ -65,9 +67,16 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	let assets: VisheoRenderingAssets
 	
 	private lazy var player = AVPlayer();
-	private var selectedSoundtrackId: Int? = nil
+	
+	private var selectedSoundtrackId: Int? = nil {
+		didSet {
+			selectionChanged?()
+		}
+	}
+	
 	var bufferProgressChanged: ((_ indexPath: IndexPath?) -> Void)? = nil;
 	var downloadStateChanged: ((SoundtrackDownloadState) -> Void)? = nil;
+	var selectionChanged: (() -> Void)? = nil;
 	private var observers: [ Notification.Name : Any ] = [:]
 	
 	private var playerItem: AVPlayerItem? = nil {
@@ -111,7 +120,15 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 		self.occasion = occasion
 		self.soundtracksService = soundtracksService
 		self.assets = assets
-		selectedSoundtrackId = assets.soundtrackId;
+		
+		switch assets.soundtrackSelection {
+			case .none:
+				selectedSoundtrackId = nil;
+			case .fallback:
+				selectedSoundtrackId = -1;
+			case .cached(let id, _):
+				selectedSoundtrackId = id;
+		}
 		
 		super.init();
 		
@@ -208,6 +225,16 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 		}
 	}
 	
+	var canConfirmSelection: Bool {
+		switch selectedSoundtrackId {
+			case .some(let value) where value >= 0:
+				return true;
+			case .none:
+				return true;
+			default:
+				return false;
+		}
+	}
 	
 	// MARK: - Private
 	private func downloadSoundtrack(soundtrack: OccasionSoundtrack?, completion: @escaping ((VisheoVideo.Result<URL?>) -> Void))

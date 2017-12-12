@@ -12,7 +12,8 @@ class SelectSoundtrackViewController: UIViewController {
 	@IBOutlet weak var progressViewTopConstraint: NSLayoutConstraint!
 	@IBOutlet weak var progressViewBottomConstraint: NSLayoutConstraint!
 	@IBOutlet weak var downloadProgressView: LabeledProgressView!
-    
+	@IBOutlet weak var selectSoundtrackButton: UIButton!
+	
 	@IBOutlet weak var soundtracksCollectionView: UICollectionView!
 	var soundtracksCollectionMediator : SoundtrackCollectionMediator?
 	
@@ -34,6 +35,14 @@ class SelectSoundtrackViewController: UIViewController {
 				self?.handleDownloadStateChange(state);
 			}
 		}
+		
+		viewModel.selectionChanged = { [weak self] in
+			DispatchQueue.main.async {
+				self?.handleSelectionChange();
+			}
+		}
+		
+		handleSelectionChange();
 	}
 	
 	private(set) var viewModel: SelectSoundtrackViewModel!
@@ -79,5 +88,10 @@ class SelectSoundtrackViewController: UIViewController {
 				progressViewTopConstraint.isActive = false;
 				progressViewBottomConstraint.isActive = true;
 		}
+	}
+	
+	private func handleSelectionChange() {
+		selectSoundtrackButton.isEnabled = viewModel.canConfirmSelection;
+		selectSoundtrackButton.alpha = viewModel.canConfirmSelection ? 1.0 : 0.7;
 	}
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c4K-87-594">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c4K-87-594">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -166,6 +166,7 @@
                         <outlet property="downloadProgressView" destination="zGP-7v-z2r" id="ebf-pL-PGk"/>
                         <outlet property="progressViewBottomConstraint" destination="PvL-5V-cJJ" id="dE8-SK-Tk6"/>
                         <outlet property="progressViewTopConstraint" destination="G4U-Dr-XBs" id="XoL-O4-i2i"/>
+                        <outlet property="selectSoundtrackButton" destination="lqe-2s-bhS" id="13X-k7-zhs"/>
                         <outlet property="soundtracksCollectionView" destination="U1I-pf-okZ" id="W5w-Ab-tLM"/>
                     </connections>
                 </viewController>
