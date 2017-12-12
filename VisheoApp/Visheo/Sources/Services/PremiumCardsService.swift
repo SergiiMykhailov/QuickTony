@@ -245,7 +245,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         return nil
     }
     
-    private func spendCard(for user: String, completion: @escaping (Bool)->()) {        
+    private func spendCard(for user: String, completion: @escaping (Bool)->()) {
         Database.database().reference(withPath: "users/\(user)/purchases").keepSynced(true)
         Database.database().reference(withPath: "users/\(user)/purchases").observeSingleEvent(of: .value) { (snapshot) in
             Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in

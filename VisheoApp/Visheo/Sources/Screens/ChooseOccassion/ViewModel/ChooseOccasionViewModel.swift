@@ -25,8 +25,10 @@ protocol ChooseOccasionViewModel : class {
 }
 
 class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
+    
+    private let maxPastDays = 2
     var firstFutureHolidayIndex: Int? {
-        return holidays.index { ($0.date?.daysFromNow ?? 0) >= 0 }
+        return holidays.index { ($0.date?.daysFromNow ?? 0) >= -maxPastDays }
     }
     
     var didChangeCallback: (() -> ())?
@@ -71,8 +73,6 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     private var holidays : [OccasionRecord] {
         return self.occasionsList.occasionRecords.filter {
             $0.category == OccasionCategory.holiday
-            }.filter {
-                self.shouldShowHoliday(on: $0.date ?? Date.distantFuture)
             }.sorted {
                 let date0 = $0.date ?? Date.distantFuture
                 let date1 = $1.date ?? Date.distantFuture
@@ -94,11 +94,6 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     
     func selectOccasion(at index: Int) {
         self.router?.showSelectCover(for: occasions[index])
-    }
-    
-    private let maxPastDays = 2
-    private func shouldShowHoliday(on date: Date) -> Bool {
-        return date.daysFromNow > -maxPastDays
     }
 }
 
