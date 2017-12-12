@@ -16,10 +16,10 @@ import PromiseKit
 enum PreviewRenderStatus
 {
 	case pending
-	case waitingForResources
+	case waitingForResources(start: TimeInterval)
 	case rendering
 	case ready(item: AVPlayerItem)
-	case failed(error: Error)
+	case failed(error: Error, shouldFallback: Bool)
 }
 
 
@@ -38,13 +38,20 @@ protocol PreviewViewModel : class {
 	var previewRenderCallback: ((PreviewRenderStatus) -> Void)? { get set }
 	
 	func statusText(for status: PreviewRenderStatus) -> String?;
+	func isActivityRunning(for status: PreviewRenderStatus) -> Bool;
+	func shouldRetryRender(for status: PreviewRenderStatus) -> Bool;
 	
 	func handleAssetsUpdate(_ assets: VisheoRenderingAssets);
     
     var premiumUsageFailedHandler : (()->())? {get set}
 }
 
-class VisheoPreviewViewModel : PreviewViewModel {
+class VisheoPreviewViewModel : PreviewViewModel
+{
+	private enum PreviewGenerationError: Error {
+		case resourceTimeout
+	}
+	
     weak var router: PreviewRouter?
     private (set) var assets: VisheoRenderingAssets
     private let permissionsService : AppPermissionsService
@@ -58,6 +65,9 @@ class VisheoPreviewViewModel : PreviewViewModel {
 	var renderContainer: PhotosAnimation? = nil;
 	var previewRenderCallback: ((PreviewRenderStatus) -> Void)? = nil;
     var premiumUsageFailedHandler: (() -> ())?
+	
+	private let soundtrackFetchTimeout: TimeInterval = 5;
+	private var displayLink: CADisplayLink? = nil;
 	
 	private (set) var renderStatus: PreviewRenderStatus = .pending {
 		didSet {
@@ -86,35 +96,52 @@ class VisheoPreviewViewModel : PreviewViewModel {
     }
 	
 	deinit {
+		stopResourceTimeoutMonitor();
 		NotificationCenter.default.removeObserver(self);
 	}
 	
 	
-	func renderPreview()
-	{
+	func renderPreview() {
 		switch renderStatus {
 			case .pending, .waitingForResources:
+				break;
+			case .failed(_, let shouldFallback) where shouldFallback:
 				break;
 			default:
 				return;
 		}
-
-		renderStatus = .rendering;
-		
-		let path = Bundle.main.path(forResource: "default_outro", ofType: "mov")!;
-		let outro = URL(fileURLWithPath: path);
 		
 		var audioURL: URL?;
+		var outroURL: URL?;
+		var fallbackAudioURL: URL?;
 		
-		if let soundtrack = assets.selectedSoundtrack {
-			if soundtracksService.soundtrackIsCached(soundtrack: soundtrack) {
+		if let path = Bundle.main.path(forResource: "default_outro", ofType: "mov") {
+			outroURL = URL(fileURLWithPath: path);
+		}
+		
+		if let path = Bundle.main.path(forResource: "beginning", ofType: "m4a") {
+			fallbackAudioURL = URL(fileURLWithPath: path);
+		}
+		
+		let currentTime = Date().timeIntervalSince1970;
+		
+		if case .cached = assets.soundtrackSelection, let soundtrack = assets.selectedSoundtrack {
+			if case .failed(_, let shouldFallback) = renderStatus, shouldFallback {
+				audioURL = fallbackAudioURL;
+				assets.setSoundtrack(.fallback(url: fallbackAudioURL));
+			} else if soundtracksService.soundtrackIsCached(soundtrack: soundtrack) {
 				audioURL = soundtracksService.cacheURL(for: soundtrack)
 			} else {
-				renderStatus = .waitingForResources;
+				renderStatus = .waitingForResources(start: currentTime);
 				soundtracksService.download(soundtrack);
+				launchResourceTimeoutMonitor();
 				return;
 			}
+		} else if case .fallback(let url) = assets.soundtrackSelection {
+			audioURL = url;
 		}
+		
+		renderStatus = .rendering;
 			
 		let videoURL = assets.videoUrl
 		let quality = RenderQuality.res480;
@@ -126,7 +153,7 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			self.renderTimeLine(videoSnapshot: url, quality: quality);
 		}
 		.then { url -> VisheoVideoComposition in
-			let video = VisheoRender(timeline: url, video: videoURL, audio: audioURL, outro: outro, quality: quality);
+			let video = VisheoRender(timeline: url, video: videoURL, audio: audioURL, outro: outroURL, quality: quality);
 			return try video.prepareComposition()
 		}
 		.then { composition -> AVPlayerItem in
@@ -139,21 +166,47 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			self?.renderStatus = .ready(item: item);
 		}
 		.catch { [weak self] error in
+			switch error {
+				case RenderError.missingAudioTrack:
+					self?.renderStatus = .failed(error: error, shouldFallback: true);
+				default:
+					self?.renderStatus = .failed(error: error, shouldFallback: false);
+			}
 			print("Failed to generate preview \(error)");
-			self?.renderStatus = .failed(error: error);
 		}
 	}
 	
 	func statusText(for status: PreviewRenderStatus) -> String?
 	{
 		switch status {
-			case .failed:
-				return "Failed to generate preview";
 			case .rendering,
 				 .waitingForResources:
 				return "Generating preview...";
+			case .failed(_, let shouldFallback) where shouldFallback:
+				return "Generating preview...";
+			case .failed:
+				return "Failed to generate preview";
 			default:
 				return nil;
+		}
+	}
+	
+	func shouldRetryRender(for status: PreviewRenderStatus) -> Bool {
+		if case .failed(_, let shouldFallback) = status, shouldFallback {
+			return true;
+		}
+		return false;
+	}
+	
+	func isActivityRunning(for status: PreviewRenderStatus) -> Bool {
+		switch status {
+			case .rendering,
+				 .waitingForResources:
+				return true;
+			case .failed(_, let shouldFallback) where shouldFallback:
+				return true;
+			default:
+				return false;
 		}
 	}
 	
@@ -198,8 +251,32 @@ class VisheoPreviewViewModel : PreviewViewModel {
                 }
             })
         }
-        
     }
+	
+	private func launchResourceTimeoutMonitor() {
+		displayLink = CADisplayLink(target: self, selector: #selector(VisheoPreviewViewModel.timeoutTick));
+		displayLink?.add(to: RunLoop.main, forMode: .commonModes);
+	}
+	
+	private func stopResourceTimeoutMonitor() {
+		displayLink?.invalidate();
+		displayLink = nil;
+	}
+	
+	@objc private func timeoutTick() {
+		guard case .waitingForResources(let start) = renderStatus else {
+			return;
+		}
+		
+		let currentTime = Date().timeIntervalSince1970;
+		guard currentTime - start >= soundtrackFetchTimeout else {
+			return;
+		}
+		
+		stopResourceTimeoutMonitor();
+		soundtracksService.cancelAllDownloads();
+		renderStatus = .failed(error: PreviewGenerationError.resourceTimeout, shouldFallback: true);
+	}
 
 	// MARK: - Rendering
 	private func fetchVideoScreenshot(url: URL) -> Promise<URL> {
@@ -262,9 +339,10 @@ class VisheoPreviewViewModel : PreviewViewModel {
 			return;
 		}
 		
-		assets.setSoundtrack(id: assets.soundtrackId, url: url);
+		assets.setSoundtrack(.cached(id: id, url: url));
 		
 		if case .waitingForResources = renderStatus {
+			stopResourceTimeoutMonitor()
 			renderPreview();
 		}
 	}
@@ -278,7 +356,8 @@ class VisheoPreviewViewModel : PreviewViewModel {
 		}
 		
 		if case .waitingForResources = renderStatus {
-			renderStatus = .failed(error: error);
+			stopResourceTimeoutMonitor();
+			renderStatus = .failed(error: error, shouldFallback: true);
 		}
 	}
 }
