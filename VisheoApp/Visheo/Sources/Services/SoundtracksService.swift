@@ -36,6 +36,7 @@ protocol SoundtracksService: class {
 	func soundtrackIsCached(soundtrack: OccasionSoundtrack) -> Bool;
 	func download(_ soundtrack: OccasionSoundtrack);
 	func cancelDownloads(except soundtrack: OccasionSoundtrack, completion: (() -> Void)?);
+	func cancelAllDownloads();
 }
 
 
@@ -127,6 +128,11 @@ class VisheoSoundtracksService: NSObject, SoundtracksService
 		}
 	}
 	
+	func cancelAllDownloads() {
+		session.getAllTasks { (tasks) in
+			tasks.forEach{ $0.cancel() }
+		}
+	}
 	
 	// MARK: - Private
 	private func _cacheURL(for soundtrack: OccasionSoundtrack) throws -> URL

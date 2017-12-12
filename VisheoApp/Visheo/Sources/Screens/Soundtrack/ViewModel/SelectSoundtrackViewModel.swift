@@ -175,7 +175,14 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 			}
 
 			self.teardown();
-			self.assets.setSoundtrack(id: id, url: url);
+			
+			switch id {
+				case .some(let value):
+					self.assets.setSoundtrack(.cached(id: value, url: url));
+				case .none:
+					self.assets.setSoundtrack(.none);
+			}
+			
 			self.router?.goBack(with: self.assets);
 		}
 	}

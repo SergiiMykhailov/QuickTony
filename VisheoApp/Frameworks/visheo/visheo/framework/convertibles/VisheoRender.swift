@@ -11,7 +11,7 @@ import AVFoundation
 public typealias VisheoVideoComposition = (mainComposition: AVComposition, videoComposition: AVVideoComposition, audioMix: AVAudioMix);
 
 
-enum RenderError: Error {
+public enum RenderError: Error {
 	case missingVideoTrack(url: URL);
 	case missingAudioTrack(url: URL);
 }

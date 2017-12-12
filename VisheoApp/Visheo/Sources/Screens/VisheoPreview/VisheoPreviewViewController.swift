@@ -104,12 +104,14 @@ class VisheoPreviewViewController: UIViewController {
 				videoContainer.item = nil;
 		}
 		
-		switch status {
-			case .rendering,
-				 .waitingForResources:
-				activityIndicator.startAnimating();
-			default:
-				activityIndicator.stopAnimating();
+		if viewModel.isActivityRunning(for: status) {
+			activityIndicator.startAnimating();
+		} else {
+			activityIndicator.stopAnimating();
+		}
+		
+		if viewModel.shouldRetryRender(for: status) {
+			viewModel.renderPreview();
 		}
 	}
 	
