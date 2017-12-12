@@ -342,6 +342,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
                                                         <color key="backgroundColor" red="0.90000000000000002" green="0.52000000000000002" blue="0.089999999999999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     </view>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DDL-xT-V5h">
+                                                        <rect key="frame" x="157" y="157" width="20" height="20"/>
+                                                    </activityIndicatorView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgS-LU-4q7">
                                                         <rect key="frame" x="127" y="127" width="80" height="80"/>
                                                         <state key="normal" image="play"/>
@@ -349,9 +352,6 @@
                                                             <action selector="playButtonPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="voO-VA-gbN"/>
                                                         </connections>
                                                     </button>
-                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DDL-xT-V5h">
-                                                        <rect key="frame" x="157" y="157" width="20" height="20"/>
-                                                    </activityIndicatorView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JUY-Yl-B80">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
                                                         <gestureRecognizers/>

@@ -245,24 +245,27 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         return nil
     }
     
-    private func spendCard(for user: String, completion: @escaping (Bool)->()) {
-        Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
-            if var purchases = currentData.value as? [String : Any] {
-                var premCards = purchases["premiumCards"] as? Int ?? 0
-                if premCards <= 0 {
-                    return TransactionResult.abort()
+    private func spendCard(for user: String, completion: @escaping (Bool)->()) {        
+        Database.database().reference(withPath: "users/\(user)/purchases").keepSynced(true)
+        Database.database().reference(withPath: "users/\(user)/purchases").observeSingleEvent(of: .value) { (snapshot) in
+            Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
+                if var purchases = currentData.value as? [String : Any] {
+                    var premCards = purchases["premiumCards"] as? Int ?? 0
+                    if premCards <= 0 {
+                        return TransactionResult.abort()
+                    } else {
+                        premCards -= 1
+                        purchases["premiumCards"] = premCards
+                        currentData.value = purchases
+                        return TransactionResult.success(withValue: currentData)
+                    }
                 } else {
-                    premCards -= 1
-                    purchases["premiumCards"] = premCards
-                    currentData.value = purchases
-                    return TransactionResult.success(withValue: currentData)
+                    return TransactionResult.abort()
                 }
-            } else {
-                return TransactionResult.abort()
-            }
-        }, andCompletionBlock: { (error, commited, snapshot) in
-            completion(commited)
-        }, withLocalEvents: false)
+            }, andCompletionBlock: { (error, commited, snapshot) in
+                completion(commited)
+            }, withLocalEvents: false)
+        }
     }
     
     // MARK: Products request delegate

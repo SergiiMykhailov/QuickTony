@@ -130,6 +130,7 @@ class ShareVisheoViewController: UIViewController {
         shareButton.isEnabled = enable
 		remindMeButton.isEnabled = enable;
 		reminderDatePicker.isEnabled = enable;
+        shareButton.alpha = enable ? 1.0 : 0.2
         shareView.alpha = enable ? 1.0 : 0.2
         copyButton.alpha = enable ? 1.0 : 0.2
         linkText.alpha = enable ? 1.0 : 0.2
