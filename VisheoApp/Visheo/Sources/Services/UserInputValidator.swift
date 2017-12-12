@@ -23,7 +23,7 @@ class VisheoUserInputValidator: UserInputValidator {
     init() {
         emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error : ValidationError())
         usernameRule = ValidationRuleLength(min: 1, error: ValidationError())
-        passwordRule = ValidationRuleLength(min: 5, error : ValidationError())
+        passwordRule = ValidationRuleLength(min: 6, error : ValidationError())
     }
     
     func isValid(email: String) -> Bool {

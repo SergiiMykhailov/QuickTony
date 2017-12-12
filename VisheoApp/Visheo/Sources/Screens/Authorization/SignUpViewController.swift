@@ -18,12 +18,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.didChangeCallback = {[weak self] in
-            let enableSignUp = self?.viewModel.canSignUp ?? false
-            self?.signUpButton.isEnabled = enableSignUp
-            self?.signUpButton.alpha = enableSignUp ? 1.0 : 0.5
-        }
-        
         viewModel.showProgressCallback = {[weak self] in
             if let view = self?.view {
                 if $0 {
