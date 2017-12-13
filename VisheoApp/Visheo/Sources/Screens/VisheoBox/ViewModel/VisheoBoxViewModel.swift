@@ -73,9 +73,7 @@ class VisheoListViewModel : VisheoBoxViewModel {
     
     func select(visheo at: Int)  {
         let record = visheos[at]
-        if !creationService.isIncomplete(visheoId: record.id) {
-            router?.show(visheo: record)
-        }
+		router?.show(visheo: record)
     }
     
     // MARK: Private
