@@ -38,14 +38,31 @@ class ShareVisheoRouter : ShareRouter {
         viewController.configure(viewModel: vm, router: self)        
         vm.startRendering()
     }
+	
+	func start(with viewController: ShareVisheoViewController, incompleteRecord record: VisheoRecord) {
+		let vm = ShareVisheoViewModel(record: record,
+									  renderingService: dependencies.renderingService,
+									  creationService: dependencies.creationService,
+									  notificationsService: dependencies.userNotificationsService);
+		viewModel = vm
+		vm.router = self
+		self.controller = viewController
+		viewController.configure(viewModel: vm, router: self)
+	}
     
     func start(with viewController: ShareVisheoViewController, record: VisheoRecord) {
-        let vm = ExistingVisheoShareViewModel(record: record,
-                                              visheoService: dependencies.creationService,
+		guard !dependencies.creationService.isIncomplete(visheoId: record.id) else {
+			start(with: viewController, incompleteRecord: record);
+			return;
+		}
+		
+		let vm = ExistingVisheoShareViewModel(record: record,
+											  visheoService: dependencies.creationService,
 											  cache: dependencies.visheosCache,
 											  notificationsService: dependencies.userNotificationsService)
+		
         viewModel = vm
-        vm.router = self
+		vm.router = self
         self.controller = viewController
         viewController.configure(viewModel: vm, router: self)
     }

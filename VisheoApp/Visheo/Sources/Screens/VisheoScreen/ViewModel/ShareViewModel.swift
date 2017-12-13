@@ -21,6 +21,7 @@ protocol ShareViewModel : class, AlertGenerating {
     var visheoUrl : URL? {get}
     var visheoLink : String? {get}
     var showBackButton : Bool {get}
+	var shouldRetryProcessing: Bool { get }
     
     var renderingTitle : String {get}
     var uploadingTitle : String {get}
@@ -71,6 +72,10 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     var showBackButton: Bool {
         return true
     }
+	
+	var shouldRetryProcessing: Bool {
+		return false;
+	}
     
     var coverImageUrl: URL? {
         return visheoRecord.coverUrl
@@ -177,11 +182,14 @@ class ShareVisheoViewModel : ShareViewModel {
 	lazy var reminderDate: Date = initialReminderDate;
     
     var showBackButton: Bool {
-        return false
+		if let _ = record {
+			return true;
+		}
+		return false;
     }    
     
     var coverImageUrl: URL? {
-        return assets.coverUrl
+        return assets?.coverUrl ?? record?.coverUrl
     }
     
     var creationStatusChanged: (() -> ())? {
@@ -204,22 +212,54 @@ class ShareVisheoViewModel : ShareViewModel {
     private let renderingService : RenderingService
     private let creationService : CreationService
 	private let userNotificationsService: UserNotificationsService
-    private let assets: VisheoRenderingAssets
     private let sharePremium : Bool
+	private var assets: VisheoRenderingAssets?;
+	private var record: VisheoRecord?;
     
     init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, sharePremium: Bool) {
         self.renderingService = renderingService
-        self.assets = assets
         self.creationService = creationService
 		self.userNotificationsService = notificationsService;
         self.sharePremium = sharePremium
+		self.assets = assets;
     }
+	
+	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService) {
+		self.renderingService = renderingService
+		self.creationService = creationService
+		self.userNotificationsService = notificationsService;
+		self.record = record;
+		
+		guard let info = self.creationService.unfinishedInfo(with: record.id) else {
+			sharePremium = false;
+			return;
+		}
+		
+		sharePremium = info.premium;
+		if info.visheoCreated {
+			let progress = creationService.uploadProgress(for: record.id) ?? 0.0;
+			creationStatus = .uploading(progress: progress);
+		} else {
+			creationStatus = .rendering(progress: 0.3);
+		}
+	}
+	
+	var currentVisheoId: String {
+		return (assets?.creationInfo.visheoId ?? record?.id)!;
+	}
+	
+	var shouldRetryProcessing: Bool {
+		if let _ = record {
+			return true;
+		}
+		return false;
+	}
 	
 	func setReminderDate(_ date: Date) {
 		reminderDate = date;
 		let title = NSString.localizedUserNotificationString(forKey: "Send your visheo!", arguments: nil);
 		
-		userNotificationsService.schedule(at: date, text: title, visheoId: assets.creationInfo.visheoId) { [weak self] error in
+		userNotificationsService.schedule(at: date, text: title, visheoId: currentVisheoId) { [weak self] error in
 			guard let e = error else {
 				self?.successAlertHandler?(NSLocalizedString("Reminder was set.", comment: "Successfully set reminder to share visheo"));
 				return;
@@ -234,7 +274,7 @@ class ShareVisheoViewModel : ShareViewModel {
 	}
     
     func retry() {
-        creationService.retryCreation(for: assets.creationInfo.visheoId)
+        creationService.retryCreation(for: currentVisheoId)
     }
     
     func tryLater() {
@@ -242,7 +282,7 @@ class ShareVisheoViewModel : ShareViewModel {
     }
     
     func deleteVisheo() {
-        self.creationService.deleteVisheo(with: assets.creationInfo.visheoId)
+        self.creationService.deleteVisheo(with: currentVisheoId)
         router?.goToRoot()
     }
     
@@ -266,7 +306,7 @@ class ShareVisheoViewModel : ShareViewModel {
                 let info = notification.userInfo,
                 let progress = info[Notification.Keys.progress] as? Double,
                 let visheoId = info[Notification.Keys.visheoId] as? String,
-                strongSelf.assets.creationInfo.visheoId == visheoId else {return}
+                strongSelf.currentVisheoId == visheoId else {return}
 
             self?.creationStatus = .rendering(progress: progress)
         }
@@ -276,15 +316,16 @@ class ShareVisheoViewModel : ShareViewModel {
                 let info = notification.userInfo,
                 let progress = info[Notification.Keys.progress] as? Double,
                 let visheoId = info[Notification.Keys.visheoId] as? String,
-                strongSelf.assets.creationInfo.visheoId == visheoId else {return}
+                strongSelf.currentVisheoId == visheoId else {return}
             
-            self?.creationStatus = .uploading(progress: progress)        }
+            self?.creationStatus = .uploading(progress: progress)
+		}
         
         NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationFailed, object: nil, queue: .main) {[weak self] (notification) in
             guard let strongSelf = self,
                 let info = notification.userInfo,
                 let visheoId = info[Notification.Keys.visheoId] as? String,
-                strongSelf.assets.creationInfo.visheoId == visheoId,
+                strongSelf.currentVisheoId == visheoId,
                 let error = info[Notification.Keys.error] as? CreationError else {return}
             
             switch error {
@@ -299,14 +340,18 @@ class ShareVisheoViewModel : ShareViewModel {
             guard let strongSelf = self,
                 let info = notification.userInfo,
                 let visheoId = info[Notification.Keys.visheoId] as? String,
-                strongSelf.assets.creationInfo.visheoId == visheoId else {return}
+                strongSelf.currentVisheoId == visheoId else {return}
             
             strongSelf.visheoUrl = info[Notification.Keys.visheoUrl] as? URL
             strongSelf.visheoLink = info[Notification.Keys.visheoShortLink] as? String
             strongSelf.creationStatus = .ready
         }
-        
-        self.creationService.createVisheo(from: assets, premium: sharePremium)
+		
+		if let `assets` = assets {
+			self.creationService.createVisheo(from: assets, premium: sharePremium)
+		} else if let id = record?.id {
+			self.creationService.retryCreation(for: id);
+		}
     }
     
     func showMenu() {

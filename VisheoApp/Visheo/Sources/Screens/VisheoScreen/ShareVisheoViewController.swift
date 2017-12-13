@@ -56,6 +56,13 @@ class ShareVisheoViewController: UIViewController {
             navigationItem.leftBarButtonItems = [menuBarItem]
         }
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated);
+		if isMovingToParentViewController && viewModel.shouldRetryProcessing {
+			viewModel.startRendering();
+		}
+	}
     
     private func showRetryError(text : String) {
         let alert = UIAlertController(title: NSLocalizedString("Error", comment: "Eroro alert title"), message: text, preferredStyle: .alert)

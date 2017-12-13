@@ -30,6 +30,7 @@ target 'Visheo' do
   pod 'GPUImage'
   pod 'PryntTrimmerView'
   pod 'LGSideMenuController'
+  pod 'ReachabilitySwift'
   
    pod 'Reveal-SDK', :configurations => ['Debug']
 end

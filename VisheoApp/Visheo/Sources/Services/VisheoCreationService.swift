@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseStorage
-
+import Reachability
 
 struct VisheoCreationInfo : Codable {
     let visheoId : String
@@ -55,6 +55,7 @@ protocol CreationService {
     func retryCreation(for visheoId: String)
     func isIncomplete(visheoId: String) -> Bool
     func uploadProgress(for visheoId: String) -> Double?
+	func unfinishedInfo(with id: String) -> VisheoCreationInfo?
 }
 
 class VisheoCreationService : CreationService {
@@ -70,6 +71,8 @@ class VisheoCreationService : CreationService {
     private let cardsRef : DatabaseReference
     private let rendererService : RenderingService
     private var uploadingProgress : [String: Double] = [:]
+	private var uploadTasks: [ String : StorageUploadTask ] = [:]
+	private let reachability = Reachability();
     
     init(userInfoProvider: UserInfoProvider, rendererService : RenderingService) {
         self.userInfoProvider = userInfoProvider
@@ -77,7 +80,17 @@ class VisheoCreationService : CreationService {
         cardsRef              = Database.database().reference().child("cards")
         
         continueUnfinished()
+		
+		reachability?.whenReachable = { [weak self] reach in
+			self?.continueUnfinishedUploads()
+		}
+		
+		try? reachability?.startNotifier()
     }
+	
+	deinit {
+		reachability?.stopNotifier();
+	}
     
     func continueUnfinished() {
         let defaults = UserDefaults.standard
@@ -89,6 +102,21 @@ class VisheoCreationService : CreationService {
             }
         }
     }
+	
+	func continueUnfinishedUploads() {
+		let defaults = UserDefaults.standard
+		guard let unfinishedRecords = defaults.object(forKey: unfinishedRecordsKey) as? Record else {return}
+		
+		for (_, value) in unfinishedRecords {
+			guard let creationInfo = try? PropertyListDecoder().decode(VisheoCreationInfo.self, from: value as! Data), creationInfo.visheoCreated else {
+				continue;
+			}
+			if let _ = uploadTasks[creationInfo.visheoId] {
+				continue;
+			}
+			retry(creationInfo: creationInfo);
+		}
+	}
     
     func unfinishedInfo(with id: String) -> VisheoCreationInfo? {
         let defaults = UserDefaults.standard
@@ -207,11 +235,20 @@ class VisheoCreationService : CreationService {
     }
     
     private func upload(creationInfo: VisheoCreationInfo) {
+		if let _ = uploadTasks[creationInfo.visheoId] {
+			return;
+		}
+		
         let videoRef = storageRef(for: creationInfo.visheoId, premium: creationInfo.premium)
         
         self.uploadingProgress[creationInfo.visheoId] = 0.0
         self.notifyUploading(progress: 0.0, for: creationInfo.visheoId)
+		
+//		self.notifyError(error: CreationError.uploadFailed, for: creationInfo.visheoId)
+//		return;
+		
         let uploadTask = videoRef.putFile(from: creationInfo.visheoURL, metadata: nil)
+		uploadTasks[creationInfo.visheoId] = uploadTask;
 
         uploadTask.observe(.progress) { (snapshot) in
             if let uploadingProgress = snapshot.progress, uploadingProgress.totalUnitCount > 0 {
@@ -223,11 +260,13 @@ class VisheoCreationService : CreationService {
 
         uploadTask.observe(.success) { snapshot in
             self.uploadingProgress.removeValue(forKey: creationInfo.visheoId)
+			self.uploadTasks.removeValue(forKey: creationInfo.visheoId);
             self.finalize(creationInfo: creationInfo, downloadUrl: snapshot.metadata?.downloadURL())
         }
 
         uploadTask.observe(.failure) { snapshot in
             self.uploadingProgress.removeValue(forKey: creationInfo.visheoId)
+			self.uploadTasks.removeValue(forKey: creationInfo.visheoId);
             self.notifyError(error: CreationError.uploadFailed, for: creationInfo.visheoId)
         }
     }
