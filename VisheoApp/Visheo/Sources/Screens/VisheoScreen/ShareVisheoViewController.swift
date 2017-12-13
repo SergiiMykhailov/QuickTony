@@ -151,14 +151,10 @@ class ShareVisheoViewController: UIViewController {
 		
         NotificationCenter.default.addObserver(self, selector: #selector(ShareVisheoViewController.itemDidFinishPlaying(_:)),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+		
+		playButton.isHidden = false;
         
-        player?.play()
-        playButton.isHidden = true
-        
-        player?.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
-        
-        playerLoadingActivity.isHidden = false
-        playerLoadingActivity.startAnimating()
+        player?.addObserver(self, forKeyPath: "status", options: [ .initial, .new], context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -166,7 +162,11 @@ class ShareVisheoViewController: UIViewController {
             if player.status == .readyToPlay {
                 playerLoadingActivity.stopAnimating()
                 playerLoadingActivity.isHidden = true
-            }
+			} else {
+				playerLoadingActivity.isHidden = false
+				playerLoadingActivity.startAnimating()
+
+			}
         }
     }
     

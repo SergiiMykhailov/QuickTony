@@ -165,14 +165,15 @@ class VisheoSoundtracksService: NSObject, SoundtracksService
 	private func moveToCache(source: URL, soundtrack: OccasionSoundtrack) {
 		do
 		{
-			let asset = AVURLAsset(url: source);
-			
-			guard let _ = asset.tracks(withMediaType: .audio).first else {
-				throw SoundtracksServiceError.hasFaultyAudioFile(soundtrack: soundtrack);
-			}
-			
 			let url = try _cacheURL(for: soundtrack);
 			_ = try filemanager.replaceItemAt(url, withItemAt: source, backupItemName: nil, options: .usingNewMetadataOnly);
+			
+			let asset = AVURLAsset(url: url);
+			
+			guard let _ = asset.tracks(withMediaType: .audio).first else {
+				try? filemanager.removeItem(at: url);
+				throw SoundtracksServiceError.hasFaultyAudioFile(soundtrack: soundtrack);
+			}
 			
 			let info: [ SoundtracksServiceNotificationKeys : Any ] = [ .trackId : soundtrack.id,
 																	   .downloadLocation : url ]
