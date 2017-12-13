@@ -26,10 +26,12 @@ class VisheoRedeemViewModel : RedeemViewModel {
     
     weak var router: RedeemRouter?
     private let purchasesService: PremiumCardsService
+	private let appStateService: AppStateService
     private let assets : VisheoRenderingAssets?
-    
-    init(purchasesService: PremiumCardsService, showBack: Bool, assets : VisheoRenderingAssets? = nil) {
+     
+	init(purchasesService: PremiumCardsService, appStateService: AppStateService, showBack: Bool, assets : VisheoRenderingAssets? = nil) {
         self.purchasesService = purchasesService
+		self.appStateService = appStateService;
         self.assets = assets
         showBackButton = showBack
     }
@@ -39,6 +41,16 @@ class VisheoRedeemViewModel : RedeemViewModel {
     }
     
     func redeem(coupon: String) {
+		guard !coupon.isEmpty else {
+			warningAlertHandler?(NSLocalizedString("Enter coupon code", comment: "Missing coupon code"));
+			return;
+		}
+		
+		guard appStateService.isReachable else {
+			warningAlertHandler?(NSLocalizedString("You seem to have lost Internet connection", comment: "No internet connection"));
+			return;
+		}
+		
         showProgressCallback?(true)
         purchasesService.redeem(coupon: coupon) { (count, error) in
             self.showProgressCallback?(false)

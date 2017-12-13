@@ -28,7 +28,7 @@ class VisheoRedeemRouter : RedeemRouter {
     }
     
     func start(with viewController: RedeemViewController, assets: VisheoRenderingAssets?, showBack: Bool) {
-        let vm = VisheoRedeemViewModel(purchasesService: dependencies.premiumCardsService, showBack: showBack, assets: assets)
+		let vm = VisheoRedeemViewModel(purchasesService: dependencies.premiumCardsService, appStateService: dependencies.appStateService, showBack: showBack, assets: assets)
         viewModel = vm
         vm.router = self
         self.controller = viewController

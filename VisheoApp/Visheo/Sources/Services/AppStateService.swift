@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Reachability
 
 protocol AppStateService {
     var firstLaunch : Bool { get }
@@ -18,6 +19,8 @@ protocol AppStateService {
 	func cameraTips(wereSeen seen: Bool);
 	
 	var appSettings: AppSettings { get }
+	
+	var isReachable: Bool { get }
 }
 
 class VisheoAppStateService: AppStateService {
@@ -26,12 +29,26 @@ class VisheoAppStateService: AppStateService {
     private static let appWasLaunchedKey = "appWasLaunchedKey"
     
     let firstLaunch: Bool
+	private let reachability = Reachability();
     
     init() {
         firstLaunch = !UserDefaults.standard.bool(forKey: VisheoAppStateService.appWasLaunchedKey)
         UserDefaults.standard.set(true, forKey: VisheoAppStateService.appWasLaunchedKey)
         UserDefaults.standard.synchronize()
+		
+		try? reachability?.startNotifier();
     }
+	
+	deinit {
+		reachability?.stopNotifier();
+	}
+	
+	var isReachable: Bool {
+		guard let connection = reachability?.connection else {
+			return true;
+		}
+		return connection != .none;
+	}
     
     var shouldShowOnboarding: Bool {
         return !UserDefaults.standard.bool(forKey: VisheoAppStateService.onboardingShownKey)

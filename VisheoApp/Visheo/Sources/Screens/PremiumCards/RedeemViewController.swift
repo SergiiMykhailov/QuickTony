@@ -64,6 +64,7 @@ class RedeemViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func redeemPressed(_ sender: Any) {
+		couponCodeField.endEditing(true);
         viewModel.redeem(coupon: couponCodeField.text ?? "")
     }
     

@@ -73,9 +73,8 @@ class VisheoCreationService : CreationService {
     private var uploadingProgress : [String: Double] = [:]
     private let freeVisheoLifetime : Int
 	private var uploadTasks: [ String : StorageUploadTask ] = [:]
-	private let reachability = Reachability();
     
-    init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, freeLifetime: Int) {
+	init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, freeLifetime: Int) {
         self.freeVisheoLifetime = freeLifetime
         self.userInfoProvider = userInfoProvider
         self.rendererService  = rendererService
@@ -83,15 +82,16 @@ class VisheoCreationService : CreationService {
         
         continueUnfinished()
 		
-		reachability?.whenReachable = { [weak self] reach in
-			self?.continueUnfinishedUploads()
+		NotificationCenter.default.addObserver(forName: Notification.Name.reachabilityChanged, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+			guard let connection = (note.object as? Reachability)?.connection, connection != .none else {
+				return;
+			}
+			self?.continueUnfinishedUploads();
 		}
-		
-		try? reachability?.startNotifier()
     }
 	
 	deinit {
-		reachability?.stopNotifier();
+		NotificationCenter.default.removeObserver(self);
 	}
     
     func continueUnfinished() {
