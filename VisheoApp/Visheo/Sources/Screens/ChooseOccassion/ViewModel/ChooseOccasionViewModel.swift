@@ -31,7 +31,11 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
         return holidays.index { ($0.date?.daysFromNow ?? 0) >= -maxPastDays }
     }
     
-    var didChangeCallback: (() -> ())?
+    var didChangeCallback: (() -> ())? {
+        didSet {
+            didChangeCallback?()
+        }
+    }
     
     func holidayViewModel(at index: Int) -> HolidayCellViewModel {
         let record = holidays[index]
