@@ -20,15 +20,22 @@ class MenuViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userPicImage: UIImageView!
+	
+	@IBOutlet weak var usernameButton: UIButton!
+	@IBOutlet weak var userPicImage: UIImageView!
     
     @objc func willBeShown() {
-        usernameLabel.text = viewModel.username
+		usernameButton.setTitle(viewModel.username, for: .normal);
         userPicImage.sd_setImage(with: viewModel.userPicture, placeholderImage: #imageLiteral(resourceName: "pic"), options: [], completed: nil)
+		
+		let recognizer = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.showAccount))
+		userPicImage.addGestureRecognizer(recognizer);
     }
-    
+	
+	@IBAction func showAccount() {
+		viewModel.showAccount();
+	}
+	
     //MARK: - VM+Router init
     
     private(set) var viewModel: MenuViewModel!

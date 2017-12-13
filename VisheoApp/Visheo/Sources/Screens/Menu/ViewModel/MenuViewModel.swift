@@ -17,6 +17,7 @@ protocol MenuViewModel : class {
     func menuItem(at index: Int) -> MenuItemViewModel
     
     func selectMenu(at index: Int)
+	func showAccount();
 }
 
 enum MenuItemType {
@@ -94,6 +95,10 @@ class VisheoMenuViewModel : MenuViewModel {
     func menuItem(at index: Int) -> MenuItemViewModel {
         return menuItems[index]
     }
+	
+	func showAccount() {
+		router?.showAccount();
+	}
 	
 	@objc private func handleVisheoOpen(_ notification: Notification) {
 		guard let visheoId = notification.userInfo?[UserNotificationsServiceNotificationKeys.id] as? String else {
