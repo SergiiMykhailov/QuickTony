@@ -58,9 +58,9 @@ protocol CreationService {
 }
 
 class VisheoCreationService : CreationService {
-    private enum StorageFolders {
-        static let premium     = "PremiumVisheos"
-        static let free        = "FreeVisheos"
+    private enum StorageBuckets {
+        static let premium     = "gs://visheo42premiumcards"
+        static let free        = "gs://visheo42freecards"
     }
     typealias Record = [String: Any]
     
@@ -126,8 +126,8 @@ class VisheoCreationService : CreationService {
             Database.database().reference().child("users/\(userId)/cards/\(id)").removeValue()
         }
         
-        let premiumRef = Storage.storage().reference().child(refPath(for: id, premium: true))
-        let freeRef = Storage.storage().reference().child(refPath(for: id, premium: false))
+        let premiumRef = storageRef(for: id, premium: true)
+        let freeRef = storageRef(for: id, premium: false)
         
         premiumRef.delete(completion: nil)
         freeRef.delete(completion: nil)
@@ -207,7 +207,7 @@ class VisheoCreationService : CreationService {
     }
     
     private func upload(creationInfo: VisheoCreationInfo) {
-        let videoRef = Storage.storage().reference().child(refPath(for: creationInfo.visheoId, premium: creationInfo.premium))
+        let videoRef = storageRef(for: creationInfo.visheoId, premium: creationInfo.premium)
         
         self.uploadingProgress[creationInfo.visheoId] = 0.0
         self.notifyUploading(progress: 0.0, for: creationInfo.visheoId)
@@ -283,9 +283,14 @@ class VisheoCreationService : CreationService {
         }
     }
     
-    private func refPath(for id: String, premium: Bool) -> String {
-        let folder = premium ? StorageFolders.premium : StorageFolders.free
-        return "\(folder)/\(id)"
+    private func  storageRef(for id: String, premium: Bool) -> StorageReference {
+        let bucket = premium ? StorageBuckets.premium : StorageBuckets.free
+        
+        let storagePath = "\(bucket)"
+        
+        
+        let storageRef = Storage.storage(url: storagePath).reference().child("\(id)")
+        return storageRef
     }
     
     private func shortUrl(for id: String) -> String {
