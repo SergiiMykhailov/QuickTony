@@ -70,8 +70,10 @@ class VisheoCreationService : CreationService {
     private let cardsRef : DatabaseReference
     private let rendererService : RenderingService
     private var uploadingProgress : [String: Double] = [:]
+    private let freeVisheoLifetime : Int
     
-    init(userInfoProvider: UserInfoProvider, rendererService : RenderingService) {
+    init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, freeLifetime: Int) {
+        self.freeVisheoLifetime = freeLifetime
         self.userInfoProvider = userInfoProvider
         self.rendererService  = rendererService
         cardsRef              = Database.database().reference().child("cards")
@@ -108,7 +110,9 @@ class VisheoCreationService : CreationService {
         var visheoRecord = info.firebaseRecord
         visheoRecord["userId"] = self.userInfoProvider.userId
         visheoRecord["userName"] = self.userInfoProvider.userName ?? "Guest"
-        
+        if !info.premium {
+            visheoRecord["lifetime"] = freeVisheoLifetime
+        }        
         let ref = Database.database().reference()
         var childUpdates = ["cards/\(info.visheoId)" : visheoRecord] as [String : Any]
         if let userId = self.userInfoProvider.userId {
@@ -305,9 +309,11 @@ extension VisheoCreationInfo {
                       "soundtrackId" : soundtrackId,
                       "occasionName" : occasionName,
                       "timestamp" : ServerValue.timestamp() ] as [String : Any]
+        
         if let coverPreviewUrlString = coverRemotePreviewUrl?.absoluteString {
             record["coverPreviewUrl"] = coverPreviewUrlString
         }
+        
         return record
     }
     private var docs: URL {

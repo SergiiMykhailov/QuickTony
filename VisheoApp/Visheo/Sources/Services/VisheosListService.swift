@@ -24,7 +24,9 @@ protocol VisheoRecord {
     var coverUrl: URL? {get}
     var name: String? {get}
     var visheoLink : String? {get}
-    var timestamp : Double? {get}
+    
+    var lifetime: Int? {get}
+    var creationDate: Date? {get}
 }
 
 class VisheoBoxService : VisheosListService {
@@ -100,13 +102,14 @@ class VisheoBoxService : VisheosListService {
 }
 
 class VisheoCardRecord : VisheoRecord {
+    var lifetime: Int?
+    var creationDate: Date?
     let id: String
     
     var videoUrl: URL?
     var coverUrl: URL?
     var name: String?
     var visheoLink: String?
-    var timestamp: Double?
     
     init(id : String) {
         self.id = id
@@ -119,6 +122,10 @@ class VisheoCardRecord : VisheoRecord {
         coverUrl   = URL(string: snapshot["coverPreviewUrl"] as? String ?? "")
         name       = snapshot["occasionName"] as? String
         visheoLink = snapshot["visheoUrl"] as? String
-        timestamp  = snapshot["timestamp"] as? Double
+        if let timestamp  = snapshot["timestamp"] as? TimeInterval {
+            creationDate = Date(timeIntervalSince1970: timestamp/1000)
+        }
+        
+        lifetime = snapshot["lifetime"] as? Int
     }
 }

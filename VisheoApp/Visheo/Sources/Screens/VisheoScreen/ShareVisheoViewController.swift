@@ -20,7 +20,8 @@ class ShareVisheoViewController: UIViewController {
 	@IBOutlet weak var shareNowContainer: UIView!
 	@IBOutlet weak var shareReminderBottomConstraint: NSLayoutConstraint!
 	@IBOutlet weak var shareNowBottomConstraint: NSLayoutConstraint!
-	
+    @IBOutlet weak var missingVisheoView: UIView!
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -55,6 +56,9 @@ class ShareVisheoViewController: UIViewController {
         } else {
             navigationItem.leftBarButtonItems = [menuBarItem]
         }
+        
+        
+        missingVisheoView.isHidden = !viewModel.isVisheoMissing
     }
     
     private func showRetryError(text : String) {
@@ -84,15 +88,19 @@ class ShareVisheoViewController: UIViewController {
 	}
 
     private func updateProgress() {
-        switch viewModel.creationStatus {
-        case .rendering(let progress):
-            progressBar.progress = progress
-            updateForRendering()
-        case .uploading(let progress):
-            progressBar.progress = progress
-            updateForUploading()
-        case .ready:
-            updateForReadyState()
+        if viewModel.isVisheoMissing {
+            updateForMissingState()
+        } else {
+            switch viewModel.creationStatus {
+            case .rendering(let progress):
+                progressBar.progress = progress
+                updateForRendering()
+            case .uploading(let progress):
+                progressBar.progress = progress
+                updateForUploading()
+            case .ready:
+                updateForReadyState()
+            }
         }
     }
     
@@ -122,6 +130,16 @@ class ShareVisheoViewController: UIViewController {
         if let visheoUrl = viewModel.visheoUrl {
             setupPlayer(with: visheoUrl)
         }
+    }
+    
+    private func updateForMissingState() {
+        menuBarItem.isEnabled = true
+        deleteBarItem.isEnabled = true
+        UIView.animate(withDuration: 0.3) {
+            self.progressBar.alpha = 0.0
+            self.coverImage.alpha = 1.0
+        }
+        interface(enable: false)
     }
     
     private func interface(enable: Bool) {

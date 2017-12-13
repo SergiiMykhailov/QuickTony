@@ -10,6 +10,8 @@ import Foundation
 import Photos
 import UserNotifications
 
+import Firebase
+
 enum VisheoCreationStatus {
     case rendering(progress: Double)
     case uploading(progress: Double)
@@ -21,6 +23,8 @@ protocol ShareViewModel : class, AlertGenerating {
     var visheoUrl : URL? {get}
     var visheoLink : String? {get}
     var showBackButton : Bool {get}
+    
+    var isVisheoMissing : Bool {get}
     
     var renderingTitle : String {get}
     var uploadingTitle : String {get}
@@ -68,6 +72,14 @@ extension ShareViewModel {
 }
 
 class ExistingVisheoShareViewModel: ShareViewModel {
+    var isVisheoMissing: Bool  {
+        guard let creationDate = visheoRecord.creationDate, let lifetime = visheoRecord.lifetime else {
+            return false
+        }
+        
+        return creationDate.daysFromNow < -lifetime
+    }
+    
     var showBackButton: Bool {
         return true
     }
@@ -77,6 +89,9 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     }
     
     var visheoUrl: URL? {
+        if isVisheoMissing {
+            return nil
+        }
         if let localUrl = visheosCache.localUrl(for: visheoRecord.id) {
             return localUrl
         } else if let remoteUrl = visheoRecord.videoUrl {
@@ -165,6 +180,10 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 }
 
 class ShareVisheoViewModel : ShareViewModel {
+    var isVisheoMissing: Bool {
+        return false
+    }
+    
     var successAlertHandler: ((String) -> ())?
     
     var warningAlertHandler: ((String) -> ())?

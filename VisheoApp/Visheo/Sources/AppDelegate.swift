@@ -15,6 +15,10 @@ import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    enum ConfigConstants {
+        static let freeVisheoLifetime = 15
+    }
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -76,7 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let permissionsService = VisheoAppPermissionsService()
 		let renderingService   = VisheoRenderingService(appStateService: appState);
         let creationService    = VisheoCreationService(userInfoProvider: authService,
-                                                       rendererService: renderingService)
+                                                       rendererService: renderingService,
+                                                       freeLifetime: ConfigConstants.freeVisheoLifetime)
 		let soundtracksService = VisheoSoundtracksService();
 		let userNotificationsService = VisheoUserNotificationsService();
         let assembly = VisheoRouterAssembly()

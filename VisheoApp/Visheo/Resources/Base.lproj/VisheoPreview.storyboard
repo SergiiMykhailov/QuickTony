@@ -52,7 +52,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103" y="187" width="128" height="18.5"/>
+                                        <rect key="frame" x="103" y="187" width="128.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -585,6 +585,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-oO-jCL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MJA-sA-jJz">
+                                        <rect key="frame" x="20" y="0.0" width="335" height="60"/>
+                                        <string key="text">Free Visheo are saved in cloud for 15 days. 
+This visheo is no longer available in cloud</string>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.69019607843137254" green="0.80000000000000004" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="MJA-sA-jJz" firstAttribute="top" secondItem="LOg-oO-jCL" secondAttribute="top" id="1Va-Qw-pqh"/>
+                                    <constraint firstAttribute="trailing" secondItem="MJA-sA-jJz" secondAttribute="trailing" constant="20" symbolic="YES" id="IYL-2S-UJR"/>
+                                    <constraint firstItem="MJA-sA-jJz" firstAttribute="leading" secondItem="LOg-oO-jCL" secondAttribute="leading" constant="20" symbolic="YES" id="O2z-Sx-TVh"/>
+                                    <constraint firstAttribute="bottom" secondItem="MJA-sA-jJz" secondAttribute="bottom" id="Yyx-x7-gGD"/>
+                                    <constraint firstAttribute="height" constant="60" id="fXp-Va-528"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -593,9 +614,12 @@
                             <constraint firstItem="vBH-nG-pAk" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="8KA-N8-YoO"/>
                             <constraint firstItem="7tK-Zx-gw7" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="QHC-FR-wq1"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="7tK-Zx-gw7" secondAttribute="trailing" id="SJf-L3-HjA"/>
+                            <constraint firstItem="LOg-oO-jCL" firstAttribute="top" secondItem="mpf-wC-7hc" secondAttribute="top" id="Ssz-bF-fzf"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="vBH-nG-pAk" secondAttribute="trailing" id="a8q-i2-E7D"/>
                             <constraint firstItem="7tK-Zx-gw7" firstAttribute="top" secondItem="mpf-wC-7hc" secondAttribute="top" id="aMc-ii-qWO"/>
+                            <constraint firstItem="LOg-oO-jCL" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="gDX-tP-pCQ"/>
                             <constraint firstItem="rFw-rC-b54" firstAttribute="width" secondItem="mpf-wC-7hc" secondAttribute="width" id="igk-Tm-SPu"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="LOg-oO-jCL" secondAttribute="trailing" id="lpT-NC-GDl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mpf-wC-7hc"/>
                     </view>
@@ -627,6 +651,7 @@
                         <outlet property="deleteBarItem" destination="f7b-DB-y8Z" id="qct-qe-jXq"/>
                         <outlet property="linkText" destination="fyp-in-Hpa" id="3Jz-dz-tYS"/>
                         <outlet property="menuBarItem" destination="QL0-nA-9zK" id="TMN-S9-TE6"/>
+                        <outlet property="missingVisheoView" destination="LOg-oO-jCL" id="jOJ-Go-1pb"/>
                         <outlet property="playButton" destination="OgS-LU-4q7" id="ubv-Oc-xIN"/>
                         <outlet property="playerLoadingActivity" destination="DDL-xT-V5h" id="E8j-xI-MuM"/>
                         <outlet property="progressBar" destination="7tK-Zx-gw7" id="Dtx-fy-EOb"/>

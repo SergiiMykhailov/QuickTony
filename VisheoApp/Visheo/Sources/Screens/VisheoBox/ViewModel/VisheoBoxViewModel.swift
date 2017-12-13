@@ -93,7 +93,7 @@ class VisheoListViewModel : VisheoBoxViewModel {
         return visheosList.visheosRecords.filter {_ in
             return true
             }.sorted(by: { (left, right) -> Bool in
-                switch (left.timestamp, right.timestamp) {
+                switch (left.creationDate, right.creationDate) {
                 case (nil, nil):
                     return left.id.compare(right.id, options: .caseInsensitive) == .orderedAscending
                 case (nil, _?):
