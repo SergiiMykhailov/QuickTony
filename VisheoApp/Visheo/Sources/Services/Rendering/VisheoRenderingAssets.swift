@@ -111,15 +111,23 @@ class VisheoRenderingAssets {
 				soundtrackId = nil;
 				soundtrackName = url?.lastPathComponent;
 				if let soundUrl = url {
-					try! FileManager.default.copyItem(at: soundUrl, to: soundtrackURL!)
+					try! copy(source: soundUrl, to: soundtrackURL!);
 				}
 			case .cached(let id, let url):
 				soundtrackId = id;
 				soundtrackName = url?.lastPathComponent;
 				if let soundUrl = url {
-					try! FileManager.default.copyItem(at: soundUrl, to: soundtrackURL!)
+					try! copy(source: soundUrl, to: soundtrackURL!);
 				}
 		}
+	}
+	
+	private func copy(source: URL, to destination: URL) throws {
+		if FileManager.default.fileExists(atPath: destination.path) {
+			try FileManager.default.removeItem(at: destination);
+		}
+		
+		try FileManager.default.copyItem(at: source, to: destination);
 	}
     
     // MARK: Photos

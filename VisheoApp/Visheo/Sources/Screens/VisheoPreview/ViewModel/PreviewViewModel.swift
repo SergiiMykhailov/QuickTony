@@ -125,12 +125,16 @@ class VisheoPreviewViewModel : PreviewViewModel
 		
 		let currentTime = Date().timeIntervalSince1970;
 		
-		if case .cached = assets.soundtrackSelection, let soundtrack = assets.selectedSoundtrack {
+		if case .cached(_, let soundtrackURL) = assets.soundtrackSelection, let soundtrack = assets.selectedSoundtrack {
 			if case .failed(_, let shouldFallback) = renderStatus, shouldFallback {
 				audioURL = fallbackAudioURL;
 				assets.setSoundtrack(.fallback(url: fallbackAudioURL));
+			} else if let url = soundtrackURL {
+				audioURL = url;
 			} else if soundtracksService.soundtrackIsCached(soundtrack: soundtrack) {
-				audioURL = soundtracksService.cacheURL(for: soundtrack)
+				let url = soundtracksService.cacheURL(for: soundtrack);
+				assets.setSoundtrack(.cached(id: soundtrack.id, url: url));
+				audioURL = assets.soundtrackURL;
 			} else {
 				renderStatus = .waitingForResources(start: currentTime);
 				soundtracksService.download(soundtrack);
