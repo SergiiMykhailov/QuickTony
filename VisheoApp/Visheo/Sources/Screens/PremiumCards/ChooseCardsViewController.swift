@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import SnapKit
 
 class ChooseCardsViewController: UIViewController {
 
@@ -73,19 +74,21 @@ class ChooseCardsViewController: UIViewController {
         noPremCardslabel.isHidden = hasCards
         haspremiumCardsContainer.isHidden = !hasCards
         premiumCardsLabel.text = "\(viewModel.premiumCardsNumber)"
-        
-        UIView.animate(withDuration: 0.3) {
-            if !self.viewModel.showFreeSection {
-                self.freeCardsSection.isHidden = true
-                self.premiumBottomConstraint.isActive = false
-                self.premiumTopConstraint.priority = .required
-                self.premiumTopConstraint.isActive = true
-            } else {
-                self.freeCardsSection.isHidden = false
-                self.premiumTopConstraint.isActive = false
-                self.premiumBottomConstraint.isActive = true
-            }
-        }
+		
+		NSLayoutConstraint.deactivate(self.premiumHeaderLabel.constraints);
+		
+		self.freeCardsSection.isHidden = !self.viewModel.showFreeSection;
+			
+		self.premiumHeaderLabel.snp.remakeConstraints({ (make) in
+			make.left.equalTo(20.0);
+			make.right.equalTo(-20.0);
+			if !self.viewModel.showFreeSection {
+				make.top.equalToSuperview().offset(32.0).priority(.required);
+			} else {
+				make.top.greaterThanOrEqualTo(self.freeCardsSection.snp.bottom).offset(20.0).priority(.required);
+				make.top.equalTo(self.freeCardsSection.snp.bottom).offset(40.0).priority(.low);
+			}
+		});
     }
     
     private func confirmFreeSending() {
@@ -127,13 +130,12 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var coupoButton: UIButton!
     
     @IBOutlet weak var haspremiumCardsContainer: UIView!
-    @IBOutlet weak var premiumCardsLabel: UILabel!
+	@IBOutlet weak var premiumHeaderLabel: UILabel!
+	@IBOutlet weak var premiumCardsLabel: UILabel!
     @IBOutlet weak var noPremCardslabel: UILabel!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
     @IBOutlet weak var backBarItem: UIBarButtonItem!
     @IBOutlet weak var freeCardsSection: UIView!
-    @IBOutlet var premiumBottomConstraint: NSLayoutConstraint!
-    @IBOutlet var premiumTopConstraint: NSLayoutConstraint!
     
     // MARK: Actions
     @IBAction func sendFreePressed(_ sender: Any) {

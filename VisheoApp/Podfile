@@ -31,6 +31,7 @@ target 'Visheo' do
   pod 'PryntTrimmerView'
   pod 'LGSideMenuController'
   pod 'ReachabilitySwift'
+  pod 'SnapKit'
   
    pod 'Reveal-SDK', :configurations => ['Debug']
 end
