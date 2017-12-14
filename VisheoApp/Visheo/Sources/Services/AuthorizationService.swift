@@ -137,11 +137,7 @@ extension VisheoAuthorizationService {
                                 if let user = user {
                                     let changeRequest = user.createProfileChangeRequest()
                                     changeRequest.displayName = fullName
-                                    
-                                    user.sendEmailVerification(completion: { (error) in
-                                        //TODO: Handle email verification fail (save status before sendign and cehck it on every start)
-                                    })
-                                    changeRequest.commitChanges { (error) in
+									changeRequest.commitChanges { (error) in
                                         //TODO: Handle full name setup fail (save full name before sendign and resend it of failed on every start)
                                     }
                                     self.notifyLogin()                                    
