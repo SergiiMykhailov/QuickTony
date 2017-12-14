@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9201B2DF1FE284C700FAC820 /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */; };
 		9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */; };
-		920EDFD21FCF059D00D121ED /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */; };
 		920EDFD71FCF064400D121ED /* SelectSoundtrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */; };
 		920EDFDC1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */; };
 		920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFDE1FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift */; };
@@ -201,8 +201,8 @@
 
 /* Begin PBXFileReference section */
 		0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9201B2E01FE284C700FAC820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MusicSelection.storyboard; sourceTree = "<group>"; };
 		9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemSuccessViewController.swift; sourceTree = "<group>"; };
-		920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MusicSelection.storyboard; sourceTree = "<group>"; };
 		920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackViewController.swift; sourceTree = "<group>"; };
 		920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackCollectionMediator.swift; sourceTree = "<group>"; };
 		920EDFDE1FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundtrackCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -668,7 +668,7 @@
 				92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */,
 				B46528111FC34A0F0070FFB7 /* VisheoPreview.storyboard */,
 				9255DF111FCDA5A200F9815F /* app_settings.plist */,
-				920EDFD11FCF059D00D121ED /* MusicSelection.storyboard */,
+				9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */,
 				B4775FFD1FD57EAA00A02BEF /* Account.storyboard */,
 				B40447C71FD8030A00CD87BA /* Purchases.storyboard */,
 			);
@@ -1159,7 +1159,7 @@
 				B43163811FBF480A00135B70 /* Localizable.strings in Resources */,
 				92ED8EEB1FDA946D00EBB15E /* default_outro.mov in Resources */,
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
-				920EDFD21FCF059D00D121ED /* MusicSelection.storyboard in Resources */,
+				9201B2DF1FE284C700FAC820 /* MusicSelection.storyboard in Resources */,
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
 				B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
@@ -1418,6 +1418,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9201B2E01FE284C700FAC820 /* Base */,
+			);
+			name = MusicSelection.storyboard;
+			sourceTree = "<group>";
+		};
 		92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
