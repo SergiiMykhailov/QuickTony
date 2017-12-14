@@ -137,7 +137,7 @@ class ChooseCardsViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sendFreePressed(_ sender: Any) {
-        viewModel.sendRegular()
+        viewModel.sendRegularConfirmed()
     }
     
     @IBAction func buySmallPressed(_ sender: Any) {
