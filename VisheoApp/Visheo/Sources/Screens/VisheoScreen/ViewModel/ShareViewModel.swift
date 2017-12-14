@@ -216,9 +216,25 @@ class ShareVisheoViewModel : ShareViewModel {
             creationStatusChanged?()
         }
     }
-    
-    var creationStatus: VisheoCreationStatus = .rendering(progress: 0.3) {
+	
+	var delayStatusReporting: TimeInterval? = nil;
+	var creationStatus: VisheoCreationStatus = .rendering(progress: 0.3) {
+		willSet {
+			switch (creationStatus, newValue) {
+				case (.rendering(let progress), .uploading) where progress >= 1.0:
+					delayStatusReporting = Date().timeIntervalSince1970;
+				case (_, .ready):
+					delayStatusReporting = nil;
+				default:
+					break;
+			}
+		}
+		
         didSet {
+			if let delay = delayStatusReporting, Date().timeIntervalSince1970 - delay < 0.4 {
+				return;
+			}
+			delayStatusReporting = nil;
             creationStatusChanged?()
         }
     }
