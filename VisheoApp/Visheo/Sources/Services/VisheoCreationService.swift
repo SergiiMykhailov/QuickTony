@@ -361,7 +361,7 @@ class VisheoCreationService : CreationService {
 		guard !appStateService.isReachable else {
 			return;
 		}
-		taskCancellationTimer = Timer(timeInterval: 30.0, target: self, selector: #selector(VisheoCreationService.cancelTasksDueToTimeout), userInfo: nil, repeats: false);
+		taskCancellationTimer = Timer(timeInterval: 60.0, target: self, selector: #selector(VisheoCreationService.cancelTasksDueToTimeout), userInfo: nil, repeats: false);
 		RunLoop.main.add(taskCancellationTimer!, forMode: .commonModes);
 	}
 	
