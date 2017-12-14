@@ -49,6 +49,13 @@ class VisheoListViewModel : VisheoBoxViewModel {
                 let visheoId = info[Notification.Keys.visheoId] as? String else {return}
             strongSelf.update(with: visheoId)
         }
+		
+		NotificationCenter.default.addObserver(forName: Notification.Name.visheoCreationFailed, object: nil, queue: OperationQueue.main)  {[weak self] (notification) in
+			guard let strongSelf = self,
+				let info = notification.userInfo,
+				let visheoId = info[Notification.Keys.visheoId] as? String else {return}
+			strongSelf.update(with: visheoId)
+		}
     }
     
     deinit {

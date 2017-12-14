@@ -80,7 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let permissionsService = VisheoAppPermissionsService()
 		let renderingService   = VisheoRenderingService(appStateService: appState);
         let creationService    = VisheoCreationService(userInfoProvider: authService,
-                                                       rendererService: renderingService,
+													   rendererService: renderingService,
+													   appStateService: appState,
                                                        freeLifetime: ConfigConstants.freeVisheoLifetime)
 		let soundtracksService = VisheoSoundtracksService();
 		let userNotificationsService = VisheoUserNotificationsService();

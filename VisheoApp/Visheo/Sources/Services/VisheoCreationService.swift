@@ -70,27 +70,40 @@ class VisheoCreationService : CreationService {
     private let userInfoProvider : UserInfoProvider
     private let cardsRef : DatabaseReference
     private let rendererService : RenderingService
+	private let  appStateService: AppStateService;
     private var uploadingProgress : [String: Double] = [:]
     private let freeVisheoLifetime : Int
 	private var uploadTasks: [ String : StorageUploadTask ] = [:]
+	private var taskCancellationTimer: Timer? = nil;
     
-	init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, freeLifetime: Int) {
+	init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, appStateService: AppStateService, freeLifetime: Int) {
         self.freeVisheoLifetime = freeLifetime
         self.userInfoProvider = userInfoProvider
         self.rendererService  = rendererService
+		self.appStateService = appStateService;
         cardsRef              = Database.database().reference().child("cards")
-        
+		
         continueUnfinished()
 		
 		NotificationCenter.default.addObserver(forName: Notification.Name.reachabilityChanged, object: nil, queue: OperationQueue.main) { [weak self] (note) in
-			guard let connection = (note.object as? Reachability)?.connection, connection != .none else {
+			guard let connection = (note.object as? Reachability)?.connection else {
 				return;
 			}
-			self?.continueUnfinishedUploads();
+			switch connection {
+				case .none:
+					self?.launchTaskCancellationTimer();
+				default:
+					self?.stopTaskCancellationTimer();
+					self?.continueUnfinishedUploads();
+			}
 		}
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCreationService.stopTaskCancellationTimer), name: .UIApplicationDidEnterBackground, object: nil);
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCreationService.launchTaskCancellationTimer), name: .UIApplicationDidBecomeActive, object: nil);
     }
 	
 	deinit {
+		stopTaskCancellationTimer()
 		NotificationCenter.default.removeObserver(self);
 	}
     
@@ -243,6 +256,11 @@ class VisheoCreationService : CreationService {
 			return;
 		}
 		
+		guard appStateService.isReachable else {
+			notifyError(error: CreationError.uploadFailed, for: creationInfo.visheoId);
+			return;
+		}
+		
         let videoRef = storageRef(for: creationInfo.visheoId, premium: creationInfo.premium)
         
         self.uploadingProgress[creationInfo.visheoId] = 0.0
@@ -336,6 +354,31 @@ class VisheoCreationService : CreationService {
     private func shortUrl(for id: String) -> String {
         return "http://visheo.com/\(id)/"
     }
+	
+	
+	@objc private func launchTaskCancellationTimer() {
+		stopTaskCancellationTimer();
+		guard !appStateService.isReachable else {
+			return;
+		}
+		taskCancellationTimer = Timer(timeInterval: 30.0, target: self, selector: #selector(VisheoCreationService.cancelTasksDueToTimeout), userInfo: nil, repeats: false);
+		RunLoop.main.add(taskCancellationTimer!, forMode: .commonModes);
+	}
+	
+	@objc private func stopTaskCancellationTimer() {
+		if let t = taskCancellationTimer, t.isValid {
+			t.invalidate();
+		}
+		taskCancellationTimer = nil;
+	}
+	
+	@objc private func cancelTasksDueToTimeout () {
+		stopTaskCancellationTimer()
+		for task in uploadTasks.values {
+			task.cancel();
+		}
+		uploadTasks.removeAll();
+	}
 }
 
 extension VisheoCreationInfo {
