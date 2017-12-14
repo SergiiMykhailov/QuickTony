@@ -139,15 +139,15 @@ public final class VisheoRender: VideoConvertible
 			
 			var fadeInDuration = CMTimeMakeWithSeconds(1.5, outroAsset.duration.timescale);
 			var fadeInStart = CMTimeSubtract(timeRanges.outroStart, fadeInDuration);
-			var outroRamp: Float = 0.2;
+			var outroRamp: Float = 0.3;
 			
 			if fadeInStart < timeRanges.mainVideoStart {
 				fadeInStart = timeRanges.mainVideoStart;
 				fadeInDuration = CMTimeSubtract(timeRanges.outroStart, timeRanges.mainVideoStart);
-				outroRamp = 0.15;
+				outroRamp = 0.2;
 			}
 			
-			audioInputParams?.setVolumeRamp(fromStartVolume: 0.02, toEndVolume: outroRamp, timeRange: CMTimeRangeMake(fadeInStart, fadeInDuration));
+			audioInputParams?.setVolumeRamp(fromStartVolume: 0.1, toEndVolume: outroRamp, timeRange: CMTimeRangeMake(fadeInStart, fadeInDuration));
 			audioInputParams?.setVolumeRamp(fromStartVolume: outroRamp, toEndVolume: 0.0, timeRange: CMTimeRangeMake(timeRanges.outroStart, outroAsset.duration));
 		} else {
 			timeRanges = calculateTimeRanges(timeline: timelineVideoTrack, video: mainVideoTrack, outro: nil, crossfadeDuration: 0.0);
