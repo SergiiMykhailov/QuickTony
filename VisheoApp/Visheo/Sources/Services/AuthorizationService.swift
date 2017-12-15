@@ -142,8 +142,7 @@ extension VisheoAuthorizationService {
 									changeRequest.commitChanges { (error) in
                                         //TODO: Handle full name setup fail (save full name before sendign and resend it of failed on every start)
                                     }
-									let event = RegistrationEvent(userId: user.uid)
-									self.loggingService.log(event: event);
+									self.logSignUpEvent(for: user, provider: "email");
                                     self.notifyLogin()                                    
                                 } else {
                                     self.notifyLoginFail(error: .unknownError(description: error?.localizedDescription ?? ""))
@@ -190,7 +189,7 @@ extension VisheoAuthorizationService {
         })
     }
     
-    private func firebaseSignIn(with credentials: AuthCredential) {
+	private func firebaseSignIn(with credentials: AuthCredential, completion: ((User?) -> Void)? = nil) {
         var oldAnonymous : User? = nil
         if Auth.auth().currentUser?.isAnonymous ?? false {
             oldAnonymous = Auth.auth().currentUser
@@ -199,8 +198,10 @@ extension VisheoAuthorizationService {
         let signInCallback : ((User?, Error?)->()) = { (user, error) in
             if let error = error {
                 oldAnonymous?.delete(completion: nil)
+				completion?(nil);
                 self.notifyLoginFail(error: .unknownError(description: error.localizedDescription))
             } else {
+				completion?(user);
                 self.notifyLogin()
             }
         }
@@ -210,6 +211,7 @@ extension VisheoAuthorizationService {
                 if let _ = error {
                     Auth.auth().signIn(with: credentials, completion: signInCallback)
                 } else {
+					completion?(user);
                     self.notifyLogin()
                 }
             }
@@ -217,7 +219,11 @@ extension VisheoAuthorizationService {
             Auth.auth().signIn(with: credentials, completion: signInCallback)
         }
     }
-    
+	
+	private func logSignUpEvent(for user: User, provider: String) {
+		let event = RegistrationEvent(userId: user.uid, provider: provider);
+		loggingService.log(event: event);
+	}
 }
 
 // MARK: Facebook
@@ -239,7 +245,11 @@ extension VisheoAuthorizationService {
                                 return
                             }
                             let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                            self.firebaseSignIn(with: credential)
+							self.firebaseSignIn(with: credential) { user in
+								if let _ = user {
+									self.logSignUpEvent(for: user!, provider: "facebook");
+								}
+							}
                         }
         }
     }
@@ -277,7 +287,11 @@ extension VisheoAuthorizationService : GIDSignInDelegate, GIDSignInUIDelegate {
                                                        accessToken: authentication.accessToken)
         
         
-        firebaseSignIn(with :credential)
+		firebaseSignIn(with :credential) { user in
+			if let _ = user {
+				self.logSignUpEvent(for: user!, provider: "google");
+			}
+		}
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {

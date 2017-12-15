@@ -41,13 +41,15 @@ extension EventRepresenting {
 
 struct RegistrationEvent: EventRepresenting {
 	let userId: String;
+	let provider: String;
 	
 	var type: EventType {
 		return .userRegistered;
 	}
 	
 	var analyticsInfo: [String : Any]? {
-		return [ "user_id" : userId ]
+		return [ "user_id" : userId,
+				 "provider" : provider ]
 	}
 	
 	var logToAnalytics: Bool {
