@@ -11,8 +11,6 @@ import MBProgressHUD
 
 class AuthorizationViewController: UIViewController, RouterProxy {
 
-    @IBOutlet weak var signInUpTextView: UITextView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextViewLinks()
@@ -38,7 +36,8 @@ class AuthorizationViewController: UIViewController, RouterProxy {
     @IBOutlet weak var signInBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var skipRegistrationHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var skipRegistrationBottomConstraint: NSLayoutConstraint!
-    //MARK: - VM+Router init
+	@IBOutlet weak var signInUpLabel: UILabel!
+	//MARK: - VM+Router init
     
     private(set) var viewModel: AuthorizationViewModel!
     private(set) var router: FlowRouter!
@@ -90,35 +89,32 @@ class AuthorizationViewController: UIViewController, RouterProxy {
     }
 }
 
-extension AuthorizationViewController : UITextViewDelegate {
-    enum Schemes {
-        static let signInScheme = "signin"
-        static let signUpScheme = "signup"
-    }
-    
+extension AuthorizationViewController {
     func configureTextViewLinks() {
-        let mutable  = NSMutableAttributedString(attributedString: signInUpTextView.attributedText)
+        let mutable  = NSMutableAttributedString(attributedString: signInUpLabel.attributedText!)
         let signInRange = mutable.mutableString.range(of: "Sign In")
         let signUpRange = mutable.mutableString.range(of: "Sign Up")
-        
-        mutable.addAttribute(.link, value: "\(Schemes.signInScheme)://", range: signInRange)
-        mutable.addAttribute(.link, value: "\(Schemes.signUpScheme)://", range: signUpRange)
-        
+	
         mutable.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: signUpRange)
         mutable.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: signInRange)
-        
-        signInUpTextView.linkTextAttributes = [:]
-        signInUpTextView.attributedText = mutable
+		
+        signInUpLabel.attributedText = mutable
+		
+		let recognizer = UITapGestureRecognizer(target: self, action: #selector(AuthorizationViewController.tappedLabel(with:)))
+		signInUpLabel.addGestureRecognizer(recognizer)
     }
-    
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        if URL.scheme == Schemes.signInScheme {
-            signInPressed()
-        } else if URL.scheme == Schemes.signUpScheme {
-            signUpPressed()
-        }
-        return false
-    }
+	
+	@objc private func tappedLabel(with recognizer: UITapGestureRecognizer) {
+		guard let text = signInUpLabel.attributedText?.string, let signInRange = text.range(of: "Sign In"), let signUpRange = text.range(of: "Sign Up") else {
+			return;
+		}
+		
+		if recognizer.didTapAttributedTextInLabel(label: signInUpLabel, inRange: NSRange(signInRange, in: text)) {
+			signInPressed();
+		} else if recognizer.didTapAttributedTextInLabel(label: signInUpLabel, inRange: NSRange(signUpRange, in: text)) {
+			signUpPressed();
+		}
+	}
 }
 
 extension AuthorizationViewController {

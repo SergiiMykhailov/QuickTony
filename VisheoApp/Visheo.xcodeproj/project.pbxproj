@@ -25,6 +25,7 @@
 		9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */; };
 		9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */; };
 		9262CBB31FBE139700F90AB3 /* CameraRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */; };
+		926B53C91FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */; };
 		92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */; };
 		92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
 		92A8D30E1FC86E86001E194D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
@@ -221,6 +222,7 @@
 		9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
 		9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRecordButton.swift; sourceTree = "<group>"; };
+		926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GestureRecognizer+TapDetection.swift"; sourceTree = "<group>"; };
 		92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewView.swift; sourceTree = "<group>"; };
 		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
 		92A8D30C1FC86E86001E194D /* blank.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank.m4v; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 		B48AAAD01FAA03CC000BB33B /* UIKitExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */,
 				B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */,
 				B48AAAD11FAA03CC000BB33B /* UIView+LayerInspectable.swift */,
 				B437CF711FDEAC1900E28C20 /* Date+Calendar.swift */,
@@ -1302,6 +1305,7 @@
 				920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */,
 				B4BCAC071FB8CDFB003EDC7F /* SelectCoverViewController.swift in Sources */,
 				B4BCABFE1FB8CC7D003EDC7F /* LaunchProxyRouter.swift in Sources */,
+				926B53C91FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
 				920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */,
 				B4BCABF21FB8CC7D003EDC7F /* SignInViewModel.swift in Sources */,
