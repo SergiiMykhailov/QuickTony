@@ -70,17 +70,19 @@ class VisheoCreationService : CreationService {
     private let userInfoProvider : UserInfoProvider
     private let cardsRef : DatabaseReference
     private let rendererService : RenderingService
-	private let  appStateService: AppStateService;
+	private let appStateService: AppStateService;
+	private let loggingService: EventLoggingService;
     private var uploadingProgress : [String: Double] = [:]
     private let freeVisheoLifetime : Int
 	private var uploadTasks: [ String : StorageUploadTask ] = [:]
 	private var taskCancellationTimer: Timer? = nil;
     
-	init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, appStateService: AppStateService, freeLifetime: Int) {
+	init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, appStateService: AppStateService, loggingService: EventLoggingService, freeLifetime: Int) {
         self.freeVisheoLifetime = freeLifetime
         self.userInfoProvider = userInfoProvider
         self.rendererService  = rendererService
 		self.appStateService = appStateService;
+		self.loggingService = loggingService;
         cardsRef              = Database.database().reference().child("cards")
 		
         continueUnfinished()
@@ -295,6 +297,7 @@ class VisheoCreationService : CreationService {
             self.cardsRef.child(creationInfo.visheoId).child("downloadUrl").setValue(downloadUrl.absoluteString)
         }
         self.cardsRef.child(creationInfo.visheoId).child("visheoUrl").setValue(shortUrl(for: creationInfo.visheoId))
+		sendAnalyticsInfo(creationInfo: creationInfo);
         remove(unfinished: creationInfo)
         notifySuccess(for: creationInfo.visheoId, visheoUrl: creationInfo.visheoURL, visheoLink: shortUrl(for: creationInfo.visheoId))
     }
@@ -378,6 +381,19 @@ class VisheoCreationService : CreationService {
 			task.cancel();
 		}
 		uploadTasks.removeAll();
+	}
+	
+	private func sendAnalyticsInfo(creationInfo: VisheoCreationInfo) {
+		let cardSentEvent = CardSentEvent(isPremium: creationInfo.premium);
+		let coverEvent = CoverUsedEvent(id: creationInfo.coverId);
+		
+		var events: [EventRepresenting] = [cardSentEvent, coverEvent];
+		
+		if creationInfo.soundtrackId >= 0 {
+			events.append(SoundtrackUsedEvent(id: creationInfo.soundtrackId));
+		}
+		
+		loggingService.log(events: events);
 	}
 }
 

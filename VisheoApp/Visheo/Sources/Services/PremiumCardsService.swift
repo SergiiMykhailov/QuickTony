@@ -90,11 +90,13 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     
     private var productsRequest : SKProductsRequest?
     private let userInfoProvider : UserInfoProvider
+	private let loggingService: EventLoggingService
     
     private var premCardsReference : DatabaseReference?
     
-    init(userInfoProvider: UserInfoProvider) {
+	init(userInfoProvider: UserInfoProvider, loggingService: EventLoggingService) {
         self.userInfoProvider = userInfoProvider
+		self.loggingService = loggingService;
         currentUserPremiumCards = 0
         super.init()
         loadPurchases()
@@ -317,6 +319,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         
         processBuying(cards: bundle.cardsCount, for: userId) {
             if $0 {
+				self.logPurchaseEvent(userId: userId, bundle: bundle, transaction: transaction);
                 SKPaymentQueue.default().finishTransaction(transaction)
                 NotificationCenter.default.post(name: Notification.Name.bundlePurchaseSucceded, object: self)
             }
@@ -330,6 +333,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         
         processBuying(cards: bundle.cardsCount, for: userId) {
             if $0 {
+				self.logPurchaseEvent(userId: userId, bundle: bundle, transaction: transaction);
                 SKPaymentQueue.default().finishTransaction(transaction)
                 NotificationCenter.default.post(name: Notification.Name.bundlePurchaseSucceded, object: self)
             }
@@ -356,6 +360,20 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
             completion(commited)
         }, withLocalEvents: false)
     }
+	
+	private func logPurchaseEvent(userId: String, bundle: PremiumCardsBundle, transaction: SKPaymentTransaction) {
+		guard let date = transaction.transactionDate, let id = transaction.transactionIdentifier else {
+			return;
+		}
+		let isBigBundle = (bundle.productId == self.bigBundle?.productId);
+		let event = BundlePurchaseEvent(userId: userId,
+										transactionId: id,
+										productId: bundle.productId,
+										date: date,
+										amount: bundle.cardsCount,
+										isBigBundle: isBigBundle);
+		loggingService.log(event: event);
+	}
 }
 
 

@@ -57,9 +57,11 @@ enum AuthError: Error {
 
 class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvider {
     private let appState : AppStateService
+	private let loggingService: EventLoggingService;
     
-    init(appState: AppStateService) {
+	init(appState: AppStateService, loggingService: EventLoggingService) {
         self.appState = appState
+		self.loggingService = loggingService;
         super.init()
         setupGoogleDependencies()
 
@@ -140,6 +142,8 @@ extension VisheoAuthorizationService {
 									changeRequest.commitChanges { (error) in
                                         //TODO: Handle full name setup fail (save full name before sendign and resend it of failed on every start)
                                     }
+									let event = RegistrationEvent(userId: user.uid)
+									self.loggingService.log(event: event);
                                     self.notifyLogin()                                    
                                 } else {
                                     self.notifyLoginFail(error: .unknownError(description: error?.localizedDescription ?? ""))

@@ -74,7 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func dependencies() -> RouterDependencies {
         let appState           = VisheoAppStateService()
-        let authService        = VisheoAuthorizationService(appState: appState)
+		let eventLoggingService = VisheoEventLoggingService();
+		let authService        = VisheoAuthorizationService(appState: appState,
+															loggingService: eventLoggingService)
         let inputValidator     = VisheoUserInputValidator()
         let occasionsList      = VisheoOccasionsListService()
         let permissionsService = VisheoAppPermissionsService()
@@ -82,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let creationService    = VisheoCreationService(userInfoProvider: authService,
 													   rendererService: renderingService,
 													   appStateService: appState,
+													   loggingService: eventLoggingService,
                                                        freeLifetime: ConfigConstants.freeVisheoLifetime)
 		let soundtracksService = VisheoSoundtracksService();
 		let userNotificationsService = VisheoUserNotificationsService();
@@ -90,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let visheosListService = VisheoBoxService(userInfoProvider: authService)
         let visheosCache = VisheosLocalCache()
         
-        let premiumService = VisheoPremiumCardsService(userInfoProvider: authService)
+		let premiumService = VisheoPremiumCardsService(userInfoProvider: authService, loggingService: eventLoggingService)
         return RouterDependencies(appStateService: appState,
                                                 appPermissionsService: permissionsService,
                                                 authorizationService: authService,
