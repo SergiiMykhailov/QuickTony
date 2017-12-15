@@ -36,7 +36,7 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="leftViewSwipeGestureEnabled" value="NO"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="leftViewWidth">
-                            <real key="value" value="284"/>
+                            <real key="value" value="260"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -53,25 +53,24 @@
             <objects>
                 <viewController id="RZd-R4-Nqo" customClass="MenuViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Shp-Xs-kVP">
-                        <rect key="frame" x="0.0" y="0.0" width="284" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hba-D1-xws">
-                                <rect key="frame" x="0.0" y="0.0" width="284" height="172"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hba-D1-xws">
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="172"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="284" id="1Zc-H1-KcZ"/>
                                     <constraint firstAttribute="height" constant="172" id="VkC-Um-BS9"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hBe-7I-Yuy">
-                                <rect key="frame" x="0.0" y="172" width="284" height="451"/>
+                                <rect key="frame" x="0.0" y="172" width="260" height="451"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuItem" rowHeight="48" id="FMy-SS-V7b" customClass="MenuTableViewCell" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="284" height="48"/>
+                                        <rect key="frame" x="0.0" y="28" width="260" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FMy-SS-V7b" id="aED-7S-XVG">
-                                            <rect key="frame" x="0.0" y="0.0" width="284" height="48"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZLQ-hB-eTL">
@@ -82,7 +81,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4v-USr">
-                                                    <rect key="frame" x="72" y="13.5" width="189" height="21.5"/>
+                                                    <rect key="frame" x="72" y="13.5" width="165" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                     <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -120,7 +119,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQt-N8-c2U">
-                                <rect key="frame" x="0.0" y="623" width="284" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="260" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wXA-QG-D8p"/>
                                 </constraints>
@@ -167,7 +166,7 @@
                         <viewLayoutGuide key="safeArea" id="Jco-KM-Lgj"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="284" height="667"/>
+                    <size key="freeformSize" width="260" height="667"/>
                     <connections>
                         <outlet property="userPicImage" destination="T9z-Gn-MfH" id="66q-NF-yyA"/>
                         <outlet property="usernameButton" destination="1UP-AB-86s" id="KAQ-XU-grk"/>
@@ -243,7 +242,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-P7-EP7" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="281" width="129.5" height="34"/>
+                                                    <rect key="frame" x="20" y="281" width="163.5" height="34"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="xFM-h5-j6w"/>

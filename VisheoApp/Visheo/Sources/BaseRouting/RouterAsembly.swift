@@ -18,6 +18,8 @@ protocol RouterAssembly {
 class VisheoRouterAssembly: RouterAssembly {
     func assembleMainScreen(on destination: UIViewController, with dependencies: RouterDependencies) {
         let sideController = destination as! LGSideMenuController
+		
+		sideController.leftViewWidth = min(290.0, ceil(UIScreen.main.bounds.width * 0.8));
         
         let mainScreenController = (sideController.rootViewController as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
         let router = VisheoChooseOccasionRouter(dependencies: dependencies)
