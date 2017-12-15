@@ -63,7 +63,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hBe-7I-Yuy">
-                                <rect key="frame" x="0.0" y="172" width="260" height="451"/>
+                                <rect key="frame" x="0.0" y="172" width="260" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuItem" rowHeight="48" id="FMy-SS-V7b" customClass="MenuTableViewCell" customModule="Visheo" customModuleProvider="target">
@@ -118,16 +118,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQt-N8-c2U">
-                                <rect key="frame" x="0.0" y="623" width="260" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="wXA-QG-D8p"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                <state key="normal" title="Privacy policy">
-                                    <color key="titleColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UP-AB-86s">
                                 <rect key="frame" x="93" y="98" width="128" height="44"/>
                                 <constraints>
@@ -149,17 +139,14 @@
                         <constraints>
                             <constraint firstItem="hBe-7I-Yuy" firstAttribute="top" secondItem="hba-D1-xws" secondAttribute="bottom" id="4V0-U3-Yay"/>
                             <constraint firstItem="hBe-7I-Yuy" firstAttribute="leading" secondItem="Jco-KM-Lgj" secondAttribute="leading" id="4oB-41-Yy9"/>
+                            <constraint firstItem="Jco-KM-Lgj" firstAttribute="bottom" secondItem="hBe-7I-Yuy" secondAttribute="bottom" id="DNb-1u-hNI"/>
                             <constraint firstItem="1UP-AB-86s" firstAttribute="centerY" secondItem="T9z-Gn-MfH" secondAttribute="centerY" id="Elq-Xb-u37"/>
                             <constraint firstItem="hba-D1-xws" firstAttribute="leading" secondItem="Jco-KM-Lgj" secondAttribute="leading" id="IqI-pd-dUV"/>
                             <constraint firstItem="T9z-Gn-MfH" firstAttribute="leading" secondItem="Jco-KM-Lgj" secondAttribute="leading" constant="20" id="JoB-cy-dgL"/>
-                            <constraint firstItem="Jco-KM-Lgj" firstAttribute="trailing" secondItem="bQt-N8-c2U" secondAttribute="trailing" id="Kwu-6j-jrm"/>
                             <constraint firstItem="hBe-7I-Yuy" firstAttribute="top" secondItem="T9z-Gn-MfH" secondAttribute="bottom" constant="20" id="V91-If-Xfa"/>
-                            <constraint firstItem="bQt-N8-c2U" firstAttribute="top" secondItem="hBe-7I-Yuy" secondAttribute="bottom" id="VFv-c3-ce0"/>
                             <constraint firstItem="hba-D1-xws" firstAttribute="top" secondItem="Shp-Xs-kVP" secondAttribute="top" id="XFO-3W-a2a"/>
-                            <constraint firstItem="Jco-KM-Lgj" firstAttribute="bottom" secondItem="bQt-N8-c2U" secondAttribute="bottom" id="cvv-Id-JBe"/>
                             <constraint firstItem="Jco-KM-Lgj" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1UP-AB-86s" secondAttribute="trailing" constant="9" id="eIK-vg-b3U"/>
                             <constraint firstItem="1UP-AB-86s" firstAttribute="leading" secondItem="T9z-Gn-MfH" secondAttribute="trailing" constant="9" id="lVK-ek-B0E"/>
-                            <constraint firstItem="bQt-N8-c2U" firstAttribute="leading" secondItem="Jco-KM-Lgj" secondAttribute="leading" id="rV0-fT-FEe"/>
                             <constraint firstItem="Jco-KM-Lgj" firstAttribute="trailing" secondItem="hBe-7I-Yuy" secondAttribute="trailing" id="vwc-jN-suh"/>
                             <constraint firstItem="Jco-KM-Lgj" firstAttribute="trailing" secondItem="hba-D1-xws" secondAttribute="trailing" id="wBB-2j-tdY"/>
                         </constraints>
@@ -927,21 +914,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="bdG-sn-BZg">
-                                <rect key="frame" x="0.0" y="229.5" width="0.0" height="144"/>
+                                <rect key="frame" x="61" y="-17346" width="253" height="35295"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR PHOTOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-PL-lMo">
+                                        <rect key="frame" x="0.0" y="0.0" width="253" height="9566.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add memorable to your Visheo — please allow Visheo to access your photos when prompted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-CT-UNf">
-                                        <rect key="frame" x="0.0" y="42" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="9608.5" width="253" height="25584.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-vf-rCc">
-                                        <rect key="frame" x="0.0" y="84" width="0.0" height="60"/>
+                                        <rect key="frame" x="0.0" y="35235" width="253" height="60"/>
                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ss-oF-nBH"/>
