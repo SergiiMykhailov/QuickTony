@@ -33,12 +33,10 @@
 			</array>
 		</dict>
 	</array>
-	<key>CFBundleVersion</key>
-	<string>28</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>f9edfee36e59c3f16c7050739bbfeb28125f15d9</string>
+		<string>c5b9501895284dd13b806ac41d0d0569f04dfcae</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -49,6 +47,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>CFBundleVersion</key>
+	<string>34</string>
 	<key>FacebookAppID</key>
 	<string>202069387030963</string>
 	<key>FacebookDisplayName</key>
