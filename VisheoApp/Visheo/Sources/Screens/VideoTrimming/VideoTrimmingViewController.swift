@@ -14,18 +14,13 @@ import MBProgressHUD
 class VideoTrimmingViewController: UIViewController {
 
     @IBOutlet weak var trimmingView: TrimmerView!
-    @IBOutlet weak var videoContainer: UIView!
+    @IBOutlet weak var videoContainer: VideoView!
     @IBOutlet weak var playButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layer = viewModel.createPlayerLayer()
-        layer.backgroundColor = UIColor.white.cgColor
-        layer.frame = CGRect(x: 0, y: 0, width: videoContainer.frame.width, height: videoContainer.frame.height)
-        
-        videoContainer.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
-        videoContainer.layer.addSublayer(layer)
+		videoContainer.player = viewModel.player;
         
         viewModel.playbackTimeChanged = {[weak self] in
             self?.trimmingView.seek(to: $0)
@@ -53,13 +48,7 @@ class VideoTrimmingViewController: UIViewController {
         }
         
         viewModel.assetsChanged = {[weak self] in
-            if let layer = self?.viewModel.createPlayerLayer() {
-                layer.backgroundColor = UIColor.white.cgColor
-                layer.frame = CGRect(x: 0, y: 0, width: self?.videoContainer.frame.width ?? 0, height: self?.videoContainer.frame.height ?? 0)
-                
-                self?.videoContainer.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
-                self?.videoContainer.layer.addSublayer(layer)
-            }
+			self?.videoContainer.player = self?.viewModel.player;
         }
     }
     

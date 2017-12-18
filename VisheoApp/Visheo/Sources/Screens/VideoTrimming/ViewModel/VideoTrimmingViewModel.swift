@@ -16,7 +16,7 @@ enum PlaybackStatus {
 
 protocol VideoTrimmingViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func togglePlayback()
-    func createPlayerLayer() -> CALayer
+	var player: AVPlayer? { get }
     func setup(trimmerView: TrimmerView)
     
     var assetsChanged : (()->())? {get set}
@@ -45,7 +45,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     var playbackTimeChanged: ((CMTime) -> ())?
     
     weak var router: VideoTrimmingRouter?
-    private var player : AVPlayer!
+    private (set) var player : AVPlayer?
     private var assets : VisheoRenderingAssets!
     private var playerAsset : AVAsset!
     private var playbackTimeCheckerTimer: Timer?
@@ -81,14 +81,14 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     }
     
     func goBack() {
-		player.pause()
+		player?.pause()
 		stopPlaybackTimeChecker()
 		
         router?.goBackToPhotos()
     }
     
     func retakeVideo() {
-        player.pause()
+		player?.pause()
         stopPlaybackTimeChecker()
         
         if editMode {
@@ -105,6 +105,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     }
     
     func togglePlayback() {
+		guard let `player` = self.player else { return }
         if !player.isPlaying {
             player.play()
             playbackStatusChanged?(.playing)
@@ -131,7 +132,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
                 self.showProgressCallback?(false)
                 if success {
                     self.assets.replaceVideoWithTrimmed()
-                    self.player.pause()
+					self.player?.pause()
 					self.stopPlaybackTimeChecker();
 					
                     if self.editMode {
@@ -161,11 +162,12 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     @objc func itemDidFinishPlaying(_ notification: Notification) {
         playbackStatusChanged?(.paused)
         if let startTime = self.startTime {
-            player.seek(to: startTime)
+			player?.seek(to: startTime)
         }
     }
     
     @objc func onPlaybackTimeChecker() {
+		guard let `player` = self.player else { return }
         let playBackTime = player.currentTime()
         playbackTimeChanged?(playBackTime)
 
@@ -174,7 +176,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
         }
         
         if playBackTime >= endTime {
-            player.seek(to: startTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+			player.seek(to: startTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
             playbackTimeChanged?(startTime)
         }
     }
@@ -184,15 +186,15 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
         self.endTime = endTime
         
         if !stopMoving {
-            player.pause()
+			player?.pause()
             playbackStatusChanged?(.paused)
             stopPlaybackTimeChecker()
         }
         if let currentTime = time {
-            player.seek(to: currentTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+			player?.seek(to: currentTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
         }
         if stopMoving {
-            player.play()
+			player?.play()
             playbackStatusChanged?(.playing)
             startPlaybackTimeChecker()
         }
