@@ -42,6 +42,7 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     let occasion : OccasionRecord
     let permissionsService : AppPermissionsService
 	let soundtracksService: SoundtracksService
+	let loggingService: EventLoggingService;
     let assets: VisheoRenderingAssets
     let editMode : Bool
     
@@ -49,11 +50,13 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
 		 assets: VisheoRenderingAssets,
 		 permissionsService: AppPermissionsService,
 		 soundtracksService: SoundtracksService,
+		 loggingService: EventLoggingService,
 		 editMode: Bool = false)
 	{
         self.occasion = occasion
         self.permissionsService = permissionsService
 		self.soundtracksService = soundtracksService
+		self.loggingService = loggingService;
         self.assets = assets
         self.editMode = editMode
         
@@ -89,7 +92,10 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
         }
     }
     
-    func navigateFurther(with assets: VisheoRenderingAssets) {
+    func navigateFurther(with assets: VisheoRenderingAssets)
+	{
+		loggingService.log(event: CoverSelectedEvent(), id: assets.creationInfo.visheoId);
+		
         if editMode {
             router?.goBack(wit: assets)
             return

@@ -50,15 +50,18 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     let assets: VisheoRenderingAssets
     let permissionsService: AppPermissionsService
 	let appStateService: AppStateService
+	let loggingService: EventLoggingService
     let editMode : Bool
     
 	init(assets: VisheoRenderingAssets,
 		 permissionsService: AppPermissionsService,
 		 appStateService: AppStateService,
+		 loggingService: EventLoggingService,
 		 editMode: Bool = false) {
         self.assets = assets
         self.permissionsService = permissionsService
 		self.appStateService = appStateService;
+		self.loggingService = loggingService;
         selectedPhotos = assets.photosLocalIds
         self.editMode = editMode
     }
@@ -81,6 +84,7 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     func skipPhotos() {
         assets.removePhotos()
         showVideoScreen(with: assets)
+		loggingService.log(event: PhotosSkippedEvent(), id: assets.creationInfo.visheoId)
     }
     
     func proceed() {
@@ -88,6 +92,7 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
         loadAssets {
             self.showProgressCallback?(false)
             self.showVideoScreen(with: self.assets)
+			self.loggingService.log(event: PhotosSelectedEvent(count: self.selectedPhotos.count), id: self.assets.creationInfo.visheoId)
         }
     }
     

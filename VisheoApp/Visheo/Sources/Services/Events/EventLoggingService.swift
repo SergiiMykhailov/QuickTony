@@ -12,12 +12,15 @@ import Firebase
 protocol EventLoggingService: class {
 	func log(event: EventRepresenting)
 	func log(events: [EventRepresenting])
+	func log(event: EventRepresenting, id: String)
 }
 
 
 class VisheoEventLoggingService: EventLoggingService
 {
 	private let formatter: DateFormatter;
+	
+	private var events: [ String : [EventRepresenting] ] = [:]
 	
 	init() {
 		formatter = DateFormatter()
@@ -39,6 +42,21 @@ class VisheoEventLoggingService: EventLoggingService
 		if event.logToAnalytics {
 			logToAnalytics(event: event);
 		}
+	}
+	
+	func log(event: EventRepresenting, id: String) {
+		var logged: [EventRepresenting] = []
+		if let existing = events[id] {
+			logged = existing;
+		}
+		
+		if logged.contains(where: { $0.type == event.type }) {
+			return;
+		}
+		
+		logged.append(event);
+		events[id] = logged;
+		log(event: event)
 	}
 	
 	

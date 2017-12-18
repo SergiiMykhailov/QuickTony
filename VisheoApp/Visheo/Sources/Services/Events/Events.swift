@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 enum EventType: String {
 	case userRegistered = "user_registered"
 	case regularCardSent = "regular_card_sent"
@@ -19,6 +18,12 @@ enum EventType: String {
 	case reminderSet = "remind_later"
 	case linkCopied = "link_copied"
 	case linkShared = "visheo_shared"
+	case coverSelected = "cover_selected"
+	case photosSelected = "selected_photos"
+	case photosSkipped = "skipped_photos"
+	case reachedPreview = "reached_preview_screen"
+	case soundtrackChanged = "soundtrack_changed"
+	case retakeVideo = "retake_video"
 }
 
 protocol EventRepresenting {
@@ -40,7 +45,6 @@ extension EventRepresenting {
 	
 }
 
-
 struct RegistrationEvent: EventRepresenting {
 	let userId: String;
 	let provider: String;
@@ -55,7 +59,6 @@ struct RegistrationEvent: EventRepresenting {
 	}
 }
 
-
 struct CardSentEvent: EventRepresenting {
 	let isPremium: Bool
 	
@@ -63,7 +66,6 @@ struct CardSentEvent: EventRepresenting {
 		return isPremium ? .premiumCardSent : .regularCardSent
 	}
 }
-
 
 struct BundlePurchaseEvent: EventRepresenting {
 	let userId: String;
@@ -96,7 +98,6 @@ struct BundlePurchaseEvent: EventRepresenting {
 	}
 }
 
-
 struct CouponRedeemedEvent: EventRepresenting {
 	var type: EventType {
 		return .couponRedeemed;
@@ -109,7 +110,6 @@ struct ReminderEvent: EventRepresenting {
 	}
 }
 
-
 struct VisheoURLCopiedEvent: EventRepresenting {
 	var type: EventType {
 		return .linkCopied;
@@ -119,5 +119,47 @@ struct VisheoURLCopiedEvent: EventRepresenting {
 struct VisheoSharedEvent: EventRepresenting {
 	var type: EventType {
 		return .linkShared;
+	}
+}
+
+struct CoverSelectedEvent: EventRepresenting {
+	var type: EventType {
+		return .coverSelected;
+	}
+}
+
+struct PhotosSelectedEvent: EventRepresenting {
+	let count: Int
+	
+	var type: EventType {
+		return .photosSelected;
+	}
+	
+	var analyticsInfo: [String : Any]? {
+		return [ "count" : count ]
+	}
+}
+
+struct PhotosSkippedEvent: EventRepresenting {
+	var type: EventType {
+		return .photosSkipped;
+	}
+}
+
+struct ReachedPreviewEvent: EventRepresenting {
+	var type: EventType {
+		return .reachedPreview;
+	}
+}
+
+struct SoundtrackChangedEvent: EventRepresenting {
+	var type: EventType {
+		return .soundtrackChanged;
+	}
+}
+
+struct RetakeVideoEvent: EventRepresenting {
+	var type: EventType {
+		return .retakeVideo;
 	}
 }

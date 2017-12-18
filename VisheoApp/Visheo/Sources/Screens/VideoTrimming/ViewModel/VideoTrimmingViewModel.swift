@@ -49,14 +49,16 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     private var assets : VisheoRenderingAssets!
     private var playerAsset : AVAsset!
     private var playbackTimeCheckerTimer: Timer?
+	private let loggingService: EventLoggingService;
     
     private var startTime : CMTime?
     private var endTime : CMTime?
     
     private let editMode: Bool
     
-    init(assets: VisheoRenderingAssets, editMode: Bool) {
+	init(assets: VisheoRenderingAssets, loggingService: EventLoggingService, editMode: Bool) {
         self.editMode = editMode
+		self.loggingService = loggingService;
         
         update(with: assets)
     }
@@ -90,7 +92,9 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     func retakeVideo() {
 		player?.pause()
         stopPlaybackTimeChecker()
-        
+		
+		loggingService.log(event: RetakeVideoEvent(), id: assets.creationInfo.visheoId);
+		
         if editMode {
             router?.showRetake(with: assets)
         } else {
@@ -138,6 +142,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
                     if self.editMode {
                         self.router?.goBackFromEdit(with: self.assets)
                     } else {
+						self.loggingService.log(event: ReachedPreviewEvent(), id: self.assets.creationInfo.visheoId);
                         self.router?.showPreview(with: self.assets)
                     }
                 } else {

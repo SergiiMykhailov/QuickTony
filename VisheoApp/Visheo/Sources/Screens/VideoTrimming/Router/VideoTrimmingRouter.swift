@@ -35,7 +35,7 @@ class VisheoVideoTrimmingRouter : VideoTrimmingRouter {
     }
     
     func start(with viewController: VideoTrimmingViewController, editMode: Bool = false) {
-        let vm = VisheoVideoTrimmingViewModel(assets: assets, editMode: editMode)
+		let vm = VisheoVideoTrimmingViewModel(assets: assets, loggingService: dependencies.loggingService, editMode: editMode)
         viewModel = vm
         vm.router = self
         self.controller = viewController
