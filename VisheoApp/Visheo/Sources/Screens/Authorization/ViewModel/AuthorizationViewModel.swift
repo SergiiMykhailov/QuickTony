@@ -8,6 +8,13 @@
 
 import UIKit
 
+
+enum AuthorizationReason {
+	case none
+	case premiumCards
+	case redeemCoupons
+}
+
 protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func loginWithGoogle()
     func loginWithFacebook()
@@ -28,27 +35,31 @@ protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerat
 
 class VisheoAutorizationViewModel : AuthorizationViewModel {
     var cancelAllowed: Bool {
-        return authForBuyingPremium
+        return authReason != .none
     }
     
     var descriptionString: String? {
-        if authForBuyingPremium {
-            return NSLocalizedString("Please sign in to purchase premium cards", comment: "Please sign in to purchase premium cards")
-        }
-        return nil
+		switch authReason {
+			case .premiumCards:
+				return NSLocalizedString("Please sign in to purchase premium cards", comment: "Please sign in to purchase premium cards")
+			case .redeemCoupons:
+				return NSLocalizedString("Please sign in to redeem coupons", comment: "Please sign in to redeem coupons")
+			default:
+				return nil
+		}
     }
     
     var warningAlertHandler: ((String) -> ())?
     var getPresentationViewController: (() -> (UIViewController?))?
     var showProgressCallback: ((Bool) -> ())?
     let anonymousAllowed : Bool
-    private let authForBuyingPremium : Bool
+	private let authReason : AuthorizationReason;
     
     weak var router: AuthorizationRouter?
     var authService : AuthorizationService
     
-    init(authService: AuthorizationService, anonymousAllowed: Bool, authForBuyingPremium: Bool) {
-        self.authForBuyingPremium = authForBuyingPremium
+	init(authService: AuthorizationService, anonymousAllowed: Bool, authReason: AuthorizationReason) {
+		self.authReason = authReason
         self.authService = authService
         self.anonymousAllowed = anonymousAllowed
     }

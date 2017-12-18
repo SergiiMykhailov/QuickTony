@@ -81,12 +81,16 @@ class VisheoMenuViewModel : MenuViewModel {
             router?.showAccount()
         case .premiumCards:
             if userInfo.isAnonymous {
-                router?.showRegistration()
+				router?.showRegistration(with: .premiumCards);
             } else {
                 router?.showPremiumCards()
             }
         case .redeem:
-            router?.showCoupons()
+			if userInfo.isAnonymous {
+				router?.showRegistration(with: .redeemCoupons);
+			} else {
+				router?.showCoupons()
+			}
         default:
             break;
         }

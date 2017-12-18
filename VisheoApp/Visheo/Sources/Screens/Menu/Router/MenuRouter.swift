@@ -16,7 +16,7 @@ protocol MenuRouter: FlowRouter {
     func showCoupons()
     func showVisheoScreen(with record: VisheoRecord)
     
-    func showRegistration()
+	func showRegistration(with reason: AuthorizationReason)
 }
 
 class VisheoMenuRouter : MenuRouter {
@@ -51,14 +51,14 @@ class VisheoMenuRouter : MenuRouter {
             let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) {
                 self.controller?.dismiss(animated: true, completion: nil)
             }
-            authRouter.start(with: authController, anonymousAllowed: false, authForPremium: true)
+			authRouter.start(with: authController, anonymousAllowed: false, authReason: sender as! AuthorizationReason)
         }
     }
 }
 
 extension VisheoMenuRouter {
-    func showRegistration() {
-        controller?.performSegue(SegueList.showRegistration, sender: nil)
+	func showRegistration(with reason: AuthorizationReason) {
+        controller?.performSegue(SegueList.showRegistration, sender: reason)
     }
     
     func showCreateVisheo() {

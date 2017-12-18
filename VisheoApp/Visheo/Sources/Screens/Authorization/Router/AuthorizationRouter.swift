@@ -33,8 +33,10 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
         self.finishAuthCallback = finishCallback
     }
     
-    func start(with viewController: AuthorizationViewController, anonymousAllowed: Bool = true, authForPremium : Bool = false) {
-        let vm = VisheoAutorizationViewModel(authService: dependencies.authorizationService, anonymousAllowed: anonymousAllowed, authForBuyingPremium : authForPremium)
+	func start(with viewController: AuthorizationViewController, anonymousAllowed: Bool = true, authReason: AuthorizationReason = .none) {
+		let vm = VisheoAutorizationViewModel(authService: dependencies.authorizationService,
+											 anonymousAllowed: anonymousAllowed,
+											 authReason : authReason)
         viewModel = vm
         vm.router = self
         self.controller = viewController
