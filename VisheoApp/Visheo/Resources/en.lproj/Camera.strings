@@ -1,0 +1,33 @@
+/* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "Cbl-tb-5X6"; */
+"Cbl-tb-5X6.normalTitle" = "Allow Access";
+
+/* Class = "UILabel"; text = "REC"; ObjectID = "Ct7-4F-cZX"; */
+"Ct7-4F-cZX.text" = "REC";
+
+/* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "LNN-dW-DoG"; */
+"LNN-dW-DoG.title" = "RECORD YOUR VIDEO WISH";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "MjJ-FK-D1Y"; */
+"MjJ-FK-D1Y.text" = "3";
+
+/* Class = "UILabel"; text = "To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted"; ObjectID = "MqL-i9-Wr9"; */
+"MqL-i9-Wr9.text" = "To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted";
+
+/* Class = "UILabel"; text = "Please rotate your device to portrait orientation"; ObjectID = "Srt-Bl-ce3"; */
+"Srt-Bl-ce3.text" = "Please rotate your device to portrait orientation";
+
+/* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "a5t-vd-l66"; */
+"a5t-vd-l66.title" = "RECORD YOUR VIDEO WISH";
+
+/* Class = "UIButton"; normalTitle = "Video Wish is Ready"; ObjectID = "agg-W8-Ax4"; */
+"agg-W8-Ax4.normalTitle" = "Video Wish is Ready";
+
+/* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "crN-cW-0Hk"; */
+"crN-cW-0Hk.title" = "RECORD YOUR VIDEO WISH";
+
+/* Class = "UIButton"; normalTitle = "Retake"; ObjectID = "vfD-hc-yMF"; */
+"vfD-hc-yMF.normalTitle" = "Retake";
+
+/* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE"; ObjectID = "xJk-8Q-bOw"; */
+"xJk-8Q-bOw.text" = "VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE";
+

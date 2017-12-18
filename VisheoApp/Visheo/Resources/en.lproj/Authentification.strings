@@ -1,0 +1,42 @@
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "4EP-vQ-Br3"; */
+"4EP-vQ-Br3.normalTitle" = "Sign Up";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "4nH-Z0-s0h"; */
+"4nH-Z0-s0h.placeholder" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Start without registration"; ObjectID = "6Cl-C3-lQA"; */
+"6Cl-C3-lQA.normalTitle" = "Start without registration";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "9bL-la-G7W"; */
+"9bL-la-G7W.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "BdO-Th-6Gy"; */
+"BdO-Th-6Gy.normalTitle" = "Sign In";
+
+/* Class = "UILabel"; text = "SIGN UP TO SEND YOUR VISHEO"; ObjectID = "FjM-eg-F0v"; */
+"FjM-eg-F0v.text" = "SIGN UP TO SEND YOUR VISHEO";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "KVg-yg-pIL"; */
+"KVg-yg-pIL.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Google"; ObjectID = "RYC-xN-UXT"; */
+"RYC-xN-UXT.text" = "Google";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "e1y-Z2-ZWy"; */
+"e1y-Z2-ZWy.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Sign in with"; ObjectID = "fxr-0m-Cd1"; */
+"fxr-0m-Cd1.text" = "Sign in with";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "jl6-ol-O6v"; */
+"jl6-ol-O6v.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Facebook"; ObjectID = "lEG-HI-xW5"; */
+"lEG-HI-xW5.text" = "Facebook";
+
+/* Class = "UIButton"; normalTitle = "Forgot password?"; ObjectID = "pv7-Ny-DeB"; */
+"pv7-Ny-DeB.normalTitle" = "Forgot password?";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "u3o-OS-bko"; */
+"u3o-OS-bko.normalTitle" = "Close";
+

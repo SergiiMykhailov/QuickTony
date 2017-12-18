@@ -1,0 +1,60 @@
+/* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "0hK-vf-rCc"; */
+"0hK-vf-rCc.normalTitle" = "Allow Access";
+
+/* Class = "UIButton"; normalTitle = "Elizabeth Burman"; ObjectID = "1UP-AB-86s"; */
+"1UP-AB-86s.normalTitle" = "Elizabeth Burman";
+
+/* Class = "UIBarButtonItem"; title = "Skip"; ObjectID = "3e4-SB-Y6h"; */
+"3e4-SB-Y6h.title" = "Skip";
+
+/* Class = "UIButton"; normalTitle = "I like this Cover"; ObjectID = "5Wj-Y4-Mkt"; */
+"5Wj-Y4-Mkt.normalTitle" = "I like this Cover";
+
+/* Class = "UILabel"; text = "Create Visheo to deliver your care to your dear ones"; ObjectID = "7wf-9j-KvF"; */
+"7wf-9j-KvF.text" = "Create Visheo to deliver your care to your dear ones";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8xJ-4v-USr"; */
+"8xJ-4v-USr.text" = "Label";
+
+/* Class = "UILabel"; text = "Congratulations on occasion"; ObjectID = "DaM-G6-XCX"; */
+"DaM-G6-XCX.text" = "Special & Everyday Occasions";
+
+/* Class = "UILabel"; text = "23rd of November"; ObjectID = "Fkg-P7-EP7"; */
+"Fkg-P7-EP7.text" = "23rd of November";
+
+/* Class = "UINavigationItem"; title = "SELECT COVER"; ObjectID = "Kjn-mm-pFO"; */
+"Kjn-mm-pFO.title" = "SELECT COVER";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Nq2-vC-p50"; */
+"Nq2-vC-p50.text" = "Label";
+
+/* Class = "UILabel"; text = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted"; ObjectID = "QQ4-CT-UNf"; */
+"QQ4-CT-UNf.text" = "To add pictures to your Visheo - please allow the application to access your camera roll";
+
+/* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "TbV-zh-dIQ"; */
+"TbV-zh-dIQ.title" = "CAMERA ROLL";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VUs-tX-owo"; */
+"VUs-tX-owo.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Create Visheo Card"; ObjectID = "aH8-5u-Q2F"; */
+"aH8-5u-Q2F.normalTitle" = "Create Visheo Card";
+
+/* Class = "UINavigationItem"; title = "VISHEO BOX"; ObjectID = "dEI-6J-amM"; */
+"dEI-6J-amM.title" = "VISHEO BOX";
+
+/* Class = "UINavigationItem"; title = "CHOOSE OCCASION"; ObjectID = "hjY-Tq-5Fw"; */
+"hjY-Tq-5Fw.title" = "CHOOSE OCCASION";
+
+/* Class = "UILabel"; text = "You have no Visheo cards yet"; ObjectID = "tMl-ow-MWp"; */
+"tMl-ow-MWp.text" = "You have no Visheo cards yet";
+
+/* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "vhb-wR-qwm"; */
+"vhb-wR-qwm.title" = "CAMERA ROLL";
+
+/* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR PHOTOS"; ObjectID = "xF6-PL-lMo"; */
+"xF6-PL-lMo.text" = "VISHEO NEEDS ACCESS TO YOUR PHOTOS";
+
+/* Class = "UIBarButtonItem"; title = "Skip"; ObjectID = "yI4-Lp-Ujp"; */
+"yI4-Lp-Ujp.title" = "Skip";
+

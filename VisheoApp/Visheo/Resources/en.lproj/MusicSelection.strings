@@ -1,0 +1,12 @@
+/* Class = "UIViewController"; title = "Music editing"; ObjectID = "c4K-87-594"; */
+"c4K-87-594.title" = "Music editing";
+
+/* Class = "UILabel"; text = "No Music"; ObjectID = "c39-Qt-AmW"; */
+"c39-Qt-AmW.text" = "No Music";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "da4-Ea-DIA"; */
+"da4-Ea-DIA.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Use this Music"; ObjectID = "lqe-2s-bhS"; */
+"lqe-2s-bhS.normalTitle" = "Use this Music";
+

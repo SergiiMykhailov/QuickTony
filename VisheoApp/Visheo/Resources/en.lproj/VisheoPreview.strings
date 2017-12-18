@@ -1,0 +1,33 @@
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "BoA-F2-OsI"; */
+"BoA-F2-OsI.normalTitle" = "Copy";
+
+/* Class = "UISegmentedControl"; LYL-aZ-IVe.segmentTitles[0] = "Send Now"; ObjectID = "LYL-aZ-IVe"; */
+"LYL-aZ-IVe.segmentTitles[0]" = "Send Now";
+
+/* Class = "UISegmentedControl"; LYL-aZ-IVe.segmentTitles[1] = "Send Later"; ObjectID = "LYL-aZ-IVe"; */
+"LYL-aZ-IVe.segmentTitles[1]" = "Send Later";
+
+/* Class = "UILabel"; text = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud"; ObjectID = "MJA-sA-jJz"; */
+"MJA-sA-jJz.text" = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud";
+
+/* Class = "UIButton"; normalTitle = "Share Visheo Card"; ObjectID = "TuK-eZ-TXQ"; */
+"TuK-eZ-TXQ.normalTitle" = "Share Visheo Card";
+
+/* Class = "UIButton"; normalTitle = "Send your Visheo"; ObjectID = "Y5n-Gj-tF4"; */
+"Y5n-Gj-tF4.normalTitle" = "Send your Visheo";
+
+/* Class = "UINavigationItem"; title = "PREVIEW VISHEO"; ObjectID = "es6-uU-TqK"; */
+"es6-uU-TqK.title" = "PREVIEW VISHEO";
+
+/* Class = "UINavigationItem"; title = "SHARE YOUR VISHEO"; ObjectID = "gn6-b8-TgL"; */
+"gn6-b8-TgL.title" = "SHARE YOUR VISHEO";
+
+/* Class = "UIButton"; normalTitle = "Remind Me"; ObjectID = "nzZ-Ya-jRK"; */
+"nzZ-Ya-jRK.normalTitle" = "Remind Me";
+
+/* Class = "UILabel"; text = "Rendering Preview..."; ObjectID = "oZJ-WX-PI0"; */
+"oZJ-WX-PI0.text" = "Rendering Preview...";
+
+/* Class = "UILabel"; text = "Set a reminder to share your Visheo in future"; ObjectID = "uG6-eF-HPq"; */
+"uG6-eF-HPq.text" = "Set a reminder to share your Visheo in future";
+

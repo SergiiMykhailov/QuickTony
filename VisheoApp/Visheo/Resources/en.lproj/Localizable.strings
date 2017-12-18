@@ -1,7 +1,220 @@
-/* 
-  Localizable.strings
-  Visheo
+/* Premium cards price part template */
+" for %@" = " for %@";
 
-  Created by Petro Kolesnikov on 11/17/17.
-  Copyright © 2017 Olearis. All rights reserved.
-*/
+/* redeem success description */
+"%d premium card(s) added to your account" = "%d premium card(s) added to your account";
+
+/* Processing video error text */
+"An error occured while processing video" = "An error occured while processing video";
+
+/* Error while deleting account text messaage */
+"An error occurred while deleting account" = "An error occurred while deleting account";
+
+/* Error while deleting account text messaage */
+"An error occurred while renaming" = "An error occurred while renaming";
+
+/* Error while sign out text messaage */
+"An error occurred while signing out" = "An error occurred while signing out";
+
+/* Visheo deletion confirmation */
+"Are you sure you want to delete this Visheo? It will be deleted forever." = "Are you sure you want to delete this Visheo? It will be deleted forever.";
+
+/* Cancel
+   Cancel button
+   Cancel text */
+"Cancel" = "Cancel";
+
+/* Confirm button text */
+"Confirm" = "Confirm";
+
+/* Contact us menu item */
+"Contact us" = "Contact us";
+
+/* Invalid coupon code error */
+"Coupon with this code does not exist. Please check if you entered the code right." = "Coupon with this code does not exist. Please check if you entered the code right.";
+
+/* No comment provided by engineer. */
+"Download failed" = "Download failed";
+
+/* No comment provided by engineer. */
+"Downloading the Music for Visheo" = "Downloading the Music for Visheo";
+
+/* forgot password alert email field placeholder */
+"Email" = "Email";
+
+/* Missing email warning */
+"Email is mandatory field" = "Email is mandatory field";
+
+/* Missing coupon code */
+"Enter coupon code" = "Enter coupon code";
+
+/* Eroro alert title */
+"Error" = "Error";
+
+/* New video recording notification text */
+"Existing video wish will be replaced with the new one" = "Existing video wish will be replaced with the new one";
+
+/* Failed to load purchases from iTunes store message text */
+"Failed to load purchases info" = "Failed to load purchases info";
+
+/* Failed to purchase bundle */
+"Failed to purchase cards bundle" = "Failed to purchase cards bundle";
+
+/* forgot password alert title */
+"Forgot your password?" = "Forgot your password?";
+
+/* Guest user title */
+"Guest" = "Guest";
+
+/* Invalid email warning */
+"It does not look like a proper email" = "It does not look like a proper email";
+
+/* Confirm account deletion alert button */
+"Login" = "Login";
+
+/* My Account menu item */
+"My Account" = "My Account";
+
+/* Missing name warning */
+"Name is mandatory field" = "Name is mandatory field";
+
+/* New visheo menu item */
+"New Visheo" = "New Visheo";
+
+/* No Music sountrack cell title */
+"No Music" = "No Music";
+
+/* Notification alert title */
+"Notification" = "Notification";
+
+/* OK, Сontinue button text */
+"OK, Сontinue" = "OK, Сontinue";
+
+/* Ok */
+"Ok" = "Ok";
+
+/* Failed to save visheo to gallery text
+   Failed to set reminder */
+"Oops... Something went wrong." = "Oops... Something went wrong.";
+
+/* error using premium card title */
+"Oops…" = "Oops…";
+
+/* Unknown error redeeming coupon */
+"Oops… Something went wrong." = "Oops… Something went wrong.";
+
+/* No comment provided by engineer. */
+"Open Settings" = "Open Settings";
+
+/* Invalid password warning */
+"Password should be at least 6 symbols" = "Password should be at least 6 symbols";
+
+/* Failed to set reminder */
+"Please enable notifications in device settings." = "Please enable notifications in device settings.";
+
+/* Forgot password alert message text */
+"Please enter your email address. You will receive a link to create a new password via email." = "Please enter your email address. You will receive a link to create a new password via email.";
+
+/* Required name */
+"Please enter your name" = "Please enter your name";
+
+/* Please sign in to purchase premium cards */
+"Please sign in to purchase premium cards" = "Please sign in to purchase premium cards";
+
+/* Premium Cards menu item */
+"Premium Cards" = "Premium Cards";
+
+/* Confirm account deletion alert button */
+"Proceed" = "Proceed";
+
+/* No comment provided by engineer. */
+"Proceed with %d Photo(s)" = "Proceed with %d Photo(s)";
+
+/* Redeem coupon menu item */
+"Redeem coupon" = "Redeem coupon";
+
+/* Successfully set reminder to share visheo */
+"Reminder was set." = "Reminder was set.";
+
+/* Render visheo error */
+"Render error. Retry?" = "Render error. Retry?";
+
+/* required field alert title */
+"Required Field" = "Required Field";
+
+/* Reset passwod link was sent sent message text */
+"Reset password link was sent." = "Reset password link was sent.";
+
+/* Retry visheo upload/render */
+"Retry" = "Retry";
+
+/* Send reset password email button */
+"Send" = "Send";
+
+/* something went wrong while suing premium card */
+"Something went wrong. Please check your Internet connection and try again." = "Something went wrong. Please check your Internet connection and try again.";
+
+/* Success title */
+"Success" = "Success";
+
+/* Purcahse pending due to parental control alert text */
+"Thank you! You can continue to use Visheo while your purchase is pending an approval from your parent." = "Thank you! You can continue to use Visheo while your purchase is pending an approval from your parent.";
+
+/* Coupon already redeemed error */
+"This coupon has been redeemed already." = "This coupon has been redeemed already.";
+
+/* Coupon expired error */
+"This coupon has expired." = "This coupon has expired.";
+
+/* Coupon limit exceeeded */
+"This coupon has reached maximum number of allowed redeems." = "This coupon has reached maximum number of allowed redeems.";
+
+/* Delete account relogin alert message */
+"This operation is sensitive and requires recent authentication. Log in again before retrying this request." = "This operation is sensitive and requires recent authentication. Log in again before retrying this request.";
+
+/* Try again button text */
+"Try Again" = "Try Again";
+
+/* Try Later visheo upload/render */
+"Try Later" = "Try Later";
+
+/* Upload visheo error */
+"Upload error. Retry?" = "Upload error. Retry?";
+
+/* USername change success */
+"User name changed successfully" = "User name changed successfully";
+
+/* Visheo Box menu item */
+"Visheo Box" = "Visheo Box";
+
+/* Visheo link was copied to clipboard message */
+"Visheo link was copied" = "Visheo link was copied";
+
+/* Waiting For Approval alert title */
+"Waiting For Approval" = "Waiting For Approval";
+
+/* warning title
+   Warning title */
+"Warning" = "Warning";
+
+/* rendering visheo progress title */
+"We are rendering your Visheo" = "We are rendering your Visheo";
+
+/* uploading visheo progress title */
+"We are uploading your Visheo" = "We are uploading your Visheo";
+
+/* Visheo deletion confirm text */
+"YES, Delete it" = "YES, Delete it";
+
+/* No internet connection */
+"You seem to have lost Internet connection" = "You seem to have lost Internet connection";
+
+/* Confirm account deletion alert message */
+"Your account with all the data will be deleted without possiblity to restore. Proceed?" = "Your account with all the data will be deleted without possiblity to restore. Proceed?";
+
+/* 480 p confirmation */
+"Your video will be rendered in 480p resolution." = "Your video will be rendered in 480p resolution.";
+
+/* Successfully save visheo to gallery text */
+"Your visheo was saved to the gallery." = "Your visheo was saved to the gallery.";
+

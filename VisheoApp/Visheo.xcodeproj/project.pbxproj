@@ -32,6 +32,7 @@
 		92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
 		92A8D30E1FC86E86001E194D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
 		92AA3CFE1FD06D5900E3C95A /* SoundtracksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */; };
+		92AD73011FE7DCEA0043B4A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */; };
 		92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */; };
 		92C006631FC0B4AC000AFD4E /* CameraPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */; };
 		92C006651FC0B4BE000AFD4E /* CameraPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */; };
@@ -231,6 +232,17 @@
 		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
 		92A8D30C1FC86E86001E194D /* blank.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank.m4v; sourceTree = "<group>"; };
 		92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtracksService.swift; sourceTree = "<group>"; };
+		92AD72FA1FE7DCE90043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		92AD72FD1FE7DCE90043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CameraTips.strings; sourceTree = "<group>"; };
+		92AD72FE1FE7DCEA0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MusicSelection.strings; sourceTree = "<group>"; };
+		92AD73021FE7DCEA0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		92AD73041FE7DCEA0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Purchases.strings; sourceTree = "<group>"; };
+		92AD73051FE7DCEA0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Camera.strings; sourceTree = "<group>"; };
+		92AD73061FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Authentification.strings; sourceTree = "<group>"; };
+		92AD73071FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VisheoPreview.strings; sourceTree = "<group>"; };
+		92AD73081FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Account.strings; sourceTree = "<group>"; };
+		92AD73091FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchProxy.strings; sourceTree = "<group>"; };
+		92AD730A1FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewModel.swift; sourceTree = "<group>"; };
 		92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsRouter.swift; sourceTree = "<group>"; };
 		92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewController.swift; sourceTree = "<group>"; };
@@ -802,6 +814,7 @@
 		B4B9D1981FA8A52300CBD7DB /* Visheo */ = {
 			isa = PBXGroup;
 			children = (
+				92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */,
 				B48AAAB91FA9E58F000BB33B /* Resources */,
 				B48AAAB41FA9E574000BB33B /* Sources */,
 				B4B9D1A51FA8A52300CBD7DB /* Info.plist */,
@@ -1172,6 +1185,7 @@
 				B46528131FC34A0F0070FFB7 /* VisheoPreview.storyboard in Resources */,
 				92A8D30E1FC86E86001E194D /* blank.m4v in Resources */,
 				B48AAAC81FA9E650000BB33B /* Roboto-Medium.ttf in Resources */,
+				92AD73011FE7DCEA0043B4A1 /* InfoPlist.strings in Resources */,
 				B40447C91FD8030A00CD87BA /* Purchases.storyboard in Resources */,
 				B43163811FBF480A00135B70 /* Localizable.strings in Resources */,
 				92ED8EEB1FDA946D00EBB15E /* default_outro.mov in Resources */,
@@ -1444,14 +1458,24 @@
 			isa = PBXVariantGroup;
 			children = (
 				9201B2E01FE284C700FAC820 /* Base */,
+				92AD72FE1FE7DCEA0043B4A1 /* en */,
 			);
 			name = MusicSelection.storyboard;
+			sourceTree = "<group>";
+		};
+		92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92AD73021FE7DCEA0043B4A1 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				92DEDBAF1FC0598400C7FBB1 /* Base */,
+				92AD73051FE7DCEA0043B4A1 /* en */,
 			);
 			name = Camera.storyboard;
 			sourceTree = "<group>";
@@ -1460,6 +1484,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				92DEDBB21FC0599100C7FBB1 /* Base */,
+				92AD72FD1FE7DCE90043B4A1 /* en */,
 			);
 			name = CameraTips.xib;
 			sourceTree = "<group>";
@@ -1468,6 +1493,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B40447C81FD8030A00CD87BA /* Base */,
+				92AD73041FE7DCEA0043B4A1 /* en */,
 			);
 			name = Purchases.storyboard;
 			sourceTree = "<group>";
@@ -1492,6 +1518,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B46528121FC34A0F0070FFB7 /* Base */,
+				92AD73071FE7DCEB0043B4A1 /* en */,
 			);
 			name = VisheoPreview.storyboard;
 			sourceTree = "<group>";
@@ -1500,6 +1527,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B4775FFE1FD57EAA00A02BEF /* Base */,
+				92AD73081FE7DCEB0043B4A1 /* en */,
 			);
 			name = Account.storyboard;
 			sourceTree = "<group>";
@@ -1508,6 +1536,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B48AAABC1FA9E58F000BB33B /* Base */,
+				92AD730A1FE7DCEB0043B4A1 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1516,6 +1545,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B48AAABE1FA9E58F000BB33B /* Base */,
+				92AD73091FE7DCEB0043B4A1 /* en */,
 			);
 			name = LaunchProxy.storyboard;
 			sourceTree = "<group>";
@@ -1524,6 +1554,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B4A79CF01FAC927200C208CF /* Base */,
+				92AD72FA1FE7DCE90043B4A1 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1532,6 +1563,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B4CFB7701FAB4A7900D6E73A /* Base */,
+				92AD73061FE7DCEB0043B4A1 /* en */,
 			);
 			name = Authentification.storyboard;
 			sourceTree = "<group>";

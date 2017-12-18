@@ -1,0 +1,21 @@
+/* Class = "UINavigationItem"; title = "MY ACCOUNT"; ObjectID = "Huu-Xn-pAW"; */
+"Huu-Xn-pAW.title" = "MY ACCOUNT";
+
+/* Class = "UIButton"; normalTitle = "Save Name"; ObjectID = "IAC-oJ-yrJ"; */
+"IAC-oJ-yrJ.normalTitle" = "Save Name";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "SUU-BM-tEl"; */
+"SUU-BM-tEl.text" = "Full Name";
+
+/* Class = "UINavigationItem"; title = "MY ACCOUNT"; ObjectID = "XJQ-Tx-UAp"; */
+"XJQ-Tx-UAp.title" = "MY ACCOUNT";
+
+/* Class = "UIButton"; normalTitle = "Delete Account"; ObjectID = "eqq-Ee-8ak"; */
+"eqq-Ee-8ak.normalTitle" = "Delete Account";
+
+/* Class = "UILabel"; text = "Your name will be shown under your Visheo card"; ObjectID = "pOF-uR-Bbl"; */
+"pOF-uR-Bbl.text" = "Your name will be shown under your Visheo card";
+
+/* Class = "UIButton"; normalTitle = "Log Out"; ObjectID = "vTB-R0-Wxg"; */
+"vTB-R0-Wxg.normalTitle" = "Log Out";
+

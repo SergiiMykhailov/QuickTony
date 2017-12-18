@@ -1,0 +1,12 @@
+/* (No Comment) */
+"CFBundleName" = "$(PRODUCT_NAME)";
+
+/* (No Comment) */
+"NSCameraUsageDescription" = "Visheo needs access to the camera to make video recording";
+
+/* (No Comment) */
+"NSMicrophoneUsageDescription" = "Visheo needs access to the microphone to make audio recording";
+
+/* (No Comment) */
+"NSPhotoLibraryUsageDescription" = "To add pictures to your Visheo - please allow the application to access your camera roll";
+
