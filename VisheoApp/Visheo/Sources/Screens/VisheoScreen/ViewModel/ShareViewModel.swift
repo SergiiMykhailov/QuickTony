@@ -50,6 +50,9 @@ protocol ShareViewModel : class, AlertGenerating {
     func deleteVisheo()
 	
 	func openSettings()
+	
+	func trackLinkCopied()
+	func trackLinkShared();
 }
 
 extension ShareViewModel {
@@ -130,12 +133,14 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     private let visheoService : CreationService
     private let visheosCache : VisheosCache
 	private let userNotificationsService: UserNotificationsService
+	private let loggingService: EventLoggingService;
     
-	init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService) {
+	init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService) {
         self.visheoRecord = record
         self.visheoService = visheoService
         self.visheosCache = cache
 		self.userNotificationsService = notificationsService;
+		self.loggingService = loggingService;
     }
     
     func showMenu() {}
@@ -165,6 +170,7 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 		
 		userNotificationsService.schedule(at: date, text: title, visheoId: visheoRecord.id) { [weak self] error in
 			guard let e = error else {
+				self?.loggingService.log(event: ReminderEvent())
 				self?.successAlertHandler?(NSLocalizedString("Reminder was set.", comment: "Successfully set reminder to share visheo"));
 				return;
 			}
@@ -181,6 +187,14 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 		if let url = URL(string: UIApplicationOpenSettingsURLString) {
 			UIApplication.shared.open(url, options: [:], completionHandler: nil);
 		}
+	}
+	
+	func trackLinkCopied() {
+		loggingService.log(event: VisheoURLCopiedEvent())
+	}
+	
+	func trackLinkShared() {
+		loggingService.log(event: VisheoSharedEvent());
 	}
 }
 
@@ -248,21 +262,24 @@ class ShareVisheoViewModel : ShareViewModel {
     private let creationService : CreationService
 	private let userNotificationsService: UserNotificationsService
     private let sharePremium : Bool
+	private let loggingService: EventLoggingService;
 	private var assets: VisheoRenderingAssets?;
 	private var record: VisheoRecord?;
     
-    init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, sharePremium: Bool) {
+	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, sharePremium: Bool) {
         self.renderingService = renderingService
         self.creationService = creationService
 		self.userNotificationsService = notificationsService;
+		self.loggingService = loggingService;
         self.sharePremium = sharePremium
 		self.assets = assets;
     }
 	
-	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService) {
+	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService) {
 		self.renderingService = renderingService
 		self.creationService = creationService
 		self.userNotificationsService = notificationsService;
+		self.loggingService = loggingService;
 		self.record = record;
 		
 		guard let info = self.creationService.unfinishedInfo(with: record.id) else {
@@ -296,6 +313,7 @@ class ShareVisheoViewModel : ShareViewModel {
 		
 		userNotificationsService.schedule(at: date, text: title, visheoId: currentVisheoId) { [weak self] error in
 			guard let e = error else {
+				self?.loggingService.log(event: ReminderEvent())
 				self?.successAlertHandler?(NSLocalizedString("Reminder was set.", comment: "Successfully set reminder to share visheo"));
 				return;
 			}
@@ -334,6 +352,14 @@ class ShareVisheoViewModel : ShareViewModel {
             }
         }
     }
+	
+	func trackLinkCopied() {
+		loggingService.log(event: VisheoURLCopiedEvent())
+	}
+	
+	func trackLinkShared() {
+		loggingService.log(event: VisheoSharedEvent());
+	}
     
     func startRendering() {
         NotificationCenter.default.addObserver(forName: Notification.Name.visheoRenderingProgress, object: nil, queue: OperationQueue.main) {[weak self] (notification) in

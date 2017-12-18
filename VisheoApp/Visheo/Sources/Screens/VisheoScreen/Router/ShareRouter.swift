@@ -31,6 +31,7 @@ class ShareVisheoRouter : ShareRouter {
 									  renderingService: dependencies.renderingService,
 									  creationService: dependencies.creationService,
                                       notificationsService: dependencies.userNotificationsService,
+									  loggingService: dependencies.loggingService,
                                       sharePremium : sharePremium)
         viewModel = vm
         vm.router = self
@@ -43,7 +44,9 @@ class ShareVisheoRouter : ShareRouter {
 		let vm = ShareVisheoViewModel(record: record,
 									  renderingService: dependencies.renderingService,
 									  creationService: dependencies.creationService,
-									  notificationsService: dependencies.userNotificationsService);
+									  notificationsService: dependencies.userNotificationsService,
+									  loggingService: dependencies.loggingService
+									  );
 		viewModel = vm
 		vm.router = self
 		self.controller = viewController
@@ -59,7 +62,8 @@ class ShareVisheoRouter : ShareRouter {
 		let vm = ExistingVisheoShareViewModel(record: record,
 											  visheoService: dependencies.creationService,
 											  cache: dependencies.visheosCache,
-											  notificationsService: dependencies.userNotificationsService)
+											  notificationsService: dependencies.userNotificationsService,
+											  loggingService: dependencies.loggingService)
 		
         viewModel = vm
 		vm.router = self

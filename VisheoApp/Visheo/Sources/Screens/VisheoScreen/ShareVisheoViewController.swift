@@ -234,12 +234,16 @@ class ShareVisheoViewController: UIViewController {
         if let link = viewModel.visheoLink {
             UIPasteboard.general.string = link
             showToast(message: NSLocalizedString("Visheo link was copied", comment: "Visheo link was copied to clipboard message"))
+			viewModel.trackLinkCopied();
         }
     }
     
     @IBAction func sharePressed(_ sender: Any) {
         if let link = viewModel.visheoLink, let visheoUrl = URL(string: link) {
-            let interaction = UIActivityViewController(activityItems: [visheoUrl], applicationActivities: nil)            
+            let interaction = UIActivityViewController(activityItems: [visheoUrl], applicationActivities: nil)
+			interaction.completionWithItemsHandler = { [weak self] _, completed, _, _ in
+				if completed { self?.viewModel.trackLinkShared() }
+			}
             present(interaction, animated: true, completion: nil)
         }
     }

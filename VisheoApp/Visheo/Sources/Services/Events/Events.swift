@@ -16,6 +16,9 @@ enum EventType: String {
 	case smallBundlePurchased = "S_bundle_purchase"
 	case bigBundlePurchased = "L_bundle_purchase"
 	case couponRedeemed = "coupon_redeemed"
+	case reminderSet = "remind_later"
+	case linkCopied = "link_copied"
+	case linkShared = "visheo_shared"
 }
 
 protocol EventRepresenting {
@@ -97,5 +100,24 @@ struct BundlePurchaseEvent: EventRepresenting {
 struct CouponRedeemedEvent: EventRepresenting {
 	var type: EventType {
 		return .couponRedeemed;
+	}
+}
+
+struct ReminderEvent: EventRepresenting {
+	var type: EventType {
+		return .reminderSet;
+	}
+}
+
+
+struct VisheoURLCopiedEvent: EventRepresenting {
+	var type: EventType {
+		return .linkCopied;
+	}
+}
+
+struct VisheoSharedEvent: EventRepresenting {
+	var type: EventType {
+		return .linkShared;
 	}
 }
