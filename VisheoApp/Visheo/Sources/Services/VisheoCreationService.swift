@@ -384,16 +384,8 @@ class VisheoCreationService : CreationService {
 	}
 	
 	private func sendAnalyticsInfo(creationInfo: VisheoCreationInfo) {
-		let cardSentEvent = CardSentEvent(isPremium: creationInfo.premium);
-		let coverEvent = CoverUsedEvent(id: creationInfo.coverId);
-		
-		var events: [EventRepresenting] = [cardSentEvent, coverEvent];
-		
-		if creationInfo.soundtrackId >= 0 {
-			events.append(SoundtrackUsedEvent(id: creationInfo.soundtrackId));
-		}
-		
-		loggingService.log(events: events);
+		let event = CardSentEvent(isPremium: creationInfo.premium);
+		loggingService.log(event: event);
 	}
 }
 

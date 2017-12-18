@@ -64,6 +64,7 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	weak var router: SelectSoundtrackRouter?
 	let occasion : OccasionRecord
 	let soundtracksService : SoundtracksService
+	private let loggingService: EventLoggingService;
 	let assets: VisheoRenderingAssets
 	
 	private lazy var player = AVPlayer();
@@ -116,9 +117,10 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 	}
 	
 	// MARK: - Lifecycle
-	init(occasion: OccasionRecord, assets: VisheoRenderingAssets, soundtracksService: SoundtracksService, editMode: Bool = false) {
+	init(occasion: OccasionRecord, assets: VisheoRenderingAssets, soundtracksService: SoundtracksService, loggingService: EventLoggingService, editMode: Bool = false) {
 		self.occasion = occasion
 		self.soundtracksService = soundtracksService
+		self.loggingService = loggingService;
 		self.assets = assets
 		
 		switch assets.soundtrackSelection {
@@ -200,6 +202,7 @@ class VisheoSelectSoundtrackViewModel: NSObject, SelectSoundtrackViewModel
 					self.assets.setSoundtrack(.none);
 			}
 			
+			self.loggingService.log(event: SoundtrackChangedEvent(), id: self.assets.creationInfo.visheoId);
 			self.router?.goBack(with: self.assets);
 		}
 	}

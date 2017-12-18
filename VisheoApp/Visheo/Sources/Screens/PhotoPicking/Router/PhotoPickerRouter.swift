@@ -36,6 +36,7 @@ class VisheoPhotoPickerRouter : PhotoPickerRouter {
 		let vm = VisheoPhotoPickerViewModel(assets: self.assets,
 											permissionsService: dependencies.appPermissionsService,
 											appStateService: dependencies.appStateService,
+											loggingService: dependencies.loggingService,
 											editMode: editMode)
         viewModel = vm
         vm.router = self

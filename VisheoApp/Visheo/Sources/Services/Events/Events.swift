@@ -8,15 +8,22 @@
 
 import UIKit
 
-
 enum EventType: String {
 	case userRegistered = "user_registered"
 	case regularCardSent = "regular_card_sent"
 	case premiumCardSent = "premium_card_sent"
-	case cardCoverUsed = "card_cover_used"
-	case soundtrackUsed = "soundtrack_used"
-	case smallBundlePurchased = "cards_5_bundle_purchase"
-	case bigBundlePurchased = "cards_20_bundle_purchase"
+	case smallBundlePurchased = "S_bundle_purchase"
+	case bigBundlePurchased = "L_bundle_purchase"
+	case couponRedeemed = "coupon_redeemed"
+	case reminderSet = "remind_later"
+	case linkCopied = "link_copied"
+	case linkShared = "visheo_shared"
+	case coverSelected = "cover_selected"
+	case photosSelected = "selected_photos"
+	case photosSkipped = "skipped_photos"
+	case reachedPreview = "reached_preview_screen"
+	case soundtrackChanged = "soundtrack_changed"
+	case retakeVideo = "retake_video"
 }
 
 protocol EventRepresenting {
@@ -33,11 +40,10 @@ extension EventRepresenting {
 	var analyticsInfo: [ String : Any ]? { return nil }
 	var internalInfo: [ String : Any ]? { return nil }
 	
-	var logToAnalytics: Bool { return false }
+	var logToAnalytics: Bool { return true }
 	var logInternally: Bool { return false }
 	
 }
-
 
 struct RegistrationEvent: EventRepresenting {
 	let userId: String;
@@ -51,12 +57,7 @@ struct RegistrationEvent: EventRepresenting {
 		return [ "user_id" : userId,
 				 "provider" : provider ]
 	}
-	
-	var logToAnalytics: Bool {
-		return true;
-	}
 }
-
 
 struct CardSentEvent: EventRepresenting {
 	let isPremium: Bool
@@ -64,44 +65,7 @@ struct CardSentEvent: EventRepresenting {
 	var type: EventType {
 		return isPremium ? .premiumCardSent : .regularCardSent
 	}
-	
-	var logToAnalytics: Bool {
-		return true;
-	}
 }
-
-struct CoverUsedEvent: EventRepresenting {
-	let id: Int
-	
-	var type: EventType {
-		return .cardCoverUsed;
-	}
-	
-	var analyticsInfo: [String : Any]? {
-		return [ "cover_id" : id ]
-	}
-	
-	var logToAnalytics: Bool {
-		return true;
-	}
-}
-
-struct SoundtrackUsedEvent: EventRepresenting {
-	let id: Int
-	
-	var type: EventType {
-		return .soundtrackUsed
-	}
-	
-	var analyticsInfo: [String : Any]? {
-		return [ "soundtrack_id" : id ]
-	}
-	
-	var logToAnalytics: Bool {
-		return true;
-	}
-}
-
 
 struct BundlePurchaseEvent: EventRepresenting {
 	let userId: String;
@@ -129,11 +93,73 @@ struct BundlePurchaseEvent: EventRepresenting {
 			]
 	}
 	
-	var logToAnalytics: Bool {
-		return true;
-	}
-	
 	var logInternally: Bool {
 		return true;
+	}
+}
+
+struct CouponRedeemedEvent: EventRepresenting {
+	var type: EventType {
+		return .couponRedeemed;
+	}
+}
+
+struct ReminderEvent: EventRepresenting {
+	var type: EventType {
+		return .reminderSet;
+	}
+}
+
+struct VisheoURLCopiedEvent: EventRepresenting {
+	var type: EventType {
+		return .linkCopied;
+	}
+}
+
+struct VisheoSharedEvent: EventRepresenting {
+	var type: EventType {
+		return .linkShared;
+	}
+}
+
+struct CoverSelectedEvent: EventRepresenting {
+	var type: EventType {
+		return .coverSelected;
+	}
+}
+
+struct PhotosSelectedEvent: EventRepresenting {
+	let count: Int
+	
+	var type: EventType {
+		return .photosSelected;
+	}
+	
+	var analyticsInfo: [String : Any]? {
+		return [ "count" : count ]
+	}
+}
+
+struct PhotosSkippedEvent: EventRepresenting {
+	var type: EventType {
+		return .photosSkipped;
+	}
+}
+
+struct ReachedPreviewEvent: EventRepresenting {
+	var type: EventType {
+		return .reachedPreview;
+	}
+}
+
+struct SoundtrackChangedEvent: EventRepresenting {
+	var type: EventType {
+		return .soundtrackChanged;
+	}
+}
+
+struct RetakeVideoEvent: EventRepresenting {
+	var type: EventType {
+		return .retakeVideo;
 	}
 }
