@@ -13,10 +13,9 @@ enum EventType: String {
 	case userRegistered = "user_registered"
 	case regularCardSent = "regular_card_sent"
 	case premiumCardSent = "premium_card_sent"
-	case cardCoverUsed = "card_cover_used"
-	case soundtrackUsed = "soundtrack_used"
-	case smallBundlePurchased = "cards_5_bundle_purchase"
-	case bigBundlePurchased = "cards_20_bundle_purchase"
+	case smallBundlePurchased = "S_bundle_purchase"
+	case bigBundlePurchased = "L_bundle_purchase"
+	case couponRedeemed = "coupon_redeemed"
 }
 
 protocol EventRepresenting {
@@ -33,7 +32,7 @@ extension EventRepresenting {
 	var analyticsInfo: [ String : Any ]? { return nil }
 	var internalInfo: [ String : Any ]? { return nil }
 	
-	var logToAnalytics: Bool { return false }
+	var logToAnalytics: Bool { return true }
 	var logInternally: Bool { return false }
 	
 }
@@ -51,10 +50,6 @@ struct RegistrationEvent: EventRepresenting {
 		return [ "user_id" : userId,
 				 "provider" : provider ]
 	}
-	
-	var logToAnalytics: Bool {
-		return true;
-	}
 }
 
 
@@ -63,42 +58,6 @@ struct CardSentEvent: EventRepresenting {
 	
 	var type: EventType {
 		return isPremium ? .premiumCardSent : .regularCardSent
-	}
-	
-	var logToAnalytics: Bool {
-		return true;
-	}
-}
-
-struct CoverUsedEvent: EventRepresenting {
-	let id: Int
-	
-	var type: EventType {
-		return .cardCoverUsed;
-	}
-	
-	var analyticsInfo: [String : Any]? {
-		return [ "cover_id" : id ]
-	}
-	
-	var logToAnalytics: Bool {
-		return true;
-	}
-}
-
-struct SoundtrackUsedEvent: EventRepresenting {
-	let id: Int
-	
-	var type: EventType {
-		return .soundtrackUsed
-	}
-	
-	var analyticsInfo: [String : Any]? {
-		return [ "soundtrack_id" : id ]
-	}
-	
-	var logToAnalytics: Bool {
-		return true;
 	}
 }
 
@@ -129,11 +88,14 @@ struct BundlePurchaseEvent: EventRepresenting {
 			]
 	}
 	
-	var logToAnalytics: Bool {
-		return true;
-	}
-	
 	var logInternally: Bool {
 		return true;
+	}
+}
+
+
+struct CouponRedeemedEvent: EventRepresenting {
+	var type: EventType {
+		return .couponRedeemed;
 	}
 }

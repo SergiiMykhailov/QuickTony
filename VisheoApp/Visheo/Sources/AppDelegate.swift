@@ -106,9 +106,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                 creationService: creationService,
 												soundtracksService: soundtracksService,
 												userNotificationsService: userNotificationsService,
-                                                routerAssembly: assembly,
-                                                visheosCache: visheosCache,
-                                                premiumCardsService: premiumService)
+												loggingService: eventLoggingService,
+												routerAssembly: assembly,
+												visheosCache: visheosCache,
+												premiumCardsService: premiumService)
     }
     
     // MARK: Appearance setup

@@ -27,11 +27,13 @@ class VisheoRedeemViewModel : RedeemViewModel {
     weak var router: RedeemRouter?
     private let purchasesService: PremiumCardsService
 	private let appStateService: AppStateService
+	private let loggingService: EventLoggingService
     private let assets : VisheoRenderingAssets?
      
-	init(purchasesService: PremiumCardsService, appStateService: AppStateService, showBack: Bool, assets : VisheoRenderingAssets? = nil) {
+	init(purchasesService: PremiumCardsService, appStateService: AppStateService, loggingService: EventLoggingService, showBack: Bool, assets : VisheoRenderingAssets? = nil) {
         self.purchasesService = purchasesService
 		self.appStateService = appStateService;
+		self.loggingService = loggingService;
         self.assets = assets
         showBackButton = showBack
     }
@@ -52,12 +54,14 @@ class VisheoRedeemViewModel : RedeemViewModel {
 		}
 		
         showProgressCallback?(true)
-        purchasesService.redeem(coupon: coupon) { (count, error) in
+        purchasesService.redeem(coupon: coupon) { [weak self] (count, error) in
+			guard let `self` = self else { return }
             self.showProgressCallback?(false)
             if let error = error {
                 self.warningAlertHandler?(self.errorString(from: error))
             } else {
-                if self.assets != nil {
+				self.loggingService.log(event: CouponRedeemedEvent())
+                if let _ = self.assets {
                     self.usePremCard()
                 } else {
                     self.router?.showSuccess(with: count ?? 0)
