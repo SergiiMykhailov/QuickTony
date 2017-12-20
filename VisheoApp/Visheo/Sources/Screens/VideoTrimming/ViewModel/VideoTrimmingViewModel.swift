@@ -146,7 +146,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
                         self.router?.showPreview(with: self.assets)
                     }
                 } else {
-                    self.warningAlertHandler?(NSLocalizedString("An error occured while processing video", comment: "Processing video error text"))
+                    self.warningAlertHandler?(NSLocalizedString("An error occurred while processing video", comment: "Processing video error text"))
                 }
             }
         }

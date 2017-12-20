@@ -5,7 +5,7 @@
 "%d premium card(s) added to your account" = "%d premium card(s) added to your account";
 
 /* Processing video error text */
-"An error occured while processing video" = "An error occured while processing video";
+"An error occurred while processing video" = "An error occurred while processing video";
 
 /* Error while deleting account text messaage */
 "An error occurred while deleting account" = "An error occurred while deleting account";
