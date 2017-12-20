@@ -13,6 +13,7 @@ enum AuthorizationReason {
 	case none
 	case premiumCards
 	case redeemCoupons
+	case sendFeedback
 }
 
 protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerating {
@@ -44,6 +45,8 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
 				return NSLocalizedString("Please sign in to purchase premium cards", comment: "Please sign in to purchase premium cards")
 			case .redeemCoupons:
 				return NSLocalizedString("Please sign in to redeem coupons", comment: "Please sign in to redeem coupons")
+			case .sendFeedback:
+				return NSLocalizedString("Please sign in to send feedback", comment: "Please sign in to send feedback")
 			default:
 				return nil
 		}

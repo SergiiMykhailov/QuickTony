@@ -17,6 +17,7 @@ protocol MenuRouter: FlowRouter {
     func showVisheoScreen(with record: VisheoRecord)
     
 	func showRegistration(with reason: AuthorizationReason)
+	func showContactForm(with contact: String?)
 }
 
 class VisheoMenuRouter : MenuRouter {
@@ -60,6 +61,13 @@ extension VisheoMenuRouter {
 	func showRegistration(with reason: AuthorizationReason) {
         controller?.performSegue(SegueList.showRegistration, sender: reason)
     }
+	
+	func showContactForm(with contact: String?) {
+		let navigationController = controller?.sideMenuController?.rootViewController as! UINavigationController
+		controller?.sideMenuController?.hideLeftView(animated: true, delay: 0.0, completionHandler: { [weak self] in
+			self?.dependencies.feedbackService.showContactForm(from: contact, on: navigationController);
+		})
+	}
     
     func showCreateVisheo() {
         showController(with: "ChooseOccasionViewController") { (controller) in

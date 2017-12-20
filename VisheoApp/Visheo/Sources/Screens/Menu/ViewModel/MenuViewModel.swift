@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol MenuViewModel : class {
+protocol MenuViewModel : class, SuccessAlertGenerating, WarningAlertGenerating {
     var username : String {get}
     var userPicture : URL? {get}
     
@@ -30,6 +30,9 @@ enum MenuItemType {
 }
 
 class VisheoMenuViewModel : MenuViewModel {
+	var successAlertHandler: ((String) -> ())?
+	var warningAlertHandler: ((String) -> ())?
+	
     var username: String {
         return userInfo.userName ?? NSLocalizedString("Guest", comment: "Guest user title")
     }
@@ -55,12 +58,15 @@ class VisheoMenuViewModel : MenuViewModel {
             VisheoMenuItemViewModel(text: NSLocalizedString("Premium Cards", comment: "Premium Cards menu item"), image: #imageLiteral(resourceName: "premiumCards"), type: .premiumCards),
             VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), type: .redeem),
             VisheoMenuItemViewModel(text: NSLocalizedString("My Account", comment: "My Account menu item"), image: #imageLiteral(resourceName: "account"), type: .account),
-//            VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), type: .contact)
+            VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), type: .contact)
         ]
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheoOpen(_:)), name: .openVisheoFromReminder, object: nil);
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheosListChange(_:)), name: .visheosChanged, object: nil);
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.feedbackSent), name: .contactUsFeedbackSent, object: nil);
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.failedToSendFeedback(_:)), name: .contactUsFeedbackFailed, object: nil);
     }
 	
 	deinit {
@@ -90,6 +96,12 @@ class VisheoMenuViewModel : MenuViewModel {
 				router?.showRegistration(with: .redeemCoupons);
 			} else {
 				router?.showCoupons()
+			}
+		case .contact:
+			if userInfo.isAnonymous {
+				router?.showRegistration(with: .sendFeedback);
+			} else {
+				router?.showContactForm(with: userInfo.userEmail)
 			}
         default:
             break;
@@ -128,5 +140,26 @@ class VisheoMenuViewModel : MenuViewModel {
 		handledRecords.forEach{
 			pendingVisheoIds.remove($0);
 		}
+	}
+	
+	@objc func feedbackSent() {
+		let message = NSLocalizedString("Your message has been sent. Thanks for contacting us!", comment: "Contact us feedback sent")
+		successAlertHandler?(message);
+	}
+	
+	@objc func failedToSendFeedback(_ notification: Notification) {
+		guard let userInfo = notification.userInfo as? [ FeedbackServiceNotificationKeys : Any ],
+			let error = userInfo[.error] as? FeedbackServiceError else {
+			return;
+		}
+		var message: String;
+		switch error {
+			case .setupMailClient:
+				message = NSLocalizedString("Please setup your email client to send feedback", comment: "Email client not setup error message");
+			case .underlying,
+				 .generic:
+				message = NSLocalizedString("Oops… Something went wrong.", comment: "Unknown error sending feedback")
+		}
+		warningAlertHandler?(message);
 	}
 }
