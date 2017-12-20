@@ -10,14 +10,12 @@ import UIKit
 
 protocol RedeemRouter: FlowRouter {
     func showMenu()
-    func showSuccess(with cardCount: Int)
-    func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool)
+    func showSuccess(with cardCount: Int, assets: VisheoRenderingAssets?)
 }
 
 class VisheoRedeemRouter : RedeemRouter {
     enum SegueList: String, SegueListType {
-        case showSuccess = "showSuccess"
-        case showShareVisheo = "showShareVisheo"
+        case showSuccess = "showRedeemSuccess"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: RedeemViewController?
@@ -45,14 +43,13 @@ class VisheoRedeemRouter : RedeemRouter {
         case .showSuccess:
             let successController = segue.destination as! RedeemSuccessViewController
             let router = VisheoRedeemSuccessRouter(dependencies: dependencies)
-            router.start(with: successController, redeemedCount: sender as! Int)
-        case .showShareVisheo:
-            let sendController = segue.destination as! ShareVisheoViewController
-            let sendRouter = ShareVisheoRouter(dependencies: dependencies)
-            let userInfo = sender as! [String : Any]
-            sendRouter.start(with: sendController,
-                             assets: userInfo[Constants.assets] as! VisheoRenderingAssets,
-                             sharePremium : userInfo[Constants.premium] as! Bool)
+			let userInfo = sender as! [String : Any]
+			let assets = userInfo[Constants.assets] as? VisheoRenderingAssets
+			router.start(with: .couponRedeem,
+						 viewController: successController,
+						 redeemedCount: userInfo[Constants.count] as! Int,
+						 assets: assets,
+						 showBackButton: assets != nil)
         }
     }
 }
@@ -61,18 +58,16 @@ extension VisheoRedeemRouter {
     private enum Constants {
         static let assets = "assets"
         static let premium = "premium"
+		static let count = "count"
     }
     
     func showMenu() {
         controller?.showLeftViewAnimated(self)
     }
     
-    func showSuccess(with cardCount: Int) {
-        controller?.performSegue(SegueList.showSuccess, sender: cardCount)
-    }
-    
-    func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool) {
-        controller?.performSegue(SegueList.showShareVisheo, sender: [Constants.assets : assets, Constants.premium : premium])
+	func showSuccess(with cardCount: Int, assets: VisheoRenderingAssets?) {
+        controller?.performSegue(SegueList.showSuccess, sender: [Constants.assets : assets as Any,
+																 Constants.count : cardCount])
     }
 }
 

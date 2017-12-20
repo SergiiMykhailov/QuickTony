@@ -22,15 +22,11 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     
     func buySmallBundle()
     func buyBigBundle()
-    func sendRegular()
     
     func showMenu()
     func showCoupon()
     
     var didChange : (()->())? {get set}
-    var premiumUsageFailedHandler : (()->())? {get set}
-    
-    func retryPremiumUse()
     
     var confirmFreeSendHandler : (()->())? {get set}
     func sendRegularConfirmed()
@@ -128,7 +124,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
             self?.didChange?()
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(VisheoChooseCardsViewModel.purchaseSucceded), name: Notification.Name.bundlePurchaseSucceded, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(VisheoChooseCardsViewModel.purchaseSucceeded(_:)), name: Notification.Name.bundlePurchaseSucceded, object: nil)
                 
         NotificationCenter.default.addObserver(forName: Notification.Name.bundlePurchaseCancelled, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
             self?.showProgressCallback?(false)
@@ -139,14 +135,6 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    func sendRegular() {
-        if visheoAssets != nil {
-            confirmFreeSendHandler?()
-        } else {
-            router?.showCreateVisheo()
-        }
     }
     
     func sendRegularConfirmed() {
@@ -180,32 +168,15 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         router?.showCoupon(with: visheoAssets)
     }
     
-    func retryPremiumUse() {
-        usePremCard()
-    }
-    
-    private func usePremCard() {
-        if let assets = visheoAssets {
-            showProgressCallback?(true)
-            purchasesService.usePremiumCard(completion: { (success) in
-                self.showProgressCallback?(false)
-                if success {
-                    self.router?.showShareVisheo(with: assets, premium: true)
-                } else {
-                    self.premiumUsageFailedHandler?()
-                }
-            })
-        }
-    }
-    
     // MARK: Notifications
     
     @objc func updatePremCardsNumber() {
         self.didChange?()
     }
     
-    @objc func purchaseSucceded() {
+	@objc func purchaseSucceeded(_ notification: Notification) {
         self.showProgressCallback?(false)
-        usePremCard()
+		let cardsCount = (notification.userInfo?["count"] as? Int) ?? 0;
+        router?.showPurchaseSuccess(with: cardsCount, assets: visheoAssets)
     }
 }
