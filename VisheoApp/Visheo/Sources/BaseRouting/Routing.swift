@@ -37,6 +37,7 @@ struct RouterDependencies {
 	let soundtracksService: SoundtracksService;
 	let userNotificationsService: UserNotificationsService;
 	let loggingService: EventLoggingService
+	let feedbackService: FeedbackService;
 
     let routerAssembly: RouterAssembly
     let visheosCache : VisheosCache

@@ -92,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let visheosListService = VisheoBoxService(userInfoProvider: authService)
         let visheosCache = VisheosLocalCache()
+		let feedbackService = VisheoFeedbackService()
         
 		let premiumService = VisheoPremiumCardsService(userInfoProvider: authService, loggingService: eventLoggingService)
         return RouterDependencies(appStateService: appState,
@@ -107,6 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 												soundtracksService: soundtracksService,
 												userNotificationsService: userNotificationsService,
 												loggingService: eventLoggingService,
+												feedbackService: feedbackService,
 												routerAssembly: assembly,
 												visheosCache: visheosCache,
 												premiumCardsService: premiumService)

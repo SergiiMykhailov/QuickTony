@@ -31,7 +31,8 @@ protocol AuthorizationService {
 
 protocol UserInfoProvider {
     var userId: String? {get}
-    
+	
+	var userEmail: String? { get }
     var userName: String? {get}
     var userPicUrl: URL? {get}
     var isAnonymous : Bool {get}
@@ -95,6 +96,10 @@ class VisheoAuthorizationService : NSObject, AuthorizationService, UserInfoProvi
     var isAnonymous: Bool  {
         return Auth.auth().currentUser?.isAnonymous ?? true
     }
+	
+	var userEmail: String? {
+		return Auth.auth().currentUser?.email;
+	}
     
     weak var presentationViewController : UIViewController?
     

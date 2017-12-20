@@ -21,6 +21,7 @@
 		922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */; };
 		9255DF0E1FCD9EC200F9815F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF0D1FCD9EC200F9815F /* AppSettings.swift */; };
 		9255DF121FCDA5A200F9815F /* app_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9255DF111FCDA5A200F9815F /* app_settings.plist */; };
+		925B91801FEA4DE500E7ACC6 /* FeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925B917F1FEA4DE500E7ACC6 /* FeedbackService.swift */; };
 		9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */; };
 		9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */; };
 		9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */; };
@@ -221,6 +222,7 @@
 		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
 		9255DF0D1FCD9EC200F9815F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		9255DF111FCDA5A200F9815F /* app_settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = app_settings.plist; sourceTree = "<group>"; };
+		925B917F1FEA4DE500E7ACC6 /* FeedbackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackService.swift; sourceTree = "<group>"; };
 		9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
 		9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
@@ -1045,6 +1047,7 @@
 				B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */,
 				92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */,
 				A60CE6EB830286290C669520 /* PremiumCardsService.swift */,
+				925B917F1FEA4DE500E7ACC6 /* FeedbackService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1355,6 +1358,7 @@
 				B4BCABF81FB8CC7D003EDC7F /* OccassionsCollectionMediator.swift in Sources */,
 				92C006651FC0B4BE000AFD4E /* CameraPermissionsViewController.swift in Sources */,
 				9255DF0E1FCD9EC200F9815F /* AppSettings.swift in Sources */,
+				925B91801FEA4DE500E7ACC6 /* FeedbackService.swift in Sources */,
 				B4BCABEC1FB8CC7D003EDC7F /* AuthorizationRouter.swift in Sources */,
 				B4BCABFA1FB8CC7D003EDC7F /* ChooseOccasionViewModel.swift in Sources */,
 				B44450CD1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift in Sources */,

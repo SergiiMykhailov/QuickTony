@@ -8,6 +8,7 @@
 
 import UIKit
 import LGSideMenuController
+import MessageUI
 
 protocol RouterAssembly {
     func assembleMainScreen(on destination: UIViewController, with dependencies: RouterDependencies)
@@ -15,11 +16,9 @@ protocol RouterAssembly {
     func assembleCreateVisheoScreen(on navigation: UINavigationController, with dependencies: RouterDependencies)
 }
 
-class VisheoRouterAssembly: RouterAssembly {
+class VisheoRouterAssembly: NSObject, RouterAssembly, MFMailComposeViewControllerDelegate {
     func assembleMainScreen(on destination: UIViewController, with dependencies: RouterDependencies) {
         let sideController = destination as! LGSideMenuController
-		
-		sideController.leftViewWidth = min(290.0, ceil(UIScreen.main.bounds.width * 0.8));
         
         let mainScreenController = (sideController.rootViewController as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
         let router = VisheoChooseOccasionRouter(dependencies: dependencies)
@@ -28,6 +27,8 @@ class VisheoRouterAssembly: RouterAssembly {
         let menuController = sideController.leftViewController as! MenuViewController
         let menuRouter = VisheoMenuRouter(dependencies: dependencies)
         menuRouter.start(with: menuController)
+		
+		sideController.leftViewWidth = min(290.0, ceil(UIScreen.main.bounds.width * 0.8));
     }
     
     func assembleCreateVisheoScreen(on navigation: UINavigationController, with dependencies: RouterDependencies) {

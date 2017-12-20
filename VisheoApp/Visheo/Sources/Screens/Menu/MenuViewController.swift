@@ -13,7 +13,7 @@ class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
         NotificationCenter.default.addObserver(self, selector: #selector(MenuViewController.willBeShown), name: Notification.Name.LGSideMenuWillShowLeftView, object: nil)
     }
     
@@ -44,6 +44,14 @@ class MenuViewController: UIViewController {
     func configure(viewModel: MenuViewModel, router: FlowRouter) {
         self.viewModel = viewModel
         self.router    = router
+		
+		self.viewModel.warningAlertHandler = {[weak self] in
+			self?.showWarningAlertWithText(text: $0)
+		}
+		
+		self.viewModel.successAlertHandler = {[weak self] in
+			self?.showSuccessAlertWithText(text: $0)
+		}
     }
 }
 
