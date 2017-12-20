@@ -31,26 +31,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="qDF-ee-GCX">
+                            <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qDF-ee-GCX">
                                 <rect key="frame" x="20" y="74" width="280" height="172"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nna-K0-FMV">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="172"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" ambiguous="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nna-K0-FMV">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="166.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WP8-ng-h3W">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="102"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WP8-ng-h3W">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="96.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hbz-4g-iDq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="54.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Regular Visheo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRy-E8-Q4t">
-                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="33"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="28"/>
                                                                 <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Always FREE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8N-79-bjX">
-                                                                <rect key="frame" x="0.0" y="36" width="280" height="24"/>
+                                                                <rect key="frame" x="0.0" y="33" width="280" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5cs-rd-nBD">
-                                                        <rect key="frame" x="0.0" y="65" width="280" height="37"/>
+                                                        <rect key="frame" x="0.0" y="59.5" width="280" height="37"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="480p quality (for phones &amp; tablets)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAN-KY-eV3">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="18.5"/>
@@ -76,8 +76,8 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yB-Sa-Lkz">
-                                                <rect key="frame" x="0.0" y="117" width="280" height="55"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yB-Sa-Lkz">
+                                                <rect key="frame" x="0.0" y="111.5" width="280" height="55"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="A8S-9U-Rcr"/>
                                                 </constraints>
@@ -112,28 +112,28 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Premium Visheo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8O7-xi-9IH">
-                                <rect key="frame" x="20" y="266" width="208" height="37"/>
+                                <rect key="frame" x="20" y="272.5" width="208.5" height="33"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="28"/>
                                 <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Your Care deserves the Best Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-Yv-nNX">
-                                <rect key="frame" x="20" y="306" width="280" height="24"/>
+                                <rect key="frame" x="20" y="308.5" width="280" height="21.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                 <color key="textColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Xbu-1b-r7v">
-                                <rect key="frame" x="20" y="306" width="219" height="24"/>
+                                <rect key="frame" x="20" y="308.5" width="235" height="21.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWf-2c-nQv">
-                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="21.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                         <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7s-pt-pbh" customClass="BadgeSwift" customModule="BadgeSwift">
-                                        <rect key="frame" x="79.5" y="0.0" width="10.5" height="24"/>
+                                        <rect key="frame" x="80" y="-2" width="25.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Premium cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUh-YY-ADx">
-                                        <rect key="frame" x="96" y="0.0" width="123" height="24"/>
+                                        <rect key="frame" x="111.5" y="0.0" width="123.5" height="21.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                         <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -301,6 +301,7 @@
                         <outlet property="premiumHeaderLabel" destination="8O7-xi-9IH" id="17a-Vf-QiF"/>
                         <segue destination="1yE-Np-pVF" kind="show" identifier="showShareVisheo" id="Jcu-CK-hCv"/>
                         <segue destination="ksx-Ka-Sj9" kind="show" identifier="showCoupon" id="Pwu-Oq-DYp"/>
+                        <segue destination="sOC-hj-pv5" kind="show" identifier="showPurchaseSuccess" id="qsm-bv-IVy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5W-z1-1Jd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,15 +388,14 @@
                         <outlet property="backItem" destination="6f7-md-CjE" id="bgu-0U-htc"/>
                         <outlet property="couponCodeField" destination="2eL-0S-rwj" id="JSs-cb-8R0"/>
                         <outlet property="menuItem" destination="nVQ-hb-8pL" id="nR4-7B-Hny"/>
-                        <segue destination="sOC-hj-pv5" kind="show" identifier="showSuccess" id="a6c-V9-HhA"/>
-                        <segue destination="1yE-Np-pVF" kind="show" identifier="showShareVisheo" id="hes-jD-Qfy"/>
+                        <segue destination="sOC-hj-pv5" kind="show" identifier="showRedeemSuccess" id="a6c-V9-HhA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghr-i1-M4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-156" y="862.21889055472275"/>
         </scene>
-        <!--ENTER COUPON CODE-->
+        <!--Purchase succeeded-->
         <scene sceneID="DEO-jG-pQv">
             <objects>
                 <viewController id="sOC-hj-pv5" customClass="RedeemSuccessViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
@@ -404,13 +404,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hDpic" translatesAutoresizingMaskIntoConstraints="NO" id="F0F-O7-nvU">
-                                <rect key="frame" x="68" y="131" width="184" height="184"/>
+                                <rect key="frame" x="66.5" y="131" width="187" height="187"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="F0F-O7-nvU" secondAttribute="height" multiplier="1:1" id="2ac-OR-1Lh"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2x-Fj-DKq">
-                                <rect key="frame" x="85" y="376" width="150" height="26.5"/>
+                                <rect key="frame" x="85" y="379" width="150" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                 <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -458,15 +458,26 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6lt-aU-IjJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ENTER COUPON CODE" id="QS2-jm-n4R">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="3vc-pN-aZR">
-                            <connections>
-                                <action selector="menuPressed:" destination="sOC-hj-pv5" id="npn-w8-CrZ"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Purchase succeeded" id="QS2-jm-n4R">
+                        <leftBarButtonItems>
+                            <barButtonItem image="menu" id="3vc-pN-aZR">
+                                <connections>
+                                    <action selector="menuPressed:" destination="sOC-hj-pv5" id="npn-w8-CrZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="arrow" id="X2w-yy-xON">
+                                <connections>
+                                    <action selector="backPressed:" destination="sOC-hj-pv5" id="XYv-kE-zOO"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="backItem" destination="X2w-yy-xON" id="4jg-q4-hkV"/>
+                        <outlet property="continueButton" destination="iXH-Ce-smB" id="m97-l8-Imc"/>
                         <outlet property="couponAddedDescriptionLabel" destination="J89-fj-SIE" id="iDv-ml-jaZ"/>
+                        <outlet property="menuItem" destination="3vc-pN-aZR" id="reK-hL-RSE"/>
+                        <segue destination="1yE-Np-pVF" kind="show" identifier="showShareVisheo" id="shW-8d-Ljj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1p3-HT-zrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -479,7 +490,7 @@
                 <viewControllerPlaceholder storyboardName="VisheoPreview" referencedIdentifier="ShareVisheoViewController" id="1yE-Np-pVF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Lx-VA-bca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691" y="121"/>
+            <point key="canvasLocation" x="1459" y="57"/>
         </scene>
     </scenes>
     <resources>
@@ -488,6 +499,7 @@
         <image name="menu" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jcu-CK-hCv"/>
+        <segue reference="shW-8d-Ljj"/>
+        <segue reference="qsm-bv-IVy"/>
     </inferredMetricsTieBreakers>
 </document>

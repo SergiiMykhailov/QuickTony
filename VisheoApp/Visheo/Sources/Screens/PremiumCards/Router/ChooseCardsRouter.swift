@@ -13,13 +13,16 @@ protocol ChooseCardsRouter: FlowRouter {
     func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool)
     func showCreateVisheo()
     func showCoupon(with assets: VisheoRenderingAssets?)
+	func showPurchaseSuccess(with count: Int, assets: VisheoRenderingAssets?);
 }
 
 class VisheoChooseCardsRouter : ChooseCardsRouter {
     enum SegueList: String, SegueListType {
         case showShareVisheo = "showShareVisheo"
         case showCoupon = "showCoupon"
+		case showPurchaseSuccess = "showPurchaseSuccess"
     }
+	
     let dependencies: RouterDependencies
     private(set) weak var controller: ChooseCardsViewController?
     private(set) weak var viewModel: ChooseCardsViewModel?
@@ -53,6 +56,16 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
             let router = VisheoRedeemRouter(dependencies: dependencies)
             let assets = sender as? VisheoRenderingAssets
             router.start(with: couponController, assets: assets, showBack: assets != nil)
+		case .showPurchaseSuccess:
+			let successController = segue.destination as! RedeemSuccessViewController
+			let router = VisheoRedeemSuccessRouter(dependencies: dependencies)
+			let userInfo = sender as! [String : Any]
+			let assets = userInfo[Constants.assets] as? VisheoRenderingAssets
+			router.start(with: .inAppPurchase,
+						 viewController: successController,
+						 redeemedCount: userInfo[Constants.count] as! Int,
+						 assets: assets,
+						 showBackButton: assets != nil)
         }
     }
 }
@@ -61,6 +74,7 @@ extension VisheoChooseCardsRouter {
     private enum Constants {
         static let assets = "assets"
         static let premium = "premium"
+		static let count = "count"
     }
     
     func showMenu() {
@@ -70,7 +84,7 @@ extension VisheoChooseCardsRouter {
     func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool) {
         controller?.performSegue(SegueList.showShareVisheo, sender: [Constants.assets : assets, Constants.premium : premium])
     }
-    
+	
     func showCreateVisheo() {
         dependencies.routerAssembly.assembleCreateVisheoScreen(on: controller?.sideMenuController?.rootViewController as! UINavigationController, with: dependencies)
     }
@@ -78,5 +92,9 @@ extension VisheoChooseCardsRouter {
     func showCoupon(with assets: VisheoRenderingAssets?) {
         controller?.performSegue(SegueList.showCoupon, sender: assets)
     }
+	
+	func showPurchaseSuccess(with count: Int, assets: VisheoRenderingAssets?) {
+		controller?.performSegue(SegueList.showPurchaseSuccess, sender: [ Constants.count : count, Constants.assets: assets as Any ])
+	}
 }
 

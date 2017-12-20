@@ -13,13 +13,9 @@ protocol RedeemViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func redeem(coupon: String)
     
     var showBackButton: Bool {get}
-    
-    var premiumUsageFailedHandler : (()->())? {get set}
-    func retrySend()
 }
 
 class VisheoRedeemViewModel : RedeemViewModel {
-    var premiumUsageFailedHandler: (() -> ())?
     var showBackButton: Bool
     var showProgressCallback: ((Bool) -> ())?
     var warningAlertHandler: ((String) -> ())?
@@ -61,32 +57,8 @@ class VisheoRedeemViewModel : RedeemViewModel {
                 self.warningAlertHandler?(self.errorString(from: error))
             } else {
 				self.loggingService.log(event: CouponRedeemedEvent())
-                if let _ = self.assets {
-                    self.usePremCard()
-                } else {
-                    self.router?.showSuccess(with: count ?? 0)
-                }
+				self.router?.showSuccess(with: count ?? 0, assets: self.assets);
             }
-        }
-    }
-    
-    func retrySend() {
-         usePremCard()
-    }
-    
-    // MARK: Private
-    
-    private func usePremCard() {
-        if let assets = assets {
-            showProgressCallback?(true)
-            purchasesService.usePremiumCard(completion: { (success) in
-                self.showProgressCallback?(false)
-                if success {
-                    self.router?.showShareVisheo(with: assets, premium: true)
-                } else {
-                    self.premiumUsageFailedHandler?()
-                }
-            })
         }
     }
     

@@ -11,12 +11,13 @@ import UIKit
 
 protocol RedeemSuccessRouter: FlowRouter {
     func showCreate()
+	func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool)
     func showMenu()
 }
 
 class VisheoRedeemSuccessRouter : RedeemSuccessRouter {
     enum SegueList: String, SegueListType {
-        case next
+        case showShareVisheo = "showShareVisheo"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: RedeemSuccessViewController?
@@ -26,8 +27,12 @@ class VisheoRedeemSuccessRouter : RedeemSuccessRouter {
         self.dependencies = dependencies
     }
     
-    func start(with viewController: RedeemSuccessViewController, redeemedCount: Int) {
-        let vm = VisheoRedeemSuccessViewModel(with: redeemedCount)
+	func start(with type: RedeemSuccessType, viewController: RedeemSuccessViewController, redeemedCount: Int, assets: VisheoRenderingAssets? = nil, showBackButton: Bool) {
+		let vm = VisheoRedeemSuccessViewModel(with: type,
+											  count: redeemedCount,
+											  assets: assets,
+											  purchasesService: dependencies.premiumCardsService,
+											  showBackButton: showBackButton)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -39,13 +44,23 @@ class VisheoRedeemSuccessRouter : RedeemSuccessRouter {
             return
         }
         switch segueList {
-        default:
-            break
+			case .showShareVisheo:
+				let sendController = segue.destination as! ShareVisheoViewController
+				let sendRouter = ShareVisheoRouter(dependencies: dependencies)
+				let userInfo = sender as! [String : Any]
+				sendRouter.start(with: sendController,
+								 assets: userInfo[Constants.assets] as! VisheoRenderingAssets,
+								 sharePremium : userInfo[Constants.premium] as! Bool)
         }
     }
 }
 
 extension VisheoRedeemSuccessRouter {
+	private enum Constants {
+		static let assets = "assets"
+		static let premium = "premium"
+	}
+	
     func showCreate() {
         dependencies.routerAssembly.assembleCreateVisheoScreen(on: controller?.sideMenuController?.rootViewController as! UINavigationController, with: dependencies)
     }
@@ -54,5 +69,8 @@ extension VisheoRedeemSuccessRouter {
         controller?.showLeftViewAnimated(self)
     }
 
+	func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool) {
+		controller?.performSegue(SegueList.showShareVisheo, sender: [Constants.assets : assets, Constants.premium : premium])
+	}
 }
 

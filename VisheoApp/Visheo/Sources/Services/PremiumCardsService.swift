@@ -321,7 +321,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
             if $0 {
 				self.logPurchaseEvent(userId: userId, bundle: bundle, transaction: transaction);
                 SKPaymentQueue.default().finishTransaction(transaction)
-                NotificationCenter.default.post(name: Notification.Name.bundlePurchaseSucceded, object: self)
+                NotificationCenter.default.post(name: .bundlePurchaseSucceded, object: self, userInfo: [ "count" : bundle.cardsCount ])
             }
         }
     }
@@ -335,7 +335,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
             if $0 {
 				self.logPurchaseEvent(userId: userId, bundle: bundle, transaction: transaction);
                 SKPaymentQueue.default().finishTransaction(transaction)
-                NotificationCenter.default.post(name: Notification.Name.bundlePurchaseSucceded, object: self)
+				NotificationCenter.default.post(name: .bundlePurchaseSucceded, object: self, userInfo: [ "count" : bundle.cardsCount ])
             }
         }
     }
