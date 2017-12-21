@@ -1,4 +1,7 @@
 /* (No Comment) */
+"CFBundleDisplayName" = "Visheo";
+
+/* (No Comment) */
 "CFBundleName" = "$(PRODUCT_NAME)";
 
 /* (No Comment) */
@@ -8,5 +11,5 @@
 "NSMicrophoneUsageDescription" = "Visheo needs access to the microphone to make audio recording";
 
 /* (No Comment) */
-"NSPhotoLibraryUsageDescription" = "To add pictures to your Visheo - please allow the application to access your camera roll";
+"NSPhotoLibraryUsageDescription" = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted";
 
