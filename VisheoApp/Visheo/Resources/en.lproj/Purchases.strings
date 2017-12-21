@@ -28,8 +28,8 @@
 /* Class = "UILabel"; text = "You have"; ObjectID = "OWf-2c-nQv"; */
 "OWf-2c-nQv.text" = "You have";
 
-/* Class = "UINavigationItem"; title = "ENTER COUPON CODE"; ObjectID = "QS2-jm-n4R"; */
-"QS2-jm-n4R.title" = "ENTER COUPON CODE";
+/* Class = "UINavigationItem"; title = "Purchase succeeded"; ObjectID = "QS2-jm-n4R"; */
+"QS2-jm-n4R.title" = "Purchase succeeded";
 
 /* Class = "UIButton"; normalTitle = "Send 5 Visheo cards for $3.99"; ObjectID = "W4z-hM-rC8"; */
 "W4z-hM-rC8.normalTitle" = "Send 5 Visheo cards for $3.99";

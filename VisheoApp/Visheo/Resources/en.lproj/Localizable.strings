@@ -4,11 +4,11 @@
 /* redeem success description */
 "%d premium card(s) added to your account" = "%d premium card(s) added to your account";
 
-/* Processing video error text */
-"An error occurred while processing video" = "An error occurred while processing video";
-
 /* Error while deleting account text messaage */
 "An error occurred while deleting account" = "An error occurred while deleting account";
+
+/* Processing video error text */
+"An error occurred while processing video" = "An error occurred while processing video";
 
 /* Error while deleting account text messaage */
 "An error occurred while renaming" = "An error occurred while renaming";
@@ -33,6 +33,9 @@
 /* Invalid coupon code error */
 "Coupon with this code does not exist. Please check if you entered the code right." = "Coupon with this code does not exist. Please check if you entered the code right.";
 
+/* Create Visheo Card */
+"Create Visheo Card" = "Create Visheo Card";
+
 /* No comment provided by engineer. */
 "Download failed" = "Download failed";
 
@@ -45,7 +48,8 @@
 /* Missing email warning */
 "Email is mandatory field" = "Email is mandatory field";
 
-/* Missing coupon code */
+/* Enter coupon code
+   Missing coupon code */
 "Enter coupon code" = "Enter coupon code";
 
 /* Eroro alert title */
@@ -100,7 +104,8 @@
 /* error using premium card title */
 "Oops…" = "Oops…";
 
-/* Unknown error redeeming coupon */
+/* Unknown error redeeming coupon
+   Unknown error sending feedback */
 "Oops… Something went wrong." = "Oops… Something went wrong.";
 
 /* No comment provided by engineer. */
@@ -118,8 +123,17 @@
 /* Required name */
 "Please enter your name" = "Please enter your name";
 
+/* Email client not setup error message */
+"Please setup your email client to send feedback" = "Please setup your email client to send feedback";
+
 /* Please sign in to purchase premium cards */
 "Please sign in to purchase premium cards" = "Please sign in to purchase premium cards";
+
+/* Please sign in to redeem coupons */
+"Please sign in to redeem coupons" = "Please sign in to redeem coupons";
+
+/* Please sign in to send feedback */
+"Please sign in to send feedback" = "Please sign in to send feedback";
 
 /* Premium Cards menu item */
 "Premium Cards" = "Premium Cards";
@@ -129,6 +143,9 @@
 
 /* No comment provided by engineer. */
 "Proceed with %d Photo(s)" = "Proceed with %d Photo(s)";
+
+/* Purchase succeeded */
+"Purchase succeeded" = "Purchase succeeded";
 
 /* Redeem coupon menu item */
 "Redeem coupon" = "Redeem coupon";
@@ -150,6 +167,9 @@
 
 /* Send reset password email button */
 "Send" = "Send";
+
+/* Send your Visheo */
+"Send your Visheo" = "Send your Visheo";
 
 /* something went wrong while suing premium card */
 "Something went wrong. Please check your Internet connection and try again." = "Something went wrong. Please check your Internet connection and try again.";
@@ -187,6 +207,9 @@
 /* Visheo Box menu item */
 "Visheo Box" = "Visheo Box";
 
+/* Contact us form mail subject */
+"Visheo feedback" = "Visheo feedback";
+
 /* Visheo link was copied to clipboard message */
 "Visheo link was copied" = "Visheo link was copied";
 
@@ -211,6 +234,9 @@
 
 /* Confirm account deletion alert message */
 "Your account with all the data will be deleted without possiblity to restore. Proceed?" = "Your account with all the data will be deleted without possiblity to restore. Proceed?";
+
+/* Contact us feedback sent */
+"Your message has been sent. Thanks for contacting us!" = "Your message has been sent. Thanks for contacting us!";
 
 /* 480 p confirmation */
 "Your video will be rendered in 480p resolution." = "Your video will be rendered in 480p resolution.";

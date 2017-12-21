@@ -8,7 +8,7 @@
 "3e4-SB-Y6h.title" = "Skip";
 
 /* Class = "UIButton"; normalTitle = "I like this Cover"; ObjectID = "5Wj-Y4-Mkt"; */
-"5Wj-Y4-Mkt.normalTitle" = "I like this Cover";
+"5Wj-Y4-Mkt.normalTitle" = "I like this Card";
 
 /* Class = "UILabel"; text = "Create Visheo to deliver your care to your dear ones"; ObjectID = "7wf-9j-KvF"; */
 "7wf-9j-KvF.text" = "Create Visheo to deliver your care to your dear ones";
@@ -17,19 +17,19 @@
 "8xJ-4v-USr.text" = "Label";
 
 /* Class = "UILabel"; text = "Congratulations on occasion"; ObjectID = "DaM-G6-XCX"; */
-"DaM-G6-XCX.text" = "Special & Everyday Occasions";
+"DaM-G6-XCX.text" = "Congratulations on occasion";
 
 /* Class = "UILabel"; text = "23rd of November"; ObjectID = "Fkg-P7-EP7"; */
 "Fkg-P7-EP7.text" = "23rd of November";
 
 /* Class = "UINavigationItem"; title = "SELECT COVER"; ObjectID = "Kjn-mm-pFO"; */
-"Kjn-mm-pFO.title" = "SELECT COVER";
+"Kjn-mm-pFO.title" = "SELECT CARD";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Nq2-vC-p50"; */
 "Nq2-vC-p50.text" = "Label";
 
 /* Class = "UILabel"; text = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted"; ObjectID = "QQ4-CT-UNf"; */
-"QQ4-CT-UNf.text" = "To add pictures to your Visheo - please allow the application to access your camera roll";
+"QQ4-CT-UNf.text" = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted";
 
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "TbV-zh-dIQ"; */
 "TbV-zh-dIQ.title" = "CAMERA ROLL";
