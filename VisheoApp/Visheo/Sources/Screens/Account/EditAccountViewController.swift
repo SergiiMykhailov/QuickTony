@@ -14,6 +14,7 @@ class EditAccountViewController: UIViewController {
         super.viewDidLoad()
         
         nameField.text = viewModel.userName
+		nameField.delegate = self;
         
         viewModel.showProgressCallback = {[weak self] in
             guard let `self` = self else {return}
@@ -71,14 +72,17 @@ class EditAccountViewController: UIViewController {
     
     // MARK: Actions    
     @IBAction func deletePressed(_ sender: Any) {
+		view.endEditing(true);
         confirmDelete()
     }
     
     @IBAction func backPressed(_ sender: Any) {
+		view.endEditing(true);
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func savePressed(_ sender: Any) {
+		view.endEditing(true);
         viewModel.saveEditing()
     }
     
@@ -127,6 +131,13 @@ class EditAccountViewController: UIViewController {
         }))
         present(alertController, animated: true, completion: nil)
     }
+}
+
+extension EditAccountViewController: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		savePressed(textField);
+		return true;
+	}
 }
 
 extension EditAccountViewController {
