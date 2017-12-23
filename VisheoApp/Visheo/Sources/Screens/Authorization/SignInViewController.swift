@@ -44,6 +44,10 @@ class SignInViewController: UIViewController, RouterProxy {
         viewModel.didSendForgotPasswordCallback = { [weak self] in
             self?.showWarningAlertWithText(text: NSLocalizedString("Reset password link was sent.", comment: "Reset passwod link was sent sent message text"))
         }
+		
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.endEditing));
+		tapRecognizer.cancelsTouchesInView = false;
+		view.addGestureRecognizer(tapRecognizer);
     }
     
     //MARK: - VM+Router init
@@ -89,6 +93,9 @@ class SignInViewController: UIViewController, RouterProxy {
     }
     
     // MARK: Actions
+	@objc private func endEditing() {
+		view.endEditing(true);
+	}
     
     @IBAction func signInTapped(_ sender: Any) {
         viewModel.signIn()
@@ -101,6 +108,8 @@ class SignInViewController: UIViewController, RouterProxy {
 
 extension SignInViewController {
     @IBAction func forgotPaswordTapped(_ sender: Any) {
+		endEditing()
+		
         let alert = UIAlertController(title: NSLocalizedString("Forgot your password?", comment: "forgot password alert title"), message: NSLocalizedString("Please enter your email address. You will receive a link to create a new password via email.", comment: "Forgot password alert message text"), preferredStyle: .alert)
         
         var forgotEmailField : UITextField?
@@ -137,9 +146,7 @@ extension SignInViewController: UITextFieldDelegate {
             passwordField.becomeFirstResponder()
         } else {
             textField.endEditing(true)
-            if viewModel.canSignIn {
-                signInTapped(textField)
-            }
+			signInTapped(textField)
         }
         return true
     }

@@ -31,6 +31,10 @@ class SignUpViewController: UIViewController {
         viewModel.warningAlertHandler = { [weak self] in
             self?.showWarningAlertWithText(text: $0)
         }
+		
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.endEditing));
+		tapRecognizer.cancelsTouchesInView = false;
+		view.addGestureRecognizer(tapRecognizer);
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +65,10 @@ class SignUpViewController: UIViewController {
     @IBAction func backTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+	
+	@objc private func endEditing() {
+		view.endEditing(true);
+	}
     
     // MARK: Keyboard observing
     
@@ -95,9 +103,7 @@ extension SignUpViewController: UITextFieldDelegate {
             passwordField.becomeFirstResponder()
         } else {
             textField.endEditing(true)
-            if viewModel.canSignUp {
-                signUpTapped(textField)
-            }
+            signUpTapped(textField)
         }
         return true
     }

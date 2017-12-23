@@ -63,6 +63,21 @@ class VisheoSignInViewModel : SignInViewModel {
     }
     
     func signIn() {
+		if email.isEmpty {
+			warningAlertHandler?(NSLocalizedString("Email is mandatory field", comment: "Missing email warning"))
+			return
+		}
+		
+		if !validator.isValid(email: email) {
+			warningAlertHandler?(NSLocalizedString("It does not look like a proper email", comment: "Invalid email warning"))
+			return
+		}
+		
+		if !validator.isValid(password: password) {
+			warningAlertHandler?(NSLocalizedString("Password should be at least 6 symbols", comment: "Invalid password warning"))
+			return
+		}
+		
         showProgressCallback?(true)
         startAuthObserving()
         authService.signIn(with: email, password: password)
