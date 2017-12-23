@@ -9,6 +9,11 @@
 import Foundation
 import Photos
 
+
+enum PhotoPickerError: Error {
+	case maxPhotosReached(max: Int)
+}
+
 protocol PhotoPickerViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func checkPhoto(id: String)
     func photoSelectionIndex(for id: String) -> Int?
@@ -20,6 +25,7 @@ protocol PhotoPickerViewModel : class, ProgressGenerating, WarningAlertGeneratin
     func skipPhotos()
     
     var didChange: (()->())? {get set}
+	var errorGenerated: ((Error)->())? {get set}
 }
 
 class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
@@ -36,6 +42,8 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
             didChange?()
         }
     }
+	
+	var errorGenerated: ((Error) -> ())?
     
     var proceedText: String {
         return String.localizedStringWithFormat(NSLocalizedString("Proceed with %d Photo(s)", comment: ""), selectedPhotos.count)
@@ -73,7 +81,9 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
         } else if selectedPhotos.count < maxPhotos {
             selectedPhotos.append(id)
             didChange?()
-        }
+		} else {
+			errorGenerated?(PhotoPickerError.maxPhotosReached(max: maxPhotos))
+		}
     }
     
     func photoSelectionIndex(for id: String) -> Int? {

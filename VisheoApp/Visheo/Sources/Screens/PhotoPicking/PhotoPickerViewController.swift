@@ -42,6 +42,10 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
                 self.collectionView.reloadData()
             }
         }
+		
+		viewModel.errorGenerated = { [weak self] in
+			self?.handleError($0);
+		}
         
         self.viewModel.showProgressCallback = {[weak self] in
             guard let `self` = self else {return}
@@ -89,6 +93,16 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func proceedPressed(_ sender: Any) {
         viewModel.proceed()
     }
+	
+	private func handleError(_ error: Error) {
+		switch error {
+			case PhotoPickerError.maxPhotosReached(let maxPhotos):
+				let message = String.localizedStringWithFormat(NSLocalizedString("Maximum %li photos allowed", comment: "Maximum number of photos error message"), maxPhotos);
+				showToast(message: message);
+			default:
+				break;
+		}
+	}
     
     private func updateItemSize() {
         let viewWidth = view.bounds.size.width
