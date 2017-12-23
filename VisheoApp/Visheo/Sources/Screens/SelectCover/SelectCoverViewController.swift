@@ -41,6 +41,11 @@ class SelectCoverViewController: UIViewController {
         self.viewModel.warningAlertHandler = {[weak self] in
             self?.showWarningAlertWithText(text: $0)
         }
+		
+		viewModel.didChangeCallback = { [weak self] in
+			self?.pagedCoversCollection.reloadData();
+			self?.coversFilmstripCollection.reloadData();
+		}
         
         if viewModel.hideBackButton {
             self.navigationItem.leftBarButtonItem = nil

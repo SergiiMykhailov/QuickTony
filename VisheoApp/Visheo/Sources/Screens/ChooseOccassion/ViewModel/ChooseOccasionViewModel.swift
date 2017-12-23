@@ -57,13 +57,21 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     
     weak var router: ChooseOccasionRouter?
     var occasionsList : OccasionsListService
+	private let appStateService: AppStateService;
     
-    init(occasionsList: OccasionsListService) {
+	init(occasionsList: OccasionsListService, appStateService: AppStateService) {
         self.occasionsList = occasionsList
+		self.appStateService = appStateService;
         
         NotificationCenter.default.addObserver(forName: Notification.Name.occasionsChanged, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
             self?.didChangeCallback?()
         }
+		
+		NotificationCenter.default.addObserver(forName: .reachabilityChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
+			if let reachable = self?.appStateService.isReachable, reachable {
+				self?.didChangeCallback?();
+			}
+		}
     }
     
     deinit {

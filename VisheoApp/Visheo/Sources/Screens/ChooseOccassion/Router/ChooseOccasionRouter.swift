@@ -26,7 +26,8 @@ class VisheoChooseOccasionRouter : ChooseOccasionRouter {
     }
     
     func start(with viewController: ChooseOccasionViewController) {
-        let vm = VisheoChooseOccasionViewModel(occasionsList: dependencies.occasionsListService)
+		let vm = VisheoChooseOccasionViewModel(occasionsList: dependencies.occasionsListService,
+											   appStateService: dependencies.appStateService)
         viewModel = vm
         vm.router = self
         self.controller = viewController

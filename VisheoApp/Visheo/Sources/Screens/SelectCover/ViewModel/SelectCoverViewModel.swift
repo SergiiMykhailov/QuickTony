@@ -21,6 +21,7 @@ protocol SelectCoverViewModel : class, ProgressGenerating, WarningAlertGeneratin
     var preselectedCoverIndex : Int {get set}
     
     func selectCover()
+	var didChangeCallback: (() -> Void)? { get set }
 }
 
 class VisheoSelectCoverViewModel : SelectCoverViewModel {
@@ -29,8 +30,8 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     }
     
     var showProgressCallback: ((Bool) -> ())?
-    
     var warningAlertHandler: ((String) -> ())?
+	var didChangeCallback: (() -> Void)?
     
     var preselectedCoverIndex: Int {
         didSet {
@@ -43,6 +44,7 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     let permissionsService : AppPermissionsService
 	let soundtracksService: SoundtracksService
 	let loggingService: EventLoggingService;
+	private let appStateService: AppStateService;
     let assets: VisheoRenderingAssets
     let editMode : Bool
     
@@ -51,17 +53,29 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
 		 permissionsService: AppPermissionsService,
 		 soundtracksService: SoundtracksService,
 		 loggingService: EventLoggingService,
+		 appStateService: AppStateService,
 		 editMode: Bool = false)
 	{
         self.occasion = occasion
         self.permissionsService = permissionsService
 		self.soundtracksService = soundtracksService
 		self.loggingService = loggingService;
+		self.appStateService = appStateService;
         self.assets = assets
         self.editMode = editMode
         
         preselectedCoverIndex = assets.coverIndex ?? 0
+		
+		NotificationCenter.default.addObserver(forName: .reachabilityChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
+			if let reachable = self?.appStateService.isReachable, reachable {
+				self?.didChangeCallback?();
+			}
+		}
     }
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self);
+	}
     
     func coverViewModel(at index: Int) -> CoverCellViewModel {
         return VisheoCoverCellViewModel(imageURL: occasion.covers[index].previewUrl)
