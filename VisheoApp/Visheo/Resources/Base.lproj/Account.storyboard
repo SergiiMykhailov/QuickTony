@@ -54,8 +54,8 @@
                                 <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUU-BM-tEl">
-                                <rect key="frame" x="142.5" y="206" width="91.5" height="26.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUU-BM-tEl">
+                                <rect key="frame" x="40" y="206" width="295" height="26.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -80,13 +80,14 @@
                             <constraint firstItem="AJu-h9-feC" firstAttribute="top" secondItem="SUU-BM-tEl" secondAttribute="bottom" constant="17.5" id="444-49-Sp5"/>
                             <constraint firstItem="l4G-Rv-jDb" firstAttribute="centerX" secondItem="1cy-mz-3M4" secondAttribute="centerX" id="6jZ-YK-7Hi"/>
                             <constraint firstItem="SUU-BM-tEl" firstAttribute="top" secondItem="l4G-Rv-jDb" secondAttribute="bottom" constant="35" id="Hqw-5P-okm"/>
+                            <constraint firstItem="SUU-BM-tEl" firstAttribute="leading" secondItem="noo-ul-bqc" secondAttribute="leading" constant="40" id="J0w-j8-Af7"/>
                             <constraint firstItem="AJu-h9-feC" firstAttribute="leading" secondItem="l4G-Rv-jDb" secondAttribute="leading" constant="3" id="NYx-Jn-ENf"/>
                             <constraint firstItem="noo-ul-bqc" firstAttribute="bottom" secondItem="vTB-R0-Wxg" secondAttribute="bottom" constant="20" id="TiI-z9-GnM"/>
                             <constraint firstItem="l4G-Rv-jDb" firstAttribute="top" secondItem="noo-ul-bqc" secondAttribute="top" constant="51" id="XeZ-yH-0Dh"/>
+                            <constraint firstItem="noo-ul-bqc" firstAttribute="trailing" secondItem="SUU-BM-tEl" secondAttribute="trailing" constant="40" id="Xio-Qx-QL9"/>
                             <constraint firstItem="pOF-uR-Bbl" firstAttribute="top" secondItem="AJu-h9-feC" secondAttribute="bottom" constant="18" id="jGh-hm-NPk"/>
                             <constraint firstItem="AJu-h9-feC" firstAttribute="trailing" secondItem="l4G-Rv-jDb" secondAttribute="trailing" constant="-3" id="lh3-Jw-tRt"/>
                             <constraint firstItem="vTB-R0-Wxg" firstAttribute="centerX" secondItem="1cy-mz-3M4" secondAttribute="centerX" id="pzT-W2-5lQ"/>
-                            <constraint firstItem="SUU-BM-tEl" firstAttribute="centerX" secondItem="1cy-mz-3M4" secondAttribute="centerX" id="wFE-Pi-Ape"/>
                             <constraint firstItem="pOF-uR-Bbl" firstAttribute="centerX" secondItem="1cy-mz-3M4" secondAttribute="centerX" id="yps-iB-yb5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="noo-ul-bqc"/>
@@ -225,6 +226,6 @@
         <image name="settings" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t1h-4B-HxR"/>
+        <segue reference="iHM-lE-WIU"/>
     </inferredMetricsTieBreakers>
 </document>
