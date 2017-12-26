@@ -230,7 +230,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-P7-EP7" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="281" width="164" height="34"/>
+                                                    <rect key="frame" x="20" y="281" width="130.5" height="34"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="xFM-h5-j6w"/>
@@ -758,8 +758,14 @@
                                 <action selector="backPressed:" destination="p6i-YY-etj" id="6WD-bx-Cn2"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="vJV-LG-7SV">
+                            <connections>
+                                <action selector="cancelPressed:" destination="p6i-YY-etj" id="HLk-5M-xHb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelBarButtonItem" destination="vJV-LG-7SV" id="tD6-GX-52j"/>
                         <outlet property="coversFilmstripCollection" destination="H4X-2C-4q9" id="uiE-4c-TbH"/>
                         <outlet property="pagedCoversCollection" destination="Ivx-NK-aur" id="Xfn-ik-ilu"/>
                         <segue destination="g7P-Dq-lrL" kind="show" identifier="showPhotoPermissions" id="kaJ-ks-jkt"/>
@@ -1001,6 +1007,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="ddP-AN-G6D"/>
         <segue reference="jJm-eC-c3f"/>
-        <segue reference="6pg-nG-fzZ"/>
+        <segue reference="2OI-cd-wsG"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,9 +17,11 @@ protocol SelectCoverViewModel : class, ProgressGenerating, WarningAlertGeneratin
     func coverViewModel(at index: Int) -> CoverCellViewModel
     var coversNumber : Int {get}
     var hideBackButton: Bool {get}
+	var canCancelSelection: Bool { get }
     
     var preselectedCoverIndex : Int {get set}
-    
+	
+	func cancel()
     func selectCover()
 	var didChangeCallback: (() -> Void)? { get set }
 }
@@ -28,6 +30,10 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     var hideBackButton: Bool {
         return editMode
     }
+	
+	var canCancelSelection: Bool {
+		return editMode;
+	}
     
     var showProgressCallback: ((Bool) -> ())?
     var warningAlertHandler: ((String) -> ())?
@@ -84,6 +90,10 @@ class VisheoSelectCoverViewModel : SelectCoverViewModel {
     var coversNumber: Int {
         return occasion.covers.count
     }
+	
+	func cancel() {
+		router?.goBack(wit: assets);
+	}
     
     func selectCover() {
         showProgressCallback?(true)
