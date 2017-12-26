@@ -15,7 +15,9 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var proceedButton: UIButton!
-    
+	@IBOutlet weak var skipBarButtonItem: UIBarButtonItem!
+	@IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
+	
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
     
@@ -59,8 +61,14 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
         if viewModel.hideNavigationButtons {
             navigationItem.hidesBackButton = true
             navigationItem.leftBarButtonItem = nil
-            navigationItem.rightBarButtonItem = nil
+			navigationItem.rightBarButtonItems = nil;
         }
+		
+		if viewModel.canSkipSelection {
+			navigationItem.rightBarButtonItems = [skipBarButtonItem];
+		} else if viewModel.canCancelSelection {
+			navigationItem.rightBarButtonItems = [cancelBarButtonItem];
+		}
     }
 
     deinit {
@@ -86,7 +94,11 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func skipPressed(_ sender: Any) {
+	@IBAction func cancelPressed(_ sender: Any) {
+		viewModel.cancel();
+	}
+	
+	@IBAction func skipPressed(_ sender: Any) {
         viewModel.skipPhotos()
     }
     

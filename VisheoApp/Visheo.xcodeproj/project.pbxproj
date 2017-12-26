@@ -1089,7 +1089,7 @@
 				B4B9D1921FA8A52300CBD7DB /* Sources */,
 				B4B9D1931FA8A52300CBD7DB /* Frameworks */,
 				B4B9D1941FA8A52300CBD7DB /* Resources */,
-				B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytis stup */,
+				B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytics setup */,
 				92EF8E881FC4190D005926E5 /* Embed Frameworks */,
 				DD698383854C530CB34D0E1B /* [CP] Embed Pods Frameworks */,
 				04778D0C6B6EF5C3357F55D6 /* [CP] Copy Pods Resources */,
@@ -1225,19 +1225,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytis stup */ = {
+		B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytics setup */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Crashlytis stup";
+			name = "Crashlytics setup";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" c5b9501895284dd13b806ac41d0d0569f04dfcae 781fd32b540f7cc68e8fe853f325480388f266992456c58df45024161a6319ea";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7a46fd1c8ce2ff847c926c7643d2946bdd1499e7 4c00028f3fa11585186d816e06a3e7e2e4e290b20eaf0f9e8d79d8661cb22f61";
 		};
 		DD698383854C530CB34D0E1B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
