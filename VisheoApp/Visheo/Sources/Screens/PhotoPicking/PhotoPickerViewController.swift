@@ -37,11 +37,11 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
         resetCachedAssets()
         PHPhotoLibrary.shared().register(self)
         
-        viewModel.didChange = {[weak self] in
+        viewModel.didChange = {[weak self] asset in
             if let `self` = self {
                 self.proceedButton.isHidden = !self.viewModel.canProceed
                 self.proceedButton.setTitle(self.viewModel.proceedText, for: .normal)
-                self.collectionView.reloadData()
+				self.reload(with: asset)
             }
         }
 		
@@ -168,7 +168,7 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
         let removedAssets = removedRects
             .flatMap { rect in collectionView.indexPathsForElements(in: rect) }
             .map { indexPath in fetchResult.object(at: indexPath.item) }
-        
+		
         // Update the assets the PHCachingImageManager is caching.
         imageManager.startCachingImages(for: addedAssets,
                                         targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
@@ -206,10 +206,45 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
     }
 
     // MARK: UICollectionView
+	private func reload(with asset: PHAsset?) {
+		guard let `asset` = asset, fetchResult.contains(asset) else {
+			collectionView.reloadData();
+			return;
+		}
+
+		var indexes: [(Int, PHAsset)] = []
+		let selected = viewModel.selectedPhotos;
+		
+		fetchResult.enumerateObjects { (asset, index, stop) in
+			if selected.contains(asset.localIdentifier) {
+				indexes.append((index, asset));
+			}
+			if indexes.count == selected.count {
+				stop.pointee = ObjCBool(true);
+			}
+		}
+		
+		if !selected.contains(asset.localIdentifier) {
+			let index = fetchResult.index(of: asset);
+			indexes.append((index, asset));
+		}
+		
+		for (index, asset) in indexes {
+			let indexPath = IndexPath(item: index, section: 0);
+			guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell else {
+				continue;
+			}
+			if let selectionIndex = viewModel.photoSelectionIndex(for: asset.localIdentifier) {
+				cell.indexView.selectionState = .selected(index: selectionIndex)
+			} else {
+				cell.indexView.selectionState = .none
+			}
+		}
+	}
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let asset = fetchResult.object(at: indexPath.item)
-        viewModel.checkPhoto(id: asset.localIdentifier)
+        viewModel.checkPhoto(asset: asset)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -223,10 +258,11 @@ class PhotoPickerViewController: UIViewController, UICollectionViewDelegate, UIC
                                                             for: indexPath) as! PhotoCollectionViewCell
         
         cell.representedAssetIdentifier = asset.localIdentifier
-        imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-            if cell.representedAssetIdentifier == asset.localIdentifier && image != nil {
-                cell.imageView.image = image
+        imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { image, info in
+            guard cell.representedAssetIdentifier == asset.localIdentifier && image != nil else {
+				return
             }
+			cell.imageView.image = image
         })
         
         if let selectionIndex = viewModel.photoSelectionIndex(for: asset.localIdentifier) {

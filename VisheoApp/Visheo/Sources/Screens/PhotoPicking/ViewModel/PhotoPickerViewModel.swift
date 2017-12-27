@@ -15,7 +15,8 @@ enum PhotoPickerError: Error {
 }
 
 protocol PhotoPickerViewModel : class, ProgressGenerating, WarningAlertGenerating {
-    func checkPhoto(id: String)
+    func checkPhoto(asset: PHAsset)
+	var selectedPhotos : [String] { get }
     func photoSelectionIndex(for id: String) -> Int?
     
     var hideNavigationButtons : Bool {get}
@@ -27,7 +28,7 @@ protocol PhotoPickerViewModel : class, ProgressGenerating, WarningAlertGeneratin
     func skipPhotos()
 	func cancel()
     
-    var didChange: (()->())? {get set}
+    var didChange: ((PHAsset?)->())? {get set}
 	var errorGenerated: ((Error)->())? {get set}
 }
 
@@ -48,9 +49,9 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     
     var warningAlertHandler: ((String) -> ())?
     
-    var didChange: (() -> ())? {
+    var didChange: ((PHAsset?) -> ())? {
         didSet {
-            didChange?()
+            didChange?(nil)
         }
     }
 	
@@ -85,13 +86,13 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
         self.editMode = editMode
     }
     
-    func checkPhoto(id: String) {
-        if let containedIndex = selectedPhotos.index(of: id) {
+    func checkPhoto(asset: PHAsset) {
+        if let containedIndex = selectedPhotos.index(of: asset.localIdentifier) {
             selectedPhotos.remove(at: containedIndex)
-            didChange?()
+            didChange?(asset)
         } else if selectedPhotos.count < maxPhotos {
-            selectedPhotos.append(id)
-            didChange?()
+            selectedPhotos.append(asset.localIdentifier)
+            didChange?(asset)
 		} else {
 			errorGenerated?(PhotoPickerError.maxPhotosReached(max: maxPhotos))
 		}
