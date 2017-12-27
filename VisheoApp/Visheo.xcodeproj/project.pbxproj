@@ -29,6 +29,9 @@
 		926B53C91FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */; };
 		926B53CE1FE42EB40031B1A0 /* EventLoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53CD1FE42EB40031B1A0 /* EventLoggingService.swift */; };
 		926B53D01FE42EBD0031B1A0 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53CF1FE42EBD0031B1A0 /* Events.swift */; };
+		92A3BA601FF3593C006FA011 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA5F1FF3593C006FA011 /* TipsViewController.swift */; };
+		92A3BA651FF35BA2006FA011 /* TipsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA641FF35BA2006FA011 /* TipsRouter.swift */; };
+		92A3BA671FF35BAB006FA011 /* TipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA661FF35BAB006FA011 /* TipsViewModel.swift */; };
 		92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */; };
 		92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
 		92A8D30E1FC86E86001E194D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
@@ -230,6 +233,9 @@
 		926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GestureRecognizer+TapDetection.swift"; sourceTree = "<group>"; };
 		926B53CD1FE42EB40031B1A0 /* EventLoggingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLoggingService.swift; sourceTree = "<group>"; };
 		926B53CF1FE42EBD0031B1A0 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		92A3BA5F1FF3593C006FA011 /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
+		92A3BA641FF35BA2006FA011 /* TipsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsRouter.swift; sourceTree = "<group>"; };
+		92A3BA661FF35BAB006FA011 /* TipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewModel.swift; sourceTree = "<group>"; };
 		92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewView.swift; sourceTree = "<group>"; };
 		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
 		92A8D30C1FC86E86001E194D /* blank.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank.m4v; sourceTree = "<group>"; };
@@ -488,6 +494,40 @@
 				926B53CF1FE42EBD0031B1A0 /* Events.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		92A3BA5C1FF3592C006FA011 /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				92A3BA621FF35B89006FA011 /* Cells */,
+				92A3BA631FF35B89006FA011 /* Router */,
+				92A3BA611FF35B89006FA011 /* ViewModels */,
+				92A3BA5F1FF3593C006FA011 /* TipsViewController.swift */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
+		92A3BA611FF35B89006FA011 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				92A3BA661FF35BAB006FA011 /* TipsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		92A3BA621FF35B89006FA011 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		92A3BA631FF35B89006FA011 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				92A3BA641FF35BA2006FA011 /* TipsRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		92A8D30A1FC86E86001E194D /* Media */ = {
@@ -839,6 +879,7 @@
 				A60CED5DE67DC02623C3F403 /* PremiumCards */,
 				B4BCAC031FB8CDE0003EDC7F /* SelectCover */,
 				920EDFD51FCF062900D121ED /* Soundtrack */,
+				92A3BA5C1FF3592C006FA011 /* Tips */,
 				B4F666201FC1C96C00B68055 /* VideoTrimming */,
 				B4AEE0E71FD1B1340043A39A /* VisheoBox */,
 				B46528081FC346650070FFB7 /* VisheoPreview */,
@@ -1326,17 +1367,20 @@
 				B467612B1FC711BD006E9CB2 /* ShareViewModel.swift in Sources */,
 				B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */,
 				9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */,
+				92A3BA671FF35BAB006FA011 /* TipsViewModel.swift in Sources */,
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
 				B4AEE0ED1FD1B27B0043A39A /* VisheoBoxViewModel.swift in Sources */,
 				B4AEE0E91FD1B1600043A39A /* VisheoBoxViewController.swift in Sources */,
 				B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */,
 				92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */,
+				92A3BA601FF3593C006FA011 /* TipsViewController.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B4BCABF71FB8CC7D003EDC7F /* HolidaysCollectionMediator.swift in Sources */,
 				920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */,
 				B4BCAC071FB8CDFB003EDC7F /* SelectCoverViewController.swift in Sources */,
 				B4BCABFE1FB8CC7D003EDC7F /* LaunchProxyRouter.swift in Sources */,
 				926B53C91FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift in Sources */,
+				92A3BA651FF35BA2006FA011 /* TipsRouter.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
 				920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */,
 				B4BCABF21FB8CC7D003EDC7F /* SignInViewModel.swift in Sources */,
