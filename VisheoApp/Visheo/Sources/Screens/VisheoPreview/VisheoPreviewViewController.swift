@@ -47,7 +47,7 @@ class VisheoPreviewViewController: UIViewController {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated);
-		videoContainer.pause();
+		videoContainer.stop();
 	}
 
     //MARK: - VM+Router init

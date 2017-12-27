@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -229,7 +230,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-P7-EP7" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="281" width="164.5" height="34"/>
+                                                    <rect key="frame" x="20" y="281" width="130.5" height="34"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="xFM-h5-j6w"/>
@@ -757,8 +758,14 @@
                                 <action selector="backPressed:" destination="p6i-YY-etj" id="6WD-bx-Cn2"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="vJV-LG-7SV">
+                            <connections>
+                                <action selector="cancelPressed:" destination="p6i-YY-etj" id="HLk-5M-xHb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelBarButtonItem" destination="vJV-LG-7SV" id="tD6-GX-52j"/>
                         <outlet property="coversFilmstripCollection" destination="H4X-2C-4q9" id="uiE-4c-TbH"/>
                         <outlet property="pagedCoversCollection" destination="Ivx-NK-aur" id="Xfn-ik-ilu"/>
                         <segue destination="g7P-Dq-lrL" kind="show" identifier="showPhotoPermissions" id="kaJ-ks-jkt"/>
@@ -872,15 +879,24 @@
                                 <action selector="backPressed:" destination="Dje-Hm-87p" id="b4u-eU-Kuq"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Skip" id="3e4-SB-Y6h">
-                            <connections>
-                                <action selector="skipPressed:" destination="Dje-Hm-87p" id="oLg-QP-aAf"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Skip" id="3e4-SB-Y6h">
+                                <connections>
+                                    <action selector="skipPressed:" destination="Dje-Hm-87p" id="oLg-QP-aAf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Cancel" id="Y8l-ga-NR8">
+                                <connections>
+                                    <action selector="cancelPressed:" destination="Dje-Hm-87p" id="EPR-LI-f5I"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelBarButtonItem" destination="Y8l-ga-NR8" id="Hvj-cU-9c1"/>
                         <outlet property="collectionView" destination="bqS-g2-86B" id="bBb-UT-D0A"/>
                         <outlet property="proceedButton" destination="VUs-tX-owo" id="KXm-bS-qsX"/>
+                        <outlet property="skipBarButtonItem" destination="3e4-SB-Y6h" id="1QY-7g-VoU"/>
                         <segue destination="53N-Og-RIQ" kind="show" identifier="showCameraScreen" id="jJm-eC-c3f"/>
                         <segue destination="c8Z-PU-L7t" kind="show" identifier="showCameraPermissionsScreen" id="ddP-AN-G6D"/>
                     </connections>
@@ -914,22 +930,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="bdG-sn-BZg">
-                                <rect key="frame" x="61" y="-16804.5" width="253" height="34212"/>
+                                <rect key="frame" x="0.0" y="229.5" width="0.0" height="144"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR PHOTOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-PL-lMo">
-                                        <rect key="frame" x="0.0" y="0.0" width="253" height="8483.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add memorable to your Visheo — please allow Visheo to access your photos when prompted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-CT-UNf">
-                                        <rect key="frame" x="0.0" y="8525.5" width="253" height="25584.5"/>
+                                        <rect key="frame" x="0.0" y="42" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-vf-rCc">
-                                        <rect key="frame" x="0.0" y="34152" width="253" height="60"/>
+                                        <rect key="frame" x="0.0" y="84" width="0.0" height="60"/>
                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ss-oF-nBH"/>
@@ -990,8 +1005,8 @@
         <image name="welcomePic" width="337" height="337"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y7f-9b-FXA"/>
-        <segue reference="G1f-tY-ZBC"/>
-        <segue reference="6pg-nG-fzZ"/>
+        <segue reference="ddP-AN-G6D"/>
+        <segue reference="jJm-eC-c3f"/>
+        <segue reference="2OI-cd-wsG"/>
     </inferredMetricsTieBreakers>
 </document>

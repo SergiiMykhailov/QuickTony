@@ -111,6 +111,11 @@ class VisheoPreviewView: UIView
 		playbackStatusChanged?(false)
 	}
 	
+	func stop() {
+		pause()
+		player?.seek(to: kCMTimeZero);
+	}
+	
 	
 	@objc private func playerDidPlayToEnd() {
 		player?.seek(to: kCMTimeZero);

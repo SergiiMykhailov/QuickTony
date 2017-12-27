@@ -16,7 +16,8 @@ class VideoTrimmingViewController: UIViewController {
     @IBOutlet weak var trimmingView: TrimmerView!
     @IBOutlet weak var videoContainer: VideoView!
     @IBOutlet weak var playButton: UIButton!
-    
+	@IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +47,8 @@ class VideoTrimmingViewController: UIViewController {
         if viewModel.hideBackButton {
             navigationItem.leftBarButtonItem = nil
         }
+		
+		navigationItem.rightBarButtonItem = viewModel.canCancelSelection ? cancelBarButtonItem : nil;
         
         viewModel.assetsChanged = {[weak self] in
 			self?.videoContainer.player = self?.viewModel.player;
@@ -76,7 +79,23 @@ class VideoTrimmingViewController: UIViewController {
     @IBAction func backPressed(_ sender: Any) {
         confirmGoingBack(retake: false)
     }
-    
+	
+	@IBAction func cancelPressed(_ sender: Any) {
+		if !viewModel.didMakeChangesInEditMode {
+			viewModel.cancel();
+			return;
+		}
+		
+		let alertController = UIAlertController(title: NSLocalizedString("Notification", comment: "Notification alert title"),
+												message: NSLocalizedString("Changes to your Video Wish won’t be applied", comment: "Cancelling edited video wish changes notification text"), preferredStyle: .alert)
+		alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
+		alertController.addAction(UIAlertAction(title: NSLocalizedString("OK, Сontinue", comment: "OK, Сontinue button text"), style: .default, handler: { [weak self]_ in
+			self?.viewModel.cancel()
+		}))
+		
+		self.present(alertController, animated: true, completion: nil)
+	}
+	
     private func confirmGoingBack(retake: Bool) {
         let alertController = UIAlertController(title: NSLocalizedString("Notification", comment: "Notification alert title"),
                                                 message: NSLocalizedString("Existing video wish will be replaced with the new one", comment: "New video recording notification text"), preferredStyle: .alert)

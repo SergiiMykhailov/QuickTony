@@ -316,8 +316,14 @@
                                 <action selector="backPressed:" destination="UoZ-eD-0S2" id="O09-4i-3q7"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" style="plain" id="r23-1M-WM6">
+                            <connections>
+                                <action selector="cancelPressed:" destination="UoZ-eD-0S2" id="t4r-XO-rpr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelBarButtonItem" destination="r23-1M-WM6" id="3QS-3D-raV"/>
                         <outlet property="playButton" destination="QfO-D3-wsF" id="NOz-Gs-9io"/>
                         <outlet property="trimmingView" destination="xbQ-h4-co6" id="kko-vC-ebi"/>
                         <outlet property="videoContainer" destination="uye-d5-Vf3" id="oOi-nS-ojQ"/>

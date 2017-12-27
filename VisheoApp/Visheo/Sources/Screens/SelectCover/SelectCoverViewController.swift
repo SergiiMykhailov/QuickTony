@@ -13,7 +13,8 @@ class SelectCoverViewController: UIViewController {
 
     @IBOutlet weak var pagedCoversCollection: UICollectionView!
     @IBOutlet weak var coversFilmstripCollection: UICollectionView!
-    
+	@IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
+	
     var pagedCoversCollectionMediator : PagedCoverCollectionMediator?
     var filmstripCoversCollectionMediator : FilmstripCoversCollectionMediator?
     
@@ -50,6 +51,8 @@ class SelectCoverViewController: UIViewController {
         if viewModel.hideBackButton {
             self.navigationItem.leftBarButtonItem = nil
         }
+		
+		navigationItem.rightBarButtonItem = viewModel.canCancelSelection ? cancelBarButtonItem : nil;
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,6 +76,10 @@ class SelectCoverViewController: UIViewController {
     @IBAction func backPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+	
+	@IBAction func cancelPressed(_ sender: Any) {
+		viewModel.cancel();
+	}
 }
 
 extension SelectCoverViewController {

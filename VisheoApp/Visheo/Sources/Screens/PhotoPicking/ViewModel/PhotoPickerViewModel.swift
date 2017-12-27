@@ -19,10 +19,13 @@ protocol PhotoPickerViewModel : class, ProgressGenerating, WarningAlertGeneratin
     func photoSelectionIndex(for id: String) -> Int?
     
     var hideNavigationButtons : Bool {get}
+	var canCancelSelection: Bool { get }
+	var canSkipSelection: Bool { get }
     var proceedText : String {get}
     var canProceed : Bool {get}
     func proceed()
     func skipPhotos()
+	func cancel()
     
     var didChange: (()->())? {get set}
 	var errorGenerated: ((Error)->())? {get set}
@@ -32,6 +35,14 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
     var hideNavigationButtons: Bool {
         return editMode
     }
+	
+	var canSkipSelection: Bool {
+		return !editMode;
+	}
+	
+	var canCancelSelection: Bool {
+		return editMode;
+	}
     
     var showProgressCallback: ((Bool) -> ())?
     
@@ -90,6 +101,10 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
         guard let index = selectedPhotos.index(of: id) else {return nil}
         return index + 1
     }
+	
+	func cancel() {
+		router?.goBack(with: assets)
+	}
     
     func skipPhotos() {
         assets.removePhotos()
