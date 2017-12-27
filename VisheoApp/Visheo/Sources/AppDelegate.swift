@@ -89,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let soundtracksService = VisheoSoundtracksService();
 		let userNotificationsService = VisheoUserNotificationsService();
         let assembly = VisheoRouterAssembly()
+		let tipsProviderService = VisheoTipsProviderService()
 
         let visheosListService = VisheoBoxService(userInfoProvider: authService)
         let visheosCache = VisheosLocalCache()
@@ -109,6 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 												userNotificationsService: userNotificationsService,
 												loggingService: eventLoggingService,
 												feedbackService: feedbackService,
+												tipsProviderService: tipsProviderService,
 												routerAssembly: assembly,
 												visheosCache: visheosCache,
 												premiumCardsService: premiumService)

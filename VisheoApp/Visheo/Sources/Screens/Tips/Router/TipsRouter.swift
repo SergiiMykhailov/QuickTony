@@ -22,8 +22,8 @@ class VisheoTipsRouter: TipsRouter
 		self.dependencies = dependencies;
 	}
 	
-	func start(with viewController: TipsViewController) {
-		let vm = VisheoTipsViewModel();
+	func start(with viewController: TipsViewController, record: OccasionRecord) {
+		let vm = VisheoTipsViewModel(record: record, tipsProvider: dependencies.tipsProviderService);
 		viewModel = vm
 		vm.router = self
 		self.controller = viewController

@@ -270,7 +270,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	}
 	
 	func showTips() {
-		router?.showTips();
+		router?.showTips(with: assets.originalOccasion);
 	}
 	
 	private func handleMotionUpdate(_ motion: CMDeviceMotion) {
