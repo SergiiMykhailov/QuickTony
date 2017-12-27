@@ -37,13 +37,13 @@ class CameraViewController: UIViewController
 	{
 		super.viewDidLoad()
 	
-        // Temporary disabled until Tips screen implemented
-//        if let icon = UIImage(named: "tipsIcon") {
-//            let tipsButton = UIButton(type: .custom);
-//            tipsButton.frame = CGRect(origin: .zero, size: icon.size);
-//            tipsButton.setImage(icon, for: .normal);
-//            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
-//        }
+        if let icon = UIImage(named: "tipsIcon") {
+            let tipsButton = UIButton(type: .custom);
+            tipsButton.frame = CGRect(origin: .zero, size: icon.size);
+            tipsButton.setImage(icon, for: .normal);
+			tipsButton.addTarget(self, action: #selector(CameraViewController.showTips), for: .touchUpInside);
+            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
+        }
 
 		viewModel.addPreviewOutput(cameraPreview);
 		
@@ -111,6 +111,10 @@ class CameraViewController: UIViewController
 	
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
 		navigationController?.popViewController(animated: true);
+	}
+	
+	@objc private func showTips() {
+		viewModel.showTips();
 	}
 	
 	private func handleRecordingState(with update: CameraRecordingState)

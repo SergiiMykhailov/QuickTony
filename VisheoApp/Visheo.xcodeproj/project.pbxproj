@@ -19,6 +19,10 @@
 		921E0CEC1FDF1BF4000A4EBC /* APLCompositionDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */; };
 		922B645B1FD97D5C0085F188 /* VisheoMovieWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */; };
 		922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */; };
+		92548DE41FF37602001F692E /* AlignedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92548DE31FF37602001F692E /* AlignedFlowLayout.swift */; };
+		92548DE81FF37A1A001F692E /* PracticeTipCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92548DE71FF37A1A001F692E /* PracticeTipCellModel.swift */; };
+		92548DEA1FF37B3D001F692E /* WordTipCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92548DE91FF37B3D001F692E /* WordTipCellModel.swift */; };
+		92548DEC1FF37CC8001F692E /* TipsProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92548DEB1FF37CC8001F692E /* TipsProviderService.swift */; };
 		9255DF0E1FCD9EC200F9815F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF0D1FCD9EC200F9815F /* AppSettings.swift */; };
 		9255DF121FCDA5A200F9815F /* app_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9255DF111FCDA5A200F9815F /* app_settings.plist */; };
 		925B91801FEA4DE500E7ACC6 /* FeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925B917F1FEA4DE500E7ACC6 /* FeedbackService.swift */; };
@@ -29,6 +33,12 @@
 		926B53C91FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */; };
 		926B53CE1FE42EB40031B1A0 /* EventLoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53CD1FE42EB40031B1A0 /* EventLoggingService.swift */; };
 		926B53D01FE42EBD0031B1A0 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53CF1FE42EBD0031B1A0 /* Events.swift */; };
+		92A3BA601FF3593C006FA011 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA5F1FF3593C006FA011 /* TipsViewController.swift */; };
+		92A3BA651FF35BA2006FA011 /* TipsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA641FF35BA2006FA011 /* TipsRouter.swift */; };
+		92A3BA671FF35BAB006FA011 /* TipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA661FF35BAB006FA011 /* TipsViewModel.swift */; };
+		92A3BA691FF35F0F006FA011 /* TipsCollectionViewMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA681FF35F0F006FA011 /* TipsCollectionViewMediator.swift */; };
+		92A3BA6B1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA6A1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift */; };
+		92A3BA6D1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA6C1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift */; };
 		92A8D3091FC85FA6001E194D /* VisheoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */; };
 		92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
 		92A8D30E1FC86E86001E194D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
@@ -38,6 +48,7 @@
 		92C006631FC0B4AC000AFD4E /* CameraPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */; };
 		92C006651FC0B4BE000AFD4E /* CameraPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */; };
 		92C649021FD6036B00D6BC1A /* UserNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */; };
+		92D58CD01FF3A3D500C901F1 /* AutoSizingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D58CCF1FF3A3D500C901F1 /* AutoSizingLayout.swift */; };
 		92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */; };
 		92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */; };
 		92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */; };
@@ -220,6 +231,10 @@
 		922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoMovieWriter.swift; sourceTree = "<group>"; };
 		922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPixelBufferAdaptor.swift; sourceTree = "<group>"; };
 		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
+		92548DE31FF37602001F692E /* AlignedFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedFlowLayout.swift; sourceTree = "<group>"; };
+		92548DE71FF37A1A001F692E /* PracticeTipCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTipCellModel.swift; sourceTree = "<group>"; };
+		92548DE91FF37B3D001F692E /* WordTipCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTipCellModel.swift; sourceTree = "<group>"; };
+		92548DEB1FF37CC8001F692E /* TipsProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsProviderService.swift; sourceTree = "<group>"; };
 		9255DF0D1FCD9EC200F9815F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		9255DF111FCDA5A200F9815F /* app_settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = app_settings.plist; sourceTree = "<group>"; };
 		925B917F1FEA4DE500E7ACC6 /* FeedbackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackService.swift; sourceTree = "<group>"; };
@@ -230,6 +245,12 @@
 		926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GestureRecognizer+TapDetection.swift"; sourceTree = "<group>"; };
 		926B53CD1FE42EB40031B1A0 /* EventLoggingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLoggingService.swift; sourceTree = "<group>"; };
 		926B53CF1FE42EBD0031B1A0 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		92A3BA5F1FF3593C006FA011 /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
+		92A3BA641FF35BA2006FA011 /* TipsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsRouter.swift; sourceTree = "<group>"; };
+		92A3BA661FF35BAB006FA011 /* TipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewModel.swift; sourceTree = "<group>"; };
+		92A3BA681FF35F0F006FA011 /* TipsCollectionViewMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCollectionViewMediator.swift; sourceTree = "<group>"; };
+		92A3BA6A1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordIdeaCollectionViewCell.swift; sourceTree = "<group>"; };
+		92A3BA6C1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPracticeCollectionViewCell.swift; sourceTree = "<group>"; };
 		92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewView.swift; sourceTree = "<group>"; };
 		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
 		92A8D30C1FC86E86001E194D /* blank.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank.m4v; sourceTree = "<group>"; };
@@ -249,6 +270,7 @@
 		92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsRouter.swift; sourceTree = "<group>"; };
 		92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewController.swift; sourceTree = "<group>"; };
 		92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsService.swift; sourceTree = "<group>"; };
+		92D58CCF1FF3A3D500C901F1 /* AutoSizingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingLayout.swift; sourceTree = "<group>"; };
 		92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTipsView.swift; sourceTree = "<group>"; };
 		92DEDBAF1FC0598400C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		92DEDBB21FC0599100C7FBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CameraTips.xib; sourceTree = "<group>"; };
@@ -490,6 +512,45 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		92A3BA5C1FF3592C006FA011 /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				92A3BA621FF35B89006FA011 /* Cells */,
+				92A3BA631FF35B89006FA011 /* Router */,
+				92A3BA611FF35B89006FA011 /* ViewModels */,
+				92A3BA5F1FF3593C006FA011 /* TipsViewController.swift */,
+				92A3BA681FF35F0F006FA011 /* TipsCollectionViewMediator.swift */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
+		92A3BA611FF35B89006FA011 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				92A3BA661FF35BAB006FA011 /* TipsViewModel.swift */,
+				92548DE71FF37A1A001F692E /* PracticeTipCellModel.swift */,
+				92548DE91FF37B3D001F692E /* WordTipCellModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		92A3BA621FF35B89006FA011 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				92A3BA6A1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift */,
+				92A3BA6C1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		92A3BA631FF35B89006FA011 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				92A3BA641FF35BA2006FA011 /* TipsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		92A8D30A1FC86E86001E194D /* Media */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +604,8 @@
 				B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */,
 				920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */,
 				92FF5F451FD9C7F9009EE6D2 /* VideoView.swift */,
+				92548DE31FF37602001F692E /* AlignedFlowLayout.swift */,
+				92D58CCF1FF3A3D500C901F1 /* AutoSizingLayout.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -839,6 +902,7 @@
 				A60CED5DE67DC02623C3F403 /* PremiumCards */,
 				B4BCAC031FB8CDE0003EDC7F /* SelectCover */,
 				920EDFD51FCF062900D121ED /* Soundtrack */,
+				92A3BA5C1FF3592C006FA011 /* Tips */,
 				B4F666201FC1C96C00B68055 /* VideoTrimming */,
 				B4AEE0E71FD1B1340043A39A /* VisheoBox */,
 				B46528081FC346650070FFB7 /* VisheoPreview */,
@@ -1048,6 +1112,7 @@
 				92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */,
 				A60CE6EB830286290C669520 /* PremiumCardsService.swift */,
 				925B917F1FEA4DE500E7ACC6 /* FeedbackService.swift */,
+				92548DEB1FF37CC8001F692E /* TipsProviderService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1325,18 +1390,23 @@
 				B4F666271FC1C9FB00B68055 /* VideoTrimmingViewModel.swift in Sources */,
 				B467612B1FC711BD006E9CB2 /* ShareViewModel.swift in Sources */,
 				B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */,
+				92A3BA6D1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift in Sources */,
 				9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */,
+				92A3BA671FF35BAB006FA011 /* TipsViewModel.swift in Sources */,
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
 				B4AEE0ED1FD1B27B0043A39A /* VisheoBoxViewModel.swift in Sources */,
 				B4AEE0E91FD1B1600043A39A /* VisheoBoxViewController.swift in Sources */,
 				B48259031FB3060800A7F5B0 /* OccasionsListService.swift in Sources */,
+				92548DEA1FF37B3D001F692E /* WordTipCellModel.swift in Sources */,
 				92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */,
+				92A3BA601FF3593C006FA011 /* TipsViewController.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B4BCABF71FB8CC7D003EDC7F /* HolidaysCollectionMediator.swift in Sources */,
 				920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */,
 				B4BCAC071FB8CDFB003EDC7F /* SelectCoverViewController.swift in Sources */,
 				B4BCABFE1FB8CC7D003EDC7F /* LaunchProxyRouter.swift in Sources */,
 				926B53C91FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift in Sources */,
+				92A3BA651FF35BA2006FA011 /* TipsRouter.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
 				920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */,
 				B4BCABF21FB8CC7D003EDC7F /* SignInViewModel.swift in Sources */,
@@ -1348,6 +1418,7 @@
 				B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */,
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
 				92FF5F461FD9C7F9009EE6D2 /* VideoView.swift in Sources */,
+				92548DE41FF37602001F692E /* AlignedFlowLayout.swift in Sources */,
 				B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */,
 				920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */,
 				B437CF7A1FDEE3B100E28C20 /* RedeemRouter.swift in Sources */,
@@ -1387,6 +1458,7 @@
 				B4BCAC0B1FB8CE18003EDC7F /* SelectCoverViewModel.swift in Sources */,
 				B437CF721FDEAC1900E28C20 /* Date+Calendar.swift in Sources */,
 				B44450D71FBEF4220021772F /* PhotoPermissionsRouter.swift in Sources */,
+				92548DE81FF37A1A001F692E /* PracticeTipCellModel.swift in Sources */,
 				926B53CE1FE42EB40031B1A0 /* EventLoggingService.swift in Sources */,
 				B4EB86DB1FD1CC7B00963150 /* VisheoCellViewModel.swift in Sources */,
 				B44450DD1FBF02E50021772F /* PhotoPickerViewModel.swift in Sources */,
@@ -1396,6 +1468,7 @@
 				B4BCABF61FB8CC7D003EDC7F /* ChooseOccasionViewController.swift in Sources */,
 				B453F1D91FCF1AED003D61CB /* MenuTableViewCell.swift in Sources */,
 				B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */,
+				92D58CD01FF3A3D500C901F1 /* AutoSizingLayout.swift in Sources */,
 				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4C893F41FD5787B00763296 /* EditAccountViewController.swift in Sources */,
 				B4BCABF11FB8CC7D003EDC7F /* AuthorizationViewModel.swift in Sources */,
@@ -1420,6 +1493,7 @@
 				922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */,
 				920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */,
 				B4F63DC01FC85FDB00E05B90 /* VisheoRenderingService.swift in Sources */,
+				92548DEC1FF37CC8001F692E /* TipsProviderService.swift in Sources */,
 				B4C893F81FD5789800763296 /* EditAccountRouter.swift in Sources */,
 				B4BCABF01FB8CC7D003EDC7F /* SignUpViewController.swift in Sources */,
 				B44450D01FBEDA7B0021772F /* VisheoRenderingAssets.swift in Sources */,
@@ -1427,6 +1501,8 @@
 				B4BCABFC1FB8CC7D003EDC7F /* OccasionCellViewModel.swift in Sources */,
 				B453F1D11FCF05B5003D61CB /* MenuViewController.swift in Sources */,
 				B453F1D71FCF1AC4003D61CB /* MenuViewModel.swift in Sources */,
+				92A3BA6B1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift in Sources */,
+				92A3BA691FF35F0F006FA011 /* TipsCollectionViewMediator.swift in Sources */,
 				B44450DB1FBF02D70021772F /* PhotoPickerRouter.swift in Sources */,
 				B4BCAC021FB8CC7D003EDC7F /* OnboardingViewModel.swift in Sources */,
 				920EDFDC1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift in Sources */,

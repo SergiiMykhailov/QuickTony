@@ -38,6 +38,7 @@ struct RouterDependencies {
 	let userNotificationsService: UserNotificationsService;
 	let loggingService: EventLoggingService
 	let feedbackService: FeedbackService;
+	let tipsProviderService: TipsProviderService;
 
     let routerAssembly: RouterAssembly
     let visheosCache : VisheosCache

@@ -43,6 +43,7 @@ protocol CameraViewModel: class
 	func stopCapture(teardown: Bool);
 	func toggleRecording()
 	func toggleCameraFace();
+	func showTips();
 	
 	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
 }
@@ -260,17 +261,17 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		camera?.rotateCamera();
 	}
 	
-	
 	var shouldPresentCameraTips: Bool {
-        return false // Temporary disabled until Tips screen implemented
-//        return appState.shouldShowCameraTips;
+        return appState.shouldShowCameraTips;
 	}
-	
 	
 	func markCameraTipsSeen() {
 		appState.cameraTips(wereSeen: true);
 	}
 	
+	func showTips() {
+		router?.showTips(with: assets.originalOccasion);
+	}
 	
 	private func handleMotionUpdate(_ motion: CMDeviceMotion) {
 		let gravity = motion.gravity;

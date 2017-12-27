@@ -31,6 +31,7 @@ protocol OccasionRecord {
     var previewCover: OccasionCover {get}
     var covers : [OccasionCover] {get}
 	var soundtracks: [OccasionSoundtrack] { get }
+	var words: [WordIdea] { get }
 }
 
 protocol OccasionCover {
@@ -46,6 +47,11 @@ protocol OccasionSoundtrack {
 	var license: String? { get }
 }
 
+protocol WordIdea {
+	var id: Int { get }
+	var text: String? { get }
+}
+
 
 class VisheoOccasionsListService : OccasionsListService {
     var occasionRecords: [OccasionRecord] {
@@ -55,13 +61,15 @@ class VisheoOccasionsListService : OccasionsListService {
 	private enum ObserverType {
 		case covers
 		case soundtracks
+		case words
 		
-		static let allTypes: [ObserverType] = [.covers, .soundtracks]
+		static let allTypes: [ObserverType] = [.covers, .soundtracks, .words]
 	}
     
     let occasionsRef : DatabaseReference
     let coversRef : DatabaseReference
 	let soundtracksRef: DatabaseReference
+	let wordsRef: DatabaseReference
     var _occasionRecords : [VisheoOccasionRecord] = []
 	private var occasionObservers : [Int : [ ObserverType : [Int: DatabaseHandle]]] = [:]
     
@@ -69,6 +77,8 @@ class VisheoOccasionsListService : OccasionsListService {
         occasionsRef = Database.database().reference().child("occasions")
         coversRef = Database.database().reference().child("covers")
 		soundtracksRef = Database.database().reference().child("music");
+		wordsRef = Database.database().reference().child("words");
+		
         loadOccasions()
         
         NotificationCenter.default.addObserver(forName: Notification.Name.authStateChanged, object: nil, queue: OperationQueue.main) { (notitication) in
@@ -93,12 +103,13 @@ class VisheoOccasionsListService : OccasionsListService {
     }
 	
 	private func databaseRef(for type: ObserverType) -> DatabaseReference {
-		switch type
-		{
+		switch type {
 			case .covers:
 				return coversRef;
 			case .soundtracks:
 				return soundtracksRef;
+			case .words:
+				return wordsRef;
 		}
 	}
     
@@ -133,6 +144,8 @@ class VisheoOccasionsListService : OccasionsListService {
 					currentOccasionObservers = observeCovers(for: occasion, at: index);
 				case .soundtracks:
 					currentOccasionObservers = observeSoundtracks(for: occasion, at: index);
+				case .words:
+					currentOccasionObservers = observeWords(for: occasion, at: index);
 			}
 			observers[type] = currentOccasionObservers
 		}
@@ -168,6 +181,20 @@ class VisheoOccasionsListService : OccasionsListService {
 		
 		return currentOccasionObservers;
 	}
+	
+	private func observeWords(for occasion: VisheoOccasionRecord, at index: Int) -> [Int: DatabaseHandle] {
+		var currentOccasionObservers : [Int:DatabaseHandle] = [:]
+		
+		for (index, word) in occasion.words.enumerated() {
+			let wordObserverId = wordsRef.child("\(word.id)").observe(.value, with: { (snapshot) in
+				occasion.word(at: index)?.update(with: snapshot.value as? [String : Any])
+				self.didChange(at: index)
+			})
+			currentOccasionObservers[index] = wordObserverId
+		}
+		
+		return currentOccasionObservers;
+	}
 }
 
 class VisheoOccasionRecord : OccasionRecord {
@@ -178,6 +205,7 @@ class VisheoOccasionRecord : OccasionRecord {
     let date : Date?
     let category : OccasionCategory
 	let soundtracks: [OccasionSoundtrack]
+	let words: [WordIdea]
     
     fileprivate func cover(at index: Int) -> VisheoOccasionCover? {
         if index < covers.count {
@@ -192,6 +220,13 @@ class VisheoOccasionRecord : OccasionRecord {
 		}
 		return nil
 	}
+	
+	fileprivate func word(at index: Int) -> VisheoWordIdea? {
+		if index < words.count {
+			return words[index] as? VisheoWordIdea
+		}
+		return nil
+	}
     
     init?(dictionary : [String : Any]) {
         name = dictionary["name"] as? String ?? ""
@@ -200,6 +235,9 @@ class VisheoOccasionRecord : OccasionRecord {
                                                         .map { VisheoOccasionCover(id: $0) }
 		soundtracks = (dictionary["music"] as? [Int?] ?? []).flatMap{$0}
                                                             .map { VisheoOccasionSoundtrack(id: $0) }
+		
+		words = (dictionary["words"] as? [Int?] ?? []).flatMap{$0}
+															.map { VisheoWordIdea(id: $0) }
         
         date = VisheoOccasionRecord.date(from: dictionary["date"] as? String)
         priority = dictionary["priority"] as? Int ?? Int.max
@@ -256,5 +294,19 @@ class VisheoOccasionSoundtrack: OccasionSoundtrack {
 		url = (snapshot["url"] as? String).flatMap{ URL(string: $0) }
 		title =	snapshot["name"] as? String;
 		license = snapshot["license"] as? String;
+	}
+}
+
+class VisheoWordIdea: WordIdea {
+	let id: Int;
+	var text: String?;
+	
+	init(id: Int) {
+		self.id = id;
+	}
+	
+	func update(with dictionary : [String : Any]?) {
+		guard let snapshot = dictionary else {return}
+		text = snapshot["text"] as? String;
 	}
 }
