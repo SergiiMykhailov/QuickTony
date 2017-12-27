@@ -24,9 +24,12 @@ protocol VideoTrimmingViewModel : class, ProgressGenerating, WarningAlertGenerat
     var playbackStatusChanged: ((PlaybackStatus)->())? {get set}
     
     var hideBackButton : Bool {get}
-    
+	var canCancelSelection: Bool { get }
+	var didMakeChangesInEditMode: Bool { get }
+	
     func didChange(startTime: CMTime?, endTime: CMTime?, at time: CMTime?, stopMoving: Bool)
-    
+	
+	func cancel()
     func retakeVideo()
     func goBack()
     func confirmTrimming()
@@ -38,6 +41,14 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     var hideBackButton: Bool {
         return editMode
     }
+	
+	var canCancelSelection: Bool {
+		return editMode;
+	}
+	
+	var didMakeChangesInEditMode: Bool {
+		return assetsChangedInEditMode;
+	}
     
     var showProgressCallback: ((Bool) -> ())?
     var warningAlertHandler: ((String) -> ())?
@@ -47,9 +58,11 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
     weak var router: VideoTrimmingRouter?
     private (set) var player : AVPlayer?
     private var assets : VisheoRenderingAssets!
+	private var originalAssets: VisheoRenderingAssets?;
     private var playerAsset : AVAsset!
     private var playbackTimeCheckerTimer: Timer?
 	private let loggingService: EventLoggingService;
+	private var assetsChangedInEditMode: Bool = false;
     
     private var startTime : CMTime?
     private var endTime : CMTime?
@@ -59,11 +72,22 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
 	init(assets: VisheoRenderingAssets, loggingService: EventLoggingService, editMode: Bool) {
         self.editMode = editMode
 		self.loggingService = loggingService;
+		self.originalAssets = assets;
         
         update(with: assets)
     }
     
-    func update(with assets: VisheoRenderingAssets) {
+    func update(with assets: VisheoRenderingAssets)
+	{
+		switch (self.assets, editMode) {
+			case (.none, true):
+				assets.backupOriginalVideo();
+			case (.some, true):
+				assetsChangedInEditMode = true;
+			default:
+				break;
+		}
+		
         self.assets = assets
         playerAsset = AVAsset(url: assets.videoUrl)
         let playerItem = AVPlayerItem(asset: playerAsset)
@@ -81,6 +105,11 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
 		stopPlaybackTimeChecker();
         NotificationCenter.default.removeObserver(self)
     }
+	
+	func cancel() {
+		assets.restoreOriginalVideo();
+		router?.goBackFromEdit(with: assets);
+	}
     
     func goBack() {
 		player?.pause()
@@ -140,6 +169,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
 					self.stopPlaybackTimeChecker();
 					
                     if self.editMode {
+						self.assets.removeBackupVideo();
                         self.router?.goBackFromEdit(with: self.assets)
                     } else {
 						self.loggingService.log(event: ReachedPreviewEvent(), id: self.assets.creationInfo.visheoId);

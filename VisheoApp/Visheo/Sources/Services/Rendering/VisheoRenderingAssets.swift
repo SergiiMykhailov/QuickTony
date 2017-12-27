@@ -13,6 +13,7 @@ import AVFoundation
 class VisheoRenderingAssets {
     private enum Constants {
         static let videoName = "video.mov"
+		static let backupVideoName = "video_backup.mov"
         static let visheoName = "visheo.mov"
     }
     
@@ -182,6 +183,26 @@ class VisheoRenderingAssets {
     func removeVideo() {
         try? FileManager.default.removeItem(at: videoUrl)
     }
+	
+	var backupVideoRelPath : String {
+		return assetsFolderRelUrl.appendingPathComponent(Constants.backupVideoName).absoluteString
+	}
+	
+	var backupVideoUrl: URL {
+		return docs.appendingPathComponent(backupVideoRelPath);
+	}
+	
+	func backupOriginalVideo() {
+		_ = try? FileManager.default.copyItem(at: videoUrl, to: backupVideoUrl);
+	}
+	
+	func restoreOriginalVideo() {
+		_ = try? FileManager.default.replaceItemAt(videoUrl, withItemAt: backupVideoUrl, options: .usingNewMetadataOnly);
+	}
+	
+	func removeBackupVideo() {
+		try? FileManager.default.removeItem(at: backupVideoUrl);
+	}
     
     // MARK: Final visheo
     
