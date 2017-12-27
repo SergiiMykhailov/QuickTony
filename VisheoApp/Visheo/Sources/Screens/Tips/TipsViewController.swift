@@ -21,6 +21,8 @@ class TipsViewController: UIViewController {
 	}
 	
 	
+	@IBOutlet weak var noWordsTopConstraint: NSLayoutConstraint!
+	@IBOutlet weak var hasWordsTopConstraint: NSLayoutConstraint!
 	@IBOutlet weak var practicesCollectionView: UICollectionView!
 	@IBOutlet weak var wordIdeasCollectionView: UICollectionView!
 	@IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -42,12 +44,12 @@ class TipsViewController: UIViewController {
 		
 		viewModel.contentChanged = { [weak self] in
 			DispatchQueue.main.async {
-				self?.wordIdeasCollectionView.reloadData();
-				self?.practicesCollectionView.reloadData();
+				self?.handleContentChange()
 			}
 		}
 		
 		update(with: viewModel.activeSection);
+		handleContentChange();
 	}
 	
 	@IBAction func switchedSection(_ sender: UISegmentedControl) {
@@ -67,5 +69,15 @@ class TipsViewController: UIViewController {
 		
 		wordIdeasCollectionView.setContentOffset(.zero, animated: false);
 		practicesCollectionView.setContentOffset(.zero, animated: false);
+	}
+	
+	private func handleContentChange() {
+		wordIdeasCollectionView.reloadData();
+		practicesCollectionView.reloadData();
+		
+		collectionViewMediator?.handleContentChange();
+		
+		hasWordsTopConstraint?.isActive = viewModel.displaysWordsSection;
+		view.layoutIfNeeded();
 	}
 }

@@ -17,6 +17,7 @@ enum TipsSection: Int {
 protocol TipsViewModel: class {
 	func numberOfItems(for section: TipsSection) -> Int
 	var activeSection: TipsSection { get }
+	var displaysWordsSection: Bool { get }
 	
 	func switchSection(to new: TipsSection);
 	
@@ -33,7 +34,7 @@ class VisheoTipsViewModel: TipsViewModel {
 	var contentChanged: (() -> Void)?;
 	
 	var activeSectionChanged: ((TipsSection) -> Void)?
-	private (set) var activeSection: TipsSection = .words {
+	private (set) var activeSection: TipsSection {
 		didSet {
 			activeSectionChanged?(activeSection);
 		}
@@ -45,6 +46,7 @@ class VisheoTipsViewModel: TipsViewModel {
 	init(record: OccasionRecord, tipsProvider: TipsProviderService) {
 		self.record = record;
 		self.tipsProvider = tipsProvider;
+		activeSection = (record.words.count > 0) ? .words : .practices;
 		
 		NotificationCenter.default.addObserver(forName: .occasionsChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
 			self?.contentChanged?();
@@ -70,6 +72,10 @@ class VisheoTipsViewModel: TipsViewModel {
 			case .practices:
 				return tipsProvider.practiceTips.count;
 		}
+	}
+	
+	var displaysWordsSection: Bool {
+		return numberOfItems(for: .words) > 0;
 	}
 	
 	

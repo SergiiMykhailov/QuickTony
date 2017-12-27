@@ -47,6 +47,22 @@ class TipsCollectionViewMediator: NSObject, UICollectionViewDataSource, UICollec
 		practicesCollectionView.dataSource = self;
 	}
 	
+	func handleContentChange() {
+		guard let layout = wordIdeasCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+			return;
+		}
+		
+		var insets = layout.sectionInset;
+		if viewModel.numberOfItems(for: .words) < 2 {
+			insets.left = (containerWidth - layout.estimatedItemSize.width) / 2.0;
+		} else {
+			insets.left = 20.0;
+		}
+		insets.right = insets.left;
+		layout.sectionInset = insets;
+		layout.invalidateLayout();
+	}
+	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		switch collectionView {
 			case wordIdeasCollectionView:
