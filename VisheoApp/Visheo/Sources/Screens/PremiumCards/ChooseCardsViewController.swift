@@ -57,6 +57,8 @@ class ChooseCardsViewController: UIViewController {
         } else {
             navigationItem.leftBarButtonItems = [menuBarItem]
         }
+		
+		udpateFromVM()
     }
     
     func udpateFromVM() {
@@ -71,20 +73,12 @@ class ChooseCardsViewController: UIViewController {
         haspremiumCardsContainer.isHidden = !hasCards
         premiumCardsLabel.text = "\(viewModel.premiumCardsNumber)"
 		
-		NSLayoutConstraint.deactivate(self.premiumHeaderLabel.constraints);
+		freeCardsSection.isHidden = !viewModel.showFreeSection;
 		
-		self.freeCardsSection.isHidden = !self.viewModel.showFreeSection;
-			
-		self.premiumHeaderLabel.snp.remakeConstraints({ (make) in
-			make.left.equalTo(20.0);
-			make.right.equalTo(-20.0);
-			if !self.viewModel.showFreeSection {
-				make.top.equalToSuperview().offset(32.0).priority(.required);
-			} else {
-				make.top.greaterThanOrEqualTo(self.freeCardsSection.snp.bottom).offset(20.0).priority(.required);
-				make.top.equalTo(self.freeCardsSection.snp.bottom).offset(40.0).priority(.low);
-			}
-		});
+		noPremiumCardsTopConstraint.isActive = viewModel.showFreeSection;
+		noPremiumTopFallbackConstraint.isActive = viewModel.showFreeSection;
+		
+		view.layoutIfNeeded();
     }
     
     private func confirmFreeSending() {
@@ -121,8 +115,12 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
     @IBOutlet weak var backBarItem: UIBarButtonItem!
     @IBOutlet weak var freeCardsSection: UIView!
-    
-    // MARK: Actions
+
+	@IBOutlet weak var hasPremiumCardsTopConstraint: NSLayoutConstraint!
+	@IBOutlet weak var noPremiumTopFallbackConstraint: NSLayoutConstraint!
+	@IBOutlet weak var noPremiumCardsTopConstraint: NSLayoutConstraint!
+	
+	// MARK: Actions
     @IBAction func sendFreePressed(_ sender: Any) {
         viewModel.sendRegularConfirmed()
     }
