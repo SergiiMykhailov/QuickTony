@@ -39,7 +39,7 @@ class VisheoFeedbackService: NSObject, FeedbackService
 			return;
 		}
 		
-		let recipients = [ "alexmahtin@gmail.com", "oleksiy.n@gmail.com" ]
+		let recipients = [ "visheoapp@gmail.com" ]
 		let subject = NSLocalizedString("Visheo feedback", comment: "Contact us form mail subject");
 		
 		let mailController = MFMailComposeViewController();
