@@ -27,10 +27,11 @@ class HolidaysCollectionMediator : NSObject, UICollectionViewDelegate, UICollect
     }
     
     func reloadData() {
-        holidaysCollection.reloadData()
-        if let firstFutureIndex = viewModel.firstFutureHolidayIndex {
-            scrollToItem(number: firstFutureIndex)
-        }
+		holidaysCollection.reloadData()
+		holidaysCollection.layoutIfNeeded();
+		if let firstFutureIndex = viewModel.firstFutureHolidayIndex {
+			scrollToItem(number: firstFutureIndex);
+		}
     }
     
     var holidayPageWidth : CGFloat {
@@ -81,6 +82,12 @@ class HolidaysCollectionMediator : NSObject, UICollectionViewDelegate, UICollect
     }
     
     func scrollToItem(number: Int) {
-        holidaysCollection.setContentOffset(CGPoint(x: CGFloat(number) * holidayPageWidth, y: 0), animated: false)
+		let indexPath = IndexPath(item: number, section: 0);
+		guard let layout = holidaysCollection.collectionViewLayout as? UICollectionViewFlowLayout,
+			let frame = layout.layoutAttributesForItem(at: indexPath)?.frame else {
+			return;
+		}
+		let offset = frame.origin.x - layout.sectionInset.left;
+		holidaysCollection.setContentOffset(CGPoint(x: offset, y: 0.0), animated: false)
     }
 }
