@@ -17,12 +17,15 @@
 "An error occurred while signing out" = "An error occurred while signing out";
 
 /* Visheo deletion confirmation */
-"Are you sure you want to delete this Visheo? It will be deleted forever." = "Are you sure you want to delete this Visheo? It will be deleted forever.";
+"Are you sure you want to delete this Visheo? It will be deleted forever." = "Are you sure you want to delete this Visheo Card? It will be deleted forever from the Visheo App and web page.";
 
 /* Cancel
    Cancel button
    Cancel text */
 "Cancel" = "Cancel";
+
+/* Cancelling edited video wish changes notification text */
+"Changes to your Video Wish won’t be applied" = "Changes to your Video Wish won’t be applied";
 
 /* Confirm button text */
 "Confirm" = "Confirm";
@@ -75,6 +78,9 @@
 
 /* Confirm account deletion alert button */
 "Login" = "Login";
+
+/* Maximum number of photos error message */
+"Maximum %li photos allowed" = "Maximum %li photos allowed";
 
 /* My Account menu item */
 "My Account" = "My Account";

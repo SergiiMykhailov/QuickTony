@@ -11,7 +11,7 @@
 "MJA-sA-jJz.text" = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud";
 
 /* Class = "UIButton"; normalTitle = "Share Visheo Card"; ObjectID = "TuK-eZ-TXQ"; */
-"TuK-eZ-TXQ.normalTitle" = "Send Visheo Card";
+"TuK-eZ-TXQ.normalTitle" = "Share Visheo Card";
 
 /* Class = "UIButton"; normalTitle = "Send your Visheo"; ObjectID = "Y5n-Gj-tF4"; */
 "Y5n-Gj-tF4.normalTitle" = "Send your Visheo";
@@ -20,7 +20,7 @@
 "es6-uU-TqK.title" = "PREVIEW VISHEO";
 
 /* Class = "UINavigationItem"; title = "SHARE YOUR VISHEO"; ObjectID = "gn6-b8-TgL"; */
-"gn6-b8-TgL.title" = "SEND YOUR VISHEO";
+"gn6-b8-TgL.title" = "SHARE YOUR VISHEO";
 
 /* Class = "UIButton"; normalTitle = "Remind Me"; ObjectID = "nzZ-Ya-jRK"; */
 "nzZ-Ya-jRK.normalTitle" = "Remind Me";

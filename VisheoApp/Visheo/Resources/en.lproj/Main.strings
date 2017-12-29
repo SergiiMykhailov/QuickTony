@@ -8,7 +8,7 @@
 "3e4-SB-Y6h.title" = "Skip";
 
 /* Class = "UIButton"; normalTitle = "I like this Cover"; ObjectID = "5Wj-Y4-Mkt"; */
-"5Wj-Y4-Mkt.normalTitle" = "I like this Card";
+"5Wj-Y4-Mkt.normalTitle" = "I like this Cover";
 
 /* Class = "UILabel"; text = "Create Visheo to deliver your care to your dear ones"; ObjectID = "7wf-9j-KvF"; */
 "7wf-9j-KvF.text" = "Create Visheo to deliver your care to your dear ones";
@@ -17,25 +17,28 @@
 "8xJ-4v-USr.text" = "Label";
 
 /* Class = "UILabel"; text = "Congratulations on occasion"; ObjectID = "DaM-G6-XCX"; */
-"DaM-G6-XCX.text" = "Congratulations on occasion";
+"DaM-G6-XCX.text" = "Special & Everyday Occasions";
 
 /* Class = "UILabel"; text = "23rd of November"; ObjectID = "Fkg-P7-EP7"; */
 "Fkg-P7-EP7.text" = "23rd of November";
 
 /* Class = "UINavigationItem"; title = "SELECT COVER"; ObjectID = "Kjn-mm-pFO"; */
-"Kjn-mm-pFO.title" = "SELECT CARD";
+"Kjn-mm-pFO.title" = "SELECT COVER";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Nq2-vC-p50"; */
 "Nq2-vC-p50.text" = "Label";
 
 /* Class = "UILabel"; text = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted"; ObjectID = "QQ4-CT-UNf"; */
-"QQ4-CT-UNf.text" = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted";
+"QQ4-CT-UNf.text" = "To add pictures to your Visheo, please allow the app to access your Camera Roll";
 
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "TbV-zh-dIQ"; */
 "TbV-zh-dIQ.title" = "CAMERA ROLL";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VUs-tX-owo"; */
 "VUs-tX-owo.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "Y8l-ga-NR8"; */
+"Y8l-ga-NR8.title" = "Cancel";
 
 /* Class = "UIButton"; normalTitle = "Create Visheo Card"; ObjectID = "aH8-5u-Q2F"; */
 "aH8-5u-Q2F.normalTitle" = "Create Visheo Card";
@@ -48,6 +51,9 @@
 
 /* Class = "UILabel"; text = "You have no Visheo cards yet"; ObjectID = "tMl-ow-MWp"; */
 "tMl-ow-MWp.text" = "You have no Visheo cards yet";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "vJV-LG-7SV"; */
+"vJV-LG-7SV.title" = "Cancel";
 
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "vhb-wR-qwm"; */
 "vhb-wR-qwm.title" = "CAMERA ROLL";

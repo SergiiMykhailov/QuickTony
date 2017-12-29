@@ -1,8 +1,17 @@
+/* Class = "UISegmentedControl"; 2Za-I9-yK2.segmentTitles[0] = "Words Ideas"; ObjectID = "2Za-I9-yK2"; */
+"2Za-I9-yK2.segmentTitles[0]" = "Words Ideas";
+
+/* Class = "UISegmentedControl"; 2Za-I9-yK2.segmentTitles[1] = "Best Practices"; ObjectID = "2Za-I9-yK2"; */
+"2Za-I9-yK2.segmentTitles[1]" = "Best Practices";
+
 /* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "Cbl-tb-5X6"; */
 "Cbl-tb-5X6.normalTitle" = "Allow Access";
 
 /* Class = "UILabel"; text = "REC"; ObjectID = "Ct7-4F-cZX"; */
 "Ct7-4F-cZX.text" = "REC";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "Ej2-FM-vwo"; */
+"Ej2-FM-vwo.title" = "Close";
 
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "LNN-dW-DoG"; */
 "LNN-dW-DoG.title" = "RECORD YOUR VIDEO WISH";
@@ -16,6 +25,9 @@
 /* Class = "UILabel"; text = "Please rotate your device to portrait orientation"; ObjectID = "Srt-Bl-ce3"; */
 "Srt-Bl-ce3.text" = "Please rotate your device to portrait orientation";
 
+/* Class = "UILabel"; text = "Good Lighting is Critical"; ObjectID = "YMW-wT-ePu"; */
+"YMW-wT-ePu.text" = "Good Lighting is Critical";
+
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "a5t-vd-l66"; */
 "a5t-vd-l66.title" = "RECORD YOUR VIDEO WISH";
 
@@ -25,9 +37,24 @@
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "crN-cW-0Hk"; */
 "crN-cW-0Hk.title" = "RECORD YOUR VIDEO WISH";
 
+/* Class = "UILabel"; text = "01"; ObjectID = "eBH-g9-WZk"; */
+"eBH-g9-WZk.text" = "01";
+
+/* Class = "UINavigationItem"; title = "INSPIRATION"; ObjectID = "gxc-oN-cko"; */
+"gxc-oN-cko.title" = "INSPIRATION";
+
+/* Class = "UILabel"; text = "My honey!\n May your Thanksgiving be filled with love & cheer, but also with full tummies. \nHappy Thanksgiving!"; ObjectID = "nMR-P5-9Es"; */
+"nMR-P5-9Es.text" = "My honey!\n May your Thanksgiving be filled with love & cheer, but also with full tummies. \nHappy Thanksgiving!";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "r23-1M-WM6"; */
+"r23-1M-WM6.title" = "Cancel";
+
 /* Class = "UIButton"; normalTitle = "Retake"; ObjectID = "vfD-hc-yMF"; */
 "vfD-hc-yMF.normalTitle" = "Retake";
 
 /* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE"; ObjectID = "xJk-8Q-bOw"; */
 "xJk-8Q-bOw.text" = "VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE";
+
+/* Class = "UILabel"; text = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video."; ObjectID = "zUb-Nv-0Bh"; */
+"zUb-Nv-0Bh.text" = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video.";
 
