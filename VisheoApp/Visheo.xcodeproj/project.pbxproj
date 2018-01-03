@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010D8975A0A9DB78A8A50DC0 /* Pods_App_VisheoStaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */; };
 		9201B2DF1FE284C700FAC820 /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */; };
 		9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */; };
 		920EDFD71FCF064400D121ED /* SelectSoundtrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */; };
@@ -16,6 +17,169 @@
 		920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */; };
 		920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */; };
 		920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */; };
+		920F8B321FF6BDC90087C45D /* CameraPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */; };
+		920F8B331FF6BDC90087C45D /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C893F91FD578AA00763296 /* AccountViewModel.swift */; };
+		920F8B341FF6BDC90087C45D /* VideoTrimmingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */; };
+		920F8B351FF6BDC90087C45D /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */; };
+		920F8B361FF6BDC90087C45D /* PagedCoverCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */; };
+		920F8B371FF6BDC90087C45D /* BestPracticeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA6C1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift */; };
+		920F8B381FF6BDC90087C45D /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */; };
+		920F8B391FF6BDC90087C45D /* TipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA661FF35BAB006FA011 /* TipsViewModel.swift */; };
+		920F8B3A1FF6BDC90087C45D /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */; };
+		920F8B3B1FF6BDC90087C45D /* VisheoBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0EC1FD1B27B0043A39A /* VisheoBoxViewModel.swift */; };
+		920F8B3C1FF6BDC90087C45D /* VisheoBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0E81FD1B1600043A39A /* VisheoBoxViewController.swift */; };
+		920F8B3D1FF6BDC90087C45D /* OccasionsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48259021FB3060800A7F5B0 /* OccasionsListService.swift */; };
+		920F8B3E1FF6BDC90087C45D /* WordTipCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92548DE91FF37B3D001F692E /* WordTipCellModel.swift */; };
+		920F8B3F1FF6BDC90087C45D /* CameraPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */; };
+		920F8B401FF6BDC90087C45D /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA5F1FF3593C006FA011 /* TipsViewController.swift */; };
+		920F8B411FF6BDC90087C45D /* RootViewControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAACF1FAA03CC000BB33B /* RootViewControllerSegue.swift */; };
+		920F8B421FF6BDC90087C45D /* HolidaysCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABD71FB8CC7C003EDC7F /* HolidaysCollectionMediator.swift */; };
+		920F8B431FF6BDC90087C45D /* SoundtrackCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */; };
+		920F8B441FF6BDC90087C45D /* SelectCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC061FB8CDFB003EDC7F /* SelectCoverViewController.swift */; };
+		920F8B451FF6BDC90087C45D /* LaunchProxyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABE21FB8CC7C003EDC7F /* LaunchProxyRouter.swift */; };
+		920F8B461FF6BDC90087C45D /* GestureRecognizer+TapDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */; };
+		920F8B471FF6BDC90087C45D /* TipsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA641FF35BA2006FA011 /* TipsRouter.swift */; };
+		920F8B481FF6BDC90087C45D /* SegueList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAD61FAA0AE1000BB33B /* SegueList.swift */; };
+		920F8B491FF6BDC90087C45D /* SelectSoundtrackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */; };
+		920F8B4A1FF6BDC90087C45D /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABD01FB8CC7C003EDC7F /* SignInViewModel.swift */; };
+		920F8B4B1FF6BDC90087C45D /* EditVisheoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DDE51FC41EBD00309974 /* EditVisheoButton.swift */; };
+		920F8B4C1FF6BDC90087C45D /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B409B3A41FADBC2100FE43F1 /* ViewModels.swift */; };
+		920F8B4D1FF6BDC90087C45D /* CameraRecordIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBB41FC0670B00C7FBB1 /* CameraRecordIndicator.swift */; };
+		920F8B4E1FF6BDC90087C45D /* RedeemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF7D1FDEE3D300E28C20 /* RedeemViewModel.swift */; };
+		920F8B4F1FF6BDC90087C45D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABE61FB8CC7C003EDC7F /* OnboardingViewController.swift */; };
+		920F8B501FF6BDC90087C45D /* PhotoSelectionIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450E21FBF0F360021772F /* PhotoSelectionIndexView.swift */; };
+		920F8B511FF6BDC90087C45D /* CoverCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC0E1FB8D5D0003EDC7F /* CoverCellViewModel.swift */; };
+		920F8B521FF6BDC90087C45D /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FF5F451FD9C7F9009EE6D2 /* VideoView.swift */; };
+		920F8B531FF6BDC90087C45D /* AlignedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92548DE31FF37602001F692E /* AlignedFlowLayout.swift */; };
+		920F8B541FF6BDC90087C45D /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1DA1FCF1C01003D61CB /* MenuItemViewModel.swift */; };
+		920F8B551FF6BDC90087C45D /* SoundtrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFDE1FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift */; };
+		920F8B561FF6BDC90087C45D /* RedeemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF791FDEE3B100E28C20 /* RedeemRouter.swift */; };
+		920F8B571FF6BDC90087C45D /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */; };
+		920F8B581FF6BDC90087C45D /* UserInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E3B681FADB6BF005064D1 /* UserInputValidator.swift */; };
+		920F8B591FF6BDC90087C45D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C893F11FD5786D00763296 /* AccountViewController.swift */; };
+		920F8B5A1FF6BDC90087C45D /* OccassionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABD51FB8CC7C003EDC7F /* OccassionCollectionViewCell.swift */; };
+		920F8B5B1FF6BDC90087C45D /* OccassionsCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABD81FB8CC7C003EDC7F /* OccassionsCollectionMediator.swift */; };
+		920F8B5C1FF6BDC90087C45D /* CameraPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */; };
+		920F8B5D1FF6BDC90087C45D /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9255DF0D1FCD9EC200F9815F /* AppSettings.swift */; };
+		920F8B5E1FF6BDC90087C45D /* FeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925B917F1FEA4DE500E7ACC6 /* FeedbackService.swift */; };
+		920F8B5F1FF6BDC90087C45D /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABC91FB8CC7C003EDC7F /* AuthorizationRouter.swift */; };
+		920F8B601FF6BDC90087C45D /* ChooseOccasionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABDC1FB8CC7C003EDC7F /* ChooseOccasionViewModel.swift */; };
+		920F8B611FF6BDC90087C45D /* FilmstripCoversCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450CC1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift */; };
+		920F8B621FF6BDC90087C45D /* HolidayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABD41FB8CC7C003EDC7F /* HolidayCollectionViewCell.swift */; };
+		920F8B631FF6BDC90087C45D /* LaunchProxyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABE41FB8CC7C003EDC7F /* LaunchProxyViewModel.swift */; };
+		920F8B641FF6BDC90087C45D /* PreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280D1FC346A30070FFB7 /* PreviewRouter.swift */; };
+		920F8B651FF6BDC90087C45D /* AccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C893F51FD5788D00763296 /* AccountRouter.swift */; };
+		920F8B661FF6BDC90087C45D /* ShareVisheoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46761261FC7118F006E9CB2 /* ShareVisheoViewController.swift */; };
+		920F8B671FF6BDC90087C45D /* ChooseOccasionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABDA1FB8CC7C003EDC7F /* ChooseOccasionRouter.swift */; };
+		920F8B681FF6BDC90087C45D /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABCA1FB8CC7C003EDC7F /* SignInRouter.swift */; };
+		920F8B691FF6BDC90087C45D /* PhotoPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450D41FBEF3F00021772F /* PhotoPermissionsViewController.swift */; };
+		920F8B6A1FF6BDC90087C45D /* SelectSoundtrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE11FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift */; };
+		920F8B6B1FF6BDC90087C45D /* RedeemSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF7F1FDEE3E800E28C20 /* RedeemSuccessViewModel.swift */; };
+		920F8B6C1FF6BDC90087C45D /* CameraTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */; };
+		920F8B6D1FF6BDC90087C45D /* VisheosCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */; };
+		920F8B6E1FF6BDC90087C45D /* VisheoBoxRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0EE1FD1B28B0043A39A /* VisheoBoxRouter.swift */; };
+		920F8B6F1FF6BDC90087C45D /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */; };
+		920F8B701FF6BDC90087C45D /* SelectCoverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC081FB8CE09003EDC7F /* SelectCoverRouter.swift */; };
+		920F8B711FF6BDC90087C45D /* VideoTrimmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */; };
+		920F8B721FF6BDC90087C45D /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABCB1FB8CC7C003EDC7F /* SignUpRouter.swift */; };
+		920F8B731FF6BDC90087C45D /* CoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC0C1FB8D599003EDC7F /* CoverCollectionViewCell.swift */; };
+		920F8B741FF6BDC90087C45D /* HolidayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABDD1FB8CC7C003EDC7F /* HolidayCellViewModel.swift */; };
+		920F8B751FF6BDC90087C45D /* LaunchProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABE01FB8CC7C003EDC7F /* LaunchProxyViewController.swift */; };
+		920F8B761FF6BDC90087C45D /* RedeemSuccessRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF7B1FDEE3C400E28C20 /* RedeemSuccessRouter.swift */; };
+		920F8B771FF6BDC90087C45D /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C893FB1FD578B700763296 /* EditAccountViewModel.swift */; };
+		920F8B781FF6BDC90087C45D /* SelectCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCAC0A1FB8CE18003EDC7F /* SelectCoverViewModel.swift */; };
+		920F8B791FF6BDC90087C45D /* Date+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF711FDEAC1900E28C20 /* Date+Calendar.swift */; };
+		920F8B7A1FF6BDC90087C45D /* PhotoPermissionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450D61FBEF4220021772F /* PhotoPermissionsRouter.swift */; };
+		920F8B7B1FF6BDC90087C45D /* PracticeTipCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92548DE71FF37A1A001F692E /* PracticeTipCellModel.swift */; };
+		920F8B7C1FF6BDC90087C45D /* EventLoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53CD1FE42EB40031B1A0 /* EventLoggingService.swift */; };
+		920F8B7D1FF6BDC90087C45D /* VisheoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EB86DA1FD1CC7B00963150 /* VisheoCellViewModel.swift */; };
+		920F8B7E1FF6BDC90087C45D /* PhotoPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450DC1FBF02E50021772F /* PhotoPickerViewModel.swift */; };
+		920F8B7F1FF6BDC90087C45D /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABD11FB8CC7C003EDC7F /* SignUpViewModel.swift */; };
+		920F8B801FF6BDC90087C45D /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B437CF751FDEE35900E28C20 /* RedeemViewController.swift */; };
+		920F8B811FF6BDC90087C45D /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAD71FAA0AE2000BB33B /* Routing.swift */; };
+		920F8B821FF6BDC90087C45D /* ChooseOccasionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABD61FB8CC7C003EDC7F /* ChooseOccasionViewController.swift */; };
+		920F8B831FF6BDC90087C45D /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1D81FCF1AED003D61CB /* MenuTableViewCell.swift */; };
+		920F8B841FF6BDC90087C45D /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280B1FC346960070FFB7 /* PreviewViewModel.swift */; };
+		920F8B851FF6BDC90087C45D /* AutoSizingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D58CCF1FF3A3D500C901F1 /* AutoSizingLayout.swift */; };
+		920F8B861FF6BDC90087C45D /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450DE1FBF02F60021772F /* PhotoPickerViewController.swift */; };
+		920F8B871FF6BDC90087C45D /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C893F31FD5787B00763296 /* EditAccountViewController.swift */; };
+		920F8B881FF6BDC90087C45D /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABCF1FB8CC7C003EDC7F /* AuthorizationViewModel.swift */; };
+		920F8B891FF6BDC90087C45D /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B53CF1FE42EBD0031B1A0 /* Events.swift */; };
+		920F8B8A1FF6BDC90087C45D /* SoundtracksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */; };
+		920F8B8B1FF6BDC90087C45D /* CameraRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBB21FBE139700F90AB3 /* CameraRecordButton.swift */; };
+		920F8B8C1FF6BDC90087C45D /* VisheoCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */; };
+		920F8B8D1FF6BDC90087C45D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */; };
+		920F8B8E1FF6BDC90087C45D /* LabeledProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F63DBB1FC83D4100E05B90 /* LabeledProgressView.swift */; };
+		920F8B8F1FF6BDC90087C45D /* VideoTrimmingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */; };
+		920F8B901FF6BDC90087C45D /* RouterAsembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0E11FD01F1B0043A39A /* RouterAsembly.swift */; };
+		920F8B911FF6BDC90087C45D /* UIView+LayerInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAD11FAA03CC000BB33B /* UIView+LayerInspectable.swift */; };
+		920F8B921FF6BDC90087C45D /* VisheoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */; };
+		920F8B931FF6BDC90087C45D /* VisheoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0F01FD1C8770043A39A /* VisheoCollectionViewCell.swift */; };
+		920F8B941FF6BDC90087C45D /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450E01FBF0B580021772F /* PhotoCollectionViewCell.swift */; };
+		920F8B951FF6BDC90087C45D /* PhotoPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450D81FBEF4340021772F /* PhotoPermissionsViewModel.swift */; };
+		920F8B961FF6BDC90087C45D /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABC71FB8CC7C003EDC7F /* AuthorizationViewController.swift */; };
+		920F8B971FF6BDC90087C45D /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1D41FCF1AB7003D61CB /* MenuRouter.swift */; };
+		920F8B981FF6BDC90087C45D /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */; };
+		920F8B991FF6BDC90087C45D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48AAAB51FA9E574000BB33B /* AppDelegate.swift */; };
+		920F8B9A1FF6BDC90087C45D /* UserNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C649011FD6036B00D6BC1A /* UserNotificationsService.swift */; };
+		920F8B9B1FF6BDC90087C45D /* VisheoPixelBufferAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */; };
+		920F8B9C1FF6BDC90087C45D /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */; };
+		920F8B9D1FF6BDC90087C45D /* VisheoRenderingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F63DBF1FC85FDA00E05B90 /* VisheoRenderingService.swift */; };
+		920F8B9E1FF6BDC90087C45D /* TipsProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92548DEB1FF37CC8001F692E /* TipsProviderService.swift */; };
+		920F8B9F1FF6BDC90087C45D /* EditAccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C893F71FD5789800763296 /* EditAccountRouter.swift */; };
+		920F8BA01FF6BDC90087C45D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABCD1FB8CC7C003EDC7F /* SignUpViewController.swift */; };
+		920F8BA11FF6BDC90087C45D /* VisheoRenderingAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450CF1FBEDA7B0021772F /* VisheoRenderingAssets.swift */; };
+		920F8BA21FF6BDC90087C45D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABCC1FB8CC7C003EDC7F /* SignInViewController.swift */; };
+		920F8BA31FF6BDC90087C45D /* OccasionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABDE1FB8CC7C003EDC7F /* OccasionCellViewModel.swift */; };
+		920F8BA41FF6BDC90087C45D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1D01FCF05B5003D61CB /* MenuViewController.swift */; };
+		920F8BA51FF6BDC90087C45D /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453F1D61FCF1AC4003D61CB /* MenuViewModel.swift */; };
+		920F8BA61FF6BDC90087C45D /* WordIdeaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA6A1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift */; };
+		920F8BA71FF6BDC90087C45D /* TipsCollectionViewMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BA681FF35F0F006FA011 /* TipsCollectionViewMediator.swift */; };
+		920F8BA81FF6BDC90087C45D /* PhotoPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44450DA1FBF02D70021772F /* PhotoPickerRouter.swift */; };
+		920F8BA91FF6BDC90087C45D /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABEA1FB8CC7C003EDC7F /* OnboardingViewModel.swift */; };
+		920F8BAA1FF6BDC90087C45D /* SoundtrackCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */; };
+		920F8BAB1FF6BDC90087C45D /* ShareRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46761281FC7119D006E9CB2 /* ShareRouter.swift */; };
+		920F8BAC1FF6BDC90087C45D /* VisheoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */; };
+		920F8BAD1FF6BDC90087C45D /* APLCompositionDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */; };
+		920F8BAE1FF6BDC90087C45D /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABE81FB8CC7C003EDC7F /* OnboardingRouter.swift */; };
+		920F8BAF1FF6BDC90087C45D /* SelectSoundtrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */; };
+		920F8BB01FF6BDC90087C45D /* VisheoMovieWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */; };
+		920F8BB11FF6BDC90087C45D /* AppStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */; };
+		920F8BB21FF6BDC90087C45D /* AppPermissionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B420ADC01FC1A2D500ECA590 /* AppPermissionsService.swift */; };
+		920F8BB31FF6BDC90087C45D /* HolidayDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A29881FB1F8CE00A8741F /* HolidayDateLabel.swift */; };
+		920F8BB41FF6BDC90087C45D /* VisheosListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0E51FD195680043A39A /* VisheosListService.swift */; };
+		920F8BB51FF6BDC90087C45D /* ChooseCardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE970E2C964F6349018A6 /* ChooseCardsRouter.swift */; };
+		920F8BB61FF6BDC90087C45D /* ChooseCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE3E66D78FE9CD21340B2 /* ChooseCardsViewModel.swift */; };
+		920F8BB71FF6BDC90087C45D /* ChooseCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE8FDBAFB65873040CDC5 /* ChooseCardsViewController.swift */; };
+		920F8BB81FF6BDC90087C45D /* PremiumCardsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60CE6EB830286290C669520 /* PremiumCardsService.swift */; };
+		920F8BBA1FF6BDC90087C45D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B474271A1FD8464700FB6223 /* StoreKit.framework */; };
+		920F8BBB1FF6BDC90087C45D /* VisheoVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; };
+		920F8BBE1FF6BDC90087C45D /* app_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9255DF111FCDA5A200F9815F /* app_settings.plist */; };
+		920F8BBF1FF6BDC90087C45D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABB1FA9E58F000BB33B /* LaunchScreen.storyboard */; };
+		920F8BC01FF6BDC90087C45D /* Authentification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CFB76F1FAB4A7900D6E73A /* Authentification.storyboard */; };
+		920F8BC11FF6BDC90087C45D /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC61FA9E650000BB33B /* Roboto-Regular.ttf */; };
+		920F8BC21FF6BDC90087C45D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = B43163881FBF482A00135B70 /* Localizable.stringsdict */; };
+		920F8BC31FF6BDC90087C45D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABA1FA9E58F000BB33B /* Assets.xcassets */; };
+		920F8BC41FF6BDC90087C45D /* VisheoPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46528111FC34A0F0070FFB7 /* VisheoPreview.storyboard */; };
+		920F8BC51FF6BDC90087C45D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
+		920F8BC61FF6BDC90087C45D /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC51FA9E650000BB33B /* Roboto-Medium.ttf */; };
+		920F8BC71FF6BDC90087C45D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */; };
+		920F8BC81FF6BDC90087C45D /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B40447C71FD8030A00CD87BA /* Purchases.storyboard */; };
+		920F8BC91FF6BDC90087C45D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B43163831FBF480A00135B70 /* Localizable.strings */; };
+		920F8BCA1FF6BDC90087C45D /* default_outro.mov in Resources */ = {isa = PBXBuildFile; fileRef = 92ED8EE81FDA946D00EBB15E /* default_outro.mov */; };
+		920F8BCB1FF6BDC90087C45D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC41FA9E650000BB33B /* Roboto-Bold.ttf */; };
+		920F8BCC1FF6BDC90087C45D /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */; };
+		920F8BCD1FF6BDC90087C45D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A79CEF1FAC927200C208CF /* Main.storyboard */; };
+		920F8BCE1FF6BDC90087C45D /* LaunchProxy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48AAABD1FA9E58F000BB33B /* LaunchProxy.storyboard */; };
+		920F8BCF1FF6BDC90087C45D /* CameraTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB31FC0599100C7FBB1 /* CameraTips.xib */; };
+		920F8BD01FF6BDC90087C45D /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4775FFD1FD57EAA00A02BEF /* Account.storyboard */; };
+		920F8BD11FF6BDC90087C45D /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DEDBB01FC0598400C7FBB1 /* Camera.storyboard */; };
+		920F8BD21FF6BDC90087C45D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
+		920F8BD51FF6BDC90087C45D /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		920F8BE41FF6BE6B0087C45D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 920F8BE11FF6BE670087C45D /* GoogleService-Info.plist */; };
+		920F8BE51FF6BE6E0087C45D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */; };
+		920F8BE71FF6C0E80087C45D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F8BE61FF6C0E80087C45D /* Environment.swift */; };
+		920F8BE81FF6C0E80087C45D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F8BE61FF6C0E80087C45D /* Environment.swift */; };
 		921E0CEC1FDF1BF4000A4EBC /* APLCompositionDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */; };
 		922B645B1FD97D5C0085F188 /* VisheoMovieWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */; };
 		922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */; };
@@ -122,7 +286,6 @@
 		B4AEE0ED1FD1B27B0043A39A /* VisheoBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0EC1FD1B27B0043A39A /* VisheoBoxViewModel.swift */; };
 		B4AEE0EF1FD1B28B0043A39A /* VisheoBoxRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0EE1FD1B28B0043A39A /* VisheoBoxRouter.swift */; };
 		B4AEE0F11FD1C8770043A39A /* VisheoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AEE0F01FD1C8770043A39A /* VisheoCollectionViewCell.swift */; };
-		B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */; };
 		B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABC71FB8CC7C003EDC7F /* AuthorizationViewController.swift */; };
 		B4BCABEC1FB8CC7D003EDC7F /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABC91FB8CC7C003EDC7F /* AuthorizationRouter.swift */; };
 		B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCABCA1FB8CC7C003EDC7F /* SignInRouter.swift */; };
@@ -167,10 +330,17 @@
 		B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */; };
 		B4F666271FC1C9FB00B68055 /* VideoTrimmingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */; };
 		B4F666291FC1CA1200B68055 /* VideoTrimmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */; };
-		D4D60DB38EDB3A168B57C72A /* Pods_Visheo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */; };
+		FB0C2237B6434A7519DD61D8 /* Pods_App_Visheo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA385FBB48DB2B563F66DA5A /* Pods_App_Visheo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		920F8B2F1FF6BDC90087C45D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 929A19251FA8D46800363CC9;
+			remoteInfo = VisheoVideo;
+		};
 		924DEB851FC3B22B00B04EE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */;
@@ -202,6 +372,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		920F8BD41FF6BDC90087C45D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				920F8BD51FF6BDC90087C45D /* VisheoVideo.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92EF8E881FC4190D005926E5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -216,7 +397,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FD6F74B86B302F75CC70FF6 /* Pods-App-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo.release.xcconfig"; sourceTree = "<group>"; };
+		391D08EBDF5AD694F5624C6D /* Pods-App-VisheoStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-VisheoStaging.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging.release.xcconfig"; sourceTree = "<group>"; };
+		481AD60403C8F371649DC574 /* Pods-App-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
 		9201B2E01FE284C700FAC820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MusicSelection.storyboard; sourceTree = "<group>"; };
 		9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemSuccessViewController.swift; sourceTree = "<group>"; };
 		920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +409,11 @@
 		920EDFE31FCF0F0C00D121ED /* SoundtrackCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackCellModel.swift; sourceTree = "<group>"; };
 		920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackRouter.swift; sourceTree = "<group>"; };
 		920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
+		920F8BDB1FF6BDC90087C45D /* VisheoStaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisheoStaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		920F8BDD1FF6BE1D0087C45D /* Staging-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Staging-Info.plist"; sourceTree = "<group>"; };
+		920F8BE11FF6BE670087C45D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		920F8BE61FF6C0E80087C45D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		921E0CEA1FDF1BF4000A4EBC /* APLCompositionDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLCompositionDebugView.h; sourceTree = "<group>"; };
 		921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLCompositionDebugView.m; sourceTree = "<group>"; };
 		922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoMovieWriter.swift; sourceTree = "<group>"; };
@@ -345,7 +533,6 @@
 		B4AEE0F01FD1C8770043A39A /* VisheoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4B9D1961FA8A52300CBD7DB /* Visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B9D1A51FA8A52300CBD7DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4BCABC71FB8CC7C003EDC7F /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		B4BCABC91FB8CC7C003EDC7F /* AuthorizationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		B4BCABCA1FB8CC7C003EDC7F /* SignInRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
@@ -390,18 +577,29 @@
 		B4F666241FC1C9ED00B68055 /* VideoTrimmingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingRouter.swift; sourceTree = "<group>"; };
 		B4F666261FC1C9FB00B68055 /* VideoTrimmingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingViewModel.swift; sourceTree = "<group>"; };
 		B4F666281FC1CA1200B68055 /* VideoTrimmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmingViewController.swift; sourceTree = "<group>"; };
-		BEA24D4F70D81BC5C6DF5B7F /* Pods-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
-		C370ACF7CBAB1D0D1A2A453C /* Pods-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visheo/Pods-Visheo.release.xcconfig"; sourceTree = "<group>"; };
+		C311916C2FA056F49B08A270 /* Pods-App-VisheoStaging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-VisheoStaging.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging.debug.xcconfig"; sourceTree = "<group>"; };
+		CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_VisheoStaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA385FBB48DB2B563F66DA5A /* Pods_App_Visheo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Visheo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		920F8BB91FF6BDC90087C45D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				920F8BBA1FF6BDC90087C45D /* StoreKit.framework in Frameworks */,
+				920F8BBB1FF6BDC90087C45D /* VisheoVideo.framework in Frameworks */,
+				010D8975A0A9DB78A8A50DC0 /* Pods_App_VisheoStaging.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4B9D1931FA8A52300CBD7DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B474271B1FD8464700FB6223 /* StoreKit.framework in Frameworks */,
 				92EF8E841FC4190D005926E5 /* VisheoVideo.framework in Frameworks */,
-				D4D60DB38EDB3A168B57C72A /* Pods_Visheo.framework in Frameworks */,
+				FB0C2237B6434A7519DD61D8 /* Pods_App_Visheo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,18 +610,10 @@
 			isa = PBXGroup;
 			children = (
 				B474271A1FD8464700FB6223 /* StoreKit.framework */,
-				0C552B2E7D9952379B5D8A43 /* Pods_Visheo.framework */,
+				FA385FBB48DB2B563F66DA5A /* Pods_App_Visheo.framework */,
+				CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		727D4B8F4BD8991BC05A56B0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BEA24D4F70D81BC5C6DF5B7F /* Pods-Visheo.debug.xcconfig */,
-				C370ACF7CBAB1D0D1A2A453C /* Pods-Visheo.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		920EDFD51FCF062900D121ED /* Soundtrack */ = {
@@ -461,6 +651,31 @@
 				920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		920F8BDF1FF6BE670087C45D /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				920F8BE01FF6BE670087C45D /* staging */,
+				920F8BE21FF6BE670087C45D /* production */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		920F8BE01FF6BE670087C45D /* staging */ = {
+			isa = PBXGroup;
+			children = (
+				920F8BE11FF6BE670087C45D /* GoogleService-Info.plist */,
+			);
+			path = staging;
+			sourceTree = "<group>";
+		};
+		920F8BE21FF6BE670087C45D /* production */ = {
+			isa = PBXGroup;
+			children = (
+				920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */,
+			);
+			path = production;
 			sourceTree = "<group>";
 		};
 		924DEB801FC3B22B00B04EE8 /* Products */ = {
@@ -591,6 +806,17 @@
 				B437CF751FDEE35900E28C20 /* RedeemViewController.swift */,
 			);
 			path = PremiumCards;
+			sourceTree = "<group>";
+		};
+		B1C9097D70D880362A3ECBDB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				481AD60403C8F371649DC574 /* Pods-App-Visheo.debug.xcconfig */,
+				2FD6F74B86B302F75CC70FF6 /* Pods-App-Visheo.release.xcconfig */,
+				C311916C2FA056F49B08A270 /* Pods-App-VisheoStaging.debug.xcconfig */,
+				391D08EBDF5AD694F5624C6D /* Pods-App-VisheoStaging.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		B42A29871FB1F8A200A8741F /* CustomUI */ = {
@@ -747,6 +973,7 @@
 		B48AAAB91FA9E58F000BB33B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				920F8BDF1FF6BE670087C45D /* Firebase */,
 				92A8D30A1FC86E86001E194D /* Media */,
 				B48AAAC21FA9E650000BB33B /* Fonts */,
 				B48AAABA1FA9E58F000BB33B /* Assets.xcassets */,
@@ -795,6 +1022,7 @@
 				B48AAAD01FAA03CC000BB33B /* UIKitExtensions */,
 				922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */,
 				922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */,
+				920F8BE61FF6C0E80087C45D /* Environment.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -863,8 +1091,8 @@
 				924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */,
 				B4B9D1981FA8A52300CBD7DB /* Visheo */,
 				B4B9D1971FA8A52300CBD7DB /* Products */,
-				727D4B8F4BD8991BC05A56B0 /* Pods */,
 				3A25D211DE89E6E80DEC2011 /* Frameworks */,
+				B1C9097D70D880362A3ECBDB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -872,6 +1100,7 @@
 			isa = PBXGroup;
 			children = (
 				B4B9D1961FA8A52300CBD7DB /* Visheo.app */,
+				920F8BDB1FF6BDC90087C45D /* VisheoStaging.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -883,7 +1112,7 @@
 				B48AAAB91FA9E58F000BB33B /* Resources */,
 				B48AAAB41FA9E574000BB33B /* Sources */,
 				B4B9D1A51FA8A52300CBD7DB /* Info.plist */,
-				B4B9D1AC1FA8D4D000CBD7DB /* GoogleService-Info.plist */,
+				920F8BDD1FF6BE1D0087C45D /* Staging-Info.plist */,
 			);
 			path = Visheo;
 			sourceTree = "<group>";
@@ -1146,18 +1375,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		920F8B2D1FF6BDC90087C45D /* VisheoStaging */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 920F8BD81FF6BDC90087C45D /* Build configuration list for PBXNativeTarget "VisheoStaging" */;
+			buildPhases = (
+				395915650F65326C8069AA35 /* [CP] Check Pods Manifest.lock */,
+				920F8B311FF6BDC90087C45D /* Sources */,
+				920F8BB91FF6BDC90087C45D /* Frameworks */,
+				920F8BBD1FF6BDC90087C45D /* Resources */,
+				920F8BD31FF6BDC90087C45D /* Crashlytics setup */,
+				920F8BD41FF6BDC90087C45D /* Embed Frameworks */,
+				189E58F36CB8CAA30C980946 /* [CP] Embed Pods Frameworks */,
+				D1F7A5CCF6BC9BE041431B95 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				920F8B2E1FF6BDC90087C45D /* PBXTargetDependency */,
+			);
+			name = VisheoStaging;
+			productName = Visheo;
+			productReference = 920F8BDB1FF6BDC90087C45D /* VisheoStaging.app */;
+			productType = "com.apple.product-type.application";
+		};
 		B4B9D1951FA8A52300CBD7DB /* Visheo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4B9D1A81FA8A52300CBD7DB /* Build configuration list for PBXNativeTarget "Visheo" */;
 			buildPhases = (
-				E2BE12273340EFE97536135C /* [CP] Check Pods Manifest.lock */,
+				297CA2FE00BBD7D59F35D4B5 /* [CP] Check Pods Manifest.lock */,
 				B4B9D1921FA8A52300CBD7DB /* Sources */,
 				B4B9D1931FA8A52300CBD7DB /* Frameworks */,
 				B4B9D1941FA8A52300CBD7DB /* Resources */,
 				B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytics setup */,
 				92EF8E881FC4190D005926E5 /* Embed Frameworks */,
-				DD698383854C530CB34D0E1B /* [CP] Embed Pods Frameworks */,
-				04778D0C6B6EF5C3357F55D6 /* [CP] Copy Pods Resources */,
+				1ABFE6E7A06AC43B9613F4C9 /* [CP] Embed Pods Frameworks */,
+				5412EA5B438073F580E0FA20 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1179,6 +1431,9 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Olearis;
 				TargetAttributes = {
+					920F8B2D1FF6BDC90087C45D = {
+						ProvisioningStyle = Automatic;
+					};
 					B4B9D1951FA8A52300CBD7DB = {
 						CreatedOnToolsVersion = 9.0.1;
 						LastSwiftMigration = 0910;
@@ -1211,6 +1466,7 @@
 			projectRoot = "";
 			targets = (
 				B4B9D1951FA8A52300CBD7DB /* Visheo */,
+				920F8B2D1FF6BDC90087C45D /* VisheoStaging */,
 			);
 		};
 /* End PBXProject section */
@@ -1240,6 +1496,35 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		920F8BBD1FF6BDC90087C45D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				920F8BBE1FF6BDC90087C45D /* app_settings.plist in Resources */,
+				920F8BBF1FF6BDC90087C45D /* LaunchScreen.storyboard in Resources */,
+				920F8BC01FF6BDC90087C45D /* Authentification.storyboard in Resources */,
+				920F8BC11FF6BDC90087C45D /* Roboto-Regular.ttf in Resources */,
+				920F8BC21FF6BDC90087C45D /* Localizable.stringsdict in Resources */,
+				920F8BC31FF6BDC90087C45D /* Assets.xcassets in Resources */,
+				920F8BC41FF6BDC90087C45D /* VisheoPreview.storyboard in Resources */,
+				920F8BC51FF6BDC90087C45D /* blank.m4v in Resources */,
+				920F8BC61FF6BDC90087C45D /* Roboto-Medium.ttf in Resources */,
+				920F8BC71FF6BDC90087C45D /* InfoPlist.strings in Resources */,
+				920F8BC81FF6BDC90087C45D /* Purchases.storyboard in Resources */,
+				920F8BC91FF6BDC90087C45D /* Localizable.strings in Resources */,
+				920F8BCA1FF6BDC90087C45D /* default_outro.mov in Resources */,
+				920F8BCB1FF6BDC90087C45D /* Roboto-Bold.ttf in Resources */,
+				920F8BCC1FF6BDC90087C45D /* MusicSelection.storyboard in Resources */,
+				920F8BCD1FF6BDC90087C45D /* Main.storyboard in Resources */,
+				920F8BCE1FF6BDC90087C45D /* LaunchProxy.storyboard in Resources */,
+				920F8BCF1FF6BDC90087C45D /* CameraTips.xib in Resources */,
+				920F8BD01FF6BDC90087C45D /* Account.storyboard in Resources */,
+				920F8BE41FF6BE6B0087C45D /* GoogleService-Info.plist in Resources */,
+				920F8BD11FF6BDC90087C45D /* Camera.storyboard in Resources */,
+				920F8BD21FF6BDC90087C45D /* beginning.m4a in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4B9D1941FA8A52300CBD7DB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1260,10 +1545,10 @@
 				B48AAAC71FA9E650000BB33B /* Roboto-Bold.ttf in Resources */,
 				9201B2DF1FE284C700FAC820 /* MusicSelection.storyboard in Resources */,
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
-				B4B9D1AD1FA8D4D100CBD7DB /* GoogleService-Info.plist in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
 				92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */,
 				B4775FFF1FD57EAA00A02BEF /* Account.storyboard in Resources */,
+				920F8BE51FF6BE6E0087C45D /* GoogleService-Info.plist in Resources */,
 				92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */,
 				92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */,
 			);
@@ -1272,45 +1557,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		04778D0C6B6EF5C3357F55D6 /* [CP] Copy Pods Resources */ = {
+		189E58F36CB8CAA30C980946 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytics setup */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Crashlytics setup";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7a46fd1c8ce2ff847c926c7643d2946bdd1499e7 4c00028f3fa11585186d816e06a3e7e2e4e290b20eaf0f9e8d79d8661cb22f61";
-		};
-		DD698383854C530CB34D0E1B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BadgeSwift/BadgeSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -1357,10 +1610,66 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visheo/Pods-Visheo-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E2BE12273340EFE97536135C /* [CP] Check Pods Manifest.lock */ = {
+		1ABFE6E7A06AC43B9613F4C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BadgeSwift/BadgeSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-11/iOS/RevealServer.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BadgeSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GPUImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		297CA2FE00BBD7D59F35D4B5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1371,16 +1680,241 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Visheo-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-App-Visheo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		395915650F65326C8069AA35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-App-VisheoStaging-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5412EA5B438073F580E0FA20 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		920F8BD31FF6BDC90087C45D /* Crashlytics setup */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Crashlytics setup";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7a46fd1c8ce2ff847c926c7643d2946bdd1499e7 4c00028f3fa11585186d816e06a3e7e2e4e290b20eaf0f9e8d79d8661cb22f61";
+		};
+		B4B9D1AB1FA8BF2E00CBD7DB /* Crashlytics setup */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Crashlytics setup";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7a46fd1c8ce2ff847c926c7643d2946bdd1499e7 4c00028f3fa11585186d816e06a3e7e2e4e290b20eaf0f9e8d79d8661cb22f61";
+		};
+		D1F7A5CCF6BC9BE041431B95 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		920F8B311FF6BDC90087C45D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				920F8B321FF6BDC90087C45D /* CameraPermissionsRouter.swift in Sources */,
+				920F8B331FF6BDC90087C45D /* AccountViewModel.swift in Sources */,
+				920F8B341FF6BDC90087C45D /* VideoTrimmingViewModel.swift in Sources */,
+				920F8B351FF6BDC90087C45D /* ShareViewModel.swift in Sources */,
+				920F8B361FF6BDC90087C45D /* PagedCoverCollectionMediator.swift in Sources */,
+				920F8B371FF6BDC90087C45D /* BestPracticeCollectionViewCell.swift in Sources */,
+				920F8B381FF6BDC90087C45D /* CameraViewModel.swift in Sources */,
+				920F8B391FF6BDC90087C45D /* TipsViewModel.swift in Sources */,
+				920F8B3A1FF6BDC90087C45D /* UIViewController+Alert.swift in Sources */,
+				920F8B3B1FF6BDC90087C45D /* VisheoBoxViewModel.swift in Sources */,
+				920F8B3C1FF6BDC90087C45D /* VisheoBoxViewController.swift in Sources */,
+				920F8B3D1FF6BDC90087C45D /* OccasionsListService.swift in Sources */,
+				920F8B3E1FF6BDC90087C45D /* WordTipCellModel.swift in Sources */,
+				920F8B3F1FF6BDC90087C45D /* CameraPermissionsViewModel.swift in Sources */,
+				920F8B401FF6BDC90087C45D /* TipsViewController.swift in Sources */,
+				920F8B411FF6BDC90087C45D /* RootViewControllerSegue.swift in Sources */,
+				920F8B421FF6BDC90087C45D /* HolidaysCollectionMediator.swift in Sources */,
+				920F8B431FF6BDC90087C45D /* SoundtrackCellModel.swift in Sources */,
+				920F8B441FF6BDC90087C45D /* SelectCoverViewController.swift in Sources */,
+				920F8B451FF6BDC90087C45D /* LaunchProxyRouter.swift in Sources */,
+				920F8B461FF6BDC90087C45D /* GestureRecognizer+TapDetection.swift in Sources */,
+				920F8B471FF6BDC90087C45D /* TipsRouter.swift in Sources */,
+				920F8B481FF6BDC90087C45D /* SegueList.swift in Sources */,
+				920F8B491FF6BDC90087C45D /* SelectSoundtrackRouter.swift in Sources */,
+				920F8B4A1FF6BDC90087C45D /* SignInViewModel.swift in Sources */,
+				920F8B4B1FF6BDC90087C45D /* EditVisheoButton.swift in Sources */,
+				920F8B4C1FF6BDC90087C45D /* ViewModels.swift in Sources */,
+				920F8B4D1FF6BDC90087C45D /* CameraRecordIndicator.swift in Sources */,
+				920F8B4E1FF6BDC90087C45D /* RedeemViewModel.swift in Sources */,
+				920F8B4F1FF6BDC90087C45D /* OnboardingViewController.swift in Sources */,
+				920F8B501FF6BDC90087C45D /* PhotoSelectionIndexView.swift in Sources */,
+				920F8B511FF6BDC90087C45D /* CoverCellViewModel.swift in Sources */,
+				920F8B521FF6BDC90087C45D /* VideoView.swift in Sources */,
+				920F8BE81FF6C0E80087C45D /* Environment.swift in Sources */,
+				920F8B531FF6BDC90087C45D /* AlignedFlowLayout.swift in Sources */,
+				920F8B541FF6BDC90087C45D /* MenuItemViewModel.swift in Sources */,
+				920F8B551FF6BDC90087C45D /* SoundtrackCollectionViewCell.swift in Sources */,
+				920F8B561FF6BDC90087C45D /* RedeemRouter.swift in Sources */,
+				920F8B571FF6BDC90087C45D /* AuthorizationService.swift in Sources */,
+				920F8B581FF6BDC90087C45D /* UserInputValidator.swift in Sources */,
+				920F8B591FF6BDC90087C45D /* AccountViewController.swift in Sources */,
+				920F8B5A1FF6BDC90087C45D /* OccassionCollectionViewCell.swift in Sources */,
+				920F8B5B1FF6BDC90087C45D /* OccassionsCollectionMediator.swift in Sources */,
+				920F8B5C1FF6BDC90087C45D /* CameraPermissionsViewController.swift in Sources */,
+				920F8B5D1FF6BDC90087C45D /* AppSettings.swift in Sources */,
+				920F8B5E1FF6BDC90087C45D /* FeedbackService.swift in Sources */,
+				920F8B5F1FF6BDC90087C45D /* AuthorizationRouter.swift in Sources */,
+				920F8B601FF6BDC90087C45D /* ChooseOccasionViewModel.swift in Sources */,
+				920F8B611FF6BDC90087C45D /* FilmstripCoversCollectionMediator.swift in Sources */,
+				920F8B621FF6BDC90087C45D /* HolidayCollectionViewCell.swift in Sources */,
+				920F8B631FF6BDC90087C45D /* LaunchProxyViewModel.swift in Sources */,
+				920F8B641FF6BDC90087C45D /* PreviewRouter.swift in Sources */,
+				920F8B651FF6BDC90087C45D /* AccountRouter.swift in Sources */,
+				920F8B661FF6BDC90087C45D /* ShareVisheoViewController.swift in Sources */,
+				920F8B671FF6BDC90087C45D /* ChooseOccasionRouter.swift in Sources */,
+				920F8B681FF6BDC90087C45D /* SignInRouter.swift in Sources */,
+				920F8B691FF6BDC90087C45D /* PhotoPermissionsViewController.swift in Sources */,
+				920F8B6A1FF6BDC90087C45D /* SelectSoundtrackViewModel.swift in Sources */,
+				920F8B6B1FF6BDC90087C45D /* RedeemSuccessViewModel.swift in Sources */,
+				920F8B6C1FF6BDC90087C45D /* CameraTipsView.swift in Sources */,
+				920F8B6D1FF6BDC90087C45D /* VisheosCache.swift in Sources */,
+				920F8B6E1FF6BDC90087C45D /* VisheoBoxRouter.swift in Sources */,
+				920F8B6F1FF6BDC90087C45D /* CameraRouter.swift in Sources */,
+				920F8B701FF6BDC90087C45D /* SelectCoverRouter.swift in Sources */,
+				920F8B711FF6BDC90087C45D /* VideoTrimmingViewController.swift in Sources */,
+				920F8B721FF6BDC90087C45D /* SignUpRouter.swift in Sources */,
+				920F8B731FF6BDC90087C45D /* CoverCollectionViewCell.swift in Sources */,
+				920F8B741FF6BDC90087C45D /* HolidayCellViewModel.swift in Sources */,
+				920F8B751FF6BDC90087C45D /* LaunchProxyViewController.swift in Sources */,
+				920F8B761FF6BDC90087C45D /* RedeemSuccessRouter.swift in Sources */,
+				920F8B771FF6BDC90087C45D /* EditAccountViewModel.swift in Sources */,
+				920F8B781FF6BDC90087C45D /* SelectCoverViewModel.swift in Sources */,
+				920F8B791FF6BDC90087C45D /* Date+Calendar.swift in Sources */,
+				920F8B7A1FF6BDC90087C45D /* PhotoPermissionsRouter.swift in Sources */,
+				920F8B7B1FF6BDC90087C45D /* PracticeTipCellModel.swift in Sources */,
+				920F8B7C1FF6BDC90087C45D /* EventLoggingService.swift in Sources */,
+				920F8B7D1FF6BDC90087C45D /* VisheoCellViewModel.swift in Sources */,
+				920F8B7E1FF6BDC90087C45D /* PhotoPickerViewModel.swift in Sources */,
+				920F8B7F1FF6BDC90087C45D /* SignUpViewModel.swift in Sources */,
+				920F8B801FF6BDC90087C45D /* RedeemViewController.swift in Sources */,
+				920F8B811FF6BDC90087C45D /* Routing.swift in Sources */,
+				920F8B821FF6BDC90087C45D /* ChooseOccasionViewController.swift in Sources */,
+				920F8B831FF6BDC90087C45D /* MenuTableViewCell.swift in Sources */,
+				920F8B841FF6BDC90087C45D /* PreviewViewModel.swift in Sources */,
+				920F8B851FF6BDC90087C45D /* AutoSizingLayout.swift in Sources */,
+				920F8B861FF6BDC90087C45D /* PhotoPickerViewController.swift in Sources */,
+				920F8B871FF6BDC90087C45D /* EditAccountViewController.swift in Sources */,
+				920F8B881FF6BDC90087C45D /* AuthorizationViewModel.swift in Sources */,
+				920F8B891FF6BDC90087C45D /* Events.swift in Sources */,
+				920F8B8A1FF6BDC90087C45D /* SoundtracksService.swift in Sources */,
+				920F8B8B1FF6BDC90087C45D /* CameraRecordButton.swift in Sources */,
+				920F8B8C1FF6BDC90087C45D /* VisheoCreationService.swift in Sources */,
+				920F8B8D1FF6BDC90087C45D /* CameraViewController.swift in Sources */,
+				920F8B8E1FF6BDC90087C45D /* LabeledProgressView.swift in Sources */,
+				920F8B8F1FF6BDC90087C45D /* VideoTrimmingRouter.swift in Sources */,
+				920F8B901FF6BDC90087C45D /* RouterAsembly.swift in Sources */,
+				920F8B911FF6BDC90087C45D /* UIView+LayerInspectable.swift in Sources */,
+				920F8B921FF6BDC90087C45D /* VisheoPreviewViewController.swift in Sources */,
+				920F8B931FF6BDC90087C45D /* VisheoCollectionViewCell.swift in Sources */,
+				920F8B941FF6BDC90087C45D /* PhotoCollectionViewCell.swift in Sources */,
+				920F8B951FF6BDC90087C45D /* PhotoPermissionsViewModel.swift in Sources */,
+				920F8B961FF6BDC90087C45D /* AuthorizationViewController.swift in Sources */,
+				920F8B971FF6BDC90087C45D /* MenuRouter.swift in Sources */,
+				920F8B981FF6BDC90087C45D /* RedeemSuccessViewController.swift in Sources */,
+				920F8B991FF6BDC90087C45D /* AppDelegate.swift in Sources */,
+				920F8B9A1FF6BDC90087C45D /* UserNotificationsService.swift in Sources */,
+				920F8B9B1FF6BDC90087C45D /* VisheoPixelBufferAdaptor.swift in Sources */,
+				920F8B9C1FF6BDC90087C45D /* ProgressIndicator.swift in Sources */,
+				920F8B9D1FF6BDC90087C45D /* VisheoRenderingService.swift in Sources */,
+				920F8B9E1FF6BDC90087C45D /* TipsProviderService.swift in Sources */,
+				920F8B9F1FF6BDC90087C45D /* EditAccountRouter.swift in Sources */,
+				920F8BA01FF6BDC90087C45D /* SignUpViewController.swift in Sources */,
+				920F8BA11FF6BDC90087C45D /* VisheoRenderingAssets.swift in Sources */,
+				920F8BA21FF6BDC90087C45D /* SignInViewController.swift in Sources */,
+				920F8BA31FF6BDC90087C45D /* OccasionCellViewModel.swift in Sources */,
+				920F8BA41FF6BDC90087C45D /* MenuViewController.swift in Sources */,
+				920F8BA51FF6BDC90087C45D /* MenuViewModel.swift in Sources */,
+				920F8BA61FF6BDC90087C45D /* WordIdeaCollectionViewCell.swift in Sources */,
+				920F8BA71FF6BDC90087C45D /* TipsCollectionViewMediator.swift in Sources */,
+				920F8BA81FF6BDC90087C45D /* PhotoPickerRouter.swift in Sources */,
+				920F8BA91FF6BDC90087C45D /* OnboardingViewModel.swift in Sources */,
+				920F8BAA1FF6BDC90087C45D /* SoundtrackCollectionMediator.swift in Sources */,
+				920F8BAB1FF6BDC90087C45D /* ShareRouter.swift in Sources */,
+				920F8BAC1FF6BDC90087C45D /* VisheoPreviewView.swift in Sources */,
+				920F8BAD1FF6BDC90087C45D /* APLCompositionDebugView.m in Sources */,
+				920F8BAE1FF6BDC90087C45D /* OnboardingRouter.swift in Sources */,
+				920F8BAF1FF6BDC90087C45D /* SelectSoundtrackViewController.swift in Sources */,
+				920F8BB01FF6BDC90087C45D /* VisheoMovieWriter.swift in Sources */,
+				920F8BB11FF6BDC90087C45D /* AppStateService.swift in Sources */,
+				920F8BB21FF6BDC90087C45D /* AppPermissionsService.swift in Sources */,
+				920F8BB31FF6BDC90087C45D /* HolidayDateLabel.swift in Sources */,
+				920F8BB41FF6BDC90087C45D /* VisheosListService.swift in Sources */,
+				920F8BB51FF6BDC90087C45D /* ChooseCardsRouter.swift in Sources */,
+				920F8BB61FF6BDC90087C45D /* ChooseCardsViewModel.swift in Sources */,
+				920F8BB71FF6BDC90087C45D /* ChooseCardsViewController.swift in Sources */,
+				920F8BB81FF6BDC90087C45D /* PremiumCardsService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4B9D1921FA8A52300CBD7DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1418,6 +1952,7 @@
 				B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */,
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
 				92FF5F461FD9C7F9009EE6D2 /* VideoView.swift in Sources */,
+				920F8BE71FF6C0E80087C45D /* Environment.swift in Sources */,
 				92548DE41FF37602001F692E /* AlignedFlowLayout.swift in Sources */,
 				B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */,
 				920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */,
@@ -1526,6 +2061,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		920F8B2E1FF6BDC90087C45D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VisheoVideo;
+			targetProxy = 920F8B2F1FF6BDC90087C45D /* PBXContainerItemProxy */;
+		};
 		92EF8E871FC4190D005926E5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VisheoVideo;
@@ -1651,6 +2191,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		920F8BD91FF6BDC90087C45D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C311916C2FA056F49B08A270 /* Pods-App-VisheoStaging.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V6NPSSGKMC;
+				INFOPLIST_FILE = "Visheo/Staging-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visheo.visheo.staging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Visheo/Sources/Visheo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		920F8BDA1FF6BDC90087C45D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 391D08EBDF5AD694F5624C6D /* Pods-App-VisheoStaging.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V6NPSSGKMC;
+				INFOPLIST_FILE = "Visheo/Staging-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visheo.visheo.staging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Visheo/Sources/Visheo-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		B4B9D1A61FA8A52300CBD7DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1760,9 +2344,9 @@
 		};
 		B4B9D1A91FA8A52300CBD7DB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEA24D4F70D81BC5C6DF5B7F /* Pods-Visheo.debug.xcconfig */;
+			baseConfigurationReference = 481AD60403C8F371649DC574 /* Pods-App-Visheo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1783,9 +2367,9 @@
 		};
 		B4B9D1AA1FA8A52300CBD7DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C370ACF7CBAB1D0D1A2A453C /* Pods-Visheo.release.xcconfig */;
+			baseConfigurationReference = 2FD6F74B86B302F75CC70FF6 /* Pods-App-Visheo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1805,6 +2389,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		920F8BD81FF6BDC90087C45D /* Build configuration list for PBXNativeTarget "VisheoStaging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				920F8BD91FF6BDC90087C45D /* Debug */,
+				920F8BDA1FF6BDC90087C45D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B4B9D1911FA8A52300CBD7DB /* Build configuration list for PBXProject "Visheo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

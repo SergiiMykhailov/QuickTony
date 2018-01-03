@@ -5,7 +5,7 @@ inhibit_all_warnings!
 
 workspace 'Visheo.xcworkspace'
 
-target 'Visheo' do
+abstract_target 'App' do
 
   pod 'Fabric'
   pod 'Crashlytics'
@@ -34,6 +34,13 @@ target 'Visheo' do
   pod 'SnapKit'
   
    pod 'Reveal-SDK', :configurations => ['Debug']
+   
+   target 'Visheo' do
+   end
+   
+   target 'VisheoStaging' do
+   end
+   
 end
 
 abstract_target 'VisheoVideoFramework' do
