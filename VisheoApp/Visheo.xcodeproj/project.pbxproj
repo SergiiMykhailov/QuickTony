@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		010D8975A0A9DB78A8A50DC0 /* Pods_App_VisheoStaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */; };
 		9201B2DF1FE284C700FAC820 /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */; };
+		9204818D1FFCDA4E0053810D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */; };
 		9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */; };
 		920EDFD71FCF064400D121ED /* SelectSoundtrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFD61FCF064400D121ED /* SelectSoundtrackViewController.swift */; };
 		920EDFDC1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920EDFDB1FCF0CFE00D121ED /* SoundtrackCollectionMediator.swift */; };
@@ -163,7 +164,6 @@
 		920F8BC41FF6BDC90087C45D /* VisheoPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46528111FC34A0F0070FFB7 /* VisheoPreview.storyboard */; };
 		920F8BC51FF6BDC90087C45D /* blank.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30C1FC86E86001E194D /* blank.m4v */; };
 		920F8BC61FF6BDC90087C45D /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B48AAAC51FA9E650000BB33B /* Roboto-Medium.ttf */; };
-		920F8BC71FF6BDC90087C45D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */; };
 		920F8BC81FF6BDC90087C45D /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B40447C71FD8030A00CD87BA /* Purchases.storyboard */; };
 		920F8BC91FF6BDC90087C45D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B43163831FBF480A00135B70 /* Localizable.strings */; };
 		920F8BCA1FF6BDC90087C45D /* default_outro.mov in Resources */ = {isa = PBXBuildFile; fileRef = 92ED8EE81FDA946D00EBB15E /* default_outro.mov */; };
@@ -1509,7 +1509,7 @@
 				920F8BC41FF6BDC90087C45D /* VisheoPreview.storyboard in Resources */,
 				920F8BC51FF6BDC90087C45D /* blank.m4v in Resources */,
 				920F8BC61FF6BDC90087C45D /* Roboto-Medium.ttf in Resources */,
-				920F8BC71FF6BDC90087C45D /* InfoPlist.strings in Resources */,
+				9204818D1FFCDA4E0053810D /* InfoPlist.strings in Resources */,
 				920F8BC81FF6BDC90087C45D /* Purchases.storyboard in Resources */,
 				920F8BC91FF6BDC90087C45D /* Localizable.strings in Resources */,
 				920F8BCA1FF6BDC90087C45D /* default_outro.mov in Resources */,
