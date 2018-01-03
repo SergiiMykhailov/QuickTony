@@ -17,9 +17,10 @@ protocol OccasionsListService: class {
     var occasionRecords : [OccasionRecord] {get}
 }
 
-enum OccasionCategory {
+enum OccasionCategory: String {
     case holiday
     case occasion
+	case featured
 }
 
 protocol OccasionRecord {
@@ -238,7 +239,7 @@ class VisheoOccasionRecord : OccasionRecord {
 		
 		words = (dictionary["words"] as? [Int?] ?? []).flatMap{$0}
 															.map { VisheoWordIdea(id: $0) }
-        
+		
         date = VisheoOccasionRecord.date(from: dictionary["date"] as? String)
         priority = dictionary["priority"] as? Int ?? Int.max
         if let previewId = dictionary["preview"] as? Int, previewId < covers.count {
@@ -247,8 +248,8 @@ class VisheoOccasionRecord : OccasionRecord {
             return nil
         }
         
-        if let stringCat = dictionary["category"] as? String {
-            category = stringCat == "holiday" ? .holiday : .occasion
+		if let stringCat = dictionary["category"] as? String, let cat = OccasionCategory(rawValue: stringCat) {
+			category = cat;
         } else {
             category = .occasion
         }
