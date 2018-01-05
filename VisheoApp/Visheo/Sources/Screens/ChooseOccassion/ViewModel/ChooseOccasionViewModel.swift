@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 protocol ChooseOccasionViewModel : class {
     var holidaysCount : Int {get}
@@ -22,6 +23,7 @@ protocol ChooseOccasionViewModel : class {
     var didChangeCallback: (()->())? {get set}
     
     func showMenu()
+	func showReviewChoiceIfNeeded()
 }
 
 class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
@@ -61,10 +63,14 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     weak var router: ChooseOccasionRouter?
     var occasionsList : OccasionsListService
 	private let appStateService: AppStateService;
+	private let feedbackService: FeedbackService
+	private let isInitialLaunch: Bool;
     
-	init(occasionsList: OccasionsListService, appStateService: AppStateService) {
-        self.occasionsList = occasionsList
+	init(isInitialLaunch: Bool, occasionsList: OccasionsListService, appStateService: AppStateService, feedbackService: FeedbackService) {
+		self.isInitialLaunch = isInitialLaunch;
+		self.occasionsList = occasionsList
 		self.appStateService = appStateService;
+		self.feedbackService = feedbackService;
         
         NotificationCenter.default.addObserver(forName: Notification.Name.occasionsChanged, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
             self?.didChangeCallback?()
@@ -123,6 +129,17 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     func selectOccasion(at index: Int) {
         self.router?.showSelectCover(for: occasions[index])
     }
+	
+	func showReviewChoiceIfNeeded() {
+		guard isInitialLaunch else {
+			return;
+		}
+		feedbackService.isReviewPending { [weak self] (isPending) in
+			if (isPending) {
+				self?.router?.showReviewChoice();
+			}
+		}
+	}
 }
 
 

@@ -261,11 +261,15 @@ class ShareVisheoViewController: UIViewController {
     }
     
     @IBAction func menuPressed(_ sender: Any) {
-        viewModel.showMenu()
+		viewModel.showReviewChoiceIfNeeded { [weak self] in
+			self?.viewModel.showMenu();
+		}
     }
     
     @IBAction func backPressed(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+		viewModel.showReviewChoiceIfNeeded { [weak self] in
+			self?.navigationController?.popViewController(animated: true)
+		}
     }
     
     @IBAction func deletePressed(_ sender: Any) {

@@ -11,6 +11,7 @@ import UIKit
 protocol ChooseOccasionRouter: FlowRouter {
     func showSelectCover(for occasion: OccasionRecord)
     func showMenu()
+	func showReviewChoice()
 }
 
 class VisheoChooseOccasionRouter : ChooseOccasionRouter {
@@ -18,16 +19,20 @@ class VisheoChooseOccasionRouter : ChooseOccasionRouter {
         case showOccasion = "showOccasion"
     }
     let dependencies: RouterDependencies
+	private let isInitialLaunch: Bool;
     private(set) weak var controller: UIViewController?
     private(set) weak var viewModel: ChooseOccasionViewModel?
     
-    public init(dependencies: RouterDependencies) {
+	public init(dependencies: RouterDependencies, isInitialLaunch: Bool = false) {
         self.dependencies = dependencies
+		self.isInitialLaunch = isInitialLaunch;
     }
     
     func start(with viewController: ChooseOccasionViewController) {
-		let vm = VisheoChooseOccasionViewModel(occasionsList: dependencies.occasionsListService,
-											   appStateService: dependencies.appStateService)
+		let vm = VisheoChooseOccasionViewModel(isInitialLaunch: isInitialLaunch,
+											   occasionsList: dependencies.occasionsListService,
+											   appStateService: dependencies.appStateService,
+											   feedbackService: dependencies.feedbackService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -55,5 +60,11 @@ extension VisheoChooseOccasionRouter {
     func showMenu() {
         controller?.showLeftViewAnimated(self)
     }
+	
+	func showReviewChoice() {
+		if let navigation = controller?.navigationController {
+			dependencies.feedbackService.showReviewChoice(on: navigation, onCancel: nil);
+		}
+	}
 }
 
