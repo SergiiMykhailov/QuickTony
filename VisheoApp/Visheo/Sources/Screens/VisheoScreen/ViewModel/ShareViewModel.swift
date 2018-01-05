@@ -45,6 +45,7 @@ protocol ShareViewModel : class, AlertGenerating {
     func retry()
     func tryLater()
     func showMenu()
+	func showReviewChoiceIfNeeded(onCancel: (() -> Void)?)
     
     func saveVisheo()
     func deleteVisheo()
@@ -134,13 +135,18 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     private let visheosCache : VisheosCache
 	private let userNotificationsService: UserNotificationsService
 	private let loggingService: EventLoggingService;
+	private let userInfo: UserInfoProvider;
+	private let feedbackService: FeedbackService;
+	private var shouldPresentFeedback = false;
     
-	init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService) {
+	init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService) {
         self.visheoRecord = record
         self.visheoService = visheoService
         self.visheosCache = cache
 		self.userNotificationsService = notificationsService;
 		self.loggingService = loggingService;
+		self.feedbackService = feedbackService;
+		self.userInfo = userInfo;
     }
     
     func showMenu() {}
@@ -190,11 +196,27 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 	}
 	
 	func trackLinkCopied() {
+		shouldPresentFeedback = true;
+		feedbackService.markReviewPending(nil);
 		loggingService.log(event: VisheoURLCopiedEvent())
 	}
 	
 	func trackLinkShared() {
+		shouldPresentFeedback = true;
+		feedbackService.markReviewPending(nil)
 		loggingService.log(event: VisheoSharedEvent());
+	}
+	
+	func showReviewChoiceIfNeeded(onCancel: (() -> Void)? = nil) {
+		guard shouldPresentFeedback else { onCancel?(); return }
+		
+		feedbackService.didLeaveReview { [weak self] (didReview) in
+			if didReview {
+				onCancel?();
+			} else {
+				self?.router?.showReviewChoice(onCancel: onCancel);
+			}
+		}
 	}
 }
 
@@ -263,23 +285,30 @@ class ShareVisheoViewModel : ShareViewModel {
 	private let userNotificationsService: UserNotificationsService
     private let sharePremium : Bool
 	private let loggingService: EventLoggingService;
+	private let userInfo: UserInfoProvider;
+	private let feedbackService: FeedbackService;
 	private var assets: VisheoRenderingAssets?;
 	private var record: VisheoRecord?;
+	private var shouldPresentFeedback = false;
     
-	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, sharePremium: Bool) {
+	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, sharePremium: Bool) {
         self.renderingService = renderingService
         self.creationService = creationService
 		self.userNotificationsService = notificationsService;
 		self.loggingService = loggingService;
+		self.userInfo = userInfo;
+		self.feedbackService = feedbackService;
         self.sharePremium = sharePremium
 		self.assets = assets;
     }
 	
-	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService) {
+	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService) {
 		self.renderingService = renderingService
 		self.creationService = creationService
 		self.userNotificationsService = notificationsService;
 		self.loggingService = loggingService;
+		self.feedbackService = feedbackService;
+		self.userInfo = userInfo;
 		self.record = record;
 		
 		guard let info = self.creationService.unfinishedInfo(with: record.id) else {
@@ -354,10 +383,14 @@ class ShareVisheoViewModel : ShareViewModel {
     }
 	
 	func trackLinkCopied() {
+		shouldPresentFeedback = true;
+		feedbackService.markReviewPending(nil);
 		loggingService.log(event: VisheoURLCopiedEvent())
 	}
 	
 	func trackLinkShared() {
+		shouldPresentFeedback = true;
+		feedbackService.markReviewPending(nil);
 		loggingService.log(event: VisheoSharedEvent());
 	}
     
@@ -418,6 +451,18 @@ class ShareVisheoViewModel : ShareViewModel {
     func showMenu() {
         router?.showMenu()
     }
+	
+	func showReviewChoiceIfNeeded(onCancel: (() -> Void)? = nil) {
+		guard shouldPresentFeedback else { onCancel?(); return }
+		
+		feedbackService.didLeaveReview { [weak self] (didReview) in
+			if didReview {
+				onCancel?();
+			} else {
+				self?.router?.showReviewChoice(onCancel: onCancel);
+			}
+		}
+	}
 	
 	func openSettings() {
 		if let url = URL(string: UIApplicationOpenSettingsURLString) {

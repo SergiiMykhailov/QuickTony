@@ -21,7 +21,7 @@ class VisheoRouterAssembly: NSObject, RouterAssembly, MFMailComposeViewControlle
         let sideController = destination as! LGSideMenuController
         
         let mainScreenController = (sideController.rootViewController as! UINavigationController).viewControllers[0] as! ChooseOccasionViewController
-        let router = VisheoChooseOccasionRouter(dependencies: dependencies)
+		let router = VisheoChooseOccasionRouter(dependencies: dependencies, isInitialLaunch: true);
         router.start(with: mainScreenController)
         
         let menuController = sideController.leftViewController as! MenuViewController

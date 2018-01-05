@@ -101,7 +101,7 @@ class VisheoMenuViewModel : MenuViewModel {
 			if userInfo.isAnonymous {
 				router?.showRegistration(with: .sendFeedback);
 			} else {
-				router?.showContactForm(with: userInfo.userEmail)
+				router?.showContactForm()
 			}
         default:
             break;

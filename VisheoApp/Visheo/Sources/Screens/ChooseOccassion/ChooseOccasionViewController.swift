@@ -44,6 +44,11 @@ class ChooseOccasionViewController: UIViewController {
     @IBAction func menuPressed(_ sender: Any) {
         viewModel.showMenu()
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated);
+		viewModel.showReviewChoiceIfNeeded()
+	}
 }
 
 extension ChooseOccasionViewController {

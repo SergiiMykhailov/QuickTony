@@ -11,6 +11,7 @@ import UIKit
 protocol ShareRouter: FlowRouter {
     func goToRoot()
     func showMenu()
+	func showReviewChoice(onCancel: (() -> Void)?)
 }
 
 class ShareVisheoRouter : ShareRouter {
@@ -32,6 +33,8 @@ class ShareVisheoRouter : ShareRouter {
 									  creationService: dependencies.creationService,
                                       notificationsService: dependencies.userNotificationsService,
 									  loggingService: dependencies.loggingService,
+									  userInfo: dependencies.userInfoProvider,
+									  feedbackService: dependencies.feedbackService,
                                       sharePremium : sharePremium)
         viewModel = vm
         vm.router = self
@@ -45,7 +48,9 @@ class ShareVisheoRouter : ShareRouter {
 									  renderingService: dependencies.renderingService,
 									  creationService: dependencies.creationService,
 									  notificationsService: dependencies.userNotificationsService,
-									  loggingService: dependencies.loggingService
+									  loggingService: dependencies.loggingService,
+									  userInfo: dependencies.userInfoProvider,
+									  feedbackService: dependencies.feedbackService
 									  );
 		viewModel = vm
 		vm.router = self
@@ -63,7 +68,9 @@ class ShareVisheoRouter : ShareRouter {
 											  visheoService: dependencies.creationService,
 											  cache: dependencies.visheosCache,
 											  notificationsService: dependencies.userNotificationsService,
-											  loggingService: dependencies.loggingService)
+											  loggingService: dependencies.loggingService,
+											  userInfo: dependencies.userInfoProvider,
+											  feedbackService: dependencies.feedbackService)
 		
         viewModel = vm
 		vm.router = self
@@ -90,5 +97,11 @@ extension ShareVisheoRouter {
     func showMenu() {
          controller?.showLeftViewAnimated(self)
     }
+	
+	func showReviewChoice(onCancel: (() -> Void)?) {
+		if let navigation = controller?.navigationController {
+			dependencies.feedbackService.showReviewChoice(on: navigation, onCancel: onCancel);
+		}
+	}
 }
 
