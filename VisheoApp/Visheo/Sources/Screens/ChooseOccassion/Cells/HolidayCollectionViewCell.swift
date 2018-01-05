@@ -15,6 +15,7 @@ class HolidayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var holidayDateLabel: UILabel!
     
     func setup(with viewModel: HolidayCellViewModel) {
+		holidayDateLabel.isHidden = viewModel.holidayDateText.isEmpty
         holidayDateLabel.text = viewModel.holidayDateText
         holidayCoverImage.sd_setImage(with: viewModel.imageURL, completed: nil)
     }    

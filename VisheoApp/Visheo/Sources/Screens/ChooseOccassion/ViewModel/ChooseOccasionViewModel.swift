@@ -28,6 +28,9 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     
     private let maxPastDays = 2
     var firstFutureHolidayIndex: Int? {
+		if let idx = holidays.index(where: { $0.category == .featured }) {
+			return idx;
+		}
         return holidays.index { ($0.date?.daysFromNow ?? 0) >= -maxPastDays }
     }
     
@@ -84,12 +87,25 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     
     private var holidays : [OccasionRecord] {
         return self.occasionsList.occasionRecords.filter {
-            $0.category == OccasionCategory.holiday
-            }.sorted {
-                let date0 = $0.date ?? Date.distantFuture
-                let date1 = $1.date ?? Date.distantFuture
-                return date0.compare(date1) == .orderedAscending
-                }
+            $0.category == .holiday || $0.category == .featured
+            }.sorted { (lhs, rhs) in
+				switch (lhs.category, rhs.category) {
+					case (.featured, .featured):
+						return lhs.priority < rhs.priority;
+					case (.featured, .holiday):
+						let date0 = Date()
+						let date1 = rhs.date ?? Date.distantFuture
+						return date0.compare(date1) == .orderedAscending
+					case (.holiday, .featured):
+						let date0 = lhs.date ?? Date.distantFuture
+						let date1 = Date()
+						return date0.compare(date1) == .orderedAscending
+					default:
+						let date0 = lhs.date ?? Date.distantFuture
+						let date1 = rhs.date ?? Date.distantFuture
+						return date0.compare(date1) == .orderedAscending
+				}
+			}
     }
     
     private var occasions : [OccasionRecord] {

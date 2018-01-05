@@ -59,10 +59,6 @@ protocol CreationService {
 }
 
 class VisheoCreationService : CreationService {
-    private enum StorageBuckets {
-        static let premium     = "gs://visheo42premiumcards"
-        static let free        = "gs://visheo42freecards"
-    }
     typealias Record = [String: Any]
     
     private let unfinishedRecordsKey = "unfinishedRecords"
@@ -345,13 +341,7 @@ class VisheoCreationService : CreationService {
     }
     
     private func  storageRef(for id: String, premium: Bool) -> StorageReference {
-        let bucket = premium ? StorageBuckets.premium : StorageBuckets.free
-        
-        let storagePath = "\(bucket)"
-        
-        
-        let storageRef = Storage.storage(url: storagePath).reference().child("\(id)")
-        return storageRef
+		return Environment.current.storageRef(for: id, premium: premium);
     }
     
     private func shortUrl(for id: String) -> String {
