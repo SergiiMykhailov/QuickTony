@@ -1,5 +1,5 @@
 /* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "0hK-vf-rCc"; */
-"0hK-vf-rCc.normalTitle" = "Allow Access";
+"0hK-vf-rCc.normalTitle" = "Add Pictures";
 
 /* Class = "UIButton"; normalTitle = "Elizabeth Burman"; ObjectID = "1UP-AB-86s"; */
 "1UP-AB-86s.normalTitle" = "Elizabeth Burman";
@@ -44,7 +44,7 @@
 "aH8-5u-Q2F.normalTitle" = "Create Visheo Card";
 
 /* Class = "UINavigationItem"; title = "VISHEO BOX"; ObjectID = "dEI-6J-amM"; */
-"dEI-6J-amM.title" = "VISHEO BOX";
+"dEI-6J-amM.title" = "MY VISHEO";
 
 /* Class = "UINavigationItem"; title = "CHOOSE OCCASION"; ObjectID = "hjY-Tq-5Fw"; */
 "hjY-Tq-5Fw.title" = "CHOOSE OCCASION";
@@ -59,7 +59,7 @@
 "vhb-wR-qwm.title" = "CAMERA ROLL";
 
 /* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR PHOTOS"; ObjectID = "xF6-PL-lMo"; */
-"xF6-PL-lMo.text" = "VISHEO NEEDS ACCESS TO YOUR PHOTOS";
+"xF6-PL-lMo.text" = "Add YOUR PHOTOS";
 
 /* Class = "UIBarButtonItem"; title = "Skip"; ObjectID = "yI4-Lp-Ujp"; */
 "yI4-Lp-Ujp.title" = "Skip";

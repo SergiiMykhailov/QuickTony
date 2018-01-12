@@ -16,7 +16,7 @@ import FBSDKLoginKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     enum ConfigConstants {
-        static let freeVisheoLifetime = 15
+        static let freeVisheoLifetime = 5
     }
     
     var window: UIWindow?

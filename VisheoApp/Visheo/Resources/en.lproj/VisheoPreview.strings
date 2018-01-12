@@ -8,7 +8,7 @@
 "LYL-aZ-IVe.segmentTitles[1]" = "Send Later";
 
 /* Class = "UILabel"; text = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud"; ObjectID = "MJA-sA-jJz"; */
-"MJA-sA-jJz.text" = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud";
+"MJA-sA-jJz.text" = "Free Visheo are saved in cloud for 5 days. \nThis visheo is no longer available in cloud";
 
 /* Class = "UIButton"; normalTitle = "Share Visheo Card"; ObjectID = "TuK-eZ-TXQ"; */
 "TuK-eZ-TXQ.normalTitle" = "Share Visheo Card";

@@ -175,7 +175,7 @@
 "Send" = "Send";
 
 /* Send your Visheo */
-"Send your Visheo" = "Send your Visheo";
+"Send your Visheo" = "Save Visheo";
 
 /* something went wrong while suing premium card */
 "Something went wrong. Please check your Internet connection and try again." = "Something went wrong. Please check your Internet connection and try again.";
@@ -211,7 +211,7 @@
 "User name changed successfully" = "User name changed successfully";
 
 /* Visheo Box menu item */
-"Visheo Box" = "Visheo Box";
+"Visheo Box" = "My Visheo";
 
 /* Contact us form mail subject */
 "Visheo feedback" = "Visheo feedback";
@@ -227,10 +227,10 @@
 "Warning" = "Warning";
 
 /* rendering visheo progress title */
-"We are rendering your Visheo" = "We are rendering your Visheo";
+"We are rendering your Visheo" = "Rendering Visheo";
 
 /* uploading visheo progress title */
-"We are uploading your Visheo" = "We are uploading your Visheo";
+"We are uploading your Visheo" = "Uploading Visheo to online storage";
 
 /* Visheo deletion confirm text */
 "YES, Delete it" = "YES, Delete it";
