@@ -20,7 +20,7 @@
 "MjJ-FK-D1Y.text" = "3";
 
 /* Class = "UILabel"; text = "To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted"; ObjectID = "MqL-i9-Wr9"; */
-"MqL-i9-Wr9.text" = "Video Wish is up to 30 seconds video with your short greeting. It’s a key component in your Visheo that will make it personal and touching.";
+"MqL-i9-Wr9.text" = "Video Wish (up to 30 seconds) - is a key component in your Visheo that will make it personal and touching";
 
 /* Class = "UILabel"; text = "Please rotate your device to portrait orientation"; ObjectID = "Srt-Bl-ce3"; */
 "Srt-Bl-ce3.text" = "Please rotate your device to portrait orientation";

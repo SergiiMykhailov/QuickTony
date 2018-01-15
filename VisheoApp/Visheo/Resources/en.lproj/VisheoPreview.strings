@@ -11,10 +11,10 @@
 "MJA-sA-jJz.text" = "Free Visheo are saved in cloud for 5 days. \nThis visheo is no longer available in cloud";
 
 /* Class = "UIButton"; normalTitle = "Share Visheo Card"; ObjectID = "TuK-eZ-TXQ"; */
-"TuK-eZ-TXQ.normalTitle" = "Share Visheo Card";
+"TuK-eZ-TXQ.normalTitle" = "Send your Visheo";
 
 /* Class = "UIButton"; normalTitle = "Send your Visheo"; ObjectID = "Y5n-Gj-tF4"; */
-"Y5n-Gj-tF4.normalTitle" = "Send your Visheo";
+"Y5n-Gj-tF4.normalTitle" = "Save your Visheo";
 
 /* Class = "UINavigationItem"; title = "PREVIEW VISHEO"; ObjectID = "es6-uU-TqK"; */
 "es6-uU-TqK.title" = "PREVIEW VISHEO";

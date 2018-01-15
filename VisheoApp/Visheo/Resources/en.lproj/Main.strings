@@ -29,7 +29,7 @@
 "Nq2-vC-p50.text" = "Label";
 
 /* Class = "UILabel"; text = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted"; ObjectID = "QQ4-CT-UNf"; */
-"QQ4-CT-UNf.text" = "To add pictures to your Visheo, please allow the app to access your Camera Roll";
+"QQ4-CT-UNf.text" = "Carefully chosen photos will make your Visheo memorable and fun to watch";
 
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "TbV-zh-dIQ"; */
 "TbV-zh-dIQ.title" = "CAMERA ROLL";
@@ -59,7 +59,7 @@
 "vhb-wR-qwm.title" = "CAMERA ROLL";
 
 /* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR PHOTOS"; ObjectID = "xF6-PL-lMo"; */
-"xF6-PL-lMo.text" = "Add YOUR PHOTOS";
+"xF6-PL-lMo.text" = "ADD YOUR PHOTOS";
 
 /* Class = "UIBarButtonItem"; title = "Skip"; ObjectID = "yI4-Lp-Ujp"; */
 "yI4-Lp-Ujp.title" = "Skip";

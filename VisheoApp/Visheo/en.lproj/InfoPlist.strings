@@ -11,5 +11,5 @@
 "NSMicrophoneUsageDescription" = "Visheo needs access to the microphone to make audio recording";
 
 /* (No Comment) */
-"NSPhotoLibraryUsageDescription" = "Carefully chosen photos will make your Visheo memorable and fun to watch";
+"NSPhotoLibraryUsageDescription" = "To add pictures to your Visheo, please allow the app to access your Camera Roll";
 
