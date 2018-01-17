@@ -6,8 +6,7 @@ CRASHLYTICS_BUILD_SECRET = "4c00028f3fa11585186d816e06a3e7e2e4e290b20eaf0f9e8d79
 CRASHLYTICS_GROUPS = [ "test" ]
 
 before_all do |lane, options|
-    # ensure_git_status_clean
-
+    ensure_git_status_clean
 end
 
 private_lane :bump_build_version do |options|
@@ -43,17 +42,17 @@ private_lane :build_adhoc_app do |options|
     output_ipa_path = IPAS_PATH + output_filename
     output_dsym_path = IPAS_PATH + output_dsym
 
-    # gym(
-    #     workspace: workspace,
-    #     clean: true,
-    #     include_symbols: true,
-    #     include_bitcode: true,
-    #     scheme: scheme,
-    #     export_method: 'ad-hoc',
-    #     archive_path: archive_path,
-    #     output_directory: IPAS_PATH,
-    #     output_name: "#{scheme}_adhoc.ipa",
-    #     export_xcargs: "-allowProvisioningUpdates")
+    gym(
+        workspace: workspace,
+        clean: true,
+        include_symbols: true,
+        include_bitcode: true,
+        scheme: scheme,
+        export_method: 'ad-hoc',
+        archive_path: archive_path,
+        output_directory: IPAS_PATH,
+        output_name: "#{scheme}_adhoc.ipa",
+        export_xcargs: "-allowProvisioningUpdates")
 
     results = { archive_path: archive_path, adhoc_output: output_ipa_path, adhoc_dsym: output_dsym_path }
     results
@@ -72,16 +71,16 @@ private_lane :build_appstore_app do |options|
     output_ipa_path = IPAS_PATH + output_filename
     output_dsym_path = IPAS_PATH + output_dsym
 
-    # gym(workspace: workspace,
-    #     scheme: "#{scheme}",
-    #     include_symbols: true,
-    #     include_bitcode: true,
-    #     skip_build_archive: true,
-    #     export_method: "app-store",
-    #     output_directory: IPAS_PATH,
-    #     output_name: output_filename,
-    #     archive_path: archive_path,
-    #     export_xcargs: "-allowProvisioningUpdates")
+    gym(workspace: workspace,
+        scheme: "#{scheme}",
+        include_symbols: true,
+        include_bitcode: true,
+        skip_build_archive: true,
+        export_method: "app-store",
+        output_directory: IPAS_PATH,
+        output_name: output_filename,
+        archive_path: archive_path,
+        export_xcargs: "-allowProvisioningUpdates")
 
     results = { appstore_output: output_ipa_path, appstore_dsym: output_dsym_path }
     results
@@ -142,17 +141,19 @@ private_lane :execute_build do |input|
 
     options = input
 
+    cocoapods(podfile: "VisheoApp")
+
     build_number = bump_build_version(options)
     options[:build_number] = build_number
 
-    # adhoc_results = build_adhoc_app(options)
-    # options = options.merge(adhoc_results)
+    adhoc_results = build_adhoc_app(options)
+    options = options.merge(adhoc_results)
 
-    # appstore_results = build_appstore_app(options)
-    # options = options.merge(appstore_results)
+    appstore_results = build_appstore_app(options)
+    options = options.merge(appstore_results)
 
-    # distribute_to_crashlytics(options)
-    # distribute_to_testflight(options)
+    distribute_to_crashlytics(options)
+    distribute_to_testflight(options)
 
     commit_build_numbers(options)
 end
@@ -160,7 +161,6 @@ end
 
 
 lane :build_staging do
-    
     options = { app_id: 'com.visheo.visheo.staging',
                 target: 'VisheoStaging',
                 workspace: 'VisheoApp/Visheo.xcworkspace',
@@ -174,8 +174,8 @@ error do |lane, exception, options|
     reset_git_repo(
         force: true,
         files: [
-            "VisheoApp/Visheo/Info.plist",
-            "VisheoApp/Visheo/Staging-Info.plist"
+            "VisheoApp/Visheo/Visheo-Info.plist",
+            "VisheoApp/Visheo/VisheoStaging-Info.plist"
         ]
 )
 end
