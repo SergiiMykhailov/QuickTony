@@ -45,3 +45,6 @@ xcuserdata/
 node_modules/
 
 # End of https://www.gitignore.io/api/xcode,cocoapods
+fastlane/report.xml
+fastlane/README.md
+Fastlane/ipas
