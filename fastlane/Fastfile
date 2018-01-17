@@ -127,7 +127,7 @@ private_lane :commit_build_numbers do |options|
     version = get_version_number(xcodeproj: project_path, 
                                     target: target)
 
-    tag = "#{slug}/v#{version}-#{build_number}"
+    tag = "#{slug}/v#{version}(#{build_number})"
 
     commit_version_bump(xcodeproj: project_path)
     
