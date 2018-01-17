@@ -127,7 +127,7 @@ private_lane :commit_build_numbers do |options|
     version = get_version_number(xcodeproj: project_path, 
                                     target: target)
 
-    tag = "#{slug}/v#{version}(#{build_number})"
+    tag = "#{slug}/v#{version}-#{build_number}"
 
     commit_version_bump(xcodeproj: project_path)
     
@@ -169,6 +169,15 @@ lane :build_staging do
     execute_build(options)
 end
 
+lane :build_release do
+    options = { app_id: 'com.visheo.visheo',
+                target: 'Visheo',
+                workspace: 'VisheoApp/Visheo.xcworkspace',
+                slug: 'production' }
+
+    execute_build(options)
+end
+
 
 error do |lane, exception, options|
     reset_git_repo(
@@ -179,34 +188,3 @@ error do |lane, exception, options|
         ]
 )
 end
-
-# lane :prebuild do
-#     plist_name = './VisheoApp/Visheo/Info.plist'
-#     cocoapods(podfile: "VisheoApp")
-#     first_build_num = 0
-#     env_build_number = ENV['XCS_INTEGRATION_NUMBER']
-#     new_build_number = (first_build_num + env_build_number.to_i).to_s
-#     set_info_plist_value(
-#         path: plist_name,
-#         key: "CFBundleVersion",
-#         value: new_build_number)
-
-# end
-
-# lane :postbuild do
-#     scheme_name = 'Visheo'
-#     ipa_name = scheme_name + ".ipa"
-
-#     gym(
-#         workspace: "VisheoApp/Visheo.xcworkspace",
-#         scheme: scheme_name,
-#         skip_build_archive: true,
-#         archive_path: ENV['XCS_ARCHIVE'],
-#         codesigning_identity: 'iPhone Distribution: Olearis TOV (4M6W632NJ7)',
-#         export_xcargs: "-allowProvisioningUpdates")
-
-#     pilot(
-#         ipa: ipa_name,
-#         skip_waiting_for_build_processing: true,
-#         username: 'ogrepet@gmail.com')
-# end
