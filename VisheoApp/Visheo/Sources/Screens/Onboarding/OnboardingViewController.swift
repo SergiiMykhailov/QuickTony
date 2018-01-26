@@ -9,7 +9,8 @@ import UIKit
 
 class OnboardingViewController: UIViewController, UIScrollViewDelegate, RouterProxy {
     @IBOutlet weak var pageControl: UIPageControl!
-    
+	@IBOutlet weak var scrollView: UIScrollView!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -40,6 +41,11 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate, RouterPr
     @IBAction func gotItPressed(_ sender: Any) {
         viewModel.onBoardingSeen()
     }
+	
+	@IBAction func nextPressed(_ sender: Any) {
+		let offset = scrollView.frame.size.width * CGFloat(pageControl.currentPage + 1);
+		scrollView.setContentOffset(CGPoint(x: offset, y: 0.0), animated: true);
+	}
 }
 
 extension OnboardingViewController {

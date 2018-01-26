@@ -99,11 +99,31 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-hS-6ge">
+                                                        <rect key="frame" x="20" y="488" width="280" height="60"/>
+                                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="7ji-CC-u5e"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                                        <state key="normal" title="Next">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="nextPressed:" destination="H4H-G1-GP2" eventType="touchUpInside" id="Iml-rV-4s5"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="gXx-OS-CWP" firstAttribute="top" secondItem="JDK-Vd-kEv" secondAttribute="bottom" constant="32" id="HFg-zr-YAb"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JDK-Vd-kEv" secondAttribute="trailing" id="Vzg-NS-bRv"/>
+                                                    <constraint firstItem="rmq-hS-6ge" firstAttribute="centerX" secondItem="UYS-tL-1aw" secondAttribute="centerX" id="aRL-YV-T9S"/>
                                                     <constraint firstItem="gXx-OS-CWP" firstAttribute="centerX" secondItem="UYS-tL-1aw" secondAttribute="centerX" id="bU8-3k-WFC"/>
                                                     <constraint firstItem="JDK-Vd-kEv" firstAttribute="top" secondItem="UYS-tL-1aw" secondAttribute="top" constant="80" id="eSC-yy-HlK"/>
                                                     <constraint firstItem="JDK-Vd-kEv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UYS-tL-1aw" secondAttribute="leading" id="kVI-l3-zsc"/>
@@ -130,11 +150,31 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJv-Qa-CL1">
+                                                        <rect key="frame" x="20" y="488" width="280" height="60"/>
+                                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="emc-IM-hxs"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                                        <state key="normal" title="Next">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="nextPressed:" destination="H4H-G1-GP2" eventType="touchUpInside" id="gcP-dC-K6N"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Yve-jt-bWU" firstAttribute="centerX" secondItem="0rJ-fO-h6i" secondAttribute="centerX" id="2qb-Da-lxJ"/>
                                                     <constraint firstItem="Yve-jt-bWU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0rJ-fO-h6i" secondAttribute="leading" id="8Sb-5r-qrm"/>
+                                                    <constraint firstItem="yJv-Qa-CL1" firstAttribute="centerX" secondItem="0rJ-fO-h6i" secondAttribute="centerX" id="GXh-it-goi"/>
                                                     <constraint firstItem="SFV-q7-Sb8" firstAttribute="centerX" secondItem="0rJ-fO-h6i" secondAttribute="centerX" id="Ujm-Vh-MRy"/>
                                                     <constraint firstItem="SFV-q7-Sb8" firstAttribute="top" secondItem="Yve-jt-bWU" secondAttribute="bottom" constant="32" id="bKw-WR-oh7"/>
                                                     <constraint firstItem="Yve-jt-bWU" firstAttribute="top" secondItem="0rJ-fO-h6i" secondAttribute="top" constant="80" id="esy-r5-HCk"/>
@@ -197,13 +237,20 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="gpR-Cr-cJd" firstAttribute="leading" secondItem="0rJ-fO-h6i" secondAttribute="trailing" id="6Dp-nv-nwz"/>
+                                            <constraint firstItem="rmq-hS-6ge" firstAttribute="width" secondItem="Huv-JD-3EV" secondAttribute="width" id="6YQ-f3-nkd"/>
                                             <constraint firstItem="0rJ-fO-h6i" firstAttribute="leading" secondItem="UYS-tL-1aw" secondAttribute="trailing" id="9SW-Tc-9tp"/>
+                                            <constraint firstItem="yJv-Qa-CL1" firstAttribute="width" secondItem="Huv-JD-3EV" secondAttribute="width" id="9Ts-8d-EYJ"/>
                                             <constraint firstItem="gpR-Cr-cJd" firstAttribute="top" secondItem="lcs-9R-bTB" secondAttribute="top" id="CEo-c7-f9Q"/>
+                                            <constraint firstItem="rmq-hS-6ge" firstAttribute="bottom" secondItem="Huv-JD-3EV" secondAttribute="bottom" id="FHL-4u-Pe1"/>
                                             <constraint firstAttribute="bottom" secondItem="0rJ-fO-h6i" secondAttribute="bottom" id="UZC-xR-qL3"/>
                                             <constraint firstItem="UYS-tL-1aw" firstAttribute="top" secondItem="lcs-9R-bTB" secondAttribute="top" id="UoL-He-XA0"/>
+                                            <constraint firstItem="yJv-Qa-CL1" firstAttribute="bottom" secondItem="Huv-JD-3EV" secondAttribute="bottom" id="VxR-up-PIH"/>
                                             <constraint firstAttribute="bottom" secondItem="gpR-Cr-cJd" secondAttribute="bottom" id="WPq-kd-bgh"/>
+                                            <constraint firstItem="yJv-Qa-CL1" firstAttribute="top" secondItem="Huv-JD-3EV" secondAttribute="top" id="a4h-55-lJy"/>
                                             <constraint firstItem="UYS-tL-1aw" firstAttribute="leading" secondItem="lcs-9R-bTB" secondAttribute="leading" id="cvh-U1-nDA"/>
+                                            <constraint firstItem="rmq-hS-6ge" firstAttribute="top" secondItem="Huv-JD-3EV" secondAttribute="top" id="hJ1-a1-2N1"/>
                                             <constraint firstItem="0rJ-fO-h6i" firstAttribute="top" secondItem="lcs-9R-bTB" secondAttribute="top" id="mzJ-5x-1zo"/>
+                                            <constraint firstItem="rmq-hS-6ge" firstAttribute="height" secondItem="Huv-JD-3EV" secondAttribute="height" id="nLc-q0-tLb"/>
                                             <constraint firstAttribute="bottom" secondItem="UYS-tL-1aw" secondAttribute="bottom" id="wZ7-5z-Git"/>
                                         </constraints>
                                     </view>
@@ -252,6 +299,7 @@
                     </view>
                     <connections>
                         <outlet property="pageControl" destination="A5l-y7-Tr1" id="AIf-5h-EyJ"/>
+                        <outlet property="scrollView" destination="ZWD-Wu-RMd" id="wsY-AK-qBA"/>
                         <segue destination="0i1-p3-K6d" kind="custom" identifier="showLogin" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="iCM-Od-qFn"/>
                     </connections>
                 </viewController>
