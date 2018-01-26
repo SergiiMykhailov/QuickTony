@@ -49,7 +49,7 @@ class VisheoMenuRouter : MenuRouter {
         switch segueList {
         case .showRegistration:
             let authController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
-            let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) {
+            let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) { _ in
                 self.controller?.dismiss(animated: true, completion: nil)
             }
 			authRouter.start(with: authController, anonymousAllowed: false, authReason: sender as! AuthorizationReason)

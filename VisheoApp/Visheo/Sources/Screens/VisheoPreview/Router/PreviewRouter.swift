@@ -16,7 +16,7 @@ protocol PreviewRouter: FlowRouter {
 	func showSoundtrackEdit(with assets: VisheoRenderingAssets)
     
     func sendVisheo(with assets: VisheoRenderingAssets, premium: Bool)
-    func showRegistration(with callback: (()->())?)
+    func showRegistration(with callback: ((Bool)->())?)
     func showCardTypeSelection(with assets: VisheoRenderingAssets)
 }
 
@@ -94,14 +94,14 @@ class VisheoPreviewRouter : PreviewRouter {
                              sharePremium : userInfo[Constants.premium] as! Bool)
         case .showRegistration: 
             let authController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
-            let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) {
+            let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) { result in
                 self.controller?.dismiss(animated: true, completion: {
-                    if let callback = sender as? (()->()) {
-                        callback()
+                    if let callback = sender as? ((Bool)->()) {
+                        callback(result)
                     }
                 })
             }
-            authRouter.start(with: authController, anonymousAllowed: false)
+			authRouter.start(with: authController, anonymousAllowed: false, authReason: .sendVisheo);
         case .showCardTypeSelection:
             let purchaseController = segue.destination as! ChooseCardsViewController
             let purchaseRouter = VisheoChooseCardsRouter(dependencies: dependencies)
@@ -140,7 +140,7 @@ extension VisheoPreviewRouter {
         controller?.performSegue(SegueList.showSendVisheo, sender: [Constants.assets : assets, Constants.premium : premium])
     }
     
-    func showRegistration(with callback: (()->())?) {
+    func showRegistration(with callback: ((Bool)->())?) {
         controller?.performSegue(SegueList.showRegistration, sender: callback)
     }
     

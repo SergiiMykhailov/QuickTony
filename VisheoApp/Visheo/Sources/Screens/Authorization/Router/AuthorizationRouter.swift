@@ -26,9 +26,9 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
     private(set) weak var controller: UIViewController?
     private(set) weak var viewModel: AuthorizationViewModel?
     
-    let finishAuthCallback : (()->())?
+    let finishAuthCallback : ((Bool)->())?
     
-    public init(dependencies: RouterDependencies, finishCallback: (()->())? = nil) {
+    public init(dependencies: RouterDependencies, finishCallback: ((Bool)->())? = nil) {
         self.dependencies = dependencies
         self.finishAuthCallback = finishCallback
     }
@@ -65,7 +65,7 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
 extension VisheoAuthorizationRouter {
     func showMainScreen() {
         if finishAuthCallback != nil {
-            finishAuthCallback?()
+            finishAuthCallback?(true)
         } else {
             controller?.performSegue(SegueList.showMainScreen, sender: nil)
         }
@@ -81,7 +81,7 @@ extension VisheoAuthorizationRouter {
     
     func close() {
         if finishAuthCallback != nil {
-            finishAuthCallback?()
+            finishAuthCallback?(false)
         }
     }
 }
