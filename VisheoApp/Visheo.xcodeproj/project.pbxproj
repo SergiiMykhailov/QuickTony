@@ -412,7 +412,6 @@
 		920EDFE61FCF10E200D121ED /* SelectSoundtrackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundtrackRouter.swift; sourceTree = "<group>"; };
 		920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		920F8BDB1FF6BDC90087C45D /* VisheoStaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisheoStaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		920F8BDD1FF6BE1D0087C45D /* Staging-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Staging-Info.plist"; sourceTree = "<group>"; };
 		920F8BE11FF6BE670087C45D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		920F8BE61FF6C0E80087C45D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -435,6 +434,8 @@
 		926B53C61FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GestureRecognizer+TapDetection.swift"; sourceTree = "<group>"; };
 		926B53CD1FE42EB40031B1A0 /* EventLoggingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLoggingService.swift; sourceTree = "<group>"; };
 		926B53CF1FE42EBD0031B1A0 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		9276A4F020191F4200D3D44B /* Visheo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Visheo-Info.plist"; sourceTree = "<group>"; };
+		9276A4F120191F4200D3D44B /* VisheoStaging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VisheoStaging-Info.plist"; sourceTree = "<group>"; };
 		92A3BA5F1FF3593C006FA011 /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		92A3BA641FF35BA2006FA011 /* TipsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsRouter.swift; sourceTree = "<group>"; };
 		92A3BA661FF35BAB006FA011 /* TipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewModel.swift; sourceTree = "<group>"; };
@@ -535,7 +536,6 @@
 		B4AEE0EE1FD1B28B0043A39A /* VisheoBoxRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoBoxRouter.swift; sourceTree = "<group>"; };
 		B4AEE0F01FD1C8770043A39A /* VisheoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4B9D1961FA8A52300CBD7DB /* Visheo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visheo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4B9D1A51FA8A52300CBD7DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4BCABC71FB8CC7C003EDC7F /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		B4BCABC91FB8CC7C003EDC7F /* AuthorizationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		B4BCABCA1FB8CC7C003EDC7F /* SignInRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
@@ -1112,11 +1112,11 @@
 		B4B9D1981FA8A52300CBD7DB /* Visheo */ = {
 			isa = PBXGroup;
 			children = (
+				9276A4F020191F4200D3D44B /* Visheo-Info.plist */,
+				9276A4F120191F4200D3D44B /* VisheoStaging-Info.plist */,
 				92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */,
 				B48AAAB91FA9E58F000BB33B /* Resources */,
 				B48AAAB41FA9E574000BB33B /* Sources */,
-				B4B9D1A51FA8A52300CBD7DB /* Info.plist */,
-				920F8BDD1FF6BE1D0087C45D /* Staging-Info.plist */,
 			);
 			path = Visheo;
 			sourceTree = "<group>";
