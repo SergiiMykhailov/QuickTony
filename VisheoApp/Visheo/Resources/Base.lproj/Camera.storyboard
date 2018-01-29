@@ -75,7 +75,8 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnp-BU-IW8">
                                         <rect key="frame" x="20" y="281" width="34" height="34"/>
-                                        <state key="normal" image="camera_toggle_button"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="camera_icon"/>
                                         <connections>
                                             <action selector="toggleCameraFace" destination="Isd-d2-FNo" eventType="touchUpInside" id="8Hz-Ac-sHb"/>
                                         </connections>
@@ -649,7 +650,7 @@ This will help avoid unnecessary shadows and grainy areas in your video.</string
     </scenes>
     <resources>
         <image name="arrow" width="20" height="20"/>
-        <image name="camera_toggle_button" width="34" height="34"/>
+        <image name="camera_icon" width="34" height="34"/>
         <image name="play" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
