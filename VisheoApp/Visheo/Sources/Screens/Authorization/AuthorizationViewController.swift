@@ -28,9 +28,23 @@ class AuthorizationViewController: UIViewController, RouterProxy {
         if let description = viewModel.descriptionString {
             authReasonlabel.text = description
         }
+		
+		if let type = viewModel.closeButtonType {
+			switch type {
+				case .back:
+					closeButtonLeadingConstraint.constant = 4.0;
+					closeButton.setTitle(nil, for: .normal);
+					closeButton.setImage(UIImage(named: "arrow"), for: .normal);
+				case .close:
+					closeButtonLeadingConstraint.constant = 20.0;
+					closeButton.setImage(nil, for: .normal);
+					closeButton.setTitle(NSLocalizedString("Close", comment: ""), for: .normal);
+			}
+		}
     }
     
-    @IBOutlet weak var closeButton: UIButton!
+	@IBOutlet weak var closeButtonLeadingConstraint: NSLayoutConstraint!
+	@IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var authReasonlabel: UILabel!
     @IBOutlet weak var signUpMandatoryLabel: UILabel!
     @IBOutlet weak var signInBottomConstraint: NSLayoutConstraint!

@@ -17,6 +17,11 @@ enum AuthorizationReason {
 	case sendVisheo
 }
 
+enum AuthorizationDismissType {
+	case back
+	case close
+}
+
 protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerating {
     func loginWithGoogle()
     func loginWithFacebook()
@@ -33,6 +38,8 @@ protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerat
     
     var cancelAllowed : Bool {get}
     var descriptionString : String? {get}
+	
+	var closeButtonType: AuthorizationDismissType? { get }
 }
 
 class VisheoAutorizationViewModel : AuthorizationViewModel {
@@ -54,6 +61,19 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
 				return nil
 		}
     }
+	
+	var closeButtonType: AuthorizationDismissType? {
+		if (!cancelAllowed) {
+			return nil;
+		}
+		
+		switch authReason {
+			case .sendVisheo:
+				return .back;
+			default:
+				return .close;
+		}
+	}
     
     var warningAlertHandler: ((String) -> ())?
     var getPresentationViewController: (() -> (UIViewController?))?
