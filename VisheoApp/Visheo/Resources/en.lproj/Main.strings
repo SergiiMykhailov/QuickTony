@@ -8,7 +8,7 @@
 "3e4-SB-Y6h.title" = "Skip";
 
 /* Class = "UIButton"; normalTitle = "I like this Cover"; ObjectID = "5Wj-Y4-Mkt"; */
-"5Wj-Y4-Mkt.normalTitle" = "I like this Card";
+"5Wj-Y4-Mkt.normalTitle" = "Select Card";
 
 /* Class = "UILabel"; text = "Create Visheo to deliver your care to your dear ones"; ObjectID = "7wf-9j-KvF"; */
 "7wf-9j-KvF.text" = "Create Visheo to deliver your care to your dear ones";
@@ -32,7 +32,7 @@
 "QQ4-CT-UNf.text" = "Carefully chosen photos will make your Visheo memorable and fun to watch";
 
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "TbV-zh-dIQ"; */
-"TbV-zh-dIQ.title" = "CAMERA ROLL";
+"TbV-zh-dIQ.title" = "SELECT PHOTOS";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VUs-tX-owo"; */
 "VUs-tX-owo.normalTitle" = "Button";
@@ -56,7 +56,7 @@
 "vJV-LG-7SV.title" = "Cancel";
 
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "vhb-wR-qwm"; */
-"vhb-wR-qwm.title" = "CAMERA ROLL";
+"vhb-wR-qwm.title" = "SELECT PHOTOS";
 
 /* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR PHOTOS"; ObjectID = "xF6-PL-lMo"; */
 "xF6-PL-lMo.text" = "ADD YOUR PHOTOS";
