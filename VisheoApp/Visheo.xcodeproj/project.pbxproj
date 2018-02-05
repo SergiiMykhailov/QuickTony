@@ -417,6 +417,7 @@
 		920F8BE61FF6C0E80087C45D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		921E0CEA1FDF1BF4000A4EBC /* APLCompositionDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLCompositionDebugView.h; sourceTree = "<group>"; };
 		921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLCompositionDebugView.m; sourceTree = "<group>"; };
+		9220DF432028893500162336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchProxy.strings; sourceTree = "<group>"; };
 		922B645A1FD97D5C0085F188 /* VisheoMovieWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoMovieWriter.swift; sourceTree = "<group>"; };
 		922B645E1FD991420085F188 /* VisheoPixelBufferAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPixelBufferAdaptor.swift; sourceTree = "<group>"; };
 		924DEB7F1FC3B22B00B04EE8 /* visheo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = visheo.xcodeproj; path = Frameworks/visheo/visheo.xcodeproj; sourceTree = "<group>"; };
@@ -442,7 +443,6 @@
 		92A3BA681FF35F0F006FA011 /* TipsCollectionViewMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCollectionViewMediator.swift; sourceTree = "<group>"; };
 		92A3BA6A1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordIdeaCollectionViewCell.swift; sourceTree = "<group>"; };
 		92A3BA6C1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPracticeCollectionViewCell.swift; sourceTree = "<group>"; };
-		92A592FD202851D800AD2F26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchProxy.strings; sourceTree = "<group>"; };
 		92A592FF202851F900AD2F26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewView.swift; sourceTree = "<group>"; };
 		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
@@ -2175,7 +2175,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B48AAABE1FA9E58F000BB33B /* Base */,
-				92A592FD202851D800AD2F26 /* en */,
+				9220DF432028893500162336 /* en */,
 			);
 			name = LaunchProxy.storyboard;
 			sourceTree = "<group>";

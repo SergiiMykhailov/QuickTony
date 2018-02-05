@@ -5,8 +5,8 @@
 /* Class = "UILabel"; text = "Special way to send your love and care"; ObjectID = "7gq-ym-YYp"; */
 "7gq-ym-YYp.text" = "Special way to send your love and care";
 
-/* Class = "UIButton"; normalTitle = "Create Video Wish"; ObjectID = "Huv-JD-3EV"; */
-"Huv-JD-3EV.normalTitle" = "Create Video Wish";
+/* Class = "UIButton"; normalTitle = "Create Visheo"; ObjectID = "Huv-JD-3EV"; */
+"Huv-JD-3EV.normalTitle" = "Create Visheo";
 
 /* Class = "UILabel"; text = "More Than a Greeting"; ObjectID = "Qio-1g-qKo"; */
 "Qio-1g-qKo.text" = "More Than a Greeting";
@@ -14,8 +14,8 @@
 /* Class = "UILabel"; text = "It’s Easy and Fun"; ObjectID = "SFV-q7-Sb8"; */
 "SFV-q7-Sb8.text" = "It’s Easy and Fun";
 
-/* Class = "UILabel"; text = "1. Choose card 2. Record video 3. Add your photos"; ObjectID = "VSg-ky-uib"; */
-"VSg-ky-uib.text" = "1. Choose card 2. Record video 3. Add your photos";
+/* Class = "UILabel"; text = "1. Choose card 2. Record video\\n3. Add your photos"; ObjectID = "VSg-ky-uib"; */
+"VSg-ky-uib.text" = "1. Choose card 2. Record video\n3. Add your photos";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "rmq-hS-6ge"; */
 "rmq-hS-6ge.normalTitle" = "Next";
