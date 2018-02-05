@@ -1,12 +1,27 @@
-/* Class = "UIButton"; normalTitle = "Got It"; ObjectID = "Huv-JD-3EV"; */
-"Huv-JD-3EV.normalTitle" = "Got It";
 
-/* Class = "UILabel"; text = "Add memorable pictures \n& record your Video Wish"; ObjectID = "SFV-q7-Sb8"; */
-"SFV-q7-Sb8.text" = "Add memorable pictures \n& record your Video Wish";
+/* Class = "UILabel"; text = "Visheo - your Video Wish"; ObjectID = "5cw-x7-Kt4"; */
+"5cw-x7-Kt4.text" = "Visheo - your Video Wish";
 
-/* Class = "UILabel"; text = "Select upcoming occasion \n& choose cover you like"; ObjectID = "gXx-OS-CWP"; */
-"gXx-OS-CWP.text" = "Select upcoming occasion \n& choose card you like";
+/* Class = "UILabel"; text = "Special way to send your love and care"; ObjectID = "7gq-ym-YYp"; */
+"7gq-ym-YYp.text" = "Special way to send your love and care";
 
-/* Class = "UILabel"; text = "Send Visheo & deliver your care to your dear ones"; ObjectID = "ite-Df-ZgF"; */
-"ite-Df-ZgF.text" = "Send Visheo & deliver your care to your dear ones";
+/* Class = "UIButton"; normalTitle = "Create Video Wish"; ObjectID = "Huv-JD-3EV"; */
+"Huv-JD-3EV.normalTitle" = "Create Video Wish";
 
+/* Class = "UILabel"; text = "More Than a Greeting"; ObjectID = "Qio-1g-qKo"; */
+"Qio-1g-qKo.text" = "More Than a Greeting";
+
+/* Class = "UILabel"; text = "It’s Easy and Fun"; ObjectID = "SFV-q7-Sb8"; */
+"SFV-q7-Sb8.text" = "It’s Easy and Fun";
+
+/* Class = "UILabel"; text = "1. Choose card 2. Record video 3. Add your photos"; ObjectID = "VSg-ky-uib"; */
+"VSg-ky-uib.text" = "1. Choose card 2. Record video 3. Add your photos";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "rmq-hS-6ge"; */
+"rmq-hS-6ge.normalTitle" = "Next";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "yJv-Qa-CL1"; */
+"yJv-Qa-CL1.normalTitle" = "Next";
+
+/* Class = "UILabel"; text = "Create Video Wishes for Holidays and Every Day"; ObjectID = "z3b-Ph-eEC"; */
+"z3b-Ph-eEC.text" = "Create Video Wishes for Holidays and Every Day";

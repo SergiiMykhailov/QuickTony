@@ -442,6 +442,8 @@
 		92A3BA681FF35F0F006FA011 /* TipsCollectionViewMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCollectionViewMediator.swift; sourceTree = "<group>"; };
 		92A3BA6A1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordIdeaCollectionViewCell.swift; sourceTree = "<group>"; };
 		92A3BA6C1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPracticeCollectionViewCell.swift; sourceTree = "<group>"; };
+		92A592FD202851D800AD2F26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchProxy.strings; sourceTree = "<group>"; };
+		92A592FF202851F900AD2F26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisheoPreviewView.swift; sourceTree = "<group>"; };
 		92A8D30B1FC86E86001E194D /* beginning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beginning.m4a; sourceTree = "<group>"; };
 		92A8D30C1FC86E86001E194D /* blank.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = blank.m4v; sourceTree = "<group>"; };
@@ -455,8 +457,6 @@
 		92AD73061FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Authentification.strings; sourceTree = "<group>"; };
 		92AD73071FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VisheoPreview.strings; sourceTree = "<group>"; };
 		92AD73081FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Account.strings; sourceTree = "<group>"; };
-		92AD73091FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchProxy.strings; sourceTree = "<group>"; };
-		92AD730A1FE7DCEB0043B4A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewModel.swift; sourceTree = "<group>"; };
 		92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsRouter.swift; sourceTree = "<group>"; };
 		92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionsViewController.swift; sourceTree = "<group>"; };
@@ -2166,7 +2166,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B48AAABC1FA9E58F000BB33B /* Base */,
-				92AD730A1FE7DCEB0043B4A1 /* en */,
+				92A592FF202851F900AD2F26 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2175,7 +2175,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B48AAABE1FA9E58F000BB33B /* Base */,
-				92AD73091FE7DCEB0043B4A1 /* en */,
+				92A592FD202851D800AD2F26 /* en */,
 			);
 			name = LaunchProxy.storyboard;
 			sourceTree = "<group>";
