@@ -64,7 +64,10 @@ class VisheoFeedbackService: NSObject, FeedbackService {
 			self?.showContactForm(on: destination, isReview: true);
 		}
 		
-		let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { _ in
+		let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { [weak self] _ in
+			if let userId = self?.userInfoProvider.userId {
+				self?.markReview(with: "cancelled", userId: userId)
+			}
 			onCancel?();
 		}
 		
@@ -109,11 +112,8 @@ class VisheoFeedbackService: NSObject, FeedbackService {
 		}
 		
 		if let userId = userInfoProvider.userId, isReview {
-			let ref = Database.database().reference().child("users/\(userId)")
-			let childUpdates = [ ReviewKeys.reviewChoice.rawValue : "feedback" ]
-			ref.updateChildValues(childUpdates)
+			markReview(with: "feedback", userId: userId)
 		}
-		
 		destination.present(mailController, animated: true, completion: nil);
 	}
 	
@@ -126,12 +126,15 @@ class VisheoFeedbackService: NSObject, FeedbackService {
 		}
 		
 		if let userId = userInfoProvider.userId {
-			let ref = Database.database().reference().child("users/\(userId)")
-			let childUpdates = [ ReviewKeys.reviewChoice.rawValue : "review" ]
-			ref.updateChildValues(childUpdates)
+			markReview(with: "review", userId: userId)
 		}
-		
 		UIApplication.shared.open(url, options: [:], completionHandler: nil)
+	}
+	
+	private func markReview(with type: String, userId: String) {
+		let ref = Database.database().reference().child("users/\(userId)")
+		let childUpdates = [ ReviewKeys.reviewChoice.rawValue : type ]
+		ref.updateChildValues(childUpdates)
 	}
 	
 	func didLeaveReview(_ callback: @escaping ((Bool) -> Void)) {
