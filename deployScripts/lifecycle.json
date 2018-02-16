@@ -4,7 +4,7 @@
     [
       {
         "action": {"type": "Delete"},
-        "condition": {"age": 14}
+        "condition": {"age": 5 }
       }
     ]
   }
