@@ -17,6 +17,7 @@ extension Notification.Name {
     static let bundlePurchaseDeferred = Notification.Name("bundlePurchaseDeferred")
     
     static let userPremiumCardsCountChanged = Notification.Name("userPremiumCardsCountChanged")
+    static let userSubscriptionStateChanged = Notification.Name("userSubscriptionStateChanged")
 }
 
 enum RedeemError : Error {
@@ -27,23 +28,32 @@ enum RedeemError : Error {
     case alreadyRedeemed
 }
 
+enum SubscriptionState : Int {
+    case none
+    case active
+    case expired
+}
+
 protocol UserPurchasesInfo {
     var currentUserPremiumCards : Int {get}
+    
+    func currentUserSubscriptionState() -> SubscriptionState
+    func currentUserSubscriptionExpireDate() -> String
 }
 
 protocol PremiumCardsService {
     func reloadPurchases()
     var smallBundle : PremiumCardsBundle? {get}
     var bigBundle : PremiumCardsBundle? {get}
+    var subscription : PremiumSubsctription? {get}
     
-    func buy(bundle: PremiumCardsBundle)
+    func buy(bundle: PurchaseBase)
     func redeem(coupon: String, completion: @escaping (Int?, RedeemError?)->())
     
     func usePremiumCard(completion: @escaping (Bool)->())
 }
 
-
-class PremiumCardsBundle {
+class PurchaseBase {
     var price : NSDecimalNumber? {
         return skProduct?.price
     }
@@ -56,16 +66,13 @@ class PremiumCardsBundle {
         return skProduct?.localizedDescription
     }
     
-    fileprivate let cardsCount : Int
     fileprivate let productId : String
     fileprivate var skProduct : SKProduct?
     
     fileprivate init?(snapshot: DataSnapshot?) {
         guard let snapshot = snapshot,
-            let cardsCount = snapshot.childSnapshot(forPath: "cardsCount").value as? Int,
             let productId = snapshot.childSnapshot(forPath:"appleId").value as? String else {return nil}
         
-        self.cardsCount = cardsCount
         self.productId = productId
     }
     
@@ -74,18 +81,72 @@ class PremiumCardsBundle {
     }
 }
 
+class PremiumCardsBundle : PurchaseBase {
+    
+    fileprivate let cardsCount : Int
+    
+    override fileprivate init?(snapshot: DataSnapshot?) {
+        guard let snapshot = snapshot,
+            let cardsCount = snapshot.childSnapshot(forPath: "cardsCount").value as? Int else {return nil}
+        
+        self.cardsCount = cardsCount
+        
+        super.init(snapshot: snapshot)
+    }
+}
+
+class PremiumSubsctription : PurchaseBase {
+    fileprivate let expires : Int
+    
+    override init?(snapshot: DataSnapshot?) {
+        guard let snapshot = snapshot,
+            let expirationPeriod = snapshot.childSnapshot(forPath: "expirationPeriod").value as? Int else {return nil}
+        
+        self.expires = expirationPeriod
+        
+        super.init(snapshot: snapshot)
+    }
+}
+
 class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesInfo, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     enum Constants {
         static let smallBundleId = "smallCardsPack"
         static let bigBundleId = "bigCardsPack"
+        static let subscription = "subscription"
     }
     
+    var subscription: PremiumSubsctription?
     var smallBundle: PremiumCardsBundle?
     var bigBundle: PremiumCardsBundle?
+    
     var currentUserPremiumCards: Int {
         didSet {
             NotificationCenter.default.post(name: Notification.Name.userPremiumCardsCountChanged, object: self)
         }
+    }
+    
+    private var expireDate: Date? {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name.userSubscriptionStateChanged, object: self)
+        }
+    }
+    
+    func currentUserSubscriptionState() -> SubscriptionState {
+        guard let expireDate = expireDate else { return .none }
+        
+        if (expireDate >= Date()) {
+            return .active
+        }
+        return .expired
+    }
+    
+    func currentUserSubscriptionExpireDate() -> String {
+        guard let expireDate = expireDate else { return "" }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: expireDate)
     }
     
     private var productsRequest : SKProductsRequest?
@@ -93,6 +154,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
 	private let loggingService: EventLoggingService
     
     private var premCardsReference : DatabaseReference?
+    private var subscriptionReference : DatabaseReference?
     
 	init(userInfoProvider: UserInfoProvider, loggingService: EventLoggingService) {
         self.userInfoProvider = userInfoProvider
@@ -106,6 +168,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         NotificationCenter.default.addObserver(forName: Notification.Name.authStateChanged, object: nil, queue: OperationQueue.main) { (notification) in
             self.currentUserPremiumCards = 0
             self.startPremiumCardsObserving()
+            self.startSubscriptionObserving()
         }
     }
     
@@ -124,11 +187,31 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         }
     }
     
+    private func startSubscriptionObserving(){
+        if let oldReference = subscriptionReference {
+            oldReference.removeAllObservers()
+        }
+        
+        if let userId = userInfoProvider.userId {
+            let userSubscriptionRef = Database.database().reference(withPath: "users/\(userId)/purchases/subscriptionExpireDate")
+            subscriptionReference = userSubscriptionRef
+            
+            userSubscriptionRef.observe(.value, with: { (snapshot) in
+                guard let dateAsString = snapshot.value as? String else { self.expireDate = nil; return }
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
+                dateFormatter.timeZone = TimeZone.current
+                self.expireDate = dateFormatter.date(from: dateAsString)
+            })
+        }
+    }
+    
     func reloadPurchases() {
         loadPurchases()
     }
     
-    func buy(bundle: PremiumCardsBundle) {
+    func buy(bundle: PurchaseBase) {
         if let product = bundle.skProduct {
             let payment = SKPayment(product: product)
             SKPaymentQueue.default().add(payment)
@@ -220,13 +303,15 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     }
     
     private func loadPurchases() {
-        Database.database().reference(withPath: "availablePurchases").observe(.value) { (snapshot) in
+        Database.database().reference(withPath: "availablePurchases_2_0").observe(.value) { (snapshot) in
             self.smallBundle = PremiumCardsBundle(snapshot: snapshot.childSnapshot(forPath: Constants.smallBundleId))
             self.bigBundle   = PremiumCardsBundle(snapshot: snapshot.childSnapshot(forPath: Constants.bigBundleId))
+            self.subscription = PremiumSubsctription(snapshot: snapshot.childSnapshot(forPath: Constants.subscription))
             
             var products = Set<String>()
             if let smallId = self.smallBundle?.productId {products.insert(smallId)}
             if let bigId = self.bigBundle?.productId {products.insert(bigId)}
+            if let subscriptionId = self.subscription?.productId {products.insert(subscriptionId)}
             self.startProductrequest(for: products)
         }
     }
@@ -237,12 +322,15 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         productsRequest?.start()
     }
     
-    private func bundle(for productId: String) -> PremiumCardsBundle? {
+    private func bundle(for productId: String) -> PurchaseBase? {
         if productId == self.bigBundle?.productId {
             return self.bigBundle
         }
         if productId == self.smallBundle?.productId {
             return self.smallBundle
+        }
+        if productId == self.subscription?.productId{
+            return self.subscription
         }
         return nil
     }
@@ -314,29 +402,40 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     }
     
     private func succeded(transaction: SKPaymentTransaction) {
-        guard let bundle = bundle(for: transaction.payment.productIdentifier),
+        guard let product = bundle(for: transaction.payment.productIdentifier),
                 let userId = userInfoProvider.userId else { return }
         
-        processBuying(cards: bundle.cardsCount, for: userId) {
-            if $0 {
-				self.logPurchaseEvent(userId: userId, bundle: bundle, transaction: transaction);
-                SKPaymentQueue.default().finishTransaction(transaction)
-                NotificationCenter.default.post(name: .bundlePurchaseSucceded, object: self, userInfo: [ "count" : bundle.cardsCount ])
-            }
-        }
+        registerSucceedProduct(forTransaction:transaction, product: product, userId: userId)
     }
     
     private func restored(transaction: SKPaymentTransaction) {
         guard let productId = transaction.original?.payment.productIdentifier,
-            let bundle = bundle(for: productId),
+            let product = bundle(for: productId),
             let userId = userInfoProvider.userId else { return }
         
-        processBuying(cards: bundle.cardsCount, for: userId) {
-            if $0 {
-				self.logPurchaseEvent(userId: userId, bundle: bundle, transaction: transaction);
-                SKPaymentQueue.default().finishTransaction(transaction)
-				NotificationCenter.default.post(name: .bundlePurchaseSucceded, object: self, userInfo: [ "count" : bundle.cardsCount ])
+        registerSucceedProduct(forTransaction:transaction, product: product, userId: userId)
+    }
+    
+    private func registerSucceedProduct(forTransaction transaction:SKPaymentTransaction, product:PurchaseBase, userId: String) {
+        if let bundle = product as? PremiumCardsBundle {
+            processBuying(cards: bundle.cardsCount, for: userId) {
+                if $0 {
+                    self.logPurchaseEvent(userId: userId, bundle: bundle, transaction: transaction)
+                    SKPaymentQueue.default().finishTransaction(transaction)
+                    NotificationCenter.default.post(name: .bundlePurchaseSucceded, object: self, userInfo: [ "count" : bundle.cardsCount ])
+                }
             }
+        }
+        
+        if let bundle = product as? PremiumSubsctription {
+            let date = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+            processSubscribing(withDate: date!, user: userId, completion: {
+                if $0 {
+                    self.logSubscriptionEvent(userId: userId, bundle: bundle, transaction: transaction)
+                    SKPaymentQueue.default().finishTransaction(transaction)
+                    NotificationCenter.default.post(name: .bundlePurchaseSucceded, object: self, userInfo: nil)
+                }
+            })
         }
     }
     
@@ -361,19 +460,39 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         }, withLocalEvents: false)
     }
 	
+    private func processSubscribing(withDate expDate: Date, user: String, completion: @escaping (Bool)->()) {
+        Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
+            dateFormatter.timeZone = TimeZone.current
+            currentData.value = ["subscriptionExpireDate" : dateFormatter.string(from: expDate)]
+            return TransactionResult.success(withValue: currentData)
+        }, andCompletionBlock: { (error, commited, snapshot) in
+            completion(commited)
+        }, withLocalEvents: false)
+    }
+    
 	private func logPurchaseEvent(userId: String, bundle: PremiumCardsBundle, transaction: SKPaymentTransaction) {
-		guard let date = transaction.transactionDate, let id = transaction.transactionIdentifier else {
-			return;
-		}
-		let isBigBundle = (bundle.productId == self.bigBundle?.productId);
+		guard let date = transaction.transactionDate, let id = transaction.transactionIdentifier else { return }
+		let isBigBundle = (bundle.productId == self.bigBundle?.productId)
 		let event = BundlePurchaseEvent(userId: userId,
 										transactionId: id,
 										productId: bundle.productId,
 										date: date,
 										amount: bundle.cardsCount,
-										isBigBundle: isBigBundle);
-		loggingService.log(event: event);
+										isBigBundle: isBigBundle)
+		loggingService.log(event: event)
 	}
+    
+    private func logSubscriptionEvent(userId: String, bundle: PremiumSubsctription, transaction: SKPaymentTransaction){
+        guard let date = transaction.transactionDate, let id = transaction.transactionIdentifier else { return }
+        let event = SubscriptionPurchaseEvent(userId: userId,
+                                              transactionId: id,
+                                              productId: bundle.productId,
+                                              date: date,
+                                              expiresIn: bundle.expires)
+        loggingService.log(event: event)
+    }
 }
 
 

@@ -98,6 +98,7 @@ PODS:
     - SDWebImage/Core (= 4.2.3)
   - SDWebImage/Core (4.2.3)
   - SnapKit (4.0.0)
+  - SwiftyStoreKit (0.13.1)
   - Validator (3.0)
 
 DEPENDENCIES:
@@ -122,6 +123,7 @@ DEPENDENCIES:
   - Reveal-SDK
   - SDWebImage (~> 4.0)
   - SnapKit
+  - SwiftyStoreKit
   - Validator
 
 SPEC CHECKSUMS:
@@ -155,8 +157,9 @@ SPEC CHECKSUMS:
   Reveal-SDK: ccc2b0f8014965ea448b7534a7c2c8da232b75e8
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyStoreKit: c36bb7841dd51a485ce5c38abf9e96fba988741f
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
 
-PODFILE CHECKSUM: 6509f28bad1cb45e9b3d510b1fffbd061f12699b
+PODFILE CHECKSUM: 07903254b015ef0937ba837b54bdf80361269024
 
 COCOAPODS: 1.4.0

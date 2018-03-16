@@ -78,14 +78,19 @@ class VisheoRedeemSuccessViewModel : RedeemSuccessViewModel {
     
     func createOrContinue() {
 		if let _ = assets {
-			usePremCard();
+			makePremiumContent();
 		} else {
 			router?.showCreate();
 		}
     }
 	
+    func makePremiumContent() {
+        //TODO: if subscription -> self.router?.showShareVisheo(with: assets, premium: true)
+        usePremCard()
+    }
+    
 	func retryPremiumUse() {
-		usePremCard()
+		makePremiumContent()
 	}
 	
 	private func usePremCard() {

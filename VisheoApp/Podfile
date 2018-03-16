@@ -33,13 +33,15 @@ abstract_target 'App' do
   pod 'ReachabilitySwift'
   pod 'SnapKit'
   
-   pod 'Reveal-SDK', :configurations => ['Debug']
-   
-   target 'Visheo' do
-   end
-   
-   target 'VisheoStaging' do
-   end
+  pod 'SwiftyStoreKit'
+  
+  pod 'Reveal-SDK', :configurations => ['Debug']
+
+  target 'Visheo' do
+  end
+
+  target 'VisheoStaging' do
+  end
    
 end
 

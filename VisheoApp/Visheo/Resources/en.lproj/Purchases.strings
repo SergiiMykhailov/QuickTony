@@ -7,8 +7,8 @@
 /* Class = "UIButton"; normalTitle = "Redeem Coupon"; ObjectID = "DVb-go-Ocm"; */
 "DVb-go-Ocm.normalTitle" = "Redeem Coupon";
 
-/* Class = "UINavigationItem"; title = "CHOOSE CARD TYPE"; ObjectID = "F0I-PB-dgM"; */
-"F0I-PB-dgM.title" = "CHOOSE CARD TYPE";
+/* Class = "UINavigationItem"; title = "MY PURCHASES"; ObjectID = "F0I-PB-dgM"; */
+"F0I-PB-dgM.title" = "MY PURCHASES";
 
 /* Class = "UILabel"; text = "Congratulations!"; ObjectID = "F2x-Fj-DKq"; */
 "F2x-Fj-DKq.text" = "Congratulations!";

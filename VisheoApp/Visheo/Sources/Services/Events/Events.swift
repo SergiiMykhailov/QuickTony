@@ -14,6 +14,7 @@ enum EventType: String {
 	case premiumCardSent = "premium_card_sent"
 	case smallBundlePurchased = "S_bundle_purchase"
 	case bigBundlePurchased = "L_bundle_purchase"
+    case subsctiptionPurchased = "subscription_purchase"
 	case couponRedeemed = "coupon_redeemed"
 	case reminderSet = "remind_later"
 	case linkCopied = "link_copied"
@@ -76,7 +77,7 @@ struct BundlePurchaseEvent: EventRepresenting {
 	let isBigBundle: Bool;
 	
 	var type: EventType {
-		return isBigBundle ? .bigBundlePurchased : .smallBundlePurchased;
+		return isBigBundle ? .bigBundlePurchased : .smallBundlePurchased
 	}
 	
 	var analyticsInfo: [String : Any]? {
@@ -96,6 +97,34 @@ struct BundlePurchaseEvent: EventRepresenting {
 	var logInternally: Bool {
 		return true;
 	}
+}
+
+struct SubscriptionPurchaseEvent: EventRepresenting {
+    let userId: String
+    let transactionId: String
+    let productId: String
+    let date: Date
+    let expiresIn: Int
+    
+    var type: EventType {
+        return .subsctiptionPurchased
+    }
+    
+    var analyticsInfo: [String : Any]? {
+        return [ "user_id" : userId ]
+    }
+    
+    var internalInfo: [String : Any]? {
+        return ["user_id" : userId,
+                "transaction_id" : transactionId,
+                "product_id" : productId,
+                "transaction_date" : date,
+                "expires_in" : expiresIn]
+    }
+    
+    var logInternally: Bool{
+        return true
+    }
 }
 
 struct CouponRedeemedEvent: EventRepresenting {

@@ -11,17 +11,21 @@ import Foundation
 protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, CustomAlertGenerating {
     var smallBundleButtonHidden : Bool {get}
     var bigBundleButtonHidden : Bool {get}
+    var subscribeSectionHidden : Bool {get}
 
     var smallBundleButtonText : String {get}
     var bigBundleButtonText : String {get}
+    var subscribeButtonText : String {get}
     
     var premiumCardsNumber : Int {get}
     
     var showBackButton : Bool {get}
     var showFreeSection : Bool {get}
+    var showSubscribedSection : Bool {get}
     
     func buySmallBundle()
     func buyBigBundle()
+    func paySubscription()
     
     func showMenu()
     func showCoupon()
@@ -41,11 +45,15 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     var showFreeSection: Bool {
-        return premiumCardsNumber == 0
+        return premiumCardsNumber == 0 && !showSubscribedSection
     }
     
     var premiumCardsNumber: Int {
         return purchasesInfo.currentUserPremiumCards
+    }
+    
+    var showSubscribedSection : Bool {
+        return purchasesInfo.currentUserSubscriptionState() == .active
     }
     
     var didChange: (() -> ())? {
@@ -67,12 +75,33 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         return purchasesService.bigBundle == nil
     }
     
+    var subscribeSectionHidden: Bool {
+        return purchasesService.subscription == nil || showSubscribedSection
+    }
+    
     var smallBundleButtonText: String {
         return description(for: purchasesService.smallBundle) ?? ""
     }
     
     var bigBundleButtonText: String {
         return description(for: purchasesService.bigBundle) ?? ""
+    }
+    
+    var subscribeButtonText: String {
+        return description(for: purchasesService.subscription) ?? ""
+    }
+    
+    private func description(for subscription: PremiumSubsctription?) -> String? {
+        if let price = subscription?.price, let locale = subscription?.priceLocale {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.locale = locale
+            let priceString = formatter.string(from: price)
+            let pricePart = NSString(format: NSLocalizedString("Unlimited / %@ per month", comment: "Unlimited visheos subscription template") as NSString, priceString ?? "")
+            return "\(pricePart)"
+        }
+        
+        return nil
     }
     
     private func description(for bundle: PremiumCardsBundle?) -> String? {
@@ -84,7 +113,6 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
             let pricePart = NSString(format: NSLocalizedString(" for %@", comment: "Premium cards price part template") as NSString, priceString ?? "")
             return "\(description)\(pricePart)"
         }
-        
         return nil
     }
     
@@ -101,7 +129,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         self.shownFromMenu = fromMenu
         self.visheoAssets = assets
         
-        if purchasesService.smallBundle == nil || purchasesService.bigBundle == nil {
+        if (purchasesService.smallBundle == nil || purchasesService.bigBundle == nil) && purchasesService.subscription == nil{
             purchasesService.reloadPurchases()
         }
         
@@ -131,6 +159,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(VisheoChooseCardsViewModel.updatePremCardsNumber), name: Notification.Name.userPremiumCardsCountChanged, object: nil)
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.userSubscriptionStateChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
     }
     
     deinit {
@@ -157,6 +189,13 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         if let bundle = purchasesService.smallBundle {
             showProgressCallback?(true)
             purchasesService.buy(bundle: bundle)
+        }
+    }
+    
+    func paySubscription() {
+        if let product = purchasesService.subscription {
+            showProgressCallback?(true)
+            purchasesService.buy(bundle: product)
         }
     }
     

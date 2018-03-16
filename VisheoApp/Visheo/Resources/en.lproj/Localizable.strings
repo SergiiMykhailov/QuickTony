@@ -1,6 +1,9 @@
 /* Premium cards price part template */
 " for %@" = " for %@";
 
+/* Unlimited visheos subscription template */
+"Unlimited / %@ per month" = "Unlimited / %@ per month";
+
 /* redeem success description */
 "%d premium card(s) added to your account" = "%d premium card(s) added to your account";
 
@@ -141,8 +144,8 @@
 /* Please sign in to send feedback */
 "Please sign in to send feedback" = "Please sign in to send feedback";
 
-/* Premium Cards menu item */
-"Premium Cards" = "Premium Cards";
+/* My purchases menu item */
+"My Purchases" = "My Purchases";
 
 /* Confirm account deletion alert button */
 "Proceed" = "Proceed";
