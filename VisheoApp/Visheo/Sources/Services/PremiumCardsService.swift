@@ -113,9 +113,9 @@ class PremiumSubsctription : PurchaseBase {
 
 class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesInfo, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     enum Constants {
-        static let smallBundleId = "smallCardsPack"
-        static let bigBundleId = "bigCardsPack"
-        static let subscription = "subscription"
+        static let smallBundleId = "cardPacks/smallCardsPack"
+        static let bigBundleId = "cardPacks/bigCardsPack"
+        static let subscription = "subscriptions/subscription"
     }
     
     var subscription: PremiumSubsctription?
