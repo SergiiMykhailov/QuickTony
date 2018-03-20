@@ -29,24 +29,24 @@
         <scene sceneID="uAN-7k-CY7">
             <objects>
                 <viewController storyboardIdentifier="ChooseCardsViewController" id="RvU-ey-AzR" customClass="ChooseCardsViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bOp-Ze-3yt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="bOp-Ze-3yt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGK-by-wa3">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGK-by-wa3">
                                 <rect key="frame" x="0.0" y="64" width="320" height="636"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="h01-aV-dnN">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1278.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="h01-aV-dnN">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1303"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUY-z5-58M" userLabel="Visheo Cards Section">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="248.5"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUY-z5-58M" userLabel="Visheo Cards Section">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="271"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-TP-Qm2">
-                                                        <rect key="frame" x="51" y="12" width="219" height="25"/>
+                                                    <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-TP-Qm2">
+                                                        <rect key="frame" x="42.5" y="20" width="236.5" height="25"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-lH-lHF" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                <rect key="frame" x="79.5" y="0.0" width="10.5" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-lH-lHF" customClass="BadgeSwift" customModule="BadgeSwift">
+                                                                <rect key="frame" x="79.5" y="-2" width="28" height="28"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -62,13 +62,13 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Premium cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Wa-Vl0">
-                                                                <rect key="frame" x="96" y="0.0" width="123" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="Premium cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Wa-Vl0">
+                                                                <rect key="frame" x="113.5" y="0.0" width="123" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxY-xk-E3a">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You have" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxY-xk-E3a">
                                                                 <rect key="frame" x="0.0" y="0.0" width="73.5" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,14 +88,14 @@
                                                             <constraint firstItem="Q4z-lH-lHF" firstAttribute="leading" secondItem="DxY-xk-E3a" secondAttribute="trailing" constant="6" id="upq-zS-7hw"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Buy Visheo Cards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWr-WN-dka">
-                                                        <rect key="frame" x="89" y="61" width="142.5" height="24"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Buy Visheo Cards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWr-WN-dka">
+                                                        <rect key="frame" x="89" y="81" width="142.5" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-eM-UCw">
-                                                        <rect key="frame" x="20" y="95" width="279" height="55"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-eM-UCw">
+                                                        <rect key="frame" x="20" y="115" width="279" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="F2k-Kg-Yty"/>
@@ -113,8 +113,8 @@
                                                             <action selector="buySmallPressed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="Es9-s2-Cnn"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rky-fm-DNs">
-                                                        <rect key="frame" x="20" y="160" width="280" height="55"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rky-fm-DNs">
+                                                        <rect key="frame" x="20" y="180" width="280" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="V3T-RA-onV"/>
@@ -132,9 +132,9 @@
                                                             <action selector="buyBigPressed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="4NN-58-ee6"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unused Visheo Crads never expire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFm-RQ-Kj3">
-                                                        <rect key="frame" x="83.5" y="223" width="153" height="13.5"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Unused Visheo Crads never expire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFm-RQ-Kj3">
+                                                        <rect key="frame" x="68.5" y="243" width="183.5" height="16"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -145,8 +145,8 @@
                                                     <constraint firstItem="tWr-WN-dka" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yUY-z5-58M" secondAttribute="leading" constant="20" id="5nB-kA-jjN"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IYJ-TP-Qm2" secondAttribute="trailing" id="6qf-uZ-cNs"/>
                                                     <constraint firstItem="rky-fm-DNs" firstAttribute="centerX" secondItem="yUY-z5-58M" secondAttribute="centerX" id="EHx-O2-lJO"/>
-                                                    <constraint firstItem="tWr-WN-dka" firstAttribute="top" secondItem="IYJ-TP-Qm2" secondAttribute="bottom" constant="24" id="Iwh-iH-xIE"/>
-                                                    <constraint firstItem="IYJ-TP-Qm2" firstAttribute="top" secondItem="yUY-z5-58M" secondAttribute="top" constant="12" id="JQH-7G-9Uz"/>
+                                                    <constraint firstItem="tWr-WN-dka" firstAttribute="top" secondItem="IYJ-TP-Qm2" secondAttribute="bottom" constant="36" id="Iwh-iH-xIE"/>
+                                                    <constraint firstItem="IYJ-TP-Qm2" firstAttribute="top" secondItem="yUY-z5-58M" secondAttribute="top" constant="20" id="JQH-7G-9Uz"/>
                                                     <constraint firstItem="IYJ-TP-Qm2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yUY-z5-58M" secondAttribute="leading" id="S4V-mm-7q3"/>
                                                     <constraint firstItem="MFm-RQ-Kj3" firstAttribute="top" secondItem="rky-fm-DNs" secondAttribute="bottom" constant="8" id="Tqo-f3-iqN"/>
                                                     <constraint firstItem="rky-fm-DNs" firstAttribute="leading" secondItem="yUY-z5-58M" secondAttribute="leading" constant="20" id="ULX-Dx-NMU"/>
@@ -160,17 +160,17 @@
                                                     <constraint firstItem="AkT-eM-UCw" firstAttribute="leading" secondItem="yUY-z5-58M" secondAttribute="leading" constant="20" id="y19-nY-qcu"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-Lx-sLI" userLabel="Subscription Section">
-                                                <rect key="frame" x="0.0" y="249.5" width="320" height="191"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-Lx-sLI" userLabel="Subscription Section">
+                                                <rect key="frame" x="0.0" y="272" width="320" height="193"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Subscribe for regular use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-pz-MO6">
-                                                        <rect key="frame" x="58.5" y="47" width="203.5" height="24"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Subscribe for regular use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-pz-MO6">
+                                                        <rect key="frame" x="58.5" y="63" width="203.5" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-dG-9Fh">
-                                                        <rect key="frame" x="20" y="81" width="279" height="60"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-dG-9Fh">
+                                                        <rect key="frame" x="20" y="97" width="279" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="pGs-Q4-1Jl"/>
@@ -188,24 +188,24 @@
                                                             <action selector="subscribeActionPassed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="USF-UD-Fyc"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can cancel subscription any time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ld-af-PBp">
-                                                        <rect key="frame" x="76" y="149" width="168" height="30"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You can cancel subscription any time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ld-af-PBp">
+                                                        <rect key="frame" x="59" y="165" width="202" height="16"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-eY-Fdx" userLabel="Separator View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-eY-Fdx" userLabel="Separator View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBe-yR-HYY">
-                                                                <rect key="frame" x="0.0" y="17" width="320" height="1"/>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBe-yR-HYY">
+                                                                <rect key="frame" x="0.0" y="25" width="320" height="1"/>
                                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="boj-R5-JZS"/>
                                                                 </constraints>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqX-v5-aYA" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                <rect key="frame" x="148.5" y="6" width="23" height="23"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqX-v5-aYA" customClass="BadgeSwift" customModule="BadgeSwift">
+                                                                <rect key="frame" x="140.5" y="6" width="39" height="39"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="EqX-v5-aYA" secondAttribute="height" id="IWx-ac-wf1"/>
                                                                 </constraints>
@@ -253,20 +253,20 @@
                                                     <constraint firstItem="EAu-pz-MO6" firstAttribute="centerX" secondItem="AIr-Lx-sLI" secondAttribute="centerX" id="w0U-8R-Gly"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKo-hC-f3d">
-                                                <rect key="frame" x="0.0" y="441.5" width="320" height="200"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKo-hC-f3d">
+                                                <rect key="frame" x="0.0" y="466" width="320" height="200"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4J-BT-0G5" userLabel="Separator View">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4J-BT-0G5" userLabel="Separator View">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVv-qC-hxc">
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVv-qC-hxc">
                                                                 <rect key="frame" x="0.0" y="25" width="320" height="1"/>
                                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="G1Y-8v-wVP"/>
                                                                 </constraints>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-JE-gHB" customClass="BadgeSwift" customModule="BadgeSwift">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-JE-gHB" customClass="BadgeSwift" customModule="BadgeSwift">
                                                                 <rect key="frame" x="140.5" y="6" width="39" height="39"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Soe-JE-gHB" secondAttribute="height" id="ePv-6s-qIN"/>
@@ -297,19 +297,19 @@
                                                             <constraint firstItem="xVv-qC-hxc" firstAttribute="centerY" secondItem="b4J-BT-0G5" secondAttribute="centerY" id="oCD-GB-RhM"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Send Visheo for Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZm-95-Pl4">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Send Visheo for Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZm-95-Pl4">
                                                         <rect key="frame" x="0.0" y="63" width="320" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="This Visheo can be used to inspire others" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCa-M7-vvU">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="This Visheo can be used to inspire others" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCa-M7-vvU">
                                                         <rect key="frame" x="0.0" y="97" width="320" height="16"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <color key="textColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O8-4N-peq">
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O8-4N-peq">
                                                         <rect key="frame" x="20" y="133" width="280" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -346,19 +346,19 @@
                                                     <constraint firstItem="TZm-95-Pl4" firstAttribute="top" secondItem="b4J-BT-0G5" secondAttribute="bottom" constant="12" id="uqc-BS-HE1"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-fB-R2G" userLabel="SubscribedSection">
-                                                <rect key="frame" x="0.0" y="642.5" width="320" height="636"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-fB-R2G" userLabel="SubscribedSection">
+                                                <rect key="frame" x="0.0" y="667" width="320" height="636"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiB-d9-Ax4">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PiB-d9-Ax4">
                                                         <rect key="frame" x="0.0" y="227" width="320" height="183.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="until 23th of April 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doF-mZ-Msr">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="until 23th of April 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doF-mZ-Msr">
                                                                 <rect key="frame" x="77.5" y="162" width="165" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subscription_state" translatesAutoresizingMaskIntoConstraints="NO" id="4ch-28-FZz">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ch-28-FZz">
                                                                 <rect key="frame" x="106.5" y="0.5" width="107" height="107"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="4ch-28-FZz" secondAttribute="height" id="ipM-eX-bOz"/>
@@ -374,7 +374,7 @@
                                                             <constraint firstItem="4ch-28-FZz" firstAttribute="centerX" secondItem="PiB-d9-Ax4" secondAttribute="centerX" id="bgV-qk-cHP"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are subscribed to send Unlimited Visheo Cards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zr-kl-IlA">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You are subscribed to send Unlimited Visheo Cards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zr-kl-IlA">
                                                         <rect key="frame" x="47.5" y="346" width="226" height="42.5"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                         <nil key="textColor"/>
@@ -431,7 +431,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="700"/>
+                    <size key="freeformSize" width="320" height="0.0"/>
                     <connections>
                         <outlet property="backBarItem" destination="Jbc-Mf-nNm" id="HYP-vj-UUI"/>
                         <outlet property="buyFifteenButton" destination="rky-fm-DNs" id="kpR-VT-2BL"/>
@@ -641,7 +641,6 @@
         <image name="arrow" width="20" height="20"/>
         <image name="hDpic" width="200" height="200"/>
         <image name="menu" width="20" height="20"/>
-        <image name="subscription_state" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jcu-CK-hCv"/>
