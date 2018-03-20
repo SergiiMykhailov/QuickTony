@@ -6,6 +6,7 @@
 import Foundation
 import StoreKit
 import Firebase
+import SwiftyStoreKit
 
 extension Notification.Name {
     static let premiumBundlesLoaded = Notification.Name("premiumBundlesLoaded")
@@ -51,6 +52,8 @@ protocol PremiumCardsService {
     func redeem(coupon: String, completion: @escaping (Int?, RedeemError?)->())
     
     func usePremiumCard(completion: @escaping (Bool)->())
+    func currentUserSubscriptionState() -> SubscriptionState
+    func checkSubscriptionStateRemotely(withCompletion completionBlock:@escaping ((VerifySubscriptionResult?, Error?) -> Void))
 }
 
 class PurchaseBase {
@@ -149,6 +152,43 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         return dateFormatter.string(from: expireDate)
     }
     
+    func checkSubscriptionStateRemotely(withCompletion completionBlock:@escaping ((VerifySubscriptionResult?, Error?) -> Void)) {
+        if let productId = subscription?.productId {
+            let appStoreValidator = Environment.current.appleStoreValidator()
+            
+            SwiftyStoreKit.verifyReceipt(using: appStoreValidator) {[weak self] result in
+                switch result {
+                case .success(let receipt):
+                    let purchaseResult = SwiftyStoreKit.verifySubscription(
+                        ofType: .autoRenewable,
+                        productId: productId,
+                        inReceipt: receipt)
+                    
+                    switch purchaseResult {
+                        case .purchased(_, let items):
+                            guard let `self` = self,
+                                let item = items.first,
+                                let userId = self.userInfoProvider.userId else { return }
+                            
+                            self.processSubscribing(withDate: item.subscriptionExpirationDate!, forTranId: item.originalTransactionId, user: userId, completion: {
+                                if $0 {
+                                    NotificationCenter.default.post(name: .bundlePurchaseSucceded, object: self, userInfo: nil)
+                                }
+                            })
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                    completionBlock(purchaseResult, nil)
+                    
+                case .error(let error):
+                    completionBlock(nil, error)
+                }
+            }
+        }
+    }
+    
     private var productsRequest : SKProductsRequest?
     private let userInfoProvider : UserInfoProvider
 	private let loggingService: EventLoggingService
@@ -240,7 +280,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         Database.database().reference(withPath: "coupons/\(couponId)/").keepSynced(true)
         
         Database.database().reference(withPath: "coupons/\(couponId)/").observeSingleEvent(of: .value) { (_) in
-            Database.database().reference(withPath: "coupons/\(couponId)/").runTransactionBlock({ (currentData) -> TransactionResult in
+            Database.database().reference(withPath: "coupons/\(couponId)/").runTransactionBlock({ (currentData) -> Firebase.TransactionResult in
                 if var coupon = currentData.value as? [String : Any] {
                     cardsToAdd = coupon["cards_amount"] as? Int ?? 0
                     
@@ -338,7 +378,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     private func spendCard(for user: String, completion: @escaping (Bool)->()) {
         Database.database().reference(withPath: "users/\(user)/purchases").keepSynced(true)
         Database.database().reference(withPath: "users/\(user)/purchases").observeSingleEvent(of: .value) { (snapshot) in
-            Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
+            Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> Firebase.TransactionResult in
                 if var purchases = currentData.value as? [String : Any] {
                     var premCards = purchases["premiumCards"] as? Int ?? 0
                     if premCards <= 0 {
@@ -428,12 +468,19 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         }
         
         if let bundle = product as? PremiumSubsctription {
-            let date = Calendar.current.date(byAdding: .month, value: 1, to: Date())
-            processSubscribing(withDate: date!, user: userId, completion: {
-                if $0 {
-                    self.logSubscriptionEvent(userId: userId, bundle: bundle, transaction: transaction)
-                    SKPaymentQueue.default().finishTransaction(transaction)
-                    NotificationCenter.default.post(name: .bundlePurchaseSucceded, object: self, userInfo: nil)
+            checkSubscriptionStateRemotely(withCompletion: { [weak self] purchaseResult, error in
+                if let purchaseResult = purchaseResult {
+                    switch purchaseResult {
+                        case .purchased(_,_):
+                            self?.logSubscriptionEvent(userId: userId, bundle: bundle, transaction: transaction)
+                            SKPaymentQueue.default().finishTransaction(transaction)
+                            break;
+                        default:
+                            break;
+                    }
+                } else if let error = error {
+                    //TODO: error handle
+                    print(error)
                 }
             })
         }
@@ -444,7 +491,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     }
     
     private func processBuying(cards count: Int, for user: String, completion: @escaping (Bool)->()) {
-        Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
+        Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> Firebase.TransactionResult in
             if var purchases = currentData.value as? [String : Any] {
                 var premCards = purchases["premiumCards"] as? Int ?? 0
                 premCards += count
@@ -460,12 +507,13 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         }, withLocalEvents: false)
     }
 	
-    private func processSubscribing(withDate expDate: Date, user: String, completion: @escaping (Bool)->()) {
-        Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> TransactionResult in
+    private func processSubscribing(withDate expDate: Date, forTranId: String, user: String, completion: @escaping (Bool)->()) {
+        Database.database().reference(withPath: "users/\(user)/purchases").runTransactionBlock({ (currentData) -> Firebase.TransactionResult in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
             dateFormatter.timeZone = TimeZone.current
-            currentData.value = ["subscriptionExpireDate" : dateFormatter.string(from: expDate)]
+            currentData.value = ["subscriptionExpireDate" : dateFormatter.string(from: expDate),
+                                 "subscriptionTransactionId" : forTranId]
             return TransactionResult.success(withValue: currentData)
         }, andCompletionBlock: { (error, commited, snapshot) in
             completion(commited)

@@ -246,6 +246,27 @@ class VisheoPreviewViewModel : PreviewViewModel
                 	self?.sendVisheo()
 				}
             }
+        } else if purchasesInfo.currentUserSubscriptionState() == .active {
+            router?.sendVisheo(with: assets, premium: true)
+        } else if purchasesInfo.currentUserSubscriptionState() == .expired {
+//            showProgressCallback?(true)
+            premCardsService.checkSubscriptionStateRemotely() { [weak self] purchaseResult, error in
+//                self.showProgressCallback?(false)
+                let assets = self?.assets
+                if let purchaseResult = purchaseResult {
+                    switch purchaseResult {
+                        case .purchased(_,_):
+                            self?.router?.sendVisheo(with: assets!, premium: true)
+                        case .expired(_,_):
+                            self?.router?.showCardTypeSelection(with: assets!)
+                        case .notPurchased:
+                            self?.router?.showCardTypeSelection(with: assets!)
+                    }
+                } else if let error = error {
+                    //TODO: handle error
+                    print(error)
+                }
+            }
         } else if purchasesInfo.currentUserPremiumCards == 0 {
             router?.showCardTypeSelection(with: assets)
         } else {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftyStoreKit
 
 enum Environment {
 	case staging
@@ -31,6 +32,17 @@ extension Environment {
 				return ProductionStorageBuckets.storageRef(for: id, premium: premium);
 		}
 	}
+    
+    func appleStoreValidator() -> AppleReceiptValidator {
+        switch self {
+            case .staging:
+                return AppleReceiptValidator(service: .sandbox,
+                                             sharedSecret: "90a37c89dd074e0f943a973ac952d3c2")
+            case .production:
+                return AppleReceiptValidator(service: .production,
+                                             sharedSecret: "18666539d51048d19fb79bbbf4798628")
+        }
+    }
 }
 
 
