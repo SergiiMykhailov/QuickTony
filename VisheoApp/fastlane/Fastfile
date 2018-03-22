@@ -31,7 +31,7 @@ lane :upload_testflight do
         codesigning_identity: 'iPhone Distribution: Oleksandr Makhtin (V6NPSSGKMC)',
         export_options: {
             provisioningProfiles: { 
-                "com.visheo.visheo" => ""
+                "com.visheo.visheo" => "Visheo AppStore"
             }
         })
 
