@@ -9,6 +9,39 @@ before_all do |lane, options|
     ensure_git_status_clean
 end
 
+lane :pre_build do
+    cocoapods
+
+    new_build_number = ENV['XCS_INTEGRATION_NUMBER']
+    set_info_plist_value(
+        path: "./Visheo/Visheo-Info.plist",
+        key: "CFBundleVersion",
+        value: new_build_number)
+end
+
+
+lane :upload_testflight do
+    scheme_name = 'Visheo'
+    ipa_name = scheme_name + "ipa"
+
+    gym(
+        scheme: scheme_name,
+        skip_build_archive: true,
+        archive_path: ENV['XCS_ARCHIVE'],
+        codesigning_identity: 'iPhone Distribution: Oleksandr Makhtin (V6NPSSGKMC)',
+        export_options: {
+            provisioningProfiles: { 
+                "com.visheo.visheo" => ""
+            }
+        })
+
+    pilot(
+        ipa: ipa_name,
+        skip_waiting_for_build_processing: true)
+end
+
+
+
 private_lane :bump_build_version do |options|
     app_id = options[:app_id]
     target = options[:target]
