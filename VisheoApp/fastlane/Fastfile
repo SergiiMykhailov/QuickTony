@@ -22,7 +22,7 @@ end
 
 lane :upload_testflight do
     scheme_name = 'Visheo'
-    ipa_name = scheme_name + "ipa"
+    ipa_name = "VisheoVideo.ipa"
 
     gym(
         scheme: scheme_name,
@@ -212,12 +212,12 @@ lane :build_release do
 end
 
 
-error do |lane, exception, options|
-    reset_git_repo(
-        force: true,
-        files: [
-            "VisheoApp/Visheo/Visheo-Info.plist",
-            "VisheoApp/Visheo/VisheoStaging-Info.plist"
-        ]
-)
+# error do |lane, exception, options|
+#     reset_git_repo(
+#         force: true,
+#         files: [
+#             "VisheoApp/Visheo/Visheo-Info.plist",
+#             "VisheoApp/Visheo/VisheoStaging-Info.plist"
+#         ]
+# )
 end
