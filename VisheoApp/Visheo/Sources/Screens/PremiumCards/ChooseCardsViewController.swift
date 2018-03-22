@@ -19,9 +19,9 @@ class ChooseCardsViewController: UIViewController {
         buyFiveButton.titleLabel?.adjustsFontSizeToFitWidth = true
         subcribeButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
-        if let couponAttributed = coupoButton.currentAttributedTitle?.mutableCopy() as? NSMutableAttributedString {
+        if let couponAttributed = couponButton.currentAttributedTitle?.mutableCopy() as? NSMutableAttributedString {
             couponAttributed.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: NSRange(location: 0, length: couponAttributed.length))
-            coupoButton.setAttributedTitle(couponAttributed, for: .normal)
+            couponButton.setAttributedTitle(couponAttributed, for: .normal)
         }
         
         viewModel.didChange = {[weak self] in
@@ -110,7 +110,7 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var buyFifteenButton: UIButton!
     @IBOutlet weak var subcribeButton: UIButton!
     
-    @IBOutlet weak var coupoButton: UIButton!
+    @IBOutlet weak var couponButton: UIButton!
 
 	@IBOutlet weak var premiumCardsLabel: UILabel!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!

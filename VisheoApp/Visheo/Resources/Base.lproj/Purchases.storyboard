@@ -509,7 +509,7 @@
                         <outlet property="buyFifteenButton" destination="rky-fm-DNs" id="kpR-VT-2BL"/>
                         <outlet property="buyFiveButton" destination="AkT-eM-UCw" id="QJJ-dm-VGR"/>
                         <outlet property="checkmarkButton" destination="cTy-p8-8vH" id="65D-nH-iBe"/>
-                        <outlet property="coupoButton" destination="MIk-2s-Jdg" id="qE1-hR-Yyx"/>
+                        <outlet property="couponButton" destination="MIk-2s-Jdg" id="3Aa-al-IyB"/>
                         <outlet property="couponSection" destination="j0h-DI-jyA" id="xzC-uq-DnW"/>
                         <outlet property="freeCardsSection" destination="cKo-hC-f3d" id="6IK-Ky-oMH"/>
                         <outlet property="menuBarItem" destination="Ndy-qK-zPh" id="V0t-9T-KyF"/>

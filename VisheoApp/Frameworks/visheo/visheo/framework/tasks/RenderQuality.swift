@@ -38,8 +38,6 @@ extension RenderQuality {
 		switch self
 		{
 			case .res720:
-				return AVAssetExportPreset640x480;
-			case .res720:
 				return AVAssetExportPreset1280x720;
 			case .res1080:
 				return AVAssetExportPreset1920x1080;
