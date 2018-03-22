@@ -71,6 +71,7 @@ class ChooseCardsViewController: UIViewController {
         subcribeButton.setTitle(viewModel.subscribeButtonText, for: .normal)
         
         premiumCardsLabel.text = "\(viewModel.premiumCardsNumber)"
+        untilDateLabel.text = "\(viewModel.untilDateText)"
 		
 		freeCardsSection.isHidden = !viewModel.showFreeSection
         premiumCardsSection.isHidden = viewModel.showSubscribedSection
@@ -123,6 +124,8 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var couponSection: UIView!
     
     @IBOutlet weak var checkmarkButton: UIButton!
+    
+    @IBOutlet weak var untilDateLabel: UILabel!
 	
 	// MARK: Actions
     @IBAction func sendFreePressed(_ sender: Any) {
