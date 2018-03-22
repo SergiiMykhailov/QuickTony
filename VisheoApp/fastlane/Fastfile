@@ -5,9 +5,9 @@ CRASHLYTICS_API_KEY = "7a46fd1c8ce2ff847c926c7643d2946bdd1499e7"
 CRASHLYTICS_BUILD_SECRET = "4c00028f3fa11585186d816e06a3e7e2e4e290b20eaf0f9e8d79d8661cb22f61"
 CRASHLYTICS_GROUPS = [ "test" ]
 
-before_all do |lane, options|
-    ensure_git_status_clean
-end
+# before_all do |lane, options|
+#     ensure_git_status_clean
+# end
 
 lane :pre_build do
     cocoapods
