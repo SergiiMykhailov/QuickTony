@@ -23,6 +23,12 @@ enum Environment {
 	
 }
 
+fileprivate enum StoragePaths {
+    static let premium     = "PremiumVisheos"
+    static let free        = "FreeVisheos"
+}
+
+
 extension Environment {
 	func storageRef(for id: String, premium: Bool) -> StorageReference {
 		switch self {
@@ -48,36 +54,32 @@ extension Environment {
 
 protocol StorageBuckets {
 	static func storageRef(for id: String, premium: Bool) -> StorageReference
+    static func bucketUrl() -> String
+    static func storagePath(premium: Bool) -> String
 }
 
+extension StorageBuckets {
+    static func storageRef(for id: String, premium: Bool) -> StorageReference {
+        let path = self.storagePath(premium: premium)
+        let url = self.bucketUrl()
+        let child = path + "/" + id;
+        let storageRef = Storage.storage(url: url).reference().child(child)
+        return storageRef
+    }
+    
+    static func storagePath(premium: Bool) -> String {
+        return premium ? StoragePaths.premium : StoragePaths.free
+    }
+}
 
 struct StagingStorageBuckets: StorageBuckets {
-	private enum StoragePaths {
-		static let premium     = "PremiumVisheos"
-		static let free        = "FreeVisheos"
-	}
-	
-	static func storageRef(for id: String, premium: Bool) -> StorageReference {
-		let path = premium ? StoragePaths.premium : StoragePaths.free
-		let url = "gs://visheo-staging.appspot.com"
-		let child = path + "/" + id;
-		let storageRef = Storage.storage(url: url).reference().child(child)
-		return storageRef
-	}
+    static func bucketUrl() -> String {
+        return "gs://visheo-staging.appspot.com"
+    }
 }
 
 struct ProductionStorageBuckets: StorageBuckets {
-	private enum StorageBuckets {
-		static let premium     = "gs://visheo42premiumcards"
-		static let free        = "gs://visheo42freecards"
-	}
-	
-	static func storageRef(for id: String, premium: Bool) -> StorageReference {
-		let bucket = premium ? StorageBuckets.premium : StorageBuckets.free
-		
-		let storagePath = "\(bucket)"
-		
-		let storageRef = Storage.storage(url: storagePath).reference().child("\(id)")
-		return storageRef
-	}
+    static func bucketUrl() -> String {
+        return "gs://visheo42freecards"
+    }
 }

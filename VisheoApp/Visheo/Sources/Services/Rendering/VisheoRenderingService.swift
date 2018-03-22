@@ -25,7 +25,7 @@ class VisheoRenderingService : RenderingService {
 	
     func export(creationInfo: VisheoCreationInfo, progress: ((Double)->())?, completion: ((URL?,Error?)->())?) {
         
-        var task = RenderTask(quality: creationInfo.premium ? .res720 : .res480);
+        var task = RenderTask(quality: .res720);
 
         task.addMedia(creationInfo.coverUrl, type: .cover);
         task.addMedia(creationInfo.photoUrls, type: .photo);

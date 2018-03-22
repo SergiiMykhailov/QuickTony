@@ -19,6 +19,11 @@ class ChooseCardsViewController: UIViewController {
         buyFiveButton.titleLabel?.adjustsFontSizeToFitWidth = true
         subcribeButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
+        if let couponAttributed = coupoButton.currentAttributedTitle?.mutableCopy() as? NSMutableAttributedString {
+            couponAttributed.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: NSRange(location: 0, length: couponAttributed.length))
+            coupoButton.setAttributedTitle(couponAttributed, for: .normal)
+        }
+        
         viewModel.didChange = {[weak self] in
             self?.udpateFromVM()
         }
@@ -70,8 +75,11 @@ class ChooseCardsViewController: UIViewController {
 		freeCardsSection.isHidden = !viewModel.showFreeSection
         premiumCardsSection.isHidden = viewModel.showSubscribedSection
         subscribeSection.isHidden = viewModel.subscribeSectionHidden
+        couponSection.isHidden = viewModel.showSubscribedSection
         subscribedSection.isHidden = !viewModel.showSubscribedSection
 		
+        checkmarkButton.isSelected = (viewModel.isFreeVisheoRuleAccepted)
+        
 		view.layoutIfNeeded();
     }
     
@@ -102,13 +110,19 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var buyFifteenButton: UIButton!
     @IBOutlet weak var subcribeButton: UIButton!
     
+    @IBOutlet weak var coupoButton: UIButton!
+
 	@IBOutlet weak var premiumCardsLabel: UILabel!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
     @IBOutlet weak var backBarItem: UIBarButtonItem!
+    
     @IBOutlet weak var freeCardsSection: UIView!
     @IBOutlet weak var subscribeSection: UIView!
     @IBOutlet weak var subscribedSection: UIView!
     @IBOutlet weak var premiumCardsSection: UIView!
+    @IBOutlet weak var couponSection: UIView!
+    
+    @IBOutlet weak var checkmarkButton: UIButton!
 	
 	// MARK: Actions
     @IBAction func sendFreePressed(_ sender: Any) {
@@ -131,8 +145,20 @@ class ChooseCardsViewController: UIViewController {
         viewModel.showMenu()
     }
     
+    @IBAction func checkmarkPressed(_ sender: UIButton) {
+        viewModel.acceptFreeRule(withSelected: !sender.isSelected)
+    }
+    
+    @IBAction func freeRulePressed(_ sender: Any) {
+        viewModel.showFreeRule()
+    }
+    
     @IBAction func backPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func showCoupon(_ sender: Any) {
+        viewModel.showCoupon()
     }
 }
 

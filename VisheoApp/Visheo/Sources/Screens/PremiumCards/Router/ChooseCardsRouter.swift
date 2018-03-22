@@ -10,10 +10,12 @@ import UIKit
 
 protocol ChooseCardsRouter: FlowRouter {
     func showMenu()
+    func showFreeRule()
     func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool)
     func showCreateVisheo()
     func showCoupon(with assets: VisheoRenderingAssets?)
 	func showPurchaseSuccess(with count: Int, assets: VisheoRenderingAssets?);
+    func showFreeAcceptPopup()
 }
 
 class VisheoChooseCardsRouter : ChooseCardsRouter {
@@ -21,6 +23,7 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
         case showShareVisheo = "showShareVisheo"
         case showCoupon = "showCoupon"
 		case showPurchaseSuccess = "showPurchaseSuccess"
+        case showFreeRule = "showFreeRule"
     }
 	
     let dependencies: RouterDependencies
@@ -66,6 +69,8 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
 						 redeemedCount: userInfo[Constants.count] as! Int,
 						 assets: assets,
 						 showBackButton: assets != nil)
+        case .showFreeRule:
+            break
         }
     }
 }
@@ -77,8 +82,16 @@ extension VisheoChooseCardsRouter {
 		static let count = "count"
     }
     
+    func showFreeAcceptPopup() {
+        controller?.showAlert(with:"", text: NSLocalizedString("Please agree that this Visheo can be publicly used", comment: "Unchecked public visheo message"))
+    }
+    
     func showMenu() {
         controller?.showLeftViewAnimated(self)
+    }
+    
+    func showFreeRule() {
+        controller?.performSegue(SegueList.showFreeRule, sender: nil)
     }
     
     func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool) {

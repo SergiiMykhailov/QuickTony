@@ -7,6 +7,9 @@
 /* redeem success description */
 "%d premium card(s) added to your account" = "%d premium card(s) added to your account";
 
+/* Unchecked public visheo message */
+"Please agree that this Visheo can be publicly used" = "Please agree that this Visheo can be publicly used";
+
 /* Error while deleting account text messaage */
 "An error occurred while deleting account" = "An error occurred while deleting account";
 

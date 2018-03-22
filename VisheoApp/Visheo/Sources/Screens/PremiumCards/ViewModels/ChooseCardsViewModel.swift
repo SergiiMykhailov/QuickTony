@@ -19,9 +19,14 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     
     var premiumCardsNumber : Int {get}
     
+    var isFreeVisheoRuleAccepted : Bool {get}
+    
     var showBackButton : Bool {get}
     var showFreeSection : Bool {get}
     var showSubscribedSection : Bool {get}
+    
+    func acceptFreeRule(withSelected selected:Bool)
+    func showFreeRule()
     
     func buySmallBundle()
     func buyBigBundle()
@@ -40,12 +45,17 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     var confirmFreeSendHandler: (() -> ())?
     var premiumUsageFailedHandler: (() -> ())?
     
+    private var freeVisheoRuleAccepted: Bool
+    
     var showBackButton: Bool {
         return !shownFromMenu
     }
     
     var showFreeSection: Bool {
-        return premiumCardsNumber == 0 && !showSubscribedSection
+        return purchasesService.isFreeAvailable &&
+               premiumCardsNumber == 0 &&
+               !showSubscribedSection &&
+               visheoAssets != nil
     }
     
     var premiumCardsNumber: Int {
@@ -91,6 +101,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         return description(for: purchasesService.subscription) ?? ""
     }
     
+    var isFreeVisheoRuleAccepted: Bool {
+        return freeVisheoRuleAccepted
+    }
+    
     private func description(for subscription: PremiumSubsctription?) -> String? {
         if let price = subscription?.price, let locale = subscription?.priceLocale {
             let formatter = NumberFormatter()
@@ -128,6 +142,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         self.purchasesInfo = purchasesInfo
         self.shownFromMenu = fromMenu
         self.visheoAssets = assets
+        self.freeVisheoRuleAccepted = true
         
         if (purchasesService.smallBundle == nil || purchasesService.bigBundle == nil) && purchasesService.subscription == nil{
             purchasesService.reloadPurchases()
@@ -170,12 +185,16 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     func sendRegularConfirmed() {
+        guard freeVisheoRuleAccepted else {
+            router?.showFreeAcceptPopup()
+            return
+        }
+        
         if let assets = visheoAssets {
             router?.showShareVisheo(with: assets, premium: false)
         } else {
             router?.showCreateVisheo()
         }
-
     }
     
     func buyBigBundle() {
@@ -197,6 +216,15 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
             showProgressCallback?(true)
             purchasesService.buy(bundle: product)
         }
+    }
+    
+    func acceptFreeRule(withSelected selected:Bool) {
+        freeVisheoRuleAccepted = selected
+        self.didChange?()
+    }
+    
+    func showFreeRule() {
+        router?.showFreeRule()
     }
     
     func showMenu() {

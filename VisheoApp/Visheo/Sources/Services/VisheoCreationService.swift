@@ -59,6 +59,10 @@ protocol CreationService {
 }
 
 class VisheoCreationService : CreationService {
+    enum ConfigConstants {
+        static let visheoLifetime = 60
+    }
+    
     typealias Record = [String: Any]
     
     private let unfinishedRecordsKey = "unfinishedRecords"
@@ -69,20 +73,25 @@ class VisheoCreationService : CreationService {
 	private let appStateService: AppStateService;
 	private let loggingService: EventLoggingService;
     private var uploadingProgress : [String: Double] = [:]
-    private let freeVisheoLifetime : Int
+    private var freeVisheoLifetime : Int
 	private var uploadTasks: [ String : StorageUploadTask ] = [:]
 	private var taskCancellationTimer: Timer? = nil;
+    private var visheoLifetimeReference: DatabaseReference?
     
-	init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, appStateService: AppStateService, loggingService: EventLoggingService, freeLifetime: Int) {
-        self.freeVisheoLifetime = freeLifetime
+	init(userInfoProvider: UserInfoProvider, rendererService : RenderingService, appStateService: AppStateService, loggingService: EventLoggingService) {
         self.userInfoProvider = userInfoProvider
         self.rendererService  = rendererService
 		self.appStateService = appStateService;
 		self.loggingService = loggingService;
         cardsRef              = Database.database().reference().child("cards")
-		
+        visheoLifetimeReference =  Database.database().reference(withPath: "appConfiguration/lifeDaysCount")
+        
+        self.freeVisheoLifetime = ConfigConstants.visheoLifetime
+        
+        startVisheoLifetimeObserving()
+        
         continueUnfinished()
-		
+        
 		NotificationCenter.default.addObserver(forName: Notification.Name.reachabilityChanged, object: nil, queue: OperationQueue.main) { [weak self] (note) in
 			guard let connection = (note.object as? Reachability)?.connection else {
 				return;
@@ -104,6 +113,16 @@ class VisheoCreationService : CreationService {
 		stopTaskCancellationTimer()
 		NotificationCenter.default.removeObserver(self);
 	}
+    
+    private func startVisheoLifetimeObserving() {
+        if let oldReference = visheoLifetimeReference {
+            oldReference.removeAllObservers()
+        }
+        
+        visheoLifetimeReference?.observe(.value, with: { (snapshot) in
+            self.freeVisheoLifetime = snapshot.value as? Int ?? ConfigConstants.visheoLifetime
+        })
+    }
     
     func continueUnfinished() {
         let defaults = UserDefaults.standard
@@ -149,9 +168,8 @@ class VisheoCreationService : CreationService {
         var visheoRecord = info.firebaseRecord
         visheoRecord["userId"] = self.userInfoProvider.userId
         visheoRecord["userName"] = self.userInfoProvider.userName ?? "Guest"
-        if !info.premium {
-            visheoRecord["lifetime"] = freeVisheoLifetime
-        }        
+        visheoRecord["lifetime"] = freeVisheoLifetime
+        
         let ref = Database.database().reference()
         var childUpdates = ["cards/\(info.visheoId)" : visheoRecord] as [String : Any]
         if let userId = self.userInfoProvider.userId {

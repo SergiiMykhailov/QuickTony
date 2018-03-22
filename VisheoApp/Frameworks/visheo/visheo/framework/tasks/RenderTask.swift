@@ -18,7 +18,7 @@ public struct RenderTask: StatefulTask
 	let quality: RenderQuality;
 	var state: TaskState;
 	
-	public init(quality: RenderQuality = .res480) {
+	public init(quality: RenderQuality = .res720) {
 		self.quality = quality;
 		self.state = .pending;
 	}
@@ -65,7 +65,7 @@ extension RenderTask: Codable, MutablePersistable, RowConvertible
 		}
 
 		let rawQuality = try container.decode(Int.self, forKey: .quality)
-		quality = RenderQuality(rawValue: rawQuality) ?? .res480;
+		quality = RenderQuality(rawValue: rawQuality) ?? .res720;
 		
 		let rawState = try container.decode(Int.self, forKey: .state);
 		state = TaskState(rawValue: rawState) ?? .pending;

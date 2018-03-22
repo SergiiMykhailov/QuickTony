@@ -47,6 +47,7 @@ protocol PremiumCardsService {
     var smallBundle : PremiumCardsBundle? {get}
     var bigBundle : PremiumCardsBundle? {get}
     var subscription : PremiumSubsctription? {get}
+    var isFreeAvailable : Bool {get}
     
     func buy(bundle: PurchaseBase)
     func redeem(coupon: String, completion: @escaping (Int?, RedeemError?)->())
@@ -195,14 +196,24 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     
     private var premCardsReference : DatabaseReference?
     private var subscriptionReference : DatabaseReference?
+    private var freeVishesReference : DatabaseReference?
+    
+    var isFreeAvailable : Bool
     
 	init(userInfoProvider: UserInfoProvider, loggingService: EventLoggingService) {
         self.userInfoProvider = userInfoProvider
 		self.loggingService = loggingService;
+        
+        isFreeAvailable = false
         currentUserPremiumCards = 0
+        
         super.init()
         loadPurchases()
+        
         startPremiumCardsObserving()
+        startSubscriptionObserving()
+        startFreeVishesObserving()
+        
         SKPaymentQueue.default().add(self)
         
         NotificationCenter.default.addObserver(forName: Notification.Name.authStateChanged, object: nil, queue: OperationQueue.main) { (notification) in
@@ -244,6 +255,20 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
                 dateFormatter.timeZone = TimeZone.current
                 self.expireDate = dateFormatter.date(from: dateAsString)
             })
+        }
+    }
+    
+    private func startFreeVishesObserving(){
+        if let oldReference = freeVishesReference {
+            oldReference.removeAllObservers()
+        }
+        
+        let appConfigFreeVishesRef = Database.database().reference(withPath: "appConfiguration/isFreeVisheoAvailable")
+        freeVishesReference = appConfigFreeVishesRef
+        
+        appConfigFreeVishesRef.observe(.value) {
+            guard let isFreeAvailable = $0.value as? Bool else { self.isFreeAvailable = false; return}
+            self.isFreeAvailable = isFreeAvailable
         }
     }
     

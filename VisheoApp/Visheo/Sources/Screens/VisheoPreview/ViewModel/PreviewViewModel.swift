@@ -148,7 +148,7 @@ class VisheoPreviewViewModel : PreviewViewModel
 		renderStatus = .rendering;
 			
 		let videoURL = assets.videoUrl
-		let quality = RenderQuality.res480;
+		let quality = RenderQuality.res720;
 		
 		firstly {
 			fetchVideoScreenshot(url: videoURL)
