@@ -28,8 +28,10 @@ struct RouterDependencies {
     let authorizationService : AuthorizationService
     let userInfoProvider : UserInfoProvider
     let userInputValidator : UserInputValidator
-    let occasionsListService : OccasionsListService
     let visheosListService : VisheosListService
+    
+    let occasionsListService : OccasionsListService
+    let occasionGroupsListService: OccasionGroupsListService
     
     let purchasesInfo: UserPurchasesInfo
     let renderingService : RenderingService

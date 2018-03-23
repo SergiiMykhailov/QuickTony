@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 															loggingService: eventLoggingService)
         let inputValidator     = VisheoUserInputValidator()
         let occasionsList      = VisheoOccasionsListService()
+        let occasionGroups     = VisheoOccasionGroupsListService(occasionList: occasionsList)
         let permissionsService = VisheoAppPermissionsService()
 		let renderingService   = VisheoRenderingService(appStateService: appState);
         let creationService    = VisheoCreationService(userInfoProvider: authService,
@@ -97,8 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                 authorizationService: authService,
                                                 userInfoProvider : authService,
                                                 userInputValidator: inputValidator,
-                                                occasionsListService: occasionsList,
                                                 visheosListService: visheosListService,
+                                                occasionsListService: occasionsList,
+                                                occasionGroupsListService: occasionGroups,
                                                 purchasesInfo:  premiumService,
                                                 renderingService: renderingService,
                                                 creationService: creationService,
