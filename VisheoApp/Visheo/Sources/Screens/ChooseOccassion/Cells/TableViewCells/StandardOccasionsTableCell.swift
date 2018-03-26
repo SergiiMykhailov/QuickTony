@@ -8,14 +8,16 @@
 
 import UIKit
 
-class StandartOccasionsTableCell : UITableViewCell {
+class StandardOccasionsTableCell : UITableViewCell {
     @IBOutlet weak var nameLabel : UILabel!
     @IBOutlet weak var occasionsCollection: UICollectionView!
     
     var occasionsCollectionMediator : OccassionsCollectionMediator?
     
-    func configure(withModel model: Any) {
-        
+    func configure(withModel model: StandardOccasionsTableCellViewModel,
+                   mediator: OccassionsCollectionMediator) {
+        occasionsCollectionMediator = mediator
+        nameLabel.text = model.title
     }
 }
 

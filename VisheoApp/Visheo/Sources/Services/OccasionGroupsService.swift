@@ -26,7 +26,7 @@ protocol OccasionGroup {
     var title : String {get}
     var priority : Int {get}
     var groupType : OccasionGroupType {get}
-    var occasions: [OccasionRecord] { get }
+    var occasions: [OccasionRecord] {get}
     var subTitle : String? {get}
 }
 

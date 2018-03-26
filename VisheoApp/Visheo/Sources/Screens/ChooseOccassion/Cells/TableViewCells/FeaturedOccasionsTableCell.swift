@@ -15,7 +15,10 @@ class FeaturedOccasionsTableCell : UITableViewCell {
     @IBOutlet weak var holidaysCollection: UICollectionView!
     var holidaysCollectionMediator : HolidaysCollectionMediator?
     
-    func configure (withModel model: Any) {
-        
+    func configure (withModel model: FeaturedOccasionsTableCellViewModel,
+                    mediator: HolidaysCollectionMediator) {
+        self.holidaysCollectionMediator = mediator
+        nameLabel.text = model.title
+        instructionLabel.text = model.subTitle
     }
 }

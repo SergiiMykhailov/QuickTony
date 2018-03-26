@@ -9,10 +9,10 @@
 import UIKit
 
 class OccassionsCollectionMediator : NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
-    let viewModel : ChooseOccasionViewModel
+    let viewModel : StandardOccasionsTableCellViewModel
     let occasionsCollection : UICollectionView
     
-    init(viewModel: ChooseOccasionViewModel,
+    init(viewModel: StandardOccasionsTableCellViewModel,
          occasionsCollection: UICollectionView) {
         self.viewModel = viewModel
         self.occasionsCollection = occasionsCollection
