@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 protocol FeaturedOccasionsTableCellViewModel {
     var title : String {get}
@@ -21,6 +22,13 @@ protocol FeaturedOccasionsTableCellViewModel {
 }
 
 struct VisheoFeaturedOccasionsTableCellViewModel : FeaturedOccasionsTableCellViewModel {
+    static func height(forWidth width: CGFloat) -> CGFloat {
+        let heightBeforeCollection = 62 as CGFloat
+        let collectionOffset = 40 as CGFloat
+        return width + heightBeforeCollection - collectionOffset
+    }
+    
+    
     var title : String
     var subTitle : String?
     private var occasionsList : [OccasionRecord]
@@ -41,8 +49,8 @@ struct VisheoFeaturedOccasionsTableCellViewModel : FeaturedOccasionsTableCellVie
                 case (.featured, .featured):
                     return lhs.priority < rhs.priority;
                 default:
-                    let date0 = (lhs.category == .featured) ? Date() : lhs.date ?? Date.distantFuture
-                    let date1 = (rhs.category == .featured) ? Date() : lhs.date ?? Date.distantFuture
+                    let date0 = (lhs.category == .featured) ? Date() : (lhs.date ?? Date.distantFuture)
+                    let date1 = (rhs.category == .featured) ? Date() : (rhs.date ?? Date.distantFuture)
                     return date0.compare(date1) == .orderedAscending
             }
         }
@@ -63,6 +71,6 @@ struct VisheoFeaturedOccasionsTableCellViewModel : FeaturedOccasionsTableCellVie
     
     func occasionViewModel(at index: Int) -> HolidayCellViewModel {
         let model = occasionsList[index]
-        return VisheoHolidayCellViewModel(date: model.date, imageURL: model.previewCover.previewUrl)
+        return VisheoHolidayCellViewModel(date: model.date, imageURL: model.previewCover.url)
     }
 }

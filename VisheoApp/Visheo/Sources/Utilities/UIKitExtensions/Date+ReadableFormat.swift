@@ -14,7 +14,7 @@ extension Date {
         let dateFormat = isYear ? "MMMM yyyy" : "MMMM"
         formatter.dateFormat =  DateFormatter.dateFormat(fromTemplate: dateFormat, options: 0, locale: Locale.current)
         formatter.locale = Locale.current
-        let dateString = String.init(format: NSLocalizedString("%1$@ of %2$@", "Readable format for date"), visheo_dayWithSuffix(), formatter.string(from: self))
+        let dateString = String.init(format: NSLocalizedString("%1$@ of %2$@", comment: "Readable format for date"), visheo_dayWithSuffix(), formatter.string(from: self))
         return dateString
     }
     
@@ -27,10 +27,10 @@ extension Date {
     
     private func visheo_suffix(forDay day: Int) -> String {
         switch day % 10 {
-        case 1: return NSLocalizedString("st", "Suffix for *first")
-        case 2: return NSLocalizedString("nd", "Suffix for *second")
-        case 3: return NSLocalizedString("rd", "Suffix for *third")
-        default: return NSLocalizedString("th", "Suffix for *fourth")
+        case 1: return NSLocalizedString("st", comment:"Suffix for *first")
+        case 2: return NSLocalizedString("nd", comment:"Suffix for *second")
+        case 3: return NSLocalizedString("rd", comment:"Suffix for *third")
+        default: return NSLocalizedString("th", comment:"Suffix for *fourth")
         }
     }
 }

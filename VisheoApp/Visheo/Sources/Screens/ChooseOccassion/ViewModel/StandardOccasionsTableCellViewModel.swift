@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 protocol StandardOccasionsTableCellViewModel {
     var title : String {get}
@@ -20,6 +21,11 @@ protocol StandardOccasionsTableCellViewModel {
 }
 
 struct VisheoStandardOccasionsTableCellViewModel : StandardOccasionsTableCellViewModel {
+    static var height : CGFloat {
+        let collectionViewHeight = 126 as CGFloat
+        return collectionViewHeight
+    }
+    
     func selectOccasion(at index: Int) {
         itemSelectionHandler(occasionsList[index])
     }
@@ -37,7 +43,7 @@ struct VisheoStandardOccasionsTableCellViewModel : StandardOccasionsTableCellVie
     init(withTitle title: String, occasions:[OccasionRecord], handler: @escaping (OccasionRecord) -> ()) {
         self.title = title
         self.occasionsList = occasions.sorted {
-            $0.priority > $1.priority
+            $0.priority < $1.priority
         }
         self.itemSelectionHandler = handler
     }

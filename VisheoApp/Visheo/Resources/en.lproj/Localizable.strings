@@ -2,7 +2,7 @@
 " for %@" = " for %@";
 
 /* Readable format for date */
-"%1$@ of %2$@" = "%1$@ of %2$@"
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
 /* Unlimited visheos subscription template */
 "Unlimited / %@ per month" = "Unlimited / %@ per month";

@@ -63,4 +63,14 @@ class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDa
         cell.configure(withModel: viewModelForGroup, mediator: mediator)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let group = viewModel.occasionGroups[indexPath.row]
+        switch group.groupType {
+        case .featured:
+            return VisheoFeaturedOccasionsTableCellViewModel.height(forWidth: tableView.frame.size.width)
+        case .standard:
+            return VisheoStandardOccasionsTableCellViewModel.height
+        }
+    }
 }

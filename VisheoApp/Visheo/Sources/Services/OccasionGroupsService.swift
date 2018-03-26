@@ -57,11 +57,11 @@ class VisheoOccasionGroupsListService : OccasionGroupsListService {
             self._occasionGroups = occasionGroups.flatMap { $1 as? [String : Any] }
                 .flatMap { VisheoOccasionGroup(dictionary: $0, occasionList: self._occasionListService.occasionRecords) }
                 .sorted { $0.priority < $1.priority }
-            print(self._occasionGroups)
+            self.didChange()
         }
     }
     
-    func didChange(at index: Int) {
+    func didChange() {
         NotificationCenter.default.post(name: .occasionGroupsChanged, object: self)
     }
 
