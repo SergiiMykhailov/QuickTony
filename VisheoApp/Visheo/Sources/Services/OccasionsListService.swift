@@ -93,7 +93,6 @@ class VisheoOccasionsListService : OccasionsListService {
             guard let occasions = snapshot.value as? [Any] else {return}
             self._occasionRecords =  occasions.flatMap { $0 as? [String : Any] }
                                             .flatMap { VisheoOccasionRecord(dictionary: $0) }
-											.filter{ $0.visible }
             self.startObserving()
         }
     }
