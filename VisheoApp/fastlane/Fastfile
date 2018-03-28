@@ -21,7 +21,7 @@ end
 
 
 lane :upload_testflight do
-    scheme_name = 'VisheoStaging'
+    scheme_name = 'Visheo'
     ipa_name = "VisheoVideo.ipa"
 
     gym(
