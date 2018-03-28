@@ -71,6 +71,6 @@ struct VisheoFeaturedOccasionsTableCellViewModel : FeaturedOccasionsTableCellVie
     
     func occasionViewModel(at index: Int) -> HolidayCellViewModel {
         let model = occasionsList[index]
-        return VisheoHolidayCellViewModel(date: model.date, imageURL: model.previewCover.url)
+        return VisheoHolidayCellViewModel(date: model.date, imageURL: model.previewCover.url, isFree: model.isFree)
     }
 }

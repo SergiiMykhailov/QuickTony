@@ -276,21 +276,45 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AS6-df-UMP" customClass="BadgeSwift" customModule="BadgeSwift">
+                                                                        <rect key="frame" x="301" y="310.5" width="24" height="14.5"/>
+                                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="badgeColor">
+                                                                                <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="3"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="0.0"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="size" keyPath="insets">
+                                                                                <size key="value" width="7" height="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
                                                                 </subviews>
                                                             </view>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="x7t-Ms-5zD" secondAttribute="bottom" id="0sh-sA-geh"/>
+                                                                <constraint firstItem="x7t-Ms-5zD" firstAttribute="trailing" secondItem="AS6-df-UMP" secondAttribute="trailing" constant="10" id="1Y1-x9-R6y"/>
                                                                 <constraint firstItem="x7t-Ms-5zD" firstAttribute="leading" secondItem="SJv-xx-bz8" secondAttribute="leading" id="4Xk-Xc-uvf"/>
                                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ycr-zN-ANO" secondAttribute="trailingMargin" id="8hN-r1-aj0"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Ycr-zN-ANO" secondAttribute="bottom" constant="20" id="DJI-pm-aLa"/>
                                                                 <constraint firstAttribute="trailing" secondItem="x7t-Ms-5zD" secondAttribute="trailing" id="TyI-yR-MEB"/>
+                                                                <constraint firstItem="x7t-Ms-5zD" firstAttribute="bottom" secondItem="AS6-df-UMP" secondAttribute="bottom" constant="10" id="Zmz-zh-ESJ"/>
                                                                 <constraint firstItem="x7t-Ms-5zD" firstAttribute="top" secondItem="SJv-xx-bz8" secondAttribute="top" id="c4Y-3c-GUG"/>
                                                                 <constraint firstItem="Ycr-zN-ANO" firstAttribute="leading" secondItem="SJv-xx-bz8" secondAttribute="leading" constant="20" id="gEk-dI-mjI"/>
+                                                                <constraint firstItem="AS6-df-UMP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SJv-xx-bz8" secondAttribute="leading" constant="10" id="i6M-yF-Fzu"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="holidayCoverImage" destination="x7t-Ms-5zD" id="q1N-Zn-GDf"/>
                                                                 <outlet property="holidayDateLabel" destination="Ycr-zN-ANO" id="vAU-xs-nZL"/>
+                                                                <outlet property="holidayFreeLabel" destination="AS6-df-UMP" id="AeM-V7-tfV"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -363,10 +387,33 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olD-B9-E1z" customClass="BadgeSwift" customModule="BadgeSwift">
+                                                                        <rect key="frame" x="71" y="80" width="24" height="14.5"/>
+                                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="badgeColor">
+                                                                                <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="3"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="0.0"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="size" keyPath="insets">
+                                                                                <size key="value" width="7" height="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
+                                                                <constraint firstItem="olD-B9-E1z" firstAttribute="trailing" secondItem="H0z-pe-boq" secondAttribute="trailing" constant="-10" id="Do1-q3-gj0"/>
                                                                 <constraint firstAttribute="bottom" secondItem="H0z-pe-boq" secondAttribute="bottom" constant="21" id="M6g-5L-32q"/>
+                                                                <constraint firstItem="olD-B9-E1z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m7b-Wo-hz3" secondAttribute="leading" constant="10" id="Mdu-ir-zr5"/>
+                                                                <constraint firstItem="olD-B9-E1z" firstAttribute="bottom" secondItem="H0z-pe-boq" secondAttribute="bottom" constant="-10" id="U2I-dT-opN"/>
                                                                 <constraint firstItem="WOQ-BF-cQF" firstAttribute="top" secondItem="H0z-pe-boq" secondAttribute="bottom" id="UXa-24-g0q"/>
                                                                 <constraint firstItem="WOQ-BF-cQF" firstAttribute="leading" secondItem="m7b-Wo-hz3" secondAttribute="leading" id="aJ2-Dw-kQn"/>
                                                                 <constraint firstAttribute="trailing" secondItem="WOQ-BF-cQF" secondAttribute="trailing" id="lga-fe-r9o"/>
@@ -377,6 +424,7 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="occasionCoverImage" destination="H0z-pe-boq" id="SSx-fD-YqO"/>
+                                                                <outlet property="occasionFree" destination="olD-B9-E1z" id="w3M-Bt-BGK"/>
                                                                 <outlet property="occasionNameLabel" destination="WOQ-BF-cQF" id="KYR-eS-aBb"/>
                                                             </connections>
                                                         </collectionViewCell>
@@ -972,21 +1020,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="bdG-sn-BZg">
-                                <rect key="frame" x="0.0" y="229.5" width="0.0" height="144"/>
+                                <rect key="frame" x="61" y="-16804.5" width="253" height="34212"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR PHOTOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-PL-lMo">
+                                        <rect key="frame" x="0.0" y="0.0" width="253" height="8483.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add memorable to your Visheo — please allow Visheo to access your photos when prompted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-CT-UNf">
-                                        <rect key="frame" x="0.0" y="42" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="8525.5" width="253" height="25584.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-vf-rCc">
-                                        <rect key="frame" x="0.0" y="84" width="0.0" height="60"/>
+                                        <rect key="frame" x="0.0" y="34152" width="253" height="60"/>
                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ss-oF-nBH"/>

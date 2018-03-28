@@ -14,7 +14,7 @@ class ChooseOccasionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewMediator = OccasionGroupsTableMediator(withViewModel: viewModel, tableView: tableView, occasionGroups:viewModel.occasionGroups)
+        tableViewMediator = OccasionGroupsTableMediator(withViewModel: viewModel, tableView: tableView)
         
         viewModel.didChangeCallback = {[weak self] in
             self?.tableView.reloadData()

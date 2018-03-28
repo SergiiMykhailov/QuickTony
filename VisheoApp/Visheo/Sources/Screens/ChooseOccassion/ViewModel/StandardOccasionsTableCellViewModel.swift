@@ -32,7 +32,7 @@ struct VisheoStandardOccasionsTableCellViewModel : StandardOccasionsTableCellVie
     
     func occasionViewModel(at index: Int) -> OccasionCellViewModel {
         let model = occasionsList[index]
-        return VisheoOccasionCellViewModel.init(name: model.name, imageURL: model.previewCover.previewUrl)
+        return VisheoOccasionCellViewModel(name: model.name, imageURL: model.previewCover.previewUrl, isFree: model.isFree)
     }
     
     var title: String
