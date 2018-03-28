@@ -246,6 +246,8 @@ class VisheoPreviewViewModel : PreviewViewModel
                 	self?.sendVisheo()
 				}
             }
+        } else if self.assets.originalOccasion.isFree {
+            router?.sendVisheo(with: assets, premium: true)
         } else if purchasesInfo.currentUserSubscriptionState() == .active {
             router?.sendVisheo(with: assets, premium: true)
         } else if purchasesInfo.currentUserSubscriptionState() == .expired {

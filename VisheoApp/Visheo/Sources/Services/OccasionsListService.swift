@@ -29,6 +29,8 @@ protocol OccasionRecord {
     var priority : Int {get}
     var category : OccasionCategory {get}
     
+    var isFree : Bool {get}
+    
     var previewCover: OccasionCover {get}
     var covers : [OccasionCover] {get}
 	var soundtracks: [OccasionSoundtrack] { get }
@@ -203,6 +205,7 @@ class VisheoOccasionRecord : OccasionRecord {
     var covers: [OccasionCover]
     let priority: Int
 	let visible: Bool
+    let isFree: Bool
     let name : String
     let date : Date?
     let category : OccasionCategory
@@ -250,6 +253,7 @@ class VisheoOccasionRecord : OccasionRecord {
         }
 		
 		visible = dictionary["visibility"] as? Bool ?? true
+        isFree = dictionary["free"] as? Bool ?? false
         
 		if let stringCat = dictionary["category"] as? String, let cat = OccasionCategory(rawValue: stringCat) {
 			category = cat;

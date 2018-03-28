@@ -18,7 +18,7 @@ class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDa
     var viewModel: ChooseOccasionViewModel
     var tableView: UITableView
     
-    init(withViewModel viewModel: ChooseOccasionViewModel, tableView: UITableView, occasionGroups: [OccasionGroup]) {
+    init(withViewModel viewModel: ChooseOccasionViewModel, tableView: UITableView) {
         self.tableView  = tableView
         self.viewModel  = viewModel
         
