@@ -48,6 +48,10 @@ class VisheoOccasionGroupsListService : OccasionGroupsListService {
         NotificationCenter.default.addObserver(forName: Notification.Name.authStateChanged, object: nil, queue: OperationQueue.main) { (notitication) in
             self.loadOccasionGroups()
         }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.occasionsChanged, object: nil, queue: OperationQueue.main) { (notitication) in
+            self.loadOccasionGroups()
+        }
     }
     
     func loadOccasionGroups() {
