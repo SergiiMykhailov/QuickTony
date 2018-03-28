@@ -9,13 +9,13 @@
 import UIKit
 
 class HolidaysCollectionMediator : NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    let viewModel : ChooseOccasionViewModel
+    let viewModel : FeaturedOccasionsTableCellViewModel
     let holidaysCollection : UICollectionView
     var currentPage: Int = 0
     var containerWidth : CGFloat
     let itemsSpacing : CGFloat = 10
     
-    init(viewModel: ChooseOccasionViewModel,
+    init(viewModel: FeaturedOccasionsTableCellViewModel,
          holidaysCollection: UICollectionView,
          containerWidth: CGFloat) {
         self.viewModel = viewModel
@@ -29,8 +29,8 @@ class HolidaysCollectionMediator : NSObject, UICollectionViewDelegate, UICollect
     func reloadData() {
 		holidaysCollection.reloadData()
 		holidaysCollection.layoutIfNeeded();
-		if let firstFutureIndex = viewModel.firstFutureHolidayIndex {
-			scrollToItem(number: firstFutureIndex);
+		if let firstSelectedIndex = viewModel.firstSelectedIndex {
+			scrollToItem(number: firstSelectedIndex);
 		}
     }
     
@@ -39,18 +39,18 @@ class HolidaysCollectionMediator : NSObject, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.selectHoliday(at: indexPath.row)
+        viewModel.selectOccasion(at: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "holidayCell", for: indexPath) as! HolidayCollectionViewCell
-        let vm = viewModel.holidayViewModel(at: indexPath.row)
+        let vm = viewModel.occasionViewModel(at: indexPath.row)
         cell.setup(with: vm)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.holidaysCount
+        return viewModel.occasionsCount
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

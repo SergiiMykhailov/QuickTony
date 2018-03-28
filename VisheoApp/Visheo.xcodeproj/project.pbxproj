@@ -8,8 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		010D8975A0A9DB78A8A50DC0 /* Pods_App_VisheoStaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */; };
+		2C17849520694D3300ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
+		2C17849820694E7C00ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
 		2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
+		2C9381FC20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
+		2C9381FD20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
+		2C93820120650F5800348BAA /* StandardOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */; };
+		2C93820220650F5800348BAA /* StandardOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */; };
+		2C938208206540B200348BAA /* OccasionGroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C938207206540B200348BAA /* OccasionGroupsService.swift */; };
+		2C938209206540B200348BAA /* OccasionGroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C938207206540B200348BAA /* OccasionGroupsService.swift */; };
+		2C93820B2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820A2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift */; };
+		2C93820C2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820A2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift */; };
+		2C93820E2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820D2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift */; };
+		2C93820F2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820D2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift */; };
+		2C9382112068EC1F00348BAA /* OccasionGroupsTableMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9382102068EC1F00348BAA /* OccasionGroupsTableMediator.swift */; };
+		2C9382122068EC1F00348BAA /* OccasionGroupsTableMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9382102068EC1F00348BAA /* OccasionGroupsTableMediator.swift */; };
 		9201B2DF1FE284C700FAC820 /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */; };
 		9204818D1FFCDA4E0053810D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */; };
 		9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */; };
@@ -401,7 +415,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ReadableFormat.swift"; sourceTree = "<group>"; };
 		2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRuleControllerViewController.swift; sourceTree = "<group>"; };
+		2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedOccasionsTableCell.swift; sourceTree = "<group>"; };
+		2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOccasionsTableCell.swift; sourceTree = "<group>"; };
+		2C938207206540B200348BAA /* OccasionGroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionGroupsService.swift; sourceTree = "<group>"; };
+		2C93820A2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedOccasionsTableCellViewModel.swift; sourceTree = "<group>"; };
+		2C93820D2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOccasionsTableCellViewModel.swift; sourceTree = "<group>"; };
+		2C9382102068EC1F00348BAA /* OccasionGroupsTableMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionGroupsTableMediator.swift; sourceTree = "<group>"; };
 		2FD6F74B86B302F75CC70FF6 /* Pods-App-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo.release.xcconfig"; sourceTree = "<group>"; };
 		391D08EBDF5AD694F5624C6D /* Pods-App-VisheoStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-VisheoStaging.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging.release.xcconfig"; sourceTree = "<group>"; };
 		481AD60403C8F371649DC574 /* Pods-App-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -612,6 +633,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C93820320650F6400348BAA /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */,
+				2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		2C93820420650F6F00348BAA /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				B4BCABD41FB8CC7C003EDC7F /* HolidayCollectionViewCell.swift */,
+				B4BCABD51FB8CC7C003EDC7F /* OccassionCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		2C93820520650FE200348BAA /* CollectionMediators */ = {
+			isa = PBXGroup;
+			children = (
+				B4BCABD71FB8CC7C003EDC7F /* HolidaysCollectionMediator.swift */,
+				B4BCABD81FB8CC7C003EDC7F /* OccassionsCollectionMediator.swift */,
+			);
+			path = CollectionMediators;
+			sourceTree = "<group>";
+		};
 		3A25D211DE89E6E80DEC2011 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1050,6 +1098,7 @@
 				B4A79CF21FACB81F00C208CF /* UIViewController+Alert.swift */,
 				B48AAAD11FAA03CC000BB33B /* UIView+LayerInspectable.swift */,
 				B437CF711FDEAC1900E28C20 /* Date+Calendar.swift */,
+				2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */,
 			);
 			path = UIKitExtensions;
 			sourceTree = "<group>";
@@ -1184,11 +1233,11 @@
 			isa = PBXGroup;
 			children = (
 				B4BCABD31FB8CC7C003EDC7F /* Cells */,
-				B4BCABD61FB8CC7C003EDC7F /* ChooseOccasionViewController.swift */,
-				B4BCABD71FB8CC7C003EDC7F /* HolidaysCollectionMediator.swift */,
-				B4BCABD81FB8CC7C003EDC7F /* OccassionsCollectionMediator.swift */,
+				2C93820520650FE200348BAA /* CollectionMediators */,
 				B4BCABD91FB8CC7C003EDC7F /* Router */,
 				B4BCABDB1FB8CC7C003EDC7F /* ViewModel */,
+				2C9382102068EC1F00348BAA /* OccasionGroupsTableMediator.swift */,
+				B4BCABD61FB8CC7C003EDC7F /* ChooseOccasionViewController.swift */,
 			);
 			path = ChooseOccassion;
 			sourceTree = "<group>";
@@ -1196,8 +1245,8 @@
 		B4BCABD31FB8CC7C003EDC7F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B4BCABD41FB8CC7C003EDC7F /* HolidayCollectionViewCell.swift */,
-				B4BCABD51FB8CC7C003EDC7F /* OccassionCollectionViewCell.swift */,
+				2C93820420650F6F00348BAA /* CollectionViewCells */,
+				2C93820320650F6400348BAA /* TableViewCells */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1216,6 +1265,8 @@
 				B4BCABDC1FB8CC7C003EDC7F /* ChooseOccasionViewModel.swift */,
 				B4BCABDD1FB8CC7C003EDC7F /* HolidayCellViewModel.swift */,
 				B4BCABDE1FB8CC7C003EDC7F /* OccasionCellViewModel.swift */,
+				2C93820A2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift */,
+				2C93820D2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1341,6 +1392,7 @@
 				B4DA3E7C1FAA3C1800D8F2F9 /* AppStateService.swift */,
 				B4A79CED1FAC81D500C208CF /* AuthorizationService.swift */,
 				925B917F1FEA4DE500E7ACC6 /* FeedbackService.swift */,
+				2C938207206540B200348BAA /* OccasionGroupsService.swift */,
 				B48259021FB3060800A7F5B0 /* OccasionsListService.swift */,
 				A60CE6EB830286290C669520 /* PremiumCardsService.swift */,
 				92AA3CFD1FD06D5900E3C95A /* SoundtracksService.swift */,
@@ -1800,6 +1852,7 @@
 				920F8B351FF6BDC90087C45D /* ShareViewModel.swift in Sources */,
 				920F8B361FF6BDC90087C45D /* PagedCoverCollectionMediator.swift in Sources */,
 				920F8B371FF6BDC90087C45D /* BestPracticeCollectionViewCell.swift in Sources */,
+				2C17849820694E7C00ACA197 /* Date+ReadableFormat.swift in Sources */,
 				920F8B381FF6BDC90087C45D /* CameraViewModel.swift in Sources */,
 				920F8B391FF6BDC90087C45D /* TipsViewModel.swift in Sources */,
 				920F8B3A1FF6BDC90087C45D /* UIViewController+Alert.swift in Sources */,
@@ -1824,10 +1877,12 @@
 				920F8B4D1FF6BDC90087C45D /* CameraRecordIndicator.swift in Sources */,
 				920F8B4E1FF6BDC90087C45D /* RedeemViewModel.swift in Sources */,
 				920F8B4F1FF6BDC90087C45D /* OnboardingViewController.swift in Sources */,
+				2C93820C2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift in Sources */,
 				920F8B501FF6BDC90087C45D /* PhotoSelectionIndexView.swift in Sources */,
 				920F8B511FF6BDC90087C45D /* CoverCellViewModel.swift in Sources */,
 				920F8B521FF6BDC90087C45D /* VideoView.swift in Sources */,
 				920F8BE81FF6C0E80087C45D /* Environment.swift in Sources */,
+				2C938209206540B200348BAA /* OccasionGroupsService.swift in Sources */,
 				920F8B531FF6BDC90087C45D /* AlignedFlowLayout.swift in Sources */,
 				920F8B541FF6BDC90087C45D /* MenuItemViewModel.swift in Sources */,
 				920F8B551FF6BDC90087C45D /* SoundtrackCollectionViewCell.swift in Sources */,
@@ -1871,6 +1926,7 @@
 				920F8B7B1FF6BDC90087C45D /* PracticeTipCellModel.swift in Sources */,
 				920F8B7C1FF6BDC90087C45D /* EventLoggingService.swift in Sources */,
 				920F8B7D1FF6BDC90087C45D /* VisheoCellViewModel.swift in Sources */,
+				2C93820F2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */,
 				920F8B7E1FF6BDC90087C45D /* PhotoPickerViewModel.swift in Sources */,
 				920F8B7F1FF6BDC90087C45D /* SignUpViewModel.swift in Sources */,
 				920F8B801FF6BDC90087C45D /* RedeemViewController.swift in Sources */,
@@ -1888,6 +1944,7 @@
 				920F8B8C1FF6BDC90087C45D /* VisheoCreationService.swift in Sources */,
 				920F8B8D1FF6BDC90087C45D /* CameraViewController.swift in Sources */,
 				920F8B8E1FF6BDC90087C45D /* LabeledProgressView.swift in Sources */,
+				2C9381FD20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */,
 				920F8B8F1FF6BDC90087C45D /* VideoTrimmingRouter.swift in Sources */,
 				920F8B901FF6BDC90087C45D /* RouterAsembly.swift in Sources */,
 				920F8B911FF6BDC90087C45D /* UIView+LayerInspectable.swift in Sources */,
@@ -1900,6 +1957,7 @@
 				920F8B981FF6BDC90087C45D /* RedeemSuccessViewController.swift in Sources */,
 				920F8B991FF6BDC90087C45D /* AppDelegate.swift in Sources */,
 				920F8B9A1FF6BDC90087C45D /* UserNotificationsService.swift in Sources */,
+				2C93820220650F5800348BAA /* StandardOccasionsTableCell.swift in Sources */,
 				2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */,
 				920F8B9B1FF6BDC90087C45D /* VisheoPixelBufferAdaptor.swift in Sources */,
 				920F8B9C1FF6BDC90087C45D /* ProgressIndicator.swift in Sources */,
@@ -1911,6 +1969,7 @@
 				920F8BA21FF6BDC90087C45D /* SignInViewController.swift in Sources */,
 				920F8BA31FF6BDC90087C45D /* OccasionCellViewModel.swift in Sources */,
 				920F8BA41FF6BDC90087C45D /* MenuViewController.swift in Sources */,
+				2C9382122068EC1F00348BAA /* OccasionGroupsTableMediator.swift in Sources */,
 				920F8BA51FF6BDC90087C45D /* MenuViewModel.swift in Sources */,
 				920F8BA61FF6BDC90087C45D /* WordIdeaCollectionViewCell.swift in Sources */,
 				920F8BA71FF6BDC90087C45D /* TipsCollectionViewMediator.swift in Sources */,
@@ -1944,6 +2003,7 @@
 				B467612B1FC711BD006E9CB2 /* ShareViewModel.swift in Sources */,
 				B475CEDB1FBDA93700808909 /* PagedCoverCollectionMediator.swift in Sources */,
 				92A3BA6D1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift in Sources */,
+				2C17849520694D3300ACA197 /* Date+ReadableFormat.swift in Sources */,
 				9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */,
 				92A3BA671FF35BAB006FA011 /* TipsViewModel.swift in Sources */,
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
@@ -1968,10 +2028,12 @@
 				92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */,
 				B437CF7E1FDEE3D300E28C20 /* RedeemViewModel.swift in Sources */,
 				B4BCAC001FB8CC7D003EDC7F /* OnboardingViewController.swift in Sources */,
+				2C93820B2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift in Sources */,
 				B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */,
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
 				92FF5F461FD9C7F9009EE6D2 /* VideoView.swift in Sources */,
 				920F8BE71FF6C0E80087C45D /* Environment.swift in Sources */,
+				2C938208206540B200348BAA /* OccasionGroupsService.swift in Sources */,
 				92548DE41FF37602001F692E /* AlignedFlowLayout.swift in Sources */,
 				B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */,
 				920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */,
@@ -2015,6 +2077,7 @@
 				92548DE81FF37A1A001F692E /* PracticeTipCellModel.swift in Sources */,
 				926B53CE1FE42EB40031B1A0 /* EventLoggingService.swift in Sources */,
 				B4EB86DB1FD1CC7B00963150 /* VisheoCellViewModel.swift in Sources */,
+				2C93820E2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */,
 				B44450DD1FBF02E50021772F /* PhotoPickerViewModel.swift in Sources */,
 				B4BCABF31FB8CC7D003EDC7F /* SignUpViewModel.swift in Sources */,
 				B437CF761FDEE35900E28C20 /* RedeemViewController.swift in Sources */,
@@ -2032,6 +2095,7 @@
 				B4CF320F1FC87E540063AA52 /* VisheoCreationService.swift in Sources */,
 				9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */,
 				B4F63DBC1FC83D4100E05B90 /* LabeledProgressView.swift in Sources */,
+				2C9381FC20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */,
 				B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */,
 				B4AEE0E21FD01F1B0043A39A /* RouterAsembly.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
@@ -2044,6 +2108,7 @@
 				9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
 				92C649021FD6036B00D6BC1A /* UserNotificationsService.swift in Sources */,
+				2C93820120650F5800348BAA /* StandardOccasionsTableCell.swift in Sources */,
 				2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */,
 				922B645F1FD991420085F188 /* VisheoPixelBufferAdaptor.swift in Sources */,
 				920EDFE91FCF1AB100D121ED /* ProgressIndicator.swift in Sources */,
@@ -2055,6 +2120,7 @@
 				B4BCABEF1FB8CC7D003EDC7F /* SignInViewController.swift in Sources */,
 				B4BCABFC1FB8CC7D003EDC7F /* OccasionCellViewModel.swift in Sources */,
 				B453F1D11FCF05B5003D61CB /* MenuViewController.swift in Sources */,
+				2C9382112068EC1F00348BAA /* OccasionGroupsTableMediator.swift in Sources */,
 				B453F1D71FCF1AC4003D61CB /* MenuViewModel.swift in Sources */,
 				92A3BA6B1FF361C4006FA011 /* WordIdeaCollectionViewCell.swift in Sources */,
 				92A3BA691FF35F0F006FA011 /* TipsCollectionViewMediator.swift in Sources */,

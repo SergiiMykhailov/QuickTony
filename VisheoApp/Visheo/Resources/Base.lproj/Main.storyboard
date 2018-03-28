@@ -195,182 +195,224 @@
             <objects>
                 <viewController storyboardIdentifier="ChooseOccasionViewController" id="J8F-X6-tff" customClass="ChooseOccasionViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PZA-0W-lc3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="606"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iN2-6H-mSy">
-                                <rect key="frame" x="0.0" y="20" width="375" height="335"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fvp-AG-RGc">
-                                    <size key="itemSize" width="335" height="335"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="holidayCell" id="Inv-4V-Tn8" customClass="HolidayCollectionViewCell" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="0.0" width="335" height="335"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2X7-Hs-fYK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="606"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeaturedOccasionsTableCell" rowHeight="394" id="Rhw-1p-oEG" customClass="FeaturedOccasionsTableCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="394"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rhw-1p-oEG" id="Xt7-X0-Ra2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="394"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wue-Wu-i5H">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="6"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-P7-EP7" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="281" width="130.5" height="34"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="34" id="xFM-h5-j6w"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozb-Ig-TEO">
+                                                    <rect key="frame" x="20" y="10" width="100.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
-                                                    <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="17"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
-                                                            <real key="value" value="17"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click on the ocassion to see collection of Cover Arts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wD5-Nt-D43">
+                                                    <rect key="frame" x="20" y="29" width="280" height="16"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fWU-El-vxt">
+                                                    <rect key="frame" x="0.0" y="51" width="375" height="335"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="THs-VG-LGL">
+                                                        <size key="itemSize" width="335" height="335"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="holidayCell" id="SJv-xx-bz8" customClass="HolidayCollectionViewCell" customModule="Visheo" customModuleProvider="target">
+                                                            <rect key="frame" x="20" y="0.0" width="335" height="335"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x7t-Ms-5zD">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="6"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycr-zN-ANO" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
+                                                                        <rect key="frame" x="20" y="281" width="130.5" height="34"/>
+                                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="34" id="jrh-Ew-3Cj"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                                                        <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="17"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                                                <real key="value" value="17"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="x7t-Ms-5zD" secondAttribute="bottom" id="0sh-sA-geh"/>
+                                                                <constraint firstItem="x7t-Ms-5zD" firstAttribute="leading" secondItem="SJv-xx-bz8" secondAttribute="leading" id="4Xk-Xc-uvf"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ycr-zN-ANO" secondAttribute="trailingMargin" id="8hN-r1-aj0"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Ycr-zN-ANO" secondAttribute="bottom" constant="20" id="DJI-pm-aLa"/>
+                                                                <constraint firstAttribute="trailing" secondItem="x7t-Ms-5zD" secondAttribute="trailing" id="TyI-yR-MEB"/>
+                                                                <constraint firstItem="x7t-Ms-5zD" firstAttribute="top" secondItem="SJv-xx-bz8" secondAttribute="top" id="c4Y-3c-GUG"/>
+                                                                <constraint firstItem="Ycr-zN-ANO" firstAttribute="leading" secondItem="SJv-xx-bz8" secondAttribute="leading" constant="20" id="gEk-dI-mjI"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="holidayCoverImage" destination="x7t-Ms-5zD" id="q1N-Zn-GDf"/>
+                                                                <outlet property="holidayDateLabel" destination="Ycr-zN-ANO" id="vAU-xs-nZL"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
                                             </subviews>
-                                        </view>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Wue-Wu-i5H" secondAttribute="bottom" id="2CT-wn-3lD"/>
-                                            <constraint firstItem="Fkg-P7-EP7" firstAttribute="leading" secondItem="Inv-4V-Tn8" secondAttribute="leading" constant="20" id="DoV-9c-2GF"/>
-                                            <constraint firstAttribute="trailing" secondItem="Wue-Wu-i5H" secondAttribute="trailing" id="Du6-bm-SqM"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fkg-P7-EP7" secondAttribute="trailingMargin" id="OYd-kx-X5F"/>
-                                            <constraint firstItem="Wue-Wu-i5H" firstAttribute="top" secondItem="Inv-4V-Tn8" secondAttribute="top" id="h2m-cE-6fd"/>
-                                            <constraint firstItem="Wue-Wu-i5H" firstAttribute="leading" secondItem="Inv-4V-Tn8" secondAttribute="leading" id="k1G-fh-V45"/>
-                                            <constraint firstAttribute="bottom" secondItem="Fkg-P7-EP7" secondAttribute="bottom" constant="20" id="kcx-v6-qYB"/>
-                                        </constraints>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="fWU-El-vxt" secondAttribute="bottom" constant="8" id="0r8-0X-WbJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="fWU-El-vxt" secondAttribute="trailing" id="7kU-HK-e65"/>
+                                                <constraint firstItem="fWU-El-vxt" firstAttribute="leading" secondItem="Xt7-X0-Ra2" secondAttribute="leading" id="CRO-lf-3iw"/>
+                                                <constraint firstItem="wD5-Nt-D43" firstAttribute="top" secondItem="ozb-Ig-TEO" secondAttribute="bottom" id="HK7-go-NlR"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ozb-Ig-TEO" secondAttribute="trailing" constant="20" id="V0X-aj-0Qo"/>
+                                                <constraint firstItem="fWU-El-vxt" firstAttribute="top" secondItem="wD5-Nt-D43" secondAttribute="bottom" constant="6" id="YnN-ip-AbZ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wD5-Nt-D43" secondAttribute="trailing" constant="20" id="c35-Jj-xzj"/>
+                                                <constraint firstItem="ozb-Ig-TEO" firstAttribute="top" secondItem="Xt7-X0-Ra2" secondAttribute="top" constant="10" id="guG-gN-tsE"/>
+                                                <constraint firstItem="fWU-El-vxt" firstAttribute="height" secondItem="Xt7-X0-Ra2" secondAttribute="width" constant="-40" id="ntg-40-rZj"/>
+                                                <constraint firstItem="ozb-Ig-TEO" firstAttribute="leading" secondItem="Xt7-X0-Ra2" secondAttribute="leading" constant="20" id="xVm-Q6-wqs"/>
+                                                <constraint firstItem="wD5-Nt-D43" firstAttribute="leading" secondItem="Xt7-X0-Ra2" secondAttribute="leading" constant="20" id="xbK-dV-X9Q"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="holidayCoverImage" destination="Wue-Wu-i5H" id="TUP-5i-TFA"/>
-                                            <outlet property="holidayDateLabel" destination="Fkg-P7-EP7" id="JCw-zr-EoG"/>
+                                            <outlet property="holidaysCollection" destination="fWU-El-vxt" id="htQ-8k-CAh"/>
+                                            <outlet property="instructionLabel" destination="wD5-Nt-D43" id="bdM-GS-Oyv"/>
+                                            <outlet property="nameLabel" destination="ozb-Ig-TEO" id="gie-8v-UyV"/>
                                         </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbX-Em-Vhb">
-                                <rect key="frame" x="20" y="375" width="335" height="1"/>
-                                <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="R81-g0-mOg"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations on occasion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-G6-XCX">
-                                <rect key="frame" x="20" y="391" width="206" height="19"/>
-                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
-                                <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-gy-rd0">
-                                <rect key="frame" x="0.0" y="418" width="375" height="126"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="126" id="eYd-pZ-lZ8"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H7n-Hi-hQi">
-                                    <size key="itemSize" width="105" height="126"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="occassionCell" id="m7b-Wo-hz3" customClass="OccassionCollectionViewCell" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="0.0" width="105" height="126"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="105" height="126"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StandardOccasionsTableCell" rowHeight="163" id="X4O-Hj-K7r" customClass="StandardOccasionsTableCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="422" width="375" height="163"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X4O-Hj-K7r" id="yMa-JD-cec">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0z-pe-boq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="6"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOQ-BF-cQF">
-                                                    <rect key="frame" x="0.0" y="105" width="105" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-gy-rd0">
+                                                    <rect key="frame" x="0.0" y="31" width="375" height="126"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="126" id="eYd-pZ-lZ8"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H7n-Hi-hQi">
+                                                        <size key="itemSize" width="105" height="126"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="occassionCell" id="m7b-Wo-hz3" customClass="OccassionCollectionViewCell" customModule="Visheo" customModuleProvider="target">
+                                                            <rect key="frame" x="20" y="0.0" width="105" height="126"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="105" height="126"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOQ-BF-cQF">
+                                                                        <rect key="frame" x="0.0" y="105" width="105" height="21"/>
+                                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                                        <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0z-pe-boq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="6"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="H0z-pe-boq" secondAttribute="bottom" constant="21" id="M6g-5L-32q"/>
+                                                                <constraint firstItem="WOQ-BF-cQF" firstAttribute="top" secondItem="H0z-pe-boq" secondAttribute="bottom" id="UXa-24-g0q"/>
+                                                                <constraint firstItem="WOQ-BF-cQF" firstAttribute="leading" secondItem="m7b-Wo-hz3" secondAttribute="leading" id="aJ2-Dw-kQn"/>
+                                                                <constraint firstAttribute="trailing" secondItem="WOQ-BF-cQF" secondAttribute="trailing" id="lga-fe-r9o"/>
+                                                                <constraint firstAttribute="bottom" secondItem="WOQ-BF-cQF" secondAttribute="bottom" id="rWy-kp-0aE"/>
+                                                                <constraint firstItem="H0z-pe-boq" firstAttribute="top" secondItem="m7b-Wo-hz3" secondAttribute="top" id="wxd-3V-QMZ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="H0z-pe-boq" secondAttribute="trailing" id="wyc-LH-U81"/>
+                                                                <constraint firstItem="H0z-pe-boq" firstAttribute="leading" secondItem="m7b-Wo-hz3" secondAttribute="leading" id="yey-zL-zg9"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="occasionCoverImage" destination="H0z-pe-boq" id="SSx-fD-YqO"/>
+                                                                <outlet property="occasionNameLabel" destination="WOQ-BF-cQF" id="KYR-eS-aBb"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations on occasion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-G6-XCX">
+                                                    <rect key="frame" x="20" y="8" width="206" height="19"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                                     <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="H0z-pe-boq" secondAttribute="bottom" constant="21" id="M6g-5L-32q"/>
-                                            <constraint firstItem="WOQ-BF-cQF" firstAttribute="top" secondItem="H0z-pe-boq" secondAttribute="bottom" id="UXa-24-g0q"/>
-                                            <constraint firstItem="WOQ-BF-cQF" firstAttribute="leading" secondItem="m7b-Wo-hz3" secondAttribute="leading" id="aJ2-Dw-kQn"/>
-                                            <constraint firstAttribute="trailing" secondItem="WOQ-BF-cQF" secondAttribute="trailing" id="lga-fe-r9o"/>
-                                            <constraint firstAttribute="bottom" secondItem="WOQ-BF-cQF" secondAttribute="bottom" id="rWy-kp-0aE"/>
-                                            <constraint firstItem="H0z-pe-boq" firstAttribute="top" secondItem="m7b-Wo-hz3" secondAttribute="top" id="wxd-3V-QMZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="H0z-pe-boq" secondAttribute="trailing" id="wyc-LH-U81"/>
-                                            <constraint firstItem="H0z-pe-boq" firstAttribute="leading" secondItem="m7b-Wo-hz3" secondAttribute="leading" id="yey-zL-zg9"/>
-                                        </constraints>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="U4i-gy-rd0" secondAttribute="bottom" constant="6" id="7gN-Ke-ou2"/>
+                                                <constraint firstItem="U4i-gy-rd0" firstAttribute="leading" secondItem="yMa-JD-cec" secondAttribute="leading" id="J52-bv-AFP"/>
+                                                <constraint firstItem="DaM-G6-XCX" firstAttribute="top" secondItem="yMa-JD-cec" secondAttribute="top" constant="8" id="PUO-SQ-CXG"/>
+                                                <constraint firstItem="DaM-G6-XCX" firstAttribute="leading" secondItem="yMa-JD-cec" secondAttribute="leading" constant="20" id="YdI-HO-Fjb"/>
+                                                <constraint firstAttribute="trailing" secondItem="U4i-gy-rd0" secondAttribute="trailing" id="cHO-jr-jXt"/>
+                                                <constraint firstItem="U4i-gy-rd0" firstAttribute="top" secondItem="DaM-G6-XCX" secondAttribute="bottom" constant="4" id="coq-Yl-WTE"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DaM-G6-XCX" secondAttribute="trailing" constant="20" id="dsQ-gm-YPf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="occasionCoverImage" destination="H0z-pe-boq" id="SSx-fD-YqO"/>
-                                            <outlet property="occasionNameLabel" destination="WOQ-BF-cQF" id="KYR-eS-aBb"/>
+                                            <outlet property="nameLabel" destination="DaM-G6-XCX" id="zBd-EY-MtM"/>
+                                            <outlet property="occasionsCollection" destination="U4i-gy-rd0" id="eEl-S2-bDg"/>
                                         </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHq-yA-6S2">
-                                <rect key="frame" x="20" y="565" width="335" height="1"/>
-                                <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="hCE-wc-Okk"/>
-                                </constraints>
-                                <viewLayoutGuide key="safeArea" id="p6U-sH-Tir"/>
-                            </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="U4i-gy-rd0" firstAttribute="top" secondItem="DaM-G6-XCX" secondAttribute="bottom" constant="8" id="70g-Bz-nja"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DaM-G6-XCX" secondAttribute="trailing" constant="20" symbolic="YES" id="BxZ-Za-bA9"/>
-                            <constraint firstItem="DaM-G6-XCX" firstAttribute="top" secondItem="FbX-Em-Vhb" secondAttribute="bottom" constant="15" id="DSt-0O-foa"/>
-                            <constraint firstItem="cHq-yA-6S2" firstAttribute="top" secondItem="U4i-gy-rd0" secondAttribute="bottom" constant="21" id="Dmm-su-Fjb"/>
-                            <constraint firstItem="zwo-40-2cB" firstAttribute="trailing" secondItem="FbX-Em-Vhb" secondAttribute="trailing" constant="20" id="IzK-Jb-6F9"/>
-                            <constraint firstItem="iN2-6H-mSy" firstAttribute="top" secondItem="zwo-40-2cB" secondAttribute="top" constant="20" id="NeO-qf-jSU"/>
-                            <constraint firstItem="FbX-Em-Vhb" firstAttribute="top" secondItem="iN2-6H-mSy" secondAttribute="bottom" constant="20" id="OIl-0L-nsC"/>
-                            <constraint firstItem="U4i-gy-rd0" firstAttribute="leading" secondItem="zwo-40-2cB" secondAttribute="leading" id="b1f-UA-IcK"/>
-                            <constraint firstItem="FbX-Em-Vhb" firstAttribute="leading" secondItem="zwo-40-2cB" secondAttribute="leading" constant="20" id="bQy-h2-QbL"/>
-                            <constraint firstItem="iN2-6H-mSy" firstAttribute="leading" secondItem="zwo-40-2cB" secondAttribute="leading" id="chZ-zX-ET0"/>
-                            <constraint firstItem="zwo-40-2cB" firstAttribute="trailing" secondItem="cHq-yA-6S2" secondAttribute="trailing" constant="20" id="j1g-Ts-8mL"/>
-                            <constraint firstItem="iN2-6H-mSy" firstAttribute="height" secondItem="PZA-0W-lc3" secondAttribute="width" constant="-40" id="jiO-Cz-KOg"/>
-                            <constraint firstItem="zwo-40-2cB" firstAttribute="trailing" secondItem="U4i-gy-rd0" secondAttribute="trailing" id="lfG-aa-fSu"/>
-                            <constraint firstItem="iN2-6H-mSy" firstAttribute="trailing" secondItem="zwo-40-2cB" secondAttribute="trailing" id="lpp-84-Sgf"/>
-                            <constraint firstItem="DaM-G6-XCX" firstAttribute="leading" secondItem="zwo-40-2cB" secondAttribute="leading" constant="20" id="qYT-nu-veQ"/>
-                            <constraint firstItem="cHq-yA-6S2" firstAttribute="leading" secondItem="zwo-40-2cB" secondAttribute="leading" constant="20" id="wdk-3P-kBf"/>
+                            <constraint firstItem="zwo-40-2cB" firstAttribute="bottom" secondItem="2X7-Hs-fYK" secondAttribute="bottom" id="EAd-Dm-auw"/>
+                            <constraint firstItem="2X7-Hs-fYK" firstAttribute="top" secondItem="zwo-40-2cB" secondAttribute="top" id="aEH-ga-JdU"/>
+                            <constraint firstItem="zwo-40-2cB" firstAttribute="trailing" secondItem="2X7-Hs-fYK" secondAttribute="trailing" id="gok-2S-mQv"/>
+                            <constraint firstItem="2X7-Hs-fYK" firstAttribute="leading" secondItem="zwo-40-2cB" secondAttribute="leading" id="lOI-oG-olQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zwo-40-2cB"/>
                     </view>
@@ -381,15 +423,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="375" height="670"/>
                     <connections>
-                        <outlet property="holidaysCollection" destination="iN2-6H-mSy" id="jbG-Ik-bt7"/>
-                        <outlet property="occasionsCollection" destination="U4i-gy-rd0" id="9Ku-Pn-slE"/>
+                        <outlet property="tableView" destination="2X7-Hs-fYK" id="hEn-tU-9sF"/>
                         <segue destination="p6i-YY-etj" kind="show" identifier="showOccasion" id="Jcd-lo-oU3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejo-aY-AV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="104.8" y="-213.64317841079463"/>
+            <point key="canvasLocation" x="104.8" y="-214.09295352323841"/>
         </scene>
         <!--VISHEO BOX-->
         <scene sceneID="GdL-Si-3u9">

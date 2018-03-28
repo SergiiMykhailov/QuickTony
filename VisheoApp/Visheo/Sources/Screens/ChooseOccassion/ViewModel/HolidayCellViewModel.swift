@@ -25,9 +25,6 @@ struct VisheoHolidayCellViewModel : HolidayCellViewModel {
 	
     var holidayDateText : String {
         guard let date = date else { return ""}
-        let formatter = DateFormatter()
-        formatter.dateFormat =  DateFormatter.dateFormat(fromTemplate: "dMMMM", options: 0, locale: Locale.current)
-        formatter.locale = Locale.current
-        return formatter.string(from: date)
+        return date.readableString()
     }
 }

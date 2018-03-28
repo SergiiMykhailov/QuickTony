@@ -16,6 +16,7 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     var smallBundleButtonText : String {get}
     var bigBundleButtonText : String {get}
     var subscribeButtonText : String {get}
+    var untilDateText : String {get}
     
     var premiumCardsNumber : Int {get}
     
@@ -103,6 +104,11 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     
     var isFreeVisheoRuleAccepted: Bool {
         return freeVisheoRuleAccepted
+    }
+    
+    var untilDateText: String {
+        guard let dateString = purchasesService.subscriptionExpirationDate?.readableString(withYear: true) else {return ""}
+        return String.init(format:NSLocalizedString("until %@", comment: "Date format with number index for subscription string") as String, dateString)
     }
     
     private func description(for subscription: PremiumSubsctription?) -> String? {

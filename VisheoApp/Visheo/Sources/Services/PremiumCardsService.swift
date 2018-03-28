@@ -47,6 +47,7 @@ protocol PremiumCardsService {
     var smallBundle : PremiumCardsBundle? {get}
     var bigBundle : PremiumCardsBundle? {get}
     var subscription : PremiumSubsctription? {get}
+    var subscriptionExpirationDate : Date? {get}
     var isFreeAvailable : Bool {get}
     
     func buy(bundle: PurchaseBase)
@@ -129,14 +130,14 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         }
     }
     
-    private var expireDate: Date? {
+    var subscriptionExpirationDate : Date? {
         didSet {
             NotificationCenter.default.post(name: Notification.Name.userSubscriptionStateChanged, object: self)
         }
     }
     
     func currentUserSubscriptionState() -> SubscriptionState {
-        guard let expireDate = expireDate else { return .none }
+        guard let expireDate = subscriptionExpirationDate else { return .none }
         
         if (expireDate >= Date()) {
             return .active
@@ -145,7 +146,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     }
     
     func currentUserSubscriptionExpireDate() -> String {
-        guard let expireDate = expireDate else { return "" }
+        guard let expireDate = subscriptionExpirationDate else { return "" }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
@@ -248,12 +249,12 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
             subscriptionReference = userSubscriptionRef
             
             userSubscriptionRef.observe(.value, with: { (snapshot) in
-                guard let dateAsString = snapshot.value as? String else { self.expireDate = nil; return }
+                guard let dateAsString = snapshot.value as? String else { self.subscriptionExpirationDate = nil; return }
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
                 dateFormatter.timeZone = TimeZone.current
-                self.expireDate = dateFormatter.date(from: dateAsString)
+                self.subscriptionExpirationDate = dateFormatter.date(from: dateAsString)
             })
         }
     }
