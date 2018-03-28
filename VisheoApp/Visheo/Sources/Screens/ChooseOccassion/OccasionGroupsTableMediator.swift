@@ -16,7 +16,7 @@ enum CellIdentifiers : String {
 
 class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDataSource {
     var viewModel: ChooseOccasionViewModel
-    var tableView: UITableView!
+    var tableView: UITableView
     
     init(withViewModel viewModel: ChooseOccasionViewModel, tableView: UITableView, occasionGroups: [OccasionGroup]) {
         self.tableView  = tableView
@@ -34,7 +34,7 @@ class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group = viewModel.occasionGroups[indexPath.row]
-        switch group.groupType {
+        switch group.type {
             case .featured:
                 return featuredCell(forOccasionAtIndex: indexPath.row)
             case .standard:
@@ -66,7 +66,7 @@ class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let group = viewModel.occasionGroups[indexPath.row]
-        switch group.groupType {
+        switch group.type {
         case .featured:
             return VisheoFeaturedOccasionsTableCellViewModel.height(forWidth: tableView.frame.size.width)
         case .standard:

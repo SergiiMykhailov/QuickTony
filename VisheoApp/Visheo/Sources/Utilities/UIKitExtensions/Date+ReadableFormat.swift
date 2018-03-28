@@ -9,7 +9,7 @@
 import Foundation
 
 extension Date {
-    func visheo_readableString(withYear isYear: Bool = false) -> String {
+    func readableString(withYear isYear: Bool = false) -> String {
         let formatter = DateFormatter()
         let dateFormat = isYear ? "MMMM yyyy" : "MMMM"
         formatter.dateFormat =  DateFormatter.dateFormat(fromTemplate: dateFormat, options: 0, locale: Locale.current)

@@ -25,6 +25,6 @@ struct VisheoHolidayCellViewModel : HolidayCellViewModel {
 	
     var holidayDateText : String {
         guard let date = date else { return ""}
-        return date.visheo_readableString()
+        return date.readableString()
     }
 }

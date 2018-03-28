@@ -107,7 +107,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     var untilDateText: String {
-        guard let dateString = purchasesService.subscriptionExpirationDate?.visheo_readableString(withYear: true) else {return ""}
+        guard let dateString = purchasesService.subscriptionExpirationDate?.readableString(withYear: true) else {return ""}
         return String.init(format:NSLocalizedString("until %@", comment: "Date format with number index for subscription string") as String, dateString)
     }
     

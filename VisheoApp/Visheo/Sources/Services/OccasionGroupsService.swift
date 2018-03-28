@@ -25,7 +25,7 @@ enum OccasionGroupType: String {
 protocol OccasionGroup {
     var title : String {get}
     var priority : Int {get}
-    var groupType : OccasionGroupType {get}
+    var type : OccasionGroupType {get}
     var occasions: [OccasionRecord] {get}
     var subTitle : String? {get}
 }
@@ -70,7 +70,7 @@ class VisheoOccasionGroupsListService : OccasionGroupsListService {
 class VisheoOccasionGroup : OccasionGroup {
     var title : String
     var priority : Int
-    var groupType: OccasionGroupType
+    var type: OccasionGroupType
     var subTitle : String?
     
     private let _occasionIds : [Int]
@@ -85,8 +85,8 @@ class VisheoOccasionGroup : OccasionGroup {
         title = dictionary["title"] as? String ?? ""
         subTitle = dictionary["subTitle"] as? String
         priority = dictionary["priority"] as? Int ?? Int.max
-        _occasionIds = (dictionary["occasionIds"] as? [Int?] ?? []).flatMap{$0}.map{$0}
-        groupType = grp
+        _occasionIds = (dictionary["occasionIds"] as? [Int?] ?? []).flatMap{$0}
+        type = grp
         
         occasions = _occasionIds.filter{ $0 < occasionList.count }
                                 .map{ occasionList[$0] }
