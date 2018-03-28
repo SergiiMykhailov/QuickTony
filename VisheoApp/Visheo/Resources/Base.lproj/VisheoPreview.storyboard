@@ -107,64 +107,51 @@
                                     <action selector="sendPressed:" destination="1dc-lh-5ja" eventType="touchUpInside" id="3mi-ZE-lAV"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="844-DT-RCB">
-                                <rect key="frame" x="34" y="390" width="307" height="92"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="844-DT-RCB">
+                                <rect key="frame" x="28" y="364" width="319" height="84"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quN-cm-BH1" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="92"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="quN-cm-BH1" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="84"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="ONH-P3-UBZ"/>
-                                            <constraint firstAttribute="height" constant="92" id="Teh-VT-hWc"/>
+                                            <constraint firstAttribute="height" constant="84" id="Teh-VT-hWc"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="cover"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit Cover"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Cover Art"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editCover:" destination="1dc-lh-5ja" eventType="touchUpInside" id="Jix-KE-EJ8"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-Nm-fJA" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="78.5" y="0.0" width="61" height="92"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-Nm-fJA" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="81" y="0.0" width="76" height="84"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="61" id="Zqm-jN-9oN"/>
-                                            <constraint firstAttribute="height" constant="92" id="h6I-2C-X6p"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="slideshow"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit  Slideshow"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Photos"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editPhotos:" destination="1dc-lh-5ja" eventType="touchUpInside" id="HEg-SE-Bob"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dns-fU-1gV" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="167.5" y="0.0" width="61" height="92"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="dns-fU-1gV" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="162" y="0.0" width="76" height="84"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="61" id="X9J-Ub-ExQ"/>
-                                            <constraint firstAttribute="height" constant="92" id="xp0-n1-Ttm"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="video"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit  Video Wish"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Video"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editVideo:" destination="1dc-lh-5ja" eventType="touchUpInside" id="rXN-E1-o8A"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-ST-sYJ" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="257" y="0.0" width="50" height="92"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-ST-sYJ" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="243" y="0.0" width="76" height="84"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="92" id="23N-zw-Hdw"/>
-                                            <constraint firstAttribute="width" constant="50" id="HLv-KD-6fJ"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="music"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit Music"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Music"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editSoundtrack:" destination="1dc-lh-5ja" eventType="touchUpInside" id="V7I-um-xXl"/>
@@ -172,7 +159,10 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="gUy-jM-9A2"/>
+                                    <constraint firstItem="E9g-ST-sYJ" firstAttribute="height" secondItem="dns-fU-1gV" secondAttribute="height" id="Jes-sV-7DN"/>
+                                    <constraint firstItem="dns-fU-1gV" firstAttribute="height" secondItem="wU0-Nm-fJA" secondAttribute="height" id="cEm-eR-Klo"/>
+                                    <constraint firstItem="wU0-Nm-fJA" firstAttribute="height" secondItem="quN-cm-BH1" secondAttribute="height" id="fA4-iv-c9q"/>
+                                    <constraint firstAttribute="height" constant="84" id="gUy-jM-9A2"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -183,10 +173,10 @@
                             <constraint firstItem="SHA-oq-exf" firstAttribute="top" secondItem="IxG-iG-yUR" secondAttribute="top" constant="20" id="9fy-ua-eOw"/>
                             <constraint firstItem="Y5n-Gj-tF4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="844-DT-RCB" secondAttribute="bottom" constant="8" id="BKg-gx-IiF"/>
                             <constraint firstItem="Y5n-Gj-tF4" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="20" id="IAQ-Rb-dKN"/>
-                            <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="844-DT-RCB" secondAttribute="trailing" constant="34" id="jZv-l7-T4j"/>
+                            <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="844-DT-RCB" secondAttribute="trailing" constant="28" id="jZv-l7-T4j"/>
                             <constraint firstItem="SHA-oq-exf" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="20" id="oYh-YN-dZg"/>
-                            <constraint firstItem="844-DT-RCB" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="bottom" priority="750" constant="35" id="q0x-Sd-hZe"/>
-                            <constraint firstItem="844-DT-RCB" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="34" id="rri-hM-YyE"/>
+                            <constraint firstItem="844-DT-RCB" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="bottom" priority="750" constant="9" id="q0x-Sd-hZe"/>
+                            <constraint firstItem="844-DT-RCB" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="28" id="rri-hM-YyE"/>
                             <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="SHA-oq-exf" secondAttribute="trailing" constant="20" id="tIJ-CF-gDY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IxG-iG-yUR"/>
@@ -195,6 +185,12 @@
                         <barButtonItem key="leftBarButtonItem" image="arrow" id="AGg-tT-fqf">
                             <connections>
                                 <action selector="backButtonPressed:" destination="1dc-lh-5ja" id="gm7-Ag-k59"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Exit" id="e9w-Mv-tpu">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="exitButtonPressed:" destination="1dc-lh-5ja" id="Wdi-JN-awh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -726,13 +722,13 @@ This visheo is no longer available in cloud</string>
     </scenes>
     <resources>
         <image name="arrow" width="20" height="20"/>
-        <image name="cover" width="50" height="52"/>
+        <image name="cover" width="78" height="63"/>
         <image name="delete" width="20" height="20"/>
         <image name="menu" width="20" height="20"/>
-        <image name="music" width="50" height="52"/>
+        <image name="music" width="78" height="63"/>
         <image name="play" width="80" height="80"/>
-        <image name="slideshow" width="50" height="52"/>
-        <image name="video" width="50" height="52"/>
+        <image name="slideshow" width="78" height="63"/>
+        <image name="video" width="78" height="63"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
