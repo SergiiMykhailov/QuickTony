@@ -15,6 +15,9 @@ protocol AppStateService {
     var shouldShowOnboarding : Bool { get }
     func onboarding(wasSeen seen: Bool)
 	
+    var shouldShowOnobardingCover : Bool { get }
+    func onboardingCover(wasSeen seen: Bool)
+    
 	var shouldShowCameraTips: Bool { get }
 	func cameraTips(wereSeen seen: Bool);
 	
@@ -27,6 +30,7 @@ class VisheoAppStateService: AppStateService {
     private static let onboardingShownKey = "OnboardingScreenWasShown"
     private static let cameraTipsShownKey = "CameraTipsWasShown"
     private static let appWasLaunchedKey = "appWasLaunchedKey"
+    private static let onboardingCoverShownKey = "onboardingCoverShownKey"
     
     let firstLaunch: Bool
 	private let reachability = Reachability();
@@ -58,6 +62,14 @@ class VisheoAppStateService: AppStateService {
         UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingShownKey)        
     }
 	
+    var shouldShowOnobardingCover : Bool {
+        return !UserDefaults.standard.bool(forKey: VisheoAppStateService.onboardingCoverShownKey)
+    }
+    
+    func onboardingCover(wasSeen seen: Bool) {
+        UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingCoverShownKey)
+    }
+    
 	var shouldShowCameraTips: Bool {
 		return !UserDefaults.standard.bool(forKey: VisheoAppStateService.cameraTipsShownKey);
 	}

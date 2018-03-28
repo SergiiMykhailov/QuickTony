@@ -359,68 +359,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qa-yL-bpA">
-                                <rect key="frame" x="0.0" y="181.5" width="375" height="305.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJk-8Q-bOw">
-                                        <rect key="frame" x="60" y="0.0" width="255" height="70.5"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-i9-Wr9">
-                                        <rect key="frame" x="65.5" y="115.5" width="244" height="95"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-tb-5X6">
-                                        <rect key="frame" x="87.5" y="245.5" width="200" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="xJm-ZU-Tct"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
-                                        <inset key="contentEdgeInsets" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
-                                        <state key="normal" title="Allow Access">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="actionButtonPressed" destination="aOk-hY-81T" eventType="touchUpInside" id="4fS-bu-ssi"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3 / 3" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJk-8Q-bOw">
+                                <rect key="frame" x="148.5" y="32" width="78" height="21.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-i9-Wr9">
+                                <rect key="frame" x="48" y="291.5" width="279" height="95"/>
+                                <string key="text">Video Message (up to 30 sec) is the key component of your Visheo that makes it personal &amp; touching
+</string>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_video" translatesAutoresizingMaskIntoConstraints="NO" id="CRD-Sb-ofq">
+                                <rect key="frame" x="121.5" y="131.5" width="132" height="132"/>
                                 <constraints>
-                                    <constraint firstItem="MqL-i9-Wr9" firstAttribute="top" secondItem="xJk-8Q-bOw" secondAttribute="bottom" constant="45" id="7vk-Xi-pN0"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xJk-8Q-bOw" secondAttribute="trailing" constant="60" id="EZ7-Ma-S7Q"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MqL-i9-Wr9" secondAttribute="trailing" constant="60" id="PP5-0U-fOx"/>
-                                    <constraint firstItem="MqL-i9-Wr9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7qa-yL-bpA" secondAttribute="leading" constant="60" id="eVm-0w-jG9"/>
-                                    <constraint firstItem="xJk-8Q-bOw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7qa-yL-bpA" secondAttribute="leading" constant="60" id="gNm-67-s3V"/>
-                                    <constraint firstItem="Cbl-tb-5X6" firstAttribute="centerX" secondItem="7qa-yL-bpA" secondAttribute="centerX" id="kwK-w4-PNR"/>
-                                    <constraint firstItem="xJk-8Q-bOw" firstAttribute="centerX" secondItem="7qa-yL-bpA" secondAttribute="centerX" id="n2M-Yt-7Ln"/>
-                                    <constraint firstItem="MqL-i9-Wr9" firstAttribute="centerX" secondItem="7qa-yL-bpA" secondAttribute="centerX" id="nQS-6Z-KRO"/>
-                                    <constraint firstAttribute="bottom" secondItem="Cbl-tb-5X6" secondAttribute="bottom" id="p9U-hQ-ttf"/>
-                                    <constraint firstItem="Cbl-tb-5X6" firstAttribute="top" secondItem="MqL-i9-Wr9" secondAttribute="bottom" constant="35" id="yAE-dU-Kys"/>
-                                    <constraint firstItem="xJk-8Q-bOw" firstAttribute="top" secondItem="7qa-yL-bpA" secondAttribute="top" id="z90-Zc-Tmz"/>
+                                    <constraint firstAttribute="width" secondItem="CRD-Sb-ofq" secondAttribute="height" id="JdJ-Wl-IsQ"/>
+                                    <constraint firstAttribute="width" constant="132" id="a9z-FG-4MH"/>
                                 </constraints>
-                            </view>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-tb-5X6">
+                                <rect key="frame" x="20" y="421.5" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="xJm-ZU-Tct"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
+                                <state key="normal" title="Allow Access">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionButtonPressed" destination="aOk-hY-81T" eventType="touchUpInside" id="4fS-bu-ssi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="D1h-Kp-tTq" firstAttribute="trailing" secondItem="7qa-yL-bpA" secondAttribute="trailing" id="IyZ-HD-wSo"/>
-                            <constraint firstItem="7qa-yL-bpA" firstAttribute="centerY" secondItem="Fv3-MH-0GX" secondAttribute="centerY" id="alo-g2-u7i"/>
-                            <constraint firstItem="7qa-yL-bpA" firstAttribute="leading" secondItem="D1h-Kp-tTq" secondAttribute="leading" id="miP-lf-PaC"/>
+                            <constraint firstItem="xJk-8Q-bOw" firstAttribute="top" secondItem="D1h-Kp-tTq" secondAttribute="top" constant="12" id="00D-cT-3KU"/>
+                            <constraint firstItem="xJk-8Q-bOw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fv3-MH-0GX" secondAttribute="leading" constant="60" id="1sJ-J8-H9k"/>
+                            <constraint firstAttribute="trailing" secondItem="MqL-i9-Wr9" secondAttribute="trailing" constant="48" id="9vz-zS-4Cn"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xJk-8Q-bOw" secondAttribute="trailing" constant="60" id="QQF-gB-k00"/>
+                            <constraint firstItem="CRD-Sb-ofq" firstAttribute="centerX" secondItem="D1h-Kp-tTq" secondAttribute="centerX" id="W5X-gZ-XrG"/>
+                            <constraint firstItem="Cbl-tb-5X6" firstAttribute="top" secondItem="MqL-i9-Wr9" secondAttribute="bottom" constant="35" id="ebb-PC-g4X"/>
+                            <constraint firstItem="MqL-i9-Wr9" firstAttribute="leading" secondItem="D1h-Kp-tTq" secondAttribute="leading" constant="48" id="gwP-Zz-7PJ"/>
+                            <constraint firstItem="CRD-Sb-ofq" firstAttribute="top" secondItem="xJk-8Q-bOw" secondAttribute="bottom" constant="78" id="hsW-eJ-PNE"/>
+                            <constraint firstItem="Cbl-tb-5X6" firstAttribute="leading" secondItem="D1h-Kp-tTq" secondAttribute="leading" constant="20" id="kec-Vi-8A5"/>
+                            <constraint firstItem="Cbl-tb-5X6" firstAttribute="centerX" secondItem="D1h-Kp-tTq" secondAttribute="centerX" id="tCt-nV-3od"/>
+                            <constraint firstItem="xJk-8Q-bOw" firstAttribute="centerX" secondItem="Fv3-MH-0GX" secondAttribute="centerX" id="tS0-pZ-D9h"/>
+                            <constraint firstItem="MqL-i9-Wr9" firstAttribute="top" secondItem="CRD-Sb-ofq" secondAttribute="bottom" constant="28" id="xeZ-8U-YDr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D1h-Kp-tTq"/>
                     </view>
@@ -438,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pua-D5-CXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="438" y="834"/>
+            <point key="canvasLocation" x="452" y="832"/>
         </scene>
         <!--INSPIRATION-->
         <scene sceneID="TmD-Jd-yJR">
@@ -651,9 +650,10 @@ This will help avoid unnecessary shadows and grainy areas in your video.</string
     <resources>
         <image name="arrow" width="20" height="20"/>
         <image name="camera_icon" width="34" height="34"/>
+        <image name="onboarding_video" width="132" height="132"/>
         <image name="play" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Qk-pt-sxu"/>
+        <segue reference="fJP-hQ-Yo3"/>
     </inferredMetricsTieBreakers>
 </document>

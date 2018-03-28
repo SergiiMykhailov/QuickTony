@@ -1,27 +1,18 @@
 
-/* Class = "UILabel"; text = "Visheo - your Video Wish"; ObjectID = "5cw-x7-Kt4"; */
-"5cw-x7-Kt4.text" = "Visheo - your Video Wish";
-
-/* Class = "UILabel"; text = "Special way to send your love and care"; ObjectID = "7gq-ym-YYp"; */
-"7gq-ym-YYp.text" = "Special way to send your love and care";
-
-/* Class = "UIButton"; normalTitle = "Create Visheo"; ObjectID = "Huv-JD-3EV"; */
-"Huv-JD-3EV.normalTitle" = "Create Visheo";
-
 /* Class = "UILabel"; text = "More Than a Greeting"; ObjectID = "Qio-1g-qKo"; */
-"Qio-1g-qKo.text" = "More Than a Greeting";
+"Qio-1g-qKo.text" = "Visheo is a Video Wish";
 
 /* Class = "UILabel"; text = "It’s Easy and Fun"; ObjectID = "SFV-q7-Sb8"; */
-"SFV-q7-Sb8.text" = "It’s Easy and Fun";
+"SFV-q7-Sb8.text" = "More than just a greeting card";
 
 /* Class = "UILabel"; text = "1. Choose card 2. Record video\\n3. Add your photos"; ObjectID = "VSg-ky-uib"; */
-"VSg-ky-uib.text" = "1. Choose card 2. Record video\n3. Add your photos";
+"VSg-ky-uib.text" = "Build personal video greetings on any occasion in seconds";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "rmq-hS-6ge"; */
 "rmq-hS-6ge.normalTitle" = "Next";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "yJv-Qa-CL1"; */
-"yJv-Qa-CL1.normalTitle" = "Next";
+"yJv-Qa-CL1.normalTitle" = "Create Visheo";
 
 /* Class = "UILabel"; text = "Create Video Wishes for Holidays and Every Day"; ObjectID = "z3b-Ph-eEC"; */
-"z3b-Ph-eEC.text" = "Create Video Wishes for Holidays and Every Day";
+"z3b-Ph-eEC.text" = "Made of given Greeting Card & Music with your Pictures and Video Message ";
