@@ -10,6 +10,12 @@
 		010D8975A0A9DB78A8A50DC0 /* Pods_App_VisheoStaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */; };
 		2C17849520694D3300ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
 		2C17849820694E7C00ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
+		2C6EE6DC206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */; };
+		2C6EE6DD206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */; };
+		2C6EE6DE206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */; };
+		2C6EE6DF206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */; };
+		2C6EE6E0206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */; };
+		2C6EE6E1206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */; };
 		2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C9381FC20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
@@ -416,6 +422,9 @@
 
 /* Begin PBXFileReference section */
 		2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ReadableFormat.swift"; sourceTree = "<group>"; };
+		2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenControllerViewModel.swift; sourceTree = "<group>"; };
+		2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenRouter.swift; sourceTree = "<group>"; };
+		2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenViewController.swift; sourceTree = "<group>"; };
 		2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRuleControllerViewController.swift; sourceTree = "<group>"; };
 		2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedOccasionsTableCell.swift; sourceTree = "<group>"; };
 		2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOccasionsTableCell.swift; sourceTree = "<group>"; };
@@ -633,6 +642,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C6EE6E4206CF59B00E06AFC /* CollectionMediators */ = {
+			isa = PBXGroup;
+			children = (
+				B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */,
+				B44450CC1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift */,
+			);
+			path = CollectionMediators;
+			sourceTree = "<group>";
+		};
+		2C6EE6E5206CF5B300E06AFC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B4BCAC0C1FB8D599003EDC7F /* CoverCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		2C93820320650F6400348BAA /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1238,6 +1264,7 @@
 				B4BCABDB1FB8CC7C003EDC7F /* ViewModel */,
 				2C9382102068EC1F00348BAA /* OccasionGroupsTableMediator.swift */,
 				B4BCABD61FB8CC7C003EDC7F /* ChooseOccasionViewController.swift */,
+				2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */,
 			);
 			path = ChooseOccassion;
 			sourceTree = "<group>";
@@ -1254,6 +1281,7 @@
 		B4BCABD91FB8CC7C003EDC7F /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */,
 				B4BCABDA1FB8CC7C003EDC7F /* ChooseOccasionRouter.swift */,
 			);
 			path = Router;
@@ -1262,6 +1290,7 @@
 		B4BCABDB1FB8CC7C003EDC7F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */,
 				B4BCABDC1FB8CC7C003EDC7F /* ChooseOccasionViewModel.swift */,
 				B4BCABDD1FB8CC7C003EDC7F /* HolidayCellViewModel.swift */,
 				B4BCABDE1FB8CC7C003EDC7F /* OccasionCellViewModel.swift */,
@@ -1326,12 +1355,11 @@
 		B4BCAC031FB8CDE0003EDC7F /* SelectCover */ = {
 			isa = PBXGroup;
 			children = (
+				2C6EE6E5206CF5B300E06AFC /* Cells */,
+				2C6EE6E4206CF59B00E06AFC /* CollectionMediators */,
 				B4BCAC041FB8CDE0003EDC7F /* Router */,
 				B4BCAC051FB8CDE0003EDC7F /* ViewModel */,
 				B4BCAC061FB8CDFB003EDC7F /* SelectCoverViewController.swift */,
-				B4BCAC0C1FB8D599003EDC7F /* CoverCollectionViewCell.swift */,
-				B475CEDA1FBDA93700808909 /* PagedCoverCollectionMediator.swift */,
-				B44450CC1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift */,
 			);
 			path = SelectCover;
 			sourceTree = "<group>";
@@ -1927,6 +1955,7 @@
 				920F8B7C1FF6BDC90087C45D /* EventLoggingService.swift in Sources */,
 				920F8B7D1FF6BDC90087C45D /* VisheoCellViewModel.swift in Sources */,
 				2C93820F2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */,
+				2C6EE6DF206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */,
 				920F8B7E1FF6BDC90087C45D /* PhotoPickerViewModel.swift in Sources */,
 				920F8B7F1FF6BDC90087C45D /* SignUpViewModel.swift in Sources */,
 				920F8B801FF6BDC90087C45D /* RedeemViewController.swift in Sources */,
@@ -1934,6 +1963,7 @@
 				920F8B821FF6BDC90087C45D /* ChooseOccasionViewController.swift in Sources */,
 				920F8B831FF6BDC90087C45D /* MenuTableViewCell.swift in Sources */,
 				920F8B841FF6BDC90087C45D /* PreviewViewModel.swift in Sources */,
+				2C6EE6E1206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift in Sources */,
 				920F8B851FF6BDC90087C45D /* AutoSizingLayout.swift in Sources */,
 				920F8B861FF6BDC90087C45D /* PhotoPickerViewController.swift in Sources */,
 				920F8B871FF6BDC90087C45D /* EditAccountViewController.swift in Sources */,
@@ -1944,6 +1974,7 @@
 				920F8B8C1FF6BDC90087C45D /* VisheoCreationService.swift in Sources */,
 				920F8B8D1FF6BDC90087C45D /* CameraViewController.swift in Sources */,
 				920F8B8E1FF6BDC90087C45D /* LabeledProgressView.swift in Sources */,
+				2C6EE6DD206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */,
 				2C9381FD20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */,
 				920F8B8F1FF6BDC90087C45D /* VideoTrimmingRouter.swift in Sources */,
 				920F8B901FF6BDC90087C45D /* RouterAsembly.swift in Sources */,
@@ -2078,6 +2109,7 @@
 				926B53CE1FE42EB40031B1A0 /* EventLoggingService.swift in Sources */,
 				B4EB86DB1FD1CC7B00963150 /* VisheoCellViewModel.swift in Sources */,
 				2C93820E2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */,
+				2C6EE6DE206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */,
 				B44450DD1FBF02E50021772F /* PhotoPickerViewModel.swift in Sources */,
 				B4BCABF31FB8CC7D003EDC7F /* SignUpViewModel.swift in Sources */,
 				B437CF761FDEE35900E28C20 /* RedeemViewController.swift in Sources */,
@@ -2085,6 +2117,7 @@
 				B4BCABF61FB8CC7D003EDC7F /* ChooseOccasionViewController.swift in Sources */,
 				B453F1D91FCF1AED003D61CB /* MenuTableViewCell.swift in Sources */,
 				B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */,
+				2C6EE6E0206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift in Sources */,
 				92D58CD01FF3A3D500C901F1 /* AutoSizingLayout.swift in Sources */,
 				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4C893F41FD5787B00763296 /* EditAccountViewController.swift in Sources */,
@@ -2095,6 +2128,7 @@
 				B4CF320F1FC87E540063AA52 /* VisheoCreationService.swift in Sources */,
 				9262CBAB1FBDF71A00F90AB3 /* CameraViewController.swift in Sources */,
 				B4F63DBC1FC83D4100E05B90 /* LabeledProgressView.swift in Sources */,
+				2C6EE6DC206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */,
 				2C9381FC20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */,
 				B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */,
 				B4AEE0E21FD01F1B0043A39A /* RouterAsembly.swift in Sources */,

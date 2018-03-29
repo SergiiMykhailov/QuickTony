@@ -1102,7 +1102,7 @@ as a slideshow in your video greeting to make it memoriable &amp; fun</string>
         <!--SELECT COVER ART-->
         <scene sceneID="dfX-95-16X">
             <objects>
-                <viewController title="SELECT COVER ART" id="yrs-cw-5cr" sceneMemberID="viewController">
+                <viewController title="SELECT COVER ART" id="yrs-cw-5cr" customClass="CoverOnboardingScreenViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yip-xz-iJP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1136,7 +1136,7 @@ as a slideshow in your video greeting to make it memoriable &amp; fun</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="allowAccessPressed:" destination="yrs-cw-5cr" eventType="touchUpInside" id="mJO-Ed-Fz4"/>
+                                    <action selector="okGotItButtoTappedWithSender:" destination="yrs-cw-5cr" eventType="touchUpInside" id="NH9-xx-el5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAD-SX-FcK">
@@ -1167,7 +1167,7 @@ of your video greeting when you play it or send in messenger</string>
                     <navigationItem key="navigationItem" title="SELECT COVER ART" id="i7C-Nj-59q" userLabel="SELECT COVER ART">
                         <barButtonItem key="leftBarButtonItem" image="arrow" id="gzX-jw-YNE">
                             <connections>
-                                <action selector="backPressed:" destination="yrs-cw-5cr" id="gZ1-nV-nzg"/>
+                                <action selector="backPressed:" destination="yrs-cw-5cr" id="UDK-lS-tdY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

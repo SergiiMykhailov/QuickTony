@@ -10,6 +10,7 @@ import UIKit
 
 protocol ChooseOccasionRouter: FlowRouter {
     func showSelectCover(for occasion: OccasionRecord)
+    func showCoverOnboarding(for occasion: OccasionRecord)
     func showMenu()
 	func showReviewChoice()
 }
@@ -17,6 +18,7 @@ protocol ChooseOccasionRouter: FlowRouter {
 class VisheoChooseOccasionRouter : ChooseOccasionRouter {
     enum SegueList: String, SegueListType {
         case showOccasion = "showOccasion"
+        case showCoverOnboarding = "showCoverOnboarding"
     }
     let dependencies: RouterDependencies
 	private let isInitialLaunch: Bool;
@@ -49,6 +51,10 @@ class VisheoChooseOccasionRouter : ChooseOccasionRouter {
             let selectCoverController = segue.destination as! SelectCoverViewController
             let selectCoverRouter = VisheoSelectCoverRouter(dependencies: dependencies, occasion: sender as! OccasionRecord)
             selectCoverRouter.start(with: selectCoverController)
+        case .showCoverOnboarding:
+            let coverOnBoardingVC = segue.destination as! CoverOnboardingScreenViewController
+            let permissionsRouter = VisheoCoverOnboardingScreenRouter(dependencies: dependencies, occasion: sender as! OccasionRecord)
+            permissionsRouter.start(with: coverOnBoardingVC)
         }
     }
 }
@@ -56,6 +62,10 @@ class VisheoChooseOccasionRouter : ChooseOccasionRouter {
 extension VisheoChooseOccasionRouter {
     func showSelectCover(for occasion: OccasionRecord) {
         controller?.performSegue(SegueList.showOccasion, sender: occasion)
+    }
+    
+    func showCoverOnboarding(for occasion: OccasionRecord) {
+        controller?.performSegue(SegueList.showCoverOnboarding, sender: occasion)
     }
     
     func showMenu() {
