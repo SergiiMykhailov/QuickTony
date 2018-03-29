@@ -247,9 +247,9 @@ class VisheoPreviewViewModel : PreviewViewModel
 				}
             }
         } else if self.assets.originalOccasion.isFree {
-            router?.sendVisheo(with: assets, premium: true)
+            showSendVisheoScreen()
         } else if purchasesInfo.currentUserSubscriptionState() == .active {
-            router?.sendVisheo(with: assets, premium: true)
+            showSendVisheoScreen()
         } else if purchasesInfo.currentUserSubscriptionState() == .expired {
 //            showProgressCallback?(true)
             premCardsService.checkSubscriptionStateRemotely() { [weak self] purchaseResult, error in
@@ -258,7 +258,7 @@ class VisheoPreviewViewModel : PreviewViewModel
                 if let purchaseResult = purchaseResult {
                     switch purchaseResult {
                         case .purchased(_,_):
-                            self?.router?.sendVisheo(with: assets!, premium: true)
+                            self?.showSendVisheoScreen()
                         case .expired(_,_):
                             self?.router?.showCardTypeSelection(with: assets!)
                         case .notPurchased:
@@ -274,7 +274,7 @@ class VisheoPreviewViewModel : PreviewViewModel
         } else {
             premCardsService.usePremiumCard(completion: { (success) in
                 if success {
-                    self.router?.sendVisheo(with: self.assets, premium: true)
+                    self.showSendVisheoScreen()
                 } else {
                     self.premiumUsageFailedHandler?()
                 }
@@ -282,6 +282,14 @@ class VisheoPreviewViewModel : PreviewViewModel
         }
     }
 	
+    private func showSendVisheoScreen(withPremium premium: Bool = true) {
+        if appStateService.shouldShowOnboardingShare {
+            router?.showShareOnboarding(with: self.assets, premium: premium)
+        } else {
+            router?.sendVisheo(with: self.assets, premium: premium)
+        }
+    }
+    
 	private func launchResourceTimeoutMonitor() {
 		displayLink = CADisplayLink(target: self, selector: #selector(VisheoPreviewViewModel.timeoutTick));
 		displayLink?.add(to: RunLoop.main, forMode: .commonModes);

@@ -16,6 +16,12 @@
 		2C6EE6DF206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */; };
 		2C6EE6E0206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */; };
 		2C6EE6E1206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */; };
+		2C6EE6F6206D2D4100E06AFC /* ShareVisheoOnboardingControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F2206D2D4100E06AFC /* ShareVisheoOnboardingControllerViewModel.swift */; };
+		2C6EE6F7206D2D4200E06AFC /* ShareVisheoOnboardingControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F2206D2D4100E06AFC /* ShareVisheoOnboardingControllerViewModel.swift */; };
+		2C6EE6F8206D2D4200E06AFC /* ShareVisheoOnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F3206D2D4100E06AFC /* ShareVisheoOnboardingRouter.swift */; };
+		2C6EE6F9206D2D4200E06AFC /* ShareVisheoOnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F3206D2D4100E06AFC /* ShareVisheoOnboardingRouter.swift */; };
+		2C6EE6FA206D2D4200E06AFC /* ShareVisheoOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F4206D2D4100E06AFC /* ShareVisheoOnboardingViewController.swift */; };
+		2C6EE6FB206D2D4200E06AFC /* ShareVisheoOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F4206D2D4100E06AFC /* ShareVisheoOnboardingViewController.swift */; };
 		2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C9381FC20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
@@ -425,6 +431,9 @@
 		2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenControllerViewModel.swift; sourceTree = "<group>"; };
 		2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenRouter.swift; sourceTree = "<group>"; };
 		2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenViewController.swift; sourceTree = "<group>"; };
+		2C6EE6F2206D2D4100E06AFC /* ShareVisheoOnboardingControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVisheoOnboardingControllerViewModel.swift; sourceTree = "<group>"; };
+		2C6EE6F3206D2D4100E06AFC /* ShareVisheoOnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVisheoOnboardingRouter.swift; sourceTree = "<group>"; };
+		2C6EE6F4206D2D4100E06AFC /* ShareVisheoOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVisheoOnboardingViewController.swift; sourceTree = "<group>"; };
 		2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRuleControllerViewController.swift; sourceTree = "<group>"; };
 		2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedOccasionsTableCell.swift; sourceTree = "<group>"; };
 		2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOccasionsTableCell.swift; sourceTree = "<group>"; };
@@ -989,6 +998,7 @@
 			children = (
 				B465280A1FC3467B0070FFB7 /* ViewModel */,
 				B46528091FC346740070FFB7 /* Router */,
+				2C6EE6F4206D2D4100E06AFC /* ShareVisheoOnboardingViewController.swift */,
 				B465280F1FC347100070FFB7 /* VisheoPreviewViewController.swift */,
 				92A8D3081FC85FA6001E194D /* VisheoPreviewView.swift */,
 			);
@@ -999,6 +1009,7 @@
 			isa = PBXGroup;
 			children = (
 				B465280D1FC346A30070FFB7 /* PreviewRouter.swift */,
+				2C6EE6F3206D2D4100E06AFC /* ShareVisheoOnboardingRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -1007,6 +1018,7 @@
 			isa = PBXGroup;
 			children = (
 				B465280B1FC346960070FFB7 /* PreviewViewModel.swift */,
+				2C6EE6F2206D2D4100E06AFC /* ShareVisheoOnboardingControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1915,6 +1927,7 @@
 				920F8B541FF6BDC90087C45D /* MenuItemViewModel.swift in Sources */,
 				920F8B551FF6BDC90087C45D /* SoundtrackCollectionViewCell.swift in Sources */,
 				920F8B561FF6BDC90087C45D /* RedeemRouter.swift in Sources */,
+				2C6EE6F7206D2D4200E06AFC /* ShareVisheoOnboardingControllerViewModel.swift in Sources */,
 				920F8B571FF6BDC90087C45D /* AuthorizationService.swift in Sources */,
 				920F8B581FF6BDC90087C45D /* UserInputValidator.swift in Sources */,
 				920F8B591FF6BDC90087C45D /* AccountViewController.swift in Sources */,
@@ -1981,12 +1994,14 @@
 				920F8B911FF6BDC90087C45D /* UIView+LayerInspectable.swift in Sources */,
 				920F8B921FF6BDC90087C45D /* VisheoPreviewViewController.swift in Sources */,
 				920F8B931FF6BDC90087C45D /* VisheoCollectionViewCell.swift in Sources */,
+				2C6EE6F9206D2D4200E06AFC /* ShareVisheoOnboardingRouter.swift in Sources */,
 				920F8B941FF6BDC90087C45D /* PhotoCollectionViewCell.swift in Sources */,
 				920F8B951FF6BDC90087C45D /* PhotoPermissionsViewModel.swift in Sources */,
 				920F8B961FF6BDC90087C45D /* AuthorizationViewController.swift in Sources */,
 				920F8B971FF6BDC90087C45D /* MenuRouter.swift in Sources */,
 				920F8B981FF6BDC90087C45D /* RedeemSuccessViewController.swift in Sources */,
 				920F8B991FF6BDC90087C45D /* AppDelegate.swift in Sources */,
+				2C6EE6FB206D2D4200E06AFC /* ShareVisheoOnboardingViewController.swift in Sources */,
 				920F8B9A1FF6BDC90087C45D /* UserNotificationsService.swift in Sources */,
 				2C93820220650F5800348BAA /* StandardOccasionsTableCell.swift in Sources */,
 				2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */,
@@ -2069,6 +2084,7 @@
 				B453F1DB1FCF1C01003D61CB /* MenuItemViewModel.swift in Sources */,
 				920EDFE01FCF0D5C00D121ED /* SoundtrackCollectionViewCell.swift in Sources */,
 				B437CF7A1FDEE3B100E28C20 /* RedeemRouter.swift in Sources */,
+				2C6EE6F6206D2D4100E06AFC /* ShareVisheoOnboardingControllerViewModel.swift in Sources */,
 				B4A79CEE1FAC81D500C208CF /* AuthorizationService.swift in Sources */,
 				B43E3B691FADB6BF005064D1 /* UserInputValidator.swift in Sources */,
 				B4C893F21FD5786D00763296 /* AccountViewController.swift in Sources */,
@@ -2135,12 +2151,14 @@
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
 				B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */,
 				B4AEE0F11FD1C8770043A39A /* VisheoCollectionViewCell.swift in Sources */,
+				2C6EE6F8206D2D4200E06AFC /* ShareVisheoOnboardingRouter.swift in Sources */,
 				B44450E11FBF0B580021772F /* PhotoCollectionViewCell.swift in Sources */,
 				B44450D91FBEF4340021772F /* PhotoPermissionsViewModel.swift in Sources */,
 				B4BCABEB1FB8CC7D003EDC7F /* AuthorizationViewController.swift in Sources */,
 				B453F1D51FCF1AB7003D61CB /* MenuRouter.swift in Sources */,
 				9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */,
 				B48AAAB71FA9E574000BB33B /* AppDelegate.swift in Sources */,
+				2C6EE6FA206D2D4200E06AFC /* ShareVisheoOnboardingViewController.swift in Sources */,
 				92C649021FD6036B00D6BC1A /* UserNotificationsService.swift in Sources */,
 				2C93820120650F5800348BAA /* StandardOccasionsTableCell.swift in Sources */,
 				2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */,

@@ -15,8 +15,11 @@ protocol AppStateService {
     var shouldShowOnboarding : Bool { get }
     func onboarding(wasSeen seen: Bool)
 	
-    var shouldShowOnobardingCover : Bool { get }
+    var shouldShowOnboardingCover : Bool { get }
     func onboardingCover(wasSeen seen: Bool)
+    
+    var shouldShowOnboardingShare : Bool { get }
+    func onboardingShare(wasSeen seen: Bool)
     
 	var shouldShowCameraTips: Bool { get }
 	func cameraTips(wereSeen seen: Bool);
@@ -31,6 +34,7 @@ class VisheoAppStateService: AppStateService {
     private static let cameraTipsShownKey = "CameraTipsWasShown"
     private static let appWasLaunchedKey = "appWasLaunchedKey"
     private static let onboardingCoverShownKey = "onboardingCoverShownKey"
+    private static let onboardingShareShownKey = "onboardingShareShownKey"
     
     let firstLaunch: Bool
 	private let reachability = Reachability();
@@ -62,12 +66,20 @@ class VisheoAppStateService: AppStateService {
         UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingShownKey)        
     }
 	
-    var shouldShowOnobardingCover : Bool {
+    var shouldShowOnboardingCover : Bool {
         return !UserDefaults.standard.bool(forKey: VisheoAppStateService.onboardingCoverShownKey)
     }
     
     func onboardingCover(wasSeen seen: Bool) {
         UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingCoverShownKey)
+    }
+    
+    var shouldShowOnboardingShare: Bool {
+        return !UserDefaults.standard.bool(forKey: VisheoAppStateService.onboardingShareShownKey)
+    }
+    
+    func onboardingShare(wasSeen seen: Bool) {
+        UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingShareShownKey)
     }
     
 	var shouldShowCameraTips: Bool {

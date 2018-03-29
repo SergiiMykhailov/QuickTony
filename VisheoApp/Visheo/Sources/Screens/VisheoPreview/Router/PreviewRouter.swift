@@ -15,6 +15,7 @@ protocol PreviewRouter: FlowRouter {
     func showVideoEdit(with assets: VisheoRenderingAssets)
 	func showSoundtrackEdit(with assets: VisheoRenderingAssets)
     
+    func showShareOnboarding(with assets: VisheoRenderingAssets, premium: Bool)
     func sendVisheo(with assets: VisheoRenderingAssets, premium: Bool)
     func showRegistration(with callback: ((Bool)->())?)
     func showCardTypeSelection(with assets: VisheoRenderingAssets)
@@ -30,6 +31,7 @@ class VisheoPreviewRouter : PreviewRouter {
         case showSendVisheo        = "showSendVisheo"
         case showRegistration      = "showRegistration"
         case showCardTypeSelection = "showCardTypeSelection"
+        case showSharingOnboarding = "showSharingOnboarding"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: VisheoPreviewViewController?
@@ -106,6 +108,13 @@ class VisheoPreviewRouter : PreviewRouter {
             let purchaseController = segue.destination as! ChooseCardsViewController
             let purchaseRouter = VisheoChooseCardsRouter(dependencies: dependencies)
             purchaseRouter.start(with: purchaseController, fromMenu: false, with: (sender as! VisheoRenderingAssets))
+        case .showSharingOnboarding:
+            let userInfo = sender as! [String : Any]
+            let shareOnboardingController = segue.destination as! ShareVisheoOnboardingViewController
+            let sendRouter = VisheoShareOnboardingRouter(dependencies: dependencies,
+                                                         assets: userInfo[Constants.assets] as! VisheoRenderingAssets,
+                                                         premium : userInfo[Constants.premium] as! Bool)
+            sendRouter.start(with: shareOnboardingController)
         }
     }
 }
@@ -135,6 +144,10 @@ extension VisheoPreviewRouter {
 	func showSoundtrackEdit(with assets: VisheoRenderingAssets) {
 		controller?.performSegue(SegueList.showSoundtrackEdit, sender: assets)
 	}
+    
+    func showShareOnboarding(with assets: VisheoRenderingAssets, premium: Bool) {
+        controller?.performSegue(SegueList.showSharingOnboarding, sender: [Constants.assets : assets, Constants.premium : premium])
+    }
     
     func sendVisheo(with assets: VisheoRenderingAssets, premium: Bool) {
         controller?.performSegue(SegueList.showSendVisheo, sender: [Constants.assets : assets, Constants.premium : premium])

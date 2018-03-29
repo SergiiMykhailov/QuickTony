@@ -70,7 +70,7 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
     }
 	
     func selectOccasion(withOccasion occasion: OccasionRecord) {
-        if appStateService.shouldShowOnobardingCover {
+        if appStateService.shouldShowOnboardingCover {
             router?.showCoverOnboarding(for: occasion)
         } else {
             router?.showSelectCover(for: occasion)
