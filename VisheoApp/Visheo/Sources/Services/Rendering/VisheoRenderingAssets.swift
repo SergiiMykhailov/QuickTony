@@ -22,6 +22,9 @@ class VisheoRenderingAssets {
     var assetsFolderRelUrl : URL {
         return URL(string: id)!
     }
+    
+    var signature : String?
+    
     private var docs: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
@@ -215,6 +218,7 @@ extension VisheoRenderingAssets {
     var creationInfo : VisheoCreationInfo {
         return VisheoCreationInfo(visheoId: id,
                                   occasionName: originalOccasion.name,
+                                  signature: signature ?? originalOccasion.name,
                                   coverId: coverId ?? -1,
                                   coverRemotePreviewUrl: coverRemotePreviewUrl,
                                   picturesCount: photoUrls.count,

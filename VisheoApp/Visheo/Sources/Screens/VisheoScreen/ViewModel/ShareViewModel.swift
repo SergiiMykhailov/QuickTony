@@ -30,6 +30,8 @@ protocol ShareViewModel : class, AlertGenerating {
     var renderingTitle : String {get}
     var uploadingTitle : String {get}
 	
+    var visheoName : String {get}
+    
 	var notificationsAuthorization: ((String) -> Void)? { get set }
     
     var creationStatusChanged : (()->())? {get set}
@@ -50,8 +52,12 @@ protocol ShareViewModel : class, AlertGenerating {
     func saveVisheo()
     func deleteVisheo()
 	
+    func updateVisheo()
+    
 	func openSettings()
 	
+    func showEditDescriptionScreen()
+    
 	func trackLinkCopied()
 	func trackLinkShared();
 }
@@ -74,9 +80,18 @@ extension ShareViewModel {
 		let final = calendar.date(byAdding: addition, to: startOfToday) ?? now;
 		return final;
 	}
+
 }
 
 class ExistingVisheoShareViewModel: ShareViewModel {
+    
+    func showEditDescriptionScreen() {
+        self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
+            self?._description = $0
+            self?.updateVisheo()
+        }
+    }
+    
     var isVisheoMissing: Bool  {
         guard let creationDate = visheoRecord.creationDate, let lifetime = visheoRecord.lifetime else {
             return false
@@ -128,6 +143,8 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     var showRetryLaterError: ((String) -> ())?
 	var notificationsAuthorization: ((String) -> Void)?
 	
+    private var _description : String?
+    
 	lazy var reminderDate: Date = initialReminderDate;
     weak var router: ShareRouter?
     private let visheoRecord : VisheoRecord
@@ -154,6 +171,11 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     func deleteVisheo() {
         self.visheoService.deleteVisheo(with: visheoRecord.id)
         router?.goToRoot()
+    }
+    
+    func updateVisheo() {
+        self.visheoService.updateVisheo(with: visheoRecord.id, signature: visheoName)
+        creationStatusChanged?()
     }
     
     func saveVisheo() {
@@ -218,9 +240,24 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 			}
 		}
 	}
+    
+    var visheoName: String {
+        return self._description ?? self.visheoRecord.signature ?? String(format: "%@ Visheo from %@", visheoRecord.name ?? "", userInfo.userName ?? "")
+    }
 }
 
 class ShareVisheoViewModel : ShareViewModel {
+    var visheoName: String {
+        return self._description ?? self.assets?.creationInfo.signature ?? String(format: "%@ Visheo from %@", assets?.originalOccasion.name ?? "", userInfo.userName ?? "")
+    }
+    
+    func showEditDescriptionScreen() {
+        self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
+            self?._description = $0
+            self?.updateVisheo()
+        }
+    }
+    
     var isVisheoMissing: Bool {
         return false
     }
@@ -278,6 +315,8 @@ class ShareVisheoViewModel : ShareViewModel {
     var renderingTitle: String = NSLocalizedString("We are rendering your Visheo", comment: "rendering visheo progress title")
     
     var uploadingTitle: String = NSLocalizedString("We are uploading your Visheo", comment: "uploading visheo progress title")
+    
+    private var _description : String?
     
     weak var router: ShareRouter?
     private let renderingService : RenderingService
@@ -366,6 +405,11 @@ class ShareVisheoViewModel : ShareViewModel {
     func deleteVisheo() {
         self.creationService.deleteVisheo(with: currentVisheoId)
         router?.goToRoot()
+    }
+    
+    func updateVisheo() {
+        self.creationService.updateVisheo(with: currentVisheoId, signature: visheoName)
+        creationStatusChanged?()
     }
     
     func saveVisheo() {

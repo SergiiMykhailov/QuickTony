@@ -22,6 +22,12 @@
 		2C6EE6F9206D2D4200E06AFC /* ShareVisheoOnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F3206D2D4100E06AFC /* ShareVisheoOnboardingRouter.swift */; };
 		2C6EE6FA206D2D4200E06AFC /* ShareVisheoOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F4206D2D4100E06AFC /* ShareVisheoOnboardingViewController.swift */; };
 		2C6EE6FB206D2D4200E06AFC /* ShareVisheoOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6F4206D2D4100E06AFC /* ShareVisheoOnboardingViewController.swift */; };
+		2C6EE70620726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70220726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift */; };
+		2C6EE70720726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70220726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift */; };
+		2C6EE70820726C9400E06AFC /* EditVideoDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70320726C9400E06AFC /* EditVideoDescriptionRouter.swift */; };
+		2C6EE70920726C9400E06AFC /* EditVideoDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70320726C9400E06AFC /* EditVideoDescriptionRouter.swift */; };
+		2C6EE70A20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */; };
+		2C6EE70B20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */; };
 		2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C9381FC20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
@@ -434,6 +440,9 @@
 		2C6EE6F2206D2D4100E06AFC /* ShareVisheoOnboardingControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVisheoOnboardingControllerViewModel.swift; sourceTree = "<group>"; };
 		2C6EE6F3206D2D4100E06AFC /* ShareVisheoOnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVisheoOnboardingRouter.swift; sourceTree = "<group>"; };
 		2C6EE6F4206D2D4100E06AFC /* ShareVisheoOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVisheoOnboardingViewController.swift; sourceTree = "<group>"; };
+		2C6EE70220726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoDescriptionControllerViewModel.swift; sourceTree = "<group>"; };
+		2C6EE70320726C9400E06AFC /* EditVideoDescriptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoDescriptionRouter.swift; sourceTree = "<group>"; };
+		2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoDescriptionViewController.swift; sourceTree = "<group>"; };
 		2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRuleControllerViewController.swift; sourceTree = "<group>"; };
 		2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedOccasionsTableCell.swift; sourceTree = "<group>"; };
 		2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOccasionsTableCell.swift; sourceTree = "<group>"; };
@@ -1029,6 +1038,7 @@
 				B46761251FC70E51006E9CB2 /* Router */,
 				B46761241FC70E45006E9CB2 /* ViewModel */,
 				B46761261FC7118F006E9CB2 /* ShareVisheoViewController.swift */,
+				2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */,
 			);
 			path = VisheoScreen;
 			sourceTree = "<group>";
@@ -1036,6 +1046,7 @@
 		B46761241FC70E45006E9CB2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2C6EE70220726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift */,
 				B467612A1FC711BD006E9CB2 /* ShareViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1044,6 +1055,7 @@
 		B46761251FC70E51006E9CB2 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				2C6EE70320726C9400E06AFC /* EditVideoDescriptionRouter.swift */,
 				B46761281FC7119D006E9CB2 /* ShareRouter.swift */,
 			);
 			path = Router;
@@ -1992,6 +2004,7 @@
 				920F8B8F1FF6BDC90087C45D /* VideoTrimmingRouter.swift in Sources */,
 				920F8B901FF6BDC90087C45D /* RouterAsembly.swift in Sources */,
 				920F8B911FF6BDC90087C45D /* UIView+LayerInspectable.swift in Sources */,
+				2C6EE70920726C9400E06AFC /* EditVideoDescriptionRouter.swift in Sources */,
 				920F8B921FF6BDC90087C45D /* VisheoPreviewViewController.swift in Sources */,
 				920F8B931FF6BDC90087C45D /* VisheoCollectionViewCell.swift in Sources */,
 				2C6EE6F9206D2D4200E06AFC /* ShareVisheoOnboardingRouter.swift in Sources */,
@@ -2011,6 +2024,7 @@
 				920F8B9E1FF6BDC90087C45D /* TipsProviderService.swift in Sources */,
 				920F8B9F1FF6BDC90087C45D /* EditAccountRouter.swift in Sources */,
 				920F8BA01FF6BDC90087C45D /* SignUpViewController.swift in Sources */,
+				2C6EE70720726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift in Sources */,
 				920F8BA11FF6BDC90087C45D /* VisheoRenderingAssets.swift in Sources */,
 				920F8BA21FF6BDC90087C45D /* SignInViewController.swift in Sources */,
 				920F8BA31FF6BDC90087C45D /* OccasionCellViewModel.swift in Sources */,
@@ -2035,6 +2049,7 @@
 				920F8BB51FF6BDC90087C45D /* ChooseCardsRouter.swift in Sources */,
 				920F8BB61FF6BDC90087C45D /* ChooseCardsViewModel.swift in Sources */,
 				920F8BB71FF6BDC90087C45D /* ChooseCardsViewController.swift in Sources */,
+				2C6EE70B20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */,
 				920F8BB81FF6BDC90087C45D /* PremiumCardsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2149,6 +2164,7 @@
 				B4F666251FC1C9ED00B68055 /* VideoTrimmingRouter.swift in Sources */,
 				B4AEE0E21FD01F1B0043A39A /* RouterAsembly.swift in Sources */,
 				B48AAAD31FAA03CC000BB33B /* UIView+LayerInspectable.swift in Sources */,
+				2C6EE70820726C9400E06AFC /* EditVideoDescriptionRouter.swift in Sources */,
 				B46528101FC347100070FFB7 /* VisheoPreviewViewController.swift in Sources */,
 				B4AEE0F11FD1C8770043A39A /* VisheoCollectionViewCell.swift in Sources */,
 				2C6EE6F8206D2D4200E06AFC /* ShareVisheoOnboardingRouter.swift in Sources */,
@@ -2168,6 +2184,7 @@
 				92548DEC1FF37CC8001F692E /* TipsProviderService.swift in Sources */,
 				B4C893F81FD5789800763296 /* EditAccountRouter.swift in Sources */,
 				B4BCABF01FB8CC7D003EDC7F /* SignUpViewController.swift in Sources */,
+				2C6EE70620726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift in Sources */,
 				B44450D01FBEDA7B0021772F /* VisheoRenderingAssets.swift in Sources */,
 				B4BCABEF1FB8CC7D003EDC7F /* SignInViewController.swift in Sources */,
 				B4BCABFC1FB8CC7D003EDC7F /* OccasionCellViewModel.swift in Sources */,
@@ -2192,6 +2209,7 @@
 				A60CEED5790033806C175466 /* ChooseCardsRouter.swift in Sources */,
 				A60CE8B0E019D486EF4AF0AF /* ChooseCardsViewModel.swift in Sources */,
 				A60CE64BD0494E69FA9B83C5 /* ChooseCardsViewController.swift in Sources */,
+				2C6EE70A20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */,
 				A60CEA5564DA671DBD7D12E6 /* PremiumCardsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

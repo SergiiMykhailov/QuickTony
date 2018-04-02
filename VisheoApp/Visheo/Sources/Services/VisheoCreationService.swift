@@ -14,6 +14,7 @@ import Reachability
 struct VisheoCreationInfo : Codable {
     let visheoId : String
     let occasionName : String
+    let signature : String
     
     let coverId : Int
     let coverRemotePreviewUrl : URL?
@@ -56,6 +57,7 @@ protocol CreationService {
     func isIncomplete(visheoId: String) -> Bool
     func uploadProgress(for visheoId: String) -> Double?
 	func unfinishedInfo(with id: String) -> VisheoCreationInfo?
+    func updateVisheo(with id: String, signature: String)
 }
 
 class VisheoCreationService : CreationService {
@@ -194,6 +196,11 @@ class VisheoCreationService : CreationService {
         freeRef.delete(completion: nil)
         
         VisheoRenderingAssets.deleteAssets(for: id)
+    }
+    
+    func updateVisheo(with id: String, signature: String) {
+        let visheoRecord = cardsRef.child("\(id)")
+        visheoRecord.updateChildValues(["signature" : signature])
     }
     
     func retryCreation(for visheoId: String) {
@@ -403,6 +410,7 @@ extension VisheoCreationInfo {
                       "picturesCount" : picturesCount,
                       "soundtrackId" : soundtrackId,
                       "occasionName" : occasionName,
+                      "signature" : signature,
                       "timestamp" : ServerValue.timestamp() ] as [String : Any]
         
         if let coverPreviewUrlString = coverRemotePreviewUrl?.absoluteString {
