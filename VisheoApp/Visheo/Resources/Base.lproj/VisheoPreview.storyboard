@@ -52,7 +52,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103" y="187" width="128" height="18.5"/>
+                                        <rect key="frame" x="103.5" y="187" width="128" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -209,6 +209,7 @@
                         <segue destination="ScI-5d-mqh" kind="presentation" identifier="showRegistration" id="rs3-wO-P6I"/>
                         <segue destination="0ZU-xD-YwL" kind="presentation" identifier="showSoundtrackEdit" id="CIi-8Y-uCc"/>
                         <segue destination="KjW-nB-Qsh" kind="show" identifier="showCardTypeSelection" id="cw0-JJ-Ga1"/>
+                        <segue destination="1n1-fk-nLn" kind="show" identifier="showSharingOnboarding" id="fis-tc-5eb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGZ-T9-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -299,7 +300,7 @@
                 <viewControllerPlaceholder storyboardName="Authentification" id="ScI-5d-mqh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESG-wG-bsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="301"/>
+            <point key="canvasLocation" x="810" y="392"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DXk-3B-qZj">
@@ -315,18 +316,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkz-U1-JAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="681"/>
+            <point key="canvasLocation" x="1006" y="967"/>
         </scene>
         <!--SHARE YOUR VISHEO-->
         <scene sceneID="2Er-xZ-amW">
             <objects>
                 <viewController storyboardIdentifier="ShareVisheoViewController" id="L2Y-ET-ymb" customClass="ShareVisheoViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WVY-Wz-gyc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="936"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="vBH-nG-pAk">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="936"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFw-rC-b54">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
@@ -638,7 +639,6 @@ This visheo is no longer available in cloud</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="backBarItem" destination="ceG-hb-vVo" id="ap4-Va-n73"/>
                         <outlet property="containerScrollView" destination="vBH-nG-pAk" id="IBC-FZ-r0D"/>
@@ -673,7 +673,7 @@ This visheo is no longer available in cloud</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3208.8000000000002" y="207.34632683658174"/>
+            <point key="canvasLocation" x="2994" y="300"/>
         </scene>
         <!--Purchases-->
         <scene sceneID="dbk-t7-AXk">
@@ -681,7 +681,7 @@ This visheo is no longer available in cloud</string>
                 <viewControllerPlaceholder storyboardName="Purchases" id="KjW-nB-Qsh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7s-eu-bUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2205" y="408"/>
+            <point key="canvasLocation" x="1635" y="300"/>
         </scene>
         <!--SelectCoverViewController-->
         <scene sceneID="hVs-3M-mrA">
@@ -691,7 +691,7 @@ This visheo is no longer available in cloud</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgr-bL-TOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="680"/>
+            <point key="canvasLocation" x="1650" y="679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6rd-dA-Fhv">
@@ -707,7 +707,7 @@ This visheo is no longer available in cloud</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xie-bv-xJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="1395"/>
+            <point key="canvasLocation" x="1006" y="1828"/>
         </scene>
         <!--VideoTrimmingViewController-->
         <scene sceneID="cSv-hh-daE">
@@ -717,18 +717,145 @@ This visheo is no longer available in cloud</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMp-MT-NBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1646" y="1394"/>
+            <point key="canvasLocation" x="1636" y="1828"/>
+        </scene>
+        <!--SAVE YOUR VISHEO-->
+        <scene sceneID="05g-Zk-sXK">
+            <objects>
+                <viewController title="SAVE YOUR VISHEO" id="1n1-fk-nLn" customClass="ShareVisheoOnboardingViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZTm-vz-7O4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlo-w0-dwX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpY-vi-fd6">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="631.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQZ-UX-eux">
+                                                <rect key="frame" x="40" y="551.5" width="295" height="60"/>
+                                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="iSG-ib-MHQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                                <state key="normal" title="Ok, got it">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="okGotItButtoTappedWithSender:" destination="1n1-fk-nLn" eventType="touchUpInside" id="Nhq-tq-4LH"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be able to download your Visheo file or simply send Visheo link to the receiver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTx-BS-IV5">
+                                                <rect key="frame" x="48" y="444" width="279" height="71.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareOptions" translatesAutoresizingMaskIntoConstraints="NO" id="GBI-4s-djx">
+                                                <rect key="frame" x="112.5" y="356" width="150" height="60"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDO-D9-W4t">
+                                                <rect key="frame" x="0.0" y="327" width="375" height="1"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="XW2-JE-KRN"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Visheo will be uploaded to the online storage, where you can keep it up 60 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6WC-7a-1J5">
+                                                <rect key="frame" x="48" y="209" width="279" height="72"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="l0b-Tc-uag"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudShare" translatesAutoresizingMaskIntoConstraints="NO" id="7BX-db-Bo6">
+                                                <rect key="frame" x="86.5" y="48" width="202" height="133"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="7BX-db-Bo6" secondAttribute="height" multiplier="50/33" id="0rY-4K-EnI"/>
+                                                    <constraint firstAttribute="width" constant="202" id="tcE-NA-xPg"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="GBI-4s-djx" firstAttribute="centerX" secondItem="iTx-BS-IV5" secondAttribute="centerX" id="1LP-vX-7LR"/>
+                                            <constraint firstAttribute="trailing" secondItem="gQZ-UX-eux" secondAttribute="trailing" constant="40" id="2je-kM-qw1"/>
+                                            <constraint firstItem="iTx-BS-IV5" firstAttribute="leading" secondItem="qpY-vi-fd6" secondAttribute="leading" constant="48" id="7lB-Ud-naO"/>
+                                            <constraint firstItem="gQZ-UX-eux" firstAttribute="top" secondItem="iTx-BS-IV5" secondAttribute="bottom" constant="36" id="HLO-sR-1WI"/>
+                                            <constraint firstItem="7BX-db-Bo6" firstAttribute="top" secondItem="qpY-vi-fd6" secondAttribute="top" constant="48" id="J7M-7i-hnR"/>
+                                            <constraint firstItem="gQZ-UX-eux" firstAttribute="leading" secondItem="qpY-vi-fd6" secondAttribute="leading" constant="40" id="Jg8-sv-KEj"/>
+                                            <constraint firstItem="iTx-BS-IV5" firstAttribute="top" secondItem="GBI-4s-djx" secondAttribute="bottom" constant="28" id="LHF-t6-I9C"/>
+                                            <constraint firstItem="pDO-D9-W4t" firstAttribute="top" secondItem="6WC-7a-1J5" secondAttribute="bottom" constant="46" id="RGh-aM-Rd9"/>
+                                            <constraint firstItem="pDO-D9-W4t" firstAttribute="leading" secondItem="qpY-vi-fd6" secondAttribute="leading" id="SnF-my-KH5"/>
+                                            <constraint firstItem="GBI-4s-djx" firstAttribute="width" secondItem="GBI-4s-djx" secondAttribute="height" multiplier="5/2" id="TjK-X5-cyw"/>
+                                            <constraint firstItem="iTx-BS-IV5" firstAttribute="centerX" secondItem="gQZ-UX-eux" secondAttribute="centerX" id="hBg-yk-qzX"/>
+                                            <constraint firstAttribute="bottom" secondItem="gQZ-UX-eux" secondAttribute="bottom" constant="20" id="hHt-G2-hHz"/>
+                                            <constraint firstItem="GBI-4s-djx" firstAttribute="top" secondItem="pDO-D9-W4t" secondAttribute="bottom" constant="28" id="hap-Vf-EWV"/>
+                                            <constraint firstAttribute="trailing" secondItem="pDO-D9-W4t" secondAttribute="trailing" id="n3K-fL-4kz"/>
+                                            <constraint firstItem="6WC-7a-1J5" firstAttribute="leading" secondItem="qpY-vi-fd6" secondAttribute="leading" constant="48" id="n60-U3-wHT"/>
+                                            <constraint firstItem="6WC-7a-1J5" firstAttribute="centerX" secondItem="iTx-BS-IV5" secondAttribute="centerX" id="nJu-Eq-4CH"/>
+                                            <constraint firstItem="6WC-7a-1J5" firstAttribute="top" secondItem="7BX-db-Bo6" secondAttribute="bottom" constant="28" id="qeM-Ix-oiS"/>
+                                            <constraint firstItem="7BX-db-Bo6" firstAttribute="centerX" secondItem="6WC-7a-1J5" secondAttribute="centerX" id="wax-JS-SVA"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qpY-vi-fd6" firstAttribute="leading" secondItem="xlo-w0-dwX" secondAttribute="leading" id="4hi-tq-gUB"/>
+                                    <constraint firstAttribute="trailing" secondItem="qpY-vi-fd6" secondAttribute="trailing" id="9SY-kW-vIe"/>
+                                    <constraint firstItem="qpY-vi-fd6" firstAttribute="top" secondItem="xlo-w0-dwX" secondAttribute="top" id="C87-nH-aV4"/>
+                                    <constraint firstAttribute="bottom" secondItem="qpY-vi-fd6" secondAttribute="bottom" id="CtV-Ge-M6N"/>
+                                    <constraint firstItem="qpY-vi-fd6" firstAttribute="width" secondItem="xlo-w0-dwX" secondAttribute="width" id="kxC-8f-kcJ"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xlo-w0-dwX" firstAttribute="leading" secondItem="dYc-es-Kq7" secondAttribute="leading" id="AK5-dg-76t"/>
+                            <constraint firstItem="dYc-es-Kq7" firstAttribute="top" secondItem="xlo-w0-dwX" secondAttribute="top" id="hmL-XE-da5"/>
+                            <constraint firstItem="xlo-w0-dwX" firstAttribute="width" secondItem="ZTm-vz-7O4" secondAttribute="width" id="uKY-K7-anB"/>
+                            <constraint firstItem="dYc-es-Kq7" firstAttribute="bottom" secondItem="xlo-w0-dwX" secondAttribute="bottom" id="xbi-Pq-VBA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dYc-es-Kq7"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SAVE YOUR VISHEO" id="qEj-al-rmp" userLabel="SELECT COVER ART">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="gl5-bz-h5C">
+                            <connections>
+                                <action selector="backPressed:" destination="1n1-fk-nLn" id="v3f-L6-uum"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="L2Y-ET-ymb" kind="show" identifier="showSendVisheo" id="r09-lo-wL2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AdW-uW-XbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2206" y="680"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow" width="20" height="20"/>
+        <image name="cloudShare" width="202" height="132"/>
         <image name="cover" width="78" height="63"/>
         <image name="delete" width="20" height="20"/>
         <image name="menu" width="20" height="20"/>
         <image name="music" width="78" height="63"/>
         <image name="play" width="80" height="80"/>
+        <image name="shareOptions" width="150" height="60"/>
         <image name="slideshow" width="78" height="63"/>
         <image name="video" width="78" height="63"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="r09-lo-wL2"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

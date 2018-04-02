@@ -1,5 +1,5 @@
 /* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "0hK-vf-rCc"; */
-"0hK-vf-rCc.normalTitle" = "Add Pictures";
+"0hK-vf-rCc.normalTitle" = "Add Photos";
 
 /* Class = "UIButton"; normalTitle = "Elizabeth Burman"; ObjectID = "1UP-AB-86s"; */
 "1UP-AB-86s.normalTitle" = "Elizabeth Burman";
@@ -29,7 +29,7 @@
 "Nq2-vC-p50.text" = "Label";
 
 /* Class = "UILabel"; text = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted"; ObjectID = "QQ4-CT-UNf"; */
-"QQ4-CT-UNf.text" = "Carefully chosen photos will make your Visheo memorable and fun to watch";
+"QQ4-CT-UNf.text" = "The photos will be played as a slideshow in your video greeting to make it memoriable & fun";
 
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "TbV-zh-dIQ"; */
 "TbV-zh-dIQ.title" = "SELECT PHOTOS";
@@ -59,7 +59,7 @@
 "vhb-wR-qwm.title" = "SELECT PHOTOS";
 
 /* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR PHOTOS"; ObjectID = "xF6-PL-lMo"; */
-"xF6-PL-lMo.text" = "ADD YOUR PHOTOS";
+"xF6-PL-lMo.text" = "Step 2 / 3";
 
 /* Class = "UIBarButtonItem"; title = "Skip"; ObjectID = "yI4-Lp-Ujp"; */
 "yI4-Lp-Ujp.title" = "Skip";

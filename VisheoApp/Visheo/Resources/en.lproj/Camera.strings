@@ -5,7 +5,7 @@
 "2Za-I9-yK2.segmentTitles[1]" = "Best Practices";
 
 /* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "Cbl-tb-5X6"; */
-"Cbl-tb-5X6.normalTitle" = "Record Video Wish";
+"Cbl-tb-5X6.normalTitle" = "Record Video Message";
 
 /* Class = "UILabel"; text = "REC"; ObjectID = "Ct7-4F-cZX"; */
 "Ct7-4F-cZX.text" = "REC";
@@ -20,7 +20,7 @@
 "MjJ-FK-D1Y.text" = "3";
 
 /* Class = "UILabel"; text = "To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted"; ObjectID = "MqL-i9-Wr9"; */
-"MqL-i9-Wr9.text" = "Video Wish (up to 30 seconds) - is a key component in your Visheo that will make it personal and touching";
+"MqL-i9-Wr9.text" = "Video Message (up to 30 sec) is the key component of your Visheo that makes it personal & touching";
 
 /* Class = "UILabel"; text = "Please rotate your device to portrait orientation"; ObjectID = "Srt-Bl-ce3"; */
 "Srt-Bl-ce3.text" = "Please rotate your device to portrait orientation";
@@ -29,13 +29,13 @@
 "YMW-wT-ePu.text" = "Good Lighting is Critical";
 
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "a5t-vd-l66"; */
-"a5t-vd-l66.title" = "RECORD YOUR VIDEO WISH";
+"a5t-vd-l66.title" = "RECORD VIDEO MESSAGE";
 
 /* Class = "UIButton"; normalTitle = "Video Wish is Ready"; ObjectID = "agg-W8-Ax4"; */
 "agg-W8-Ax4.normalTitle" = "Video Wish is Ready";
 
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "crN-cW-0Hk"; */
-"crN-cW-0Hk.title" = "RECORD YOUR VIDEO WISH";
+"crN-cW-0Hk.title" = "RECORD VIDEO MESSAGE";
 
 /* Class = "UILabel"; text = "01"; ObjectID = "eBH-g9-WZk"; */
 "eBH-g9-WZk.text" = "01";
@@ -53,7 +53,7 @@
 "vfD-hc-yMF.normalTitle" = "Retake";
 
 /* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE"; ObjectID = "xJk-8Q-bOw"; */
-"xJk-8Q-bOw.text" = "RECORD VIDEO WISH";
+"xJk-8Q-bOw.text" = "Step 3 / 3";
 
 /* Class = "UILabel"; text = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video."; ObjectID = "zUb-Nv-0Bh"; */
 "zUb-Nv-0Bh.text" = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video.";
