@@ -10,7 +10,6 @@
 import UIKit
 
 protocol ShareOnboardingRouter: FlowRouter {
-    func start(with: ShareVisheoOnboardingViewController)
     func showShareVisheo()
 }
 

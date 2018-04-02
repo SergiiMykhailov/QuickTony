@@ -10,7 +10,6 @@
 import UIKit
 
 protocol CoverOnboardingScreenRouter: FlowRouter {
-    func start(with: CoverOnboardingScreenViewController)
     func showSelectCover()
 }
 
