@@ -165,6 +165,10 @@ class VisheoRenderingAssets {
     
     // MARK: Video
     
+    var isVideoRecorded : Bool {
+        return FileManager.default.fileExists(atPath: videoUrl.path)
+    }
+    
     var trimPoints : (CMTime, CMTime)?
     
     var videoRelPath : String {

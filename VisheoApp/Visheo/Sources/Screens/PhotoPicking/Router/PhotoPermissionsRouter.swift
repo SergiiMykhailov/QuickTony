@@ -12,6 +12,7 @@ protocol PhotoPermissionsRouter: FlowRouter {
     func showPhotoLibrary()
     func showCamera()
     func showCameraPermissions()
+    func showTrimScreen()
     
     func goBack()
 }
@@ -21,6 +22,7 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
         case showPhotoLibrary = "showPhotoLibrary"
         case showCamera = "showCameraScreen"
         case showCameraPermissions = "showCameraPermissionsScreen"
+        case showTrimScreen = "showTrimScreen"
     }
     let dependencies: RouterDependencies
     let assets : VisheoRenderingAssets
@@ -37,7 +39,7 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
     
     func start(with viewController: PhotoPermissionsViewController, editMode: Bool = false) {
         self.editMode = editMode
-        let vm = VisheoPhotoPermissionsViewModel(permissionsService: dependencies.appPermissionsService, editMode: editMode)
+        let vm = VisheoPhotoPermissionsViewModel(permissionsService: dependencies.appPermissionsService, editMode: editMode, videoRecorded: assets.isVideoRecorded)
         viewModel = vm
         vm.router = self
         self.controller = viewController        
@@ -61,6 +63,10 @@ class VisheoPhotoPermissionsRouter : PhotoPermissionsRouter {
             let cameraPermissionController = segue.destination as! CameraPermissionsViewController
             let cameraPermissionsRouter = VisheoCameraPermissionsRouter(dependencies: dependencies, assets: assets)
             cameraPermissionsRouter.start(with: cameraPermissionController)
+        case .showTrimScreen:
+            let trimmingController = segue.destination as! VideoTrimmingViewController
+            let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: assets)
+            trimmingRouter.start(with: trimmingController)
         }
     }
 }
@@ -76,6 +82,10 @@ extension VisheoPhotoPermissionsRouter {
     
     func showCameraPermissions() {
         controller?.performSegue(SegueList.showCameraPermissions, sender: nil)
+    }
+    
+    func showTrimScreen() {
+        controller?.performSegue(SegueList.showTrimScreen, sender: nil)
     }
     
     func goBack() {
