@@ -13,12 +13,14 @@ protocol PhotoPickerRouter: FlowRouter {
     func showCameraPermissions(with assets: VisheoRenderingAssets)
     
     func goBack(with assets: VisheoRenderingAssets)
+    func showTrimScreen(with assets: VisheoRenderingAssets)
 }
 
 class VisheoPhotoPickerRouter : PhotoPickerRouter {
     enum SegueList: String, SegueListType {
         case showCamera = "showCameraScreen"
         case showCameraPermissions = "showCameraPermissionsScreen"
+        case showTrimScreen = "showTrimScreen"
     }
     let dependencies: RouterDependencies
     private(set) weak var controller: UIViewController?
@@ -26,7 +28,7 @@ class VisheoPhotoPickerRouter : PhotoPickerRouter {
     let assets : VisheoRenderingAssets
     private let photosSelectedCallback  : ((VisheoRenderingAssets)->())?
     
-    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets,callback: ((VisheoRenderingAssets)->())? = nil) {
+    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets, callback: ((VisheoRenderingAssets)->())? = nil) {
         self.dependencies = dependencies
         self.assets = assets
         self.photosSelectedCallback = callback
@@ -57,6 +59,10 @@ class VisheoPhotoPickerRouter : PhotoPickerRouter {
             let cameraPermissionController = segue.destination as! CameraPermissionsViewController
             let cameraPermissionsRouter = VisheoCameraPermissionsRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets)
             cameraPermissionsRouter.start(with: cameraPermissionController)
+        case .showTrimScreen:
+            let trimmingController = segue.destination as! VideoTrimmingViewController
+            let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: sender as! VisheoRenderingAssets)
+            trimmingRouter.start(with: trimmingController)
         }
     }
 }
@@ -68,6 +74,10 @@ extension VisheoPhotoPickerRouter {
     
     func showCameraPermissions(with assets: VisheoRenderingAssets) {
         controller?.performSegue(SegueList.showCameraPermissions, sender: assets)
+    }
+    
+    func showTrimScreen(with assets: VisheoRenderingAssets) {
+        controller?.performSegue(SegueList.showTrimScreen, sender: assets)
     }
     
     func goBack(with assets: VisheoRenderingAssets) {

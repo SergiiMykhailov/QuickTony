@@ -46,17 +46,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V01-yZ-NSN">
-                                        <rect key="frame" x="273.5" y="15" width="46.5" height="19"/>
+                                        <rect key="frame" x="275" y="15" width="45" height="21.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-DV-gPA" customClass="CameraRecordIndicator" customModule="Visheo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="9" height="9.5"/>
+                                                <rect key="frame" x="0.0" y="5.5" width="10" height="11"/>
                                                 <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pSM-DV-gPA" secondAttribute="height" multiplier="1:1" id="9sA-Ik-ddr"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="REC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct7-4F-cZX">
-                                                <rect key="frame" x="14" y="0.0" width="32.5" height="19"/>
+                                                <rect key="frame" x="15" y="0.0" width="30" height="21.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -82,10 +82,10 @@
                                         </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNF-hk-vTk">
-                                        <rect key="frame" x="115" y="138.5" width="220" height="57.5"/>
+                                        <rect key="frame" x="129.5" y="136" width="205.5" height="62.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your device to portrait orientation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="Srt-Bl-ce3">
-                                                <rect key="frame" x="10" y="10" width="200" height="37.5"/>
+                                                <rect key="frame" x="10" y="10" width="185.5" height="42.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -437,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pua-D5-CXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="452" y="832"/>
+            <point key="canvasLocation" x="425" y="969"/>
         </scene>
         <!--INSPIRATION-->
         <scene sceneID="TmD-Jd-yJR">
@@ -654,6 +654,6 @@ This will help avoid unnecessary shadows and grainy areas in your video.</string
         <image name="play" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fJP-hQ-Yo3"/>
+        <segue reference="0Qk-pt-sxu"/>
     </inferredMetricsTieBreakers>
 </document>

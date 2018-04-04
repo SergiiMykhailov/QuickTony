@@ -134,7 +134,9 @@ class VisheoPhotoPickerViewModel : PhotoPickerViewModel {
             return
         }
         
-        if permissionsService.cameraAccessAllowed {
+        if assets.isVideoRecorded {
+            router?.showTrimScreen(with: assets)
+        } else if permissionsService.cameraAccessAllowed {
             router?.showCamera(with: assets)
         } else {
             router?.showCameraPermissions(with: assets)

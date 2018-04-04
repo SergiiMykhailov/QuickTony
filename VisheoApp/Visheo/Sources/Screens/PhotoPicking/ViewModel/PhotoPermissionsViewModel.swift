@@ -26,7 +26,9 @@ class VisheoPhotoPermissionsViewModel : PhotoPermissionsViewModel {
             return
         }
         
-        if permissionsService.cameraAccessAllowed {
+        if isVideoRecorded {
+            router?.showTrimScreen()
+        } else if permissionsService.cameraAccessAllowed {
             router?.showCamera()
         } else {
             router?.showCameraPermissions()
@@ -55,9 +57,11 @@ class VisheoPhotoPermissionsViewModel : PhotoPermissionsViewModel {
     weak var router: PhotoPermissionsRouter?
     let permissionsService: AppPermissionsService
     let editMode : Bool
+    let isVideoRecorded : Bool
     
-    init(permissionsService: AppPermissionsService, editMode: Bool) {
+    init(permissionsService: AppPermissionsService, editMode: Bool, videoRecorded: Bool) {
         self.permissionsService = permissionsService
         self.editMode = editMode
+        self.isVideoRecorded = videoRecorded
     }
 }
