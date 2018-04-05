@@ -108,7 +108,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="844-DT-RCB">
-                                <rect key="frame" x="28" y="364" width="319" height="84"/>
+                                <rect key="frame" x="28" y="375" width="319" height="84"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="quN-cm-BH1" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="76" height="84"/>
@@ -175,7 +175,7 @@
                             <constraint firstItem="Y5n-Gj-tF4" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="20" id="IAQ-Rb-dKN"/>
                             <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="844-DT-RCB" secondAttribute="trailing" constant="28" id="jZv-l7-T4j"/>
                             <constraint firstItem="SHA-oq-exf" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="20" id="oYh-YN-dZg"/>
-                            <constraint firstItem="844-DT-RCB" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="bottom" priority="750" constant="9" id="q0x-Sd-hZe"/>
+                            <constraint firstItem="844-DT-RCB" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="bottom" constant="20" id="q0x-Sd-hZe"/>
                             <constraint firstItem="844-DT-RCB" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="28" id="rri-hM-YyE"/>
                             <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="SHA-oq-exf" secondAttribute="trailing" constant="20" id="tIJ-CF-gDY"/>
                         </constraints>
@@ -973,7 +973,7 @@ This visheo is no longer available in cloud</string>
         <image name="video" width="78" height="63"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r09-lo-wL2"/>
+        <segue reference="qxY-1U-qrq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
