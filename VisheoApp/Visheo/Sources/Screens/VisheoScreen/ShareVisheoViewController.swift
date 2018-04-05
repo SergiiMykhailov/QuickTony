@@ -57,6 +57,7 @@ class ShareVisheoViewController: UIViewController {
         linkText.text = viewModel.visheoName
         
         updateProgress()
+        viewModel.updateVisheo()
 		
         if viewModel.showBackButton {
             navigationItem.leftBarButtonItems = [backBarItem]
