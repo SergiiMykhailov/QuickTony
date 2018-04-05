@@ -86,30 +86,25 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding1" translatesAutoresizingMaskIntoConstraints="NO" id="JDK-Vd-kEv">
-                                                        <rect key="frame" x="0.0" y="35" width="320" height="320"/>
+                                                        <rect key="frame" x="0.0" y="32" width="320" height="320"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="JDK-Vd-kEv" secondAttribute="height" id="sxp-4l-ehz"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="ph2-bC-KQl">
-                                                        <rect key="frame" x="58" y="391" width="204" height="22747.5"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Visheo is a Video Wish " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qio-1g-qKo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="204" height="24"/>
-                                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3b-Ph-eEC">
-                                                                <rect key="frame" x="0.0" y="46" width="204" height="22701.5"/>
-                                                                <string key="text">Made of given Greeting Card &amp; Music
-with your Pictures and Video Message</string>
-                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Visheo is a Video Wish " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qio-1g-qKo">
+                                                        <rect key="frame" x="66.5" y="366" width="188" height="24"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3b-Ph-eEC" userLabel="Made of given Greeting Card &amp; Music with your Pictures and Video Message">
+                                                        <rect key="frame" x="46.5" y="412" width="227" height="42.5"/>
+                                                        <string key="text">made of Greeting Card, Photos, 
+Video Message and Music</string>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-hS-6ge">
                                                         <rect key="frame" x="20" y="488" width="280" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,17 +124,47 @@ with your Pictures and Video Message</string>
                                                             <action selector="nextPressed:" destination="H4H-G1-GP2" eventType="touchUpInside" id="Iml-rV-4s5"/>
                                                         </connections>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDV-XH-nRW">
+                                                        <rect key="frame" x="160" y="474" width="0.0" height="14"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" id="PJB-2l-0OA"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFR-kr-XCq">
+                                                        <rect key="frame" x="160" y="454.5" width="0.0" height="14"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" id="G8T-lw-uK1"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkF-lI-QOQ">
+                                                        <rect key="frame" x="160.5" y="352" width="0.0" height="14"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" id="9kS-ko-9xw"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="ph2-bC-KQl" firstAttribute="top" secondItem="JDK-Vd-kEv" secondAttribute="bottom" constant="36" id="K5m-Vp-gKd"/>
-                                                    <constraint firstAttribute="bottom" secondItem="rmq-hS-6ge" secondAttribute="bottom" constant="20" id="OHk-IO-DL3"/>
+                                                    <constraint firstItem="BkF-lI-QOQ" firstAttribute="centerX" secondItem="JDK-Vd-kEv" secondAttribute="centerX" id="9L1-3P-6HD"/>
+                                                    <constraint firstItem="Qio-1g-qKo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UYS-tL-1aw" secondAttribute="leading" constant="20" id="9QQ-yd-OLJ"/>
+                                                    <constraint firstItem="BkF-lI-QOQ" firstAttribute="top" secondItem="JDK-Vd-kEv" secondAttribute="bottom" id="Ecp-d7-NMU"/>
+                                                    <constraint firstItem="BkF-lI-QOQ" firstAttribute="height" secondItem="SFR-kr-XCq" secondAttribute="height" id="Sip-Et-Dun"/>
+                                                    <constraint firstItem="Qio-1g-qKo" firstAttribute="top" secondItem="BkF-lI-QOQ" secondAttribute="bottom" id="VAP-VA-mht"/>
                                                     <constraint firstAttribute="trailing" secondItem="JDK-Vd-kEv" secondAttribute="trailing" id="Vzg-NS-bRv"/>
+                                                    <constraint firstItem="SFR-kr-XCq" firstAttribute="top" secondItem="z3b-Ph-eEC" secondAttribute="bottom" id="XOR-wK-sCo"/>
                                                     <constraint firstItem="rmq-hS-6ge" firstAttribute="centerX" secondItem="UYS-tL-1aw" secondAttribute="centerX" id="aRL-YV-T9S"/>
-                                                    <constraint firstItem="JDK-Vd-kEv" firstAttribute="top" secondItem="UYS-tL-1aw" secondAttribute="top" constant="35" id="eSC-yy-HlK"/>
+                                                    <constraint firstItem="z3b-Ph-eEC" firstAttribute="top" secondItem="Qio-1g-qKo" secondAttribute="bottom" constant="22" id="cPa-FW-9z5"/>
+                                                    <constraint firstItem="JDK-Vd-kEv" firstAttribute="top" secondItem="UYS-tL-1aw" secondAttribute="top" constant="32" id="eSC-yy-HlK"/>
+                                                    <constraint firstItem="Qio-1g-qKo" firstAttribute="centerX" secondItem="UYS-tL-1aw" secondAttribute="centerX" id="fe3-YW-K67"/>
+                                                    <constraint firstItem="z3b-Ph-eEC" firstAttribute="centerX" secondItem="UYS-tL-1aw" secondAttribute="centerX" id="ffE-QN-0go"/>
                                                     <constraint firstItem="rmq-hS-6ge" firstAttribute="leading" secondItem="UYS-tL-1aw" secondAttribute="leading" constant="20" id="jks-6Z-7WM"/>
                                                     <constraint firstItem="JDK-Vd-kEv" firstAttribute="leading" secondItem="UYS-tL-1aw" secondAttribute="leading" id="kVI-l3-zsc"/>
-                                                    <constraint firstItem="ph2-bC-KQl" firstAttribute="centerX" secondItem="UYS-tL-1aw" secondAttribute="centerX" id="p7M-dp-JNR"/>
+                                                    <constraint firstItem="PDV-XH-nRW" firstAttribute="height" secondItem="SFR-kr-XCq" secondAttribute="height" id="ouE-Bs-YBA"/>
+                                                    <constraint firstItem="rmq-hS-6ge" firstAttribute="top" secondItem="PDV-XH-nRW" secondAttribute="bottom" id="qc1-y6-5C1"/>
+                                                    <constraint firstItem="z3b-Ph-eEC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UYS-tL-1aw" secondAttribute="leading" constant="20" id="taM-NE-3bV"/>
                                                     <constraint firstAttribute="trailing" secondItem="rmq-hS-6ge" secondAttribute="trailing" constant="20" id="u68-Jc-M9D"/>
                                                     <constraint firstItem="JDK-Vd-kEv" firstAttribute="centerX" secondItem="UYS-tL-1aw" secondAttribute="centerX" id="yla-Jh-XbO"/>
                                                 </constraints>
@@ -148,30 +173,32 @@ with your Pictures and Video Message</string>
                                                 <rect key="frame" x="320" y="0.0" width="320" height="568"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding2" translatesAutoresizingMaskIntoConstraints="NO" id="Yve-jt-bWU">
-                                                        <rect key="frame" x="0.0" y="35" width="320" height="320"/>
+                                                        <rect key="frame" x="0.0" y="32" width="320" height="320"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Yve-jt-bWU" secondAttribute="height" id="lde-wR-cTS"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-LA-dPr">
-                                                        <rect key="frame" x="58" y="391" width="204" height="7627.5"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="It’s Easy and Fun" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFV-q7-Sb8" userLabel="Select upcoming occasion  &amp; choose cover you like">
-                                                                <rect key="frame" x="0.0" y="0.0" width="204" height="24"/>
-                                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="1. Choose card 2. Record video\n3. Add your photos" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSg-ky-uib">
-                                                                <rect key="frame" x="0.0" y="46" width="204" height="7581.5"/>
-                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yE6-Lt-Jfx">
+                                                        <rect key="frame" x="160" y="352" width="0.0" height="14"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" id="qCG-tX-VXd"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Personal Greeting Movie" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFV-q7-Sb8">
+                                                        <rect key="frame" x="61" y="366" width="199" height="24"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="for your dear ones on any occasion created in seconds" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSg-ky-uib">
+                                                        <rect key="frame" x="32.5" y="412" width="256" height="42.5"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJv-Qa-CL1">
-                                                        <rect key="frame" x="20" y="488" width="280" height="60"/>
+                                                        <rect key="frame" x="20.5" y="488" width="280" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="emc-IM-hxs"/>
@@ -192,19 +219,27 @@ with your Pictures and Video Message</string>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="SFV-q7-Sb8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0rJ-fO-h6i" secondAttribute="leading" constant="20" id="1b0-xk-4xC"/>
+                                                    <constraint firstItem="yE6-Lt-Jfx" firstAttribute="centerX" secondItem="Yve-jt-bWU" secondAttribute="centerX" id="1xt-03-0ps"/>
                                                     <constraint firstItem="Yve-jt-bWU" firstAttribute="centerX" secondItem="0rJ-fO-h6i" secondAttribute="centerX" id="2qb-Da-lxJ"/>
                                                     <constraint firstItem="Yve-jt-bWU" firstAttribute="leading" secondItem="0rJ-fO-h6i" secondAttribute="leading" id="8Sb-5r-qrm"/>
+                                                    <constraint firstItem="VSg-ky-uib" firstAttribute="centerX" secondItem="0rJ-fO-h6i" secondAttribute="centerX" id="F5Q-7s-PFw"/>
                                                     <constraint firstItem="yJv-Qa-CL1" firstAttribute="centerX" secondItem="0rJ-fO-h6i" secondAttribute="centerX" id="GXh-it-goi"/>
-                                                    <constraint firstItem="Yve-jt-bWU" firstAttribute="top" secondItem="0rJ-fO-h6i" secondAttribute="top" constant="35" id="esy-r5-HCk"/>
+                                                    <constraint firstItem="VSg-ky-uib" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0rJ-fO-h6i" secondAttribute="leading" constant="20" id="GeX-kN-6GE"/>
+                                                    <constraint firstItem="VSg-ky-uib" firstAttribute="top" secondItem="SFV-q7-Sb8" secondAttribute="bottom" constant="22" id="TSq-Hz-2t1"/>
+                                                    <constraint firstItem="SFV-q7-Sb8" firstAttribute="top" secondItem="yE6-Lt-Jfx" secondAttribute="bottom" id="VnK-LI-luH"/>
+                                                    <constraint firstItem="Yve-jt-bWU" firstAttribute="top" secondItem="0rJ-fO-h6i" secondAttribute="top" constant="32" id="esy-r5-HCk"/>
                                                     <constraint firstAttribute="trailing" secondItem="Yve-jt-bWU" secondAttribute="trailing" id="mgG-Aq-grI"/>
-                                                    <constraint firstItem="AOJ-LA-dPr" firstAttribute="centerX" secondItem="0rJ-fO-h6i" secondAttribute="centerX" id="x01-7k-3V3"/>
-                                                    <constraint firstItem="AOJ-LA-dPr" firstAttribute="top" secondItem="Yve-jt-bWU" secondAttribute="bottom" constant="36" id="zoL-q0-Y4f"/>
+                                                    <constraint firstItem="yE6-Lt-Jfx" firstAttribute="top" secondItem="Yve-jt-bWU" secondAttribute="bottom" id="snX-zz-aCk"/>
+                                                    <constraint firstItem="SFV-q7-Sb8" firstAttribute="centerX" secondItem="0rJ-fO-h6i" secondAttribute="centerX" id="zZ1-Vu-2Q3"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="yE6-Lt-Jfx" firstAttribute="height" secondItem="BkF-lI-QOQ" secondAttribute="height" id="3RD-rY-9Wn"/>
                                             <constraint firstItem="0rJ-fO-h6i" firstAttribute="leading" secondItem="UYS-tL-1aw" secondAttribute="trailing" id="9SW-Tc-9tp"/>
+                                            <constraint firstItem="UYS-tL-1aw" firstAttribute="width" secondItem="0rJ-fO-h6i" secondAttribute="width" id="AtJ-cY-jgQ"/>
                                             <constraint firstAttribute="bottom" secondItem="0rJ-fO-h6i" secondAttribute="bottom" id="UZC-xR-qL3"/>
                                             <constraint firstItem="UYS-tL-1aw" firstAttribute="top" secondItem="lcs-9R-bTB" secondAttribute="top" id="UoL-He-XA0"/>
                                             <constraint firstItem="rmq-hS-6ge" firstAttribute="top" secondItem="yJv-Qa-CL1" secondAttribute="top" id="WUW-dS-Nvr"/>
@@ -217,10 +252,9 @@ with your Pictures and Video Message</string>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="ph2-bC-KQl" firstAttribute="width" secondItem="rZW-7x-vF7" secondAttribute="width" constant="-116" id="9QW-DV-iZg"/>
                                     <constraint firstAttribute="bottom" secondItem="lcs-9R-bTB" secondAttribute="bottom" id="Ph7-xW-W06"/>
+                                    <constraint firstItem="rZW-7x-vF7" firstAttribute="bottom" secondItem="rmq-hS-6ge" secondAttribute="bottom" constant="20" id="RYK-W9-6V1"/>
                                     <constraint firstItem="lcs-9R-bTB" firstAttribute="leading" secondItem="ZWD-Wu-RMd" secondAttribute="leading" id="ZUl-bW-N0z"/>
-                                    <constraint firstItem="AOJ-LA-dPr" firstAttribute="width" secondItem="rZW-7x-vF7" secondAttribute="width" constant="-116" id="fTl-MG-6ir"/>
                                     <constraint firstAttribute="trailing" secondItem="lcs-9R-bTB" secondAttribute="trailing" id="feI-CA-cPl"/>
                                     <constraint firstItem="lcs-9R-bTB" firstAttribute="top" secondItem="ZWD-Wu-RMd" secondAttribute="top" id="kHo-ZS-W66"/>
                                 </constraints>
@@ -230,25 +264,29 @@ with your Pictures and Video Message</string>
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="A5l-y7-Tr1">
-                                <rect key="frame" x="148.5" y="23168.5" width="23" height="37"/>
+                                <rect key="frame" x="149" y="468.5" width="23" height="5.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="Txf-4J-zam"/>
+                                    <constraint firstAttribute="height" constant="5.5" id="g2E-R3-Vjc"/>
+                                </constraints>
                                 <color key="pageIndicatorTintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ph2-bC-KQl" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="A5l-y7-Tr1" secondAttribute="top" constant="-30" id="5bB-5Y-PcN"/>
                             <constraint firstItem="ZWD-Wu-RMd" firstAttribute="top" secondItem="27c-L2-qbc" secondAttribute="top" id="B1V-UQ-qTr"/>
+                            <constraint firstItem="PDV-XH-nRW" firstAttribute="centerX" secondItem="A5l-y7-Tr1" secondAttribute="centerX" id="FUo-5k-u4k"/>
                             <constraint firstItem="ZWD-Wu-RMd" firstAttribute="height" secondItem="27c-L2-qbc" secondAttribute="height" id="Gkh-2r-Azz"/>
                             <constraint firstItem="lcs-9R-bTB" firstAttribute="width" secondItem="27c-L2-qbc" secondAttribute="width" multiplier="2" id="J3J-jw-fE8"/>
-                            <constraint firstItem="A5l-y7-Tr1" firstAttribute="centerX" secondItem="27c-L2-qbc" secondAttribute="centerX" id="MF8-jd-0jf"/>
+                            <constraint firstItem="PDV-XH-nRW" firstAttribute="top" secondItem="A5l-y7-Tr1" secondAttribute="bottom" id="JGQ-UF-LhH"/>
                             <constraint firstItem="0rJ-fO-h6i" firstAttribute="height" secondItem="27c-L2-qbc" secondAttribute="height" id="MFv-Lh-c2C"/>
-                            <constraint firstItem="UYS-tL-1aw" firstAttribute="width" secondItem="27c-L2-qbc" secondAttribute="width" id="NvM-XD-FcM"/>
-                            <constraint firstItem="ukI-9a-If0" firstAttribute="bottom" secondItem="A5l-y7-Tr1" secondAttribute="bottom" priority="750" constant="150" id="TC4-KY-7wz"/>
+                            <constraint firstItem="A5l-y7-Tr1" firstAttribute="centerX" secondItem="ukI-9a-If0" secondAttribute="centerX" id="Qwj-BB-ffe"/>
+                            <constraint firstItem="SFR-kr-XCq" firstAttribute="centerX" secondItem="A5l-y7-Tr1" secondAttribute="centerX" id="WcZ-o1-jnk"/>
                             <constraint firstItem="lcs-9R-bTB" firstAttribute="height" secondItem="27c-L2-qbc" secondAttribute="height" id="eMd-hi-onq"/>
                             <constraint firstItem="ZWD-Wu-RMd" firstAttribute="bottom" secondItem="ukI-9a-If0" secondAttribute="bottom" id="gdh-VZ-LTk"/>
+                            <constraint firstItem="A5l-y7-Tr1" firstAttribute="top" secondItem="SFR-kr-XCq" secondAttribute="bottom" id="jRH-gI-1hz"/>
                             <constraint firstItem="0rJ-fO-h6i" firstAttribute="width" secondItem="27c-L2-qbc" secondAttribute="width" id="mks-X2-F38"/>
-                            <constraint firstItem="AOJ-LA-dPr" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="A5l-y7-Tr1" secondAttribute="top" constant="-30" id="rrf-fJ-Cdy"/>
                             <constraint firstItem="ZWD-Wu-RMd" firstAttribute="width" secondItem="27c-L2-qbc" secondAttribute="width" id="tWp-Q0-B8l"/>
                             <constraint firstItem="ZWD-Wu-RMd" firstAttribute="leading" secondItem="ukI-9a-If0" secondAttribute="leading" id="uJ5-0Q-BKF"/>
                             <constraint firstItem="UYS-tL-1aw" firstAttribute="height" secondItem="27c-L2-qbc" secondAttribute="height" id="wks-C4-sms"/>
@@ -264,7 +302,7 @@ with your Pictures and Video Message</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bo7-5Q-nXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1033" y="500"/>
+            <point key="canvasLocation" x="1031.25" y="499.64788732394368"/>
         </scene>
     </scenes>
     <resources>
