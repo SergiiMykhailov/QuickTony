@@ -222,7 +222,7 @@ extension VisheoRenderingAssets {
     var creationInfo : VisheoCreationInfo {
         return VisheoCreationInfo(visheoId: id,
                                   occasionName: originalOccasion.name,
-                                  signature: signature ?? originalOccasion.name,
+                                  signature: signature,
                                   coverId: coverId ?? -1,
                                   coverRemotePreviewUrl: coverRemotePreviewUrl,
                                   picturesCount: photoUrls.count,

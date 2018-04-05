@@ -14,7 +14,7 @@ import Reachability
 struct VisheoCreationInfo : Codable {
     let visheoId : String
     let occasionName : String
-    let signature : String
+    let signature : String?
     
     let coverId : Int
     let coverRemotePreviewUrl : URL?

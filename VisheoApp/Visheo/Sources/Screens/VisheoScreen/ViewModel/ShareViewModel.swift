@@ -242,13 +242,13 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 	}
     
     var visheoName: String {
-        return self._description ?? self.visheoRecord.signature ?? String(format: NSLocalizedString( "%@ Visheo from %@", comment: "Format for visheo description"), visheoRecord.name ?? "", userInfo.userName ?? "")
+        return self._description ?? self.visheoRecord.signature ?? String(format: NSLocalizedString( "%@ Visheo from %@", comment: "Format for visheo description"), visheoRecord.name ?? "", userInfo.userName ?? "Guest")
     }
 }
 
 class ShareVisheoViewModel : ShareViewModel {
     var visheoName: String {
-        return self._description ?? self.assets?.creationInfo.signature ?? String(format: NSLocalizedString( "%@ Visheo from %@", comment: "Format for visheo description"), assets?.originalOccasion.name ?? "", userInfo.userName ?? "")
+        return self._description ?? self.assets?.creationInfo.signature ?? String(format: NSLocalizedString( "%@ Visheo from %@", comment: "Format for visheo description"), assets?.originalOccasion.name ?? "", userInfo.userName ?? "Guest")
     }
     
     func showEditDescriptionScreen() {
