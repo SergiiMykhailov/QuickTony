@@ -93,7 +93,7 @@ class VisheoOccasionGroup : OccasionGroup {
         type = grp
         
         occasions = _occasionIds.filter{ $0 < occasionList.count }
-                                .map{ occasionList[$0] }
+            .flatMap{ id in occasionList.first { $0.id == id } }
                                 .filter {
                                     if let group = $0 as? VisheoOccasionRecord {
                                         return group.visible
