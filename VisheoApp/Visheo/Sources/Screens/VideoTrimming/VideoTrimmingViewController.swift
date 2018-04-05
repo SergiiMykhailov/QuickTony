@@ -97,16 +97,16 @@ class VideoTrimmingViewController: UIViewController {
 	}
 	
     private func confirmGoingBack(retake: Bool) {
+        if !retake {
+            self.viewModel.goBack()
+            return
+        }
+        
         let alertController = UIAlertController(title: NSLocalizedString("Notification", comment: "Notification alert title"),
                                                 message: NSLocalizedString("Existing video wish will be replaced with the new one", comment: "New video recording notification text"), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: NSLocalizedString("OK, Сontinue", comment: "OK, Сontinue button text"), style: .default, handler: {_ in
-            if retake {
-                self.viewModel.retakeVideo()
-            } else {
-                self.viewModel.goBack()
-            }
-            
+            self.viewModel.retakeVideo()
         }))
         
         self.present(alertController, animated: true, completion: nil)
