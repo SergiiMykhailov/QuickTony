@@ -24,6 +24,7 @@ enum OccasionCategory: String {
 }
 
 protocol OccasionRecord {
+    var id : Int {get}
     var name : String {get}
     var date : Date? {get}
     var priority : Int {get}
@@ -93,8 +94,8 @@ class VisheoOccasionsListService : OccasionsListService {
         occasionsRef.observe(.value) { (snapshot) in
             self.stopObserving()
             guard let occasions = snapshot.value as? [Any] else {return}
-            self._occasionRecords =  occasions.flatMap { $0 as? [String : Any] }
-                                            .flatMap { VisheoOccasionRecord(dictionary: $0) }
+            self._occasionRecords =  occasions.map { $0 as? [String : Any] }
+            .enumerated().flatMap { VisheoOccasionRecord(dictionary: $1, withId:$0) }
             self.startObserving()
         }
     }
@@ -203,6 +204,7 @@ class VisheoOccasionsListService : OccasionsListService {
 class VisheoOccasionRecord : OccasionRecord {
     var previewCover: OccasionCover
     var covers: [OccasionCover]
+    let id: Int
     let priority: Int
 	let visible: Bool
     let isFree: Bool
@@ -233,7 +235,11 @@ class VisheoOccasionRecord : OccasionRecord {
 		return nil
 	}
     
-    init?(dictionary : [String : Any]) {
+    init?(dictionary : [String : Any]?, withId id: Int) {
+        guard let dictionary = dictionary else { return nil }
+        
+        self.id = id
+        
         name = dictionary["name"] as? String ?? ""
         
         covers = (dictionary["covers"] as? [Int?] ?? []).flatMap{$0}
