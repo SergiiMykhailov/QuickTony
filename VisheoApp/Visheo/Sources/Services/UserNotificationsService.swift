@@ -25,7 +25,8 @@ extension Notification.Name {
 }
 
 protocol UserNotificationsService {
-	func schedule(at date: Date, text: String, visheoId: String, completion: ((Error?) -> Void)?);
+	func schedule(at date: Date, text: String, visheoId: String, completion: ((Error?) -> Void)?)
+    func registerNotifications()
 }
 
 class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUserNotificationCenterDelegate
@@ -131,4 +132,15 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
 		NotificationCenter.default.post(name: .openVisheoFromReminder, object: self, userInfo: info);
 		completionHandler();
 	}
+    
+    func registerNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+        
+        UIApplication.shared.registerForRemoteNotifications()
+    }
 }
