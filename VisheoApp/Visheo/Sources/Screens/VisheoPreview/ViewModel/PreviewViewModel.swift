@@ -283,11 +283,7 @@ class VisheoPreviewViewModel : PreviewViewModel
     }
 	
     private func showSendVisheoScreen(withPremium premium: Bool = true) {
-        if appStateService.shouldShowOnboardingShare {
-            router?.showShareOnboarding(with: self.assets, premium: premium)
-        } else {
-            router?.sendVisheo(with: self.assets, premium: premium)
-        }
+        router?.sendVisheo(with: self.assets, premium: premium)
     }
     
 	private func launchResourceTimeoutMonitor() {

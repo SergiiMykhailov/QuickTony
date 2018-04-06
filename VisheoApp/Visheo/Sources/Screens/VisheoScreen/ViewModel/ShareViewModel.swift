@@ -57,9 +57,11 @@ protocol ShareViewModel : class, AlertGenerating {
 	func openSettings()
 	
     func showEditDescriptionScreen()
+    func shouldShowOnboarding() -> Bool
+    func onboardingDidFinish()
     
 	func trackLinkCopied()
-	func trackLinkShared();
+	func trackLinkShared()
 }
 
 extension ShareViewModel {
@@ -80,10 +82,27 @@ extension ShareViewModel {
 		let final = calendar.date(byAdding: addition, to: startOfToday) ?? now;
 		return final;
 	}
-
 }
 
-class ExistingVisheoShareViewModel: ShareViewModel {
+class ShareViewModelImpl {
+    
+    var appStateService : AppStateService
+    
+    init(withAppStateService appStateService: AppStateService) {
+        self.appStateService = appStateService
+    }
+    
+    
+    func shouldShowOnboarding() -> Bool {
+        return appStateService.shouldShowOnboardingShare
+    }
+    
+    func onboardingDidFinish() {
+        appStateService.onboardingShare(wasSeen: true)
+    }
+}
+
+class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
     
     func showEditDescriptionScreen() {
         self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
@@ -156,7 +175,7 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 	private let feedbackService: FeedbackService;
 	private var shouldPresentFeedback = false;
     
-	init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService) {
+    init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, appStateService: AppStateService) {
         self.visheoRecord = record
         self.visheoService = visheoService
         self.visheosCache = cache
@@ -164,6 +183,8 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 		self.loggingService = loggingService;
 		self.feedbackService = feedbackService;
 		self.userInfo = userInfo;
+        
+        super.init(withAppStateService: appStateService)
     }
     
     func showMenu() {}
@@ -246,7 +267,7 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     }
 }
 
-class ShareVisheoViewModel : ShareViewModel {
+class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
     var visheoName: String {
         return self._description ?? self.assets?.creationInfo.signature ?? String(format: NSLocalizedString( "%@ Visheo from %@", comment: "Format for visheo description"), assets?.originalOccasion.name ?? "", userInfo.userName ?? "Guest")
     }
@@ -330,7 +351,7 @@ class ShareVisheoViewModel : ShareViewModel {
 	private var record: VisheoRecord?;
 	private var shouldPresentFeedback = false;
     
-	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, sharePremium: Bool) {
+	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, sharePremium: Bool, appStateService: AppStateService) {
         self.renderingService = renderingService
         self.creationService = creationService
 		self.userNotificationsService = notificationsService;
@@ -339,9 +360,10 @@ class ShareVisheoViewModel : ShareViewModel {
 		self.feedbackService = feedbackService;
         self.sharePremium = sharePremium
 		self.assets = assets;
+        super.init(withAppStateService: appStateService)
     }
 	
-	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService) {
+	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, appStateService: AppStateService) {
 		self.renderingService = renderingService
 		self.creationService = creationService
 		self.userNotificationsService = notificationsService;
@@ -352,6 +374,7 @@ class ShareVisheoViewModel : ShareViewModel {
 		
 		guard let info = self.creationService.unfinishedInfo(with: record.id) else {
 			sharePremium = false;
+            super.init(withAppStateService: appStateService)
 			return;
 		}
 		
@@ -362,6 +385,8 @@ class ShareVisheoViewModel : ShareViewModel {
 		} else {
 			creationStatus = .rendering(progress: 0.3);
 		}
+        
+        super.init(withAppStateService: appStateService)
 	}
 	
 	var currentVisheoId: String {

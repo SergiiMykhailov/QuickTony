@@ -41,7 +41,8 @@ class ShareVisheoRouter : ShareRouter {
 									  loggingService: dependencies.loggingService,
 									  userInfo: dependencies.userInfoProvider,
 									  feedbackService: dependencies.feedbackService,
-                                      sharePremium : sharePremium)
+                                      sharePremium : sharePremium,
+                                      appStateService: dependencies.appStateService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -56,7 +57,8 @@ class ShareVisheoRouter : ShareRouter {
 									  notificationsService: dependencies.userNotificationsService,
 									  loggingService: dependencies.loggingService,
 									  userInfo: dependencies.userInfoProvider,
-									  feedbackService: dependencies.feedbackService
+                                      feedbackService: dependencies.feedbackService,
+                                      appStateService: dependencies.appStateService
 									  );
 		viewModel = vm
 		vm.router = self
@@ -76,7 +78,8 @@ class ShareVisheoRouter : ShareRouter {
 											  notificationsService: dependencies.userNotificationsService,
 											  loggingService: dependencies.loggingService,
 											  userInfo: dependencies.userInfoProvider,
-											  feedbackService: dependencies.feedbackService)
+                                              feedbackService: dependencies.feedbackService,
+                                              appStateService: dependencies.appStateService)
 		
         viewModel = vm
 		vm.router = self

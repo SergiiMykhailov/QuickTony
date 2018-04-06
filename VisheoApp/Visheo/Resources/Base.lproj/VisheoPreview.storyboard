@@ -617,6 +617,79 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smk-Xh-6ZC">
+                                <rect key="frame" x="0.0" y="38" width="375" height="565"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1He-CF-ZPi">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="535.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be able to download your Visheo file or simply send Visheo link to the receiver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kL-TZ-UfW">
+                                                <rect key="frame" x="48" y="444" width="279" height="71.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareOptions" translatesAutoresizingMaskIntoConstraints="NO" id="xei-h6-cRN">
+                                                <rect key="frame" x="112.5" y="356" width="150" height="60"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2T-Rx-pjI">
+                                                <rect key="frame" x="0.0" y="327" width="375" height="1"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="mHx-UN-b1y"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Visheo will be uploaded to the online storage, where you can keep it up 60 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYC-Al-3RE">
+                                                <rect key="frame" x="48" y="209" width="279" height="72"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="XMR-FS-Z8S"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudShare" translatesAutoresizingMaskIntoConstraints="NO" id="DTO-ZZ-40d">
+                                                <rect key="frame" x="87" y="48" width="202" height="133"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="202" id="BGf-8k-e4Y"/>
+                                                    <constraint firstAttribute="width" secondItem="DTO-ZZ-40d" secondAttribute="height" multiplier="50/33" id="emO-aI-OJt"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="centerX" secondItem="0kL-TZ-UfW" secondAttribute="centerX" id="5A6-Ld-mCB"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="top" secondItem="xei-h6-cRN" secondAttribute="bottom" constant="28" id="5Kc-h7-M0A"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="centerX" secondItem="1He-CF-ZPi" secondAttribute="centerX" id="9Hn-vB-jD1"/>
+                                            <constraint firstItem="DTO-ZZ-40d" firstAttribute="top" secondItem="1He-CF-ZPi" secondAttribute="top" constant="48" id="EOM-zl-nGw"/>
+                                            <constraint firstItem="I2T-Rx-pjI" firstAttribute="top" secondItem="UYC-Al-3RE" secondAttribute="bottom" constant="46" id="JmA-lb-cyk"/>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="width" secondItem="xei-h6-cRN" secondAttribute="height" multiplier="5/2" id="RDy-ux-qy9"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" constant="48" id="Z03-bP-YmM"/>
+                                            <constraint firstAttribute="trailing" secondItem="I2T-Rx-pjI" secondAttribute="trailing" id="aFP-41-u0b"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="top" secondItem="DTO-ZZ-40d" secondAttribute="bottom" constant="28" id="coa-I0-DBm"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" constant="48" id="jRK-46-suy"/>
+                                            <constraint firstAttribute="bottom" secondItem="0kL-TZ-UfW" secondAttribute="bottom" constant="20" id="oFH-wb-jZ4"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="centerX" secondItem="1He-CF-ZPi" secondAttribute="centerX" id="oxj-Ue-YNq"/>
+                                            <constraint firstItem="DTO-ZZ-40d" firstAttribute="centerX" secondItem="UYC-Al-3RE" secondAttribute="centerX" id="tAr-cN-YZN"/>
+                                            <constraint firstItem="I2T-Rx-pjI" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" id="uY8-cN-TcM"/>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="top" secondItem="I2T-Rx-pjI" secondAttribute="bottom" constant="28" id="xdy-XR-P48"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1He-CF-ZPi" secondAttribute="trailing" id="1Ue-UH-9YL"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="top" secondItem="smk-Xh-6ZC" secondAttribute="top" id="8jK-3g-8lv"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="width" secondItem="smk-Xh-6ZC" secondAttribute="width" id="LtS-Ks-mGf"/>
+                                    <constraint firstAttribute="bottom" secondItem="1He-CF-ZPi" secondAttribute="bottom" id="lcj-ws-5JH"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="leading" secondItem="smk-Xh-6ZC" secondAttribute="leading" id="xwM-oD-Y9W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-oO-jCL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <subviews>
@@ -641,8 +714,10 @@ This visheo is no longer available in cloud</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="smk-Xh-6ZC" firstAttribute="top" secondItem="7tK-Zx-gw7" secondAttribute="bottom" id="1AZ-bU-n3q"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="bottom" secondItem="vBH-nG-pAk" secondAttribute="bottom" id="1Hu-Aa-QfY"/>
                             <constraint firstItem="vBH-nG-pAk" firstAttribute="top" secondItem="mpf-wC-7hc" secondAttribute="top" id="5fq-C9-Boa"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="smk-Xh-6ZC" secondAttribute="trailing" id="7N4-7s-CWh"/>
                             <constraint firstItem="vBH-nG-pAk" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="8KA-N8-YoO"/>
                             <constraint firstItem="7tK-Zx-gw7" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="QHC-FR-wq1"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="7tK-Zx-gw7" secondAttribute="trailing" id="SJf-L3-HjA"/>
@@ -652,6 +727,8 @@ This visheo is no longer available in cloud</string>
                             <constraint firstItem="LOg-oO-jCL" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="gDX-tP-pCQ"/>
                             <constraint firstItem="rFw-rC-b54" firstAttribute="width" secondItem="mpf-wC-7hc" secondAttribute="width" id="igk-Tm-SPu"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="LOg-oO-jCL" secondAttribute="trailing" id="lpT-NC-GDl"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="bottom" secondItem="smk-Xh-6ZC" secondAttribute="bottom" id="w6q-cV-eAf"/>
+                            <constraint firstItem="smk-Xh-6ZC" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="wwA-PZ-Uf8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mpf-wC-7hc"/>
                     </view>
@@ -687,6 +764,7 @@ This visheo is no longer available in cloud</string>
                         <outlet property="linkText" destination="j2b-GP-nn3" id="j9P-n9-Enp"/>
                         <outlet property="menuBarItem" destination="QL0-nA-9zK" id="TMN-S9-TE6"/>
                         <outlet property="missingVisheoView" destination="LOg-oO-jCL" id="jOJ-Go-1pb"/>
+                        <outlet property="onboardingView" destination="smk-Xh-6ZC" id="hsM-Of-Kep"/>
                         <outlet property="playButton" destination="OgS-LU-4q7" id="ubv-Oc-xIN"/>
                         <outlet property="playerLoadingActivity" destination="DDL-xT-V5h" id="E8j-xI-MuM"/>
                         <outlet property="progressBar" destination="7tK-Zx-gw7" id="Dtx-fy-EOb"/>
@@ -973,7 +1051,7 @@ This visheo is no longer available in cloud</string>
         <image name="video" width="78" height="63"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qxY-1U-qrq"/>
+        <segue reference="r09-lo-wL2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

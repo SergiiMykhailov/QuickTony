@@ -21,6 +21,7 @@ class ShareVisheoViewController: UIViewController {
 	@IBOutlet weak var shareReminderBottomConstraint: NSLayoutConstraint!
 	@IBOutlet weak var shareNowBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var missingVisheoView: UIView!
+    @IBOutlet weak var onboardingView: UIScrollView!
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -124,6 +125,7 @@ class ShareVisheoViewController: UIViewController {
         interface(enable: false)
         menuBarItem.isEnabled = false
         deleteButton.isEnabled = false
+        onboardingView.isHidden = !viewModel.shouldShowOnboarding()
     }
     
     private func updateForUploading() {
@@ -131,11 +133,15 @@ class ShareVisheoViewController: UIViewController {
         interface(enable: false)
         menuBarItem.isEnabled = true
         deleteButton.isEnabled = false
+        onboardingView.isHidden = !viewModel.shouldShowOnboarding()
     }
     
     private func updateForReadyState() {
         menuBarItem.isEnabled = true
         deleteButton.isEnabled = true
+        onboardingView.isHidden = true
+        viewModel.onboardingDidFinish()
+        
         UIView.animate(withDuration: 0.3) {
             self.progressBar.alpha = 0.0
             self.coverImage.alpha = 0.0
