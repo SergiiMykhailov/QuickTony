@@ -9,6 +9,7 @@
 import Foundation
 import UserNotifications
 import PromiseKit
+import FirebaseMessaging
 
 enum UserNotificationsServiceError: Error
 {
@@ -31,6 +32,8 @@ protocol UserNotificationsService {
 
 class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUserNotificationCenterDelegate
 {
+    let gcmMessageIDKey = "gcm.message_id"
+    
 	override init() {
 		super.init();
 		UNUserNotificationCenter.current().delegate = self;
@@ -123,10 +126,20 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
 	}
 	
 	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+
 		completionHandler([.alert, .sound]);
 	}
 	
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+
 		let visheoId = response.notification.request.identifier;
 		let info = [ UserNotificationsServiceNotificationKeys.id : visheoId ];
 		NotificationCenter.default.post(name: .openVisheoFromReminder, object: self, userInfo: info);
@@ -142,5 +155,14 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
             completionHandler: {_, _ in })
         
         UIApplication.shared.registerForRemoteNotifications()
+    }
+}
+
+extension VisheoUserNotificationsService : MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+    }
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("Received data message: \(remoteMessage.appData)")
     }
 }
