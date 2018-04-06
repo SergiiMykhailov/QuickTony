@@ -79,15 +79,20 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     var getPresentationViewController: (() -> (UIViewController?))?
     var showProgressCallback: ((Bool) -> ())?
     let anonymousAllowed : Bool
+    let userNotificationService: UserNotificationsService
 	private let authReason : AuthorizationReason;
     
     weak var router: AuthorizationRouter?
     var authService : AuthorizationService
     
-	init(authService: AuthorizationService, anonymousAllowed: Bool, authReason: AuthorizationReason) {
+    init(authService: AuthorizationService,
+         anonymousAllowed: Bool,
+         authReason: AuthorizationReason,
+         userNotificationService: UserNotificationsService) {
 		self.authReason = authReason
         self.authService = authService
         self.anonymousAllowed = anonymousAllowed
+        self.userNotificationService = userNotificationService
     }
     
     deinit {
@@ -127,6 +132,7 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     @objc func processLogin() {
         showProgressCallback?(false)
         stopAuthObserving()
+        userNotificationService.registerNotifications()
         router?.showMainScreen()
     }
     
