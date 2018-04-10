@@ -1303,7 +1303,7 @@ as a slideshow in your video greeting to make it memoriable &amp; fun</string>
                     <connections>
                         <segue destination="Dje-Hm-87p" kind="show" identifier="showPhotoLibrary" id="6pg-nG-fzZ"/>
                         <segue destination="53N-Og-RIQ" kind="show" identifier="showCameraScreen" id="G1f-tY-ZBC"/>
-                        <segue destination="c8Z-PU-L7t" kind="show" identifier="showTrimScreen" id="Y7f-9b-FXA"/>
+                        <segue destination="c8Z-PU-L7t" kind="show" identifier="showCameraPermissionsScreen" id="Y7f-9b-FXA"/>
                         <segue destination="7Ze-Fx-ePp" kind="show" identifier="showTrimScreen" id="XwF-J3-EP3"/>
                     </connections>
                 </viewController>
