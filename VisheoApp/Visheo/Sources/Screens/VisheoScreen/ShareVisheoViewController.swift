@@ -35,6 +35,10 @@ class ShareVisheoViewController: UIViewController {
             self?.updateProgress()
         }
         
+        viewModel.visheoNameChanged = {[weak self] in
+            self?.updateVisheoName()
+        }
+        
         viewModel.showRetryLaterError = { [weak self] in
             self?.showRetryError(text: $0)
         }
@@ -58,7 +62,7 @@ class ShareVisheoViewController: UIViewController {
         linkText.text = viewModel.visheoName
         
         updateProgress()
-        viewModel.updateVisheo()
+        viewModel.updateVisheoName()
 		
         if viewModel.showBackButton {
             navigationItem.leftBarButtonItems = [backBarItem]
@@ -141,6 +145,7 @@ class ShareVisheoViewController: UIViewController {
         deleteButton.isEnabled = true
         onboardingView.isHidden = true
         viewModel.onboardingDidFinish()
+        updateVisheoName()
         
         UIView.animate(withDuration: 0.3) {
             self.progressBar.alpha = 0.0
@@ -150,7 +155,6 @@ class ShareVisheoViewController: UIViewController {
         if let visheoUrl = viewModel.visheoUrl {
             setupPlayer(with: visheoUrl)
         }
-        linkText.text = viewModel.visheoName
     }
     
     private func updateForMissingState() {
@@ -161,6 +165,10 @@ class ShareVisheoViewController: UIViewController {
             self.coverImage.alpha = 1.0
         }
         interface(enable: false)
+    }
+    
+    private func updateVisheoName() {
+        linkText.text = viewModel.visheoName
     }
     
     private func interface(enable: Bool) {

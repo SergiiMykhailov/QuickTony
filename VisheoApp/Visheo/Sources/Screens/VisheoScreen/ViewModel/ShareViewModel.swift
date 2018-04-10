@@ -37,6 +37,8 @@ protocol ShareViewModel : class, AlertGenerating {
     var creationStatusChanged : (()->())? {get set}
     var creationStatus : VisheoCreationStatus {get}
 	
+    var visheoNameChanged : (()->())? {get set}
+    
 	var reminderDate: Date { get }
 	var minimumReminderDate: Date { get }
 	func setReminderDate(_ date: Date);
@@ -52,7 +54,7 @@ protocol ShareViewModel : class, AlertGenerating {
     func saveVisheo()
     func deleteVisheo()
 	
-    func updateVisheo()
+    func updateVisheoName()
     
 	func openSettings()
 	
@@ -107,7 +109,7 @@ class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
     func showEditDescriptionScreen() {
         self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
             self?._description = $0
-            self?.updateVisheo()
+            self?.updateVisheoName()
         }
     }
     
@@ -156,6 +158,7 @@ class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
     func retry() {}
     func tryLater() {}
     
+    var visheoNameChanged: (()->())?
     var creationStatusChanged: (() -> ())?
     var successAlertHandler: ((String) -> ())?
     var warningAlertHandler: ((String) -> ())?
@@ -194,9 +197,9 @@ class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
         router?.goToRoot()
     }
     
-    func updateVisheo() {
+    func updateVisheoName() {
         self.visheoService.updateVisheo(with: visheoRecord.id, signature: visheoName)
-        creationStatusChanged?()
+        visheoNameChanged?()
     }
     
     func saveVisheo() {
@@ -275,7 +278,7 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
     func showEditDescriptionScreen() {
         self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
             self?._description = $0
-            self?.updateVisheo()
+            self?.updateVisheoName()
         }
     }
     
@@ -286,6 +289,7 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
     var successAlertHandler: ((String) -> ())?
     
     var warningAlertHandler: ((String) -> ())?
+    var visheoNameChanged: (()->())?
     
     var showRetryLaterError: ((String) -> ())?
 	var notificationsAuthorization: ((String) -> Void)?
@@ -432,9 +436,9 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
         router?.goToRoot()
     }
     
-    func updateVisheo() {
+    func updateVisheoName() {
         self.creationService.updateVisheo(with: currentVisheoId, signature: visheoName)
-        creationStatusChanged?()
+        visheoNameChanged?()
     }
     
     func saveVisheo() {
