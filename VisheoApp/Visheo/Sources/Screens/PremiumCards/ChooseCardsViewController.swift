@@ -66,6 +66,13 @@ class ChooseCardsViewController: UIViewController {
         buyFiveButton.isHidden = viewModel.smallBundleButtonHidden
         buyFifteenButton.isHidden = viewModel.bigBundleButtonHidden
         
+        if (!viewModel.smallBundleButtonHidden){
+            smallPackageIndicator.removeFromSuperview()
+        }
+        if (!viewModel.bigBundleButtonHidden){
+            bigPackageIndicator.removeFromSuperview()
+        }
+        
         buyFiveButton.setTitle(viewModel.smallBundleButtonText, for: .normal)
         buyFifteenButton.setTitle(viewModel.bigBundleButtonText, for: .normal)
         subcribeButton.setTitle(viewModel.subscribeButtonText, for: .normal)
@@ -122,6 +129,9 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var subscribedSection: UIView!
     @IBOutlet weak var premiumCardsSection: UIView!
     @IBOutlet weak var couponSection: UIView!
+    
+    @IBOutlet weak var bigPackageIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var smallPackageIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var checkmarkButton: UIButton!
     

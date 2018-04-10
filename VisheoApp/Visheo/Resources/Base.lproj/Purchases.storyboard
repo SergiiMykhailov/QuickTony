@@ -42,10 +42,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="303"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-TP-Qm2">
-                                                        <rect key="frame" x="42" y="24" width="236.5" height="25"/>
+                                                        <rect key="frame" x="43.5" y="24" width="235" height="22.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-lH-lHF" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                <rect key="frame" x="79.5" y="-2" width="28" height="28"/>
+                                                                <rect key="frame" x="80" y="-2" width="25.5" height="25.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -62,13 +62,13 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Premium cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Wa-Vl0">
-                                                                <rect key="frame" x="113.5" y="0.0" width="123" height="24"/>
+                                                                <rect key="frame" x="111.5" y="0.0" width="123.5" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxY-xk-E3a">
-                                                                <rect key="frame" x="0.0" y="0.0" width="73.5" height="25"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -88,13 +88,17 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Buy Visheo Cards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWr-WN-dka">
-                                                        <rect key="frame" x="89.5" y="97" width="142.5" height="24"/>
+                                                        <rect key="frame" x="89.5" y="94.5" width="142.5" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MDb-8A-gue">
+                                                        <rect key="frame" x="141" y="142.5" width="37" height="37"/>
+                                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </activityIndicatorView>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-eM-UCw">
-                                                        <rect key="frame" x="20" y="133" width="280" height="60"/>
+                                                        <rect key="frame" x="20" y="130.5" width="280" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="F2k-Kg-Yty"/>
@@ -112,8 +116,12 @@
                                                             <action selector="buySmallPressed:" destination="RvU-ey-AzR" eventType="touchUpInside" id="Es9-s2-Cnn"/>
                                                         </connections>
                                                     </button>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mlM-k3-Z33">
+                                                        <rect key="frame" x="141" y="212.5" width="37" height="37"/>
+                                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </activityIndicatorView>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rky-fm-DNs">
-                                                        <rect key="frame" x="20" y="203" width="280" height="60"/>
+                                                        <rect key="frame" x="20" y="200.5" width="280" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="V3T-RA-onV"/>
@@ -132,7 +140,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unused Visheo Crads never expire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFm-RQ-Kj3">
-                                                        <rect key="frame" x="68.5" y="275" width="183.5" height="16"/>
+                                                        <rect key="frame" x="68.5" y="272.5" width="183.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -143,9 +151,12 @@
                                                     <constraint firstItem="AkT-eM-UCw" firstAttribute="top" secondItem="tWr-WN-dka" secondAttribute="bottom" constant="12" id="0kr-3S-KVU"/>
                                                     <constraint firstItem="tWr-WN-dka" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yUY-z5-58M" secondAttribute="leading" constant="20" id="5nB-kA-jjN"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IYJ-TP-Qm2" secondAttribute="trailing" id="6qf-uZ-cNs"/>
+                                                    <constraint firstItem="MDb-8A-gue" firstAttribute="centerX" secondItem="mlM-k3-Z33" secondAttribute="centerX" id="D8h-g3-yvd"/>
                                                     <constraint firstAttribute="trailing" secondItem="AkT-eM-UCw" secondAttribute="trailing" constant="20" id="GHr-cJ-yHS"/>
+                                                    <constraint firstItem="mlM-k3-Z33" firstAttribute="centerX" secondItem="MFm-RQ-Kj3" secondAttribute="centerX" id="IGr-Tf-vGt"/>
                                                     <constraint firstItem="tWr-WN-dka" firstAttribute="top" secondItem="IYJ-TP-Qm2" secondAttribute="bottom" constant="48" id="Iwh-iH-xIE"/>
                                                     <constraint firstItem="IYJ-TP-Qm2" firstAttribute="top" secondItem="yUY-z5-58M" secondAttribute="top" constant="24" id="JQH-7G-9Uz"/>
+                                                    <constraint firstItem="mlM-k3-Z33" firstAttribute="top" secondItem="MDb-8A-gue" secondAttribute="bottom" constant="33" id="Kty-5c-gqR"/>
                                                     <constraint firstItem="IYJ-TP-Qm2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yUY-z5-58M" secondAttribute="leading" id="S4V-mm-7q3"/>
                                                     <constraint firstItem="MFm-RQ-Kj3" firstAttribute="top" secondItem="rky-fm-DNs" secondAttribute="bottom" constant="12" id="Tqo-f3-iqN"/>
                                                     <constraint firstItem="rky-fm-DNs" firstAttribute="leading" secondItem="yUY-z5-58M" secondAttribute="leading" constant="20" id="ULX-Dx-NMU"/>
@@ -154,6 +165,7 @@
                                                     <constraint firstItem="MFm-RQ-Kj3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yUY-z5-58M" secondAttribute="leading" constant="20" id="gq3-bu-RJS"/>
                                                     <constraint firstItem="rky-fm-DNs" firstAttribute="top" secondItem="AkT-eM-UCw" secondAttribute="bottom" constant="10" id="mbT-en-gvk"/>
                                                     <constraint firstItem="MFm-RQ-Kj3" firstAttribute="centerX" secondItem="yUY-z5-58M" secondAttribute="centerX" id="qg7-gr-Ct8"/>
+                                                    <constraint firstItem="MFm-RQ-Kj3" firstAttribute="top" secondItem="mlM-k3-Z33" secondAttribute="bottom" constant="23" id="vW3-c4-ehH"/>
                                                     <constraint firstItem="IYJ-TP-Qm2" firstAttribute="centerX" secondItem="yUY-z5-58M" secondAttribute="centerX" id="vzR-lb-CyQ"/>
                                                     <constraint firstItem="tWr-WN-dka" firstAttribute="centerX" secondItem="yUY-z5-58M" secondAttribute="centerX" id="wUL-Li-Kqg"/>
                                                     <constraint firstItem="AkT-eM-UCw" firstAttribute="leading" secondItem="yUY-z5-58M" secondAttribute="leading" constant="20" id="y19-nY-qcu"/>
@@ -516,6 +528,7 @@
                     <size key="freeformSize" width="320" height="750"/>
                     <connections>
                         <outlet property="backBarItem" destination="Jbc-Mf-nNm" id="HYP-vj-UUI"/>
+                        <outlet property="bigPackageIndicator" destination="mlM-k3-Z33" id="txl-AM-DcC"/>
                         <outlet property="buyFifteenButton" destination="rky-fm-DNs" id="kpR-VT-2BL"/>
                         <outlet property="buyFiveButton" destination="AkT-eM-UCw" id="QJJ-dm-VGR"/>
                         <outlet property="checkmarkButton" destination="cTy-p8-8vH" id="65D-nH-iBe"/>
@@ -525,6 +538,7 @@
                         <outlet property="menuBarItem" destination="Ndy-qK-zPh" id="V0t-9T-KyF"/>
                         <outlet property="premiumCardsLabel" destination="Q4z-lH-lHF" id="Gf0-6e-MGN"/>
                         <outlet property="premiumCardsSection" destination="yUY-z5-58M" id="hIa-SJ-oou"/>
+                        <outlet property="smallPackageIndicator" destination="MDb-8A-gue" id="1dq-Xu-PTC"/>
                         <outlet property="subcribeButton" destination="vIj-dG-9Fh" id="O6r-Cv-rme"/>
                         <outlet property="subscribeSection" destination="AIr-Lx-sLI" id="jID-SW-N3l"/>
                         <outlet property="subscribedSection" destination="hOX-fB-R2G" id="8rV-IQ-xP0"/>
@@ -810,6 +824,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jcu-CK-hCv"/>
-        <segue reference="a6c-V9-HhA"/>
+        <segue reference="qsm-bv-IVy"/>
     </inferredMetricsTieBreakers>
 </document>
