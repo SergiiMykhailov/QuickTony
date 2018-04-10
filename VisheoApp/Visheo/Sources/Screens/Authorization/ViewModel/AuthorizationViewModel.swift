@@ -132,8 +132,11 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     @objc func processLogin() {
         showProgressCallback?(false)
         stopAuthObserving()
-        userNotificationService.registerNotifications()
         router?.showMainScreen()
+        
+        if (!authService.isAnonymous) {
+            userNotificationService.registerNotifications()
+        }
     }
     
     @objc func processLoginFail(notification: Notification) {

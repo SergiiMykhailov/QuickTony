@@ -8,7 +8,7 @@
 "Unlimited / %@ per month" = "Unlimited / %@ per month";
 
 /* Format for visheo description */
-"%@ Visheo from %@" = "%@ Visheo from %@";
+"Visheo from %@" = "Visheo from %@";
 
 /* redeem success description */
 "%d premium card(s) added to your account" = "%d premium card(s) added to your account";
