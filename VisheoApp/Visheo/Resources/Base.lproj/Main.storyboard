@@ -202,27 +202,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="606"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeaturedOccasionsTableCell" rowHeight="394" id="Rhw-1p-oEG" customClass="FeaturedOccasionsTableCell" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="394"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeaturedOccasionsTableCell" rowHeight="397" id="Rhw-1p-oEG" customClass="FeaturedOccasionsTableCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="397"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rhw-1p-oEG" id="Xt7-X0-Ra2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="394"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozb-Ig-TEO">
-                                                    <rect key="frame" x="20" y="10" width="100.5" height="19"/>
-                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click on the ocassion to see collection of Cover Arts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wD5-Nt-D43">
-                                                    <rect key="frame" x="20" y="29" width="280" height="16"/>
-                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="hqs-fR-gjD">
+                                                    <rect key="frame" x="20" y="10" width="280" height="38"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Trending Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozb-Ig-TEO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="99.5" height="24"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Click on the ocassion to see collection of Cover Arts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wD5-Nt-D43">
+                                                            <rect key="frame" x="0.0" y="22" width="280" height="16"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fWU-El-vxt">
-                                                    <rect key="frame" x="0.0" y="51" width="375" height="335"/>
+                                                    <rect key="frame" x="0.0" y="54" width="375" height="335"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="THs-VG-LGL">
                                                         <size key="itemSize" width="335" height="335"/>
@@ -253,7 +258,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycr-zN-ANO" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                                        <rect key="frame" x="20" y="281" width="130" height="34"/>
+                                                                        <rect key="frame" x="20" y="281" width="163.5" height="34"/>
                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="34" id="jrh-Ew-3Cj"/>
@@ -277,7 +282,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AS6-df-UMP" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                        <rect key="frame" x="301" y="310.5" width="24" height="14.5"/>
+                                                                        <rect key="frame" x="287" y="307" width="38" height="18"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -324,14 +329,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="fWU-El-vxt" secondAttribute="bottom" constant="8" id="0r8-0X-WbJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="fWU-El-vxt" secondAttribute="trailing" id="7kU-HK-e65"/>
                                                 <constraint firstItem="fWU-El-vxt" firstAttribute="leading" secondItem="Xt7-X0-Ra2" secondAttribute="leading" id="CRO-lf-3iw"/>
-                                                <constraint firstItem="wD5-Nt-D43" firstAttribute="top" secondItem="ozb-Ig-TEO" secondAttribute="bottom" id="HK7-go-NlR"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ozb-Ig-TEO" secondAttribute="trailing" constant="20" id="V0X-aj-0Qo"/>
-                                                <constraint firstItem="fWU-El-vxt" firstAttribute="top" secondItem="wD5-Nt-D43" secondAttribute="bottom" constant="6" id="YnN-ip-AbZ"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wD5-Nt-D43" secondAttribute="trailing" constant="20" id="c35-Jj-xzj"/>
-                                                <constraint firstItem="ozb-Ig-TEO" firstAttribute="top" secondItem="Xt7-X0-Ra2" secondAttribute="top" constant="10" id="guG-gN-tsE"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hqs-fR-gjD" secondAttribute="trailing" constant="20" id="FtI-is-QOr"/>
+                                                <constraint firstItem="hqs-fR-gjD" firstAttribute="leading" secondItem="Xt7-X0-Ra2" secondAttribute="leading" constant="20" id="XK0-ea-DbI"/>
+                                                <constraint firstItem="fWU-El-vxt" firstAttribute="top" secondItem="hqs-fR-gjD" secondAttribute="bottom" constant="6" id="h6w-ce-h3w"/>
+                                                <constraint firstItem="hqs-fR-gjD" firstAttribute="top" secondItem="Xt7-X0-Ra2" secondAttribute="top" constant="10" id="hC5-VI-Zg9"/>
                                                 <constraint firstItem="fWU-El-vxt" firstAttribute="height" secondItem="Xt7-X0-Ra2" secondAttribute="width" constant="-40" id="ntg-40-rZj"/>
-                                                <constraint firstItem="ozb-Ig-TEO" firstAttribute="leading" secondItem="Xt7-X0-Ra2" secondAttribute="leading" constant="20" id="xVm-Q6-wqs"/>
-                                                <constraint firstItem="wD5-Nt-D43" firstAttribute="leading" secondItem="Xt7-X0-Ra2" secondAttribute="leading" constant="20" id="xbK-dV-X9Q"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -340,15 +342,15 @@
                                             <outlet property="nameLabel" destination="ozb-Ig-TEO" id="gie-8v-UyV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StandardOccasionsTableCell" rowHeight="163" id="X4O-Hj-K7r" customClass="StandardOccasionsTableCell" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="422" width="375" height="163"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StandardOccasionsTableCell" rowHeight="178" id="X4O-Hj-K7r" customClass="StandardOccasionsTableCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="425" width="375" height="178"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X4O-Hj-K7r" id="yMa-JD-cec">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-gy-rd0">
-                                                    <rect key="frame" x="0.0" y="31" width="375" height="126"/>
+                                                    <rect key="frame" x="0.0" y="46" width="375" height="126"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="126" id="eYd-pZ-lZ8"/>
@@ -388,7 +390,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olD-B9-E1z" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                        <rect key="frame" x="71" y="80" width="24" height="14.5"/>
+                                                                        <rect key="frame" x="57" y="76.5" width="38" height="18"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -430,25 +432,37 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations on occasion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-G6-XCX">
-                                                    <rect key="frame" x="20" y="8" width="206" height="19"/>
-                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
-                                                    <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-iE-Ivv">
+                                                    <rect key="frame" x="21" y="2.5" width="280" height="37.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Trending Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqC-YV-pJV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="99.5" height="23.5"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Click on the ocassion to see collection of Cover Arts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2X-hy-OFg">
+                                                            <rect key="frame" x="0.0" y="21.5" width="280" height="16"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="U4i-gy-rd0" firstAttribute="top" secondItem="GFt-iE-Ivv" secondAttribute="bottom" constant="6" id="0AZ-6G-TI9"/>
                                                 <constraint firstAttribute="bottom" secondItem="U4i-gy-rd0" secondAttribute="bottom" constant="6" id="7gN-Ke-ou2"/>
+                                                <constraint firstItem="GFt-iE-Ivv" firstAttribute="top" secondItem="yMa-JD-cec" secondAttribute="top" constant="2.5" id="AKU-bs-uz2"/>
                                                 <constraint firstItem="U4i-gy-rd0" firstAttribute="leading" secondItem="yMa-JD-cec" secondAttribute="leading" id="J52-bv-AFP"/>
-                                                <constraint firstItem="DaM-G6-XCX" firstAttribute="top" secondItem="yMa-JD-cec" secondAttribute="top" constant="8" id="PUO-SQ-CXG"/>
-                                                <constraint firstItem="DaM-G6-XCX" firstAttribute="leading" secondItem="yMa-JD-cec" secondAttribute="leading" constant="20" id="YdI-HO-Fjb"/>
+                                                <constraint firstItem="GFt-iE-Ivv" firstAttribute="leading" secondItem="yMa-JD-cec" secondAttribute="leading" constant="21" id="TTI-IV-5jw"/>
                                                 <constraint firstAttribute="trailing" secondItem="U4i-gy-rd0" secondAttribute="trailing" id="cHO-jr-jXt"/>
-                                                <constraint firstItem="U4i-gy-rd0" firstAttribute="top" secondItem="DaM-G6-XCX" secondAttribute="bottom" constant="4" id="coq-Yl-WTE"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DaM-G6-XCX" secondAttribute="trailing" constant="20" id="dsQ-gm-YPf"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GFt-iE-Ivv" secondAttribute="trailing" constant="20" id="d53-hc-tdd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="nameLabel" destination="DaM-G6-XCX" id="zBd-EY-MtM"/>
+                                            <outlet property="instructionLabel" destination="b2X-hy-OFg" id="NYL-fx-u3k"/>
+                                            <outlet property="nameLabel" destination="qqC-YV-pJV" id="McJ-AS-0pN"/>
                                             <outlet property="occasionsCollection" destination="U4i-gy-rd0" id="eEl-S2-bDg"/>
                                         </connections>
                                     </tableViewCell>
@@ -606,13 +620,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no Visheo cards yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tMl-ow-MWp">
-                                        <rect key="frame" x="56.5" y="309" width="263" height="23.5"/>
+                                        <rect key="frame" x="56.5" y="309" width="263" height="26.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                         <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Visheo to deliver your care to your dear ones" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wf-9j-KvF">
-                                        <rect key="frame" x="56.5" y="344.5" width="263" height="53"/>
+                                        <rect key="frame" x="56.5" y="347.5" width="263" height="53"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                         <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1030,20 +1044,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2 / 3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF6-PL-lMo">
-                                <rect key="frame" x="40" y="12" width="295" height="23.5"/>
+                                <rect key="frame" x="40" y="12" width="295" height="26.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_photo" translatesAutoresizingMaskIntoConstraints="NO" id="mo3-7A-pRd">
-                                <rect key="frame" x="121" y="113.5" width="132" height="132"/>
+                                <rect key="frame" x="121" y="116.5" width="132" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="YNc-qt-5Kn"/>
                                     <constraint firstAttribute="width" secondItem="mo3-7A-pRd" secondAttribute="height" id="ZDI-y8-ty5"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-vf-rCc">
-                                <rect key="frame" x="20" y="415.5" width="335" height="60"/>
+                                <rect key="frame" x="20" y="418.5" width="335" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2ss-oF-nBH"/>
@@ -1062,7 +1076,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ4-CT-UNf">
-                                <rect key="frame" x="48" y="293.5" width="279" height="95"/>
+                                <rect key="frame" x="48" y="296.5" width="279" height="95"/>
                                 <string key="text">The photos will be played 
 as a slideshow in your video greeting to make it memoriable &amp; fun</string>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
@@ -1118,20 +1132,20 @@ as a slideshow in your video greeting to make it memoriable &amp; fun</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1 / 3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYi-Hp-kpE">
-                                <rect key="frame" x="40" y="12" width="295" height="23.5"/>
+                                <rect key="frame" x="40" y="12" width="295" height="26.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_cover" translatesAutoresizingMaskIntoConstraints="NO" id="whM-cs-2XB">
-                                <rect key="frame" x="121" y="113.5" width="132" height="132"/>
+                                <rect key="frame" x="121" y="116.5" width="132" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="whM-cs-2XB" secondAttribute="height" id="YZf-Dv-S60"/>
                                     <constraint firstAttribute="width" constant="132" id="yvA-1e-LQo"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qz3-wt-dBO">
-                                <rect key="frame" x="20" y="392" width="335" height="60"/>
+                                <rect key="frame" x="20" y="395" width="335" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="wcU-gm-043"/>
@@ -1150,7 +1164,7 @@ as a slideshow in your video greeting to make it memoriable &amp; fun</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAD-SX-FcK">
-                                <rect key="frame" x="48" y="293.5" width="279" height="71.5"/>
+                                <rect key="frame" x="48" y="296.5" width="279" height="71.5"/>
                                 <string key="text">Cover Art is the first scene 
 of your video greeting when you play it or send in messenger</string>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
