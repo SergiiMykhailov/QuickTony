@@ -594,22 +594,22 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIB-gJ-Nr4">
-                                                <rect key="frame" x="375" y="359" width="375" height="389.5"/>
+                                                <rect key="frame" x="375" y="359" width="375" height="383.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Set a reminder to share your Visheo in future" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG6-eF-HPq">
-                                                        <rect key="frame" x="60" y="0.0" width="255" height="53"/>
+                                                        <rect key="frame" x="60" y="0.0" width="255" height="47"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nF5-eM-neh">
-                                                        <rect key="frame" x="0.0" y="73" width="375" height="216"/>
+                                                        <rect key="frame" x="0.0" y="67" width="375" height="216"/>
                                                         <date key="date" timeIntervalSinceReferenceDate="534110241.26562399">
                                                             <!--2017-12-04 19:57:21 +0000-->
                                                         </date>
                                                     </datePicker>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzZ-Ya-jRK">
-                                                        <rect key="frame" x="20" y="309.5" width="335" height="60"/>
+                                                        <rect key="frame" x="20" y="303.5" width="335" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="7G2-4W-8HC"/>
