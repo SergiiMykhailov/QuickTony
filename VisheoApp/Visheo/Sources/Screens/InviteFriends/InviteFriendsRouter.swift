@@ -10,7 +10,7 @@
 import UIKit
 
 protocol InviteFriendsRouter: FlowRouter {
-    
+    func showMenu()
 }
 
 class VisheoInviteFriendsRouter:  InviteFriendsRouter {
@@ -49,5 +49,10 @@ class VisheoInviteFriendsRouter:  InviteFriendsRouter {
         viewModel = vm
         vm.delegate = controller
         controller.configure(viewModel: vm, router: self)
+    }
+    
+    
+    func showMenu() {
+        controller?.showLeftViewAnimated(self)
     }
 }

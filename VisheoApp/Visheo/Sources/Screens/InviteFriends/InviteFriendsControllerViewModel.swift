@@ -14,7 +14,7 @@ protocol InviteFriendsViewModelDelegate: class {
 }
 
 protocol InviteFriendsViewModel: class {
-    
+    func showMenu()
 }
 
 final class InviteFriendsControllerViewModel: InviteFriendsViewModel {
@@ -28,5 +28,8 @@ final class InviteFriendsControllerViewModel: InviteFriendsViewModel {
     init(router: InviteFriendsRouter) {
         self.router = router
     }
-
+    
+    func showMenu() {
+        router?.showMenu()
+    }
 }

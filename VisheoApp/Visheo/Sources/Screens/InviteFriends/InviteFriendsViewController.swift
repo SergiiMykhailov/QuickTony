@@ -31,6 +31,9 @@ final class InviteFriendsViewController: UIViewController {
         
     }
 
+    @IBAction func menuPressed(_ sender: Any) {
+        viewModel.showMenu()
+    }
 }
 
 // MARK: - Router -
