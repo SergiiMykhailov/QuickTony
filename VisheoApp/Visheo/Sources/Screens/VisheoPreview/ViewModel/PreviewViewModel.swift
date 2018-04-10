@@ -243,7 +243,11 @@ class VisheoPreviewViewModel : PreviewViewModel
         if authService.isAnonymous {
             router?.showRegistration { [weak self] registered in
 				if (registered) {
-                	self?.sendVisheo()
+                    //            showProgressCallback?(true)
+                    self?.premCardsService.checkUserCardsRemotely {
+                        //                self.showProgressCallback?(false)
+                        self?.sendVisheo()
+                    }
 				}
             }
         } else if self.assets.originalOccasion.isFree {

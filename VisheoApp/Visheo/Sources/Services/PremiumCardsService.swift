@@ -55,6 +55,7 @@ protocol PremiumCardsService {
     
     func usePremiumCard(completion: @escaping (Bool)->())
     func currentUserSubscriptionState() -> SubscriptionState
+    func checkUserCardsRemotely(withCompletion completion: (()->())?)
     func checkSubscriptionStateRemotely(withCompletion completionBlock:@escaping ((VerifySubscriptionResult?, Error?) -> Void))
 }
 
@@ -152,6 +153,18 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: expireDate)
+    }
+    
+    func checkUserCardsRemotely(withCompletion completion: (()->())?) {
+        if let userId = userInfoProvider.userId {
+            let userPremCardsRef = Database.database().reference(withPath: "users/\(userId)/purchases/premiumCards")
+            userPremCardsRef.observeSingleEvent(of: .value) { (snapshot) in
+                self.currentUserPremiumCards = snapshot.value as? Int ?? 0
+                completion?()
+            }
+            return
+        }
+        completion?()
     }
     
     func checkSubscriptionStateRemotely(withCompletion completionBlock:@escaping ((VerifySubscriptionResult?, Error?) -> Void)) {
