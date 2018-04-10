@@ -696,7 +696,7 @@
         <!--Invite Friends-->
         <scene sceneID="0uG-zI-xKF">
             <objects>
-                <viewController id="17U-LF-E4N" userLabel="Invite Friends" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InviteFriendsViewController" id="17U-LF-E4N" userLabel="Invite Friends" customClass="InviteFriendsViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1FZ-ob-NIT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -710,7 +710,7 @@ who installs the app!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvk-uR-6Eq">
-                                <rect key="frame" x="20" y="352.5" width="335" height="47.5"/>
+                                <rect key="frame" x="20" y="289.5" width="335" height="47.5"/>
                                 <string key="text">Invite friends to join Visheo family 
 by sending them this link</string>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
@@ -718,7 +718,8 @@ by sending them this link</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://visheo.com/SqdRs/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbz-gX-lRe">
-                                <rect key="frame" x="20" y="409" width="335" height="44"/>
+                                <rect key="frame" x="20" y="349" width="335" height="44"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="P76-jm-cii"/>
                                 </constraints>
@@ -736,27 +737,31 @@ by sending them this link</string>
                                         <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zSK-M0-JME" appends="YES" id="j1Y-mf-e6N"/>
+                                </connections>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aXL-H8-16F">
-                                <rect key="frame" x="93" y="127.5" width="189" height="189"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invitation" translatesAutoresizingMaskIntoConstraints="NO" id="aXL-H8-16F">
+                                <rect key="frame" x="124.5" y="127.5" width="126" height="126"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aXL-H8-16F" secondAttribute="height" id="fny-wM-ZYs"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="nkW-yT-jdS">
-                                <rect key="frame" x="20" y="461" width="335" height="115"/>
+                                <rect key="frame" x="20" y="415" width="335" height="102"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTj-Le-rP9">
-                                        <rect key="frame" x="0.0" y="0.0" width="61.5" height="115"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="61.5" height="102"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mM-7X-T4I">
-                                                <rect key="frame" x="0.0" y="0.0" width="61.5" height="61.5"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mM-7X-T4I">
+                                                <rect key="frame" x="0.0" y="0.0" width="61" height="61"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="5mM-7X-T4I" secondAttribute="height" id="H1Y-ki-w8L"/>
                                                 </constraints>
+                                                <state key="normal" image="copyUrl"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy URL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76K-pu-RFV">
-                                                <rect key="frame" x="0.0" y="69.5" width="61" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Copy URL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76K-pu-RFV">
+                                                <rect key="frame" x="-0.5" y="69.5" width="61" height="16"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -774,16 +779,17 @@ by sending them this link</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHv-LI-ZUB">
-                                        <rect key="frame" x="91.5" y="0.0" width="61" height="115"/>
+                                        <rect key="frame" x="91.5" y="0.0" width="61" height="102"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-bl-0wP">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-bl-0wP">
                                                 <rect key="frame" x="0.0" y="0.0" width="61" height="62"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="tCS-bl-0wP" secondAttribute="height" id="oQb-FP-nCe"/>
                                                 </constraints>
+                                                <state key="normal" image="sendVisheo"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-vm-nyM">
-                                                <rect key="frame" x="-0.5" y="70" width="61.5" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Share Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-vm-nyM">
+                                                <rect key="frame" x="-1" y="70.5" width="61.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -801,22 +807,23 @@ by sending them this link</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68e-JO-Fus">
-                                        <rect key="frame" x="182.5" y="0.0" width="61.5" height="115"/>
+                                        <rect key="frame" x="182.5" y="0.0" width="61.5" height="102"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sek-z9-a0y">
-                                                <rect key="frame" x="0.0" y="0.0" width="61.5" height="61.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="Sek-z9-a0y" secondAttribute="height" id="Sm9-wv-1i2"/>
-                                                </constraints>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leR-t0-o77">
-                                                <rect key="frame" x="0.0" y="69.5" width="61.5" height="32"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leR-t0-o77">
+                                                <rect key="frame" x="0.0" y="69.5" width="60.5" height="32"/>
                                                 <string key="text">Send to 
 Facebook</string>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sek-z9-a0y">
+                                                <rect key="frame" x="0.0" y="0.0" width="61" height="61"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Sek-z9-a0y" secondAttribute="height" id="Sm9-wv-1i2"/>
+                                                </constraints>
+                                                <state key="normal" image="facebookInvite"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -830,16 +837,17 @@ Facebook</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKq-6d-gbd">
-                                        <rect key="frame" x="274" y="0.0" width="61" height="115"/>
+                                        <rect key="frame" x="274" y="0.0" width="61" height="102"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eZ-4K-85L">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eZ-4K-85L">
                                                 <rect key="frame" x="0.0" y="0.0" width="61" height="61.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="9eZ-4K-85L" secondAttribute="height" id="l1r-aq-2qo"/>
                                                 </constraints>
+                                                <state key="normal" image="twitterInvite"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEZ-0S-IDy">
-                                                <rect key="frame" x="0.0" y="69.5" width="61" height="45.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEZ-0S-IDy">
+                                                <rect key="frame" x="-0.5" y="70" width="61" height="32"/>
                                                 <string key="text">Send to 
 Twitter</string>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
@@ -869,12 +877,11 @@ Twitter</string>
                             <constraint firstItem="twi-Ls-AT5" firstAttribute="centerX" secondItem="wjq-2F-QNh" secondAttribute="centerX" id="K1H-iG-JQ3"/>
                             <constraint firstItem="aXL-H8-16F" firstAttribute="top" secondItem="twi-Ls-AT5" secondAttribute="bottom" constant="30" id="KQG-MS-hue"/>
                             <constraint firstItem="twi-Ls-AT5" firstAttribute="top" secondItem="wjq-2F-QNh" secondAttribute="top" constant="35" id="LR7-Ue-OKQ"/>
-                            <constraint firstItem="wjq-2F-QNh" firstAttribute="bottom" secondItem="hbz-gX-lRe" secondAttribute="bottom" constant="214" id="Ohu-Qz-PBq"/>
-                            <constraint firstItem="nkW-yT-jdS" firstAttribute="top" secondItem="hbz-gX-lRe" secondAttribute="bottom" constant="8" id="PHw-jJ-cJR"/>
+                            <constraint firstItem="nkW-yT-jdS" firstAttribute="top" secondItem="hbz-gX-lRe" secondAttribute="bottom" constant="22" id="PHw-jJ-cJR"/>
                             <constraint firstItem="wjq-2F-QNh" firstAttribute="trailing" secondItem="hbz-gX-lRe" secondAttribute="trailing" constant="20" id="RMs-eA-wf4"/>
                             <constraint firstItem="Uvk-uR-6Eq" firstAttribute="leading" secondItem="wjq-2F-QNh" secondAttribute="leading" constant="20" id="Wdo-ll-m27"/>
                             <constraint firstItem="twi-Ls-AT5" firstAttribute="leading" secondItem="wjq-2F-QNh" secondAttribute="leading" constant="20" id="ZYB-82-ICJ"/>
-                            <constraint firstItem="hbz-gX-lRe" firstAttribute="top" secondItem="Uvk-uR-6Eq" secondAttribute="bottom" constant="9" id="dA7-dw-KUa"/>
+                            <constraint firstItem="hbz-gX-lRe" firstAttribute="top" secondItem="Uvk-uR-6Eq" secondAttribute="bottom" constant="12" id="dA7-dw-KUa"/>
                             <constraint firstItem="aXL-H8-16F" firstAttribute="centerX" secondItem="wjq-2F-QNh" secondAttribute="centerX" id="nZV-Md-Xi0"/>
                             <constraint firstItem="Uvk-uR-6Eq" firstAttribute="centerX" secondItem="wjq-2F-QNh" secondAttribute="centerX" id="ooP-6l-0Oj"/>
                             <constraint firstItem="hbz-gX-lRe" firstAttribute="leading" secondItem="wjq-2F-QNh" secondAttribute="leading" constant="20" id="pVo-EY-EDm"/>
@@ -884,6 +891,7 @@ Twitter</string>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMq-Uu-KE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="zSK-M0-JME"/>
             </objects>
             <point key="canvasLocation" x="1344.8" y="-964.76761619190415"/>
         </scene>
@@ -1387,16 +1395,21 @@ of your video greeting when you play it or send in messenger</string>
     <resources>
         <image name="arrow" width="20" height="20"/>
         <image name="background" width="284" height="172"/>
+        <image name="copyUrl" width="60" height="60"/>
+        <image name="facebookInvite" width="60" height="60"/>
+        <image name="invitation" width="126" height="116"/>
         <image name="menu" width="20" height="20"/>
         <image name="onboarding_cover" width="132" height="132"/>
         <image name="onboarding_photo" width="132" height="132"/>
         <image name="rectangleCopy9" width="73" height="73"/>
+        <image name="sendVisheo" width="60" height="60"/>
+        <image name="twitterInvite" width="60" height="60"/>
         <image name="visheoboxempty" width="315" height="190"/>
         <image name="welcomePic" width="337" height="337"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XwF-J3-EP3"/>
-        <segue reference="ddP-AN-G6D"/>
+        <segue reference="Y7f-9b-FXA"/>
         <segue reference="G1f-tY-ZBC"/>
         <segue reference="6pg-nG-fzZ"/>
         <segue reference="fxh-VD-Rh6"/>
