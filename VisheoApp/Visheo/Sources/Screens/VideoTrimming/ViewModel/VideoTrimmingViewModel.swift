@@ -124,12 +124,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
 		
 		loggingService.log(event: RetakeVideoEvent(), id: assets.creationInfo.visheoId);
 		
-        if editMode {
-            router?.showRetake(with: assets)
-        } else {
-            assets.removeVideo()
-            router?.goBackToCapture()
-        }
+        router?.showRetake(with: assets)
     }
     
     func setup(trimmerView: TrimmerView) {
