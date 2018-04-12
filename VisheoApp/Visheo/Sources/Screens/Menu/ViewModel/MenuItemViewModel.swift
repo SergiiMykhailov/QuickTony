@@ -9,14 +9,16 @@
 import UIKit
 
 protocol MenuItemViewModel {
-    var text : String? {get}
-    var image : UIImage? {get}
+    var text: String? {get}
+    var image: UIImage? {get}
+    var subText: String? {get}
 }
 
 
 struct VisheoMenuItemViewModel : MenuItemViewModel {
     let text: String?
     let image: UIImage?
+    let subText: String?
     
-    let type : MenuItemType
+    let type: MenuItemType
 }

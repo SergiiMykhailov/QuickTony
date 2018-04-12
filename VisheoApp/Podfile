@@ -22,6 +22,8 @@ abstract_target 'App' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   
+  pod 'TwitterKit'
+  
   pod 'MBProgressHUD'
   pod 'Validator'
   

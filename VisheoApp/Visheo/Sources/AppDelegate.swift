@@ -13,6 +13,7 @@ import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
 import UserNotifications
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Storage.storage().maxUploadRetryTime = 60
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        TWTRTwitter.sharedInstance().start(withConsumerKey: "rmwotRCcivfCd6LqtBGG7k3sr", consumerSecret: "u2qfzgYROzQo5dvLC7S2VD0zkFLfez4Kag58w4fEvU6AfJW0iU")
+        
         
         setupAppearance()
         

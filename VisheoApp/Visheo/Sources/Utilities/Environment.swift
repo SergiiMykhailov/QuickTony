@@ -24,8 +24,8 @@ enum Environment {
 }
 
 fileprivate enum StoragePaths {
-    static let premium     = "PremiumVisheos"
-    static let free        = "FreeVisheos"
+    static let premium     = "RegularVisheo"
+    static let free        = "PublicVisheo"
 }
 
 

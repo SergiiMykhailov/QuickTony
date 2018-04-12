@@ -19,6 +19,10 @@ enum EventType: String {
 	case reminderSet = "remind_later"
 	case linkCopied = "link_copied"
 	case linkShared = "visheo_shared"
+    case inviteLinkCopied = "invite_link_copied"
+    case inviteLinkShared = "invite_link_shared"
+    case inviteLinkFacebookShared = "invite_link_facebook_shared"
+    case inviteLinkTwitterShared = "invite_link_twitter_shared"
 	case coverSelected = "cover_selected"
 	case photosSelected = "selected_photos"
 	case photosSkipped = "skipped_photos"
@@ -149,6 +153,30 @@ struct VisheoSharedEvent: EventRepresenting {
 	var type: EventType {
 		return .linkShared;
 	}
+}
+
+struct InviteURLCopiedEvent: EventRepresenting {
+    var type: EventType {
+        return .inviteLinkCopied;
+    }
+}
+
+struct InviteURLSharedEvent: EventRepresenting {
+    var type: EventType {
+        return .inviteLinkShared;
+    }
+}
+
+struct InviteFacebookSharedEvent: EventRepresenting {
+    var type: EventType {
+        return .inviteLinkFacebookShared;
+    }
+}
+
+struct InviteTwitterSharedEvent: EventRepresenting {
+    var type: EventType {
+        return .inviteLinkTwitterShared;
+    }
 }
 
 struct CoverSelectedEvent: EventRepresenting {

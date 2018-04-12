@@ -56,7 +56,7 @@ class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDa
     func standardCell(forOccasionAtIndex index: Int) -> StandardOccasionsTableCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.standard.rawValue) as! StandardOccasionsTableCell
         let group = viewModel.occasionGroups[index]
-        let viewModelForGroup = VisheoStandardOccasionsTableCellViewModel(withTitle: group.title, occasions: group.occasions) { [weak self] in
+        let viewModelForGroup = VisheoStandardOccasionsTableCellViewModel(withTitle: group.title, subTitle: group.subTitle, occasions: group.occasions) { [weak self] in
             self?.viewModel.selectOccasion(withOccasion: $0)
         }
         let mediator = OccassionsCollectionMediator(viewModel: viewModelForGroup, occasionsCollection: cell.occasionsCollection)

@@ -20,5 +20,6 @@ class FeaturedOccasionsTableCell : UITableViewCell {
         self.holidaysCollectionMediator = mediator
         nameLabel.text = model.title
         instructionLabel.text = model.subTitle
+        instructionLabel.isHidden = model.subTitle == nil
     }
 }

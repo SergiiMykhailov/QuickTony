@@ -53,15 +53,18 @@ class VisheoMenuViewModel : MenuViewModel {
         self.userInfo = userInfo
 		self.notificationService = notificationService;
 		self.visheoListService = visheoListService;
+
+        let inviteFriendsActive = true        //TODO: add app config
         menuItems = [
-            VisheoMenuItemViewModel(text: NSLocalizedString("New Visheo", comment: "New visheo menu item"), image: #imageLiteral(resourceName: "newVisheo"), type: .newVisheo),
-            VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), type: .visheoBox),
-            VisheoMenuItemViewModel(text: NSLocalizedString("My Purchases", comment: "My purchases menu item"), image: #imageLiteral(resourceName: "premiumCards"), type: .premiumCards),
-            VisheoMenuItemViewModel(text: NSLocalizedString("Invite friends", comment: "Invite frinds menu item"), image: #imageLiteral(resourceName: "inviteFriends"), type: .inviteFriends),
-            VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), type: .redeem),
-            VisheoMenuItemViewModel(text: NSLocalizedString("My Account", comment: "My Account menu item"), image: #imageLiteral(resourceName: "account"), type: .account),
-            VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), type: .contact)
-        ]
+            VisheoMenuItemViewModel(text: NSLocalizedString("New Visheo", comment: "New visheo menu item"), image: #imageLiteral(resourceName: "newVisheo"), subText: nil, type: .newVisheo),
+            VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), subText: nil, type: .visheoBox),
+            VisheoMenuItemViewModel(text: NSLocalizedString("My Purchases", comment: "My purchases menu item"), image: #imageLiteral(resourceName: "premiumCards"), subText: nil, type: .premiumCards),
+            (inviteFriendsActive) ?
+            VisheoMenuItemViewModel(text: NSLocalizedString("Invite friends", comment: "Invite frinds menu item"), image: #imageLiteral(resourceName: "inviteFriends"), subText: NSLocalizedString("& get Visheo Cards for FREE", comment: "Invite friends menu substring"), type: .inviteFriends) : nil,
+            VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), subText: nil, type: .redeem),
+            VisheoMenuItemViewModel(text: NSLocalizedString("My Account", comment: "My Account menu item"), image: #imageLiteral(resourceName: "account"), subText: nil, type: .account),
+            VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), subText: nil, type: .contact)
+            ].flatMap{$0}
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheoOpen(_:)), name: .openVisheoFromReminder, object: nil);
 		
@@ -111,8 +114,6 @@ class VisheoMenuViewModel : MenuViewModel {
 			} else {
 				router?.showContactForm()
 			}
-        default:
-            break;
         }
     }
     

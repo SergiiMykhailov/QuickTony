@@ -23,6 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>twitterkit-rmwotRCcivfCd6LqtBGG7k3sr</string>
 				<string>fb202069387030963</string>
 			</array>
 		</dict>
@@ -59,6 +60,7 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>twitter</string>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>

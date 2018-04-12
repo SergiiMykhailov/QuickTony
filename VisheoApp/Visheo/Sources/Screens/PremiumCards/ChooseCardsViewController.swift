@@ -67,10 +67,10 @@ class ChooseCardsViewController: UIViewController {
         buyFifteenButton.isHidden = viewModel.bigBundleButtonHidden
         
         if (!viewModel.smallBundleButtonHidden){
-            smallPackageIndicator.removeFromSuperview()
+            smallPackageIndicator?.removeFromSuperview()
         }
         if (!viewModel.bigBundleButtonHidden){
-            bigPackageIndicator.removeFromSuperview()
+            bigPackageIndicator?.removeFromSuperview()
         }
         
         buyFiveButton.setTitle(viewModel.smallBundleButtonText, for: .normal)

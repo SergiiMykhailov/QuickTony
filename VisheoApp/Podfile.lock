@@ -111,6 +111,9 @@ PODS:
   - SDWebImage/Core (4.2.3)
   - SnapKit (4.0.0)
   - SwiftyStoreKit (0.13.1)
+  - TwitterCore (3.1.0)
+  - TwitterKit (3.3.0):
+    - TwitterCore (>= 3.1.0)
   - Validator (3.0)
 
 DEPENDENCIES:
@@ -137,6 +140,7 @@ DEPENDENCIES:
   - SDWebImage (~> 4.0)
   - SnapKit
   - SwiftyStoreKit
+  - TwitterKit
   - Validator
 
 SPEC CHECKSUMS:
@@ -173,8 +177,10 @@ SPEC CHECKSUMS:
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyStoreKit: c36bb7841dd51a485ce5c38abf9e96fba988741f
+  TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
+  TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
 
-PODFILE CHECKSUM: 250589f12b075f4c0e88ce4ce46671ca0e0df3d4
+PODFILE CHECKSUM: 90eb8e259535d82a9e984e56ac2274185d1457b2
 
 COCOAPODS: 1.4.0

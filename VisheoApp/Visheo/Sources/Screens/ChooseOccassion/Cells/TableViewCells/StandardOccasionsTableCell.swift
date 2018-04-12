@@ -10,6 +10,7 @@ import UIKit
 
 class StandardOccasionsTableCell : UITableViewCell {
     @IBOutlet weak var nameLabel : UILabel!
+    @IBOutlet weak var instructionLabel : UILabel!
     @IBOutlet weak var occasionsCollection: UICollectionView!
     
     var occasionsCollectionMediator : OccassionsCollectionMediator?
@@ -18,6 +19,8 @@ class StandardOccasionsTableCell : UITableViewCell {
                    mediator: OccassionsCollectionMediator) {
         occasionsCollectionMediator = mediator
         nameLabel.text = model.title
+        instructionLabel.text = model.subTitle
+        instructionLabel.isHidden = model.subTitle == nil
     }
 }
 

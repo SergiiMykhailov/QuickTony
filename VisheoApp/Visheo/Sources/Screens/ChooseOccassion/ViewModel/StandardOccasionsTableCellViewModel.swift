@@ -13,6 +13,7 @@ protocol StandardOccasionsTableCellViewModel {
     var title : String {get}
     var occasionsCount : Int {get}
     var selectedIndex : Int? {get}
+    var subTitle : String? {get}
     
     var itemSelectionHandler : (OccasionRecord) -> () {get}
     
@@ -36,12 +37,14 @@ struct VisheoStandardOccasionsTableCellViewModel : StandardOccasionsTableCellVie
     }
     
     var title: String
+    var subTitle : String?
     private var occasionsList : [OccasionRecord]
     
     var itemSelectionHandler: (OccasionRecord) -> ()
     
-    init(withTitle title: String, occasions:[OccasionRecord], handler: @escaping (OccasionRecord) -> ()) {
+    init(withTitle title: String, subTitle: String?, occasions:[OccasionRecord], handler: @escaping (OccasionRecord) -> ()) {
         self.title = title
+        self.subTitle = subTitle
         self.occasionsList = occasions.sorted {
             $0.priority < $1.priority
         }

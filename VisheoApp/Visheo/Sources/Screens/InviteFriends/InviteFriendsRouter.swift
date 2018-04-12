@@ -45,7 +45,7 @@ class VisheoInviteFriendsRouter:  InviteFriendsRouter {
 
     func start(controller: InviteFriendsViewController) {
         self.controller = controller
-        let vm = InviteFriendsControllerViewModel(router: self)
+        let vm = InviteFriendsControllerViewModel(router: self, loggingService: dependencies.loggingService)
         viewModel = vm
         vm.delegate = controller
         controller.configure(viewModel: vm, router: self)
