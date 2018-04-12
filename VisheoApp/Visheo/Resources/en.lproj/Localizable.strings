@@ -250,7 +250,7 @@
 "Visheo feedback" = "Visheo feedback";
 
 /* Format for visheo description */
-"Visheo from %@" = "Visheo from %@";
+"Video wish from %@" = "Video wish from %@";
 
 /* Visheo link was copied to clipboard message */
 "Visheo link was copied" = "Visheo link was copied";
