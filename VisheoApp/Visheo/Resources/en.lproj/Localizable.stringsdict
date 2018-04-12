@@ -6,6 +6,7 @@
             NSStringFormatValueTypeKey = d;
             one = "Proceed with %d Photo";
             other = "Proceed with %d Photos";
+            zero = "Proceed with %d Photos";
         };
     };
 }

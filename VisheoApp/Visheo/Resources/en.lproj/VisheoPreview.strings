@@ -1,32 +1,74 @@
-/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "BoA-F2-OsI"; */
+/* Class = "UILabel"; text = "You will be able to download your Visheo file or simply send Visheo link to the receiver"; ObjectID = "0kL-TZ-UfW"; */
+"0kL-TZ-UfW.text" = "You will be able to download your Visheo file or simply send Visheo link to the receiver";
+
+/* Class = "UIViewController"; title = "SAVE YOUR VISHEO"; ObjectID = "1n1-fk-nLn"; */
+"1n1-fk-nLn.title" = "SAVE YOUR VISHEO";
+
+/* Class = "UILabel"; text = "Download File"; ObjectID = "2rq-ZD-4DS"; */
+"2rq-ZD-4DS.text" = "Download File";
+
+/* Class = "UILabel"; text = "Your Visheo will be uploaded to the online storage, where you can keep it up 60 days"; ObjectID = "6WC-7a-1J5"; */
+"6WC-7a-1J5.text" = "Your Visheo will be uploaded to the online storage, where you can keep it up 60 days";
+
+/* (No Comment) */
 "BoA-F2-OsI.normalTitle" = "Copy";
 
-/* Class = "UISegmentedControl"; LYL-aZ-IVe.segmentTitles[0] = "Send Now"; ObjectID = "LYL-aZ-IVe"; */
+/* (No Comment) */
 "LYL-aZ-IVe.segmentTitles[0]" = "Send Now";
 
-/* Class = "UISegmentedControl"; LYL-aZ-IVe.segmentTitles[1] = "Send Later"; ObjectID = "LYL-aZ-IVe"; */
+/* (No Comment) */
 "LYL-aZ-IVe.segmentTitles[1]" = "Send Later";
 
 /* Class = "UILabel"; text = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud"; ObjectID = "MJA-sA-jJz"; */
-"MJA-sA-jJz.text" = "Free Visheo are saved in cloud for 5 days. \nThis visheo is no longer available in cloud";
+"MJA-sA-jJz.text" = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud";
 
-/* Class = "UIButton"; normalTitle = "Share Visheo Card"; ObjectID = "TuK-eZ-TXQ"; */
+/* Class = "UILabel"; text = "Send Visheo"; ObjectID = "P0n-2L-MjI"; */
+"P0n-2L-MjI.text" = "Send Visheo";
+
+/* (No Comment) */
 "TuK-eZ-TXQ.normalTitle" = "Send your Visheo";
+
+/* Class = "UILabel"; text = "Your Visheo will be uploaded to the online storage, where you can keep it up 60 days"; ObjectID = "UYC-Al-3RE"; */
+"UYC-Al-3RE.text" = "Your Visheo will be uploaded to the online storage, where you can keep it up 60 days";
+
+/* Class = "UILabel"; text = "Copy URL"; ObjectID = "Vg8-QI-gad"; */
+"Vg8-QI-gad.text" = "Copy URL";
 
 /* Class = "UIButton"; normalTitle = "Send your Visheo"; ObjectID = "Y5n-Gj-tF4"; */
 "Y5n-Gj-tF4.normalTitle" = "Save your Visheo";
 
+/* Class = "UIBarButtonItem"; title = "Exit"; ObjectID = "e9w-Mv-tpu"; */
+"e9w-Mv-tpu.title" = "Exit";
+
+/* Class = "UINavigationItem"; title = "EDIT VISHEO DESCRIPTION"; ObjectID = "eJ6-qO-gRR"; */
+"eJ6-qO-gRR.title" = "EDIT VISHEO DESCRIPTION";
+
 /* Class = "UINavigationItem"; title = "PREVIEW VISHEO"; ObjectID = "es6-uU-TqK"; */
 "es6-uU-TqK.title" = "PREVIEW & EDIT";
 
+/* Class = "UIButton"; normalTitle = "Ok, got it"; ObjectID = "gQZ-UX-eux"; */
+"gQZ-UX-eux.normalTitle" = "Ok, got it";
+
 /* Class = "UINavigationItem"; title = "SHARE YOUR VISHEO"; ObjectID = "gn6-b8-TgL"; */
 "gn6-b8-TgL.title" = "SHARE YOUR VISHEO";
+
+/* Class = "UILabel"; text = "You will be able to download your Visheo file or simply send Visheo link to the receiver"; ObjectID = "iTx-BS-IV5"; */
+"iTx-BS-IV5.text" = "You will be able to download your Visheo file or simply send Visheo link to the receiver";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "j2b-GP-nn3"; */
+"j2b-GP-nn3.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Remind Me"; ObjectID = "nzZ-Ya-jRK"; */
 "nzZ-Ya-jRK.normalTitle" = "Remind Me";
 
 /* Class = "UILabel"; text = "Rendering Preview..."; ObjectID = "oZJ-WX-PI0"; */
 "oZJ-WX-PI0.text" = "Rendering Preview...";
+
+/* Class = "UIButton"; normalTitle = "Save Description"; ObjectID = "pxK-am-2mg"; */
+"pxK-am-2mg.normalTitle" = "Save Description";
+
+/* Class = "UINavigationItem"; title = "SAVE YOUR VISHEO"; ObjectID = "qEj-al-rmp"; */
+"qEj-al-rmp.title" = "SAVE YOUR VISHEO";
 
 /* Class = "UILabel"; text = "Set a reminder to share your Visheo in future"; ObjectID = "uG6-eF-HPq"; */
 "uG6-eF-HPq.text" = "Set a reminder to share your Visheo in future";

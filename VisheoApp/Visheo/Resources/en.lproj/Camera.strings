@@ -19,7 +19,7 @@
 /* Class = "UILabel"; text = "3"; ObjectID = "MjJ-FK-D1Y"; */
 "MjJ-FK-D1Y.text" = "3";
 
-/* Class = "UILabel"; text = "To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted"; ObjectID = "MqL-i9-Wr9"; */
+/* Class = "UILabel"; text = "Video Message (up to 30 sec) is the key component of your Visheo that makes it personal & touching\n"; ObjectID = "MqL-i9-Wr9"; */
 "MqL-i9-Wr9.text" = "Video Message (up to 30 sec) is the key component of your Visheo that makes it personal & touching";
 
 /* Class = "UILabel"; text = "Please rotate your device to portrait orientation"; ObjectID = "Srt-Bl-ce3"; */
@@ -52,7 +52,7 @@
 /* Class = "UIButton"; normalTitle = "Retake"; ObjectID = "vfD-hc-yMF"; */
 "vfD-hc-yMF.normalTitle" = "Retake";
 
-/* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE"; ObjectID = "xJk-8Q-bOw"; */
+/* Class = "UILabel"; text = "Step 3 / 3"; ObjectID = "xJk-8Q-bOw"; */
 "xJk-8Q-bOw.text" = "Step 3 / 3";
 
 /* Class = "UILabel"; text = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video."; ObjectID = "zUb-Nv-0Bh"; */
