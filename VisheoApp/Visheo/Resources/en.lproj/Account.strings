@@ -14,7 +14,7 @@
 "eqq-Ee-8ak.normalTitle" = "Delete Account";
 
 /* Class = "UILabel"; text = "Your name will be shown under your Visheo card"; ObjectID = "pOF-uR-Bbl"; */
-"pOF-uR-Bbl.text" = "Your name will be shown under your Visheo card";
+"pOF-uR-Bbl.text" = "Your name will be shown in your Visheo signature by default";
 
 /* Class = "UIButton"; normalTitle = "Log Out"; ObjectID = "vTB-R0-Wxg"; */
 "vTB-R0-Wxg.normalTitle" = "Log Out";

@@ -20,7 +20,7 @@
 "LYL-aZ-IVe.segmentTitles[1]" = "Send Later";
 
 /* Class = "UILabel"; text = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud"; ObjectID = "MJA-sA-jJz"; */
-"MJA-sA-jJz.text" = "Free Visheo are saved in cloud for 15 days. \nThis visheo is no longer available in cloud";
+"MJA-sA-jJz.text" = "Visheo Cards are saved in cloud for 60 days. \nThis visheo is no longer available in cloud";
 
 /* Class = "UILabel"; text = "Send Visheo"; ObjectID = "P0n-2L-MjI"; */
 "P0n-2L-MjI.text" = "Send Visheo";
@@ -41,7 +41,7 @@
 "e9w-Mv-tpu.title" = "Exit";
 
 /* Class = "UINavigationItem"; title = "EDIT VISHEO DESCRIPTION"; ObjectID = "eJ6-qO-gRR"; */
-"eJ6-qO-gRR.title" = "EDIT VISHEO DESCRIPTION";
+"eJ6-qO-gRR.title" = "EDIT VISHEO SIGNATURE";
 
 /* Class = "UINavigationItem"; title = "PREVIEW VISHEO"; ObjectID = "es6-uU-TqK"; */
 "es6-uU-TqK.title" = "PREVIEW & EDIT";
@@ -50,7 +50,7 @@
 "gQZ-UX-eux.normalTitle" = "Ok, got it";
 
 /* Class = "UINavigationItem"; title = "SHARE YOUR VISHEO"; ObjectID = "gn6-b8-TgL"; */
-"gn6-b8-TgL.title" = "SHARE YOUR VISHEO";
+"gn6-b8-TgL.title" = "SEND YOUR VISHEO";
 
 /* Class = "UILabel"; text = "You will be able to download your Visheo file or simply send Visheo link to the receiver"; ObjectID = "iTx-BS-IV5"; */
 "iTx-BS-IV5.text" = "You will be able to download your Visheo file or simply send Visheo link to the receiver";

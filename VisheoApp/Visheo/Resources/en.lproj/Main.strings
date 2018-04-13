@@ -8,10 +8,10 @@
 "3e4-SB-Y6h.title" = "Skip";
 
 /* Class = "UIButton"; normalTitle = "I like this Cover"; ObjectID = "5Wj-Y4-Mkt"; */
-"5Wj-Y4-Mkt.normalTitle" = "I like this Cover";
+"5Wj-Y4-Mkt.normalTitle" = "Choose Cover Art";
 
 /* Class = "UILabel"; text = "Create Visheo to deliver your care to your dear ones"; ObjectID = "7wf-9j-KvF"; */
-"7wf-9j-KvF.text" = "Create Visheo to deliver your care to your dear ones";
+"7wf-9j-KvF.text" = "Create Visheo to express your care of your dear ones";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "8xJ-4v-USr"; */
 "8xJ-4v-USr.text" = "Label";
@@ -29,7 +29,7 @@
 "Fkg-P7-EP7.text" = "23rd of November";
 
 /* Class = "UINavigationItem"; title = "SELECT COVER"; ObjectID = "Kjn-mm-pFO"; */
-"Kjn-mm-pFO.title" = "SELECT COVER";
+"Kjn-mm-pFO.title" = "SELECT COVER ART";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Nq2-vC-p50"; */
 "Nq2-vC-p50.text" = "Label";
@@ -50,7 +50,7 @@
 "Ycr-zN-ANO.text" = "23rd of November";
 
 /* Class = "UIButton"; normalTitle = "Create Visheo Card"; ObjectID = "aH8-5u-Q2F"; */
-"aH8-5u-Q2F.normalTitle" = "Create Visheo Card";
+"aH8-5u-Q2F.normalTitle" = "Create Visheo";
 
 /* Class = "UILabel"; text = "Click on the ocassion to see collection of Cover Arts"; ObjectID = "b2X-hy-OFg"; */
 "b2X-hy-OFg.text" = "Click on the ocassion to see collection of Cover Arts";
@@ -65,7 +65,7 @@
 "i7C-Nj-59q.title" = "SELECT COVER ART";
 
 /* Class = "UILabel"; text = "Cover Art is the first scene \nof your video greeting when you play it or send in messenger"; ObjectID = "lAD-SX-FcK"; */
-"lAD-SX-FcK.text" = "Cover Art is the first scene \nof your video greeting when you play it or send in messenger";
+"lAD-SX-FcK.text" = "Cover Art is the first scene of your video greeting and the thumbnail";
 
 /* Class = "UILabel"; text = "Free"; ObjectID = "olD-B9-E1z"; */
 "olD-B9-E1z.text" = "Free";
@@ -80,7 +80,7 @@
 "qz3-wt-dBO.normalTitle" = "Ok, got it";
 
 /* Class = "UILabel"; text = "You have no Visheo cards yet"; ObjectID = "tMl-ow-MWp"; */
-"tMl-ow-MWp.text" = "You have no Visheo cards yet";
+"tMl-ow-MWp.text" = "You have no Visheo Cards yet";
 
 /* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "vJV-LG-7SV"; */
 "vJV-LG-7SV.title" = "Cancel";
