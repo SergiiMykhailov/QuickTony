@@ -28,22 +28,27 @@ protocol InviteFriendsViewModel: class {
 final class InviteFriendsControllerViewModel: InviteFriendsViewModel {
     weak var delegate: InviteFriendsViewModelDelegate?
     
-    var inviteUrl: URL? {
-        return URL.init(string: self.inviteLink ?? "")
-    }
+    var inviteUrl: URL?
     var inviteLink: String? {
-        return "https://visheo.com/invite/UoiAdIH4"
+        return inviteUrl?.absoluteString
     }
     
     // MARK: - Private properties -
     private(set) weak var router: InviteFriendsRouter?
     private let loggingService: EventLoggingService
+    private let invitationService: InvitesService
 
     // MARK: - Lifecycle -
 
-    init(router: InviteFriendsRouter, loggingService: EventLoggingService) {
+    init(router: InviteFriendsRouter, loggingService: EventLoggingService, invitationService: InvitesService) {
         self.router = router
         self.loggingService = loggingService
+        self.invitationService = invitationService
+    
+        invitationService.createInviteURLIfNeeded() { [weak self] in
+            self?.inviteUrl = $0
+            self?.delegate?.refreshUI()
+        }
     }
     
     func showMenu() {

@@ -140,7 +140,7 @@ extension InviteFriendsViewController: FBSDKSharingDelegate {
 extension InviteFriendsViewController: InviteFriendsViewModelDelegate {
 
     func refreshUI() {
-
+        linkLable.text = viewModel.inviteLink
     }
 
 }

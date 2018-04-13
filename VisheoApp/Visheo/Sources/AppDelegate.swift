@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import Firebase
+import FirebaseDynamicLinks
 import GoogleSignIn
 import FBSDKLoginKit
 import UserNotifications
@@ -42,6 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let isDynamicLink = DynamicLinks.dynamicLinks()?.shouldHandleDynamicLink(fromCustomSchemeURL: url),
+            isDynamicLink {
+            let dynamicLink = DynamicLinks.dynamicLinks()?.dynamicLink(fromCustomSchemeURL: url)
+            return dependencies().invitationService.handleDynamicLink(from: dynamicLink)
+        }
         
         let facebookHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         let googleHandled   = GIDSignIn.sharedInstance().handle(url,
@@ -74,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let visheosListService = VisheoBoxService(userInfoProvider: authService)
         let visheosCache = VisheosLocalCache()
 		let feedbackService = VisheoFeedbackService(userInfoProvider: authService);
-        
+        let invitationService = VisheoInvitesService(withAuthorizationService: authService, userInfo: authService)
 		let premiumService = VisheoPremiumCardsService(userInfoProvider: authService, loggingService: eventLoggingService)
         return RouterDependencies(appStateService: appState,
                                                 appPermissionsService: permissionsService,
@@ -94,7 +100,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 												tipsProviderService: tipsProviderService,
 												routerAssembly: assembly,
 												visheosCache: visheosCache,
-												premiumCardsService: premiumService)
+												premiumCardsService: premiumService,
+                                                invitationService: invitationService)
     }
     
     // MARK: Appearance setup
