@@ -10,6 +10,8 @@
 		010D8975A0A9DB78A8A50DC0 /* Pods_App_VisheoStaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */; };
 		2C17849520694D3300ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
 		2C17849820694E7C00ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
+		2C549D8020809A3000B59061 /* InvitesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C549D7F20809A3000B59061 /* InvitesService.swift */; };
+		2C549D8120809A3000B59061 /* InvitesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C549D7F20809A3000B59061 /* InvitesService.swift */; };
 		2C6EE6DC206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */; };
 		2C6EE6DD206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */; };
 		2C6EE6DE206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */; };
@@ -440,6 +442,7 @@
 
 /* Begin PBXFileReference section */
 		2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ReadableFormat.swift"; sourceTree = "<group>"; };
+		2C549D7F20809A3000B59061 /* InvitesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesService.swift; sourceTree = "<group>"; };
 		2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenControllerViewModel.swift; sourceTree = "<group>"; };
 		2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenRouter.swift; sourceTree = "<group>"; };
 		2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenViewController.swift; sourceTree = "<group>"; };
@@ -1476,6 +1479,7 @@
 				B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */,
 				B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */,
 				B4AEE0E51FD195680043A39A /* VisheosListService.swift */,
+				2C549D7F20809A3000B59061 /* InvitesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2002,6 +2006,7 @@
 				920F8B601FF6BDC90087C45D /* ChooseOccasionViewModel.swift in Sources */,
 				920F8B611FF6BDC90087C45D /* FilmstripCoversCollectionMediator.swift in Sources */,
 				920F8B621FF6BDC90087C45D /* HolidayCollectionViewCell.swift in Sources */,
+				2C549D8120809A3000B59061 /* InvitesService.swift in Sources */,
 				920F8B631FF6BDC90087C45D /* LaunchProxyViewModel.swift in Sources */,
 				920F8B641FF6BDC90087C45D /* PreviewRouter.swift in Sources */,
 				920F8B651FF6BDC90087C45D /* AccountRouter.swift in Sources */,
@@ -2165,6 +2170,7 @@
 				B4BCABFA1FB8CC7D003EDC7F /* ChooseOccasionViewModel.swift in Sources */,
 				B44450CD1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift in Sources */,
 				B4BCABF41FB8CC7D003EDC7F /* HolidayCollectionViewCell.swift in Sources */,
+				2C549D8020809A3000B59061 /* InvitesService.swift in Sources */,
 				B4BCABFF1FB8CC7D003EDC7F /* LaunchProxyViewModel.swift in Sources */,
 				B465280E1FC346A30070FFB7 /* PreviewRouter.swift in Sources */,
 				B4C893F61FD5788D00763296 /* AccountRouter.swift in Sources */,

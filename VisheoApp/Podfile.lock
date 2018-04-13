@@ -24,6 +24,9 @@ PODS:
   - Firebase/Database (4.8.2):
     - Firebase/Core
     - FirebaseDatabase (= 4.1.4)
+  - Firebase/DynamicLinks (4.8.2):
+    - Firebase/Core
+    - FirebaseDynamicLinks (= 2.3.2)
   - Firebase/Messaging (4.8.2):
     - Firebase/Core
     - FirebaseMessaging (= 2.0.8)
@@ -45,6 +48,8 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
+  - FirebaseDynamicLinks (2.3.2):
+    - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.8):
     - FirebaseCore (~> 4.0)
   - FirebaseMessaging (2.0.8):
@@ -126,6 +131,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/DynamicLinks
   - Firebase/Messaging
   - Firebase/Storage
   - GoogleSignIn
@@ -156,6 +162,7 @@ SPEC CHECKSUMS:
   FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
   FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
   FirebaseDatabase: de4446507ccd3257fca37d16f40e1540324571fd
+  FirebaseDynamicLinks: 38b68641d24e78d0277a9205d988ce22875d5a25
   FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
   FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
   FirebaseStorage: 181bb543d39ee3c53e0558de7ba86b1286a0427f
@@ -181,6 +188,6 @@ SPEC CHECKSUMS:
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
 
-PODFILE CHECKSUM: 90eb8e259535d82a9e984e56ac2274185d1457b2
+PODFILE CHECKSUM: 22c45ed743bdece84d54b2a29bccbec8a9a2d5c6
 
 COCOAPODS: 1.4.0
