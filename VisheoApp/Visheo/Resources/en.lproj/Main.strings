@@ -1,4 +1,4 @@
-/* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "0hK-vf-rCc"; */
+/* Class = "UIButton"; normalTitle = "Add Photos"; ObjectID = "0hK-vf-rCc"; */
 "0hK-vf-rCc.normalTitle" = "Add Photos";
 
 /* Class = "UIButton"; normalTitle = "Elizabeth Burman"; ObjectID = "1UP-AB-86s"; */
@@ -8,27 +8,33 @@
 "3e4-SB-Y6h.title" = "Skip";
 
 /* Class = "UIButton"; normalTitle = "I like this Cover"; ObjectID = "5Wj-Y4-Mkt"; */
-"5Wj-Y4-Mkt.normalTitle" = "Select Card";
+"5Wj-Y4-Mkt.normalTitle" = "Choose Cover Art";
 
 /* Class = "UILabel"; text = "Create Visheo to deliver your care to your dear ones"; ObjectID = "7wf-9j-KvF"; */
-"7wf-9j-KvF.text" = "Create Visheo to deliver your care to your dear ones";
+"7wf-9j-KvF.text" = "Create Visheo to express your care of your dear ones";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "8xJ-4v-USr"; */
 "8xJ-4v-USr.text" = "Label";
 
-/* Class = "UILabel"; text = "Congratulations on occasion"; ObjectID = "DaM-G6-XCX"; */
+/* Class = "UILabel"; text = "Free"; ObjectID = "AS6-df-UMP"; */
+"AS6-df-UMP.text" = "Free";
+
+/* Class = "UILabel"; text = "Step 1 / 3"; ObjectID = "CYi-Hp-kpE"; */
+"CYi-Hp-kpE.text" = "Step 1 / 3";
+
+/* (No Comment) */
 "DaM-G6-XCX.text" = "Special & Everyday Occasions";
 
-/* Class = "UILabel"; text = "23rd of November"; ObjectID = "Fkg-P7-EP7"; */
+/* (No Comment) */
 "Fkg-P7-EP7.text" = "23rd of November";
 
 /* Class = "UINavigationItem"; title = "SELECT COVER"; ObjectID = "Kjn-mm-pFO"; */
-"Kjn-mm-pFO.title" = "SELECT CARD";
+"Kjn-mm-pFO.title" = "SELECT COVER ART";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Nq2-vC-p50"; */
 "Nq2-vC-p50.text" = "Label";
 
-/* Class = "UILabel"; text = "To add memorable to your Visheo — please allow Visheo to access your photos when prompted"; ObjectID = "QQ4-CT-UNf"; */
+/* Class = "UILabel"; text = "The photos will be played \nas a slideshow in your video greeting to make it memoriable & fun"; ObjectID = "QQ4-CT-UNf"; */
 "QQ4-CT-UNf.text" = "The photos will be played as a slideshow in your video greeting to make it memoriable & fun";
 
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "TbV-zh-dIQ"; */
@@ -40,8 +46,14 @@
 /* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "Y8l-ga-NR8"; */
 "Y8l-ga-NR8.title" = "Cancel";
 
+/* Class = "UILabel"; text = "23rd of November"; ObjectID = "Ycr-zN-ANO"; */
+"Ycr-zN-ANO.text" = "23rd of November";
+
 /* Class = "UIButton"; normalTitle = "Create Visheo Card"; ObjectID = "aH8-5u-Q2F"; */
-"aH8-5u-Q2F.normalTitle" = "Create Visheo Card";
+"aH8-5u-Q2F.normalTitle" = "Create Visheo";
+
+/* Class = "UILabel"; text = "Click on the ocassion to see collection of Cover Arts"; ObjectID = "b2X-hy-OFg"; */
+"b2X-hy-OFg.text" = "Click on the ocassion to see collection of Cover Arts";
 
 /* Class = "UINavigationItem"; title = "VISHEO BOX"; ObjectID = "dEI-6J-amM"; */
 "dEI-6J-amM.title" = "MY VISHEO";
@@ -49,8 +61,26 @@
 /* Class = "UINavigationItem"; title = "CHOOSE OCCASION"; ObjectID = "hjY-Tq-5Fw"; */
 "hjY-Tq-5Fw.title" = "CHOOSE OCCASION";
 
+/* Class = "UINavigationItem"; title = "SELECT COVER ART"; ObjectID = "i7C-Nj-59q"; */
+"i7C-Nj-59q.title" = "SELECT COVER ART";
+
+/* Class = "UILabel"; text = "Cover Art is the first scene \nof your video greeting when you play it or send in messenger"; ObjectID = "lAD-SX-FcK"; */
+"lAD-SX-FcK.text" = "Cover Art is the first scene of your video greeting and the thumbnail";
+
+/* Class = "UILabel"; text = "Free"; ObjectID = "olD-B9-E1z"; */
+"olD-B9-E1z.text" = "Free";
+
+/* Class = "UILabel"; text = "Trending Now"; ObjectID = "ozb-Ig-TEO"; */
+"ozb-Ig-TEO.text" = "Trending Now";
+
+/* Class = "UILabel"; text = "Trending Now"; ObjectID = "qqC-YV-pJV"; */
+"qqC-YV-pJV.text" = "Trending Now";
+
+/* Class = "UIButton"; normalTitle = "Ok, got it"; ObjectID = "qz3-wt-dBO"; */
+"qz3-wt-dBO.normalTitle" = "Ok, got it";
+
 /* Class = "UILabel"; text = "You have no Visheo cards yet"; ObjectID = "tMl-ow-MWp"; */
-"tMl-ow-MWp.text" = "You have no Visheo cards yet";
+"tMl-ow-MWp.text" = "You have no Visheo Cards yet";
 
 /* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "vJV-LG-7SV"; */
 "vJV-LG-7SV.title" = "Cancel";
@@ -58,9 +88,15 @@
 /* Class = "UINavigationItem"; title = "CAMERA ROLL"; ObjectID = "vhb-wR-qwm"; */
 "vhb-wR-qwm.title" = "SELECT PHOTOS";
 
-/* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR PHOTOS"; ObjectID = "xF6-PL-lMo"; */
+/* Class = "UILabel"; text = "Click on the ocassion to see collection of Cover Arts"; ObjectID = "wD5-Nt-D43"; */
+"wD5-Nt-D43.text" = "Click on the ocassion to see collection of Cover Arts";
+
+/* Class = "UILabel"; text = "Step 2 / 3"; ObjectID = "xF6-PL-lMo"; */
 "xF6-PL-lMo.text" = "Step 2 / 3";
 
 /* Class = "UIBarButtonItem"; title = "Skip"; ObjectID = "yI4-Lp-Ujp"; */
 "yI4-Lp-Ujp.title" = "Skip";
+
+/* Class = "UIViewController"; title = "SELECT COVER ART"; ObjectID = "yrs-cw-5cr"; */
+"yrs-cw-5cr.title" = "SELECT COVER ART";
 

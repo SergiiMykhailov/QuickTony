@@ -1,11 +1,32 @@
-/* Class = "UIButton"; normalTitle = "Send Regular Visheo for FREE"; ObjectID = "0yB-Sa-Lkz"; */
-"0yB-Sa-Lkz.normalTitle" = "Send Regular Visheo for FREE";
+/* (No Comment) */
+"0yB-Sa-Lkz.normalTitle" = "Send Visheo for FREE";
 
-/* Class = "UILabel"; text = "Premium Visheo"; ObjectID = "8O7-xi-9IH"; */
-"8O7-xi-9IH.text" = "Premium Visheo";
+/* Class = "UILabel"; text = "You can cancel subscription any time"; ObjectID = "1Ld-af-PBp"; */
+"1Ld-af-PBp.text" = "You can cancel subscription any time";
+
+/* Class = "UIButton"; normalTitle = "Agree & send for FREE"; ObjectID = "6O8-4N-peq"; */
+"6O8-4N-peq.normalTitle" = "Agree & send for FREE";
+
+/* (No Comment) */
+"8O7-xi-9IH.text" = "Visheo Card";
+
+/* Class = "UILabel"; text = "You are subscribed to send Unlimited Visheo Cards"; ObjectID = "8Zr-kl-IlA"; */
+"8Zr-kl-IlA.text" = "You are subscribed to send Unlimited Visheo Cards";
+
+/* Class = "UIButton"; normalTitle = "Send 5 Visheo cards for $3.99"; ObjectID = "AkT-eM-UCw"; */
+"AkT-eM-UCw.normalTitle" = "Send 5 Visheo cards for $3.99";
 
 /* Class = "UIButton"; normalTitle = "Redeem Coupon"; ObjectID = "DVb-go-Ocm"; */
 "DVb-go-Ocm.normalTitle" = "Redeem Coupon";
+
+/* Class = "UILabel"; text = "You have"; ObjectID = "DxY-xk-E3a"; */
+"DxY-xk-E3a.text" = "You have";
+
+/* Class = "UILabel"; text = "Subscribe for regular use"; ObjectID = "EAu-pz-MO6"; */
+"EAu-pz-MO6.text" = "Subscribe for regular use";
+
+/* Class = "UILabel"; text = "OR"; ObjectID = "EqX-v5-aYA"; */
+"EqX-v5-aYA.text" = "OR";
 
 /* Class = "UINavigationItem"; title = "MY PURCHASES"; ObjectID = "F0I-PB-dgM"; */
 "F0I-PB-dgM.title" = "MY PURCHASES";
@@ -13,51 +34,99 @@
 /* Class = "UILabel"; text = "Congratulations!"; ObjectID = "F2x-Fj-DKq"; */
 "F2x-Fj-DKq.text" = "Congratulations!";
 
-/* Class = "UILabel"; text = "720 HD quality (for big screens)"; ObjectID = "Fxh-yJ-riv"; */
+/* (No Comment) */
 "Fxh-yJ-riv.text" = "720 HD quality (for big screens)";
 
-/* Class = "UILabel"; text = "Your Care deserves the Best Quality"; ObjectID = "Ivz-Yv-nNX"; */
+/* Class = "UILabel"; text = "Visheo cards"; ObjectID = "HdW-Wa-Vl0"; */
+"HdW-Wa-Vl0.text" = "Visheo Cards";
+
+/* (No Comment) */
 "Ivz-Yv-nNX.text" = "Your Care deserves the Best Quality";
 
-/* Class = "UILabel"; text = "3 Visheo card(s) added to your account"; ObjectID = "J89-fj-SIE"; */
+/* Class = "UILabel"; text = "3 premium card(s) added to your account"; ObjectID = "J89-fj-SIE"; */
 "J89-fj-SIE.text" = "3 Visheo card(s) added to your account";
 
-/* Class = "UILabel"; text = "Always FREE"; ObjectID = "N8N-79-bjX"; */
+/* Class = "UILabel"; text = "Unused Visheo Crads never expire"; ObjectID = "MFm-RQ-Kj3"; */
+"MFm-RQ-Kj3.text" = "Unused Visheo Crads never expire";
+
+/* (No Comment) */
 "N8N-79-bjX.text" = "Always FREE";
 
-/* Class = "UILabel"; text = "You have"; ObjectID = "OWf-2c-nQv"; */
+/* Class = "UILabel"; text = "This Visheo can be used to inspire others"; ObjectID = "OCa-M7-vvU"; */
+"OCa-M7-vvU.text" = "This Visheo can be used to inspire others";
+
+/* (No Comment) */
 "OWf-2c-nQv.text" = "You have";
+
+/* Class = "UILabel"; text = "Inspire others by your Visheo!"; ObjectID = "PIk-Xe-vI3"; */
+"PIk-Xe-vI3.text" = "Inspire others by your Visheo!";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "Q4z-lH-lHF"; */
+"Q4z-lH-lHF.text" = "3";
 
 /* Class = "UINavigationItem"; title = "Purchase succeeded"; ObjectID = "QS2-jm-n4R"; */
 "QS2-jm-n4R.title" = "Purchase succeeded";
 
-/* Class = "UIButton"; normalTitle = "Send 5 Visheo cards for $3.99"; ObjectID = "W4z-hM-rC8"; */
+/* Class = "UILabel"; text = "OR"; ObjectID = "Soe-JE-gHB"; */
+"Soe-JE-gHB.text" = "OR";
+
+/* Class = "UILabel"; text = "Send Visheo for Free"; ObjectID = "TZm-95-Pl4"; */
+"TZm-95-Pl4.text" = "Send Visheo for Free";
+
+/* Class = "UILabel"; text = "Allow your Visheo to be used as an example on visheo.com website, on Visheo Facebook page or in other promo materials & send it for FREE!"; ObjectID = "Tx4-uW-bNI"; */
+"Tx4-uW-bNI.text" = "Allow your Visheo to be used as an example on visheo.com website, on Visheo Facebook page or in other promo materials & send it for FREE!";
+
+/* (No Comment) */
 "W4z-hM-rC8.normalTitle" = "Send 5 Visheo cards for $3.99";
 
 /* Class = "UINavigationItem"; title = "ENTER COUPON CODE"; ObjectID = "WDc-nz-Yfg"; */
 "WDc-nz-Yfg.title" = "ENTER COUPON CODE";
 
-/* Class = "UILabel"; text = "Regular Visheo"; ObjectID = "iRy-E8-Q4t"; */
-"iRy-E8-Q4t.text" = "Regular Visheo";
+/* Class = "UIViewController"; title = "PUBLIC VISHEO"; ObjectID = "XhT-N4-YS6"; */
+"XhT-N4-YS6.title" = "PUBLIC VISHEO";
+
+/* Class = "UILabel"; text = "You can cancel your subscription in your Apple ID settings"; ObjectID = "boY-RT-3ne"; */
+"boY-RT-3ne.text" = "You can cancel your subscription in your Apple ID settings";
+
+/* Class = "UILabel"; text = "until 23th of April 2018"; ObjectID = "doF-mZ-Msr"; */
+"doF-mZ-Msr.text" = "until 23th of April 2018";
+
+/* (No Comment) */
+"iRy-E8-Q4t.text" = "Visheo Card";
 
 /* Class = "UIButton"; normalTitle = "Create Visheo Card"; ObjectID = "iXH-Ce-smB"; */
 "iXH-Ce-smB.normalTitle" = "Create Visheo Card";
 
-/* Class = "UILabel"; text = "Available forever"; ObjectID = "lcX-f5-r5o"; */
+/* (No Comment) */
 "lcX-f5-r5o.text" = "Available forever";
 
-/* Class = "UIButton"; normalTitle = "Send 15 Visheo cards for $9.99"; ObjectID = "ohR-X9-YCi"; */
+/* (No Comment) */
 "ohR-X9-YCi.normalTitle" = "Send 15 Visheo cards for $9.99";
 
-/* Class = "UILabel"; text = "3"; ObjectID = "p7s-pt-pbh"; */
+/* (No Comment) */
 "p7s-pt-pbh.text" = "3";
 
-/* Class = "UILabel"; text = "Available for 15 days"; ObjectID = "pFb-ms-o2E"; */
-"pFb-ms-o2E.text" = "Available for 5 days";
+/* (No Comment) */
+"pFb-ms-o2E.text" = "Available for 60 days";
 
-/* Class = "UILabel"; text = "Visheo cards"; ObjectID = "rUh-YY-ADx"; */
-"rUh-YY-ADx.text" = "Visheo cards";
+/* Class = "UINavigationItem"; title = "PUBLIC VISHEO"; ObjectID = "pHa-ny-99X"; */
+"pHa-ny-99X.title" = "PUBLIC VISHEO";
 
-/* Class = "UILabel"; text = "480p quality (for phones & tablets)"; ObjectID = "zAN-KY-eV3"; */
+/* Class = "UIButton"; normalTitle = "Ok, got it"; ObjectID = "pVd-cR-YJD"; */
+"pVd-cR-YJD.normalTitle" = "Ok, got it";
+
+/* (No Comment) */
+"rUh-YY-ADx.text" = "Visheo Cards";
+
+/* Class = "UIButton"; normalTitle = "Send 15 Visheo cards for $9.99"; ObjectID = "rky-fm-DNs"; */
+"rky-fm-DNs.normalTitle" = "Send 15 Visheo cards for $9.99";
+
+/* Class = "UILabel"; text = "Buy Visheo Cards"; ObjectID = "tWr-WN-dka"; */
+"tWr-WN-dka.text" = "Buy Visheo Cards";
+
+/* Class = "UIButton"; normalTitle = "Subscripe for unlimited cards"; ObjectID = "vIj-dG-9Fh"; */
+"vIj-dG-9Fh.normalTitle" = "Subscripe for unlimited cards";
+
+/* (No Comment) */
 "zAN-KY-eV3.text" = "480p quality (for phones & tablets)";
 
