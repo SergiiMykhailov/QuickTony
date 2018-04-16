@@ -45,9 +45,7 @@ struct VisheoStandardOccasionsTableCellViewModel : StandardOccasionsTableCellVie
     init(withTitle title: String, subTitle: String?, occasions:[OccasionRecord], handler: @escaping (OccasionRecord) -> ()) {
         self.title = title
         self.subTitle = subTitle
-        self.occasionsList = occasions.sorted {
-            $0.priority < $1.priority
-        }
+        self.occasionsList = occasions
         self.itemSelectionHandler = handler
     }
     
