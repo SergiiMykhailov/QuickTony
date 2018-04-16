@@ -65,7 +65,7 @@
 "Error" = "Error";
 
 /* New video recording notification text */
-"Existing video wish will be replaced with the new one" = "Existing video wish will be replaced with the new one";
+"Existing video wish will be replaced with the new one" = "Existing video message will be replaced with the new one";
 
 /* Exit button text */
 "Exit" = "Exit";

@@ -44,16 +44,7 @@ struct VisheoFeaturedOccasionsTableCellViewModel : FeaturedOccasionsTableCellVie
                  handler: @escaping (OccasionRecord) -> ()) {
         self.title = title
         self.subTitle = subTitle
-        self.occasionsList = occasions.sorted { (lhs, rhs) in
-            switch (lhs.category, rhs.category) {
-                case (.featured, .featured):
-                    return lhs.priority < rhs.priority;
-                default:
-                    let date0 = (lhs.category == .featured) ? Date() : (lhs.date ?? Date.distantFuture)
-                    let date1 = (rhs.category == .featured) ? Date() : (rhs.date ?? Date.distantFuture)
-                    return date0.compare(date1) == .orderedAscending
-            }
-        }
+        self.occasionsList = occasions
         self.itemSelectionHandler = handler
     }
     

@@ -65,7 +65,7 @@
 "i7C-Nj-59q.title" = "SELECT COVER ART";
 
 /* Class = "UILabel"; text = "Cover Art is the first scene \nof your video greeting when you play it or send in messenger"; ObjectID = "lAD-SX-FcK"; */
-"lAD-SX-FcK.text" = "Cover Art is the first scene of your video greeting and the thumbnail";
+"lAD-SX-FcK.text" = "Cover Art is the first scene \nof your video greeting \nand the thumbnail";
 
 /* Class = "UILabel"; text = "Free"; ObjectID = "olD-B9-E1z"; */
 "olD-B9-E1z.text" = "Free";

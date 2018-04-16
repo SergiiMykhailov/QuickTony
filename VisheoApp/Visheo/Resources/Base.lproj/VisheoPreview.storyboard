@@ -326,79 +326,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smk-Xh-6ZC">
-                                <rect key="frame" x="0.0" y="38" width="375" height="565"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1He-CF-ZPi">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="535.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be able to download your Visheo file or simply send Visheo link to the receiver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kL-TZ-UfW">
-                                                <rect key="frame" x="48" y="444" width="279" height="71.5"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareOptions" translatesAutoresizingMaskIntoConstraints="NO" id="xei-h6-cRN">
-                                                <rect key="frame" x="112.5" y="356" width="150" height="60"/>
-                                            </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2T-Rx-pjI">
-                                                <rect key="frame" x="0.0" y="327" width="375" height="1"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="mHx-UN-b1y"/>
-                                                </constraints>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Visheo will be uploaded to the online storage, where you can keep it up 60 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYC-Al-3RE">
-                                                <rect key="frame" x="48" y="209" width="279" height="72"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="72" id="XMR-FS-Z8S"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudShare" translatesAutoresizingMaskIntoConstraints="NO" id="DTO-ZZ-40d">
-                                                <rect key="frame" x="87" y="48" width="202" height="133"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="202" id="BGf-8k-e4Y"/>
-                                                    <constraint firstAttribute="width" secondItem="DTO-ZZ-40d" secondAttribute="height" multiplier="50/33" id="emO-aI-OJt"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="xei-h6-cRN" firstAttribute="centerX" secondItem="0kL-TZ-UfW" secondAttribute="centerX" id="5A6-Ld-mCB"/>
-                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="top" secondItem="xei-h6-cRN" secondAttribute="bottom" constant="28" id="5Kc-h7-M0A"/>
-                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="centerX" secondItem="1He-CF-ZPi" secondAttribute="centerX" id="9Hn-vB-jD1"/>
-                                            <constraint firstItem="DTO-ZZ-40d" firstAttribute="top" secondItem="1He-CF-ZPi" secondAttribute="top" constant="48" id="EOM-zl-nGw"/>
-                                            <constraint firstItem="I2T-Rx-pjI" firstAttribute="top" secondItem="UYC-Al-3RE" secondAttribute="bottom" constant="46" id="JmA-lb-cyk"/>
-                                            <constraint firstItem="xei-h6-cRN" firstAttribute="width" secondItem="xei-h6-cRN" secondAttribute="height" multiplier="5/2" id="RDy-ux-qy9"/>
-                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" constant="48" id="Z03-bP-YmM"/>
-                                            <constraint firstAttribute="trailing" secondItem="I2T-Rx-pjI" secondAttribute="trailing" id="aFP-41-u0b"/>
-                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="top" secondItem="DTO-ZZ-40d" secondAttribute="bottom" constant="28" id="coa-I0-DBm"/>
-                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" constant="48" id="jRK-46-suy"/>
-                                            <constraint firstAttribute="bottom" secondItem="0kL-TZ-UfW" secondAttribute="bottom" constant="20" id="oFH-wb-jZ4"/>
-                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="centerX" secondItem="1He-CF-ZPi" secondAttribute="centerX" id="oxj-Ue-YNq"/>
-                                            <constraint firstItem="DTO-ZZ-40d" firstAttribute="centerX" secondItem="UYC-Al-3RE" secondAttribute="centerX" id="tAr-cN-YZN"/>
-                                            <constraint firstItem="I2T-Rx-pjI" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" id="uY8-cN-TcM"/>
-                                            <constraint firstItem="xei-h6-cRN" firstAttribute="top" secondItem="I2T-Rx-pjI" secondAttribute="bottom" constant="28" id="xdy-XR-P48"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1He-CF-ZPi" secondAttribute="trailing" id="1Ue-UH-9YL"/>
-                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="top" secondItem="smk-Xh-6ZC" secondAttribute="top" id="8jK-3g-8lv"/>
-                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="width" secondItem="smk-Xh-6ZC" secondAttribute="width" id="LtS-Ks-mGf"/>
-                                    <constraint firstAttribute="bottom" secondItem="1He-CF-ZPi" secondAttribute="bottom" id="lcj-ws-5JH"/>
-                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="leading" secondItem="smk-Xh-6ZC" secondAttribute="leading" id="xwM-oD-Y9W"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="vBH-nG-pAk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
@@ -594,22 +521,22 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIB-gJ-Nr4">
-                                                <rect key="frame" x="375" y="359" width="375" height="389.5"/>
+                                                <rect key="frame" x="375" y="359" width="375" height="383.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Set a reminder to share your Visheo in future" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG6-eF-HPq">
-                                                        <rect key="frame" x="60" y="0.0" width="255" height="53"/>
+                                                        <rect key="frame" x="60" y="0.0" width="255" height="47"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nF5-eM-neh">
-                                                        <rect key="frame" x="0.0" y="73" width="375" height="216"/>
+                                                        <rect key="frame" x="0.0" y="67" width="375" height="216"/>
                                                         <date key="date" timeIntervalSinceReferenceDate="534110241.26562399">
                                                             <!--2017-12-04 19:57:21 +0000-->
                                                         </date>
                                                     </datePicker>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzZ-Ya-jRK">
-                                                        <rect key="frame" x="20" y="309.5" width="335" height="60"/>
+                                                        <rect key="frame" x="20" y="303.5" width="335" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="7G2-4W-8HC"/>
@@ -690,6 +617,79 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smk-Xh-6ZC">
+                                <rect key="frame" x="0.0" y="38" width="375" height="565"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1He-CF-ZPi">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="535.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be able to download your Visheo file or simply send Visheo link to the receiver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kL-TZ-UfW">
+                                                <rect key="frame" x="48" y="444" width="279" height="71.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareOptions" translatesAutoresizingMaskIntoConstraints="NO" id="xei-h6-cRN">
+                                                <rect key="frame" x="112.5" y="356" width="150" height="60"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2T-Rx-pjI">
+                                                <rect key="frame" x="0.0" y="327" width="375" height="1"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="mHx-UN-b1y"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Visheo will be uploaded to the online storage, where you can keep it up 60 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYC-Al-3RE">
+                                                <rect key="frame" x="48" y="209" width="279" height="72"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="XMR-FS-Z8S"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudShare" translatesAutoresizingMaskIntoConstraints="NO" id="DTO-ZZ-40d">
+                                                <rect key="frame" x="87" y="48" width="202" height="133"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="202" id="BGf-8k-e4Y"/>
+                                                    <constraint firstAttribute="width" secondItem="DTO-ZZ-40d" secondAttribute="height" multiplier="50/33" id="emO-aI-OJt"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="centerX" secondItem="0kL-TZ-UfW" secondAttribute="centerX" id="5A6-Ld-mCB"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="top" secondItem="xei-h6-cRN" secondAttribute="bottom" constant="28" id="5Kc-h7-M0A"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="centerX" secondItem="1He-CF-ZPi" secondAttribute="centerX" id="9Hn-vB-jD1"/>
+                                            <constraint firstItem="DTO-ZZ-40d" firstAttribute="top" secondItem="1He-CF-ZPi" secondAttribute="top" constant="48" id="EOM-zl-nGw"/>
+                                            <constraint firstItem="I2T-Rx-pjI" firstAttribute="top" secondItem="UYC-Al-3RE" secondAttribute="bottom" constant="46" id="JmA-lb-cyk"/>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="width" secondItem="xei-h6-cRN" secondAttribute="height" multiplier="5/2" id="RDy-ux-qy9"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" constant="48" id="Z03-bP-YmM"/>
+                                            <constraint firstAttribute="trailing" secondItem="I2T-Rx-pjI" secondAttribute="trailing" id="aFP-41-u0b"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="top" secondItem="DTO-ZZ-40d" secondAttribute="bottom" constant="28" id="coa-I0-DBm"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" constant="48" id="jRK-46-suy"/>
+                                            <constraint firstAttribute="bottom" secondItem="0kL-TZ-UfW" secondAttribute="bottom" constant="20" id="oFH-wb-jZ4"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="centerX" secondItem="1He-CF-ZPi" secondAttribute="centerX" id="oxj-Ue-YNq"/>
+                                            <constraint firstItem="DTO-ZZ-40d" firstAttribute="centerX" secondItem="UYC-Al-3RE" secondAttribute="centerX" id="tAr-cN-YZN"/>
+                                            <constraint firstItem="I2T-Rx-pjI" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" id="uY8-cN-TcM"/>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="top" secondItem="I2T-Rx-pjI" secondAttribute="bottom" constant="28" id="xdy-XR-P48"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1He-CF-ZPi" secondAttribute="trailing" id="1Ue-UH-9YL"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="top" secondItem="smk-Xh-6ZC" secondAttribute="top" id="8jK-3g-8lv"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="width" secondItem="smk-Xh-6ZC" secondAttribute="width" id="LtS-Ks-mGf"/>
+                                    <constraint firstAttribute="bottom" secondItem="1He-CF-ZPi" secondAttribute="bottom" id="lcj-ws-5JH"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="leading" secondItem="smk-Xh-6ZC" secondAttribute="leading" id="xwM-oD-Y9W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-oO-jCL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <subviews>
