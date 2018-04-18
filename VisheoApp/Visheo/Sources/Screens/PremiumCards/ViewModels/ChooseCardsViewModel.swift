@@ -25,6 +25,7 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     var showBackButton : Bool {get}
     var showFreeSection : Bool {get}
     var showSubscribedSection : Bool {get}
+    var showCouponSection: Bool {get}
     
     func acceptFreeRule(withSelected selected:Bool)
     func showFreeRule()
@@ -60,6 +61,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
                premiumCardsNumber == 0 &&
                !showSubscribedSection &&
                visheoAssets != nil
+    }
+    
+    var showCouponSection: Bool {
+        return purchasesService.isCouponAvailable && !showSubscribedSection
     }
     
     var premiumCardsNumber: Int {
@@ -185,6 +190,14 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         NotificationCenter.default.addObserver(self, selector: #selector(VisheoChooseCardsViewModel.updatePremCardsNumber), name: Notification.Name.userPremiumCardsCountChanged, object: nil)
         
         NotificationCenter.default.addObserver(forName: Notification.Name.userSubscriptionStateChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.freeVisheoAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.couponAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
             self?.didChange?()
         }
     }

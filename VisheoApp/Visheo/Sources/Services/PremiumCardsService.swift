@@ -19,6 +19,9 @@ extension Notification.Name {
     
     static let userPremiumCardsCountChanged = Notification.Name("userPremiumCardsCountChanged")
     static let userSubscriptionStateChanged = Notification.Name("userSubscriptionStateChanged")
+    
+    static let freeVisheoAvailableChanged = Notification.Name("freeVisheoAvailableChanged")
+    static let couponAvailableChanged = Notification.Name("couponAvailableChanged")
 }
 
 enum RedeemError : Error {
@@ -49,6 +52,7 @@ protocol PremiumCardsService {
     var subscription : PremiumSubsctription? {get}
     var subscriptionExpirationDate : Date? {get}
     var isFreeAvailable : Bool {get}
+    var isCouponAvailable : Bool {get}
     
     func buy(bundle: PurchaseBase)
     func redeem(coupon: String, completion: @escaping (Int?, RedeemError?)->())
@@ -215,14 +219,17 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     private var premCardsReference : DatabaseReference?
     private var subscriptionReference : DatabaseReference?
     private var freeVishesReference : DatabaseReference?
+    private var appConfigCouponsReference : DatabaseReference?
     
     var isFreeAvailable : Bool
+    var isCouponAvailable : Bool
     
 	init(userInfoProvider: UserInfoProvider, loggingService: EventLoggingService) {
         self.userInfoProvider = userInfoProvider
 		self.loggingService = loggingService;
         
         isFreeAvailable = false
+        isCouponAvailable = false
         currentUserPremiumCards = 0
         
         super.init()
@@ -230,7 +237,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         
         startPremiumCardsObserving()
         startSubscriptionObserving()
-        startFreeVishesObserving()
+        startAppConfigObserving()
         
         SKPaymentQueue.default().add(self)
         
@@ -276,9 +283,9 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         }
     }
     
-    private func startFreeVishesObserving(){
-        if let oldReference = freeVishesReference {
-            oldReference.removeAllObservers()
+    private func startAppConfigObserving(){
+        [freeVishesReference, appConfigCouponsReference].flatMap { $0 }.forEach {
+            $0.removeAllObservers()
         }
         
         let appConfigFreeVishesRef = Database.database().reference(withPath: "appConfiguration/isFreeVisheoAvailable")
@@ -287,6 +294,16 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         appConfigFreeVishesRef.observe(.value) {
             guard let isFreeAvailable = $0.value as? Bool else { self.isFreeAvailable = false; return}
             self.isFreeAvailable = isFreeAvailable
+            NotificationCenter.default.post(name: Notification.Name.freeVisheoAvailableChanged, object: self)
+        }
+        
+        let appConfigCouponsRef = Database.database().reference(withPath: "appConfiguration/isCouponAvailable")
+        appConfigCouponsReference = appConfigCouponsRef
+        
+        appConfigCouponsRef.observe(.value) {
+            guard let isCouponAvailable = $0.value as? Bool else { self.isCouponAvailable = false; return}
+            self.isCouponAvailable = isCouponAvailable
+            NotificationCenter.default.post(name: Notification.Name.couponAvailableChanged, object: self)
         }
     }
     

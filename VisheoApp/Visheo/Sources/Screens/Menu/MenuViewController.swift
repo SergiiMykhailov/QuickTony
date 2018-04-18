@@ -15,6 +15,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 		
         NotificationCenter.default.addObserver(self, selector: #selector(MenuViewController.willBeShown), name: Notification.Name.LGSideMenuWillShowLeftView, object: nil)
+        
     }
     
     deinit {
@@ -23,6 +24,7 @@ class MenuViewController: UIViewController {
 	
 	@IBOutlet weak var usernameButton: UIButton!
 	@IBOutlet weak var userPicImage: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
     @objc func willBeShown() {
 		usernameButton.setTitle(viewModel.username, for: .normal);
@@ -52,6 +54,10 @@ class MenuViewController: UIViewController {
 		self.viewModel.successAlertHandler = {[weak self] in
 			self?.showSuccessAlertWithText(text: $0)
 		}
+        
+        self.viewModel.didChange = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 }
 

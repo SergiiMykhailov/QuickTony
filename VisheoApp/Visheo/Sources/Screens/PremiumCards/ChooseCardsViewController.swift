@@ -83,7 +83,7 @@ class ChooseCardsViewController: UIViewController {
 		freeCardsSection.isHidden = !viewModel.showFreeSection
         premiumCardsSection.isHidden = viewModel.showSubscribedSection
         subscribeSection.isHidden = viewModel.subscribeSectionHidden
-        couponSection.isHidden = viewModel.showSubscribedSection
+        couponSection.isHidden = !viewModel.showCouponSection
         subscribedSection.isHidden = !viewModel.showSubscribedSection
 		
         checkmarkButton.isSelected = (viewModel.isFreeVisheoRuleAccepted)

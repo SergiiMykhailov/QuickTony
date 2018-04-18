@@ -16,6 +16,8 @@ protocol MenuViewModel : class, SuccessAlertGenerating, WarningAlertGenerating {
     var menuItemsCount : Int {get}
     func menuItem(at index: Int) -> MenuItemViewModel
     
+    var didChange : (()->())? {get set}
+    
     func selectMenu(at index: Int)
 	func showAccount();
 }
@@ -41,32 +43,46 @@ class VisheoMenuViewModel : MenuViewModel {
         return userInfo.userPicUrl
     }
     
+    var didChange : (() -> ())?
+    
     weak var router: MenuRouter?
     private let userInfo: UserInfoProvider
-	private let notificationService: UserNotificationsService;
-	private let visheoListService: VisheosListService;
-    private let menuItems : [VisheoMenuItemViewModel]
+	private let notificationService: UserNotificationsService
+	private let visheoListService: VisheosListService
+    private let premiumCardsService: PremiumCardsService
+    private var menuItems : [VisheoMenuItemViewModel] {
+        get {
+            let couponButton = VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), type: .redeem)
+            let menuItems = [
+                VisheoMenuItemViewModel(text: NSLocalizedString("New Visheo", comment: "New visheo menu item"), image: #imageLiteral(resourceName: "newVisheo"), type: .newVisheo),
+                VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), type: .visheoBox),
+                VisheoMenuItemViewModel(text: NSLocalizedString("My Purchases", comment: "My purchases menu item"), image: #imageLiteral(resourceName: "premiumCards"), type: .premiumCards),
+                premiumCardsService.isCouponAvailable ? couponButton : nil,
+                VisheoMenuItemViewModel(text: NSLocalizedString("My Account", comment: "My Account menu item"), image: #imageLiteral(resourceName: "account"), type: .account),
+                VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), type: .contact)
+                ].flatMap{$0}
+            
+            return menuItems
+        }
+    }
 	private var pendingVisheoIds = Set<String>()
     
-    init(userInfo: UserInfoProvider, notificationService: UserNotificationsService, visheoListService: VisheosListService) {
+    init(userInfo: UserInfoProvider, notificationService: UserNotificationsService, visheoListService: VisheosListService, premiumCardsService: PremiumCardsService) {
         self.userInfo = userInfo
-		self.notificationService = notificationService;
-		self.visheoListService = visheoListService;
-        menuItems = [
-            VisheoMenuItemViewModel(text: NSLocalizedString("New Visheo", comment: "New visheo menu item"), image: #imageLiteral(resourceName: "newVisheo"), type: .newVisheo),
-            VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), type: .visheoBox),
-            VisheoMenuItemViewModel(text: NSLocalizedString("My Purchases", comment: "My purchases menu item"), image: #imageLiteral(resourceName: "premiumCards"), type: .premiumCards),
-            VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), type: .redeem),
-            VisheoMenuItemViewModel(text: NSLocalizedString("My Account", comment: "My Account menu item"), image: #imageLiteral(resourceName: "account"), type: .account),
-            VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), type: .contact)
-        ]
-		
+		self.notificationService = notificationService
+		self.visheoListService = visheoListService
+		self.premiumCardsService = premiumCardsService
+        
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheoOpen(_:)), name: .openVisheoFromReminder, object: nil);
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheosListChange(_:)), name: .visheosChanged, object: nil);
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.feedbackSent), name: .contactUsFeedbackSent, object: nil);
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.failedToSendFeedback(_:)), name: .contactUsFeedbackFailed, object: nil);
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.couponAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.didChange?()
+        }
     }
 	
 	deinit {
@@ -103,8 +119,6 @@ class VisheoMenuViewModel : MenuViewModel {
 			} else {
 				router?.showContactForm()
 			}
-        default:
-            break;
         }
     }
     
