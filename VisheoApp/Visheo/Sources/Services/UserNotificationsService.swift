@@ -34,9 +34,13 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
 {
     let gcmMessageIDKey = "gcm.message_id"
     
-	override init() {
-		super.init();
-		UNUserNotificationCenter.current().delegate = self;
+    let invitesService : InvitesService
+    
+    init(withInvitesService invitesService: InvitesService) {
+        self.invitesService = invitesService
+		super.init() 
+		UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
 	}
 	
 	func schedule(at date: Date, text: String, visheoId: String, completion: ((Error?) -> Void)?)
@@ -117,9 +121,9 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
 		return Promise { fl, rj in
 			UNUserNotificationCenter.current().add(request) { (error) in
 				if let e = error {
-					rj(e);
+					rj(e)
 				} else {
-					fl(Void());
+					fl(Void())
 				}
 			}
 		}
@@ -131,7 +135,7 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
             print("Message ID: \(messageID)")
         }
 
-		completionHandler([.alert, .sound]);
+		completionHandler([.alert, .sound])
 	}
 	
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -143,7 +147,7 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
 		let visheoId = response.notification.request.identifier;
 		let info = [ UserNotificationsServiceNotificationKeys.id : visheoId ];
 		NotificationCenter.default.post(name: .openVisheoFromReminder, object: self, userInfo: info);
-		completionHandler();
+		completionHandler()
 	}
     
     func registerNotifications() {
@@ -160,7 +164,7 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
 
 extension VisheoUserNotificationsService : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("Firebase registration token: \(fcmToken)")
+        invitesService.registerFCMToken(withToken: fcmToken)
     }
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         print("Received data message: \(remoteMessage.appData)")

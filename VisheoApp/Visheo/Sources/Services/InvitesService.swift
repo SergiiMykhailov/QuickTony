@@ -15,14 +15,14 @@ enum linkParams : String {
 }
 
 protocol InvitesService {
-    func registerFCMToken(withToken token: String, forUserId userId: String)
+    func registerFCMToken(withToken token: String)
     func createInviteURLIfNeeded(withCompletion completion: @escaping (URL?) -> (Void))
     func handleDynamicLink(from dynamicLink: DynamicLink?) -> Bool
     func activateInvitation(forUserId userId: String, withPromo promo: String)
 }
 
 struct DynamicLinkParams {
-    let googleAppId = "aj6fz"
+    let googleAppId = Environment.current.inviteURL()
     let bundleId = "com.visheo.visheo"
     let packageName = "com.visheo"
     let minimumAndroidVersion = 131
@@ -33,18 +33,22 @@ struct DynamicLinkParams {
 class VisheoInvitesService : InvitesService {
     var userInfo: UserInfoProvider?
     var authService: AuthorizationService?
+    var loggingService: EventLoggingService?
     var usersRef: DatabaseReference
     
     var invitedById: String?
     
-    init(withAuthorizationService authService: AuthorizationService, userInfo: UserInfoProvider) {
+    init(withAuthorizationService authService: AuthorizationService, eventLoggingService: EventLoggingService, userInfo: UserInfoProvider) {
         usersRef = Database.database().reference().child("users")
         self.authService = authService
+        self.loggingService = eventLoggingService
         self.userInfo = userInfo
     }
     
-    func registerFCMToken(withToken token: String, forUserId userId: String) {
-        self.usersRef.child(userId).child("fcm_tokens").childByAutoId().setValue(token)
+    func registerFCMToken(withToken token: String) {
+        if let userId = userInfo?.userId {
+            self.usersRef.child(userId).child("fcm_tokens").child(token).setValue(true)
+        }
     }
     
     func createInviteURLIfNeeded(withCompletion completion: @escaping (URL?) -> (Void)) {
@@ -89,6 +93,7 @@ class VisheoInvitesService : InvitesService {
     func activateInvitation(forUserId userId: String, withPromo promo: String) {
         let userRecord = Database.database().reference().child("users").child(userId)
         userRecord.child("referred_by").setValue(promo)
+        loggingService?.log(event: InviteDidHappenEvent())
     }
     
 }

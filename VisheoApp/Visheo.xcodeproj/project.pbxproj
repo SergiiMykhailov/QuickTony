@@ -50,6 +50,7 @@
 		2C9A11CF207CAC9200DD114C /* InviteFriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */; };
 		2C9A11D0207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */; };
 		2C9A11D1207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */; };
+		2CADBE982085FFA10011C88E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CADBE972085FFA10011C88E /* GoogleService-Info.plist */; };
 		9201B2DF1FE284C700FAC820 /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */; };
 		9204818D1FFCDA4E0053810D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */; };
 		9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */; };
@@ -219,7 +220,6 @@
 		920F8BD21FF6BDC90087C45D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
 		920F8BD51FF6BDC90087C45D /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		920F8BE41FF6BE6B0087C45D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 920F8BE11FF6BE670087C45D /* GoogleService-Info.plist */; };
-		920F8BE51FF6BE6E0087C45D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */; };
 		920F8BE71FF6C0E80087C45D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F8BE61FF6C0E80087C45D /* Environment.swift */; };
 		920F8BE81FF6C0E80087C45D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F8BE61FF6C0E80087C45D /* Environment.swift */; };
 		921E0CEC1FDF1BF4000A4EBC /* APLCompositionDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */; };
@@ -463,6 +463,8 @@
 		2C9A11C8207CAC9100DD114C /* InviteFriendsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsControllerViewModel.swift; sourceTree = "<group>"; };
 		2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsRouter.swift; sourceTree = "<group>"; };
 		2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
+		2CADBE972085FFA10011C88E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2CADBE992086033D0011C88E /* Visheo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Visheo.entitlements; sourceTree = "<group>"; };
 		2FD6F74B86B302F75CC70FF6 /* Pods-App-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo.release.xcconfig"; sourceTree = "<group>"; };
 		391D08EBDF5AD694F5624C6D /* Pods-App-VisheoStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-VisheoStaging.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging.release.xcconfig"; sourceTree = "<group>"; };
 		481AD60403C8F371649DC574 /* Pods-App-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -477,7 +479,6 @@
 		920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		920F8BDB1FF6BDC90087C45D /* VisheoStaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisheoStaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920F8BE11FF6BE670087C45D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		920F8BE61FF6C0E80087C45D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		921E0CEA1FDF1BF4000A4EBC /* APLCompositionDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLCompositionDebugView.h; sourceTree = "<group>"; };
 		921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLCompositionDebugView.m; sourceTree = "<group>"; };
@@ -794,7 +795,7 @@
 		920F8BE21FF6BE670087C45D /* production */ = {
 			isa = PBXGroup;
 			children = (
-				920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */,
+				2CADBE972085FFA10011C88E /* GoogleService-Info.plist */,
 			);
 			path = production;
 			sourceTree = "<group>";
@@ -1239,6 +1240,7 @@
 		B4B9D1981FA8A52300CBD7DB /* Visheo */ = {
 			isa = PBXGroup;
 			children = (
+				2CADBE992086033D0011C88E /* Visheo.entitlements */,
 				9276A4F020191F4200D3D44B /* Visheo-Info.plist */,
 				9276A4F120191F4200D3D44B /* VisheoStaging-Info.plist */,
 				92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */,
@@ -1578,6 +1580,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 						};
 					};
 					B4B9D1951FA8A52300CBD7DB = {
@@ -1586,6 +1591,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -1695,8 +1703,8 @@
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
 				92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */,
+				2CADBE982085FFA10011C88E /* GoogleService-Info.plist in Resources */,
 				B4775FFF1FD57EAA00A02BEF /* Account.storyboard in Resources */,
-				920F8BE51FF6BE6E0087C45D /* GoogleService-Info.plist in Resources */,
 				92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */,
 				92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */,
 			);
@@ -2570,6 +2578,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Visheo/Visheo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6NPSSGKMC;
@@ -2592,6 +2601,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Visheo/Visheo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6NPSSGKMC;

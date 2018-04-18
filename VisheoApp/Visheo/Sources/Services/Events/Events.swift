@@ -29,6 +29,7 @@ enum EventType: String {
 	case reachedPreview = "reached_preview_screen"
 	case soundtrackChanged = "soundtrack_changed"
 	case retakeVideo = "retake_video"
+    case inviteDidHappen = "invite_happened"
 }
 
 protocol EventRepresenting {
@@ -176,6 +177,12 @@ struct InviteFacebookSharedEvent: EventRepresenting {
 struct InviteTwitterSharedEvent: EventRepresenting {
     var type: EventType {
         return .inviteLinkTwitterShared;
+    }
+}
+
+struct InviteDidHappenEvent: EventRepresenting {
+    var type: EventType {
+        return .inviteDidHappen;
     }
 }
 

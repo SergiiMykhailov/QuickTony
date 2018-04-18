@@ -73,14 +73,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 													   appStateService: appState,
 													   loggingService: eventLoggingService)
 		let soundtracksService = VisheoSoundtracksService();
-		let userNotificationsService = VisheoUserNotificationsService();
+        let invitationService = VisheoInvitesService(withAuthorizationService: authService, eventLoggingService: eventLoggingService, userInfo: authService)
+        let userNotificationsService = VisheoUserNotificationsService(withInvitesService: invitationService)
         let assembly = VisheoRouterAssembly()
 		let tipsProviderService = VisheoTipsProviderService()
 
         let visheosListService = VisheoBoxService(userInfoProvider: authService)
         let visheosCache = VisheosLocalCache()
 		let feedbackService = VisheoFeedbackService(userInfoProvider: authService);
-        let invitationService = VisheoInvitesService(withAuthorizationService: authService, userInfo: authService)
 		let premiumService = VisheoPremiumCardsService(userInfoProvider: authService, loggingService: eventLoggingService)
         return RouterDependencies(appStateService: appState,
                                                 appPermissionsService: permissionsService,

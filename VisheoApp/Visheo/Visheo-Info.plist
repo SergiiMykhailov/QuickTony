@@ -35,6 +35,16 @@
 				<string>com.googleusercontent.apps.25294653104-6avn2sa2mo9rh7dqo9p0a3t46l7kdiif</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Bundle ID</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.visheo.visheo</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>8</string>
