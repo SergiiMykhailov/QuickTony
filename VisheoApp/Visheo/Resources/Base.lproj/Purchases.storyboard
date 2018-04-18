@@ -36,13 +36,13 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="686"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="h01-aV-dnN">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1476"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1494.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUY-z5-58M" userLabel="Visheo Cards Section">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="303"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-TP-Qm2">
-                                                        <rect key="frame" x="51" y="24" width="218.5" height="25"/>
+                                                        <rect key="frame" x="51.5" y="24" width="218.5" height="25"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-lH-lHF" customClass="BadgeSwift" customModule="BadgeSwift">
                                                                 <rect key="frame" x="79.5" y="-2" width="28" height="28"/>
@@ -172,7 +172,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-Lx-sLI" userLabel="Subscription Section">
-                                                <rect key="frame" x="0.0" y="304" width="320" height="203"/>
+                                                <rect key="frame" x="0.0" y="304" width="320" height="221.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Subscribe for regular use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-pz-MO6">
                                                         <rect key="frame" x="58.5" y="57" width="203.5" height="24"/>
@@ -200,7 +200,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can cancel subscription any time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ld-af-PBp">
-                                                        <rect key="frame" x="59" y="163" width="202" height="28"/>
+                                                        <rect key="frame" x="59" y="163" width="202" height="46.5"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -253,10 +253,10 @@
                                                     <constraint firstItem="8AO-eY-Fdx" firstAttribute="leading" secondItem="AIr-Lx-sLI" secondAttribute="leading" id="21O-kP-Mci"/>
                                                     <constraint firstAttribute="bottom" secondItem="1Ld-af-PBp" secondAttribute="bottom" constant="12" id="9e3-cR-XLw"/>
                                                     <constraint firstItem="1Ld-af-PBp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AIr-Lx-sLI" secondAttribute="leading" constant="20" id="CHv-dg-pl7"/>
-                                                    <constraint firstItem="1Ld-af-PBp" firstAttribute="top" secondItem="vIj-dG-9Fh" secondAttribute="bottom" constant="10" id="ExD-VO-2UG"/>
                                                     <constraint firstItem="1Ld-af-PBp" firstAttribute="centerX" secondItem="AIr-Lx-sLI" secondAttribute="centerX" id="GFD-54-MCv"/>
                                                     <constraint firstItem="EAu-pz-MO6" firstAttribute="top" secondItem="8AO-eY-Fdx" secondAttribute="bottom" constant="18" id="UsA-bd-1bA"/>
                                                     <constraint firstItem="vIj-dG-9Fh" firstAttribute="top" secondItem="EAu-pz-MO6" secondAttribute="bottom" constant="12" id="iSe-m1-WHt"/>
+                                                    <constraint firstItem="1Ld-af-PBp" firstAttribute="top" secondItem="vIj-dG-9Fh" secondAttribute="bottom" constant="10" id="oBn-36-rMo"/>
                                                     <constraint firstItem="vIj-dG-9Fh" firstAttribute="leading" secondItem="AIr-Lx-sLI" secondAttribute="leading" constant="20" id="pVs-iJ-fKW"/>
                                                     <constraint firstItem="EAu-pz-MO6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AIr-Lx-sLI" secondAttribute="leading" constant="20" id="qu7-V3-rvG"/>
                                                     <constraint firstItem="8AO-eY-Fdx" firstAttribute="top" secondItem="AIr-Lx-sLI" secondAttribute="top" id="tCM-VT-2yh"/>
@@ -265,7 +265,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKo-hC-f3d">
-                                                <rect key="frame" x="0.0" y="508" width="320" height="226"/>
+                                                <rect key="frame" x="0.0" y="526.5" width="320" height="226"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4J-BT-0G5" userLabel="Separator View">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
@@ -398,7 +398,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-fB-R2G" userLabel="SubscribedSection">
-                                                <rect key="frame" x="0.0" y="735" width="320" height="686"/>
+                                                <rect key="frame" x="0.0" y="753.5" width="320" height="686"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiB-d9-Ax4">
                                                         <rect key="frame" x="0.0" y="117" width="320" height="287.5"/>
@@ -454,7 +454,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0h-DI-jyA" userLabel="Coupon Section">
-                                                <rect key="frame" x="0.0" y="1422" width="320" height="54"/>
+                                                <rect key="frame" x="0.0" y="1440.5" width="320" height="54"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MIk-2s-Jdg">
                                                         <rect key="frame" x="99" y="10" width="122" height="44"/>
@@ -547,6 +547,7 @@
                         <segue destination="ksx-Ka-Sj9" kind="show" identifier="showCoupon" id="Pwu-Oq-DYp"/>
                         <segue destination="sOC-hj-pv5" kind="show" identifier="showPurchaseSuccess" id="qsm-bv-IVy"/>
                         <segue destination="XhT-N4-YS6" kind="show" identifier="showFreeRule" id="NyT-JF-RXI"/>
+                        <segue destination="1dp-Px-DV7" kind="show" identifier="showSubscriptionDescription" id="lgh-jy-gnZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5W-z1-1Jd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -727,7 +728,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1p3-HT-zrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="854"/>
+            <point key="canvasLocation" x="726" y="855"/>
         </scene>
         <!--ShareVisheoViewController-->
         <scene sceneID="LZb-dO-9qA">
@@ -809,7 +810,83 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0d6-7s-fzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="736.875" y="51.760563380281688"/>
+            <point key="canvasLocation" x="660" y="-560"/>
+        </scene>
+        <!--PUBLIC VISHEO-->
+        <scene sceneID="QEF-m5-rtI">
+            <objects>
+                <viewController title="PUBLIC VISHEO" id="1dp-Px-DV7" customClass="SubscriptionDescriptionViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MJu-VJ-aZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAI-cq-nL2">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uje-KO-Ot4">
+                                        <rect key="frame" x="40" y="20" width="240" height="21.5"/>
+                                        <mutableString key="text">In order to purchase the subscription please get acknowledged with the conditions below:\n\n\t\u2022 The subscription fee will be charged to iTunes Account at confirmation of purchase\n\n\t\u2022 Subscription period starts at the date of purchase and ends in one month after the start date\n\n\t\u2022 Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the subscription period\n\n\t\u2022 Account will be charged for renewal within 24-hours prior to the end of the subscription period, the cost of renewal is %@\n\n\t\u2022 Subscriptions may be managed by you and auto-renewal may be turned off by going to the Account Settings on your device after purchase</mutableString>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZI-3Z-doF">
+                                        <rect key="frame" x="20" y="67.5" width="280" height="60"/>
+                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="24Q-nv-lFj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Ok, got it"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="gotItButtonPressedWithSender:" destination="1dp-Px-DV7" eventType="touchUpInside" id="A1Y-KT-egC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="uje-KO-Ot4" secondAttribute="trailing" constant="40" id="38q-Hq-Zeu"/>
+                                    <constraint firstItem="uje-KO-Ot4" firstAttribute="top" secondItem="jAI-cq-nL2" secondAttribute="top" constant="20" id="CXI-oP-L6U"/>
+                                    <constraint firstAttribute="trailing" secondItem="rZI-3Z-doF" secondAttribute="trailing" constant="20" id="Gpf-H0-nza"/>
+                                    <constraint firstItem="rZI-3Z-doF" firstAttribute="centerX" secondItem="jAI-cq-nL2" secondAttribute="centerX" id="Vm2-04-V4a"/>
+                                    <constraint firstItem="uje-KO-Ot4" firstAttribute="centerX" secondItem="jAI-cq-nL2" secondAttribute="centerX" id="dOS-Ot-V2a"/>
+                                    <constraint firstItem="rZI-3Z-doF" firstAttribute="leading" secondItem="jAI-cq-nL2" secondAttribute="leading" constant="20" id="eOD-sK-4Ks"/>
+                                    <constraint firstAttribute="bottom" secondItem="rZI-3Z-doF" secondAttribute="bottom" constant="20" id="nfd-io-oZC"/>
+                                    <constraint firstItem="uje-KO-Ot4" firstAttribute="leading" secondItem="jAI-cq-nL2" secondAttribute="leading" constant="40" id="sne-ck-B4z"/>
+                                    <constraint firstItem="rZI-3Z-doF" firstAttribute="top" secondItem="uje-KO-Ot4" secondAttribute="bottom" constant="26" id="w4e-91-40T"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GbE-mY-TrG" firstAttribute="bottom" secondItem="jAI-cq-nL2" secondAttribute="bottom" id="5WU-js-g88"/>
+                            <constraint firstItem="jAI-cq-nL2" firstAttribute="top" secondItem="GbE-mY-TrG" secondAttribute="top" id="Uv4-Uc-YIN"/>
+                            <constraint firstItem="jAI-cq-nL2" firstAttribute="width" secondItem="MJu-VJ-aZ2" secondAttribute="width" id="bpc-cb-fYQ"/>
+                            <constraint firstItem="GbE-mY-TrG" firstAttribute="trailing" secondItem="jAI-cq-nL2" secondAttribute="trailing" id="dXL-MI-Ogo"/>
+                            <constraint firstItem="jAI-cq-nL2" firstAttribute="leading" secondItem="GbE-mY-TrG" secondAttribute="leading" id="tXG-5b-o8v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GbE-mY-TrG"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="PUBLIC VISHEO" id="csg-MP-cjc">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="HpV-66-ajF">
+                            <connections>
+                                <action selector="backPressed:" destination="1dp-Px-DV7" id="JlP-Hi-bUt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="uje-KO-Ot4" id="nEB-JR-kxv"/>
+                        <segue destination="sOC-hj-pv5" kind="show" identifier="showPurchaseSuccess" id="erQ-C0-0II"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QJi-jX-uRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="120"/>
         </scene>
     </scenes>
     <resources>
@@ -824,6 +901,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jcu-CK-hCv"/>
-        <segue reference="qsm-bv-IVy"/>
+        <segue reference="erQ-C0-0II"/>
     </inferredMetricsTieBreakers>
 </document>

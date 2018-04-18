@@ -151,7 +151,7 @@ class ChooseCardsViewController: UIViewController {
     }
     
     @IBAction func subscribeActionPassed(_ sender: Any){
-        viewModel.paySubscription()
+        viewModel.showSubscriptionDescription()
     }
     
     @IBAction func menuPressed(_ sender: Any) {

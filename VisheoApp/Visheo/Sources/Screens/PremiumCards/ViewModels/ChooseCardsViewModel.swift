@@ -31,10 +31,11 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     
     func buySmallBundle()
     func buyBigBundle()
-    func paySubscription()
     
     func showMenu()
     func showCoupon()
+    
+    func showSubscriptionDescription()
     
     var didChange : (()->())? {get set}
     
@@ -43,6 +44,7 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
 }
 
 class VisheoChooseCardsViewModel : ChooseCardsViewModel {
+    
     var confirmFreeSendHandler: (() -> ())?
     var premiumUsageFailedHandler: (() -> ())?
     
@@ -51,6 +53,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     var showBackButton: Bool {
         return !shownFromMenu
     }
+    
     
     var showFreeSection: Bool {
         return purchasesService.isFreeAvailable &&
@@ -217,13 +220,6 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         }
     }
     
-    func paySubscription() {
-        if let product = purchasesService.subscription {
-            showProgressCallback?(true)
-            purchasesService.buy(bundle: product)
-        }
-    }
-    
     func acceptFreeRule(withSelected selected:Bool) {
         freeVisheoRuleAccepted = selected
         self.didChange?()
@@ -239,6 +235,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     
     func showCoupon() {
         router?.showCoupon(with: visheoAssets)
+    }
+    
+    func showSubscriptionDescription() {
+        router?.showSubscriptionDescription(with: visheoAssets)
     }
     
     // MARK: Notifications

@@ -77,7 +77,8 @@ class PurchaseBase {
     
     fileprivate init?(snapshot: DataSnapshot?) {
         guard let snapshot = snapshot,
-            let productId = snapshot.childSnapshot(forPath:"appleId").value as? String else {return nil}
+            let productId = snapshot.childSnapshot(forPath:"appleId").value as? String
+            else {return nil}
         
         self.productId = productId
     }
@@ -103,13 +104,16 @@ class PremiumCardsBundle : PurchaseBase {
 
 class PremiumSubsctription : PurchaseBase {
     fileprivate let expires : Int
+    let iosDescription : String
     
     override init?(snapshot: DataSnapshot?) {
         guard let snapshot = snapshot,
-            let expirationPeriod = snapshot.childSnapshot(forPath: "expirationPeriod").value as? Int else {return nil}
+            let expirationPeriod = snapshot.childSnapshot(forPath: "expirationPeriod").value as? Int,
+            let iosDescription = snapshot.childSnapshot(forPath:"iosDescription").value as? String
+            else { return nil }
         
         self.expires = expirationPeriod
-        
+        self.iosDescription = iosDescription.replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\t", with: "\t").replacingOccurrences(of: "\\u2022", with: "\u{2022}")
         super.init(snapshot: snapshot)
     }
 }
