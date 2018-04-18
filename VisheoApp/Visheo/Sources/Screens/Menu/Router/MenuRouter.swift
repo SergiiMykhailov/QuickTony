@@ -35,7 +35,8 @@ class VisheoMenuRouter : MenuRouter {
     func start(with viewController: MenuViewController) {
 		let vm = VisheoMenuViewModel(userInfo: dependencies.userInfoProvider,
 									 notificationService: dependencies.userNotificationsService,
-									 visheoListService: dependencies.visheosListService)
+                                     visheoListService: dependencies.visheosListService,
+                                     premiumCardsService: dependencies.premiumCardsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
