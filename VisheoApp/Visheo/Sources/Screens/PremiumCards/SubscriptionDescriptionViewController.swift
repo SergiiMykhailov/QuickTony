@@ -31,7 +31,7 @@ final class SubscriptionDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.descriptionLabel.text = viewModel.subscribptionDescription
+        self.descriptionLabel.attributedText = viewModel.subscribptionDescription
         
         viewModel.warningAlertHandler = {[weak self] in
             self?.showWarningAlertWithText(text: $0)
@@ -85,7 +85,7 @@ extension SubscriptionDescriptionViewController: SubscriptionDescriptionViewMode
     
 
     func refreshUI() {
-        self.descriptionLabel.text = viewModel.subscribptionDescription
+        self.descriptionLabel.attributedText = viewModel.subscribptionDescription
     }
 
 }

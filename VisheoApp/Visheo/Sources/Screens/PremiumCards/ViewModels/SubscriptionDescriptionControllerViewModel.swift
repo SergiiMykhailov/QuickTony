@@ -15,7 +15,7 @@ protocol SubscriptionDescriptionViewModelDelegate: class {
 
 protocol SubscriptionDescriptionViewModel: class, AlertGenerating, ProgressGenerating, CustomAlertGenerating {
     weak var delegate: SubscriptionDescriptionViewModelDelegate? {get}
-    var subscribptionDescription : String? {get}
+    var subscribptionDescription : NSAttributedString? {get}
     func paySubscription()
 }
 
@@ -24,7 +24,7 @@ final class SubscriptionDescriptionControllerViewModel: SubscriptionDescriptionV
 
     weak var delegate: SubscriptionDescriptionViewModelDelegate?
     
-    var subscribptionDescription : String? {
+    var subscribptionDescription : NSAttributedString? {
         if let price = purchasesService.subscription?.price,
             let locale = purchasesService.subscription?.priceLocale,
             let iosDescription = purchasesService.subscription?.iosDescription {
@@ -32,7 +32,8 @@ final class SubscriptionDescriptionControllerViewModel: SubscriptionDescriptionV
             formatter.numberStyle = .currency
             formatter.locale = locale
             let priceString = formatter.string(from: price)
-            return String(format:iosDescription, priceString ?? "")
+            let finalString = String(format:iosDescription, priceString ?? "", priceString ?? "")
+            return try? NSMutableAttributedString(data: finalString.data(using: .utf8) ?? Data(), options: [:], documentAttributes: nil)
         }
         return nil
     }
