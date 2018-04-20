@@ -42,10 +42,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="303"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-TP-Qm2">
-                                                        <rect key="frame" x="60.5" y="24" width="201" height="25"/>
+                                                        <rect key="frame" x="51" y="24" width="218.5" height="25"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-lH-lHF" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                <rect key="frame" x="79.5" y="0.0" width="10.5" height="24"/>
+                                                                <rect key="frame" x="79.5" y="-2" width="28" height="28"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Visheo cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Wa-Vl0">
-                                                                <rect key="frame" x="96" y="0.0" width="105" height="24"/>
+                                                                <rect key="frame" x="113.5" y="0.0" width="105" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -175,13 +175,13 @@
                                                 <rect key="frame" x="0.0" y="304" width="320" height="221.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Subscribe for regular use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-pz-MO6">
-                                                        <rect key="frame" x="58.5" y="41" width="203.5" height="24"/>
+                                                        <rect key="frame" x="58.5" y="57" width="203.5" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-dG-9Fh">
-                                                        <rect key="frame" x="20" y="77" width="280" height="60"/>
+                                                        <rect key="frame" x="20" y="93" width="280" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="pGs-Q4-1Jl"/>
@@ -200,23 +200,23 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can cancel subscription any time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ld-af-PBp">
-                                                        <rect key="frame" x="59" y="147" width="202" height="62.5"/>
+                                                        <rect key="frame" x="59" y="163" width="202" height="46.5"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-eY-Fdx" userLabel="Separator View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="23"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBe-yR-HYY">
-                                                                <rect key="frame" x="0.0" y="11" width="320" height="1"/>
+                                                                <rect key="frame" x="0.0" y="19" width="320" height="1"/>
                                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="boj-R5-JZS"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqX-v5-aYA" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                <rect key="frame" x="149" y="0.0" width="23" height="23"/>
+                                                                <rect key="frame" x="141" y="0.0" width="39" height="39"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="EqX-v5-aYA" secondAttribute="height" id="IWx-ac-wf1"/>
                                                                 </constraints>
@@ -841,7 +841,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAI-cq-nL2">
                                 <rect key="frame" x="0.0" y="64" width="320" height="404"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uje-KO-Ot4">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uje-KO-Ot4">
                                         <rect key="frame" x="40" y="20" width="240" height="21.5"/>
                                         <string key="text">In order to purchase the subscription please get acknowledged with the conditions below:\n\n\t\u2022 The subscription fee will be charged to iTunes Account at confirmation of purchase\n\n\t\u2022 Subscription period starts at the date of purchase and ends in one month after the start date\n\n\t\u2022 Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the subscription period\n\n\t\u2022 Account will be charged for renewal within 24-hours prior to the end of the subscription period, the cost of renewal is %@\n\n\t\u2022 Subscriptions may be managed by you and auto-renewal may be turned off by going to the Account Settings on your device after purchase</string>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
@@ -880,6 +880,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="uje-KO-Ot4" id="nEB-JR-kxv"/>
+                        <outlet property="scrollView" destination="jAI-cq-nL2" id="yNt-Se-yW4"/>
                         <segue destination="sOC-hj-pv5" kind="show" identifier="showPurchaseSuccess" id="erQ-C0-0II"/>
                     </connections>
                 </viewController>

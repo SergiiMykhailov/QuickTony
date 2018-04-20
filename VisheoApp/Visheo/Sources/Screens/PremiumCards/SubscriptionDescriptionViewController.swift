@@ -18,6 +18,7 @@ final class SubscriptionDescriptionViewController: UIViewController {
     private(set) var router: FlowRouter!
 
     @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: - Configuration -
 
@@ -32,6 +33,9 @@ final class SubscriptionDescriptionViewController: UIViewController {
         super.viewDidLoad()
 
         self.descriptionLabel.attributedText = viewModel.subscribptionDescription
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(SubscriptionDescriptionViewController.tappedLabel(with:)))
+        descriptionLabel.addGestureRecognizer(recognizer)
         
         viewModel.warningAlertHandler = {[weak self] in
             self?.showWarningAlertWithText(text: $0)
@@ -54,6 +58,18 @@ final class SubscriptionDescriptionViewController: UIViewController {
             }
         }
     }
+    
+    @objc private func tappedLabel(with recognizer: UITapGestureRecognizer) {
+        guard let attributedDescription = descriptionLabel.attributedText else { return }
+        
+        attributedDescription.enumerateAttribute(.link, in: NSMakeRange(0, attributedDescription.length), options: []) { (object, range, stop) in
+            if let url = object as? URL, recognizer.didTapAttributedTextInLabel(label: descriptionLabel, inRange: range),
+                recognizer.didTapAttributedTextInLabel(label: descriptionLabel, inRange: range),
+                UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
 
     @IBAction func gotItButtonPressed(sender: UIButton){
         viewModel.paySubscription()
@@ -61,6 +77,11 @@ final class SubscriptionDescriptionViewController: UIViewController {
     
     @IBAction func backPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollView.flashScrollIndicators()
     }
 }
 
