@@ -88,7 +88,7 @@ class VisheoPreviewViewController: UIViewController {
     }
     
     @IBAction func sendPressed(_ sender: Any) {
-        viewModel.sendVisheo()
+        viewModel.buttonSaveWasClicked()
     }
 	
 	@IBAction func togglePlayback() {

@@ -27,8 +27,9 @@ protocol PreviewViewModel : class {
     func editCover()
     func editPhotos()
     func editVideo()
-	func editSoundtrack();
-	
+	func editSoundtrack()
+    
+	func buttonSaveWasClicked()
     func sendVisheo()
     
     var assets : VisheoRenderingAssets {get}
@@ -54,12 +55,13 @@ class VisheoPreviewViewModel : PreviewViewModel
 	
     weak var router: PreviewRouter?
     private (set) var assets: VisheoRenderingAssets
-    private let permissionsService : AppPermissionsService
+    private let permissionsService: AppPermissionsService
     private let authService: AuthorizationService
     private let purchasesInfo: UserPurchasesInfo
 	private let appStateService: AppStateService;
 	private let soundtracksService: SoundtracksService
-    private let premCardsService : PremiumCardsService
+    private let premCardsService: PremiumCardsService
+    private let loggingService: EventLoggingService
 	
 	let extractor = VideoThumbnailExtractor();
 	var renderContainer: PhotosAnimation? = nil;
@@ -82,14 +84,16 @@ class VisheoPreviewViewModel : PreviewViewModel
          purchasesInfo: UserPurchasesInfo,
 		 appStateService: AppStateService,
 		 soundtracksService: SoundtracksService,
-         premCardsService: PremiumCardsService) {
+         premCardsService: PremiumCardsService,
+         eventLoggingService: EventLoggingService) {
         self.assets = assets
         self.permissionsService = permissionsService
         self.authService = authService
         self.purchasesInfo = purchasesInfo
-		self.appStateService = appStateService;
-		self.soundtracksService = soundtracksService;
+		self.appStateService = appStateService
+		self.soundtracksService = soundtracksService
         self.premCardsService = premCardsService
+        self.loggingService = eventLoggingService
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoPreviewViewModel.soundtrackDownloaded(_:)), name: .soundtrackDownloadFinished, object: nil);
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoPreviewViewModel.soundtrackDownloadFailed(_:)), name: .soundtrackDownloadFailed, object: nil);
@@ -238,6 +242,11 @@ class VisheoPreviewViewModel : PreviewViewModel
 	func editSoundtrack() {
 		router?.showSoundtrackEdit(with: assets);
 	}
+    
+    func buttonSaveWasClicked() {
+        self.loggingService.log(event: VisheoSaved())
+        sendVisheo()
+    }
     
     func sendVisheo() {
         if authService.isAnonymous {

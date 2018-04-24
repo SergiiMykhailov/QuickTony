@@ -15,13 +15,16 @@ protocol OnboardingViewModel : class {
 class VisheoOnboardingViewModel : OnboardingViewModel {
     weak var router: OnboardingRouter?
     var appState : AppStateService
+    var loggingService : EventLoggingService
     
-    init(appState: AppStateService) {
+    init(appState: AppStateService, eventLoggingService: EventLoggingService) {
         self.appState = appState
+        self.loggingService = eventLoggingService
     }
     
     func onBoardingSeen() {
         appState.onboarding(wasSeen: true)
+        loggingService.log(event: BestPracticesClicked())
         
         router?.showLogin()
     }

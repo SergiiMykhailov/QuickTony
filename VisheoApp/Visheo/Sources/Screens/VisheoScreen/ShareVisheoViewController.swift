@@ -145,6 +145,7 @@ class ShareVisheoViewController: UIViewController {
         deleteButton.isEnabled = true
         onboardingView.isHidden = true
         viewModel.onboardingDidFinish()
+        viewModel.trackVisheoUploaded()
         updateVisheoName()
         
         UIView.animate(withDuration: 0.3) {
