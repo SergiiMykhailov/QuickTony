@@ -12,13 +12,7 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     var smallBundleButtonHidden : Bool {get}
     var bigBundleButtonHidden : Bool {get}
     var subscribeSectionHidden : Bool {get}
-
-    var smallBundleButtonText : String {get}
-    var bigBundleButtonText : String {get}
-    var subscribeButtonText : String {get}
-    var untilDateText : String {get}
-    
-    var premiumCardsNumber : Int {get}
+    var subscribeLimitedHidden : Bool {get}
     
     var isFreeVisheoRuleAccepted : Bool {get}
     
@@ -28,6 +22,15 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
     var showCouponSection: Bool {get}
     
     func acceptFreeRule(withSelected selected:Bool)
+    
+    var premiumCardsNumber : Int {get}
+
+    var smallBundleButtonText : String {get}
+    var bigBundleButtonText : String {get}
+    var subscribeButtonText : String {get}
+    var untilDateText : String {get}
+    func limitedOfferText() -> String?
+    
     func showFreeRule()
     
     func buySmallBundle()
@@ -95,7 +98,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     var subscribeSectionHidden: Bool {
-        return purchasesService.subscription == nil || showSubscribedSection
+        return  purchasesService.subscription == nil || showSubscribedSection
     }
     
     var smallBundleButtonText: String {
@@ -108,6 +111,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     
     var subscribeButtonText: String {
         return description(for: purchasesService.subscription) ?? ""
+    }
+    
+    var subscribeLimitedHidden: Bool {
+        return !purchasesService.isSubscriptionLimited
     }
     
     var isFreeVisheoRuleAccepted: Bool {
@@ -125,11 +132,20 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
             formatter.numberStyle = .currency
             formatter.locale = locale
             let priceString = formatter.string(from: price)
-            let pricePart = NSString(format: NSLocalizedString("Unlimited / %@ per month", comment: "Unlimited visheos subscription template") as NSString, priceString ?? "")
+            let pricePart = NSString(format:subscriptionPartFormat() as NSString, priceString ?? "")
             return "\(pricePart)"
         }
         
         return nil
+    }
+    
+    private func subscriptionPartFormat() -> String {
+        let key = (purchasesService.isSubscriptionLimited) ? "Unlimited / %@ per month *" : "Unlimited / %@ per month"
+        return NSLocalizedString(key, comment: "Unlimited visheos subscription template")
+    }
+    
+    func limitedOfferText() -> String? {
+        return (purchasesService.isSubscriptionLimited) ? NSLocalizedString("* Limited offer", comment: "Limited subscription text") : nil
     }
     
     private func description(for bundle: PremiumCardsBundle?) -> String? {
@@ -198,6 +214,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name.couponAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.subscriptionAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
             self?.didChange?()
         }
     }

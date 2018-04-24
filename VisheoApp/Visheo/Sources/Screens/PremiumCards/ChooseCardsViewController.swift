@@ -86,6 +86,9 @@ class ChooseCardsViewController: UIViewController {
         couponSection.isHidden = !viewModel.showCouponSection
         subscribedSection.isHidden = !viewModel.showSubscribedSection
 		
+        subscriptionLimitedLabel.isHidden = viewModel.subscribeLimitedHidden
+        subscriptionLimitedLabel.text = viewModel.limitedOfferText()
+        
         checkmarkButton.isSelected = (viewModel.isFreeVisheoRuleAccepted)
         
 		view.layoutIfNeeded();
@@ -121,6 +124,7 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var couponButton: UIButton!
 
 	@IBOutlet weak var premiumCardsLabel: UILabel!
+    @IBOutlet weak var subscriptionLimitedLabel: UILabel!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
     @IBOutlet weak var backBarItem: UIBarButtonItem!
     

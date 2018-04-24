@@ -22,6 +22,7 @@ extension Notification.Name {
     
     static let freeVisheoAvailableChanged = Notification.Name("freeVisheoAvailableChanged")
     static let couponAvailableChanged = Notification.Name("couponAvailableChanged")
+    static let subscriptionAvailableChanged = Notification.Name("subscriptionAvailableChanged")
 }
 
 enum RedeemError : Error {
@@ -53,6 +54,7 @@ protocol PremiumCardsService {
     var subscriptionExpirationDate : Date? {get}
     var isFreeAvailable : Bool {get}
     var isCouponAvailable : Bool {get}
+    var isSubscriptionLimited : Bool {get}
     
     func buy(bundle: PurchaseBase)
     func redeem(coupon: String, completion: @escaping (Int?, RedeemError?)->())
@@ -219,10 +221,12 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     private var premCardsReference : DatabaseReference?
     private var subscriptionReference : DatabaseReference?
     private var freeVishesReference : DatabaseReference?
+    private var appConfigSubscriptionReference : DatabaseReference?
     private var appConfigCouponsReference : DatabaseReference?
     
     var isFreeAvailable : Bool
     var isCouponAvailable : Bool
+    var isSubscriptionLimited : Bool
     
 	init(userInfoProvider: UserInfoProvider, loggingService: EventLoggingService) {
         self.userInfoProvider = userInfoProvider
@@ -230,6 +234,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         
         isFreeAvailable = false
         isCouponAvailable = false
+        isSubscriptionLimited = false
         currentUserPremiumCards = 0
         
         super.init()
@@ -284,7 +289,7 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     }
     
     private func startAppConfigObserving(){
-        [freeVishesReference, appConfigCouponsReference].flatMap { $0 }.forEach {
+        [freeVishesReference, appConfigCouponsReference, appConfigSubscriptionReference].compactMap { $0 }.forEach {
             $0.removeAllObservers()
         }
         
@@ -304,6 +309,15 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
             guard let isCouponAvailable = $0.value as? Bool else { self.isCouponAvailable = false; return}
             self.isCouponAvailable = isCouponAvailable
             NotificationCenter.default.post(name: Notification.Name.couponAvailableChanged, object: self)
+        }
+        
+        let appConfigSubscriptionRef = Database.database().reference(withPath: "appConfiguration/isSubscriptionLimited")
+        appConfigSubscriptionReference = appConfigSubscriptionRef
+        
+        appConfigSubscriptionRef.observe(.value) {
+            guard let isSubscriptionLimited = $0.value as? Bool else { self.isSubscriptionLimited = false; return}
+            self.isSubscriptionLimited = isSubscriptionLimited
+            NotificationCenter.default.post(name: Notification.Name.subscriptionAvailableChanged, object: self)
         }
     }
     
