@@ -36,14 +36,6 @@ class CameraViewController: UIViewController
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
-	
-        if let icon = UIImage(named: "tipsIcon") {
-            let tipsButton = UIButton(type: .custom);
-            tipsButton.frame = CGRect(origin: .zero, size: icon.size);
-            tipsButton.setImage(icon, for: .normal);
-			tipsButton.addTarget(self, action: #selector(CameraViewController.showTips), for: .touchUpInside);
-            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: tipsButton);
-        }
 
 		viewModel.addPreviewOutput(cameraPreview);
 		
@@ -76,14 +68,6 @@ class CameraViewController: UIViewController
 		viewModel.startCapture();
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated);
-		
-		if isMovingToParentViewController && viewModel.shouldPresentCameraTips {
-			displayTipsController();
-		}
-	}
-	
 	override func viewWillDisappear(_ animated: Bool) {
 		viewModel.stopCapture(teardown: isMovingFromParentViewController)
 		super.viewWillDisappear(animated);
@@ -111,10 +95,6 @@ class CameraViewController: UIViewController
 	
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
 		navigationController?.popViewController(animated: true);
-	}
-	
-	@objc private func showTips() {
-		viewModel.showTips();
 	}
 	
 	private func handleRecordingState(with update: CameraRecordingState)
@@ -211,24 +191,5 @@ extension CameraViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		super.prepare(for: segue, sender: sender)
 		router.prepare(for: segue, sender: sender)
-	}
-}
-
-
-extension CameraViewController {
-	//MARK: - Tips
-	
-	private func displayTipsController(onDisplay: (() -> Void)? = nil) {
-		guard let buttonView = navigationItem.rightBarButtonItem?.customView, let navigationView = navigationController?.view else {
-			return;
-		}
-		
-		let tipsButtonFrame = navigationView.convert(buttonView.frame, from: buttonView.superview);
-		
-		let tipsView = CameraTipsView.display(in: navigationView, aligningTo: tipsButtonFrame, completion: onDisplay)
-		
-		tipsView?.tipsDismissedBlock = { [weak self] in
-			self?.viewModel.markCameraTipsSeen();
-		}
 	}
 }

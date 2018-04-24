@@ -12,6 +12,7 @@ protocol MenuRouter: FlowRouter {
     func showCreateVisheo()
     func showVisheoBox()
     func showAccount()
+    func showBestPracticies()
     func showPremiumCards()
     func showCoupons()
     func showVisheoScreen(with record: VisheoRecord)
@@ -91,6 +92,13 @@ extension VisheoMenuRouter {
         }
     }
 
+    func showBestPracticies() {
+        showController(with: "TipsViewController", storyboard: UIStoryboard(name: "Main", bundle: nil)) { (controller) in
+            let router = VisheoTipsRouter(dependencies: dependencies)
+            router.start(with: controller as! TipsViewController)
+        }
+    }
+    
 	func showVisheoScreen(with record: VisheoRecord) {
 		let storyboard = UIStoryboard(name: "VisheoPreview", bundle: nil)
 		
