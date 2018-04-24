@@ -42,10 +42,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="303"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-TP-Qm2">
-                                                        <rect key="frame" x="54" y="24" width="214" height="22"/>
+                                                        <rect key="frame" x="52.5" y="24" width="217" height="22.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-lH-lHF" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                <rect key="frame" x="79.5" y="-2" width="25" height="25"/>
+                                                                <rect key="frame" x="80" y="-2" width="25.5" height="25.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -62,13 +62,13 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Visheo cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdW-Wa-Vl0">
-                                                                <rect key="frame" x="110.5" y="0.0" width="103.5" height="21"/>
+                                                                <rect key="frame" x="111.5" y="0.0" width="105.5" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxY-xk-E3a">
-                                                                <rect key="frame" x="0.0" y="0.0" width="73.5" height="22"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -88,17 +88,17 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Buy Visheo Cards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWr-WN-dka">
-                                                        <rect key="frame" x="89" y="94" width="143.5" height="21"/>
+                                                        <rect key="frame" x="89.5" y="94.5" width="142.5" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MDb-8A-gue">
-                                                        <rect key="frame" x="141" y="139" width="37" height="37"/>
+                                                        <rect key="frame" x="141" y="142.5" width="37" height="37"/>
                                                         <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </activityIndicatorView>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-eM-UCw">
-                                                        <rect key="frame" x="20" y="127" width="280" height="60"/>
+                                                        <rect key="frame" x="20" y="130.5" width="280" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="F2k-Kg-Yty"/>
@@ -117,11 +117,11 @@
                                                         </connections>
                                                     </button>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mlM-k3-Z33">
-                                                        <rect key="frame" x="141" y="209" width="37" height="37"/>
+                                                        <rect key="frame" x="141" y="212.5" width="37" height="37"/>
                                                         <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </activityIndicatorView>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rky-fm-DNs">
-                                                        <rect key="frame" x="20" y="197" width="280" height="60"/>
+                                                        <rect key="frame" x="20" y="200.5" width="280" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="V3T-RA-onV"/>
@@ -140,7 +140,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unused Visheo Crads never expire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFm-RQ-Kj3">
-                                                        <rect key="frame" x="67.5" y="269" width="185.5" height="22"/>
+                                                        <rect key="frame" x="68.5" y="272.5" width="183.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -175,7 +175,7 @@
                                                 <rect key="frame" x="0.0" y="304" width="320" height="213.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-dG-9Fh">
-                                                        <rect key="frame" x="20" y="92" width="280" height="60"/>
+                                                        <rect key="frame" x="20" y="93" width="280" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="pGs-Q4-1Jl"/>
@@ -194,23 +194,23 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can cancel subscription any time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ld-af-PBp">
-                                                        <rect key="frame" x="60" y="176" width="200" height="25.5"/>
+                                                        <rect key="frame" x="59" y="177.5" width="202" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-eY-Fdx" userLabel="Separator View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBe-yR-HYY">
-                                                                <rect key="frame" x="0.0" y="20" width="320" height="1"/>
+                                                                <rect key="frame" x="0.0" y="19" width="320" height="1"/>
                                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="boj-R5-JZS"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqX-v5-aYA" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                <rect key="frame" x="140" y="0.0" width="41" height="41"/>
+                                                                <rect key="frame" x="141" y="0.0" width="39" height="39"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="EqX-v5-aYA" secondAttribute="height" id="IWx-ac-wf1"/>
                                                                 </constraints>
@@ -240,14 +240,14 @@
                                                             <constraint firstItem="EqX-v5-aYA" firstAttribute="top" secondItem="8AO-eY-Fdx" secondAttribute="top" id="ybF-Hc-WEb"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Limited offer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdq-Ps-1gN">
-                                                        <rect key="frame" x="20" y="162" width="280" height="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="* Limited offer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdq-Ps-1gN">
+                                                        <rect key="frame" x="20" y="163" width="280" height="14.5"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Subscribe for regular use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-pz-MO6">
-                                                        <rect key="frame" x="59" y="59" width="202.5" height="21"/>
+                                                        <rect key="frame" x="58.5" y="57" width="203.5" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -266,6 +266,7 @@
                                                     <constraint firstItem="Tdq-Ps-1gN" firstAttribute="top" secondItem="vIj-dG-9Fh" secondAttribute="bottom" constant="10" id="gLh-tG-oR8"/>
                                                     <constraint firstItem="vIj-dG-9Fh" firstAttribute="top" secondItem="EAu-pz-MO6" secondAttribute="bottom" constant="12" id="iSe-m1-WHt"/>
                                                     <constraint firstItem="1Ld-af-PBp" firstAttribute="top" secondItem="Tdq-Ps-1gN" secondAttribute="bottom" id="n7v-7h-glG"/>
+                                                    <constraint firstItem="1Ld-af-PBp" firstAttribute="top" secondItem="vIj-dG-9Fh" secondAttribute="bottom" priority="999" constant="10" id="pBU-PJ-pw6"/>
                                                     <constraint firstItem="vIj-dG-9Fh" firstAttribute="leading" secondItem="AIr-Lx-sLI" secondAttribute="leading" constant="20" id="pVs-iJ-fKW"/>
                                                     <constraint firstItem="EAu-pz-MO6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AIr-Lx-sLI" secondAttribute="leading" constant="20" id="qu7-V3-rvG"/>
                                                     <constraint firstItem="8AO-eY-Fdx" firstAttribute="top" secondItem="AIr-Lx-sLI" secondAttribute="top" id="tCM-VT-2yh"/>
@@ -277,17 +278,17 @@
                                                 <rect key="frame" x="0.0" y="518.5" width="320" height="226"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4J-BT-0G5" userLabel="Separator View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVv-qC-hxc">
-                                                                <rect key="frame" x="0.0" y="28.5" width="320" height="1"/>
+                                                                <rect key="frame" x="0.0" y="27" width="320" height="1"/>
                                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="G1Y-8v-wVP"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-JE-gHB" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                <rect key="frame" x="131.5" y="0.0" width="58" height="58"/>
+                                                                <rect key="frame" x="133" y="0.0" width="55" height="55"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Soe-JE-gHB" secondAttribute="height" id="ePv-6s-qIN"/>
                                                                 </constraints>
@@ -318,7 +319,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Send Visheo for Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZm-95-Pl4">
-                                                        <rect key="frame" x="0.0" y="76" width="320" height="21"/>
+                                                        <rect key="frame" x="0.0" y="73" width="320" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -327,7 +328,7 @@
                                                         <rect key="frame" x="0.0" y="97" width="320" height="44"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="This Visheo can be used to inspire others" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCa-M7-vvU">
-                                                                <rect key="frame" x="44" y="13.5" width="232" height="16.5"/>
+                                                                <rect key="frame" x="44" y="12.5" width="232" height="18.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                                 <color key="textColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -410,7 +411,7 @@
                                                 <rect key="frame" x="0.0" y="745.5" width="320" height="686"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiB-d9-Ax4">
-                                                        <rect key="frame" x="0.0" y="117" width="320" height="279"/>
+                                                        <rect key="frame" x="0.0" y="117" width="320" height="287.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VisheoSubscribeImage" translatesAutoresizingMaskIntoConstraints="NO" id="4ch-28-FZz">
                                                                 <rect key="frame" x="94" y="0.0" width="132" height="132"/>
@@ -420,19 +421,19 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are subscribed to send Unlimited Visheo Cards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zr-kl-IlA">
-                                                                <rect key="frame" x="33.5" y="156" width="253.5" height="42"/>
+                                                                <rect key="frame" x="33.5" y="156" width="254" height="47.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="until 23th of April 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doF-mZ-Msr">
-                                                                <rect key="frame" x="69.5" y="198" width="181.5" height="21"/>
+                                                                <rect key="frame" x="67.5" y="203.5" width="186" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can cancel your subscription in your Apple ID settings" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boY-RT-3ne">
-                                                                <rect key="frame" x="20" y="239" width="280" height="40"/>
+                                                                <rect key="frame" x="20" y="247.5" width="280" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -551,6 +552,7 @@
                         <outlet property="subcribeButton" destination="vIj-dG-9Fh" id="O6r-Cv-rme"/>
                         <outlet property="subscribeSection" destination="AIr-Lx-sLI" id="jID-SW-N3l"/>
                         <outlet property="subscribedSection" destination="hOX-fB-R2G" id="8rV-IQ-xP0"/>
+                        <outlet property="subscriptionLimitedLabel" destination="Tdq-Ps-1gN" id="Li5-RR-ALu"/>
                         <outlet property="untilDateLabel" destination="doF-mZ-Msr" id="r3r-7k-Ld9"/>
                         <segue destination="1yE-Np-pVF" kind="show" identifier="showShareVisheo" id="Jcu-CK-hCv"/>
                         <segue destination="ksx-Ka-Sj9" kind="show" identifier="showCoupon" id="Pwu-Oq-DYp"/>
