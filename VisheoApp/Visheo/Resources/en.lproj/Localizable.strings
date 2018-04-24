@@ -235,7 +235,7 @@
 "Try Later" = "Try Later";
 
 /* Unlimited visheos subscription template */
-"Unlimited / %@ per month" = "Unlimited / %@ per month";
+"Unlimited / %@ per month" = "Unlimited / %@ per month *";
 
 /* Upload visheo error */
 "Upload error. Retry?" = "Upload error. Retry?";

@@ -95,7 +95,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     var subscribeSectionHidden: Bool {
-        return purchasesService.subscription == nil || showSubscribedSection
+        return  !purchasesService.isSubscriptionAvailable || purchasesService.subscription == nil || showSubscribedSection
     }
     
     var smallBundleButtonText: String {
@@ -198,6 +198,10 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name.couponAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.subscriptionAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
             self?.didChange?()
         }
     }
