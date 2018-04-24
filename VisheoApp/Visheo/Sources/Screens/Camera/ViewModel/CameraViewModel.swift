@@ -30,9 +30,6 @@ private let maxVideoRecordingDuration: TimeInterval = 30.0;
 
 protocol CameraViewModel: class
 {
-	var shouldPresentCameraTips: Bool { get };
-	func markCameraTipsSeen();
-	
 	var isRecording: Bool { get }
 	
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? { get set };
@@ -40,10 +37,9 @@ protocol CameraViewModel: class
 	
 	func addPreviewOutput(_ output: GPUImageInput)
 	func startCapture()
-	func stopCapture(teardown: Bool);
+	func stopCapture(teardown: Bool)
 	func toggleRecording()
-	func toggleCameraFace();
-	func showTips();
+	func toggleCameraFace()
 	
 	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
 }
@@ -259,18 +255,6 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	
 	func toggleCameraFace() {
 		camera?.rotateCamera();
-	}
-	
-	var shouldPresentCameraTips: Bool {
-        return appState.shouldShowCameraTips;
-	}
-	
-	func markCameraTipsSeen() {
-		appState.cameraTips(wereSeen: true);
-	}
-	
-	func showTips() {
-		router?.showTips(with: assets.originalOccasion);
 	}
 	
 	private func handleMotionUpdate(_ motion: CMDeviceMotion) {
