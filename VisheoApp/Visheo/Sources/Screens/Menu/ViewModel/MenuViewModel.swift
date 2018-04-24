@@ -50,6 +50,8 @@ class VisheoMenuViewModel : MenuViewModel {
 	private let notificationService: UserNotificationsService
 	private let visheoListService: VisheosListService
     private let premiumCardsService: PremiumCardsService
+    private let loggingService: EventLoggingService
+    
     private var menuItems : [VisheoMenuItemViewModel] {
         get {
             let couponButton = VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), type: .redeem)
@@ -67,11 +69,16 @@ class VisheoMenuViewModel : MenuViewModel {
     }
 	private var pendingVisheoIds = Set<String>()
     
-    init(userInfo: UserInfoProvider, notificationService: UserNotificationsService, visheoListService: VisheosListService, premiumCardsService: PremiumCardsService) {
+    init(userInfo: UserInfoProvider,
+         notificationService: UserNotificationsService,
+         visheoListService: VisheosListService,
+         premiumCardsService: PremiumCardsService,
+         loggingService: EventLoggingService) {
         self.userInfo = userInfo
 		self.notificationService = notificationService
 		self.visheoListService = visheoListService
 		self.premiumCardsService = premiumCardsService
+        self.loggingService = loggingService
         
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheoOpen(_:)), name: .openVisheoFromReminder, object: nil)
 		
@@ -100,6 +107,7 @@ class VisheoMenuViewModel : MenuViewModel {
         case .visheoBox:
             router?.showVisheoBox()
         case .bestPracticies:
+            loggingService.log(event: BestPracticesClicked())
             router?.showBestPracticies()
         case .premiumCards:
             if userInfo.isAnonymous {
