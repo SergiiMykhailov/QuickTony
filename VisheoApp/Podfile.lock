@@ -111,7 +111,8 @@ PODS:
   - SDWebImage/Core (4.2.3)
   - SnapKit (4.0.0)
   - SwiftyStoreKit (0.13.1)
-  - Validator (3.0)
+  - UXCam (2.5.17)
+  - Validator (3.0.2)
 
 DEPENDENCIES:
   - BadgeSwift (~> 5.0)
@@ -137,6 +138,7 @@ DEPENDENCIES:
   - SDWebImage (~> 4.0)
   - SnapKit
   - SwiftyStoreKit
+  - UXCam
   - Validator
 
 SPEC CHECKSUMS:
@@ -173,8 +175,9 @@ SPEC CHECKSUMS:
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyStoreKit: c36bb7841dd51a485ce5c38abf9e96fba988741f
-  Validator: 7d9828daffabc757604603052e407f208fa9b6d5
+  UXCam: 447d2dba06987472a651962c8a5f0477dcca9040
+  Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
 
-PODFILE CHECKSUM: 250589f12b075f4c0e88ce4ce46671ca0e0df3d4
+PODFILE CHECKSUM: c61b2e776eef488e941e899fcea8cb4bf34d0d9d
 
 COCOAPODS: 1.4.0
