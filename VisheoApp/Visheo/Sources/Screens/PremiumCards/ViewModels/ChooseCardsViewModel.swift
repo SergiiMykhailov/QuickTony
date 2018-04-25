@@ -60,14 +60,14 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     
     
     var showFreeSection: Bool {
-        return purchasesService.isFreeAvailable &&
+        return appStateService.isFreeAvailable &&
                premiumCardsNumber == 0 &&
                !showSubscribedSection &&
                visheoAssets != nil
     }
     
     var showCouponSection: Bool {
-        return purchasesService.isCouponAvailable && !showSubscribedSection
+        return appStateService.isCouponAvailable && !showSubscribedSection
     }
     
     var premiumCardsNumber: Int {
@@ -114,7 +114,7 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     var subscribeLimitedHidden: Bool {
-        return !purchasesService.isSubscriptionLimited
+        return !appStateService.isSubscriptionLimited
     }
     
     var isFreeVisheoRuleAccepted: Bool {
@@ -140,12 +140,12 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     private func subscriptionPartFormat() -> String {
-        let key = (purchasesService.isSubscriptionLimited) ? "Unlimited / %@ per month *" : "Unlimited / %@ per month"
+        let key = (appStateService.isSubscriptionLimited) ? "Unlimited / %@ per month *" : "Unlimited / %@ per month"
         return NSLocalizedString(key, comment: "Unlimited visheos subscription template")
     }
     
     func limitedOfferText() -> String? {
-        return (purchasesService.isSubscriptionLimited) ? NSLocalizedString("* Limited offer", comment: "Limited subscription text") : nil
+        return (appStateService.isSubscriptionLimited) ? NSLocalizedString("* Limited offer", comment: "Limited subscription text") : nil
     }
     
     private func description(for bundle: PremiumCardsBundle?) -> String? {
@@ -166,9 +166,11 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     private let purchasesInfo : UserPurchasesInfo
     private let shownFromMenu : Bool
     private let visheoAssets : VisheoRenderingAssets?
+    private let appStateService : AppStateService
     
-    init(fromMenu: Bool, purchasesService: PremiumCardsService, purchasesInfo: UserPurchasesInfo, assets: VisheoRenderingAssets?) {
+    init(fromMenu: Bool, purchasesService: PremiumCardsService, appStateService : AppStateService, purchasesInfo: UserPurchasesInfo, assets: VisheoRenderingAssets?) {
         self.purchasesService = purchasesService
+        self.appStateService = appStateService
         self.purchasesInfo = purchasesInfo
         self.shownFromMenu = fromMenu
         self.visheoAssets = assets

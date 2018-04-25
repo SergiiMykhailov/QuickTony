@@ -50,22 +50,21 @@ class VisheoMenuViewModel : MenuViewModel {
     private let userInfo: UserInfoProvider
 	private let notificationService: UserNotificationsService
 	private let visheoListService: VisheosListService
-    private let premiumCardsService: PremiumCardsService
+    private let appStateService: AppStateService
     private let loggingService: EventLoggingService
     
     private var menuItems : [VisheoMenuItemViewModel] {
         get {
             let couponButton = VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), subText: nil, type: .redeem)
+            let inviteButton = VisheoMenuItemViewModel(text: NSLocalizedString("Invite friends", comment: "Invite frinds menu item"), image: #imageLiteral(resourceName: "inviteFriends"), subText: NSLocalizedString("& get Visheo Cards for FREE", comment: "Invite friends menu substring"), type: .inviteFriends)
             
-            let inviteFriendsActive = true        //TODO: add app config
             let menuItems = [
                 VisheoMenuItemViewModel(text: NSLocalizedString("New Visheo", comment: "New visheo menu item"), image: #imageLiteral(resourceName: "newVisheo"), subText: nil, type: .newVisheo),
                 VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), subText: nil, type: .visheoBox),
                 VisheoMenuItemViewModel(text: NSLocalizedString("My Purchases", comment: "My purchases menu item"), image: #imageLiteral(resourceName: "premiumCards"), subText: nil, type: .premiumCards),
-                (inviteFriendsActive) ?
-                    VisheoMenuItemViewModel(text: NSLocalizedString("Invite friends", comment: "Invite frinds menu item"), image: #imageLiteral(resourceName: "inviteFriends"), subText: NSLocalizedString("& get Visheo Cards for FREE", comment: "Invite friends menu substring"), type: .inviteFriends) : nil,
+                appStateService.isInviteFriendsAvailable ? inviteButton : nil,
                 VisheoMenuItemViewModel(text: NSLocalizedString("Best Practicies", comment: "Best Practicies menu item"), image: #imageLiteral(resourceName: "bestPracticies"), subText: nil, type: .bestPracticies),
-                premiumCardsService.isCouponAvailable ? couponButton : nil,
+                appStateService.isCouponAvailable ? couponButton : nil,
                 VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), subText: nil, type: .contact)
                 ].compactMap{$0}
             
@@ -77,12 +76,12 @@ class VisheoMenuViewModel : MenuViewModel {
     init(userInfo: UserInfoProvider,
          notificationService: UserNotificationsService,
          visheoListService: VisheosListService,
-         premiumCardsService: PremiumCardsService,
+         appStateService: AppStateService,
          loggingService: EventLoggingService) {
         self.userInfo = userInfo
 		self.notificationService = notificationService
 		self.visheoListService = visheoListService
-		self.premiumCardsService = premiumCardsService
+		self.appStateService = appStateService
         self.loggingService = loggingService
 
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheoOpen(_:)), name: .openVisheoFromReminder, object: nil)
@@ -93,6 +92,10 @@ class VisheoMenuViewModel : MenuViewModel {
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.failedToSendFeedback(_:)), name: .contactUsFeedbackFailed, object: nil)
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.couponAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.inviteFriendsAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
             self?.didChange?()
         }
     }

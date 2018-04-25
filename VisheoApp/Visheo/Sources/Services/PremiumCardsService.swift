@@ -19,10 +19,6 @@ extension Notification.Name {
     
     static let userPremiumCardsCountChanged = Notification.Name("userPremiumCardsCountChanged")
     static let userSubscriptionStateChanged = Notification.Name("userSubscriptionStateChanged")
-    
-    static let freeVisheoAvailableChanged = Notification.Name("freeVisheoAvailableChanged")
-    static let couponAvailableChanged = Notification.Name("couponAvailableChanged")
-    static let subscriptionAvailableChanged = Notification.Name("subscriptionAvailableChanged")
 }
 
 enum RedeemError : Error {
@@ -52,9 +48,6 @@ protocol PremiumCardsService {
     var bigBundle : PremiumCardsBundle? {get}
     var subscription : PremiumSubsctription? {get}
     var subscriptionExpirationDate : Date? {get}
-    var isFreeAvailable : Bool {get}
-    var isCouponAvailable : Bool {get}
-    var isSubscriptionLimited : Bool {get}
     
     func buy(bundle: PurchaseBase)
     func redeem(coupon: String, completion: @escaping (Int?, RedeemError?)->())
@@ -220,21 +213,11 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
     
     private var premCardsReference : DatabaseReference?
     private var subscriptionReference : DatabaseReference?
-    private var freeVishesReference : DatabaseReference?
-    private var appConfigSubscriptionReference : DatabaseReference?
-    private var appConfigCouponsReference : DatabaseReference?
-    
-    var isFreeAvailable : Bool
-    var isCouponAvailable : Bool
-    var isSubscriptionLimited : Bool
     
 	init(userInfoProvider: UserInfoProvider, loggingService: EventLoggingService) {
         self.userInfoProvider = userInfoProvider
 		self.loggingService = loggingService;
         
-        isFreeAvailable = false
-        isCouponAvailable = false
-        isSubscriptionLimited = false
         currentUserPremiumCards = 0
         
         super.init()
@@ -242,7 +225,6 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
         
         startPremiumCardsObserving()
         startSubscriptionObserving()
-        startAppConfigObserving()
         
         SKPaymentQueue.default().add(self)
         
@@ -285,39 +267,6 @@ class VisheoPremiumCardsService : NSObject, PremiumCardsService, UserPurchasesIn
                 dateFormatter.timeZone = TimeZone.current
                 self.subscriptionExpirationDate = dateFormatter.date(from: dateAsString)
             })
-        }
-    }
-    
-    private func startAppConfigObserving(){
-        [freeVishesReference, appConfigCouponsReference, appConfigSubscriptionReference].compactMap { $0 }.forEach {
-            $0.removeAllObservers()
-        }
-        
-        let appConfigFreeVishesRef = Database.database().reference(withPath: "appConfiguration/isFreeVisheoAvailable")
-        freeVishesReference = appConfigFreeVishesRef
-        
-        appConfigFreeVishesRef.observe(.value) {
-            guard let isFreeAvailable = $0.value as? Bool else { self.isFreeAvailable = false; return}
-            self.isFreeAvailable = isFreeAvailable
-            NotificationCenter.default.post(name: Notification.Name.freeVisheoAvailableChanged, object: self)
-        }
-        
-        let appConfigCouponsRef = Database.database().reference(withPath: "appConfiguration/isCouponAvailable")
-        appConfigCouponsReference = appConfigCouponsRef
-        
-        appConfigCouponsRef.observe(.value) {
-            guard let isCouponAvailable = $0.value as? Bool else { self.isCouponAvailable = false; return}
-            self.isCouponAvailable = isCouponAvailable
-            NotificationCenter.default.post(name: Notification.Name.couponAvailableChanged, object: self)
-        }
-        
-        let appConfigSubscriptionRef = Database.database().reference(withPath: "appConfiguration/isSubscriptionLimited")
-        appConfigSubscriptionReference = appConfigSubscriptionRef
-        
-        appConfigSubscriptionRef.observe(.value) {
-            guard let isSubscriptionLimited = $0.value as? Bool else { self.isSubscriptionLimited = false; return}
-            self.isSubscriptionLimited = isSubscriptionLimited
-            NotificationCenter.default.post(name: Notification.Name.subscriptionAvailableChanged, object: self)
         }
     }
     

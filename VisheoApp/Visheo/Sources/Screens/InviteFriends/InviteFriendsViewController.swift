@@ -34,6 +34,7 @@ final class InviteFriendsViewController: UIViewController {
     }
 
     @IBOutlet weak var linkLable: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func menuPressed(_ sender: Any) {
         viewModel.showMenu()
@@ -62,6 +63,8 @@ final class InviteFriendsViewController: UIViewController {
         dialog.show()
     }
     
+    
+    //DISABLED
     @IBAction func twitterPressed(_ sender: Any) {
         if (TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers()) {
             self.showTwitter()
@@ -140,6 +143,7 @@ extension InviteFriendsViewController: FBSDKSharingDelegate {
 extension InviteFriendsViewController: InviteFriendsViewModelDelegate {
 
     func refreshUI() {
+        activityIndicator?.removeFromSuperview()
         linkLable.text = viewModel.inviteLink
     }
 

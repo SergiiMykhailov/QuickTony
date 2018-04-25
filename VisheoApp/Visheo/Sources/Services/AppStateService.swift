@@ -8,6 +8,14 @@
 
 import Foundation
 import Reachability
+import Firebase
+
+extension Notification.Name {
+    static let freeVisheoAvailableChanged = Notification.Name("freeVisheoAvailableChanged")
+    static let couponAvailableChanged = Notification.Name("couponAvailableChanged")
+    static let subscriptionAvailableChanged = Notification.Name("subscriptionAvailableChanged")
+    static let inviteFriendsAvailableChanged = Notification.Name("inviteFriendsAvailableChanged")
+}
 
 protocol AppStateService {
     var firstLaunch : Bool { get }
@@ -27,6 +35,11 @@ protocol AppStateService {
 	var appSettings: AppSettings { get }
 	
 	var isReachable: Bool { get }
+    
+    var isFreeAvailable : Bool {get}
+    var isCouponAvailable : Bool {get}
+    var isSubscriptionLimited : Bool {get}
+    var isInviteFriendsAvailable : Bool {get}
 }
 
 class VisheoAppStateService: AppStateService {
@@ -36,6 +49,16 @@ class VisheoAppStateService: AppStateService {
     private static let onboardingCoverShownKey = "onboardingCoverShownKey"
     private static let onboardingShareShownKey = "onboardingShareShownKey"
     
+    var isFreeAvailable : Bool = false
+    var isCouponAvailable : Bool = false
+    var isSubscriptionLimited : Bool = false
+    var isInviteFriendsAvailable : Bool = false
+    
+    private var freeVishesReference : DatabaseReference?
+    private var subscriptionReference : DatabaseReference?
+    private var couponsReference : DatabaseReference?
+    private var inviteFriendsReference : DatabaseReference?
+    
     let firstLaunch: Bool
 	private let reachability = Reachability();
     
@@ -44,7 +67,8 @@ class VisheoAppStateService: AppStateService {
         UserDefaults.standard.set(true, forKey: VisheoAppStateService.appWasLaunchedKey)
         UserDefaults.standard.synchronize()
 		
-		try? reachability?.startNotifier();
+		try? reachability?.startNotifier()
+        startAppConfigObserving()
     }
 	
 	deinit {
@@ -108,4 +132,46 @@ class VisheoAppStateService: AppStateService {
 		
 		return settings ?? defaults;
 	}
+    
+    private func startAppConfigObserving(){
+        [freeVishesReference, couponsReference, subscriptionReference, inviteFriendsReference].compactMap { $0 }.forEach {
+            $0.removeAllObservers()
+        }
+        
+        let appConfigFreeVishesRef = Database.database().reference(withPath: "appConfiguration/isFreeVisheoAvailable")
+        freeVishesReference = appConfigFreeVishesRef
+        
+        appConfigFreeVishesRef.observe(.value) {
+            guard let isFreeAvailable = $0.value as? Bool else { self.isFreeAvailable = false; return}
+            self.isFreeAvailable = isFreeAvailable
+            NotificationCenter.default.post(name: Notification.Name.freeVisheoAvailableChanged, object: self)
+        }
+        
+        let appConfigCouponsRef = Database.database().reference(withPath: "appConfiguration/isCouponAvailable")
+        couponsReference = appConfigCouponsRef
+        
+        appConfigCouponsRef.observe(.value) {
+            guard let isCouponAvailable = $0.value as? Bool else { self.isCouponAvailable = false; return}
+            self.isCouponAvailable = isCouponAvailable
+            NotificationCenter.default.post(name: Notification.Name.couponAvailableChanged, object: self)
+        }
+        
+        let appConfigSubscriptionRef = Database.database().reference(withPath: "appConfiguration/isSubscriptionLimited")
+        subscriptionReference = appConfigSubscriptionRef
+        
+        appConfigSubscriptionRef.observe(.value) {
+            guard let isSubscriptionLimited = $0.value as? Bool else { self.isSubscriptionLimited = false; return}
+            self.isSubscriptionLimited = isSubscriptionLimited
+            NotificationCenter.default.post(name: Notification.Name.subscriptionAvailableChanged, object: self)
+        }
+        
+        let appConfigInviteFriendsRef = Database.database().reference(withPath: "appConfiguration/isInviteFriendsAvailable")
+        inviteFriendsReference = appConfigInviteFriendsRef
+        
+        appConfigInviteFriendsRef.observe(.value) {
+            guard let isInviteFriendsAvailble = $0.value as? Bool else { self.isInviteFriendsAvailable = false; return}
+            self.isInviteFriendsAvailable = isInviteFriendsAvailble
+            NotificationCenter.default.post(name: Notification.Name.inviteFriendsAvailableChanged, object: self)
+        }
+    }
 }

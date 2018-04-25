@@ -37,7 +37,7 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
     }
     
     func start(with viewController: ChooseCardsViewController, fromMenu: Bool, with assets: VisheoRenderingAssets? = nil) {
-        let vm = VisheoChooseCardsViewModel(fromMenu: fromMenu, purchasesService: dependencies.premiumCardsService, purchasesInfo: dependencies.purchasesInfo, assets: assets)
+        let vm = VisheoChooseCardsViewModel(fromMenu: fromMenu, purchasesService: dependencies.premiumCardsService, appStateService: dependencies.appStateService, purchasesInfo: dependencies.purchasesInfo, assets: assets)
         viewModel = vm
         vm.router = self
         self.controller = viewController
