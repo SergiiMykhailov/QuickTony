@@ -23,7 +23,7 @@ abstract_target 'App' do
   pod 'FBSDKShareKit'
   
   pod 'MBProgressHUD'
-  pod 'Validator'
+  pod 'Validator', '~> 3.0.2'
   
   pod 'SDWebImage', '~> 4.0'
   pod 'BadgeSwift', '~> 5.0'
