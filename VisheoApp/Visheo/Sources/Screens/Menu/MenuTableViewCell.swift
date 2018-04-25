@@ -26,5 +26,10 @@ class MenuTableViewCell: UITableViewCell {
             menuItemSubText.isHidden = true
         }
     }
-    
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        menuItemSubText.isHidden = false
+    }
 }
