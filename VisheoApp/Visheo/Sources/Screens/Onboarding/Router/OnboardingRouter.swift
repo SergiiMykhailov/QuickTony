@@ -28,7 +28,7 @@ class VisheoOnboardingRouter : OnboardingRouter {
     }
     
     func start(with viewController: OnboardingViewController) {
-        let vm = VisheoOnboardingViewModel(appState: dependencies.appStateService)
+        let vm = VisheoOnboardingViewModel(appState: dependencies.appStateService, eventLoggingService: dependencies.loggingService)
         viewModel = vm
         vm.router = self
         self.controller = viewController

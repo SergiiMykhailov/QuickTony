@@ -83,9 +83,12 @@ class ChooseCardsViewController: UIViewController {
 		freeCardsSection.isHidden = !viewModel.showFreeSection
         premiumCardsSection.isHidden = viewModel.showSubscribedSection
         subscribeSection.isHidden = viewModel.subscribeSectionHidden
-        couponSection.isHidden = viewModel.showSubscribedSection
+        couponSection.isHidden = !viewModel.showCouponSection
         subscribedSection.isHidden = !viewModel.showSubscribedSection
 		
+        subscriptionLimitedLabel.isHidden = viewModel.subscribeLimitedHidden
+        subscriptionLimitedLabel.text = viewModel.limitedOfferText()
+        
         checkmarkButton.isSelected = (viewModel.isFreeVisheoRuleAccepted)
         
 		view.layoutIfNeeded();
@@ -121,6 +124,7 @@ class ChooseCardsViewController: UIViewController {
     @IBOutlet weak var couponButton: UIButton!
 
 	@IBOutlet weak var premiumCardsLabel: UILabel!
+    @IBOutlet weak var subscriptionLimitedLabel: UILabel!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
     @IBOutlet weak var backBarItem: UIBarButtonItem!
     
@@ -151,7 +155,7 @@ class ChooseCardsViewController: UIViewController {
     }
     
     @IBAction func subscribeActionPassed(_ sender: Any){
-        viewModel.paySubscription()
+        viewModel.showSubscriptionDescription()
     }
     
     @IBAction func menuPressed(_ sender: Any) {

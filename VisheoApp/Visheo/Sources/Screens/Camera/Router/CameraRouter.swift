@@ -11,7 +11,6 @@ import UIKit
 
 protocol CameraRouter: FlowRouter {
 	func showTrimScreen(with assets: VisheoRenderingAssets)
-	func showTips(with record: OccasionRecord)
 }
 
 
@@ -19,7 +18,6 @@ class VisheoCameraRouter: CameraRouter
 {
 	enum SegueList: String, SegueListType {
 		case showTrimScreen = "showTrimScreen"
-		case showTips = "showTips"
 	}
 	
 	let dependencies: RouterDependencies
@@ -52,11 +50,6 @@ class VisheoCameraRouter: CameraRouter
             	let trimmingController = segue.destination as! VideoTrimmingViewController
             	let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: assets)
             	trimmingRouter.start(with: trimmingController)
-			case .showTips:
-				let tipsController = (segue.destination as! UINavigationController).viewControllers[0] as! TipsViewController
-				let tipsRouter = VisheoTipsRouter(dependencies: dependencies);
-				let record = sender as! OccasionRecord
-				tipsRouter.start(with: tipsController, record: record);
 		}
 	}
 }
@@ -71,8 +64,4 @@ extension VisheoCameraRouter {
             controller?.performSegue(SegueList.showTrimScreen, sender: assets)
         }
     }
-	
-	func showTips(with record: OccasionRecord) {
-		controller?.performSegue(SegueList.showTips, sender: record);
-	}
 }

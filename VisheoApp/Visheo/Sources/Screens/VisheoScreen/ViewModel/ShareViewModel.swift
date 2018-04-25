@@ -64,6 +64,9 @@ protocol ShareViewModel : class, AlertGenerating {
     
 	func trackLinkCopied()
 	func trackLinkShared()
+    func trackVisheoUploaded()
+    func trackDescriptionChanged()
+    func trackVisheoDownloaded()
 }
 
 extension ShareViewModel {
@@ -110,6 +113,7 @@ class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
         self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
             self?._description = $0
             self?.updateVisheoName()
+            self?.trackDescriptionChanged()
         }
     }
     
@@ -209,6 +213,7 @@ class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
             }) {[weak self] (success, error) in
                 if success {
                     self?.successAlertHandler?(NSLocalizedString("Your visheo was saved to the gallery.", comment: "Successfully save visheo to gallery text"))
+                    self?.trackVisheoDownloaded()
                 } else {
                     self?.warningAlertHandler?(NSLocalizedString("Oops... Something went wrong.", comment: "Failed to save visheo to gallery text"))
                 }
@@ -252,7 +257,19 @@ class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
 		feedbackService.markReviewPending(nil)
 		loggingService.log(event: VisheoSharedEvent());
 	}
+    
+    func trackVisheoUploaded() {
+        loggingService.log(event: VisheoUploaded())
+    }
+    
+    func trackDescriptionChanged(){
+        loggingService.log(event: DescriptionChanged())
+    }
 	
+    func trackVisheoDownloaded() {
+        loggingService.log(event: VisheoDownloadEvent())
+    }
+    
 	func showReviewChoiceIfNeeded(onCancel: (() -> Void)? = nil) {
 		guard shouldPresentFeedback else { onCancel?(); return }
 		
@@ -279,6 +296,7 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
         self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
             self?._description = $0
             self?.updateVisheoName()
+            self?.trackDescriptionChanged()
         }
     }
     
@@ -464,8 +482,20 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
 	func trackLinkShared() {
 		shouldPresentFeedback = true;
 		feedbackService.markReviewPending(nil);
-		loggingService.log(event: VisheoSharedEvent());
+		loggingService.log(event: VisheoSharedEvent())
 	}
+    
+    func trackVisheoUploaded() {
+        loggingService.log(event: VisheoUploaded())
+    }
+    
+    func trackDescriptionChanged(){
+        loggingService.log(event: DescriptionChanged())
+    }
+    
+    func trackVisheoDownloaded() {
+        loggingService.log(event: VisheoDownloadEvent())
+    }
     
     func startRendering() {
         NotificationCenter.default.addObserver(forName: Notification.Name.visheoRenderingProgress, object: nil, queue: OperationQueue.main) {[weak self] (notification) in

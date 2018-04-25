@@ -26,7 +26,7 @@ abstract_target 'App' do
   pod 'TwitterKit'
   
   pod 'MBProgressHUD'
-  pod 'Validator'
+  pod 'Validator', '~> 3.0.2'
   
   pod 'SDWebImage', '~> 4.0'
   pod 'BadgeSwift', '~> 5.0'
@@ -36,6 +36,8 @@ abstract_target 'App' do
   pod 'LGSideMenuController'
   pod 'ReachabilitySwift'
   pod 'SnapKit'
+  
+  pod 'UXCam'
   
   pod 'SwiftyStoreKit'
   

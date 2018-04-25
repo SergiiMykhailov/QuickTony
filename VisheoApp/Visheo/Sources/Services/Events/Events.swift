@@ -9,27 +9,33 @@
 import UIKit
 
 enum EventType: String {
-	case userRegistered = "user_registered"
-	case regularCardSent = "regular_card_sent"
-	case premiumCardSent = "premium_card_sent"
-	case smallBundlePurchased = "S_bundle_purchase"
-	case bigBundlePurchased = "L_bundle_purchase"
-    case subsctiptionPurchased = "subscription_purchase"
-	case couponRedeemed = "coupon_redeemed"
-	case reminderSet = "remind_later"
-	case linkCopied = "link_copied"
-	case linkShared = "visheo_shared"
-    case inviteLinkCopied = "invite_link_copied"
-    case inviteLinkShared = "invite_link_shared"
+    case inviteLinkCopied         = "invite_link_copied"
+    case inviteLinkShared         = "invite_link_shared"
     case inviteLinkFacebookShared = "invite_link_facebook_shared"
-    case inviteLinkTwitterShared = "invite_link_twitter_shared"
-	case coverSelected = "cover_selected"
-	case photosSelected = "selected_photos"
-	case photosSkipped = "skipped_photos"
-	case reachedPreview = "reached_preview_screen"
-	case soundtrackChanged = "soundtrack_changed"
-	case retakeVideo = "retake_video"
-    case inviteDidHappen = "invite_happened"
+    case inviteLinkTwitterShared  = "invite_link_twitter_shared"
+    case inviteDidHappen          = "invite_happened"
+	case userRegistered           = "user_registered"
+	case regularCardSent          = "regular_card_sent"
+	case premiumCardSent          = "premium_card_sent"
+	case smallBundlePurchased     = "S_bundle_purchase"
+	case bigBundlePurchased       = "L_bundle_purchase"
+    case subsctiptionPurchased    = "subscription_purchase"
+	case couponRedeemed           = "coupon_redeemed"
+	case reminderSet              = "remind_later"
+	case linkCopied               = "link_copied"
+	case linkShared               = "visheo_shared"
+	case coverSelected            = "cover_selected"
+	case photosSelected           = "selected_photos"
+	case photosSkipped            = "skipped_photos"
+	case reachedPreview           = "reached_preview_screen"
+	case soundtrackChanged        = "soundtrack_changed"
+	case retakeVideo              = "retake_video"
+    case visheoDownloaded         = "downloaded"
+    case visheoSaved              = "visheo_save_click"
+    case visheoUploaded           = "visheo_uploaded"
+    case descriptionChanged       = "description_changed"
+    case bestPracticesClicked     = "best_practices_clicked"
+    case onboardingPassed         = "onboarding_passed"
 }
 
 protocol EventRepresenting {
@@ -226,4 +232,40 @@ struct RetakeVideoEvent: EventRepresenting {
 	var type: EventType {
 		return .retakeVideo;
 	}
+}
+
+struct VisheoDownloadEvent: EventRepresenting {
+    var type: EventType {
+        return .visheoDownloaded
+    }
+}
+
+struct VisheoSaved: EventRepresenting {
+    var type: EventType {
+        return .visheoSaved
+    }
+}
+
+struct VisheoUploaded: EventRepresenting {
+    var type: EventType {
+        return .visheoUploaded
+    }
+}
+
+struct DescriptionChanged: EventRepresenting {
+    var type: EventType {
+        return .descriptionChanged
+    }
+}
+
+struct BestPracticesClicked: EventRepresenting {
+    var type: EventType {
+        return .bestPracticesClicked
+    }
+}
+
+struct OnboardingPassed: EventRepresenting {
+    var type: EventType {
+        return .onboardingPassed
+    }
 }

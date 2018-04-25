@@ -100,8 +100,8 @@
 /* exit from preview message title */
 "Message" = "Message";
 
-/* My Account menu item */
-"My Account" = "My Account";
+/* Best Practicies menu item */
+"Best Practicies" = "Best Practicies";
 
 /* My purchases menu item */
 "My Purchases" = "My Purchases";
@@ -236,6 +236,9 @@
 
 /* Unlimited visheos subscription template */
 "Unlimited / %@ per month" = "Unlimited / %@ per month";
+
+/* Unlimited visheos subscription template */
+"Unlimited / %@ per month *" = "Unlimited / %@ per month *";
 
 /* Upload visheo error */
 "Upload error. Retry?" = "Upload error. Retry?";

@@ -15,6 +15,7 @@ import GoogleSignIn
 import FBSDKLoginKit
 import UserNotifications
 import TwitterKit
+import UXCam
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -24,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
+        
+        UXCam.start(withKey: "a138a13355e1245")
         
         Database.database().isPersistenceEnabled = true
         Storage.storage().maxUploadRetryTime = 60

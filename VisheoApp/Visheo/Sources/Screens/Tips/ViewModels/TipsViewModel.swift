@@ -15,38 +15,22 @@ enum TipsSection: Int {
 }
 
 protocol TipsViewModel: class {
-	func numberOfItems(for section: TipsSection) -> Int
-	var activeSection: TipsSection { get }
-	var displaysWordsSection: Bool { get }
+	func numberOfItems() -> Int
 	
-	func switchSection(to new: TipsSection);
-	
-	var activeSectionChanged: ((TipsSection) -> Void)? { get set }
 	var contentChanged: (() -> Void)? { get set }
 	
-	func practiceTipCellModel(at index: Int) -> PracticeTipCellModel;
-	func wordTipCellModel(at index: Int) -> WordTipCellModel;
+	func practiceTipCellModel(at index: Int) -> PracticeTipCellModel
 }
 
 class VisheoTipsViewModel: TipsViewModel {
 	weak var router: TipsRouter?
 	
-	var contentChanged: (() -> Void)?;
-	
-	var activeSectionChanged: ((TipsSection) -> Void)?
-	private (set) var activeSection: TipsSection {
-		didSet {
-			activeSectionChanged?(activeSection);
-		}
-	}
+	var contentChanged: (() -> Void)?
 	
 	private let tipsProvider: TipsProviderService;
-	private let record: OccasionRecord;
 	
-	init(record: OccasionRecord, tipsProvider: TipsProviderService) {
-		self.record = record;
+	init(tipsProvider: TipsProviderService) {
 		self.tipsProvider = tipsProvider;
-		activeSection = (record.words.count > 0) ? .words : .practices;
 		
 		NotificationCenter.default.addObserver(forName: .occasionsChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
 			self?.contentChanged?();
@@ -61,21 +45,8 @@ class VisheoTipsViewModel: TipsViewModel {
 		NotificationCenter.default.removeObserver(self);
 	}
 	
-	func switchSection(to new: TipsSection) {
-		activeSection = new;
-	}
-	
-	func numberOfItems(for section: TipsSection) -> Int {
-		switch section {
-			case .words:
-				return record.words.count;
-			case .practices:
-				return tipsProvider.practiceTips.count;
-		}
-	}
-	
-	var displaysWordsSection: Bool {
-		return numberOfItems(for: .words) > 0;
+	func numberOfItems() -> Int {
+        return tipsProvider.practiceTips.count;
 	}
 	
 	
@@ -83,9 +54,5 @@ class VisheoTipsViewModel: TipsViewModel {
 		let item = tipsProvider.practiceTips[index];
 		return VisheoPracticeTipCellModel(index: index + 1, title: item.title, text: item.text)
 	}
-	
-	func wordTipCellModel(at index: Int) -> WordTipCellModel {
-		let item = record.words[index];
-		return VisheoWordTipCellModel(text: item.text);
-	}
+
 }
