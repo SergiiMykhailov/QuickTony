@@ -143,7 +143,7 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-
+        
 		let visheoId = response.notification.request.identifier;
 		let info = [ UserNotificationsServiceNotificationKeys.id : visheoId ];
 		NotificationCenter.default.post(name: .openVisheoFromReminder, object: self, userInfo: info);
@@ -159,6 +159,9 @@ class VisheoUserNotificationsService: NSObject, UserNotificationsService, UNUser
             completionHandler: {_, _ in })
         
         UIApplication.shared.registerForRemoteNotifications()
+        if let fcmToken = Messaging.messaging().fcmToken {
+            invitesService.registerFCMToken(withToken: fcmToken)
+        }
     }
 }
 
