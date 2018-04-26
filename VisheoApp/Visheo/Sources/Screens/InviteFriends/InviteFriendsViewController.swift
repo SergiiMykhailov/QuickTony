@@ -143,7 +143,7 @@ extension InviteFriendsViewController: FBSDKSharingDelegate {
 extension InviteFriendsViewController: InviteFriendsViewModelDelegate {
 
     func refreshUI() {
-        activityIndicator?.removeFromSuperview()
+        activityIndicator.isHidden = true
         linkLable.text = viewModel.inviteLink
     }
 

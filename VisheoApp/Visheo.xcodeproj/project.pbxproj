@@ -32,6 +32,7 @@
 		2C6EE70B20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */; };
 		2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
+		2C8CC95B2092059000FF9B4F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */; };
 		2C9381FC20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
 		2C9381FD20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
 		2C93820120650F5800348BAA /* StandardOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */; };
@@ -50,7 +51,7 @@
 		2C9A11CF207CAC9200DD114C /* InviteFriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */; };
 		2C9A11D0207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */; };
 		2C9A11D1207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */; };
-		2CADBE982085FFA10011C88E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CADBE972085FFA10011C88E /* GoogleService-Info.plist */; };
+		2CADBE982085FFA10011C88E /* GoogleService-Info-old.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */; };
 		2CADBEA020879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */; };
 		2CADBEA120879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */; };
 		2CADBEA220879AA70011C88E /* SubscriptionDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9D20879AA70011C88E /* SubscriptionDescriptionRouter.swift */; };
@@ -460,6 +461,7 @@
 		2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoDescriptionViewController.swift; sourceTree = "<group>"; };
 		2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRuleControllerViewController.swift; sourceTree = "<group>"; };
 		2C89DF9F2073CF260012586B /* VisheoStaging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VisheoStaging.entitlements; sourceTree = "<group>"; };
+		2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedOccasionsTableCell.swift; sourceTree = "<group>"; };
 		2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOccasionsTableCell.swift; sourceTree = "<group>"; };
 		2C938207206540B200348BAA /* OccasionGroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionGroupsService.swift; sourceTree = "<group>"; };
@@ -469,7 +471,7 @@
 		2C9A11C8207CAC9100DD114C /* InviteFriendsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsControllerViewModel.swift; sourceTree = "<group>"; };
 		2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsRouter.swift; sourceTree = "<group>"; };
 		2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
-		2CADBE972085FFA10011C88E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-old.plist"; sourceTree = "<group>"; };
 		2CADBE992086033D0011C88E /* Visheo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Visheo.entitlements; sourceTree = "<group>"; };
 		2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionControllerViewModel.swift; sourceTree = "<group>"; };
 		2CADBE9D20879AA70011C88E /* SubscriptionDescriptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionRouter.swift; sourceTree = "<group>"; };
@@ -804,7 +806,8 @@
 		920F8BE21FF6BE670087C45D /* production */ = {
 			isa = PBXGroup;
 			children = (
-				2CADBE972085FFA10011C88E /* GoogleService-Info.plist */,
+				2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */,
+				2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */,
 			);
 			path = production;
 			sourceTree = "<group>";
@@ -1701,6 +1704,7 @@
 			files = (
 				9255DF121FCDA5A200F9815F /* app_settings.plist in Resources */,
 				B48AAAC01FA9E58F000BB33B /* LaunchScreen.storyboard in Resources */,
+				2C8CC95B2092059000FF9B4F /* GoogleService-Info.plist in Resources */,
 				92C2E475200E51FE00693F95 /* fox-min.gif in Resources */,
 				B4CFB7711FAB4A7900D6E73A /* Authentification.storyboard in Resources */,
 				B48AAAC91FA9E650000BB33B /* Roboto-Regular.ttf in Resources */,
@@ -1718,7 +1722,7 @@
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
 				92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */,
-				2CADBE982085FFA10011C88E /* GoogleService-Info.plist in Resources */,
+				2CADBE982085FFA10011C88E /* GoogleService-Info-old.plist in Resources */,
 				B4775FFF1FD57EAA00A02BEF /* Account.storyboard in Resources */,
 				92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */,
 				92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */,
