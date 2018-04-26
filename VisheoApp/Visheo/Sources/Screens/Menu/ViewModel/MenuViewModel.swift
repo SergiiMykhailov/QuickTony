@@ -116,7 +116,7 @@ class VisheoMenuViewModel : MenuViewModel {
             router?.showVisheoBox()
         case .inviteFriends:
             if userInfo.isAnonymous {
-                router?.showRegistration(with: .redeemCoupons);
+                router?.showRegistration(with: .inviteFriends);
             } else {
                 router?.showInvites()
             }
