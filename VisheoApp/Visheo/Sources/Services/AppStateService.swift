@@ -9,12 +9,14 @@
 import Foundation
 import Reachability
 import Firebase
+import UXCam
 
 extension Notification.Name {
     static let freeVisheoAvailableChanged = Notification.Name("freeVisheoAvailableChanged")
     static let couponAvailableChanged = Notification.Name("couponAvailableChanged")
     static let subscriptionAvailableChanged = Notification.Name("subscriptionAvailableChanged")
     static let inviteFriendsAvailableChanged = Notification.Name("inviteFriendsAvailableChanged")
+    static let UXCamStateChanged = Notification.Name("UXCamStateChanged")
 }
 
 protocol AppStateService {
@@ -53,11 +55,13 @@ class VisheoAppStateService: AppStateService {
     var isCouponAvailable : Bool = false
     var isSubscriptionLimited : Bool = false
     var isInviteFriendsAvailable : Bool = false
+    var isUXCamAvailable : Bool = false
     
     private var freeVishesReference : DatabaseReference?
     private var subscriptionReference : DatabaseReference?
     private var couponsReference : DatabaseReference?
     private var inviteFriendsReference : DatabaseReference?
+    private var uxCamReference : DatabaseReference?
     
     let firstLaunch: Bool
 	private let reachability = Reachability();
@@ -134,7 +138,13 @@ class VisheoAppStateService: AppStateService {
 	}
     
     private func startAppConfigObserving(){
-        [freeVishesReference, couponsReference, subscriptionReference, inviteFriendsReference].compactMap { $0 }.forEach {
+        [
+            freeVishesReference,
+            couponsReference,
+            subscriptionReference,
+            inviteFriendsReference,
+            uxCamReference
+        ].compactMap { $0 }.forEach {
             $0.removeAllObservers()
         }
         
@@ -172,6 +182,16 @@ class VisheoAppStateService: AppStateService {
             guard let isInviteFriendsAvailble = $0.value as? Bool else { self.isInviteFriendsAvailable = false; return}
             self.isInviteFriendsAvailable = isInviteFriendsAvailble
             NotificationCenter.default.post(name: Notification.Name.inviteFriendsAvailableChanged, object: self)
+        }
+        
+        let uxCamFriendsRef = Database.database().reference(withPath: "appConfiguration/isUXCamAvailable")
+        uxCamReference = uxCamFriendsRef
+        
+        uxCamFriendsRef.observe(.value) {
+            guard let isUXCamAvailable = $0.value as? Bool else { self.isUXCamAvailable = false; return}
+            self.isUXCamAvailable = isUXCamAvailable
+            NotificationCenter.default.post(name: Notification.Name.UXCamStateChanged, object: self)
+            isUXCamAvailable ? UXCam.start(withKey: "a138a13355e1245") : UXCam.stopApplicationAndUploadData()
         }
     }
 }

@@ -15,18 +15,16 @@ import GoogleSignIn
 import FBSDKLoginKit
 import UserNotifications
 import TwitterKit
-import UXCam
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var launchProxyRouter: DefaultLaunchProxyRouter?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
         FirebaseApp.configure()
-        
-        UXCam.start(withKey: "a138a13355e1245")
         
         Database.database().isPersistenceEnabled = true
         Storage.storage().maxUploadRetryTime = 60
@@ -38,8 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         setupAppearance()
         
         if let launchProxyController = self.window?.rootViewController as? LaunchProxyViewController {            
-            let launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies())
-            launchProxyRouter.start(with: launchProxyController)
+            launchProxyRouter = DefaultLaunchProxyRouter(dependencies: dependencies())
+            launchProxyRouter?.start(with: launchProxyController)
         }
         
         return true
@@ -49,9 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if let isDynamicLink = DynamicLinks.dynamicLinks()?.shouldHandleDynamicLink(fromCustomSchemeURL: url),
             isDynamicLink {
             let dynamicLink = DynamicLinks.dynamicLinks()?.dynamicLink(fromCustomSchemeURL: url)
-            return dependencies().invitationService.handleDynamicLink(from: dynamicLink)
+            return launchProxyRouter?.dependencies.invitationService.handleDynamicLink(from: dynamicLink) ?? false
         }
-        
+    
         let facebookHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         let googleHandled   = GIDSignIn.sharedInstance().handle(url,
                                                               sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
@@ -106,6 +104,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 												premiumCardsService: premiumService,
                                                 invitationService: invitationService)
     }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
+    }
+    
     
     // MARK: Appearance setup
     
