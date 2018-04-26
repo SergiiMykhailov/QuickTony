@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tel-8a-P0G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tel-8a-P0G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -52,51 +52,51 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" ambiguous="YES" text="Sign in with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxr-0m-Cd1">
-                                <rect key="frame" x="140" y="390" width="95" height="24"/>
+                                <rect key="frame" x="140" y="366" width="95" height="24"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                 <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-aV-LR4">
-                                <rect key="frame" x="117.5" y="432" width="60" height="60"/>
+                                <rect key="frame" x="117.5" y="408" width="60" height="60"/>
                                 <state key="normal" image="facebook"/>
                                 <connections>
                                     <action selector="facebookPressed:" destination="Utz-9c-J4S" eventType="touchUpInside" id="joU-sf-pKT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBX-BJ-M18">
-                                <rect key="frame" x="197.5" y="432" width="60" height="60"/>
+                                <rect key="frame" x="197.5" y="408" width="60" height="60"/>
                                 <state key="normal" image="google"/>
                                 <connections>
                                     <action selector="googlePressed:" destination="Utz-9c-J4S" eventType="touchUpInside" id="5Rl-wD-VZV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEG-HI-xW5">
-                                <rect key="frame" x="120.5" y="500" width="53" height="16"/>
+                                <rect key="frame" x="120.5" y="476" width="53" height="16"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                 <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Google" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYC-xN-UXT">
-                                <rect key="frame" x="208.5" y="500" width="39" height="16"/>
+                                <rect key="frame" x="208.5" y="476" width="39" height="16"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                 <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtD-zk-jvZ" userLabel="Separator">
-                                <rect key="frame" x="129.5" y="537" width="116" height="1"/>
+                                <rect key="frame" x="129.5" y="513" width="116" height="1"/>
                                 <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="jiM-by-Htp"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L54-Bt-5CW">
-                                <rect key="frame" x="20" y="548" width="335" height="24"/>
+                                <rect key="frame" x="20" y="526.5" width="335" height="21.5"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Sign In or Sign Up with email">
                                         <attributes>
                                             <color key="NSColor" red="0.21176" green="0.21176" blue="0.21176" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="18" name="Roboto-Medium"/>
+                                            <font key="NSFont" metaFont="system" size="18"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
@@ -104,7 +104,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cl-C3-lQA">
-                                <rect key="frame" x="20" y="587" width="335" height="60"/>
+                                <rect key="frame" x="20" y="563" width="335" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Xbq-vK-AUQ"/>
@@ -123,14 +123,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6N-Gc-4rH" userLabel="Separator">
-                                <rect key="frame" x="129.5" y="366" width="116" height="1"/>
+                                <rect key="frame" x="129.5" y="363.5" width="116" height="1"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="eRE-y4-XCW"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SIGN UP TO SEND YOUR VISHEO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-eg-F0v">
-                                <rect key="frame" x="81.5" y="290" width="212" height="53"/>
+                                <rect key="frame" x="81.5" y="290" width="212" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="212" id="d2J-dY-h8L"/>
                                 </constraints>
@@ -139,8 +139,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3o-OS-bko">
-                                <rect key="frame" x="20" y="20" width="46" height="36"/>
+                                <rect key="frame" x="20" y="20" width="46" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="NLQ-4X-VGT"/>
+                                    <constraint firstAttribute="height" constant="44" id="SVn-Sl-638"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Close">
                                     <color key="titleColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -148,11 +153,25 @@
                                     <action selector="closePressed:" destination="Utz-9c-J4S" eventType="touchUpInside" id="O9L-WY-6BA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vm-KZ-icq">
+                                <rect key="frame" x="20" y="633" width="335" height="14"/>
+                                <color key="tintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="By signing in you agree with Visheo Terms of Use">
+                                        <attributes>
+                                            <font key="NSFont" size="12" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ihp-aV-LR4" firstAttribute="top" secondItem="fxr-0m-Cd1" secondAttribute="bottom" priority="750" constant="18" id="0kF-2B-Jnd"/>
                             <constraint firstItem="uBX-BJ-M18" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fxr-0m-Cd1" secondAttribute="bottom" constant="7" id="12M-wx-ofb"/>
+                            <constraint firstItem="1Vm-KZ-icq" firstAttribute="centerX" secondItem="yff-uO-Qij" secondAttribute="centerX" id="2BB-i4-JeV"/>
                             <constraint firstItem="L54-Bt-5CW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dtD-zk-jvZ" secondAttribute="bottom" constant="7" id="3Yk-YQ-cgM"/>
                             <constraint firstItem="fxr-0m-Cd1" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" id="4Md-o9-RhP"/>
                             <constraint firstItem="dtD-zk-jvZ" firstAttribute="top" secondItem="lEG-HI-xW5" secondAttribute="bottom" constant="21" id="55c-p8-1p3"/>
@@ -161,13 +180,13 @@
                             <constraint firstItem="fRm-Ar-x2G" firstAttribute="top" secondItem="yff-uO-Qij" secondAttribute="top" constant="56" id="Auv-GA-sBN"/>
                             <constraint firstItem="P6N-Gc-4rH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FjM-eg-F0v" secondAttribute="bottom" constant="5" id="BCK-b5-q60"/>
                             <constraint firstItem="RYC-xN-UXT" firstAttribute="centerX" secondItem="uBX-BJ-M18" secondAttribute="centerX" id="DH8-O5-VHU"/>
+                            <constraint firstItem="1Vm-KZ-icq" firstAttribute="leading" secondItem="yff-uO-Qij" secondAttribute="leading" constant="20" id="EBm-EN-BML"/>
                             <constraint firstItem="P6N-Gc-4rH" firstAttribute="trailing" secondItem="dtD-zk-jvZ" secondAttribute="trailing" id="GP7-1e-mL3"/>
                             <constraint firstItem="6Cl-C3-lQA" firstAttribute="leading" secondItem="yff-uO-Qij" secondAttribute="leading" constant="20" id="Hls-2V-sOE"/>
                             <constraint firstItem="L54-Bt-5CW" firstAttribute="leading" secondItem="yff-uO-Qij" secondAttribute="leading" constant="20" id="ItJ-Wi-QkR"/>
                             <constraint firstItem="uBX-BJ-M18" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" constant="40" id="LZT-PC-Ins"/>
                             <constraint firstItem="u3o-OS-bko" firstAttribute="leading" secondItem="yff-uO-Qij" secondAttribute="leading" constant="20" id="OmX-jI-ZXS"/>
                             <constraint firstItem="Ihp-aV-LR4" firstAttribute="centerX" secondItem="yff-uO-Qij" secondAttribute="centerX" constant="-40" id="PVO-zU-QSv"/>
-                            <constraint firstItem="yff-uO-Qij" firstAttribute="bottom" secondItem="6Cl-C3-lQA" secondAttribute="bottom" constant="20" id="S79-IX-Of5"/>
                             <constraint firstItem="dtD-zk-jvZ" firstAttribute="top" secondItem="RYC-xN-UXT" secondAttribute="bottom" constant="21" id="XcO-LV-9A1"/>
                             <constraint firstItem="yff-uO-Qij" firstAttribute="trailing" secondItem="6Cl-C3-lQA" secondAttribute="trailing" constant="20" id="Zbv-8l-oVe"/>
                             <constraint firstItem="6Cl-C3-lQA" firstAttribute="centerX" secondItem="Qmw-ge-h1G" secondAttribute="centerX" id="a8T-Er-19a"/>
@@ -176,6 +195,7 @@
                             <constraint firstItem="u3o-OS-bko" firstAttribute="top" secondItem="yff-uO-Qij" secondAttribute="top" id="cMk-zn-azp"/>
                             <constraint firstItem="P6N-Gc-4rH" firstAttribute="top" secondItem="FjM-eg-F0v" secondAttribute="bottom" priority="250" constant="25" id="cni-lJ-eV0"/>
                             <constraint firstItem="P6N-Gc-4rH" firstAttribute="leading" secondItem="dtD-zk-jvZ" secondAttribute="leading" id="diP-VS-hD7"/>
+                            <constraint firstItem="1Vm-KZ-icq" firstAttribute="top" secondItem="6Cl-C3-lQA" secondAttribute="bottom" constant="10" id="dkN-nN-jln"/>
                             <constraint firstItem="RYC-xN-UXT" firstAttribute="top" secondItem="uBX-BJ-M18" secondAttribute="bottom" constant="8" id="etg-9z-Lxu"/>
                             <constraint firstItem="L54-Bt-5CW" firstAttribute="top" secondItem="dtD-zk-jvZ" secondAttribute="bottom" priority="250" constant="10" id="f0P-V6-qW6"/>
                             <constraint firstItem="dtD-zk-jvZ" firstAttribute="trailing" secondItem="uBX-BJ-M18" secondAttribute="trailing" constant="-12" id="h9K-gJ-291"/>
@@ -190,6 +210,7 @@
                             <constraint firstItem="dtD-zk-jvZ" firstAttribute="leading" secondItem="Ihp-aV-LR4" secondAttribute="leading" constant="12" id="uoI-ZR-4S2"/>
                             <constraint firstItem="lEG-HI-xW5" firstAttribute="top" secondItem="Ihp-aV-LR4" secondAttribute="bottom" constant="8" id="xMM-4a-FKq"/>
                             <constraint firstItem="6Cl-C3-lQA" firstAttribute="top" secondItem="L54-Bt-5CW" secondAttribute="bottom" constant="15" id="xvD-fj-ziY"/>
+                            <constraint firstItem="yff-uO-Qij" firstAttribute="bottom" secondItem="1Vm-KZ-icq" secondAttribute="bottom" constant="20" id="yfj-j8-hzZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yff-uO-Qij"/>
                     </view>
@@ -197,11 +218,13 @@
                     <connections>
                         <outlet property="authReasonlabel" destination="FjM-eg-F0v" id="QBW-uI-vVD"/>
                         <outlet property="closeButton" destination="u3o-OS-bko" id="e8g-jr-qFi"/>
+                        <outlet property="closeButtonLeadingConstraint" destination="OmX-jI-ZXS" id="q9d-ff-6u1"/>
                         <outlet property="signInBottomConstraint" destination="xvD-fj-ziY" id="2so-fw-oOb"/>
                         <outlet property="signInUpLabel" destination="L54-Bt-5CW" id="xq0-9u-0du"/>
                         <outlet property="signUpMandatoryLabel" destination="FjM-eg-F0v" id="uMe-GE-Saw"/>
-                        <outlet property="skipRegistrationBottomConstraint" destination="S79-IX-Of5" id="r7z-Na-qts"/>
+                        <outlet property="skipRegistrationBottomConstraint" destination="dkN-nN-jln" id="b9T-a4-Sru"/>
                         <outlet property="skipRegistrationHeightConstraint" destination="Xbq-vK-AUQ" id="1Nb-tE-xWb"/>
+                        <outlet property="termsOfUseLabel" destination="1Vm-KZ-icq" id="nW4-QQ-H4h"/>
                         <segue destination="tlf-cp-qex" kind="custom" identifier="showMainScreen" customClass="RootViewControllerSegue" customModule="Visheo" customModuleProvider="target" id="f4y-We-X0N"/>
                         <segue destination="mrH-bx-Ih5" kind="show" identifier="showSignUp" id="Lmh-A0-2e4"/>
                         <segue destination="uMs-Cd-kd9" kind="show" identifier="showSignIn" id="es3-m7-1Ox"/>
@@ -548,6 +571,6 @@
         <image name="logo" width="182" height="204"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="n81-7H-tYm"/>
+        <segue reference="f4y-We-X0N"/>
     </inferredMetricsTieBreakers>
 </document>

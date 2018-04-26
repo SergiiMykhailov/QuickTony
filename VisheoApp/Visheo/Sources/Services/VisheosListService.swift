@@ -27,6 +27,7 @@ protocol VisheoRecord {
     
     var lifetime: Int? {get}
     var creationDate: Date? {get}
+    var signature: String? {get}
 }
 
 class VisheoBoxService : VisheosListService {
@@ -110,6 +111,7 @@ class VisheoCardRecord : VisheoRecord {
     var coverUrl: URL?
     var name: String?
     var visheoLink: String?
+    var signature: String?
     
     init(id : String) {
         self.id = id
@@ -127,5 +129,6 @@ class VisheoCardRecord : VisheoRecord {
         }
         
         lifetime = snapshot["lifetime"] as? Int
+        signature = snapshot["signature"] as? String
     }
 }

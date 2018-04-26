@@ -1,6 +1,9 @@
 /* Premium cards price part template */
 " for %@" = " for %@";
 
+/* Readable format for date */
+"%1$@ of %2$@" = "%1$@ of %2$@";
+
 /* redeem success description */
 "%d premium card(s) added to your account" = "%d premium card(s) added to your account";
 
@@ -17,7 +20,7 @@
 "An error occurred while signing out" = "An error occurred while signing out";
 
 /* Visheo deletion confirmation */
-"Are you sure you want to delete this Visheo? It will be deleted forever." = "Are you sure you want to delete this Visheo Card? It will be deleted forever from the Visheo App and web page.";
+"Are you sure you want to delete this Visheo? It will be deleted forever." = "Are you sure you want to delete this Visheo Card? It will be deleted forever from the Visheo App and online storage.";
 
 /* Cancel
    Cancel button
@@ -25,13 +28,16 @@
 "Cancel" = "Cancel";
 
 /* Cancelling edited video wish changes notification text */
-"Changes to your Video Wish won’t be applied" = "Changes to your Video Wish won’t be applied";
+"Changes to your Video Wish won’t be applied" = "Changes to your Visheo won’t be applied";
+
+/* No comment provided by engineer. */
+"Close" = "Close";
 
 /* Confirm button text */
 "Confirm" = "Confirm";
 
 /* Contact us menu item */
-"Contact us" = "Contact us";
+"Contact us" = "Contact Us";
 
 /* Invalid coupon code error */
 "Coupon with this code does not exist. Please check if you entered the code right." = "Coupon with this code does not exist. Please check if you entered the code right.";
@@ -59,19 +65,28 @@
 "Error" = "Error";
 
 /* New video recording notification text */
-"Existing video wish will be replaced with the new one" = "Existing video wish will be replaced with the new one";
+"Existing video wish will be replaced with the new one" = "Existing video message will be replaced with the new one";
+
+/* Exit button text */
+"Exit" = "Exit";
 
 /* Failed to load purchases from iTunes store message text */
 "Failed to load purchases info" = "Failed to load purchases info";
 
 /* Failed to purchase bundle */
-"Failed to purchase cards bundle" = "Failed to purchase cards bundle";
+"Failed to purchase cards bundle" = "Failed to purchase Visheo Cards";
 
 /* forgot password alert title */
 "Forgot your password?" = "Forgot your password?";
 
 /* Guest user title */
 "Guest" = "Guest";
+
+/* No comment provided by engineer. */
+"If you enjoy using Visheo, please rate us at AppStore! It won't take more than a minute. Thanks for your support!" = "If you enjoy using Visheo, please rate us at AppStore! It won't take more than a minute. Thanks for your support!";
+
+/* if you exit now you Visheo won't be saved */
+"If you exit now you Visheo won't be saved" = "If you exit now you Visheo won't be saved";
 
 /* Invalid email warning */
 "It does not look like a proper email" = "It does not look like a proper email";
@@ -82,8 +97,14 @@
 /* Maximum number of photos error message */
 "Maximum %li photos allowed" = "Maximum %li photos allowed";
 
-/* My Account menu item */
-"My Account" = "My Account";
+/* exit from preview message title */
+"Message" = "Message";
+
+/* Best Practicies menu item */
+"Best Practicies" = "Best Practicies";
+
+/* My purchases menu item */
+"My Purchases" = "My Purchases";
 
 /* Missing name warning */
 "Name is mandatory field" = "Name is mandatory field";
@@ -120,6 +141,9 @@
 /* Invalid password warning */
 "Password should be at least 6 symbols" = "Password should be at least 6 symbols";
 
+/* Unchecked public visheo message */
+"Please agree that this Visheo can be publicly used" = "Please agree that this Visheo can be publicly used";
+
 /* Failed to set reminder */
 "Please enable notifications in device settings." = "Please enable notifications in device settings.";
 
@@ -141,9 +165,6 @@
 /* Please sign in to send feedback */
 "Please sign in to send feedback" = "Please sign in to send feedback";
 
-/* Premium Cards menu item */
-"Premium Cards" = "Premium Cards";
-
 /* Confirm account deletion alert button */
 "Proceed" = "Proceed";
 
@@ -153,14 +174,17 @@
 /* Purchase succeeded */
 "Purchase succeeded" = "Purchase succeeded";
 
+/* No comment provided by engineer. */
+"Rate us now" = "Rate us now";
+
 /* Redeem coupon menu item */
-"Redeem coupon" = "Redeem coupon";
+"Redeem coupon" = "Redeem Coupon";
 
 /* Successfully set reminder to share visheo */
 "Reminder was set." = "Reminder was set.";
 
 /* Render visheo error */
-"Render error. Retry?" = "Render error. Retry?";
+"Render error. Retry?" = "Rendering error. Retry?";
 
 /* required field alert title */
 "Required Field" = "Required Field";
@@ -171,8 +195,14 @@
 /* Retry visheo upload/render */
 "Retry" = "Retry";
 
+/* SIGN UP TO SEND YOUR VISHEO */
+"SIGN UP TO SEND YOUR VISHEO" = "SIGN UP TO SEND YOUR VISHEO";
+
 /* Send reset password email button */
 "Send" = "Send";
+
+/* No comment provided by engineer. */
+"Send us feedback" = "Send us feedback";
 
 /* Send your Visheo */
 "Send your Visheo" = "Send your Visheo";
@@ -204,17 +234,29 @@
 /* Try Later visheo upload/render */
 "Try Later" = "Try Later";
 
+/* Unlimited visheos subscription template */
+"Unlimited / %@ per month" = "Unlimited / %@ per month";
+
+/* Unlimited visheos subscription template */
+"Unlimited / %@ per month *" = "Unlimited / %@ per month *";
+
 /* Upload visheo error */
 "Upload error. Retry?" = "Upload error. Retry?";
 
 /* USername change success */
 "User name changed successfully" = "User name changed successfully";
 
+/* Format for visheo description */
+"Video wish from %@" = "Video wish from %@";
+
 /* Visheo Box menu item */
-"Visheo Box" = "Visheo Box";
+"Visheo Box" = "My Visheo";
 
 /* Contact us form mail subject */
 "Visheo feedback" = "Visheo feedback";
+
+/* (No Comment) */
+"Visheo from %@" = "Video wish from %@";
 
 /* Visheo link was copied to clipboard message */
 "Visheo link was copied" = "Visheo link was copied";
@@ -227,16 +269,19 @@
 "Warning" = "Warning";
 
 /* rendering visheo progress title */
-"We are rendering your Visheo" = "We are rendering your Visheo";
+"We are rendering your Visheo" = "Rendering Visheo";
 
 /* uploading visheo progress title */
-"We are uploading your Visheo" = "We are uploading your Visheo";
+"We are uploading your Visheo" = "Uploading Visheo to online storage";
 
 /* Visheo deletion confirm text */
-"YES, Delete it" = "YES, Delete it";
+"YES, Delete it" = "Yes, delete it";
 
 /* No internet connection */
 "You seem to have lost Internet connection" = "You seem to have lost Internet connection";
+
+/* redeem success description */
+"You successfully purchased subscription" = "You successfully purchased subscription";
 
 /* Confirm account deletion alert message */
 "Your account with all the data will be deleted without possiblity to restore. Proceed?" = "Your account with all the data will be deleted without possiblity to restore. Proceed?";
@@ -248,5 +293,20 @@
 "Your video will be rendered in 480p resolution." = "Your video will be rendered in 480p resolution.";
 
 /* Successfully save visheo to gallery text */
-"Your visheo was saved to the gallery." = "Your visheo was saved to the gallery.";
+"Your visheo was saved to the gallery." = "Your Visheo was saved to media gallery.";
+
+/* Suffix for *second */
+"nd" = "nd";
+
+/* Suffix for *third */
+"rd" = "rd";
+
+/* Suffix for *first */
+"st" = "st";
+
+/* Suffix for *fourth */
+"th" = "th";
+
+/* Date format with number index for subscription string */
+"until %@" = "until %@";
 

@@ -9,32 +9,24 @@
 import UIKit
 
 class ChooseOccasionViewController: UIViewController {
-    @IBOutlet weak var holidaysCollection: UICollectionView!
-    @IBOutlet weak var occasionsCollection: UICollectionView!
-    
-    var holidaysCollectionMediator : HolidaysCollectionMediator?
-    var occasionsCollectionMediator : OccassionsCollectionMediator?
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        holidaysCollectionMediator = HolidaysCollectionMediator(viewModel: viewModel,
-                                                                holidaysCollection: holidaysCollection,
-                                                                containerWidth: self.view.frame.width)
-        
-        occasionsCollectionMediator = OccassionsCollectionMediator(viewModel: viewModel,
-                                                                   occasionsCollection: occasionsCollection)
+        tableViewMediator = OccasionGroupsTableMediator(withViewModel: viewModel, tableView: tableView)
         
         viewModel.didChangeCallback = {[weak self] in
-            self?.holidaysCollectionMediator?.reloadData()
-            self?.occasionsCollection.reloadData()
+            self?.tableView.reloadData()
         }
+        
     }
 
     //MARK: - VM+Router init
     
     private(set) var viewModel: ChooseOccasionViewModel!
     private(set) var router: FlowRouter!
+    private var tableViewMediator: OccasionGroupsTableMediator?
     
     func configure(viewModel: ChooseOccasionViewModel, router: FlowRouter) {
         self.viewModel = viewModel
@@ -44,6 +36,11 @@ class ChooseOccasionViewController: UIViewController {
     @IBAction func menuPressed(_ sender: Any) {
         viewModel.showMenu()
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated);
+		viewModel.showReviewChoiceIfNeeded()
+	}
 }
 
 extension ChooseOccasionViewController {

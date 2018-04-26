@@ -14,14 +14,15 @@ class ChooseCardsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let couponAttributed = coupoButton.currentAttributedTitle?.mutableCopy() as? NSMutableAttributedString {
-            couponAttributed.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: NSRange(location: 0, length: couponAttributed.length))
-            coupoButton.setAttributedTitle(couponAttributed, for: .normal)
-        }
         
         buyFifteenButton.titleLabel?.adjustsFontSizeToFitWidth = true
         buyFiveButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        subcribeButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        if let couponAttributed = couponButton.currentAttributedTitle?.mutableCopy() as? NSMutableAttributedString {
+            couponAttributed.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: NSRange(location: 0, length: couponAttributed.length))
+            couponButton.setAttributedTitle(couponAttributed, for: .normal)
+        }
         
         viewModel.didChange = {[weak self] in
             self?.udpateFromVM()
@@ -65,19 +66,31 @@ class ChooseCardsViewController: UIViewController {
         buyFiveButton.isHidden = viewModel.smallBundleButtonHidden
         buyFifteenButton.isHidden = viewModel.bigBundleButtonHidden
         
+        if (!viewModel.smallBundleButtonHidden){
+            smallPackageIndicator?.removeFromSuperview()
+        }
+        if (!viewModel.bigBundleButtonHidden){
+            bigPackageIndicator?.removeFromSuperview()
+        }
+        
         buyFiveButton.setTitle(viewModel.smallBundleButtonText, for: .normal)
         buyFifteenButton.setTitle(viewModel.bigBundleButtonText, for: .normal)
+        subcribeButton.setTitle(viewModel.subscribeButtonText, for: .normal)
         
-        let hasCards = viewModel.premiumCardsNumber > 0
-        noPremCardslabel.isHidden = hasCards
-        haspremiumCardsContainer.isHidden = !hasCards
         premiumCardsLabel.text = "\(viewModel.premiumCardsNumber)"
+        untilDateLabel.text = "\(viewModel.untilDateText)"
 		
-		freeCardsSection.isHidden = !viewModel.showFreeSection;
+		freeCardsSection.isHidden = !viewModel.showFreeSection
+        premiumCardsSection.isHidden = viewModel.showSubscribedSection
+        subscribeSection.isHidden = viewModel.subscribeSectionHidden
+        couponSection.isHidden = !viewModel.showCouponSection
+        subscribedSection.isHidden = !viewModel.showSubscribedSection
 		
-		noPremiumCardsTopConstraint.isActive = viewModel.showFreeSection;
-		noPremiumTopFallbackConstraint.isActive = viewModel.showFreeSection;
-		
+        subscriptionLimitedLabel.isHidden = viewModel.subscribeLimitedHidden
+        subscriptionLimitedLabel.text = viewModel.limitedOfferText()
+        
+        checkmarkButton.isSelected = (viewModel.isFreeVisheoRuleAccepted)
+        
 		view.layoutIfNeeded();
     }
     
@@ -106,19 +119,27 @@ class ChooseCardsViewController: UIViewController {
     
     @IBOutlet weak var buyFiveButton: UIButton!
     @IBOutlet weak var buyFifteenButton: UIButton!
-    @IBOutlet weak var coupoButton: UIButton!
+    @IBOutlet weak var subcribeButton: UIButton!
     
-    @IBOutlet weak var haspremiumCardsContainer: UIView!
-	@IBOutlet weak var premiumHeaderLabel: UILabel!
+    @IBOutlet weak var couponButton: UIButton!
+
 	@IBOutlet weak var premiumCardsLabel: UILabel!
-    @IBOutlet weak var noPremCardslabel: UILabel!
+    @IBOutlet weak var subscriptionLimitedLabel: UILabel!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
     @IBOutlet weak var backBarItem: UIBarButtonItem!
+    
     @IBOutlet weak var freeCardsSection: UIView!
-
-	@IBOutlet weak var hasPremiumCardsTopConstraint: NSLayoutConstraint!
-	@IBOutlet weak var noPremiumTopFallbackConstraint: NSLayoutConstraint!
-	@IBOutlet weak var noPremiumCardsTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var subscribeSection: UIView!
+    @IBOutlet weak var subscribedSection: UIView!
+    @IBOutlet weak var premiumCardsSection: UIView!
+    @IBOutlet weak var couponSection: UIView!
+    
+    @IBOutlet weak var bigPackageIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var smallPackageIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var checkmarkButton: UIButton!
+    
+    @IBOutlet weak var untilDateLabel: UILabel!
 	
 	// MARK: Actions
     @IBAction func sendFreePressed(_ sender: Any) {
@@ -133,16 +154,28 @@ class ChooseCardsViewController: UIViewController {
         viewModel.buyBigBundle()
     }
     
+    @IBAction func subscribeActionPassed(_ sender: Any){
+        viewModel.showSubscriptionDescription()
+    }
+    
     @IBAction func menuPressed(_ sender: Any) {
         viewModel.showMenu()
     }
     
-    @IBAction func showCoupon(_ sender: Any) {
-        viewModel.showCoupon()
+    @IBAction func checkmarkPressed(_ sender: UIButton) {
+        viewModel.acceptFreeRule(withSelected: !sender.isSelected)
+    }
+    
+    @IBAction func freeRulePressed(_ sender: Any) {
+        viewModel.showFreeRule()
     }
     
     @IBAction func backPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func showCoupon(_ sender: Any) {
+        viewModel.showCoupon()
     }
 }
 

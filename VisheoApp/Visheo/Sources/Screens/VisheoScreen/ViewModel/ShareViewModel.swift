@@ -30,11 +30,15 @@ protocol ShareViewModel : class, AlertGenerating {
     var renderingTitle : String {get}
     var uploadingTitle : String {get}
 	
+    var visheoName : String {get}
+    
 	var notificationsAuthorization: ((String) -> Void)? { get set }
     
     var creationStatusChanged : (()->())? {get set}
     var creationStatus : VisheoCreationStatus {get}
 	
+    var visheoNameChanged : (()->())? {get set}
+    
 	var reminderDate: Date { get }
 	var minimumReminderDate: Date { get }
 	func setReminderDate(_ date: Date);
@@ -45,14 +49,24 @@ protocol ShareViewModel : class, AlertGenerating {
     func retry()
     func tryLater()
     func showMenu()
+	func showReviewChoiceIfNeeded(onCancel: (() -> Void)?)
     
     func saveVisheo()
     func deleteVisheo()
 	
+    func updateVisheoName()
+    
 	func openSettings()
 	
+    func showEditDescriptionScreen()
+    func shouldShowOnboarding() -> Bool
+    func onboardingDidFinish()
+    
 	func trackLinkCopied()
-	func trackLinkShared();
+	func trackLinkShared()
+    func trackVisheoUploaded()
+    func trackDescriptionChanged()
+    func trackVisheoDownloaded()
 }
 
 extension ShareViewModel {
@@ -75,7 +89,34 @@ extension ShareViewModel {
 	}
 }
 
-class ExistingVisheoShareViewModel: ShareViewModel {
+class ShareViewModelImpl {
+    
+    var appStateService : AppStateService
+    
+    init(withAppStateService appStateService: AppStateService) {
+        self.appStateService = appStateService
+    }
+    
+    
+    func shouldShowOnboarding() -> Bool {
+        return appStateService.shouldShowOnboardingShare
+    }
+    
+    func onboardingDidFinish() {
+        appStateService.onboardingShare(wasSeen: true)
+    }
+}
+
+class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
+    
+    func showEditDescriptionScreen() {
+        self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
+            self?._description = $0
+            self?.updateVisheoName()
+            self?.trackDescriptionChanged()
+        }
+    }
+    
     var isVisheoMissing: Bool  {
         guard let creationDate = visheoRecord.creationDate, let lifetime = visheoRecord.lifetime else {
             return false
@@ -121,12 +162,15 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     func retry() {}
     func tryLater() {}
     
+    var visheoNameChanged: (()->())?
     var creationStatusChanged: (() -> ())?
     var successAlertHandler: ((String) -> ())?
     var warningAlertHandler: ((String) -> ())?
     var showRetryLaterError: ((String) -> ())?
 	var notificationsAuthorization: ((String) -> Void)?
 	
+    private var _description : String?
+    
 	lazy var reminderDate: Date = initialReminderDate;
     weak var router: ShareRouter?
     private let visheoRecord : VisheoRecord
@@ -134,13 +178,20 @@ class ExistingVisheoShareViewModel: ShareViewModel {
     private let visheosCache : VisheosCache
 	private let userNotificationsService: UserNotificationsService
 	private let loggingService: EventLoggingService;
+	private let userInfo: UserInfoProvider;
+	private let feedbackService: FeedbackService;
+	private var shouldPresentFeedback = false;
     
-	init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService) {
+    init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, appStateService: AppStateService) {
         self.visheoRecord = record
         self.visheoService = visheoService
         self.visheosCache = cache
 		self.userNotificationsService = notificationsService;
 		self.loggingService = loggingService;
+		self.feedbackService = feedbackService;
+		self.userInfo = userInfo;
+        
+        super.init(withAppStateService: appStateService)
     }
     
     func showMenu() {}
@@ -150,6 +201,11 @@ class ExistingVisheoShareViewModel: ShareViewModel {
         router?.goToRoot()
     }
     
+    func updateVisheoName() {
+        self.visheoService.updateVisheo(with: visheoRecord.id, signature: visheoName)
+        visheoNameChanged?()
+    }
+    
     func saveVisheo() {
         if let visheoUrl = visheoUrl {
             PHPhotoLibrary.shared().performChanges({
@@ -157,6 +213,7 @@ class ExistingVisheoShareViewModel: ShareViewModel {
             }) {[weak self] (success, error) in
                 if success {
                     self?.successAlertHandler?(NSLocalizedString("Your visheo was saved to the gallery.", comment: "Successfully save visheo to gallery text"))
+                    self?.trackVisheoDownloaded()
                 } else {
                     self?.warningAlertHandler?(NSLocalizedString("Oops... Something went wrong.", comment: "Failed to save visheo to gallery text"))
                 }
@@ -190,15 +247,59 @@ class ExistingVisheoShareViewModel: ShareViewModel {
 	}
 	
 	func trackLinkCopied() {
+		shouldPresentFeedback = true;
+		feedbackService.markReviewPending(nil);
 		loggingService.log(event: VisheoURLCopiedEvent())
 	}
 	
 	func trackLinkShared() {
+		shouldPresentFeedback = true;
+		feedbackService.markReviewPending(nil)
 		loggingService.log(event: VisheoSharedEvent());
 	}
+    
+    func trackVisheoUploaded() {
+        loggingService.log(event: VisheoUploaded())
+    }
+    
+    func trackDescriptionChanged(){
+        loggingService.log(event: DescriptionChanged())
+    }
+	
+    func trackVisheoDownloaded() {
+        loggingService.log(event: VisheoDownloadEvent())
+    }
+    
+	func showReviewChoiceIfNeeded(onCancel: (() -> Void)? = nil) {
+		guard shouldPresentFeedback else { onCancel?(); return }
+		
+		feedbackService.didLeaveReview { [weak self] (didReview) in
+			if didReview {
+				onCancel?();
+			} else {
+				self?.router?.showReviewChoice(onCancel: onCancel);
+			}
+		}
+	}
+    
+    var visheoName: String {
+        return self._description ?? self.visheoRecord.signature ?? String(format: NSLocalizedString( "Video wish from %@", comment: "Format for visheo description"), userInfo.userName ?? "Guest")
+    }
 }
 
-class ShareVisheoViewModel : ShareViewModel {
+class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
+    var visheoName: String {
+        return self._description ?? self.assets?.creationInfo.signature ?? String(format: NSLocalizedString( "Video wish from %@", comment: "Format for visheo description"), userInfo.userName ?? "Guest")
+    }
+    
+    func showEditDescriptionScreen() {
+        self.router?.showEditDescriptionScreen(withDescription: visheoName) { [weak self] in
+            self?._description = $0
+            self?.updateVisheoName()
+            self?.trackDescriptionChanged()
+        }
+    }
+    
     var isVisheoMissing: Bool {
         return false
     }
@@ -206,6 +307,7 @@ class ShareVisheoViewModel : ShareViewModel {
     var successAlertHandler: ((String) -> ())?
     
     var warningAlertHandler: ((String) -> ())?
+    var visheoNameChanged: (()->())?
     
     var showRetryLaterError: ((String) -> ())?
 	var notificationsAuthorization: ((String) -> Void)?
@@ -257,33 +359,44 @@ class ShareVisheoViewModel : ShareViewModel {
     
     var uploadingTitle: String = NSLocalizedString("We are uploading your Visheo", comment: "uploading visheo progress title")
     
+    private var _description : String?
+    
     weak var router: ShareRouter?
     private let renderingService : RenderingService
     private let creationService : CreationService
 	private let userNotificationsService: UserNotificationsService
     private let sharePremium : Bool
 	private let loggingService: EventLoggingService;
+	private let userInfo: UserInfoProvider;
+	private let feedbackService: FeedbackService;
 	private var assets: VisheoRenderingAssets?;
 	private var record: VisheoRecord?;
+	private var shouldPresentFeedback = false;
     
-	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, sharePremium: Bool) {
+	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, sharePremium: Bool, appStateService: AppStateService) {
         self.renderingService = renderingService
         self.creationService = creationService
 		self.userNotificationsService = notificationsService;
 		self.loggingService = loggingService;
+		self.userInfo = userInfo;
+		self.feedbackService = feedbackService;
         self.sharePremium = sharePremium
 		self.assets = assets;
+        super.init(withAppStateService: appStateService)
     }
 	
-	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService) {
+	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, appStateService: AppStateService) {
 		self.renderingService = renderingService
 		self.creationService = creationService
 		self.userNotificationsService = notificationsService;
 		self.loggingService = loggingService;
+		self.feedbackService = feedbackService;
+		self.userInfo = userInfo;
 		self.record = record;
 		
 		guard let info = self.creationService.unfinishedInfo(with: record.id) else {
 			sharePremium = false;
+            super.init(withAppStateService: appStateService)
 			return;
 		}
 		
@@ -294,6 +407,8 @@ class ShareVisheoViewModel : ShareViewModel {
 		} else {
 			creationStatus = .rendering(progress: 0.3);
 		}
+        
+        super.init(withAppStateService: appStateService)
 	}
 	
 	var currentVisheoId: String {
@@ -339,6 +454,11 @@ class ShareVisheoViewModel : ShareViewModel {
         router?.goToRoot()
     }
     
+    func updateVisheoName() {
+        self.creationService.updateVisheo(with: currentVisheoId, signature: visheoName)
+        visheoNameChanged?()
+    }
+    
     func saveVisheo() {
         if let visheoUrl = visheoUrl {
             PHPhotoLibrary.shared().performChanges({
@@ -354,12 +474,28 @@ class ShareVisheoViewModel : ShareViewModel {
     }
 	
 	func trackLinkCopied() {
+		shouldPresentFeedback = true;
+		feedbackService.markReviewPending(nil);
 		loggingService.log(event: VisheoURLCopiedEvent())
 	}
 	
 	func trackLinkShared() {
-		loggingService.log(event: VisheoSharedEvent());
+		shouldPresentFeedback = true;
+		feedbackService.markReviewPending(nil);
+		loggingService.log(event: VisheoSharedEvent())
 	}
+    
+    func trackVisheoUploaded() {
+        loggingService.log(event: VisheoUploaded())
+    }
+    
+    func trackDescriptionChanged(){
+        loggingService.log(event: DescriptionChanged())
+    }
+    
+    func trackVisheoDownloaded() {
+        loggingService.log(event: VisheoDownloadEvent())
+    }
     
     func startRendering() {
         NotificationCenter.default.addObserver(forName: Notification.Name.visheoRenderingProgress, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
@@ -418,6 +554,18 @@ class ShareVisheoViewModel : ShareViewModel {
     func showMenu() {
         router?.showMenu()
     }
+	
+	func showReviewChoiceIfNeeded(onCancel: (() -> Void)? = nil) {
+		guard shouldPresentFeedback else { onCancel?(); return }
+		
+		feedbackService.didLeaveReview { [weak self] (didReview) in
+			if didReview {
+				onCancel?();
+			} else {
+				self?.router?.showReviewChoice(onCancel: onCancel);
+			}
+		}
+	}
 	
 	func openSettings() {
 		if let url = URL(string: UIApplicationOpenSettingsURLString) {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1dc-lh-5ja">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1dc-lh-5ja">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -52,7 +52,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103.5" y="187" width="128" height="18.5"/>
+                                        <rect key="frame" x="103" y="187" width="128" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -107,64 +107,51 @@
                                     <action selector="sendPressed:" destination="1dc-lh-5ja" eventType="touchUpInside" id="3mi-ZE-lAV"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="844-DT-RCB">
-                                <rect key="frame" x="34" y="390" width="307" height="92"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="844-DT-RCB">
+                                <rect key="frame" x="28" y="375" width="319" height="84"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quN-cm-BH1" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="92"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="quN-cm-BH1" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="84"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="ONH-P3-UBZ"/>
-                                            <constraint firstAttribute="height" constant="92" id="Teh-VT-hWc"/>
+                                            <constraint firstAttribute="height" constant="84" id="Teh-VT-hWc"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="cover"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit Cover"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Cover Art"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editCover:" destination="1dc-lh-5ja" eventType="touchUpInside" id="Jix-KE-EJ8"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-Nm-fJA" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="78.5" y="0.0" width="61" height="92"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-Nm-fJA" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="81" y="0.0" width="76" height="84"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="61" id="Zqm-jN-9oN"/>
-                                            <constraint firstAttribute="height" constant="92" id="h6I-2C-X6p"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="slideshow"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit  Slideshow"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Photos"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editPhotos:" destination="1dc-lh-5ja" eventType="touchUpInside" id="HEg-SE-Bob"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dns-fU-1gV" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="167.5" y="0.0" width="61" height="92"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="dns-fU-1gV" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="162" y="0.0" width="76" height="84"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="61" id="X9J-Ub-ExQ"/>
-                                            <constraint firstAttribute="height" constant="92" id="xp0-n1-Ttm"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="video"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit  Video Wish"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Video"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editVideo:" destination="1dc-lh-5ja" eventType="touchUpInside" id="rXN-E1-o8A"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-ST-sYJ" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
-                                        <rect key="frame" x="257" y="0.0" width="50" height="92"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-ST-sYJ" customClass="EditVisheoButton" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="243" y="0.0" width="76" height="84"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="92" id="23N-zw-Hdw"/>
-                                            <constraint firstAttribute="width" constant="50" id="HLv-KD-6fJ"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="music"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Edit Music"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Music"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="editSoundtrack:" destination="1dc-lh-5ja" eventType="touchUpInside" id="V7I-um-xXl"/>
@@ -172,7 +159,10 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="gUy-jM-9A2"/>
+                                    <constraint firstItem="E9g-ST-sYJ" firstAttribute="height" secondItem="dns-fU-1gV" secondAttribute="height" id="Jes-sV-7DN"/>
+                                    <constraint firstItem="dns-fU-1gV" firstAttribute="height" secondItem="wU0-Nm-fJA" secondAttribute="height" id="cEm-eR-Klo"/>
+                                    <constraint firstItem="wU0-Nm-fJA" firstAttribute="height" secondItem="quN-cm-BH1" secondAttribute="height" id="fA4-iv-c9q"/>
+                                    <constraint firstAttribute="height" constant="84" id="gUy-jM-9A2"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -183,10 +173,10 @@
                             <constraint firstItem="SHA-oq-exf" firstAttribute="top" secondItem="IxG-iG-yUR" secondAttribute="top" constant="20" id="9fy-ua-eOw"/>
                             <constraint firstItem="Y5n-Gj-tF4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="844-DT-RCB" secondAttribute="bottom" constant="8" id="BKg-gx-IiF"/>
                             <constraint firstItem="Y5n-Gj-tF4" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="20" id="IAQ-Rb-dKN"/>
-                            <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="844-DT-RCB" secondAttribute="trailing" constant="34" id="jZv-l7-T4j"/>
+                            <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="844-DT-RCB" secondAttribute="trailing" constant="28" id="jZv-l7-T4j"/>
                             <constraint firstItem="SHA-oq-exf" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="20" id="oYh-YN-dZg"/>
-                            <constraint firstItem="844-DT-RCB" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="bottom" priority="750" constant="35" id="q0x-Sd-hZe"/>
-                            <constraint firstItem="844-DT-RCB" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="34" id="rri-hM-YyE"/>
+                            <constraint firstItem="844-DT-RCB" firstAttribute="top" secondItem="SHA-oq-exf" secondAttribute="bottom" constant="20" id="q0x-Sd-hZe"/>
+                            <constraint firstItem="844-DT-RCB" firstAttribute="leading" secondItem="IxG-iG-yUR" secondAttribute="leading" constant="28" id="rri-hM-YyE"/>
                             <constraint firstItem="IxG-iG-yUR" firstAttribute="trailing" secondItem="SHA-oq-exf" secondAttribute="trailing" constant="20" id="tIJ-CF-gDY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IxG-iG-yUR"/>
@@ -195,6 +185,12 @@
                         <barButtonItem key="leftBarButtonItem" image="arrow" id="AGg-tT-fqf">
                             <connections>
                                 <action selector="backButtonPressed:" destination="1dc-lh-5ja" id="gm7-Ag-k59"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Exit" id="e9w-Mv-tpu">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="exitButtonPressed:" destination="1dc-lh-5ja" id="Wdi-JN-awh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -213,6 +209,7 @@
                         <segue destination="ScI-5d-mqh" kind="presentation" identifier="showRegistration" id="rs3-wO-P6I"/>
                         <segue destination="0ZU-xD-YwL" kind="presentation" identifier="showSoundtrackEdit" id="CIi-8Y-uCc"/>
                         <segue destination="KjW-nB-Qsh" kind="show" identifier="showCardTypeSelection" id="cw0-JJ-Ga1"/>
+                        <segue destination="1n1-fk-nLn" kind="show" identifier="showSharingOnboarding" id="fis-tc-5eb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGZ-T9-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -303,7 +300,7 @@
                 <viewControllerPlaceholder storyboardName="Authentification" id="ScI-5d-mqh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESG-wG-bsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="301"/>
+            <point key="canvasLocation" x="810" y="392"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DXk-3B-qZj">
@@ -319,21 +316,21 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkz-U1-JAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="681"/>
+            <point key="canvasLocation" x="1006" y="967"/>
         </scene>
         <!--SHARE YOUR VISHEO-->
         <scene sceneID="2Er-xZ-amW">
             <objects>
                 <viewController storyboardIdentifier="ShareVisheoViewController" id="L2Y-ET-ymb" customClass="ShareVisheoViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WVY-Wz-gyc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="936"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="vBH-nG-pAk">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="936"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFw-rC-b54">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nq-3Z-f0C">
                                                 <rect key="frame" x="20" y="20" width="335" height="335"/>
@@ -389,104 +386,142 @@
                                                     <outletCollection property="gestureRecognizers" destination="ndl-k9-yKy" appends="YES" id="CgF-tU-8IH"/>
                                                 </connections>
                                             </view>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LYL-aZ-IVe">
-                                                <rect key="frame" x="20" y="375" width="335" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="dVa-hJ-hfR"/>
-                                                </constraints>
-                                                <segments>
-                                                    <segment title="Send Now"/>
-                                                    <segment title="Send Later"/>
-                                                </segments>
-                                                <color key="tintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="shareTypeChanged:" destination="L2Y-ET-ymb" eventType="valueChanged" id="XbL-ZS-3on"/>
-                                                </connections>
-                                            </segmentedControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2II-fv-hQX">
-                                                <rect key="frame" x="0.0" y="429" width="375" height="170"/>
+                                                <rect key="frame" x="0.0" y="359" width="375" height="238"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbX-PK-2AN">
-                                                        <rect key="frame" x="20" y="10" width="335" height="60"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbi-BI-yX8">
+                                                        <rect key="frame" x="317" y="4" width="38" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="0Ih-yO-R3n"/>
+                                                            <constraint firstAttribute="width" constant="38" id="VTw-Ky-Y8M"/>
+                                                        </constraints>
+                                                        <state key="normal" image="edit"/>
+                                                        <connections>
+                                                            <action selector="editButtonPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="v9u-mS-E7Q"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNJ-3f-zSM">
+                                                        <rect key="frame" x="130" y="184" width="115" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="2xm-OD-6rh"/>
+                                                            <constraint firstAttribute="width" constant="115" id="BsC-LK-5Q8"/>
+                                                        </constraints>
+                                                        <state key="normal">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="Delete this Visheo">
+                                                                    <attributes>
+                                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                        <font key="NSFont" size="12" name=".SFNSText"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="deletePressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="riq-6L-hiK"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8pq-SY-ZUQ">
+                                                        <rect key="frame" x="67.5" y="58" width="240" height="86"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoA-F2-OsI">
-                                                                <rect key="frame" x="225" y="0.0" width="110" height="60"/>
-                                                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4YW-SU-LAn">
+                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="110" id="mlI-U4-9Cg"/>
+                                                                    <constraint firstAttribute="width" secondItem="4YW-SU-LAn" secondAttribute="height" multiplier="1:1" id="cL6-Ni-emO"/>
+                                                                    <constraint firstAttribute="width" constant="60" id="wKM-Yw-6kQ"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
-                                                                <state key="normal" title="Copy">
-                                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
+                                                                <state key="normal" image="downloadFile"/>
                                                                 <connections>
-                                                                    <action selector="copyPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="YZ6-EZ-xWh"/>
+                                                                    <action selector="downloadPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="rhX-WQ-Mxj"/>
                                                                 </connections>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyp-in-Hpa">
-                                                                <rect key="frame" x="20" y="30" width="190" height="0.0"/>
-                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                                <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNN-3H-6Zr">
+                                                                <rect key="frame" x="90" y="0.0" width="60" height="60"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="vNN-3H-6Zr" secondAttribute="height" multiplier="1:1" id="20w-jW-10P"/>
+                                                                </constraints>
+                                                                <state key="normal" image="copyUrl"/>
+                                                                <connections>
+                                                                    <action selector="copyPressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="0Bo-g7-fXL"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKP-6L-TWp">
+                                                                <rect key="frame" x="180" y="0.0" width="60" height="60"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="WKP-6L-TWp" secondAttribute="height" multiplier="1:1" id="3l6-VM-nsg"/>
+                                                                </constraints>
+                                                                <state key="normal" image="sendVisheo"/>
+                                                                <connections>
+                                                                    <action selector="sharePressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="THI-mv-fNI"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download File" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rq-ZD-4DS">
+                                                                <rect key="frame" x="-7.5" y="70" width="76.5" height="16"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy URL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vg8-QI-gad">
+                                                                <rect key="frame" x="93.5" y="70" width="53" height="16"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Visheo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0n-2L-MjI">
+                                                                <rect key="frame" x="177" y="70" width="67.5" height="16"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                                <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="BoA-F2-OsI" firstAttribute="leading" secondItem="fyp-in-Hpa" secondAttribute="trailing" constant="15" id="1qD-3q-MkA"/>
-                                                            <constraint firstItem="fyp-in-Hpa" firstAttribute="leading" secondItem="wbX-PK-2AN" secondAttribute="leading" constant="20" id="6fy-eC-4Hw"/>
-                                                            <constraint firstItem="BoA-F2-OsI" firstAttribute="top" secondItem="wbX-PK-2AN" secondAttribute="top" id="FFb-DL-1Iv"/>
-                                                            <constraint firstAttribute="bottom" secondItem="BoA-F2-OsI" secondAttribute="bottom" id="Gwi-hW-kBR"/>
-                                                            <constraint firstAttribute="trailing" secondItem="BoA-F2-OsI" secondAttribute="trailing" id="IWU-Q3-yFZ"/>
-                                                            <constraint firstAttribute="height" constant="60" id="V33-Dn-Dhe"/>
-                                                            <constraint firstItem="fyp-in-Hpa" firstAttribute="centerY" secondItem="wbX-PK-2AN" secondAttribute="centerY" id="vT9-IM-15b"/>
+                                                            <constraint firstAttribute="bottom" secondItem="2rq-ZD-4DS" secondAttribute="bottom" id="MTt-eu-Du8"/>
+                                                            <constraint firstItem="vNN-3H-6Zr" firstAttribute="width" secondItem="WKP-6L-TWp" secondAttribute="width" id="NQA-Md-T5U"/>
+                                                            <constraint firstAttribute="trailing" secondItem="WKP-6L-TWp" secondAttribute="trailing" id="Nmt-Sz-P4d"/>
+                                                            <constraint firstItem="Vg8-QI-gad" firstAttribute="centerX" secondItem="vNN-3H-6Zr" secondAttribute="centerX" id="O4Q-Tn-Otc"/>
+                                                            <constraint firstItem="vNN-3H-6Zr" firstAttribute="centerY" secondItem="WKP-6L-TWp" secondAttribute="centerY" id="Pkf-Vi-gfR"/>
+                                                            <constraint firstItem="2rq-ZD-4DS" firstAttribute="centerX" secondItem="4YW-SU-LAn" secondAttribute="centerX" id="Rdk-98-5XS"/>
+                                                            <constraint firstItem="2rq-ZD-4DS" firstAttribute="top" secondItem="4YW-SU-LAn" secondAttribute="bottom" constant="10" id="h9A-hR-Kot"/>
+                                                            <constraint firstItem="Vg8-QI-gad" firstAttribute="top" secondItem="vNN-3H-6Zr" secondAttribute="bottom" constant="10" id="hob-7k-r6a"/>
+                                                            <constraint firstItem="vNN-3H-6Zr" firstAttribute="leading" secondItem="4YW-SU-LAn" secondAttribute="trailing" constant="30" id="ipN-p2-Bkh"/>
+                                                            <constraint firstItem="4YW-SU-LAn" firstAttribute="top" secondItem="8pq-SY-ZUQ" secondAttribute="top" id="q6l-Ak-JET"/>
+                                                            <constraint firstItem="4YW-SU-LAn" firstAttribute="centerY" secondItem="vNN-3H-6Zr" secondAttribute="centerY" id="qQT-4a-c1K"/>
+                                                            <constraint firstItem="P0n-2L-MjI" firstAttribute="centerX" secondItem="WKP-6L-TWp" secondAttribute="centerX" id="qTo-DC-7aK"/>
+                                                            <constraint firstItem="P0n-2L-MjI" firstAttribute="top" secondItem="WKP-6L-TWp" secondAttribute="bottom" constant="10" id="qn8-gM-PSP"/>
+                                                            <constraint firstItem="vNN-3H-6Zr" firstAttribute="width" secondItem="4YW-SU-LAn" secondAttribute="width" id="tRW-1U-pn4"/>
+                                                            <constraint firstItem="4YW-SU-LAn" firstAttribute="leading" secondItem="8pq-SY-ZUQ" secondAttribute="leading" id="x3s-8t-bre"/>
+                                                            <constraint firstItem="WKP-6L-TWp" firstAttribute="leading" secondItem="vNN-3H-6Zr" secondAttribute="trailing" constant="30" id="y6e-4M-yEG"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuK-eZ-TXQ">
-                                                        <rect key="frame" x="20" y="90" width="335" height="60"/>
-                                                        <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="plN-9q-Nvt"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
-                                                        <color key="tintColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Share Visheo Card">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="sharePressed:" destination="L2Y-ET-ymb" eventType="touchUpInside" id="p8H-16-HCH"/>
-                                                        </connections>
-                                                    </button>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PsJ-yy-PoI">
+                                                        <rect key="frame" x="130" y="199.5" width="11" height="13"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2b-GP-nn3">
+                                                        <rect key="frame" x="20" y="4" width="297" height="24"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="TuK-eZ-TXQ" secondAttribute="bottom" constant="20" id="69v-ad-5TQ"/>
-                                                    <constraint firstItem="wbX-PK-2AN" firstAttribute="top" secondItem="2II-fv-hQX" secondAttribute="top" constant="10" id="7if-hT-aIq"/>
-                                                    <constraint firstAttribute="trailing" secondItem="wbX-PK-2AN" secondAttribute="trailing" constant="20" id="FAV-7h-KMI"/>
-                                                    <constraint firstItem="TuK-eZ-TXQ" firstAttribute="top" secondItem="wbX-PK-2AN" secondAttribute="bottom" constant="20" id="FUK-VV-I2u"/>
-                                                    <constraint firstItem="wbX-PK-2AN" firstAttribute="leading" secondItem="2II-fv-hQX" secondAttribute="leading" constant="20" id="KcV-7w-S28"/>
-                                                    <constraint firstAttribute="trailing" secondItem="TuK-eZ-TXQ" secondAttribute="trailing" constant="20" id="Qz3-F2-J86"/>
-                                                    <constraint firstItem="TuK-eZ-TXQ" firstAttribute="leading" secondItem="2II-fv-hQX" secondAttribute="leading" constant="20" id="wJT-J2-fkr"/>
+                                                    <constraint firstItem="j2b-GP-nn3" firstAttribute="leading" secondItem="2II-fv-hQX" secondAttribute="leading" constant="20" id="8Jq-Sj-4ke"/>
+                                                    <constraint firstItem="Kbi-BI-yX8" firstAttribute="leading" secondItem="j2b-GP-nn3" secondAttribute="trailing" id="8cA-up-3hb"/>
+                                                    <constraint firstItem="Kbi-BI-yX8" firstAttribute="top" secondItem="2II-fv-hQX" secondAttribute="top" constant="4" id="BL1-tC-Zzl"/>
+                                                    <constraint firstItem="xNJ-3f-zSM" firstAttribute="centerX" secondItem="2II-fv-hQX" secondAttribute="centerX" id="Dmb-eQ-GWf"/>
+                                                    <constraint firstItem="8pq-SY-ZUQ" firstAttribute="top" secondItem="j2b-GP-nn3" secondAttribute="bottom" constant="30" id="FZg-8o-tfV"/>
+                                                    <constraint firstItem="8pq-SY-ZUQ" firstAttribute="centerX" secondItem="2II-fv-hQX" secondAttribute="centerX" id="QYO-0V-zZd"/>
+                                                    <constraint firstItem="xNJ-3f-zSM" firstAttribute="leading" secondItem="PsJ-yy-PoI" secondAttribute="leading" id="cXh-0H-YRX"/>
+                                                    <constraint firstItem="8pq-SY-ZUQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2II-fv-hQX" secondAttribute="leading" constant="20" id="dbX-au-o2z"/>
+                                                    <constraint firstItem="j2b-GP-nn3" firstAttribute="top" secondItem="2II-fv-hQX" secondAttribute="top" constant="4" id="hF8-Si-5vA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xNJ-3f-zSM" secondAttribute="bottom" constant="10" id="jLq-9t-QrQ"/>
+                                                    <constraint firstItem="xNJ-3f-zSM" firstAttribute="top" secondItem="8pq-SY-ZUQ" secondAttribute="bottom" constant="40" id="oZE-EI-Qum"/>
+                                                    <constraint firstItem="PsJ-yy-PoI" firstAttribute="centerY" secondItem="xNJ-3f-zSM" secondAttribute="centerY" id="pqT-zg-zk3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Kbi-BI-yX8" secondAttribute="trailing" constant="20" id="tcC-XP-lNA"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIB-gJ-Nr4">
-                                                <rect key="frame" x="375" y="429" width="375" height="383.5"/>
+                                                <rect key="frame" x="375" y="359" width="375" height="383.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Set a reminder to share your Visheo in future" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG6-eF-HPq">
                                                         <rect key="frame" x="60" y="0.0" width="255" height="47"/>
@@ -540,19 +575,16 @@
                                         <constraints>
                                             <constraint firstItem="2II-fv-hQX" firstAttribute="width" secondItem="rFw-rC-b54" secondAttribute="width" id="6LN-mY-gfU"/>
                                             <constraint firstAttribute="bottom" secondItem="2II-fv-hQX" secondAttribute="bottom" id="EVJ-2I-NuZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="LYL-aZ-IVe" secondAttribute="trailing" constant="20" id="GJP-ya-ZiF"/>
                                             <constraint firstItem="2II-fv-hQX" firstAttribute="trailing" secondItem="rFw-rC-b54" secondAttribute="leading" id="HC6-e9-uLr"/>
                                             <constraint firstAttribute="trailing" secondItem="5Nq-3Z-f0C" secondAttribute="trailing" constant="20" id="Ivx-0g-pHY"/>
                                             <constraint firstAttribute="trailing" secondItem="2II-fv-hQX" secondAttribute="trailing" id="Ku8-vj-gMl"/>
                                             <constraint firstItem="bIB-gJ-Nr4" firstAttribute="leading" secondItem="2II-fv-hQX" secondAttribute="trailing" id="Sn7-6v-2A4"/>
-                                            <constraint firstItem="LYL-aZ-IVe" firstAttribute="top" secondItem="5Nq-3Z-f0C" secondAttribute="bottom" constant="20" id="W4m-sz-0BM"/>
-                                            <constraint firstItem="LYL-aZ-IVe" firstAttribute="leading" secondItem="rFw-rC-b54" secondAttribute="leading" constant="20" id="WTU-4p-zTr"/>
+                                            <constraint firstItem="2II-fv-hQX" firstAttribute="top" secondItem="JUY-Yl-B80" secondAttribute="bottom" constant="4" id="XhE-pU-UbL"/>
                                             <constraint firstAttribute="bottom" secondItem="bIB-gJ-Nr4" secondAttribute="bottom" id="dax-oq-TXh"/>
                                             <constraint firstItem="5Nq-3Z-f0C" firstAttribute="leading" secondItem="rFw-rC-b54" secondAttribute="leading" constant="20" id="jci-9V-OFQ"/>
                                             <constraint firstItem="5Nq-3Z-f0C" firstAttribute="top" secondItem="rFw-rC-b54" secondAttribute="top" constant="20" id="mJQ-bR-5PS"/>
                                             <constraint firstItem="bIB-gJ-Nr4" firstAttribute="width" secondItem="rFw-rC-b54" secondAttribute="width" id="o9B-QS-qaN"/>
                                             <constraint firstItem="bIB-gJ-Nr4" firstAttribute="top" secondItem="2II-fv-hQX" secondAttribute="top" id="vdG-bD-r9u"/>
-                                            <constraint firstItem="2II-fv-hQX" firstAttribute="top" secondItem="LYL-aZ-IVe" secondAttribute="bottom" constant="20" id="zN0-r1-HLi"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -585,6 +617,79 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smk-Xh-6ZC">
+                                <rect key="frame" x="0.0" y="38" width="375" height="565"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1He-CF-ZPi">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="535.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be able to download your Visheo file or simply send Visheo link to the receiver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kL-TZ-UfW">
+                                                <rect key="frame" x="48" y="444" width="279" height="71.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareOptions" translatesAutoresizingMaskIntoConstraints="NO" id="xei-h6-cRN">
+                                                <rect key="frame" x="112.5" y="356" width="150" height="60"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2T-Rx-pjI">
+                                                <rect key="frame" x="0.0" y="327" width="375" height="1"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="mHx-UN-b1y"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Visheo will be uploaded to the online storage, where you can keep it up 60 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYC-Al-3RE">
+                                                <rect key="frame" x="48" y="209" width="279" height="72"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="XMR-FS-Z8S"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudShare" translatesAutoresizingMaskIntoConstraints="NO" id="DTO-ZZ-40d">
+                                                <rect key="frame" x="87" y="48" width="202" height="133"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="202" id="BGf-8k-e4Y"/>
+                                                    <constraint firstAttribute="width" secondItem="DTO-ZZ-40d" secondAttribute="height" multiplier="50/33" id="emO-aI-OJt"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="centerX" secondItem="0kL-TZ-UfW" secondAttribute="centerX" id="5A6-Ld-mCB"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="top" secondItem="xei-h6-cRN" secondAttribute="bottom" constant="28" id="5Kc-h7-M0A"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="centerX" secondItem="1He-CF-ZPi" secondAttribute="centerX" id="9Hn-vB-jD1"/>
+                                            <constraint firstItem="DTO-ZZ-40d" firstAttribute="top" secondItem="1He-CF-ZPi" secondAttribute="top" constant="48" id="EOM-zl-nGw"/>
+                                            <constraint firstItem="I2T-Rx-pjI" firstAttribute="top" secondItem="UYC-Al-3RE" secondAttribute="bottom" constant="46" id="JmA-lb-cyk"/>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="width" secondItem="xei-h6-cRN" secondAttribute="height" multiplier="5/2" id="RDy-ux-qy9"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" constant="48" id="Z03-bP-YmM"/>
+                                            <constraint firstAttribute="trailing" secondItem="I2T-Rx-pjI" secondAttribute="trailing" id="aFP-41-u0b"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="top" secondItem="DTO-ZZ-40d" secondAttribute="bottom" constant="28" id="coa-I0-DBm"/>
+                                            <constraint firstItem="0kL-TZ-UfW" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" constant="48" id="jRK-46-suy"/>
+                                            <constraint firstAttribute="bottom" secondItem="0kL-TZ-UfW" secondAttribute="bottom" constant="20" id="oFH-wb-jZ4"/>
+                                            <constraint firstItem="UYC-Al-3RE" firstAttribute="centerX" secondItem="1He-CF-ZPi" secondAttribute="centerX" id="oxj-Ue-YNq"/>
+                                            <constraint firstItem="DTO-ZZ-40d" firstAttribute="centerX" secondItem="UYC-Al-3RE" secondAttribute="centerX" id="tAr-cN-YZN"/>
+                                            <constraint firstItem="I2T-Rx-pjI" firstAttribute="leading" secondItem="1He-CF-ZPi" secondAttribute="leading" id="uY8-cN-TcM"/>
+                                            <constraint firstItem="xei-h6-cRN" firstAttribute="top" secondItem="I2T-Rx-pjI" secondAttribute="bottom" constant="28" id="xdy-XR-P48"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1He-CF-ZPi" secondAttribute="trailing" id="1Ue-UH-9YL"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="top" secondItem="smk-Xh-6ZC" secondAttribute="top" id="8jK-3g-8lv"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="width" secondItem="smk-Xh-6ZC" secondAttribute="width" id="LtS-Ks-mGf"/>
+                                    <constraint firstAttribute="bottom" secondItem="1He-CF-ZPi" secondAttribute="bottom" id="lcj-ws-5JH"/>
+                                    <constraint firstItem="1He-CF-ZPi" firstAttribute="leading" secondItem="smk-Xh-6ZC" secondAttribute="leading" id="xwM-oD-Y9W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-oO-jCL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <subviews>
@@ -609,8 +714,10 @@ This visheo is no longer available in cloud</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="smk-Xh-6ZC" firstAttribute="top" secondItem="7tK-Zx-gw7" secondAttribute="bottom" id="1AZ-bU-n3q"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="bottom" secondItem="vBH-nG-pAk" secondAttribute="bottom" id="1Hu-Aa-QfY"/>
                             <constraint firstItem="vBH-nG-pAk" firstAttribute="top" secondItem="mpf-wC-7hc" secondAttribute="top" id="5fq-C9-Boa"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="smk-Xh-6ZC" secondAttribute="trailing" id="7N4-7s-CWh"/>
                             <constraint firstItem="vBH-nG-pAk" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="8KA-N8-YoO"/>
                             <constraint firstItem="7tK-Zx-gw7" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="QHC-FR-wq1"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="7tK-Zx-gw7" secondAttribute="trailing" id="SJf-L3-HjA"/>
@@ -620,54 +727,60 @@ This visheo is no longer available in cloud</string>
                             <constraint firstItem="LOg-oO-jCL" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="gDX-tP-pCQ"/>
                             <constraint firstItem="rFw-rC-b54" firstAttribute="width" secondItem="mpf-wC-7hc" secondAttribute="width" id="igk-Tm-SPu"/>
                             <constraint firstItem="mpf-wC-7hc" firstAttribute="trailing" secondItem="LOg-oO-jCL" secondAttribute="trailing" id="lpT-NC-GDl"/>
+                            <constraint firstItem="mpf-wC-7hc" firstAttribute="bottom" secondItem="smk-Xh-6ZC" secondAttribute="bottom" id="w6q-cV-eAf"/>
+                            <constraint firstItem="smk-Xh-6ZC" firstAttribute="leading" secondItem="mpf-wC-7hc" secondAttribute="leading" id="wwA-PZ-Uf8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mpf-wC-7hc"/>
                     </view>
                     <navigationItem key="navigationItem" title="SHARE YOUR VISHEO" id="gn6-b8-TgL">
                         <leftBarButtonItems>
                             <barButtonItem image="menu" id="QL0-nA-9zK">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="menuPressed:" destination="L2Y-ET-ymb" id="lx9-0N-Sr1"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="arrow" id="ceG-hb-vVo">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="backPressed:" destination="L2Y-ET-ymb" id="xS2-uc-T88"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" image="delete" id="f7b-DB-y8Z">
+                        <barButtonItem key="rightBarButtonItem" image="notification" style="plain" id="KeE-4T-1ds">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="deletePressed:" destination="L2Y-ET-ymb" id="Vva-7e-HWl"/>
+                                <action selector="shareTypeChanged:" destination="L2Y-ET-ymb" id="zFb-eX-813"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="backBarItem" destination="ceG-hb-vVo" id="ap4-Va-n73"/>
+                        <outlet property="changeStateButton" destination="KeE-4T-1ds" id="HKR-6V-0Kn"/>
                         <outlet property="containerScrollView" destination="vBH-nG-pAk" id="IBC-FZ-r0D"/>
-                        <outlet property="copyButton" destination="BoA-F2-OsI" id="MaV-Fg-iRD"/>
+                        <outlet property="copyButton" destination="vNN-3H-6Zr" id="Ndc-Dj-zVQ"/>
                         <outlet property="coverImage" destination="JUY-Yl-B80" id="mhg-IF-Q9h"/>
-                        <outlet property="deleteBarItem" destination="f7b-DB-y8Z" id="qct-qe-jXq"/>
-                        <outlet property="linkText" destination="fyp-in-Hpa" id="3Jz-dz-tYS"/>
+                        <outlet property="deleteButton" destination="xNJ-3f-zSM" id="rhJ-Ip-aWW"/>
+                        <outlet property="linkText" destination="j2b-GP-nn3" id="j9P-n9-Enp"/>
                         <outlet property="menuBarItem" destination="QL0-nA-9zK" id="TMN-S9-TE6"/>
                         <outlet property="missingVisheoView" destination="LOg-oO-jCL" id="jOJ-Go-1pb"/>
+                        <outlet property="onboardingView" destination="smk-Xh-6ZC" id="hsM-Of-Kep"/>
                         <outlet property="playButton" destination="OgS-LU-4q7" id="ubv-Oc-xIN"/>
                         <outlet property="playerLoadingActivity" destination="DDL-xT-V5h" id="E8j-xI-MuM"/>
                         <outlet property="progressBar" destination="7tK-Zx-gw7" id="Dtx-fy-EOb"/>
                         <outlet property="remindMeButton" destination="nzZ-Ya-jRK" id="he7-RG-Pyz"/>
                         <outlet property="reminderDatePicker" destination="nF5-eM-neh" id="aR1-8j-pkq"/>
+                        <outlet property="saveButton" destination="4YW-SU-LAn" id="HeX-n8-dUa"/>
                         <outlet property="scrollContainer" destination="rFw-rC-b54" id="feu-o5-Y8o"/>
-                        <outlet property="shareButton" destination="TuK-eZ-TXQ" id="kFd-y4-kcK"/>
+                        <outlet property="shareButton" destination="WKP-6L-TWp" id="uzw-9G-muB"/>
                         <outlet property="shareNowBottomConstraint" destination="EVJ-2I-NuZ" id="864-iR-WxU"/>
                         <outlet property="shareNowContainer" destination="2II-fv-hQX" id="4yM-Bs-7qR"/>
                         <outlet property="shareNowLeadingConstraint" destination="HC6-e9-uLr" id="cUu-8O-GAn"/>
                         <outlet property="shareNowTrailingConstraint" destination="Ku8-vj-gMl" id="Fpd-hw-i6W"/>
                         <outlet property="shareReminderBottomConstraint" destination="dax-oq-TXh" id="D4f-hv-Iol"/>
                         <outlet property="shareReminderContainer" destination="bIB-gJ-Nr4" id="qIL-50-sjf"/>
-                        <outlet property="shareTypeSegment" destination="LYL-aZ-IVe" id="5HE-xS-D8p"/>
-                        <outlet property="shareView" destination="wbX-PK-2AN" id="mOG-cZ-3Nu"/>
                         <outlet property="videoContainer" destination="ZrE-rC-yr6" id="A8E-Ym-dzO"/>
+                        <segue destination="qaC-N5-r0V" kind="show" identifier="showEditDescription" id="TPR-fj-cv1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECA-Rw-rYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -677,7 +790,7 @@ This visheo is no longer available in cloud</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3208.8000000000002" y="207.34632683658174"/>
+            <point key="canvasLocation" x="2992.8000000000002" y="300"/>
         </scene>
         <!--Purchases-->
         <scene sceneID="dbk-t7-AXk">
@@ -685,7 +798,7 @@ This visheo is no longer available in cloud</string>
                 <viewControllerPlaceholder storyboardName="Purchases" id="KjW-nB-Qsh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7s-eu-bUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2205" y="408"/>
+            <point key="canvasLocation" x="1635" y="300"/>
         </scene>
         <!--SelectCoverViewController-->
         <scene sceneID="hVs-3M-mrA">
@@ -695,7 +808,7 @@ This visheo is no longer available in cloud</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgr-bL-TOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="680"/>
+            <point key="canvasLocation" x="1650" y="679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6rd-dA-Fhv">
@@ -711,7 +824,7 @@ This visheo is no longer available in cloud</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xie-bv-xJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="1395"/>
+            <point key="canvasLocation" x="1006" y="1828"/>
         </scene>
         <!--VideoTrimmingViewController-->
         <scene sceneID="cSv-hh-daE">
@@ -721,18 +834,224 @@ This visheo is no longer available in cloud</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMp-MT-NBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1646" y="1394"/>
+            <point key="canvasLocation" x="1636" y="1828"/>
+        </scene>
+        <!--SAVE YOUR VISHEO-->
+        <scene sceneID="05g-Zk-sXK">
+            <objects>
+                <viewController title="SAVE YOUR VISHEO" id="1n1-fk-nLn" customClass="ShareVisheoOnboardingViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZTm-vz-7O4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlo-w0-dwX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpY-vi-fd6">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="631.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQZ-UX-eux">
+                                                <rect key="frame" x="40" y="551.5" width="295" height="60"/>
+                                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="iSG-ib-MHQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                                <state key="normal" title="Ok, got it">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="okGotItButtoTappedWithSender:" destination="1n1-fk-nLn" eventType="touchUpInside" id="Nhq-tq-4LH"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be able to download your Visheo file or simply send Visheo link to the receiver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTx-BS-IV5">
+                                                <rect key="frame" x="48" y="444" width="279" height="71.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareOptions" translatesAutoresizingMaskIntoConstraints="NO" id="GBI-4s-djx">
+                                                <rect key="frame" x="112.5" y="356" width="150" height="60"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDO-D9-W4t">
+                                                <rect key="frame" x="0.0" y="327" width="375" height="1"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="XW2-JE-KRN"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Visheo will be uploaded to the online storage, where you can keep it up 60 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6WC-7a-1J5">
+                                                <rect key="frame" x="48" y="209" width="279" height="72"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="l0b-Tc-uag"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudShare" translatesAutoresizingMaskIntoConstraints="NO" id="7BX-db-Bo6">
+                                                <rect key="frame" x="86.5" y="48" width="202" height="133"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="7BX-db-Bo6" secondAttribute="height" multiplier="50/33" id="0rY-4K-EnI"/>
+                                                    <constraint firstAttribute="width" constant="202" id="tcE-NA-xPg"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="GBI-4s-djx" firstAttribute="centerX" secondItem="iTx-BS-IV5" secondAttribute="centerX" id="1LP-vX-7LR"/>
+                                            <constraint firstAttribute="trailing" secondItem="gQZ-UX-eux" secondAttribute="trailing" constant="40" id="2je-kM-qw1"/>
+                                            <constraint firstItem="iTx-BS-IV5" firstAttribute="leading" secondItem="qpY-vi-fd6" secondAttribute="leading" constant="48" id="7lB-Ud-naO"/>
+                                            <constraint firstItem="gQZ-UX-eux" firstAttribute="top" secondItem="iTx-BS-IV5" secondAttribute="bottom" constant="36" id="HLO-sR-1WI"/>
+                                            <constraint firstItem="7BX-db-Bo6" firstAttribute="top" secondItem="qpY-vi-fd6" secondAttribute="top" constant="48" id="J7M-7i-hnR"/>
+                                            <constraint firstItem="gQZ-UX-eux" firstAttribute="leading" secondItem="qpY-vi-fd6" secondAttribute="leading" constant="40" id="Jg8-sv-KEj"/>
+                                            <constraint firstItem="iTx-BS-IV5" firstAttribute="top" secondItem="GBI-4s-djx" secondAttribute="bottom" constant="28" id="LHF-t6-I9C"/>
+                                            <constraint firstItem="pDO-D9-W4t" firstAttribute="top" secondItem="6WC-7a-1J5" secondAttribute="bottom" constant="46" id="RGh-aM-Rd9"/>
+                                            <constraint firstItem="pDO-D9-W4t" firstAttribute="leading" secondItem="qpY-vi-fd6" secondAttribute="leading" id="SnF-my-KH5"/>
+                                            <constraint firstItem="GBI-4s-djx" firstAttribute="width" secondItem="GBI-4s-djx" secondAttribute="height" multiplier="5/2" id="TjK-X5-cyw"/>
+                                            <constraint firstItem="iTx-BS-IV5" firstAttribute="centerX" secondItem="gQZ-UX-eux" secondAttribute="centerX" id="hBg-yk-qzX"/>
+                                            <constraint firstAttribute="bottom" secondItem="gQZ-UX-eux" secondAttribute="bottom" constant="20" id="hHt-G2-hHz"/>
+                                            <constraint firstItem="GBI-4s-djx" firstAttribute="top" secondItem="pDO-D9-W4t" secondAttribute="bottom" constant="28" id="hap-Vf-EWV"/>
+                                            <constraint firstAttribute="trailing" secondItem="pDO-D9-W4t" secondAttribute="trailing" id="n3K-fL-4kz"/>
+                                            <constraint firstItem="6WC-7a-1J5" firstAttribute="leading" secondItem="qpY-vi-fd6" secondAttribute="leading" constant="48" id="n60-U3-wHT"/>
+                                            <constraint firstItem="6WC-7a-1J5" firstAttribute="centerX" secondItem="iTx-BS-IV5" secondAttribute="centerX" id="nJu-Eq-4CH"/>
+                                            <constraint firstItem="6WC-7a-1J5" firstAttribute="top" secondItem="7BX-db-Bo6" secondAttribute="bottom" constant="28" id="qeM-Ix-oiS"/>
+                                            <constraint firstItem="7BX-db-Bo6" firstAttribute="centerX" secondItem="6WC-7a-1J5" secondAttribute="centerX" id="wax-JS-SVA"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qpY-vi-fd6" firstAttribute="leading" secondItem="xlo-w0-dwX" secondAttribute="leading" id="4hi-tq-gUB"/>
+                                    <constraint firstAttribute="trailing" secondItem="qpY-vi-fd6" secondAttribute="trailing" id="9SY-kW-vIe"/>
+                                    <constraint firstItem="qpY-vi-fd6" firstAttribute="top" secondItem="xlo-w0-dwX" secondAttribute="top" id="C87-nH-aV4"/>
+                                    <constraint firstAttribute="bottom" secondItem="qpY-vi-fd6" secondAttribute="bottom" id="CtV-Ge-M6N"/>
+                                    <constraint firstItem="qpY-vi-fd6" firstAttribute="width" secondItem="xlo-w0-dwX" secondAttribute="width" id="kxC-8f-kcJ"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xlo-w0-dwX" firstAttribute="leading" secondItem="dYc-es-Kq7" secondAttribute="leading" id="AK5-dg-76t"/>
+                            <constraint firstItem="dYc-es-Kq7" firstAttribute="top" secondItem="xlo-w0-dwX" secondAttribute="top" id="hmL-XE-da5"/>
+                            <constraint firstItem="xlo-w0-dwX" firstAttribute="width" secondItem="ZTm-vz-7O4" secondAttribute="width" id="uKY-K7-anB"/>
+                            <constraint firstItem="dYc-es-Kq7" firstAttribute="bottom" secondItem="xlo-w0-dwX" secondAttribute="bottom" id="xbi-Pq-VBA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dYc-es-Kq7"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SAVE YOUR VISHEO" id="qEj-al-rmp" userLabel="SELECT COVER ART">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="gl5-bz-h5C">
+                            <connections>
+                                <action selector="backPressed:" destination="1n1-fk-nLn" id="v3f-L6-uum"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="L2Y-ET-ymb" kind="show" identifier="showSendVisheo" id="r09-lo-wL2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AdW-uW-XbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2206" y="680"/>
+        </scene>
+        <!--EDIT VISHEO DESCRIPTION-->
+        <scene sceneID="2G4-kg-9u2">
+            <objects>
+                <viewController id="qaC-N5-r0V" customClass="EditVideoDescriptionViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uGE-oa-Z7b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5n-2D-HuN">
+                                <rect key="frame" x="50" y="50" width="275" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="VdR-hH-eLH"/>
+                                </constraints>
+                                <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hz5-ep-F7n">
+                                <rect key="frame" x="50" y="110" width="275" height="1"/>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="JL7-vh-lEB"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxK-am-2mg">
+                                <rect key="frame" x="50" y="131" width="275" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="XKd-AS-r65"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="Save Description">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePressed:" destination="qaC-N5-r0V" eventType="touchUpInside" id="pDL-Rv-NKA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pxK-am-2mg" firstAttribute="leading" secondItem="Hz5-ep-F7n" secondAttribute="leading" id="68x-qa-6PO"/>
+                            <constraint firstItem="Fuw-kt-86w" firstAttribute="trailing" secondItem="s5n-2D-HuN" secondAttribute="trailing" constant="50" id="6xm-91-Lok"/>
+                            <constraint firstItem="pxK-am-2mg" firstAttribute="top" secondItem="Hz5-ep-F7n" secondAttribute="bottom" constant="20" id="7wD-Ho-nif"/>
+                            <constraint firstItem="s5n-2D-HuN" firstAttribute="leading" secondItem="Fuw-kt-86w" secondAttribute="leading" constant="50" id="8J5-Bj-BSX"/>
+                            <constraint firstItem="s5n-2D-HuN" firstAttribute="top" secondItem="Fuw-kt-86w" secondAttribute="top" constant="50" id="Man-5c-ImE"/>
+                            <constraint firstItem="pxK-am-2mg" firstAttribute="trailing" secondItem="Hz5-ep-F7n" secondAttribute="trailing" id="RlD-hV-47v"/>
+                            <constraint firstItem="Hz5-ep-F7n" firstAttribute="leading" secondItem="s5n-2D-HuN" secondAttribute="leading" id="WSj-2I-tLk"/>
+                            <constraint firstItem="Hz5-ep-F7n" firstAttribute="trailing" secondItem="s5n-2D-HuN" secondAttribute="trailing" id="jH0-zZ-2Na"/>
+                            <constraint firstItem="Hz5-ep-F7n" firstAttribute="top" secondItem="s5n-2D-HuN" secondAttribute="bottom" id="zg6-15-V9u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fuw-kt-86w"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="EDIT VISHEO DESCRIPTION" id="eJ6-qO-gRR">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="PGw-Fd-L2z">
+                            <connections>
+                                <action selector="backPressed:" destination="qaC-N5-r0V" id="OXp-9y-diO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionField" destination="s5n-2D-HuN" id="wvf-FO-UEZ"/>
+                        <outlet property="saveButton" destination="pxK-am-2mg" id="DHT-MX-TOk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Jc-Dm-xQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3916" y="300"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow" width="20" height="20"/>
-        <image name="cover" width="50" height="52"/>
-        <image name="delete" width="20" height="20"/>
+        <image name="cloudShare" width="202" height="132"/>
+        <image name="copyUrl" width="60" height="60"/>
+        <image name="cover" width="78" height="63"/>
+        <image name="delete" width="11" height="13"/>
+        <image name="downloadFile" width="60" height="60"/>
+        <image name="edit" width="22" height="22"/>
         <image name="menu" width="20" height="20"/>
-        <image name="music" width="50" height="52"/>
+        <image name="music" width="78" height="63"/>
+        <image name="notification" width="25" height="25"/>
         <image name="play" width="80" height="80"/>
-        <image name="slideshow" width="50" height="52"/>
-        <image name="video" width="50" height="52"/>
+        <image name="sendVisheo" width="60" height="60"/>
+        <image name="shareOptions" width="150" height="60"/>
+        <image name="slideshow" width="78" height="63"/>
+        <image name="video" width="78" height="63"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="r09-lo-wL2"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

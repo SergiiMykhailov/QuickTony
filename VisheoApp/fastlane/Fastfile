@@ -1,0 +1,223 @@
+default_platform :ios
+
+IPAS_PATH = "./fastlane/ipas/"
+CRASHLYTICS_API_KEY = "7a46fd1c8ce2ff847c926c7643d2946bdd1499e7"
+CRASHLYTICS_BUILD_SECRET = "4c00028f3fa11585186d816e06a3e7e2e4e290b20eaf0f9e8d79d8661cb22f61"
+CRASHLYTICS_GROUPS = [ "test" ]
+
+# before_all do |lane, options|
+#     ensure_git_status_clean
+# end
+
+lane :pre_build do
+    cocoapods
+
+    new_build_number = ENV['XCS_INTEGRATION_NUMBER']
+    set_info_plist_value(
+        path: "./Visheo/Visheo-Info.plist",
+        key: "CFBundleVersion",
+        value: new_build_number)
+end
+
+
+lane :upload_testflight do
+    scheme_name = 'Visheo'
+    ipa_name = "VisheoVideo.ipa"
+
+    gym(
+        scheme: scheme_name,
+        skip_build_archive: true,
+        archive_path: ENV['XCS_ARCHIVE'],
+        codesigning_identity: 'iPhone Distribution: Oleksandr Makhtin (V6NPSSGKMC)',
+        export_options: {
+            provisioningProfiles: { 
+                "com.visheo.visheo" => "Visheo AppStore"
+            }
+        })
+
+    pilot(
+        ipa: ipa_name,
+        skip_waiting_for_build_processing: true)
+end
+
+
+
+private_lane :bump_build_version do |options|
+    app_id = options[:app_id]
+    target = options[:target]
+    project_path = "VisheoApp/Visheo.xcodeproj"
+
+    build_number = latest_testflight_build_number(initial_build_number: 1,
+                                                app_identifier: app_id)
+
+    build_number = build_number + 1;
+
+    increment_build_number_in_plist(
+        build_number: "#{build_number}",
+        xcodeproj: project_path,
+        target: target
+    )
+
+    build_number
+end
+
+
+private_lane :build_adhoc_app do |options|
+
+    workspace = options[:workspace]
+    scheme = options[:target]
+    archive_path = IPAS_PATH + "#{scheme}.xcarchive"
+
+    filename = "#{scheme}_adhoc"
+    output_filename = "#{filename}.ipa"
+    output_dsym = "#{filename}.app.dSYM.zip"
+
+    output_ipa_path = IPAS_PATH + output_filename
+    output_dsym_path = IPAS_PATH + output_dsym
+
+    gym(
+        workspace: workspace,
+        clean: true,
+        include_symbols: true,
+        include_bitcode: true,
+        scheme: scheme,
+        export_method: 'ad-hoc',
+        archive_path: archive_path,
+        output_directory: IPAS_PATH,
+        output_name: "#{scheme}_adhoc.ipa",
+        export_xcargs: "-allowProvisioningUpdates")
+
+    results = { archive_path: archive_path, adhoc_output: output_ipa_path, adhoc_dsym: output_dsym_path }
+    results
+end
+
+
+private_lane :build_appstore_app do |options|
+    workspace = options[:workspace]
+    scheme = options[:target]
+    archive_path = options[:archive_path]
+
+    filename = "#{scheme}_appstore"
+    output_filename = "#{filename}.ipa"
+    output_dsym = "#{filename}.app.dSYM.zip"
+
+    output_ipa_path = IPAS_PATH + output_filename
+    output_dsym_path = IPAS_PATH + output_dsym
+
+    gym(workspace: workspace,
+        scheme: "#{scheme}",
+        include_symbols: true,
+        include_bitcode: true,
+        skip_build_archive: true,
+        export_method: "app-store",
+        output_directory: IPAS_PATH,
+        output_name: output_filename,
+        archive_path: archive_path,
+        export_xcargs: "-allowProvisioningUpdates")
+
+    results = { appstore_output: output_ipa_path, appstore_dsym: output_dsym_path }
+    results
+end
+
+
+private_lane :distribute_to_crashlytics do |options|
+    ipa_path = options[:adhoc_output]
+    dsym_path = options[:adhoc_dsym]
+
+    crashlytics(
+                crashlytics_path: './VisheoApp/Pods/Crashlytics/',
+                api_token: CRASHLYTICS_API_KEY,
+                build_secret: CRASHLYTICS_BUILD_SECRET,
+                ipa_path: ipa_path,
+                groups: CRASHLYTICS_GROUPS
+                )
+                    
+    upload_symbols_to_crashlytics(
+                                dsym_path: dsym_path,
+                                api_token: CRASHLYTICS_API_KEY,
+                                binary_path: './VisheoApp/Pods/Fabric/upload-symbols'
+                                )
+end
+
+
+private_lane :distribute_to_testflight do |options|
+    ipa_path = options[:appstore_output]
+        
+    pilot(
+        ipa: ipa_path,
+        skip_submission: true,
+        skip_waiting_for_build_processing: true
+        )
+end
+
+
+private_lane :commit_build_numbers do |options|
+    target = options[:target]
+    project_path = "VisheoApp/Visheo.xcodeproj"
+
+    slug = options[:slug]
+    build_number = options[:build_number]
+    version = get_version_number(xcodeproj: project_path, 
+                                    target: target)
+
+    tag = "#{slug}/v#{version}(#{build_number})"
+
+    commit_version_bump(xcodeproj: project_path)
+    
+    add_git_tag(tag: tag)
+
+    push_to_git_remote
+end
+
+
+private_lane :execute_build do |input|
+
+    options = input
+
+    cocoapods(podfile: "VisheoApp")
+
+    build_number = bump_build_version(options)
+    options[:build_number] = build_number
+
+    adhoc_results = build_adhoc_app(options)
+    options = options.merge(adhoc_results)
+
+    appstore_results = build_appstore_app(options)
+    options = options.merge(appstore_results)
+
+    distribute_to_crashlytics(options)
+    distribute_to_testflight(options)
+
+    commit_build_numbers(options)
+end
+
+
+
+lane :build_staging do
+    options = { app_id: 'com.visheo.visheo.staging',
+                target: 'VisheoStaging',
+                workspace: 'VisheoApp/Visheo.xcworkspace',
+                slug: 'staging' }
+
+    execute_build(options)
+end
+
+lane :build_release do
+    options = { app_id: 'com.visheo.visheo',
+                target: 'Visheo',
+                workspace: 'VisheoApp/Visheo.xcworkspace',
+                slug: 'production' }
+
+    execute_build(options)
+end
+
+
+# error do |lane, exception, options|
+#     reset_git_repo(
+#         force: true,
+#         files: [
+#             "VisheoApp/Visheo/Visheo-Info.plist",
+#             "VisheoApp/Visheo/VisheoStaging-Info.plist"
+#         ]
+# )
+# end

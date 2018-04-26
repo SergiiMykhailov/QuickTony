@@ -10,18 +10,23 @@ import Foundation
 
 protocol HolidayCellViewModel {
     var imageURL : URL? {get}
+	var displaysDate: Bool { get }
     var holidayDateText : String {get}
+    var isFree: Bool {get}
 }
 
 struct VisheoHolidayCellViewModel : HolidayCellViewModel {
     let date : Date?
     let imageURL : URL?
+    let isFree: Bool
     
+	var displaysDate: Bool {
+		return false;
+//		return !holidayDateText.isEmpty;
+	}
+	
     var holidayDateText : String {
         guard let date = date else { return ""}
-        let formatter = DateFormatter()
-        formatter.dateFormat =  DateFormatter.dateFormat(fromTemplate: "dMMMM", options: 0, locale: Locale.current)
-        formatter.locale = Locale.current
-        return formatter.string(from: date)
+        return date.readableString()
     }
 }

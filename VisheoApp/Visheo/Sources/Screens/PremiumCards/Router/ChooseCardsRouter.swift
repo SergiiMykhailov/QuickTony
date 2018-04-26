@@ -10,10 +10,13 @@ import UIKit
 
 protocol ChooseCardsRouter: FlowRouter {
     func showMenu()
+    func showFreeRule()
     func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool)
     func showCreateVisheo()
     func showCoupon(with assets: VisheoRenderingAssets?)
 	func showPurchaseSuccess(with count: Int, assets: VisheoRenderingAssets?);
+    func showFreeAcceptPopup()
+    func showSubscriptionDescription(with assets: VisheoRenderingAssets?)
 }
 
 class VisheoChooseCardsRouter : ChooseCardsRouter {
@@ -21,6 +24,8 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
         case showShareVisheo = "showShareVisheo"
         case showCoupon = "showCoupon"
 		case showPurchaseSuccess = "showPurchaseSuccess"
+        case showFreeRule = "showFreeRule"
+        case showSubscriptionDescription = "showSubscriptionDescription"
     }
 	
     let dependencies: RouterDependencies
@@ -66,6 +71,13 @@ class VisheoChooseCardsRouter : ChooseCardsRouter {
 						 redeemedCount: userInfo[Constants.count] as! Int,
 						 assets: assets,
 						 showBackButton: assets != nil)
+        case .showSubscriptionDescription:
+            let subscriptionDescrptionController = segue.destination as! SubscriptionDescriptionViewController
+            let assets = sender as? VisheoRenderingAssets
+            let router = DefaultSubscriptionDescriptionRouter(withDependencies: dependencies, assets: assets)
+            router.start(controller: subscriptionDescrptionController)
+        case .showFreeRule:
+            break
         }
     }
 }
@@ -77,8 +89,16 @@ extension VisheoChooseCardsRouter {
 		static let count = "count"
     }
     
+    func showFreeAcceptPopup() {
+        controller?.showAlert(with:"", text: NSLocalizedString("Please agree that this Visheo can be publicly used", comment: "Unchecked public visheo message"))
+    }
+    
     func showMenu() {
         controller?.showLeftViewAnimated(self)
+    }
+    
+    func showFreeRule() {
+        controller?.performSegue(SegueList.showFreeRule, sender: nil)
     }
     
     func showShareVisheo(with assets: VisheoRenderingAssets, premium: Bool) {
@@ -96,5 +116,9 @@ extension VisheoChooseCardsRouter {
 	func showPurchaseSuccess(with count: Int, assets: VisheoRenderingAssets?) {
 		controller?.performSegue(SegueList.showPurchaseSuccess, sender: [ Constants.count : count, Constants.assets: assets as Any ])
 	}
+    
+    func showSubscriptionDescription(with assets: VisheoRenderingAssets?){
+        controller?.performSegue(SegueList.showSubscriptionDescription, sender: assets)
+    }
 }
 

@@ -63,6 +63,74 @@ public final class PhotosAnimation: VideoConvertible
 	}
 	
 	
+	enum AssetContents {
+		case single(image: CGImage, size: CGSize)
+		case sequence(images: [CGImage], keyframes: [TimeInterval], duration: TimeInterval, size: CGSize)
+		
+		var size: CGSize {
+			switch self {
+				case .single(_, let size):
+					return size;
+				case .sequence(_, _, _, let size):
+					return size;
+			}
+		}
+	}
+	
+	
+	func layerContents(from url: URL) -> AssetContents? {
+		guard let src = CGImageSourceCreateWithURL(url as CFURL, nil) else { return nil }
+		let frameCount = CGImageSourceGetCount(src)
+		
+		guard frameCount > 0 else {
+			return nil;
+		}
+		
+		if (frameCount < 2) {
+			guard let image = UIImage(contentsOfFile: url.path)?.fixedOrientation(), let cgImage = image.cgImage else {
+				return nil;
+			}
+			return .single(image: cgImage, size: image.size);
+		}
+		
+		var totalDuration = 0.0;
+		var relativeFrames: [Double] = []
+		var frames: [CGImage] = []
+		var size: CGSize = .zero;
+		
+		for index in 0..<frameCount {
+			guard let frameProperties = CGImageSourceCopyPropertiesAtIndex(src, index, nil) as? [String: AnyObject] else {
+				return nil;
+			}
+			guard let gifProperties = frameProperties[kCGImagePropertyGIFDictionary as String] as? [String: AnyObject] else {
+				return nil;
+			}
+			
+			var frameDuration = 0.0;
+			
+			if let delayTimeUnclampedProp = gifProperties[kCGImagePropertyGIFUnclampedDelayTime as String] as? NSNumber {
+				frameDuration = delayTimeUnclampedProp.doubleValue
+			}
+			else if let delayTimeProp = gifProperties[kCGImagePropertyGIFDelayTime as String] as? NSNumber {
+				frameDuration = delayTimeProp.doubleValue
+			}
+			
+			if let frame = CGImageSourceCreateImageAtIndex(src, index, nil) {
+				size = CGSize(width: frame.width, height: frame.height)
+				relativeFrames.append(totalDuration)
+				frames.append(frame)
+			}
+			
+			totalDuration += frameDuration;
+		}
+		
+		var keyFrames = relativeFrames.map{ $0 / totalDuration }
+		keyFrames.append(1.0);
+		
+		return .sequence(images: frames, keyframes: keyFrames, duration: totalDuration, size: size);
+	}
+	
+	
 	func prepare() -> (layer: CALayer, duration: TimeInterval)
 	{
 		let renderSize = quality.renderSize;
@@ -76,16 +144,20 @@ public final class PhotosAnimation: VideoConvertible
 		
 		for (index, asset) in frames.enumerated()
 		{
-			let image = UIImage(contentsOfFile: asset.url.path)!.fixedOrientation();
+			guard let contents = layerContents(from: asset.url) else {
+				continue;
+			}
 			
-			let scaledSize = image.scaledSize(fitting: renderSize);
+			let scaledSize = contents.size.scaledSize(fitting: renderSize);
 			
 			let motion = Motion.motionForAsset(sized: scaledSize, inBounds: renderSize);
 			let offset = motion.initialOffset(for: scaledSize, inBounds: renderSize);
 			
 			let contentsLayer = CALayer();
 			
-			contentsLayer.contents = image.cgImage;
+			if case .single(let image, _) = contents {
+				contentsLayer.contents = image;
+			}
 			contentsLayer.frame = CGRect(origin: .zero, size: scaledSize);
 			contentsLayer.position = CGPoint(x: renderFrame.midX, y: renderFrame.midY);
 			contentsLayer.backgroundColor = UIColor.clear.cgColor;
@@ -115,18 +187,36 @@ public final class PhotosAnimation: VideoConvertible
 			
 			if asset.type == .cover || asset.type == .photo
 			{
-				let motionAnimation = animation(for: motion, in: contentsLayer, initialOffset: offset);
-				motionAnimation.beginTime = beginTime;
+				var motionAnimation: CAPropertyAnimation
 				
-				switch asset.type {
+				if case .sequence(let images, let keyframes, let duration, _) = contents {
+					let animation = CAKeyframeAnimation(keyPath: "contents")
+					
+					animation.duration = duration;
+					animation.repeatCount = HUGE;
+					animation.isRemovedOnCompletion = false;
+					animation.fillMode = kCAFillModeForwards;
+					animation.values = images;
+					animation.keyTimes = keyframes.map(NSNumber.init);
+					animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear);
+					animation.calculationMode = kCAAnimationDiscrete;
+					
+					motionAnimation = animation;
+				}
+				else {
+					motionAnimation = animation(for: motion, in: contentsLayer, initialOffset: offset);
+					
+					switch asset.type {
 					case .photo:
 						motionAnimation.duration = settings.assetAnimationDuration;
 					case .cover:
 						motionAnimation.duration = settings.coverAnimationDuration;
 					default:
 						break;
+					}
 				}
-			
+				
+				motionAnimation.beginTime = beginTime;
 				contentsLayer.add(motionAnimation, forKey: "motion");
 				
 				let animDuration = (motionAnimation.duration - 0.55 * transitionAnimationDuration);

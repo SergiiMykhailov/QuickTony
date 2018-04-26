@@ -21,12 +21,22 @@ class ShareVisheoViewController: UIViewController {
 	@IBOutlet weak var shareReminderBottomConstraint: NSLayoutConstraint!
 	@IBOutlet weak var shareNowBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var missingVisheoView: UIView!
+    @IBOutlet weak var onboardingView: UIScrollView!
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+        if let couponAttributed = deleteButton.currentAttributedTitle?.mutableCopy() as? NSMutableAttributedString {
+            couponAttributed.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: NSRange(location: 0, length: couponAttributed.length))
+            deleteButton.setAttributedTitle(couponAttributed, for: .normal)
+        }
+        
         viewModel.creationStatusChanged = {[weak self] in
             self?.updateProgress()
+        }
+        
+        viewModel.visheoNameChanged = {[weak self] in
+            self?.updateVisheoName()
         }
         
         viewModel.showRetryLaterError = { [weak self] in
@@ -49,7 +59,10 @@ class ShareVisheoViewController: UIViewController {
 		reminderDatePicker.minimumDate = viewModel.minimumReminderDate;
         coverImage.sd_setImage(with: viewModel.coverImageUrl, completed: nil)
         
+        linkText.text = viewModel.visheoName
+        
         updateProgress()
+        viewModel.updateVisheoName()
 		
         if viewModel.showBackButton {
             navigationItem.leftBarButtonItems = [backBarItem]
@@ -115,25 +128,31 @@ class ShareVisheoViewController: UIViewController {
         progressBar.title = viewModel.renderingTitle
         interface(enable: false)
         menuBarItem.isEnabled = false
-        deleteBarItem.isEnabled = false
+        deleteButton.isEnabled = false
+        onboardingView.isHidden = !viewModel.shouldShowOnboarding()
     }
     
     private func updateForUploading() {
         progressBar.title = viewModel.uploadingTitle
         interface(enable: false)
         menuBarItem.isEnabled = true
-        deleteBarItem.isEnabled = false
+        deleteButton.isEnabled = false
+        onboardingView.isHidden = !viewModel.shouldShowOnboarding()
     }
     
     private func updateForReadyState() {
         menuBarItem.isEnabled = true
-        deleteBarItem.isEnabled = true
+        deleteButton.isEnabled = true
+        onboardingView.isHidden = true
+        viewModel.onboardingDidFinish()
+        viewModel.trackVisheoUploaded()
+        updateVisheoName()
+        
         UIView.animate(withDuration: 0.3) {
             self.progressBar.alpha = 0.0
             self.coverImage.alpha = 0.0
         }
         interface(enable: true)
-        linkText.text = viewModel.visheoLink
         if let visheoUrl = viewModel.visheoUrl {
             setupPlayer(with: visheoUrl)
         }
@@ -141,7 +160,7 @@ class ShareVisheoViewController: UIViewController {
     
     private func updateForMissingState() {
         menuBarItem.isEnabled = true
-        deleteBarItem.isEnabled = true
+        deleteButton.isEnabled = true
         UIView.animate(withDuration: 0.3) {
             self.progressBar.alpha = 0.0
             self.coverImage.alpha = 1.0
@@ -149,18 +168,17 @@ class ShareVisheoViewController: UIViewController {
         interface(enable: false)
     }
     
+    private func updateVisheoName() {
+        linkText.text = viewModel.visheoName
+    }
+    
     private func interface(enable: Bool) {
-        copyButton.isEnabled = enable
-        shareTypeSegment.isEnabled = enable
-        shareButton.isEnabled = enable
-		remindMeButton.isEnabled = enable;
-		reminderDatePicker.isEnabled = enable;
-        shareButton.alpha = enable ? 1.0 : 0.2
-        shareView.alpha = enable ? 1.0 : 0.2
-        copyButton.alpha = enable ? 1.0 : 0.2
-        linkText.alpha = enable ? 1.0 : 0.2
-		remindMeButton.alpha = enable ? 1.0 : 0.2;
-		reminderDatePicker.alpha = enable ? 1.0 : 0.2;
+        changeStateButton.isEnabled = enable
+        
+        [shareNowContainer, shareReminderContainer].forEach {
+            $0?.alpha = enable ? 1.0 : 0.2
+            $0?.isUserInteractionEnabled = enable
+        }
     }
     
     private var player : AVPlayer?
@@ -215,20 +233,24 @@ class ShareVisheoViewController: UIViewController {
         self.router    = router
     }
 	
+    private(set) var isNotificationState = false
+    
 	@IBOutlet weak var reminderDatePicker: UIDatePicker!
 	@IBOutlet weak var remindMeButton: UIButton!
     @IBOutlet weak var progressBar: LabeledProgressView!
-    @IBOutlet weak var shareTypeSegment: UISegmentedControl!
-    @IBOutlet weak var shareView: UIView!
+//    @IBOutlet weak var shareTypeSegment: UISegmentedControl!
     @IBOutlet weak var linkText: UILabel!
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var videoContainer: VideoView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet var menuBarItem: UIBarButtonItem!
     @IBOutlet var backBarItem: UIBarButtonItem!
-    @IBOutlet weak var deleteBarItem: UIBarButtonItem!
+    @IBOutlet weak var changeStateButton: UIBarButtonItem!
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    
     
     @IBAction func copyPressed(_ sender: Any) {
         if let link = viewModel.visheoLink {
@@ -260,12 +282,20 @@ class ShareVisheoViewController: UIViewController {
         }
     }
     
+    @IBAction func downloadPressed(_ sender: Any) {
+        self.viewModel.saveVisheo()
+    }
+    
     @IBAction func menuPressed(_ sender: Any) {
-        viewModel.showMenu()
+		viewModel.showReviewChoiceIfNeeded { [weak self] in
+			self?.viewModel.showMenu();
+		}
     }
     
     @IBAction func backPressed(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+		viewModel.showReviewChoiceIfNeeded { [weak self] in
+			self?.navigationController?.popViewController(animated: true)
+		}
     }
     
     @IBAction func deletePressed(_ sender: Any) {
@@ -280,39 +310,44 @@ class ShareVisheoViewController: UIViewController {
         present(confirmation, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var deletePressed: UIBarButtonItem!
+    @IBAction func editButtonPressed(_ sender: Any) {
+        viewModel.showEditDescriptionScreen()
+    }
+    
+    
     @IBAction func playButtonPressed(_ sender: Any) {
         guard let player = player else {return}
         player.play()
         playButton.isHidden = true
     }
 	
-	@IBAction func shareTypeChanged(_ sender: UISegmentedControl) {
+	@IBAction func shareTypeChanged(_ sender: UIBarButtonItem) {
 		
-		let shareNow = (sender.selectedSegmentIndex == 0);
+		isNotificationState = !isNotificationState;
 		
-		shareNowTrailingConstraint.isActive = shareNow;
-		shareNowLeadingConstraint.isActive = !shareNow;
-		shareNowBottomConstraint.isActive = shareNow;
-		shareReminderBottomConstraint.isActive = !shareNow;
+        changeStateButton.image = (isNotificationState) ?  #imageLiteral(resourceName: "send") : #imageLiteral(resourceName: "notification")
+        
+		shareNowTrailingConstraint.isActive = !isNotificationState;
+		shareNowLeadingConstraint.isActive = isNotificationState;
+		shareNowBottomConstraint.isActive = !isNotificationState;
+		shareReminderBottomConstraint.isActive = isNotificationState;
 		
 		UIView.animateKeyframes(withDuration: 0.35, delay: 0.0, options: [.beginFromCurrentState, .calculationModeLinear], animations: {
-			
-			if shareNow {
-				UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2, animations: {
-					self.containerScrollView.setContentOffset(.zero, animated: false);
-				})
-				UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.7, animations: {
-					self.view.layoutIfNeeded();
-				})
+			if self.isNotificationState {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.7, animations: {
+                    self.view.layoutIfNeeded();
+                })
+                UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: {
+                    let frame = self.shareReminderContainer.frame;
+                    self.containerScrollView.scrollRectToVisible(frame, animated: true);
+                })
 			} else {
-				UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.7, animations: {
-					self.view.layoutIfNeeded();
-				})
-				UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: {
-					let frame = self.shareReminderContainer.frame;
-					self.containerScrollView.scrollRectToVisible(frame, animated: true);
-				})
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2, animations: {
+                    self.containerScrollView.setContentOffset(.zero, animated: false);
+                })
+                UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.7, animations: {
+                    self.view.layoutIfNeeded();
+                })
 			}
 		}) { _ in
 		}

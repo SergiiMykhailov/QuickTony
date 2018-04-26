@@ -27,8 +27,9 @@ protocol PreviewViewModel : class {
     func editCover()
     func editPhotos()
     func editVideo()
-	func editSoundtrack();
-	
+	func editSoundtrack()
+    
+	func buttonSaveWasClicked()
     func sendVisheo()
     
     var assets : VisheoRenderingAssets {get}
@@ -54,12 +55,13 @@ class VisheoPreviewViewModel : PreviewViewModel
 	
     weak var router: PreviewRouter?
     private (set) var assets: VisheoRenderingAssets
-    private let permissionsService : AppPermissionsService
+    private let permissionsService: AppPermissionsService
     private let authService: AuthorizationService
     private let purchasesInfo: UserPurchasesInfo
 	private let appStateService: AppStateService;
 	private let soundtracksService: SoundtracksService
-    private let premCardsService : PremiumCardsService
+    private let premCardsService: PremiumCardsService
+    private let loggingService: EventLoggingService
 	
 	let extractor = VideoThumbnailExtractor();
 	var renderContainer: PhotosAnimation? = nil;
@@ -82,14 +84,16 @@ class VisheoPreviewViewModel : PreviewViewModel
          purchasesInfo: UserPurchasesInfo,
 		 appStateService: AppStateService,
 		 soundtracksService: SoundtracksService,
-         premCardsService: PremiumCardsService) {
+         premCardsService: PremiumCardsService,
+         eventLoggingService: EventLoggingService) {
         self.assets = assets
         self.permissionsService = permissionsService
         self.authService = authService
         self.purchasesInfo = purchasesInfo
-		self.appStateService = appStateService;
-		self.soundtracksService = soundtracksService;
+		self.appStateService = appStateService
+		self.soundtracksService = soundtracksService
         self.premCardsService = premCardsService
+        self.loggingService = eventLoggingService
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoPreviewViewModel.soundtrackDownloaded(_:)), name: .soundtrackDownloadFinished, object: nil);
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoPreviewViewModel.soundtrackDownloadFailed(_:)), name: .soundtrackDownloadFailed, object: nil);
@@ -148,7 +152,7 @@ class VisheoPreviewViewModel : PreviewViewModel
 		renderStatus = .rendering;
 			
 		let videoURL = assets.videoUrl
-		let quality = RenderQuality.res480;
+		let quality = RenderQuality.res720;
 		
 		firstly {
 			fetchVideoScreenshot(url: videoURL)
@@ -239,17 +243,51 @@ class VisheoPreviewViewModel : PreviewViewModel
 		router?.showSoundtrackEdit(with: assets);
 	}
     
+    func buttonSaveWasClicked() {
+        self.loggingService.log(event: VisheoSaved())
+        sendVisheo()
+    }
+    
     func sendVisheo() {
         if authService.isAnonymous {
-            router?.showRegistration {
-                self.sendVisheo()
+            router?.showRegistration { [weak self] registered in
+				if (registered) {
+                    //            showProgressCallback?(true)
+                    self?.premCardsService.checkUserCardsRemotely {
+                        //                self.showProgressCallback?(false)
+                        self?.sendVisheo()
+                    }
+				}
+            }
+        } else if self.assets.originalOccasion.isFree {
+            showSendVisheoScreen()
+        } else if purchasesInfo.currentUserSubscriptionState() == .active {
+            showSendVisheoScreen()
+        } else if purchasesInfo.currentUserSubscriptionState() == .expired {
+//            showProgressCallback?(true)
+            premCardsService.checkSubscriptionStateRemotely() { [weak self] purchaseResult, error in
+//                self.showProgressCallback?(false)
+                let assets = self?.assets
+                if let purchaseResult = purchaseResult {
+                    switch purchaseResult {
+                        case .purchased(_,_):
+                            self?.showSendVisheoScreen()
+                        case .expired(_,_):
+                            self?.router?.showCardTypeSelection(with: assets!)
+                        case .notPurchased:
+                            self?.router?.showCardTypeSelection(with: assets!)
+                    }
+                } else if let error = error {
+                    //TODO: handle error
+                    print(error)
+                }
             }
         } else if purchasesInfo.currentUserPremiumCards == 0 {
             router?.showCardTypeSelection(with: assets)
         } else {
             premCardsService.usePremiumCard(completion: { (success) in
                 if success {
-                    self.router?.sendVisheo(with: self.assets, premium: true)
+                    self.showSendVisheoScreen()
                 } else {
                     self.premiumUsageFailedHandler?()
                 }
@@ -257,6 +295,10 @@ class VisheoPreviewViewModel : PreviewViewModel
         }
     }
 	
+    private func showSendVisheoScreen(withPremium premium: Bool = true) {
+        router?.sendVisheo(with: self.assets, premium: premium)
+    }
+    
 	private func launchResourceTimeoutMonitor() {
 		displayLink = CADisplayLink(target: self, selector: #selector(VisheoPreviewViewModel.timeoutTick));
 		displayLink?.add(to: RunLoop.main, forMode: .commonModes);

@@ -67,7 +67,7 @@ class ViewController: UIViewController
 		let video = Bundle.main.path(forResource: "video", ofType: "mp4")!;
 		let audio = Bundle.main.path(forResource: "beginning", ofType: "m4a")!;
 		
-		var task = RenderTask(quality: .res480);
+		var task = RenderTask(quality: .res720);
 		
 		task.addMedia(URL(fileURLWithPath: cover), type: .cover);
 		task.addMedia(photos, type: .photo);

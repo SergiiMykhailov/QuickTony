@@ -14,6 +14,12 @@ enum AuthorizationReason {
 	case premiumCards
 	case redeemCoupons
 	case sendFeedback
+	case sendVisheo
+}
+
+enum AuthorizationDismissType {
+	case back
+	case close
 }
 
 protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerating {
@@ -32,6 +38,8 @@ protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerat
     
     var cancelAllowed : Bool {get}
     var descriptionString : String? {get}
+	
+	var closeButtonType: AuthorizationDismissType? { get }
 }
 
 class VisheoAutorizationViewModel : AuthorizationViewModel {
@@ -47,24 +55,44 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
 				return NSLocalizedString("Please sign in to redeem coupons", comment: "Please sign in to redeem coupons")
 			case .sendFeedback:
 				return NSLocalizedString("Please sign in to send feedback", comment: "Please sign in to send feedback")
+			case .sendVisheo:
+				return NSLocalizedString("SIGN UP TO SEND YOUR VISHEO", comment: "SIGN UP TO SEND YOUR VISHEO")
 			default:
 				return nil
 		}
     }
+	
+	var closeButtonType: AuthorizationDismissType? {
+		if (!cancelAllowed) {
+			return nil;
+		}
+		
+		switch authReason {
+			case .sendVisheo:
+				return .back;
+			default:
+				return .close;
+		}
+	}
     
     var warningAlertHandler: ((String) -> ())?
     var getPresentationViewController: (() -> (UIViewController?))?
     var showProgressCallback: ((Bool) -> ())?
     let anonymousAllowed : Bool
+    let userNotificationService: UserNotificationsService
 	private let authReason : AuthorizationReason;
     
     weak var router: AuthorizationRouter?
     var authService : AuthorizationService
     
-	init(authService: AuthorizationService, anonymousAllowed: Bool, authReason: AuthorizationReason) {
+    init(authService: AuthorizationService,
+         anonymousAllowed: Bool,
+         authReason: AuthorizationReason,
+         userNotificationService: UserNotificationsService) {
 		self.authReason = authReason
         self.authService = authService
         self.anonymousAllowed = anonymousAllowed
+        self.userNotificationService = userNotificationService
     }
     
     deinit {
@@ -105,6 +133,10 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
         showProgressCallback?(false)
         stopAuthObserving()
         router?.showMainScreen()
+        
+        if (!authService.isAnonymous) {
+            userNotificationService.registerNotifications()
+        }
     }
     
     @objc func processLoginFail(notification: Notification) {

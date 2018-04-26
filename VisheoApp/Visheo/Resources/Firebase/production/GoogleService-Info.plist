@@ -36,5 +36,7 @@
 	<string>1:25294653104:ios:b74fdbb40e1c723f</string>
 	<key>DATABASE_URL</key>
 	<string>https://visheo42.firebaseio.com</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 </dict>
 </plist>

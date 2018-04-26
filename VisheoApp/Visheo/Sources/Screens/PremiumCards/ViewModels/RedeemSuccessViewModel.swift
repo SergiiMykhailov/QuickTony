@@ -52,6 +52,11 @@ class VisheoRedeemSuccessViewModel : RedeemSuccessViewModel {
     }
     
     var redeemedDescription: String {
+        if (purchasesService.currentUserSubscriptionState() == .active)
+        {
+            return String(format: NSLocalizedString("You successfully purchased subscription", comment: "redeem success description"))
+        }
+        
         return String(format: NSLocalizedString("%d premium card(s) added to your account", comment: "redeem success description"), redeemedCount)
     }
 	
@@ -78,16 +83,48 @@ class VisheoRedeemSuccessViewModel : RedeemSuccessViewModel {
     
     func createOrContinue() {
 		if let _ = assets {
-			usePremCard();
+			makePremiumContent();
 		} else {
 			router?.showCreate();
 		}
     }
 	
+    func makePremiumContent() {
+        if (purchasesService.currentUserSubscriptionState() != .none) {
+            useSubscription()
+            return
+        }
+        usePremCard()
+    }
+    
 	func retryPremiumUse() {
-		usePremCard()
+		makePremiumContent()
 	}
 	
+    private func useSubscription() {
+        guard let assets = assets else { return }
+        if (purchasesService.currentUserSubscriptionState() == .active) {
+            self.router?.showShareVisheo(with: assets, premium: true)
+        } else if purchasesService.currentUserSubscriptionState() == .expired {
+            showProgressCallback?(true)
+            purchasesService.checkSubscriptionStateRemotely() { [unowned self] purchaseResult, error in
+                self.showProgressCallback?(false)
+                if let purchaseResult = purchaseResult {
+                    switch purchaseResult {
+                        case .purchased(_,_):
+                            self.router?.showShareVisheo(with: assets, premium: true)
+                        case .expired(_,_):
+                            self.router?.showCreate();
+                        case .notPurchased:
+                            self.router?.showCreate();
+                    }
+                } else if error != nil {
+                    self.router?.showCreate();
+                }
+            }
+        }
+    }
+    
 	private func usePremCard() {
 		guard let `assets` = assets else {
 			return;

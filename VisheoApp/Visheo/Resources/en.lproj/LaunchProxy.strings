@@ -1,12 +1,18 @@
-/* Class = "UIButton"; normalTitle = "Got It"; ObjectID = "Huv-JD-3EV"; */
-"Huv-JD-3EV.normalTitle" = "Got It";
+/* Class = "UILabel"; text = "Visheo is a Video Wish "; ObjectID = "Qio-1g-qKo"; */
+"Qio-1g-qKo.text" = "Visheo is a Video Wish";
 
-/* Class = "UILabel"; text = "Add memorable pictures \n& record your Video Wish"; ObjectID = "SFV-q7-Sb8"; */
-"SFV-q7-Sb8.text" = "Add memorable pictures \n& record your Video Wish";
+/* Class = "UILabel"; text = "Personal Greeting Movie"; ObjectID = "SFV-q7-Sb8"; */
+"SFV-q7-Sb8.text" = "Cute Video Greetings";
 
-/* Class = "UILabel"; text = "Select upcoming occasion \n& choose cover you like"; ObjectID = "gXx-OS-CWP"; */
-"gXx-OS-CWP.text" = "Select upcoming occasion \n& choose card you like";
+/* Class = "UILabel"; text = "for your dear ones on any occasion created in seconds"; ObjectID = "VSg-ky-uib"; */
+"VSg-ky-uib.text" = "for your dear ones on any occasion\ncreated in seconds";
 
-/* Class = "UILabel"; text = "Send Visheo & deliver your care to your dear ones"; ObjectID = "ite-Df-ZgF"; */
-"ite-Df-ZgF.text" = "Send Visheo & deliver your care to your dear ones";
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "rmq-hS-6ge"; */
+"rmq-hS-6ge.normalTitle" = "Next";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "yJv-Qa-CL1"; */
+"yJv-Qa-CL1.normalTitle" = "Create Visheo";
+
+/* Class = "UILabel"; text = "made of Greeting Card, Photos, \nVideo Message and Music"; ObjectID = "z3b-Ph-eEC"; */
+"z3b-Ph-eEC.text" = "made of Greeting Card, Photos, \nVideo Message & Music";
 

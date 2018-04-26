@@ -11,20 +11,35 @@ import Foundation
 protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, CustomAlertGenerating {
     var smallBundleButtonHidden : Bool {get}
     var bigBundleButtonHidden : Bool {get}
-
-    var smallBundleButtonText : String {get}
-    var bigBundleButtonText : String {get}
+    var subscribeSectionHidden : Bool {get}
+    var subscribeLimitedHidden : Bool {get}
     
-    var premiumCardsNumber : Int {get}
+    var isFreeVisheoRuleAccepted : Bool {get}
     
     var showBackButton : Bool {get}
     var showFreeSection : Bool {get}
+    var showSubscribedSection : Bool {get}
+    var showCouponSection: Bool {get}
+    
+    func acceptFreeRule(withSelected selected:Bool)
+    
+    var premiumCardsNumber : Int {get}
+
+    var smallBundleButtonText : String {get}
+    var bigBundleButtonText : String {get}
+    var subscribeButtonText : String {get}
+    var untilDateText : String {get}
+    func limitedOfferText() -> String?
+    
+    func showFreeRule()
     
     func buySmallBundle()
     func buyBigBundle()
     
     func showMenu()
     func showCoupon()
+    
+    func showSubscriptionDescription()
     
     var didChange : (()->())? {get set}
     
@@ -33,19 +48,34 @@ protocol ChooseCardsViewModel : class, AlertGenerating, ProgressGenerating, Cust
 }
 
 class VisheoChooseCardsViewModel : ChooseCardsViewModel {
+    
     var confirmFreeSendHandler: (() -> ())?
     var premiumUsageFailedHandler: (() -> ())?
+    
+    private var freeVisheoRuleAccepted: Bool
     
     var showBackButton: Bool {
         return !shownFromMenu
     }
     
+    
     var showFreeSection: Bool {
-        return premiumCardsNumber == 0
+        return purchasesService.isFreeAvailable &&
+               premiumCardsNumber == 0 &&
+               !showSubscribedSection &&
+               visheoAssets != nil
+    }
+    
+    var showCouponSection: Bool {
+        return purchasesService.isCouponAvailable && !showSubscribedSection
     }
     
     var premiumCardsNumber: Int {
         return purchasesInfo.currentUserPremiumCards
+    }
+    
+    var showSubscribedSection : Bool {
+        return purchasesInfo.currentUserSubscriptionState() == .active
     }
     
     var didChange: (() -> ())? {
@@ -67,12 +97,55 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         return purchasesService.bigBundle == nil
     }
     
+    var subscribeSectionHidden: Bool {
+        return  purchasesService.subscription == nil || showSubscribedSection
+    }
+    
     var smallBundleButtonText: String {
         return description(for: purchasesService.smallBundle) ?? ""
     }
     
     var bigBundleButtonText: String {
         return description(for: purchasesService.bigBundle) ?? ""
+    }
+    
+    var subscribeButtonText: String {
+        return description(for: purchasesService.subscription) ?? ""
+    }
+    
+    var subscribeLimitedHidden: Bool {
+        return !purchasesService.isSubscriptionLimited
+    }
+    
+    var isFreeVisheoRuleAccepted: Bool {
+        return freeVisheoRuleAccepted
+    }
+    
+    var untilDateText: String {
+        guard let dateString = purchasesService.subscriptionExpirationDate?.readableString(withYear: true) else {return ""}
+        return String.init(format:NSLocalizedString("until %@", comment: "Date format with number index for subscription string") as String, dateString)
+    }
+    
+    private func description(for subscription: PremiumSubsctription?) -> String? {
+        if let price = subscription?.price, let locale = subscription?.priceLocale {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.locale = locale
+            let priceString = formatter.string(from: price)
+            let pricePart = NSString(format:subscriptionPartFormat() as NSString, priceString ?? "")
+            return "\(pricePart)"
+        }
+        
+        return nil
+    }
+    
+    private func subscriptionPartFormat() -> String {
+        let key = (purchasesService.isSubscriptionLimited) ? "Unlimited / %@ per month *" : "Unlimited / %@ per month"
+        return NSLocalizedString(key, comment: "Unlimited visheos subscription template")
+    }
+    
+    func limitedOfferText() -> String? {
+        return (purchasesService.isSubscriptionLimited) ? NSLocalizedString("* Limited offer", comment: "Limited subscription text") : nil
     }
     
     private func description(for bundle: PremiumCardsBundle?) -> String? {
@@ -84,7 +157,6 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
             let pricePart = NSString(format: NSLocalizedString(" for %@", comment: "Premium cards price part template") as NSString, priceString ?? "")
             return "\(description)\(pricePart)"
         }
-        
         return nil
     }
     
@@ -100,8 +172,9 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         self.purchasesInfo = purchasesInfo
         self.shownFromMenu = fromMenu
         self.visheoAssets = assets
+        self.freeVisheoRuleAccepted = true
         
-        if purchasesService.smallBundle == nil || purchasesService.bigBundle == nil {
+        if (purchasesService.smallBundle == nil || purchasesService.bigBundle == nil) && purchasesService.subscription == nil{
             purchasesService.reloadPurchases()
         }
         
@@ -131,6 +204,22 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(VisheoChooseCardsViewModel.updatePremCardsNumber), name: Notification.Name.userPremiumCardsCountChanged, object: nil)
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.userSubscriptionStateChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.freeVisheoAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.couponAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.subscriptionAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.didChange?()
+        }
     }
     
     deinit {
@@ -138,12 +227,16 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
     }
     
     func sendRegularConfirmed() {
+        guard freeVisheoRuleAccepted else {
+            router?.showFreeAcceptPopup()
+            return
+        }
+        
         if let assets = visheoAssets {
             router?.showShareVisheo(with: assets, premium: false)
         } else {
             router?.showCreateVisheo()
         }
-
     }
     
     func buyBigBundle() {
@@ -160,12 +253,25 @@ class VisheoChooseCardsViewModel : ChooseCardsViewModel {
         }
     }
     
+    func acceptFreeRule(withSelected selected:Bool) {
+        freeVisheoRuleAccepted = selected
+        self.didChange?()
+    }
+    
+    func showFreeRule() {
+        router?.showFreeRule()
+    }
+    
     func showMenu() {
         router?.showMenu()
     }
     
     func showCoupon() {
         router?.showCoupon(with: visheoAssets)
+    }
+    
+    func showSubscriptionDescription() {
+        router?.showSubscriptionDescription(with: visheoAssets)
     }
     
     // MARK: Notifications

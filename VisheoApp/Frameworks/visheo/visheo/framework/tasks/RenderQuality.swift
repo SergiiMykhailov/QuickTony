@@ -13,7 +13,6 @@ import AVFoundation
 
 public enum RenderQuality: Int
 {
-	case res480 = 480
 	case res720 = 720
 	case res1080 = 1080
 }
@@ -38,8 +37,6 @@ extension RenderQuality {
 	{
 		switch self
 		{
-			case .res480:
-				return AVAssetExportPreset640x480;
 			case .res720:
 				return AVAssetExportPreset1280x720;
 			case .res1080:

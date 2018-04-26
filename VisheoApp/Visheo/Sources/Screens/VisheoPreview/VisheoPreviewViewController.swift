@@ -66,6 +66,12 @@ class VisheoPreviewViewController: UIViewController {
 		navigationController?.popViewController(animated: true);
 	}
     
+    @IBAction func exitButtonPressed(_ sender: UIBarButtonItem) {
+        self.handleExitButtonPress { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true);
+        }
+    }
+    
     @IBAction func editCover(_ sender: Any) {
         viewModel.editCover()
     }
@@ -82,7 +88,7 @@ class VisheoPreviewViewController: UIViewController {
     }
     
     @IBAction func sendPressed(_ sender: Any) {
-        viewModel.sendVisheo()
+        viewModel.buttonSaveWasClicked()
     }
 	
 	@IBAction func togglePlayback() {
@@ -126,14 +132,26 @@ class VisheoPreviewViewController: UIViewController {
 		}
 	}
     
+    private func handleExitButtonPress(withContinue continueHandler: @escaping () -> ()) {
+        let alertController = UIAlertController(title: NSLocalizedString("Message", comment: "exit from preview message title"), message: NSLocalizedString("If you exit now you Visheo won't be saved", comment: "if you exit now you Visheo won't be saved"), preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Exit", comment: "Exit button text"), style: .destructive) { (action) in
+            continueHandler()
+        })
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
     private func handlePremiumCardUsageError() {
         let alertController = UIAlertController(title: NSLocalizedString("Oops…", comment: "error using premium card title"), message: NSLocalizedString("Something went wrong. Please check your Internet connection and try again.", comment: "something went wrong while suing premium card"), preferredStyle: .alert)
 
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Try Again", comment: "Try again button text"), style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Try Again", comment: "Try again button text"), style: .default) { (action) in
             self.viewModel.sendVisheo()
-        }))
+        })
             
         present(alertController, animated: true, completion: nil)
     }

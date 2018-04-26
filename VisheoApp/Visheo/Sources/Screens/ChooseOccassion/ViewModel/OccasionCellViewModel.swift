@@ -11,9 +11,11 @@ import Foundation
 protocol OccasionCellViewModel {
     var imageURL : URL? {get}
     var name : String {get}
+    var isFree : Bool {get}
 }
 
 struct VisheoOccasionCellViewModel : OccasionCellViewModel {
     let name : String
     let imageURL : URL?
+    let isFree: Bool
 }

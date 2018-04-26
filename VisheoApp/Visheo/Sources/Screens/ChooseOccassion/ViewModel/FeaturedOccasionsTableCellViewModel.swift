@@ -1,0 +1,67 @@
+//
+//  FeaturedOccasionsTableCellViewModel.swift
+//  Visheo
+//
+//  Created by Ivan on 3/26/18.
+//  Copyright © 2018 Olearis. All rights reserved.
+//
+
+import Foundation
+import CoreGraphics
+
+protocol FeaturedOccasionsTableCellViewModel {
+    var title : String {get}
+    var subTitle : String? {get}
+    var occasionsCount : Int {get}
+    var firstSelectedIndex : Int? {get}
+    
+    var itemSelectionHandler : (OccasionRecord) -> () {get}
+    
+    func selectOccasion(at index: Int)
+    func occasionViewModel(at index: Int) -> HolidayCellViewModel
+}
+
+struct VisheoFeaturedOccasionsTableCellViewModel : FeaturedOccasionsTableCellViewModel {
+    static func height(forWidth width: CGFloat) -> CGFloat {
+        let heightBeforeCollection = 62 as CGFloat
+        let collectionOffset = 40 as CGFloat
+        return width + heightBeforeCollection - collectionOffset
+    }
+    
+    
+    var title : String
+    var subTitle : String?
+    private var occasionsList : [OccasionRecord]
+    var itemSelectionHandler : (OccasionRecord) -> ()
+    
+    var occasionsCount: Int {
+        return occasionsList.count
+    }
+    
+    init(withTitle title: String,
+                subTitle: String?,
+               occasions: [OccasionRecord],
+                 handler: @escaping (OccasionRecord) -> ()) {
+        self.title = title
+        self.subTitle = subTitle
+        self.occasionsList = occasions
+        self.itemSelectionHandler = handler
+    }
+    
+    private let maxPastDays = 2
+    var firstSelectedIndex: Int? {
+        if let idx = occasionsList.index(where: { $0.category == .featured }) {
+            return idx;
+        }
+        return occasionsList.index { ($0.date?.daysFromNow ?? 0) >= -maxPastDays }
+    }
+    
+    func selectOccasion(at index: Int) {
+        itemSelectionHandler(occasionsList[index])
+    }
+    
+    func occasionViewModel(at index: Int) -> HolidayCellViewModel {
+        let model = occasionsList[index]
+        return VisheoHolidayCellViewModel(date: model.date, imageURL: model.previewCover.url, isFree: model.isFree)
+    }
+}

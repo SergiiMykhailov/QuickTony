@@ -22,6 +22,9 @@ class VisheoRenderingAssets {
     var assetsFolderRelUrl : URL {
         return URL(string: id)!
     }
+    
+    var signature : String?
+    
     private var docs: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
@@ -162,6 +165,10 @@ class VisheoRenderingAssets {
     
     // MARK: Video
     
+    var isVideoRecorded : Bool {
+        return FileManager.default.fileExists(atPath: videoUrl.path)
+    }
+    
     var trimPoints : (CMTime, CMTime)?
     
     var videoRelPath : String {
@@ -215,6 +222,7 @@ extension VisheoRenderingAssets {
     var creationInfo : VisheoCreationInfo {
         return VisheoCreationInfo(visheoId: id,
                                   occasionName: originalOccasion.name,
+                                  signature: signature,
                                   coverId: coverId ?? -1,
                                   coverRemotePreviewUrl: coverRemotePreviewUrl,
                                   picturesCount: photoUrls.count,

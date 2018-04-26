@@ -1,11 +1,11 @@
 /* Class = "UISegmentedControl"; 2Za-I9-yK2.segmentTitles[0] = "Words Ideas"; ObjectID = "2Za-I9-yK2"; */
-"2Za-I9-yK2.segmentTitles[0]" = "Words Ideas";
+"2Za-I9-yK2.segmentTitles[0]" = "Wishes Ideas";
 
 /* Class = "UISegmentedControl"; 2Za-I9-yK2.segmentTitles[1] = "Best Practices"; ObjectID = "2Za-I9-yK2"; */
 "2Za-I9-yK2.segmentTitles[1]" = "Best Practices";
 
 /* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "Cbl-tb-5X6"; */
-"Cbl-tb-5X6.normalTitle" = "Allow Access";
+"Cbl-tb-5X6.normalTitle" = "Record Video Message";
 
 /* Class = "UILabel"; text = "REC"; ObjectID = "Ct7-4F-cZX"; */
 "Ct7-4F-cZX.text" = "REC";
@@ -14,13 +14,13 @@
 "Ej2-FM-vwo.title" = "Close";
 
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "LNN-dW-DoG"; */
-"LNN-dW-DoG.title" = "RECORD YOUR VIDEO WISH";
+"LNN-dW-DoG.title" = "RECORD VIDEO MESSAGE";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "MjJ-FK-D1Y"; */
 "MjJ-FK-D1Y.text" = "3";
 
-/* Class = "UILabel"; text = "To add video wish to your Visheo — please allow Visheo to access your camera and microphone when prompted"; ObjectID = "MqL-i9-Wr9"; */
-"MqL-i9-Wr9.text" = "To record your video wish please allow the app to access your camera and microphone";
+/* Class = "UILabel"; text = "Video Message (up to 30 sec) is the key component of your Visheo that makes it personal & touching\n"; ObjectID = "MqL-i9-Wr9"; */
+"MqL-i9-Wr9.text" = "Video Message (up to 30 sec) is the key component of your Visheo that makes it personal & touching";
 
 /* Class = "UILabel"; text = "Please rotate your device to portrait orientation"; ObjectID = "Srt-Bl-ce3"; */
 "Srt-Bl-ce3.text" = "Please rotate your device to portrait orientation";
@@ -29,19 +29,19 @@
 "YMW-wT-ePu.text" = "Good Lighting is Critical";
 
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "a5t-vd-l66"; */
-"a5t-vd-l66.title" = "RECORD YOUR VIDEO WISH";
+"a5t-vd-l66.title" = "RECORD VIDEO MESSAGE";
 
 /* Class = "UIButton"; normalTitle = "Video Wish is Ready"; ObjectID = "agg-W8-Ax4"; */
-"agg-W8-Ax4.normalTitle" = "Video Wish is Ready";
+"agg-W8-Ax4.normalTitle" = "Proceed to Preview";
 
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "crN-cW-0Hk"; */
-"crN-cW-0Hk.title" = "RECORD YOUR VIDEO WISH";
+"crN-cW-0Hk.title" = "RECORD VIDEO MESSAGE";
 
 /* Class = "UILabel"; text = "01"; ObjectID = "eBH-g9-WZk"; */
 "eBH-g9-WZk.text" = "01";
 
 /* Class = "UINavigationItem"; title = "INSPIRATION"; ObjectID = "gxc-oN-cko"; */
-"gxc-oN-cko.title" = "INSPIRATION";
+"gxc-oN-cko.title" = "BEST PRACTICIES";
 
 /* Class = "UILabel"; text = "My honey!\n May your Thanksgiving be filled with love & cheer, but also with full tummies. \nHappy Thanksgiving!"; ObjectID = "nMR-P5-9Es"; */
 "nMR-P5-9Es.text" = "My honey!\n May your Thanksgiving be filled with love & cheer, but also with full tummies. \nHappy Thanksgiving!";
@@ -52,8 +52,8 @@
 /* Class = "UIButton"; normalTitle = "Retake"; ObjectID = "vfD-hc-yMF"; */
 "vfD-hc-yMF.normalTitle" = "Retake";
 
-/* Class = "UILabel"; text = "VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE"; ObjectID = "xJk-8Q-bOw"; */
-"xJk-8Q-bOw.text" = "VISHEO NEEDS ACCESS TO YOUR CAMERA AND MICROPHONE";
+/* Class = "UILabel"; text = "Step 3 / 3"; ObjectID = "xJk-8Q-bOw"; */
+"xJk-8Q-bOw.text" = "Step 3 / 3";
 
 /* Class = "UILabel"; text = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video."; ObjectID = "zUb-Nv-0Bh"; */
 "zUb-Nv-0Bh.text" = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video.";

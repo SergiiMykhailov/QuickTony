@@ -11,11 +11,18 @@ import UIKit
 protocol ShareRouter: FlowRouter {
     func goToRoot()
     func showMenu()
+	func showReviewChoice(onCancel: (() -> Void)?)
+    func showEditDescriptionScreen(withDescription description: String, successEditinHandle: @escaping (String) -> ())
 }
 
 class ShareVisheoRouter : ShareRouter {
+    private enum Constants {
+        static let description = "description"
+        static let successEditinHandle = "successEditinHandle"
+    }
+    
     enum SegueList: String, SegueListType {
-        case next
+        case showEditDescription = "showEditDescription"
     }
     
     let dependencies: RouterDependencies
@@ -32,7 +39,10 @@ class ShareVisheoRouter : ShareRouter {
 									  creationService: dependencies.creationService,
                                       notificationsService: dependencies.userNotificationsService,
 									  loggingService: dependencies.loggingService,
-                                      sharePremium : sharePremium)
+									  userInfo: dependencies.userInfoProvider,
+									  feedbackService: dependencies.feedbackService,
+                                      sharePremium : sharePremium,
+                                      appStateService: dependencies.appStateService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -45,7 +55,10 @@ class ShareVisheoRouter : ShareRouter {
 									  renderingService: dependencies.renderingService,
 									  creationService: dependencies.creationService,
 									  notificationsService: dependencies.userNotificationsService,
-									  loggingService: dependencies.loggingService
+									  loggingService: dependencies.loggingService,
+									  userInfo: dependencies.userInfoProvider,
+                                      feedbackService: dependencies.feedbackService,
+                                      appStateService: dependencies.appStateService
 									  );
 		viewModel = vm
 		vm.router = self
@@ -63,7 +76,10 @@ class ShareVisheoRouter : ShareRouter {
 											  visheoService: dependencies.creationService,
 											  cache: dependencies.visheosCache,
 											  notificationsService: dependencies.userNotificationsService,
-											  loggingService: dependencies.loggingService)
+											  loggingService: dependencies.loggingService,
+											  userInfo: dependencies.userInfoProvider,
+                                              feedbackService: dependencies.feedbackService,
+                                              appStateService: dependencies.appStateService)
 		
         viewModel = vm
 		vm.router = self
@@ -76,8 +92,15 @@ class ShareVisheoRouter : ShareRouter {
             return
         }
         switch segueList {
-        default:
-            break
+            case .showEditDescription:
+                let editController = segue.destination as! EditVideoDescriptionViewController
+                let editRouter = DefaultEditVideoDescriptionRouter(dependencies: dependencies)
+                let userInfo = sender as! [String : Any]
+                let description = userInfo[Constants.description] as? String
+                let successEditHandler = userInfo[Constants.successEditinHandle] as? (String) -> ()
+                editRouter.start(with: description!,
+                                 editHandler: successEditHandler,
+                                 controller: editController)
         }
     }
 }
@@ -89,6 +112,16 @@ extension ShareVisheoRouter {
     
     func showMenu() {
          controller?.showLeftViewAnimated(self)
+    }
+	
+	func showReviewChoice(onCancel: (() -> Void)?) {
+		if let navigation = controller?.navigationController {
+			dependencies.feedbackService.showReviewChoice(on: navigation, onCancel: onCancel);
+		}
+	}
+    
+    func showEditDescriptionScreen(withDescription description: String, successEditinHandle: @escaping (String) -> ()) {
+        controller?.performSegue(SegueList.showEditDescription, sender: [Constants.description : description, Constants.successEditinHandle : successEditinHandle])
     }
 }
 

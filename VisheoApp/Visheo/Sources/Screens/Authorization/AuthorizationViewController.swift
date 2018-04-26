@@ -14,6 +14,7 @@ class AuthorizationViewController: UIViewController, RouterProxy {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextViewLinks()
+        configureTermsOfUseLink()
         
         if !viewModel.anonymousAllowed {
             skipRegistrationBottomConstraint.constant = 0
@@ -28,15 +29,30 @@ class AuthorizationViewController: UIViewController, RouterProxy {
         if let description = viewModel.descriptionString {
             authReasonlabel.text = description
         }
+		
+		if let type = viewModel.closeButtonType {
+			switch type {
+				case .back:
+					closeButtonLeadingConstraint.constant = 4.0;
+					closeButton.setTitle(nil, for: .normal);
+					closeButton.setImage(UIImage(named: "arrow"), for: .normal);
+				case .close:
+					closeButtonLeadingConstraint.constant = 20.0;
+					closeButton.setImage(nil, for: .normal);
+					closeButton.setTitle(NSLocalizedString("Close", comment: ""), for: .normal);
+			}
+		}
     }
     
-    @IBOutlet weak var closeButton: UIButton!
+	@IBOutlet weak var closeButtonLeadingConstraint: NSLayoutConstraint!
+	@IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var authReasonlabel: UILabel!
     @IBOutlet weak var signUpMandatoryLabel: UILabel!
     @IBOutlet weak var signInBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var skipRegistrationHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var skipRegistrationBottomConstraint: NSLayoutConstraint!
 	@IBOutlet weak var signInUpLabel: UILabel!
+    @IBOutlet weak var termsOfUseLabel: UILabel!
 	//MARK: - VM+Router init
     
     private(set) var viewModel: AuthorizationViewModel!
@@ -90,6 +106,7 @@ class AuthorizationViewController: UIViewController, RouterProxy {
 }
 
 extension AuthorizationViewController {
+    
     func configureTextViewLinks() {
         let mutable  = NSMutableAttributedString(attributedString: signInUpLabel.attributedText!)
         let signInRange = mutable.mutableString.range(of: "Sign In")
@@ -104,16 +121,37 @@ extension AuthorizationViewController {
 		signInUpLabel.addGestureRecognizer(recognizer)
     }
 	
+    func configureTermsOfUseLink() {
+        let mutable = NSMutableAttributedString(attributedString: termsOfUseLabel.attributedText!)
+        let termsRange = mutable.mutableString.range(of: "Visheo Terms of Use")
+        let link = URL(string: "https://visheo.com/terms-of-use/")!
+        
+        mutable.addAttributes([.underlineStyle : NSUnderlineStyle.styleSingle.rawValue,
+                               .link : link], range: termsRange)
+        
+        termsOfUseLabel.attributedText = mutable
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(AuthorizationViewController.tappedLabel(with:)))
+        termsOfUseLabel.addGestureRecognizer(recognizer)
+    }
+    
 	@objc private func tappedLabel(with recognizer: UITapGestureRecognizer) {
-		guard let text = signInUpLabel.attributedText?.string, let signInRange = text.range(of: "Sign In"), let signUpRange = text.range(of: "Sign Up") else {
+        guard let text = signInUpLabel.attributedText?.string, let signInRange = text.range(of: "Sign In"), let signUpRange = text.range(of: "Sign Up"), let termsOfUseText = termsOfUseLabel.attributedText?.string, let termsOfUseRange = termsOfUseText.range(of: "Visheo Terms of Use") else {
 			return;
 		}
 		
 		if recognizer.didTapAttributedTextInLabel(label: signInUpLabel, inRange: NSRange(signInRange, in: text)) {
-			signInPressed();
+			signInPressed()
 		} else if recognizer.didTapAttributedTextInLabel(label: signInUpLabel, inRange: NSRange(signUpRange, in: text)) {
-			signUpPressed();
-		}
+			signUpPressed()
+        } else if recognizer.didTapAttributedTextInLabel(label: termsOfUseLabel, inRange: NSRange(termsOfUseRange, in: termsOfUseText)) {
+            guard let attributedDescription = termsOfUseLabel.attributedText else { return }
+            attributedDescription.enumerateAttribute(.link, in: NSMakeRange(0, attributedDescription.length), options: []) { (object, range, stop) in
+                if let url = object as? URL, recognizer.didTapAttributedTextInLabel(label: termsOfUseLabel, inRange: range), UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        }
 	}
 }
 

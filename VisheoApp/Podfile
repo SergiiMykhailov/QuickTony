@@ -14,6 +14,7 @@ abstract_target 'App' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'Firebase/Messaging'
   
   pod 'GoogleSignIn'
   
@@ -22,7 +23,7 @@ abstract_target 'App' do
   pod 'FBSDKShareKit'
   
   pod 'MBProgressHUD'
-  pod 'Validator'
+  pod 'Validator', '~> 3.0.2'
   
   pod 'SDWebImage', '~> 4.0'
   pod 'BadgeSwift', '~> 5.0'
@@ -33,13 +34,17 @@ abstract_target 'App' do
   pod 'ReachabilitySwift'
   pod 'SnapKit'
   
-   pod 'Reveal-SDK', :configurations => ['Debug']
-   
-   target 'Visheo' do
-   end
-   
-   target 'VisheoStaging' do
-   end
+  pod 'UXCam'
+  
+  pod 'SwiftyStoreKit'
+  
+  pod 'Reveal-SDK', :configurations => ['Debug']
+
+  target 'Visheo' do
+  end
+
+  target 'VisheoStaging' do
+  end
    
 end
 
@@ -56,4 +61,10 @@ abstract_target 'VisheoVideoFramework' do
 	target 'VisheoVideo' do
 	end
 	
+end
+
+post_install do |installer|
+	installer.pods_project.build_configurations.each do |config|
+		config.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = ''
+	end
 end

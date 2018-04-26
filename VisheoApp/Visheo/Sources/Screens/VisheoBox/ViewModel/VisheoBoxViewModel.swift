@@ -116,7 +116,7 @@ class VisheoListViewModel : VisheoBoxViewModel {
         let progress = creationService.uploadProgress(for: record.id) ?? 0.0
         
         return VisheoCellViewModel(coverUrl: record.coverUrl,
-                                   visheoTitle: record.name,
+                                   visheoTitle: record.signature ?? record.name,
                                    isUploading: isUploading,
                                    uploadProgress : progress)
     }

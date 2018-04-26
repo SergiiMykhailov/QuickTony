@@ -12,12 +12,13 @@ protocol MenuRouter: FlowRouter {
     func showCreateVisheo()
     func showVisheoBox()
     func showAccount()
+    func showBestPracticies()
     func showPremiumCards()
     func showCoupons()
     func showVisheoScreen(with record: VisheoRecord)
     
 	func showRegistration(with reason: AuthorizationReason)
-	func showContactForm(with contact: String?)
+	func showContactForm()
 }
 
 class VisheoMenuRouter : MenuRouter {
@@ -35,7 +36,9 @@ class VisheoMenuRouter : MenuRouter {
     func start(with viewController: MenuViewController) {
 		let vm = VisheoMenuViewModel(userInfo: dependencies.userInfoProvider,
 									 notificationService: dependencies.userNotificationsService,
-									 visheoListService: dependencies.visheosListService)
+                                     visheoListService: dependencies.visheosListService,
+                                     premiumCardsService: dependencies.premiumCardsService,
+                                     loggingService: dependencies.loggingService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
@@ -49,7 +52,7 @@ class VisheoMenuRouter : MenuRouter {
         switch segueList {
         case .showRegistration:
             let authController = (segue.destination as! UINavigationController).viewControllers[0] as! AuthorizationViewController
-            let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) {
+            let authRouter = VisheoAuthorizationRouter(dependencies: dependencies) { _ in
                 self.controller?.dismiss(animated: true, completion: nil)
             }
 			authRouter.start(with: authController, anonymousAllowed: false, authReason: sender as! AuthorizationReason)
@@ -62,10 +65,10 @@ extension VisheoMenuRouter {
         controller?.performSegue(SegueList.showRegistration, sender: reason)
     }
 	
-	func showContactForm(with contact: String?) {
+	func showContactForm() {
 		let navigationController = controller?.sideMenuController?.rootViewController as! UINavigationController
 		controller?.sideMenuController?.hideLeftView(animated: true, delay: 0.0, completionHandler: { [weak self] in
-			self?.dependencies.feedbackService.showContactForm(from: contact, on: navigationController);
+			self?.dependencies.feedbackService.showContactForm(on: navigationController);
 		})
 	}
     
@@ -90,6 +93,13 @@ extension VisheoMenuRouter {
         }
     }
 
+    func showBestPracticies() {
+        showController(with: "TipsViewController", storyboard: UIStoryboard(name: "Main", bundle: nil)) { (controller) in
+            let router = VisheoTipsRouter(dependencies: dependencies)
+            router.start(with: controller as! TipsViewController)
+        }
+    }
+    
 	func showVisheoScreen(with record: VisheoRecord) {
 		let storyboard = UIStoryboard(name: "VisheoPreview", bundle: nil)
 		
