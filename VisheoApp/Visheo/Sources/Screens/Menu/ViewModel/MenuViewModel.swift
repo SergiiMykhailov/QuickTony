@@ -63,8 +63,8 @@ class VisheoMenuViewModel : MenuViewModel {
                 VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), subText: nil, type: .visheoBox),
                 VisheoMenuItemViewModel(text: NSLocalizedString("My Purchases", comment: "My purchases menu item"), image: #imageLiteral(resourceName: "premiumCards"), subText: nil, type: .premiumCards),
                 appStateService.isInviteFriendsAvailable ? inviteButton : nil,
-                VisheoMenuItemViewModel(text: NSLocalizedString("Best Practicies", comment: "Best Practicies menu item"), image: #imageLiteral(resourceName: "bestPracticies"), subText: nil, type: .bestPracticies),
                 appStateService.isCouponAvailable ? couponButton : nil,
+                VisheoMenuItemViewModel(text: NSLocalizedString("Best Practicies", comment: "Best Practicies menu item"), image: #imageLiteral(resourceName: "bestPracticies"), subText: nil, type: .bestPracticies),
                 VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), subText: nil, type: .contact)
                 ].flatMap{$0}
             
