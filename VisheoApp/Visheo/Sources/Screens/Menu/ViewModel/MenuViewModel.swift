@@ -66,7 +66,7 @@ class VisheoMenuViewModel : MenuViewModel {
                 VisheoMenuItemViewModel(text: NSLocalizedString("Best Practicies", comment: "Best Practicies menu item"), image: #imageLiteral(resourceName: "bestPracticies"), subText: nil, type: .bestPracticies),
                 appStateService.isCouponAvailable ? couponButton : nil,
                 VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), subText: nil, type: .contact)
-                ].compactMap{$0}
+                ].flatMap{$0}
             
             return menuItems
         }

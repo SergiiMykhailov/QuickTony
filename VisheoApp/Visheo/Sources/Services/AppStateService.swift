@@ -144,7 +144,7 @@ class VisheoAppStateService: AppStateService {
             subscriptionReference,
             inviteFriendsReference,
             uxCamReference
-        ].compactMap { $0 }.forEach {
+            ].flatMap { $0 }.forEach {
             $0.removeAllObservers()
         }
         
