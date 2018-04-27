@@ -10,6 +10,16 @@
 		010D8975A0A9DB78A8A50DC0 /* Pods_App_VisheoStaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */; };
 		2C17849520694D3300ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
 		2C17849820694E7C00ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
+		2C50D13C2093669600306231 /* PremiumCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D13B2093669600306231 /* PremiumCollectionMediator.swift */; };
+		2C50D140209366C100306231 /* PremiumOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D13F209366C100306231 /* PremiumOccasionsTableCell.swift */; };
+		2C50D141209366C100306231 /* PremiumOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D13F209366C100306231 /* PremiumOccasionsTableCell.swift */; };
+		2C50D143209366D700306231 /* PremiumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D142209366D700306231 /* PremiumCollectionViewCell.swift */; };
+		2C50D144209366D700306231 /* PremiumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D142209366D700306231 /* PremiumCollectionViewCell.swift */; };
+		2C50D145209366DB00306231 /* PremiumCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D13B2093669600306231 /* PremiumCollectionMediator.swift */; };
+		2C50D1472093675D00306231 /* PremiumOccasionsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D1462093675D00306231 /* PremiumOccasionsTableCellViewModel.swift */; };
+		2C50D1482093675D00306231 /* PremiumOccasionsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D1462093675D00306231 /* PremiumOccasionsTableCellViewModel.swift */; };
+		2C50D14A209367F500306231 /* PremiumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D149209367F500306231 /* PremiumCellViewModel.swift */; };
+		2C50D14B209367F500306231 /* PremiumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D149209367F500306231 /* PremiumCellViewModel.swift */; };
 		2C549D8020809A3000B59061 /* InvitesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C549D7F20809A3000B59061 /* InvitesService.swift */; };
 		2C549D8120809A3000B59061 /* InvitesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C549D7F20809A3000B59061 /* InvitesService.swift */; };
 		2C6EE6DC206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */; };
@@ -449,6 +459,11 @@
 
 /* Begin PBXFileReference section */
 		2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ReadableFormat.swift"; sourceTree = "<group>"; };
+		2C50D13B2093669600306231 /* PremiumCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCollectionMediator.swift; sourceTree = "<group>"; };
+		2C50D13F209366C100306231 /* PremiumOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumOccasionsTableCell.swift; sourceTree = "<group>"; };
+		2C50D142209366D700306231 /* PremiumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C50D1462093675D00306231 /* PremiumOccasionsTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumOccasionsTableCellViewModel.swift; sourceTree = "<group>"; };
+		2C50D149209367F500306231 /* PremiumCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCellViewModel.swift; sourceTree = "<group>"; };
 		2C549D7F20809A3000B59061 /* InvitesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesService.swift; sourceTree = "<group>"; };
 		2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenControllerViewModel.swift; sourceTree = "<group>"; };
 		2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenRouter.swift; sourceTree = "<group>"; };
@@ -707,6 +722,7 @@
 			children = (
 				2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */,
 				2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */,
+				2C50D13F209366C100306231 /* PremiumOccasionsTableCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -716,6 +732,7 @@
 			children = (
 				B4BCABD41FB8CC7C003EDC7F /* HolidayCollectionViewCell.swift */,
 				B4BCABD51FB8CC7C003EDC7F /* OccassionCollectionViewCell.swift */,
+				2C50D142209366D700306231 /* PremiumCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -725,6 +742,7 @@
 			children = (
 				B4BCABD71FB8CC7C003EDC7F /* HolidaysCollectionMediator.swift */,
 				B4BCABD81FB8CC7C003EDC7F /* OccassionsCollectionMediator.swift */,
+				2C50D13B2093669600306231 /* PremiumCollectionMediator.swift */,
 			);
 			path = CollectionMediators;
 			sourceTree = "<group>";
@@ -1362,6 +1380,8 @@
 				B4BCABDE1FB8CC7C003EDC7F /* OccasionCellViewModel.swift */,
 				2C93820A2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift */,
 				2C93820D2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift */,
+				2C50D1462093675D00306231 /* PremiumOccasionsTableCellViewModel.swift */,
+				2C50D149209367F500306231 /* PremiumCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2004,6 +2024,7 @@
 				920F8B461FF6BDC90087C45D /* GestureRecognizer+TapDetection.swift in Sources */,
 				920F8B471FF6BDC90087C45D /* TipsRouter.swift in Sources */,
 				920F8B481FF6BDC90087C45D /* SegueList.swift in Sources */,
+				2C50D1482093675D00306231 /* PremiumOccasionsTableCellViewModel.swift in Sources */,
 				920F8B491FF6BDC90087C45D /* SelectSoundtrackRouter.swift in Sources */,
 				920F8B4A1FF6BDC90087C45D /* SignInViewModel.swift in Sources */,
 				920F8B4B1FF6BDC90087C45D /* EditVisheoButton.swift in Sources */,
@@ -2015,6 +2036,7 @@
 				920F8B501FF6BDC90087C45D /* PhotoSelectionIndexView.swift in Sources */,
 				920F8B511FF6BDC90087C45D /* CoverCellViewModel.swift in Sources */,
 				920F8B521FF6BDC90087C45D /* VideoView.swift in Sources */,
+				2C50D14B209367F500306231 /* PremiumCellViewModel.swift in Sources */,
 				920F8BE81FF6C0E80087C45D /* Environment.swift in Sources */,
 				2C938209206540B200348BAA /* OccasionGroupsService.swift in Sources */,
 				920F8B531FF6BDC90087C45D /* AlignedFlowLayout.swift in Sources */,
@@ -2070,6 +2092,7 @@
 				920F8B7F1FF6BDC90087C45D /* SignUpViewModel.swift in Sources */,
 				920F8B801FF6BDC90087C45D /* RedeemViewController.swift in Sources */,
 				920F8B811FF6BDC90087C45D /* Routing.swift in Sources */,
+				2C50D141209366C100306231 /* PremiumOccasionsTableCell.swift in Sources */,
 				920F8B821FF6BDC90087C45D /* ChooseOccasionViewController.swift in Sources */,
 				920F8B831FF6BDC90087C45D /* MenuTableViewCell.swift in Sources */,
 				920F8B841FF6BDC90087C45D /* PreviewViewModel.swift in Sources */,
@@ -2097,6 +2120,7 @@
 				920F8B941FF6BDC90087C45D /* PhotoCollectionViewCell.swift in Sources */,
 				920F8B951FF6BDC90087C45D /* PhotoPermissionsViewModel.swift in Sources */,
 				920F8B961FF6BDC90087C45D /* AuthorizationViewController.swift in Sources */,
+				2C50D145209366DB00306231 /* PremiumCollectionMediator.swift in Sources */,
 				920F8B971FF6BDC90087C45D /* MenuRouter.swift in Sources */,
 				920F8B981FF6BDC90087C45D /* RedeemSuccessViewController.swift in Sources */,
 				920F8B991FF6BDC90087C45D /* AppDelegate.swift in Sources */,
@@ -2129,6 +2153,7 @@
 				920F8BAE1FF6BDC90087C45D /* OnboardingRouter.swift in Sources */,
 				920F8BAF1FF6BDC90087C45D /* SelectSoundtrackViewController.swift in Sources */,
 				920F8BB01FF6BDC90087C45D /* VisheoMovieWriter.swift in Sources */,
+				2C50D144209366D700306231 /* PremiumCollectionViewCell.swift in Sources */,
 				920F8BB11FF6BDC90087C45D /* AppStateService.swift in Sources */,
 				920F8BB21FF6BDC90087C45D /* AppPermissionsService.swift in Sources */,
 				920F8BB31FF6BDC90087C45D /* HolidayDateLabel.swift in Sources */,
@@ -2171,9 +2196,11 @@
 				926B53C91FE429A30031B1A0 /* GestureRecognizer+TapDetection.swift in Sources */,
 				92A3BA651FF35BA2006FA011 /* TipsRouter.swift in Sources */,
 				B48AAAD81FAA0AE2000BB33B /* SegueList.swift in Sources */,
+				2C50D1472093675D00306231 /* PremiumOccasionsTableCellViewModel.swift in Sources */,
 				920EDFE71FCF10E200D121ED /* SelectSoundtrackRouter.swift in Sources */,
 				B4BCABF21FB8CC7D003EDC7F /* SignInViewModel.swift in Sources */,
 				B433DDE61FC41EBD00309974 /* EditVisheoButton.swift in Sources */,
+				2C50D140209366C100306231 /* PremiumOccasionsTableCell.swift in Sources */,
 				B409B3A51FADBC2100FE43F1 /* ViewModels.swift in Sources */,
 				92DEDBB51FC0670B00C7FBB1 /* CameraRecordIndicator.swift in Sources */,
 				B437CF7E1FDEE3D300E28C20 /* RedeemViewModel.swift in Sources */,
@@ -2181,6 +2208,7 @@
 				2C93820B2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift in Sources */,
 				B44450E31FBF0F360021772F /* PhotoSelectionIndexView.swift in Sources */,
 				B4BCAC0F1FB8D5D0003EDC7F /* CoverCellViewModel.swift in Sources */,
+				2C50D14A209367F500306231 /* PremiumCellViewModel.swift in Sources */,
 				92FF5F461FD9C7F9009EE6D2 /* VideoView.swift in Sources */,
 				920F8BE71FF6C0E80087C45D /* Environment.swift in Sources */,
 				2C938208206540B200348BAA /* OccasionGroupsService.swift in Sources */,
@@ -2197,6 +2225,7 @@
 				92C006651FC0B4BE000AFD4E /* CameraPermissionsViewController.swift in Sources */,
 				9255DF0E1FCD9EC200F9815F /* AppSettings.swift in Sources */,
 				925B91801FEA4DE500E7ACC6 /* FeedbackService.swift in Sources */,
+				2C50D13C2093669600306231 /* PremiumCollectionMediator.swift in Sources */,
 				B4BCABEC1FB8CC7D003EDC7F /* AuthorizationRouter.swift in Sources */,
 				B4BCABFA1FB8CC7D003EDC7F /* ChooseOccasionViewModel.swift in Sources */,
 				B44450CD1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift in Sources */,
@@ -2208,6 +2237,7 @@
 				B46761271FC7118F006E9CB2 /* ShareVisheoViewController.swift in Sources */,
 				B4BCABF91FB8CC7D003EDC7F /* ChooseOccasionRouter.swift in Sources */,
 				B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */,
+				2C50D143209366D700306231 /* PremiumCollectionViewCell.swift in Sources */,
 				B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */,
 				920EDFE21FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift in Sources */,
 				B437CF801FDEE3E800E28C20 /* RedeemSuccessViewModel.swift in Sources */,
