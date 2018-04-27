@@ -16,6 +16,8 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Visheo needs access to the location to improve user experience</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.1</string>
 	<key>CFBundleURLTypes</key>
@@ -47,7 +49,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>33</string>
+	<string>36</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>

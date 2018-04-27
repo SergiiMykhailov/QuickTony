@@ -22,11 +22,11 @@ protocol InvitesService {
 }
 
 struct DynamicLinkParams {
-    let googleAppId = Environment.current.inviteURL()
+    let googleAppId = Environment.current.inviteURLPrefix()
     let bundleId = "com.visheo.visheo"
     let packageName = "com.visheo"
     let minimumAndroidVersion = 131
-    let minimumIOSVersion = "1.0"
+    let minimumIOSVersion = "2.1"
     let appStoreId = "1321534014"
 }
 

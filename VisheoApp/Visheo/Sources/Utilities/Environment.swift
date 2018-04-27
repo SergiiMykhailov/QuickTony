@@ -50,7 +50,7 @@ extension Environment {
         }
     }
     
-    func inviteURL () -> String {
+    func inviteURLPrefix () -> String {
         switch self {
         case .staging:
             return "aj6fz"
