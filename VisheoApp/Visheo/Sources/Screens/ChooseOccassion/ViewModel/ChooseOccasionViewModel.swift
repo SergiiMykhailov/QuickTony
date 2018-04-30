@@ -50,9 +50,9 @@ class VisheoChooseOccasionViewModel : ChooseOccasionViewModel {
 		self.appStateService = appStateService
 		self.feedbackService = feedbackService
         
-            NotificationCenter.default.addObserver(forName: Notification.Name.occasionGroupsChanged, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
-                self?.didChangeCallback?()
-            }
+        NotificationCenter.default.addObserver(forName: Notification.Name.occasionGroupsChanged, object: nil, queue: OperationQueue.main) {[weak self] (notification) in
+            self?.didChangeCallback?()
+        }
 		
 		NotificationCenter.default.addObserver(forName: .reachabilityChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
 			if let reachable = self?.appStateService.isReachable, reachable {
