@@ -60,10 +60,12 @@ class VisheoSignUpViewModel : SignUpViewModel {
     
     let validator : UserInputValidator
     var authService : AuthorizationService
+    let userNotificationService: UserNotificationsService
     
-    init(userInputValidator: UserInputValidator, authService: AuthorizationService) {
+    init(userInputValidator: UserInputValidator, authService: AuthorizationService, userNotificationService: UserNotificationsService) {
         self.authService = authService
         self.validator = userInputValidator
+        self.userNotificationService = userNotificationService
     }
     
     func signUp() {
@@ -96,6 +98,10 @@ class VisheoSignUpViewModel : SignUpViewModel {
         showProgressCallback?(false)
         stopAuthObserving()
         router?.showMainScreen()
+        
+        if (!authService.isAnonymous) {
+            userNotificationService.registerNotifications()
+        }
     }
     
     @objc func processLoginFail(notification: Notification) {

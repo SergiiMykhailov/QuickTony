@@ -26,6 +26,7 @@ enum MenuItemType {
     case newVisheo
     case visheoBox
     case premiumCards
+    case inviteFriends
     case redeem
     case bestPracticies
     case contact
@@ -49,20 +50,23 @@ class VisheoMenuViewModel : MenuViewModel {
     private let userInfo: UserInfoProvider
 	private let notificationService: UserNotificationsService
 	private let visheoListService: VisheosListService
-    private let premiumCardsService: PremiumCardsService
+    private let appStateService: AppStateService
     private let loggingService: EventLoggingService
     
     private var menuItems : [VisheoMenuItemViewModel] {
         get {
-            let couponButton = VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), type: .redeem)
+            let couponButton = VisheoMenuItemViewModel(text: NSLocalizedString("Redeem coupon", comment: "Redeem coupon menu item"), image: #imageLiteral(resourceName: "redeemCoupon"), subText: nil, type: .redeem)
+            let inviteButton = VisheoMenuItemViewModel(text: NSLocalizedString("Invite friends", comment: "Invite frinds menu item"), image: #imageLiteral(resourceName: "inviteFriends"), subText: NSLocalizedString("& get Visheo Cards for FREE", comment: "Invite friends menu substring"), type: .inviteFriends)
+            
             let menuItems = [
-                VisheoMenuItemViewModel(text: NSLocalizedString("New Visheo", comment: "New visheo menu item"), image: #imageLiteral(resourceName: "newVisheo"), type: .newVisheo),
-                VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), type: .visheoBox),
-                VisheoMenuItemViewModel(text: NSLocalizedString("My Purchases", comment: "My purchases menu item"), image: #imageLiteral(resourceName: "premiumCards"), type: .premiumCards),
-                VisheoMenuItemViewModel(text: NSLocalizedString("Best Practicies", comment: "Best Practicies menu item"), image: #imageLiteral(resourceName: "bestPracticies"), type: .bestPracticies),
-                premiumCardsService.isCouponAvailable ? couponButton : nil,
-                VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), type: .contact)
-                ].compactMap{$0}
+                VisheoMenuItemViewModel(text: NSLocalizedString("New Visheo", comment: "New visheo menu item"), image: #imageLiteral(resourceName: "newVisheo"), subText: nil, type: .newVisheo),
+                VisheoMenuItemViewModel(text: NSLocalizedString("Visheo Box", comment: "Visheo Box menu item"), image: #imageLiteral(resourceName: "visheoBox"), subText: nil, type: .visheoBox),
+                VisheoMenuItemViewModel(text: NSLocalizedString("My Purchases", comment: "My purchases menu item"), image: #imageLiteral(resourceName: "premiumCards"), subText: nil, type: .premiumCards),
+                appStateService.isInviteFriendsAvailable ? inviteButton : nil,
+                appStateService.isCouponAvailable ? couponButton : nil,
+                VisheoMenuItemViewModel(text: NSLocalizedString("Best Practicies", comment: "Best Practicies menu item"), image: #imageLiteral(resourceName: "bestPracticies"), subText: nil, type: .bestPracticies),
+                VisheoMenuItemViewModel(text: NSLocalizedString("Contact us", comment: "Contact us menu item"), image: #imageLiteral(resourceName: "contactUs"), subText: nil, type: .contact)
+                ].flatMap{$0}
             
             return menuItems
         }
@@ -72,14 +76,14 @@ class VisheoMenuViewModel : MenuViewModel {
     init(userInfo: UserInfoProvider,
          notificationService: UserNotificationsService,
          visheoListService: VisheosListService,
-         premiumCardsService: PremiumCardsService,
+         appStateService: AppStateService,
          loggingService: EventLoggingService) {
         self.userInfo = userInfo
 		self.notificationService = notificationService
 		self.visheoListService = visheoListService
-		self.premiumCardsService = premiumCardsService
+		self.appStateService = appStateService
         self.loggingService = loggingService
-        
+
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheoOpen(_:)), name: .openVisheoFromReminder, object: nil)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.handleVisheosListChange(_:)), name: .visheosChanged, object: nil)
@@ -88,6 +92,10 @@ class VisheoMenuViewModel : MenuViewModel {
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoMenuViewModel.failedToSendFeedback(_:)), name: .contactUsFeedbackFailed, object: nil)
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.couponAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.didChange?()
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.inviteFriendsAvailableChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
             self?.didChange?()
         }
     }
@@ -106,6 +114,12 @@ class VisheoMenuViewModel : MenuViewModel {
             router?.showCreateVisheo()
         case .visheoBox:
             router?.showVisheoBox()
+        case .inviteFriends:
+            if userInfo.isAnonymous {
+                router?.showRegistration(with: .inviteFriends);
+            } else {
+                router?.showInvites()
+            }
         case .bestPracticies:
             loggingService.log(event: BestPracticesClicked())
             router?.showBestPracticies()

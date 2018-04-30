@@ -46,4 +46,5 @@ struct RouterDependencies {
     let visheosCache : VisheosCache
     
     let premiumCardsService: PremiumCardsService
+    let invitationService: VisheoInvitesService
 }

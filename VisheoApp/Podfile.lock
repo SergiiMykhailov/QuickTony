@@ -24,6 +24,9 @@ PODS:
   - Firebase/Database (4.13.0):
     - Firebase/Core
     - FirebaseDatabase (= 4.1.5)
+  - Firebase/DynamicLinks (4.13.0):
+    - Firebase/Core
+    - FirebaseDynamicLinks (= 2.3.2)
   - Firebase/Messaging (4.13.0):
     - Firebase/Core
     - FirebaseMessaging (= 2.2.0)
@@ -45,6 +48,8 @@ PODS:
     - FirebaseAnalytics (~> 4.1)
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
+  - FirebaseDynamicLinks (2.3.2):
+    - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
   - FirebaseMessaging (2.2.0):
@@ -111,6 +116,9 @@ PODS:
   - SDWebImage/Core (4.3.3)
   - SnapKit (4.0.0)
   - SwiftyStoreKit (0.13.1)
+  - TwitterCore (3.1.0)
+  - TwitterKit (3.3.0):
+    - TwitterCore (>= 3.1.0)
   - UXCam (2.5.17)
   - Validator (3.0.2)
 
@@ -124,6 +132,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/DynamicLinks
   - Firebase/Messaging
   - Firebase/Storage
   - GoogleSignIn
@@ -138,6 +147,7 @@ DEPENDENCIES:
   - SDWebImage (~> 4.0)
   - SnapKit
   - SwiftyStoreKit
+  - TwitterKit
   - UXCam
   - Validator (~> 3.0.2)
 
@@ -154,6 +164,7 @@ SPEC CHECKSUMS:
   FirebaseAuth: bf22cacf22c60ab454bf2636f556d8892b10b53f
   FirebaseCore: 90cb1c53d69b556f112a1bf72b5fcfaad7650790
   FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
+  FirebaseDynamicLinks: 38b68641d24e78d0277a9205d988ce22875d5a25
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   FirebaseMessaging: 75cdb862e86c30e0913a2ff307e48d49357c5b73
   FirebaseStorage: 0c223481c8f89ed300cf1239ddd2d9833622c65f
@@ -175,9 +186,11 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyStoreKit: c36bb7841dd51a485ce5c38abf9e96fba988741f
+  TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
+  TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   UXCam: 447d2dba06987472a651962c8a5f0477dcca9040
   Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
 
-PODFILE CHECKSUM: c6a746abd8ecea7640181b0bff1537fb81c8d34b
+PODFILE CHECKSUM: ebbaaf5836da5015101d65ed76a2b6ac49d86536
 
 COCOAPODS: 1.4.0

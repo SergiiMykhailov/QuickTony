@@ -15,12 +15,15 @@ abstract_target 'App' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
   
   pod 'GoogleSignIn'
   
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
+  
+  pod 'TwitterKit'
   
   pod 'MBProgressHUD'
   pod 'Validator', '~> 3.0.2'

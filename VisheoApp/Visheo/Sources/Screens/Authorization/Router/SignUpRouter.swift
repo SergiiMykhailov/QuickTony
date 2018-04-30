@@ -28,7 +28,7 @@ class VisheoSignUpRouter : SignUpRouter {
     }
     
     func start(with viewController: SignUpViewController) {
-        let vm = VisheoSignUpViewModel(userInputValidator: dependencies.userInputValidator, authService: dependencies.authorizationService)
+        let vm = VisheoSignUpViewModel(userInputValidator: dependencies.userInputValidator, authService: dependencies.authorizationService, userNotificationService: dependencies.userNotificationsService)
         viewModel = vm
         vm.router = self
         self.controller = viewController

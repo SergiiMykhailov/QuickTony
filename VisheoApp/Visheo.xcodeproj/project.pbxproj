@@ -10,6 +10,8 @@
 		010D8975A0A9DB78A8A50DC0 /* Pods_App_VisheoStaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE469FFD196FF5120AC49A6A /* Pods_App_VisheoStaging.framework */; };
 		2C17849520694D3300ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
 		2C17849820694E7C00ACA197 /* Date+ReadableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */; };
+		2C549D8020809A3000B59061 /* InvitesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C549D7F20809A3000B59061 /* InvitesService.swift */; };
+		2C549D8120809A3000B59061 /* InvitesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C549D7F20809A3000B59061 /* InvitesService.swift */; };
 		2C6EE6DC206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */; };
 		2C6EE6DD206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */; };
 		2C6EE6DE206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */; };
@@ -30,6 +32,7 @@
 		2C6EE70B20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */; };
 		2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
+		2C8CC95B2092059000FF9B4F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */; };
 		2C9381FC20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
 		2C9381FD20650F0400348BAA /* FeaturedOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */; };
 		2C93820120650F5800348BAA /* StandardOccasionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */; };
@@ -42,6 +45,13 @@
 		2C93820F2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93820D2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift */; };
 		2C9382112068EC1F00348BAA /* OccasionGroupsTableMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9382102068EC1F00348BAA /* OccasionGroupsTableMediator.swift */; };
 		2C9382122068EC1F00348BAA /* OccasionGroupsTableMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9382102068EC1F00348BAA /* OccasionGroupsTableMediator.swift */; };
+		2C9A11CC207CAC9100DD114C /* InviteFriendsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11C8207CAC9100DD114C /* InviteFriendsControllerViewModel.swift */; };
+		2C9A11CD207CAC9200DD114C /* InviteFriendsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11C8207CAC9100DD114C /* InviteFriendsControllerViewModel.swift */; };
+		2C9A11CE207CAC9200DD114C /* InviteFriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */; };
+		2C9A11CF207CAC9200DD114C /* InviteFriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */; };
+		2C9A11D0207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */; };
+		2C9A11D1207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */; };
+		2CADBE982085FFA10011C88E /* GoogleService-Info-old.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */; };
 		2CADBEA020879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */; };
 		2CADBEA120879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */; };
 		2CADBEA220879AA70011C88E /* SubscriptionDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9D20879AA70011C88E /* SubscriptionDescriptionRouter.swift */; };
@@ -217,7 +227,6 @@
 		920F8BD21FF6BDC90087C45D /* beginning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92A8D30B1FC86E86001E194D /* beginning.m4a */; };
 		920F8BD51FF6BDC90087C45D /* VisheoVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 924DEB8A1FC3B22B00B04EE8 /* VisheoVideo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		920F8BE41FF6BE6B0087C45D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 920F8BE11FF6BE670087C45D /* GoogleService-Info.plist */; };
-		920F8BE51FF6BE6E0087C45D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */; };
 		920F8BE71FF6C0E80087C45D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F8BE61FF6C0E80087C45D /* Environment.swift */; };
 		920F8BE81FF6C0E80087C45D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F8BE61FF6C0E80087C45D /* Environment.swift */; };
 		921E0CEC1FDF1BF4000A4EBC /* APLCompositionDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */; };
@@ -440,6 +449,7 @@
 
 /* Begin PBXFileReference section */
 		2C17849420694D3300ACA197 /* Date+ReadableFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ReadableFormat.swift"; sourceTree = "<group>"; };
+		2C549D7F20809A3000B59061 /* InvitesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesService.swift; sourceTree = "<group>"; };
 		2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenControllerViewModel.swift; sourceTree = "<group>"; };
 		2C6EE6D9206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenRouter.swift; sourceTree = "<group>"; };
 		2C6EE6DA206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverOnboardingScreenViewController.swift; sourceTree = "<group>"; };
@@ -451,12 +461,18 @@
 		2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoDescriptionViewController.swift; sourceTree = "<group>"; };
 		2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRuleControllerViewController.swift; sourceTree = "<group>"; };
 		2C89DF9F2073CF260012586B /* VisheoStaging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VisheoStaging.entitlements; sourceTree = "<group>"; };
+		2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C9381FB20650F0400348BAA /* FeaturedOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedOccasionsTableCell.swift; sourceTree = "<group>"; };
 		2C93820020650F5800348BAA /* StandardOccasionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOccasionsTableCell.swift; sourceTree = "<group>"; };
 		2C938207206540B200348BAA /* OccasionGroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionGroupsService.swift; sourceTree = "<group>"; };
 		2C93820A2068E56500348BAA /* FeaturedOccasionsTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedOccasionsTableCellViewModel.swift; sourceTree = "<group>"; };
 		2C93820D2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOccasionsTableCellViewModel.swift; sourceTree = "<group>"; };
 		2C9382102068EC1F00348BAA /* OccasionGroupsTableMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionGroupsTableMediator.swift; sourceTree = "<group>"; };
+		2C9A11C8207CAC9100DD114C /* InviteFriendsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsControllerViewModel.swift; sourceTree = "<group>"; };
+		2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsRouter.swift; sourceTree = "<group>"; };
+		2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
+		2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-old.plist"; sourceTree = "<group>"; };
+		2CADBE992086033D0011C88E /* Visheo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Visheo.entitlements; sourceTree = "<group>"; };
 		2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionControllerViewModel.swift; sourceTree = "<group>"; };
 		2CADBE9D20879AA70011C88E /* SubscriptionDescriptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionRouter.swift; sourceTree = "<group>"; };
 		2CADBE9E20879AA70011C88E /* SubscriptionDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionViewController.swift; sourceTree = "<group>"; };
@@ -474,7 +490,6 @@
 		920EDFE81FCF1AB100D121ED /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		920F8BDB1FF6BDC90087C45D /* VisheoStaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisheoStaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920F8BE11FF6BE670087C45D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		920F8BE61FF6C0E80087C45D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		921E0CEA1FDF1BF4000A4EBC /* APLCompositionDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLCompositionDebugView.h; sourceTree = "<group>"; };
 		921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLCompositionDebugView.m; sourceTree = "<group>"; };
@@ -714,6 +729,16 @@
 			path = CollectionMediators;
 			sourceTree = "<group>";
 		};
+		2C9A11C5207CAC6D00DD114C /* InviteFriends */ = {
+			isa = PBXGroup;
+			children = (
+				2C9A11C8207CAC9100DD114C /* InviteFriendsControllerViewModel.swift */,
+				2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */,
+				2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */,
+			);
+			path = InviteFriends;
+			sourceTree = "<group>";
+		};
 		3A25D211DE89E6E80DEC2011 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,7 +806,8 @@
 		920F8BE21FF6BE670087C45D /* production */ = {
 			isa = PBXGroup;
 			children = (
-				920F8BE31FF6BE670087C45D /* GoogleService-Info.plist */,
+				2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */,
+				2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */,
 			);
 			path = production;
 			sourceTree = "<group>";
@@ -1229,6 +1255,7 @@
 		B4B9D1981FA8A52300CBD7DB /* Visheo */ = {
 			isa = PBXGroup;
 			children = (
+				2CADBE992086033D0011C88E /* Visheo.entitlements */,
 				9276A4F020191F4200D3D44B /* Visheo-Info.plist */,
 				9276A4F120191F4200D3D44B /* VisheoStaging-Info.plist */,
 				92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */,
@@ -1241,6 +1268,7 @@
 		B4BCABC51FB8CC7C003EDC7F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2C9A11C5207CAC6D00DD114C /* InviteFriends */,
 				B4C893EC1FD5782B00763296 /* Account */,
 				B4BCABC61FB8CC7C003EDC7F /* Authorization */,
 				9262CBA91FBDF71A00F90AB3 /* Camera */,
@@ -1468,6 +1496,7 @@
 				B4CF320E1FC87E540063AA52 /* VisheoCreationService.swift */,
 				B46D7FCE1FD309C40057CF08 /* VisheosCache.swift */,
 				B4AEE0E51FD195680043A39A /* VisheosListService.swift */,
+				2C549D7F20809A3000B59061 /* InvitesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1566,6 +1595,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 						};
 					};
 					B4B9D1951FA8A52300CBD7DB = {
@@ -1574,6 +1606,12 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -1666,6 +1704,7 @@
 			files = (
 				9255DF121FCDA5A200F9815F /* app_settings.plist in Resources */,
 				B48AAAC01FA9E58F000BB33B /* LaunchScreen.storyboard in Resources */,
+				2C8CC95B2092059000FF9B4F /* GoogleService-Info.plist in Resources */,
 				92C2E475200E51FE00693F95 /* fox-min.gif in Resources */,
 				B4CFB7711FAB4A7900D6E73A /* Authentification.storyboard in Resources */,
 				B48AAAC91FA9E650000BB33B /* Roboto-Regular.ttf in Resources */,
@@ -1683,8 +1722,8 @@
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
 				92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */,
+				2CADBE982085FFA10011C88E /* GoogleService-Info-old.plist in Resources */,
 				B4775FFF1FD57EAA00A02BEF /* Account.storyboard in Resources */,
-				920F8BE51FF6BE6E0087C45D /* GoogleService-Info.plist in Resources */,
 				92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */,
 				92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */,
 			);
@@ -1718,6 +1757,8 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1744,6 +1785,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1780,6 +1823,8 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1806,6 +1851,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1861,10 +1908,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1897,7 +1948,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7a46fd1c8ce2ff847c926c7643d2946bdd1499e7 4c00028f3fa11585186d816e06a3e7e2e4e290b20eaf0f9e8d79d8661cb22f61";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" c5b9501895284dd13b806ac41d0d0569f04dfcae f6a45ee5be400723ae997dfd75c28c3d9c25d92710f3a6ab13d4db6eab3de468";
 		};
 		D1F7A5CCF6BC9BE041431B95 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1907,10 +1958,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1979,6 +2034,7 @@
 				920F8B601FF6BDC90087C45D /* ChooseOccasionViewModel.swift in Sources */,
 				920F8B611FF6BDC90087C45D /* FilmstripCoversCollectionMediator.swift in Sources */,
 				920F8B621FF6BDC90087C45D /* HolidayCollectionViewCell.swift in Sources */,
+				2C549D8120809A3000B59061 /* InvitesService.swift in Sources */,
 				920F8B631FF6BDC90087C45D /* LaunchProxyViewModel.swift in Sources */,
 				920F8B641FF6BDC90087C45D /* PreviewRouter.swift in Sources */,
 				920F8B651FF6BDC90087C45D /* AccountRouter.swift in Sources */,
@@ -2004,8 +2060,10 @@
 				920F8B791FF6BDC90087C45D /* Date+Calendar.swift in Sources */,
 				920F8B7A1FF6BDC90087C45D /* PhotoPermissionsRouter.swift in Sources */,
 				920F8B7B1FF6BDC90087C45D /* PracticeTipCellModel.swift in Sources */,
+				2C9A11CD207CAC9200DD114C /* InviteFriendsControllerViewModel.swift in Sources */,
 				920F8B7C1FF6BDC90087C45D /* EventLoggingService.swift in Sources */,
 				920F8B7D1FF6BDC90087C45D /* VisheoCellViewModel.swift in Sources */,
+				2C9A11CF207CAC9200DD114C /* InviteFriendsRouter.swift in Sources */,
 				2C93820F2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */,
 				2C6EE6DF206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */,
 				920F8B7E1FF6BDC90087C45D /* PhotoPickerViewModel.swift in Sources */,
@@ -2076,6 +2134,7 @@
 				920F8BB31FF6BDC90087C45D /* HolidayDateLabel.swift in Sources */,
 				920F8BB41FF6BDC90087C45D /* VisheosListService.swift in Sources */,
 				920F8BB51FF6BDC90087C45D /* ChooseCardsRouter.swift in Sources */,
+				2C9A11D1207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */,
 				920F8BB61FF6BDC90087C45D /* ChooseCardsViewModel.swift in Sources */,
 				920F8BB71FF6BDC90087C45D /* ChooseCardsViewController.swift in Sources */,
 				2C6EE70B20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */,
@@ -2142,6 +2201,7 @@
 				B4BCABFA1FB8CC7D003EDC7F /* ChooseOccasionViewModel.swift in Sources */,
 				B44450CD1FBDD82D0021772F /* FilmstripCoversCollectionMediator.swift in Sources */,
 				B4BCABF41FB8CC7D003EDC7F /* HolidayCollectionViewCell.swift in Sources */,
+				2C549D8020809A3000B59061 /* InvitesService.swift in Sources */,
 				B4BCABFF1FB8CC7D003EDC7F /* LaunchProxyViewModel.swift in Sources */,
 				B465280E1FC346A30070FFB7 /* PreviewRouter.swift in Sources */,
 				B4C893F61FD5788D00763296 /* AccountRouter.swift in Sources */,
@@ -2167,8 +2227,10 @@
 				B437CF721FDEAC1900E28C20 /* Date+Calendar.swift in Sources */,
 				B44450D71FBEF4220021772F /* PhotoPermissionsRouter.swift in Sources */,
 				92548DE81FF37A1A001F692E /* PracticeTipCellModel.swift in Sources */,
+				2C9A11CC207CAC9100DD114C /* InviteFriendsControllerViewModel.swift in Sources */,
 				926B53CE1FE42EB40031B1A0 /* EventLoggingService.swift in Sources */,
 				B4EB86DB1FD1CC7B00963150 /* VisheoCellViewModel.swift in Sources */,
+				2C9A11CE207CAC9200DD114C /* InviteFriendsRouter.swift in Sources */,
 				2C93820E2068E58400348BAA /* StandardOccasionsTableCellViewModel.swift in Sources */,
 				2C6EE6DE206CF4DB00E06AFC /* CoverOnboardingScreenRouter.swift in Sources */,
 				B44450DD1FBF02E50021772F /* PhotoPickerViewModel.swift in Sources */,
@@ -2239,6 +2301,7 @@
 				B42A29891FB1F8CE00A8741F /* HolidayDateLabel.swift in Sources */,
 				B4AEE0E61FD195680043A39A /* VisheosListService.swift in Sources */,
 				A60CEED5790033806C175466 /* ChooseCardsRouter.swift in Sources */,
+				2C9A11D0207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */,
 				A60CE8B0E019D486EF4AF0AF /* ChooseCardsViewModel.swift in Sources */,
 				A60CE64BD0494E69FA9B83C5 /* ChooseCardsViewController.swift in Sources */,
 				2C6EE70A20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */,
@@ -2540,6 +2603,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Visheo/Visheo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6NPSSGKMC;
@@ -2562,6 +2626,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Visheo/Visheo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6NPSSGKMC;

@@ -14,6 +14,7 @@ protocol MenuRouter: FlowRouter {
     func showAccount()
     func showBestPracticies()
     func showPremiumCards()
+    func showInvites()
     func showCoupons()
     func showVisheoScreen(with record: VisheoRecord)
     
@@ -37,7 +38,7 @@ class VisheoMenuRouter : MenuRouter {
 		let vm = VisheoMenuViewModel(userInfo: dependencies.userInfoProvider,
 									 notificationService: dependencies.userNotificationsService,
                                      visheoListService: dependencies.visheosListService,
-                                     premiumCardsService: dependencies.premiumCardsService,
+                                     appStateService: dependencies.appStateService,
                                      loggingService: dependencies.loggingService)
         viewModel = vm
         vm.router = self
@@ -120,6 +121,13 @@ extension VisheoMenuRouter {
         showController(with: "RedeemViewController", storyboard: UIStoryboard(name: "Purchases", bundle: nil)) { (controller) in
             let router = VisheoRedeemRouter(dependencies: dependencies)
             router.start(with: controller as! RedeemViewController, assets: nil, showBack: false)
+        }
+    }
+    
+    func showInvites() {
+        showController(with: "InviteFriendsViewController", storyboard: UIStoryboard(name: "Main", bundle: nil)) { (controller) in
+            let router = VisheoInviteFriendsRouter(dependencies: dependencies)
+            router.start(controller: controller as! InviteFriendsViewController)
         }
     }
     

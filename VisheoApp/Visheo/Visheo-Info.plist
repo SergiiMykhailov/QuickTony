@@ -16,6 +16,8 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Visheo needs access to the location to improve user experience</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.1</string>
 	<key>CFBundleURLTypes</key>
@@ -23,6 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>twitterkit-rmwotRCcivfCd6LqtBGG7k3sr</string>
 				<string>fb202069387030963</string>
 			</array>
 		</dict>
@@ -31,16 +34,26 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.25294653104-6avn2sa2mo9rh7dqo9p0a3t46l7kdiif</string>
+				<string>com.googleusercontent.apps.25294653104-rea4jokqadmntpbh6m2og35udv46us55</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Bundle ID</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.visheo.visheo</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>30</string>
+	<string>36</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>7a46fd1c8ce2ff847c926c7643d2946bdd1499e7</string>
+		<string>c5b9501895284dd13b806ac41d0d0569f04dfcae</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -59,6 +72,7 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>twitter</string>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>

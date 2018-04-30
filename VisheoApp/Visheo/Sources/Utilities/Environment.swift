@@ -49,6 +49,15 @@ extension Environment {
                                              sharedSecret: "18666539d51048d19fb79bbbf4798628")
         }
     }
+    
+    func inviteURLPrefix () -> String {
+        switch self {
+        case .staging:
+            return "aj6fz"
+        case .production:
+            return "q877w"
+        }
+    }
 }
 
 

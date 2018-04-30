@@ -161,7 +161,7 @@ public final class VisheoRender: VideoConvertible
 		
 		let duration = CMTimeMakeWithSeconds(1.5, timelineAsset.duration.timescale);
 		let start = CMTimeRangeMake(CMTimeSubtract(timeRanges.mainVideoStart, duration), duration);
-		audioInputParams?.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.02, timeRange: start);
+		audioInputParams?.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.04, timeRange: start);
 		
 		if let videoSound = mainVideoAsset.tracks(withMediaType: .audio).first {
 			try videoCompositionSoundtrack.insertTimeRange(videoSound.timeRange, of: videoSound, at: timeRanges.mainVideoStart);

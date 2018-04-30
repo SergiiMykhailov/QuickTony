@@ -15,6 +15,7 @@ enum AuthorizationReason {
 	case redeemCoupons
 	case sendFeedback
 	case sendVisheo
+    case inviteFriends
 }
 
 enum AuthorizationDismissType {
@@ -57,6 +58,8 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
 				return NSLocalizedString("Please sign in to send feedback", comment: "Please sign in to send feedback")
 			case .sendVisheo:
 				return NSLocalizedString("SIGN UP TO SEND YOUR VISHEO", comment: "SIGN UP TO SEND YOUR VISHEO")
+            case .inviteFriends:
+                return NSLocalizedString("Please sign in to invite friends", comment: "Please sign in to invite friends")
 			default:
 				return nil
 		}

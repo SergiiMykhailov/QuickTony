@@ -14,9 +14,22 @@ class MenuTableViewCell: UITableViewCell {
     
     @IBOutlet weak var menuItemText: UILabel!
     
+    @IBOutlet weak var menuItemSubText : UILabel!
+    
     func setup(with viewModel: MenuItemViewModel) {
         menuItemText.text = viewModel.text
         menuItemImage.image = viewModel.image
+        
+        if (viewModel.subText != nil) {
+            menuItemSubText.text = viewModel.subText
+        } else {
+            menuItemSubText.isHidden = true
+        }
     }
-    
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        menuItemSubText.isHidden = false
+    }
 }
