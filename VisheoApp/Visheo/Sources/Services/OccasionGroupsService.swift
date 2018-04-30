@@ -77,7 +77,6 @@ class VisheoOccasionGroupsListService : OccasionGroupsListService {
     
     func didChange() {
         bgtasker.mapOperation(withDelay: 10000) {
-            print("call notification center")
             NotificationCenter.default.post(name: .occasionGroupsChanged, object: self)
         }
     }
