@@ -67,7 +67,7 @@
                                 <rect key="frame" x="0.0" y="172" width="260" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuItem" rowHeight="48" id="FMy-SS-V7b" customClass="MenuTableViewCell" customModule="Visheo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuItem" rowHeight="48" id="FMy-SS-V7b" customClass="MenuTableViewCell" customModule="Visheo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="260" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FMy-SS-V7b" id="aED-7S-XVG">
@@ -82,7 +82,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4v-USr">
-                                                    <rect key="frame" x="72" y="13.5" width="165" height="21.5"/>
+                                                    <rect key="frame" x="72" y="13.5" width="50" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                     <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -274,7 +274,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycr-zN-ANO" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                                        <rect key="frame" x="20" y="281" width="163.5" height="34"/>
+                                                                        <rect key="frame" x="20" y="281" width="129.5" height="34"/>
                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="34" id="jrh-Ew-3Cj"/>
@@ -298,7 +298,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AS6-df-UMP" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                        <rect key="frame" x="287" y="307" width="38" height="18"/>
+                                                                        <rect key="frame" x="301" y="309" width="24" height="16"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>

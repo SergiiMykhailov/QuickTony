@@ -51,6 +51,12 @@
 		2C9A11CF207CAC9200DD114C /* InviteFriendsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */; };
 		2C9A11D0207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */; };
 		2C9A11D1207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */; };
+		2CACC9B42097898600D75AA4 /* PrompterControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B02097898600D75AA4 /* PrompterControllerViewModel.swift */; };
+		2CACC9B52097898600D75AA4 /* PrompterControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B02097898600D75AA4 /* PrompterControllerViewModel.swift */; };
+		2CACC9B62097898600D75AA4 /* PrompterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B12097898600D75AA4 /* PrompterRouter.swift */; };
+		2CACC9B72097898600D75AA4 /* PrompterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B12097898600D75AA4 /* PrompterRouter.swift */; };
+		2CACC9B82097898600D75AA4 /* PrompterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B22097898600D75AA4 /* PrompterViewController.swift */; };
+		2CACC9B92097898600D75AA4 /* PrompterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B22097898600D75AA4 /* PrompterViewController.swift */; };
 		2CADBE982085FFA10011C88E /* GoogleService-Info-old.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */; };
 		2CADBEA020879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */; };
 		2CADBEA120879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */; };
@@ -471,6 +477,9 @@
 		2C9A11C8207CAC9100DD114C /* InviteFriendsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsControllerViewModel.swift; sourceTree = "<group>"; };
 		2C9A11C9207CAC9100DD114C /* InviteFriendsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsRouter.swift; sourceTree = "<group>"; };
 		2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
+		2CACC9B02097898600D75AA4 /* PrompterControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterControllerViewModel.swift; sourceTree = "<group>"; };
+		2CACC9B12097898600D75AA4 /* PrompterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterRouter.swift; sourceTree = "<group>"; };
+		2CACC9B22097898600D75AA4 /* PrompterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterViewController.swift; sourceTree = "<group>"; };
 		2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-old.plist"; sourceTree = "<group>"; };
 		2CADBE992086033D0011C88E /* Visheo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Visheo.entitlements; sourceTree = "<group>"; };
 		2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionControllerViewModel.swift; sourceTree = "<group>"; };
@@ -830,6 +839,7 @@
 				9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */,
 				92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */,
 				92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */,
+				2CACC9B22097898600D75AA4 /* PrompterViewController.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -837,6 +847,7 @@
 		9262CBAC1FBDF96100F90AB3 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				2CACC9B12097898600D75AA4 /* PrompterRouter.swift */,
 				9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */,
 				92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */,
 			);
@@ -846,6 +857,7 @@
 		9262CBAF1FBDFA4100F90AB3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2CACC9B02097898600D75AA4 /* PrompterControllerViewModel.swift */,
 				9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */,
 				92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */,
 			);
@@ -1996,8 +2008,10 @@
 				920F8B3E1FF6BDC90087C45D /* WordTipCellModel.swift in Sources */,
 				920F8B3F1FF6BDC90087C45D /* CameraPermissionsViewModel.swift in Sources */,
 				920F8B401FF6BDC90087C45D /* TipsViewController.swift in Sources */,
+				2CACC9B72097898600D75AA4 /* PrompterRouter.swift in Sources */,
 				920F8B411FF6BDC90087C45D /* RootViewControllerSegue.swift in Sources */,
 				920F8B421FF6BDC90087C45D /* HolidaysCollectionMediator.swift in Sources */,
+				2CACC9B52097898600D75AA4 /* PrompterControllerViewModel.swift in Sources */,
 				920F8B431FF6BDC90087C45D /* SoundtrackCellModel.swift in Sources */,
 				920F8B441FF6BDC90087C45D /* SelectCoverViewController.swift in Sources */,
 				920F8B451FF6BDC90087C45D /* LaunchProxyRouter.swift in Sources */,
@@ -2045,6 +2059,7 @@
 				920F8B6A1FF6BDC90087C45D /* SelectSoundtrackViewModel.swift in Sources */,
 				920F8B6B1FF6BDC90087C45D /* RedeemSuccessViewModel.swift in Sources */,
 				920F8B6C1FF6BDC90087C45D /* CameraTipsView.swift in Sources */,
+				2CACC9B92097898600D75AA4 /* PrompterViewController.swift in Sources */,
 				920F8B6D1FF6BDC90087C45D /* VisheosCache.swift in Sources */,
 				920F8B6E1FF6BDC90087C45D /* VisheoBoxRouter.swift in Sources */,
 				920F8B6F1FF6BDC90087C45D /* CameraRouter.swift in Sources */,
@@ -2163,8 +2178,10 @@
 				92548DEA1FF37B3D001F692E /* WordTipCellModel.swift in Sources */,
 				92C006611FC0B49E000AFD4E /* CameraPermissionsViewModel.swift in Sources */,
 				92A3BA601FF3593C006FA011 /* TipsViewController.swift in Sources */,
+				2CACC9B62097898600D75AA4 /* PrompterRouter.swift in Sources */,
 				B48AAAD21FAA03CC000BB33B /* RootViewControllerSegue.swift in Sources */,
 				B4BCABF71FB8CC7D003EDC7F /* HolidaysCollectionMediator.swift in Sources */,
+				2CACC9B42097898600D75AA4 /* PrompterControllerViewModel.swift in Sources */,
 				920EDFE41FCF0F0C00D121ED /* SoundtrackCellModel.swift in Sources */,
 				B4BCAC071FB8CDFB003EDC7F /* SelectCoverViewController.swift in Sources */,
 				B4BCABFE1FB8CC7D003EDC7F /* LaunchProxyRouter.swift in Sources */,
@@ -2212,6 +2229,7 @@
 				920EDFE21FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift in Sources */,
 				B437CF801FDEE3E800E28C20 /* RedeemSuccessViewModel.swift in Sources */,
 				92DEDBAD1FC01ACD00C7FBB1 /* CameraTipsView.swift in Sources */,
+				2CACC9B82097898600D75AA4 /* PrompterViewController.swift in Sources */,
 				B46D7FCF1FD309C40057CF08 /* VisheosCache.swift in Sources */,
 				B4AEE0EF1FD1B28B0043A39A /* VisheoBoxRouter.swift in Sources */,
 				9262CBAE1FBDF98300F90AB3 /* CameraRouter.swift in Sources */,

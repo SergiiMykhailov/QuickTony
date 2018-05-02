@@ -19,7 +19,8 @@ class CameraViewController: UIViewController
 	@IBOutlet weak var cameraToggleButton: UIButton!
 	@IBOutlet weak var recordingStatusView: UIView!
 	@IBOutlet weak var recordingIndicator: CameraRecordIndicator!
-	@IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var prompterViewController: UIView!
 	
 	//MARK: - VM+Router init
 	
@@ -56,6 +57,12 @@ class CameraViewController: UIViewController
 				self?.handleDeviceRotation(orientation)
 			}
 		}
+        
+        viewModel.didChanged = { [weak self] in
+            DispatchQueue.main.async {
+                self?.updateFromViewModel()
+            }
+        }
 		
 		let mask = CAShapeLayer();
 		rotationHintView.layer.mask = mask;
@@ -82,17 +89,24 @@ class CameraViewController: UIViewController
 		mask.path = UIBezierPath(roundedRect: rotationHintView.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 6.0, height: 6.0)).cgPath;
 	}
 	
+    func updateFromViewModel() {
+        self.prompterViewController.isHidden = !self.viewModel.isPrompterEnabled
+    }
 	
 	//MARK: - Actions
 	
 	@IBAction func toggleVideoRecording() {
-		viewModel.toggleRecording();
+		viewModel.toggleRecording()
 	}
 	
 	@IBAction func toggleCameraFace() {
 		viewModel.toggleCameraFace()
 	}
-	
+    
+    @IBAction func togglePrompterMode() {
+        viewModel.togglePrompterMode()
+    }
+    
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
 		navigationController?.popViewController(animated: true);
 	}

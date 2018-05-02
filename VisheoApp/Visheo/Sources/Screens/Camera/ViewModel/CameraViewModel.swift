@@ -31,17 +31,19 @@ private let maxVideoRecordingDuration: TimeInterval = 30.0;
 protocol CameraViewModel: class
 {
 	var isRecording: Bool { get }
-	
+    var isPrompterEnabled: Bool { get }
+    
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? { get set };
 	var recordingProgressChangedBlock: ((Double) -> Void)? { get set }
+    var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
+    var didChanged: (()->())? { get set }
 	
 	func addPreviewOutput(_ output: GPUImageInput)
 	func startCapture()
 	func stopCapture(teardown: Bool)
 	func toggleRecording()
 	func toggleCameraFace()
-	
-	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
+    func togglePrompterMode()
 }
 
 
@@ -50,10 +52,13 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	var appState : AppStateService
 	
 	weak var router: CameraRouter?
-	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil;
-	var recordingProgressChangedBlock: ((Double) -> Void)? = nil;
-	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? = nil;
+	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil
+	var recordingProgressChangedBlock: ((Double) -> Void)? = nil
+	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? = nil
+    var didChanged: (()->())? = nil
 	
+    var isPrompterEnabled: Bool
+    
 	private let cropFilter = GPUImageCropFilter();
 	
 	private var camera: GPUImageVideoCamera?;
@@ -76,8 +81,9 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	}
 	
 	init(appState: AppStateService, assets : VisheoRenderingAssets) {
-		self.appState = appState;
+		self.appState = appState
         self.assets = assets
+        self.isPrompterEnabled = false
 		super.init();
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationWillResignActive, object: nil);
@@ -256,6 +262,11 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	func toggleCameraFace() {
 		camera?.rotateCamera();
 	}
+    
+    func togglePrompterMode() {
+        isPrompterEnabled = !isPrompterEnabled
+        didChanged?()
+    }
 	
 	private func handleMotionUpdate(_ motion: CMDeviceMotion) {
 		let gravity = motion.gravity;
