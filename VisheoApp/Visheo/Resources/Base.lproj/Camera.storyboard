@@ -560,21 +560,21 @@ I wish this new year of your life let all your dreams &amp; wishes come true!</s
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLg-vR-eRQ">
-                                <rect key="frame" x="36" y="274" width="303" height="95"/>
+                                <rect key="frame" x="36" y="262" width="303" height="95"/>
                                 <string key="text">We collected wishes for your inspiration. Swipe and choose one, but be creative! Only words of your heart will sound heartwarming.</string>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="publicVisheoLamp" translatesAutoresizingMaskIntoConstraints="NO" id="HUK-YV-pka">
-                                <rect key="frame" x="121.5" y="102" width="132" height="132"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="promptOnboarding" translatesAutoresizingMaskIntoConstraints="NO" id="HUK-YV-pka">
+                                <rect key="frame" x="127.5" y="102" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HUK-YV-pka" secondAttribute="height" id="Cu3-AF-hI4"/>
-                                    <constraint firstAttribute="width" constant="132" id="iU1-Zb-9Is"/>
+                                    <constraint firstAttribute="width" constant="120" id="iU1-Zb-9Is"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbh-83-DWg">
-                                <rect key="frame" x="20" y="425" width="335" height="60"/>
+                                <rect key="frame" x="20" y="413" width="335" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vz5-En-b0v"/>
@@ -625,7 +625,7 @@ I wish this new year of your life let all your dreams &amp; wishes come true!</s
         <image name="camera_icon" width="34" height="34"/>
         <image name="onboarding_video" width="132" height="132"/>
         <image name="play" width="80" height="80"/>
-        <image name="publicVisheoLamp" width="132" height="132"/>
+        <image name="promptOnboarding" width="240" height="240"/>
         <image name="tipsIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
