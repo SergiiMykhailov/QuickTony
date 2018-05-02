@@ -287,7 +287,7 @@ class VisheoCreationService : CreationService {
         let videoRef = storageRef(for: creationInfo.visheoId, premium: creationInfo.premium)
         
         self.uploadingProgress[creationInfo.visheoId] = 0.0
-        self.notifyUploading(progress: 0.0, for: creationInfo.visheoId)
+        self.notifyUploading(progress: 0.0, for: creationInfo.visheoId, fileURL: creationInfo.visheoURL)
 		
         let uploadTask = videoRef.putFile(from: creationInfo.visheoURL, metadata: nil)
 		uploadTasks[creationInfo.visheoId] = uploadTask;
@@ -296,7 +296,7 @@ class VisheoCreationService : CreationService {
             if let uploadingProgress = snapshot.progress, uploadingProgress.totalUnitCount > 0 {
                 let progress = Double(uploadingProgress.completedUnitCount) / Double(uploadingProgress.totalUnitCount)
                 self.uploadingProgress[creationInfo.visheoId] = progress
-                self.notifyUploading(progress: progress, for: creationInfo.visheoId)
+                self.notifyUploading(progress: progress, for: creationInfo.visheoId, fileURL: creationInfo.visheoURL)
             }
         }
 
@@ -325,9 +325,10 @@ class VisheoCreationService : CreationService {
     
     // MARK: Private
     
-    private func notifyUploading(progress: Double, for visheoId: String) {
+    private func notifyUploading(progress: Double, for visheoId: String, fileURL: URL) {
         let info = [Notification.Keys.progress : progress,
-                    Notification.Keys.visheoId : visheoId] as [String : Any]
+                    Notification.Keys.visheoId : visheoId,
+                    Notification.Keys.visheoUrl : fileURL] as [String : Any]
         NotificationCenter.default.post(name: .visheoUploadingProgress, object: self, userInfo: info)
     }
     

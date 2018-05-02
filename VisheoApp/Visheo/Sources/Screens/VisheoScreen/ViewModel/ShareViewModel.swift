@@ -180,16 +180,18 @@ class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
 	private let loggingService: EventLoggingService;
 	private let userInfo: UserInfoProvider;
 	private let feedbackService: FeedbackService;
+    private let permissionsService: AppPermissionsService;
 	private var shouldPresentFeedback = false;
     
-    init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, appStateService: AppStateService) {
+    init(record: VisheoRecord, visheoService: CreationService, cache: VisheosCache, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, appStateService: AppStateService, permissionsService: AppPermissionsService) {
         self.visheoRecord = record
         self.visheoService = visheoService
         self.visheosCache = cache
-		self.userNotificationsService = notificationsService;
-		self.loggingService = loggingService;
-		self.feedbackService = feedbackService;
-		self.userInfo = userInfo;
+		self.userNotificationsService = notificationsService
+		self.loggingService = loggingService
+		self.feedbackService = feedbackService
+		self.userInfo = userInfo
+        self.permissionsService = permissionsService
         
         super.init(withAppStateService: appStateService)
     }
@@ -208,6 +210,11 @@ class ExistingVisheoShareViewModel: ShareViewModelImpl, ShareViewModel {
     
     func saveVisheo() {
         if let visheoUrl = visheoUrl {
+            guard permissionsService.galleryAccessAllowed else {
+                UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+                return
+            }
+            
             PHPhotoLibrary.shared().performChanges({
                 PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: visheoUrl)
             }) {[weak self] (success, error) in
@@ -367,13 +374,14 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
 	private let userNotificationsService: UserNotificationsService
     private let sharePremium : Bool
 	private let loggingService: EventLoggingService;
+    private let permissionsService: AppPermissionsService
 	private let userInfo: UserInfoProvider;
 	private let feedbackService: FeedbackService;
 	private var assets: VisheoRenderingAssets?;
 	private var record: VisheoRecord?;
 	private var shouldPresentFeedback = false;
     
-	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, sharePremium: Bool, appStateService: AppStateService) {
+	init(assets: VisheoRenderingAssets, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, sharePremium: Bool, appStateService: AppStateService, permissionsService: AppPermissionsService) {
         self.renderingService = renderingService
         self.creationService = creationService
 		self.userNotificationsService = notificationsService;
@@ -381,11 +389,12 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
 		self.userInfo = userInfo;
 		self.feedbackService = feedbackService;
         self.sharePremium = sharePremium
-		self.assets = assets;
+		self.assets = assets
+        self.permissionsService = permissionsService
         super.init(withAppStateService: appStateService)
     }
 	
-	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, appStateService: AppStateService) {
+	init(record: VisheoRecord, renderingService: RenderingService, creationService: CreationService, notificationsService: UserNotificationsService, loggingService: EventLoggingService, userInfo: UserInfoProvider, feedbackService: FeedbackService, appStateService: AppStateService, permissionsService: AppPermissionsService) {
 		self.renderingService = renderingService
 		self.creationService = creationService
 		self.userNotificationsService = notificationsService;
@@ -393,6 +402,7 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
 		self.feedbackService = feedbackService;
 		self.userInfo = userInfo;
 		self.record = record;
+        self.permissionsService = permissionsService
 		
 		guard let info = self.creationService.unfinishedInfo(with: record.id) else {
 			sharePremium = false;
@@ -461,6 +471,11 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
     
     func saveVisheo() {
         if let visheoUrl = visheoUrl {
+            guard permissionsService.galleryAccessAllowed else {
+                UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+                return
+            }
+            
             PHPhotoLibrary.shared().performChanges({
                 PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: visheoUrl)
             }) {[weak self] (success, error) in
@@ -515,6 +530,7 @@ class ShareVisheoViewModel : ShareViewModelImpl, ShareViewModel {
                 let visheoId = info[Notification.Keys.visheoId] as? String,
                 strongSelf.currentVisheoId == visheoId else {return}
             
+            strongSelf.visheoUrl = info[Notification.Keys.visheoUrl] as? URL
             self?.creationStatus = .uploading(progress: progress)
 		}
         
