@@ -20,6 +20,7 @@
 		2C50D1482093675D00306231 /* PremiumOccasionsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D1462093675D00306231 /* PremiumOccasionsTableCellViewModel.swift */; };
 		2C50D14A209367F500306231 /* PremiumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D149209367F500306231 /* PremiumCellViewModel.swift */; };
 		2C50D14B209367F500306231 /* PremiumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C50D149209367F500306231 /* PremiumCellViewModel.swift */; };
+		2C50D1542097153F00306231 /* BackgroundTasker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF3F2932091C7FF0045BCE7 /* BackgroundTasker.swift */; };
 		2C549D8020809A3000B59061 /* InvitesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C549D7F20809A3000B59061 /* InvitesService.swift */; };
 		2C549D8120809A3000B59061 /* InvitesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C549D7F20809A3000B59061 /* InvitesService.swift */; };
 		2C6EE6DC206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE6D8206CF4DB00E06AFC /* CoverOnboardingScreenControllerViewModel.swift */; };
@@ -68,6 +69,7 @@
 		2CADBEA320879AA70011C88E /* SubscriptionDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9D20879AA70011C88E /* SubscriptionDescriptionRouter.swift */; };
 		2CADBEA420879AA70011C88E /* SubscriptionDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9E20879AA70011C88E /* SubscriptionDescriptionViewController.swift */; };
 		2CADBEA520879AA70011C88E /* SubscriptionDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9E20879AA70011C88E /* SubscriptionDescriptionViewController.swift */; };
+		2CF3F2942091C7FF0045BCE7 /* BackgroundTasker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF3F2932091C7FF0045BCE7 /* BackgroundTasker.swift */; };
 		9201B2DF1FE284C700FAC820 /* MusicSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201B2E11FE284C700FAC820 /* MusicSelection.storyboard */; };
 		9204818D1FFCDA4E0053810D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AD73031FE7DCEA0043B4A1 /* InfoPlist.strings */; };
 		9204AE231FDF910D007FFAE8 /* RedeemSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204AE221FDF910D007FFAE8 /* RedeemSuccessViewController.swift */; };
@@ -491,6 +493,7 @@
 		2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionControllerViewModel.swift; sourceTree = "<group>"; };
 		2CADBE9D20879AA70011C88E /* SubscriptionDescriptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionRouter.swift; sourceTree = "<group>"; };
 		2CADBE9E20879AA70011C88E /* SubscriptionDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionViewController.swift; sourceTree = "<group>"; };
+		2CF3F2932091C7FF0045BCE7 /* BackgroundTasker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasker.swift; sourceTree = "<group>"; };
 		2FD6F74B86B302F75CC70FF6 /* Pods-App-Visheo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Visheo.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo.release.xcconfig"; sourceTree = "<group>"; };
 		391D08EBDF5AD694F5624C6D /* Pods-App-VisheoStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-VisheoStaging.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-VisheoStaging/Pods-App-VisheoStaging.release.xcconfig"; sourceTree = "<group>"; };
 		481AD60403C8F371649DC574 /* Pods-App-Visheo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Visheo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Visheo/Pods-App-Visheo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -755,6 +758,14 @@
 				2C9A11CA207CAC9100DD114C /* InviteFriendsViewController.swift */,
 			);
 			path = InviteFriends;
+			sourceTree = "<group>";
+		};
+		2CF3F2902091C7E10045BCE7 /* BackgroundTasker */ = {
+			isa = PBXGroup;
+			children = (
+				2CF3F2932091C7FF0045BCE7 /* BackgroundTasker.swift */,
+			);
+			path = BackgroundTasker;
 			sourceTree = "<group>";
 		};
 		3A25D211DE89E6E80DEC2011 /* Frameworks */ = {
@@ -1179,6 +1190,7 @@
 		B48AAACD1FAA03CC000BB33B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2CF3F2902091C7E10045BCE7 /* BackgroundTasker */,
 				921E0CEA1FDF1BF4000A4EBC /* APLCompositionDebugView.h */,
 				921E0CEB1FDF1BF4000A4EBC /* APLCompositionDebugView.m */,
 				B48AAACE1FAA03CC000BB33B /* Segues */,
@@ -2016,6 +2028,7 @@
 				920F8B3E1FF6BDC90087C45D /* WordTipCellModel.swift in Sources */,
 				920F8B3F1FF6BDC90087C45D /* CameraPermissionsViewModel.swift in Sources */,
 				920F8B401FF6BDC90087C45D /* TipsViewController.swift in Sources */,
+				2C50D1542097153F00306231 /* BackgroundTasker.swift in Sources */,
 				920F8B411FF6BDC90087C45D /* RootViewControllerSegue.swift in Sources */,
 				920F8B421FF6BDC90087C45D /* HolidaysCollectionMediator.swift in Sources */,
 				920F8B431FF6BDC90087C45D /* SoundtrackCellModel.swift in Sources */,
@@ -2332,6 +2345,7 @@
 				B4AEE0E61FD195680043A39A /* VisheosListService.swift in Sources */,
 				A60CEED5790033806C175466 /* ChooseCardsRouter.swift in Sources */,
 				2C9A11D0207CAC9200DD114C /* InviteFriendsViewController.swift in Sources */,
+				2CF3F2942091C7FF0045BCE7 /* BackgroundTasker.swift in Sources */,
 				A60CE8B0E019D486EF4AF0AF /* ChooseCardsViewModel.swift in Sources */,
 				A60CE64BD0494E69FA9B83C5 /* ChooseCardsViewController.swift in Sources */,
 				2C6EE70A20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */,
