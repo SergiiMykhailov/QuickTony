@@ -19,6 +19,7 @@ protocol OccasionGroupsListService: class {
 
 enum OccasionGroupType: String {
     case standard
+    case premium
     case featured
 }
 
