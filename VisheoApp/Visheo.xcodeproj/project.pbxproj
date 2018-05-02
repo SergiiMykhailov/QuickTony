@@ -41,6 +41,16 @@
 		2C6EE70920726C9400E06AFC /* EditVideoDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70320726C9400E06AFC /* EditVideoDescriptionRouter.swift */; };
 		2C6EE70A20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */; };
 		2C6EE70B20726C9400E06AFC /* EditVideoDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */; };
+		2C81E48C2099D0BB00360478 /* PrompterWordsCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E48B2099D0BB00360478 /* PrompterWordsCollectionMediator.swift */; };
+		2C81E48F2099D3FB00360478 /* PrompterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E48E2099D3FB00360478 /* PrompterCollectionViewCell.swift */; };
+		2C81E4902099D3FB00360478 /* PrompterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E48E2099D3FB00360478 /* PrompterCollectionViewCell.swift */; };
+		2C81E4912099F00C00360478 /* PrompterWordsCollectionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E48B2099D0BB00360478 /* PrompterWordsCollectionMediator.swift */; };
+		2C81E496209A0E2400360478 /* PrompterOnboardingControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E492209A0E2400360478 /* PrompterOnboardingControllerViewModel.swift */; };
+		2C81E497209A0E2400360478 /* PrompterOnboardingControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E492209A0E2400360478 /* PrompterOnboardingControllerViewModel.swift */; };
+		2C81E498209A0E2400360478 /* PrompterOnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E493209A0E2400360478 /* PrompterOnboardingRouter.swift */; };
+		2C81E499209A0E2400360478 /* PrompterOnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E493209A0E2400360478 /* PrompterOnboardingRouter.swift */; };
+		2C81E49A209A0E2400360478 /* PrompterOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E494209A0E2400360478 /* PrompterOnboardingViewController.swift */; };
+		2C81E49B209A0E2400360478 /* PrompterOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81E494209A0E2400360478 /* PrompterOnboardingViewController.swift */; };
 		2C861EE82062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C861EE92062AC7200C30252 /* FreeRuleControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */; };
 		2C8CC95B2092059000FF9B4F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */; };
@@ -482,6 +492,11 @@
 		2C6EE70220726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoDescriptionControllerViewModel.swift; sourceTree = "<group>"; };
 		2C6EE70320726C9400E06AFC /* EditVideoDescriptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoDescriptionRouter.swift; sourceTree = "<group>"; };
 		2C6EE70420726C9400E06AFC /* EditVideoDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoDescriptionViewController.swift; sourceTree = "<group>"; };
+		2C81E48B2099D0BB00360478 /* PrompterWordsCollectionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterWordsCollectionMediator.swift; sourceTree = "<group>"; };
+		2C81E48E2099D3FB00360478 /* PrompterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C81E492209A0E2400360478 /* PrompterOnboardingControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterOnboardingControllerViewModel.swift; sourceTree = "<group>"; };
+		2C81E493209A0E2400360478 /* PrompterOnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterOnboardingRouter.swift; sourceTree = "<group>"; };
+		2C81E494209A0E2400360478 /* PrompterOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterOnboardingViewController.swift; sourceTree = "<group>"; };
 		2C861EE22062AC7200C30252 /* FreeRuleControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRuleControllerViewController.swift; sourceTree = "<group>"; };
 		2C89DF9F2073CF260012586B /* VisheoStaging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VisheoStaging.entitlements; sourceTree = "<group>"; };
 		2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -729,6 +744,22 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		2C81E4882099D09A00360478 /* Mediator */ = {
+			isa = PBXGroup;
+			children = (
+				2C81E48B2099D0BB00360478 /* PrompterWordsCollectionMediator.swift */,
+			);
+			path = Mediator;
+			sourceTree = "<group>";
+		};
+		2C81E48D2099D3DF00360478 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2C81E48E2099D3FB00360478 /* PrompterCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		2C93820320650F6400348BAA /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,12 +894,15 @@
 		9262CBA91FBDF71A00F90AB3 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				2C81E48D2099D3DF00360478 /* Cells */,
+				2C81E4882099D09A00360478 /* Mediator */,
 				9262CBAF1FBDFA4100F90AB3 /* ViewModel */,
 				9262CBAC1FBDF96100F90AB3 /* Router */,
 				9262CBAA1FBDF71A00F90AB3 /* CameraViewController.swift */,
 				92C006641FC0B4BE000AFD4E /* CameraPermissionsViewController.swift */,
 				92DEDBAC1FC01ACD00C7FBB1 /* CameraTipsView.swift */,
 				2CACC9B22097898600D75AA4 /* PrompterViewController.swift */,
+				2C81E494209A0E2400360478 /* PrompterOnboardingViewController.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -879,6 +913,7 @@
 				2CACC9B12097898600D75AA4 /* PrompterRouter.swift */,
 				9262CBAD1FBDF98300F90AB3 /* CameraRouter.swift */,
 				92C006621FC0B4AC000AFD4E /* CameraPermissionsRouter.swift */,
+				2C81E493209A0E2400360478 /* PrompterOnboardingRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -889,6 +924,7 @@
 				2CACC9B02097898600D75AA4 /* PrompterControllerViewModel.swift */,
 				9262CBB01FBDFA5600F90AB3 /* CameraViewModel.swift */,
 				92C006601FC0B49E000AFD4E /* CameraPermissionsViewModel.swift */,
+				2C81E492209A0E2400360478 /* PrompterOnboardingControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2031,6 +2067,7 @@
 				920F8B371FF6BDC90087C45D /* BestPracticeCollectionViewCell.swift in Sources */,
 				2C17849820694E7C00ACA197 /* Date+ReadableFormat.swift in Sources */,
 				920F8B381FF6BDC90087C45D /* CameraViewModel.swift in Sources */,
+				2C81E49B209A0E2400360478 /* PrompterOnboardingViewController.swift in Sources */,
 				920F8B391FF6BDC90087C45D /* TipsViewModel.swift in Sources */,
 				920F8B3A1FF6BDC90087C45D /* UIViewController+Alert.swift in Sources */,
 				2CADBEA120879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */,
@@ -2091,6 +2128,7 @@
 				920F8B671FF6BDC90087C45D /* ChooseOccasionRouter.swift in Sources */,
 				920F8B681FF6BDC90087C45D /* SignInRouter.swift in Sources */,
 				920F8B691FF6BDC90087C45D /* PhotoPermissionsViewController.swift in Sources */,
+				2C81E499209A0E2400360478 /* PrompterOnboardingRouter.swift in Sources */,
 				920F8B6A1FF6BDC90087C45D /* SelectSoundtrackViewModel.swift in Sources */,
 				920F8B6B1FF6BDC90087C45D /* RedeemSuccessViewModel.swift in Sources */,
 				920F8B6C1FF6BDC90087C45D /* CameraTipsView.swift in Sources */,
@@ -2129,6 +2167,7 @@
 				920F8B861FF6BDC90087C45D /* PhotoPickerViewController.swift in Sources */,
 				920F8B871FF6BDC90087C45D /* EditAccountViewController.swift in Sources */,
 				2CADBEA320879AA70011C88E /* SubscriptionDescriptionRouter.swift in Sources */,
+				2C81E497209A0E2400360478 /* PrompterOnboardingControllerViewModel.swift in Sources */,
 				920F8B881FF6BDC90087C45D /* AuthorizationViewModel.swift in Sources */,
 				920F8B891FF6BDC90087C45D /* Events.swift in Sources */,
 				920F8B8A1FF6BDC90087C45D /* SoundtracksService.swift in Sources */,
@@ -2163,6 +2202,7 @@
 				920F8B9F1FF6BDC90087C45D /* EditAccountRouter.swift in Sources */,
 				920F8BA01FF6BDC90087C45D /* SignUpViewController.swift in Sources */,
 				2C6EE70720726C9400E06AFC /* EditVideoDescriptionControllerViewModel.swift in Sources */,
+				2C81E4902099D3FB00360478 /* PrompterCollectionViewCell.swift in Sources */,
 				920F8BA11FF6BDC90087C45D /* VisheoRenderingAssets.swift in Sources */,
 				920F8BA21FF6BDC90087C45D /* SignInViewController.swift in Sources */,
 				920F8BA31FF6BDC90087C45D /* OccasionCellViewModel.swift in Sources */,
@@ -2173,6 +2213,7 @@
 				920F8BA71FF6BDC90087C45D /* TipsCollectionViewMediator.swift in Sources */,
 				920F8BA81FF6BDC90087C45D /* PhotoPickerRouter.swift in Sources */,
 				920F8BA91FF6BDC90087C45D /* OnboardingViewModel.swift in Sources */,
+				2C81E4912099F00C00360478 /* PrompterWordsCollectionMediator.swift in Sources */,
 				920F8BAA1FF6BDC90087C45D /* SoundtrackCollectionMediator.swift in Sources */,
 				920F8BAB1FF6BDC90087C45D /* ShareRouter.swift in Sources */,
 				920F8BAC1FF6BDC90087C45D /* VisheoPreviewView.swift in Sources */,
@@ -2207,6 +2248,7 @@
 				92A3BA6D1FF361D4006FA011 /* BestPracticeCollectionViewCell.swift in Sources */,
 				2C17849520694D3300ACA197 /* Date+ReadableFormat.swift in Sources */,
 				9262CBB11FBDFA5600F90AB3 /* CameraViewModel.swift in Sources */,
+				2C81E49A209A0E2400360478 /* PrompterOnboardingViewController.swift in Sources */,
 				92A3BA671FF35BAB006FA011 /* TipsViewModel.swift in Sources */,
 				B4A79CF31FACB81F00C208CF /* UIViewController+Alert.swift in Sources */,
 				2CADBEA020879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */,
@@ -2267,7 +2309,10 @@
 				B46761271FC7118F006E9CB2 /* ShareVisheoViewController.swift in Sources */,
 				B4BCABF91FB8CC7D003EDC7F /* ChooseOccasionRouter.swift in Sources */,
 				B4BCABED1FB8CC7D003EDC7F /* SignInRouter.swift in Sources */,
+				2C81E498209A0E2400360478 /* PrompterOnboardingRouter.swift in Sources */,
 				2C50D143209366D700306231 /* PremiumCollectionViewCell.swift in Sources */,
+				2C81E48F2099D3FB00360478 /* PrompterCollectionViewCell.swift in Sources */,
+				2C81E48C2099D0BB00360478 /* PrompterWordsCollectionMediator.swift in Sources */,
 				B44450D51FBEF3F00021772F /* PhotoPermissionsViewController.swift in Sources */,
 				920EDFE21FCF0D6C00D121ED /* SelectSoundtrackViewModel.swift in Sources */,
 				B437CF801FDEE3E800E28C20 /* RedeemSuccessViewModel.swift in Sources */,
@@ -2303,6 +2348,7 @@
 				B465280C1FC346960070FFB7 /* PreviewViewModel.swift in Sources */,
 				2C6EE6E0206CF4DB00E06AFC /* CoverOnboardingScreenViewController.swift in Sources */,
 				92D58CD01FF3A3D500C901F1 /* AutoSizingLayout.swift in Sources */,
+				2C81E496209A0E2400360478 /* PrompterOnboardingControllerViewModel.swift in Sources */,
 				B44450DF1FBF02F60021772F /* PhotoPickerViewController.swift in Sources */,
 				B4C893F41FD5787B00763296 /* EditAccountViewController.swift in Sources */,
 				2CADBEA220879AA70011C88E /* SubscriptionDescriptionRouter.swift in Sources */,

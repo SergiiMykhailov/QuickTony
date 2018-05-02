@@ -31,9 +31,9 @@ class DefaultPrompterRouter:  PrompterRouter {
         self.dependencies = dependencies
     }
 
-    func start(controller: PrompterViewController) {
+    func start(with controller: PrompterViewController, words: [WordIdea], clearAllAction: @escaping ()->()) {
         self.controller = controller
-        let vm = PrompterControllerViewModel(router: self)
+        let vm = PrompterControllerViewModel(router: self, words: words, clearAllAction: clearAllAction)
         viewModel = vm
         controller.configure(viewModel: vm, router: self)
     }

@@ -22,7 +22,8 @@ class CameraViewController: UIViewController
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var prompterViewController: UIView!
 	
-	//MARK: - VM+Router init
+    @IBOutlet weak var tipsBarButton: UIBarButtonItem!
+    //MARK: - VM+Router init
 	
 	private(set) var viewModel: CameraViewModel!
 	private(set) var router: FlowRouter!
@@ -38,6 +39,10 @@ class CameraViewController: UIViewController
 	{
 		super.viewDidLoad()
 
+        if (!viewModel.isPrompterAvailable) {
+            navigationItem.rightBarButtonItem = nil
+        }
+        
 		viewModel.addPreviewOutput(cameraPreview);
 		
 		viewModel.recordingStateChangedBlock = { [weak self] update in

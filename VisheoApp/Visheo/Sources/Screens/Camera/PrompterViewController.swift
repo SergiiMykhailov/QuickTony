@@ -15,12 +15,20 @@ final class PrompterViewController: UIViewController {
 
     private(set) var viewModel: PrompterViewModel!
     private(set) var router: FlowRouter!
+    private var collectionViewMediator: PrompterWordsCollectionMediator?
+    
+    @IBOutlet weak var wordsCollectionView: UICollectionView!
+    @IBOutlet weak var pageIndicateLabel: UILabel!
 
     // MARK: - Configuration -
 
     func configure(viewModel: PrompterViewModel, router: FlowRouter) {
         self.viewModel = viewModel
         self.router    = router
+        
+        viewModel.currentPageChanged = { [weak self] in
+            self?.loadDataFromViewModel()
+        }
     }
 
     // MARK: - Lifecycle -
@@ -28,8 +36,19 @@ final class PrompterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        collectionViewMediator = PrompterWordsCollectionMediator(viewModel: viewModel, wordsCollection: wordsCollectionView)
+        loadDataFromViewModel()
     }
-
+    
+    func loadDataFromViewModel() {
+        pageIndicateLabel.text = viewModel.pageIndicatorText
+    }
+    
+    // MARK: - Actions -
+    
+    @IBAction func clearAllButtonPressed() {
+        viewModel.clearAllPressed()
+    }
 }
 
 // MARK: - Router -

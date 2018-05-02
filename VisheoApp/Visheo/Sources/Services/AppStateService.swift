@@ -32,8 +32,11 @@ protocol AppStateService {
     func onboardingShare(wasSeen seen: Bool)
     
 	var shouldShowCameraTips: Bool { get }
-	func cameraTips(wereSeen seen: Bool);
+	func cameraTips(wereSeen seen: Bool)
 	
+    var shouldShowPrompterOnboarding: Bool { get }
+    func prompterOnboarding(wereSeen seen: Bool)
+    
 	var appSettings: AppSettings { get }
 	
 	var isReachable: Bool { get }
@@ -50,6 +53,7 @@ class VisheoAppStateService: AppStateService {
     private static let appWasLaunchedKey = "appWasLaunchedKey"
     private static let onboardingCoverShownKey = "onboardingCoverShownKey"
     private static let onboardingShareShownKey = "onboardingShareShownKey"
+    private static let onboardingPrompterShownKey = "onboardingPrompterShownKey"
     
     var isFreeAvailable : Bool = false
     var isCouponAvailable : Bool = false
@@ -91,7 +95,8 @@ class VisheoAppStateService: AppStateService {
     }
     
     func onboarding(wasSeen seen: Bool) {
-        UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingShownKey)        
+        UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingShownKey)
+        UserDefaults.standard.synchronize()
     }
 	
     var shouldShowOnboardingCover : Bool {
@@ -100,6 +105,7 @@ class VisheoAppStateService: AppStateService {
     
     func onboardingCover(wasSeen seen: Bool) {
         UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingCoverShownKey)
+        UserDefaults.standard.synchronize()
     }
     
     var shouldShowOnboardingShare: Bool {
@@ -108,17 +114,27 @@ class VisheoAppStateService: AppStateService {
     
     func onboardingShare(wasSeen seen: Bool) {
         UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingShareShownKey)
+        UserDefaults.standard.synchronize()
     }
     
 	var shouldShowCameraTips: Bool {
-		return !UserDefaults.standard.bool(forKey: VisheoAppStateService.cameraTipsShownKey);
+		return !UserDefaults.standard.bool(forKey: VisheoAppStateService.cameraTipsShownKey)
 	}
 	
 	func cameraTips(wereSeen seen: Bool) {
-		UserDefaults.standard.set(seen, forKey: VisheoAppStateService.cameraTipsShownKey);
-		UserDefaults.standard.synchronize();
+		UserDefaults.standard.set(seen, forKey: VisheoAppStateService.cameraTipsShownKey)
+		UserDefaults.standard.synchronize()
 	}
+    
+    var shouldShowPrompterOnboarding: Bool {
+        return !UserDefaults.standard.bool(forKey: VisheoAppStateService.onboardingPrompterShownKey)
+    }
 	
+    func prompterOnboarding(wereSeen seen: Bool) {
+        UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingPrompterShownKey)
+        UserDefaults.standard.synchronize()
+    }
+    
 	var appSettings: AppSettings {
 		let defaults = AppSettings();
 		

@@ -32,12 +32,14 @@ protocol CameraViewModel: class
 {
 	var isRecording: Bool { get }
     var isPrompterEnabled: Bool { get }
+    var isPrompterAvailable: Bool { get }
     
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? { get set };
 	var recordingProgressChangedBlock: ((Double) -> Void)? { get set }
     var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
     var didChanged: (()->())? { get set }
-	
+    var clearAllAction: (()->())? { get }
+    
 	func addPreviewOutput(_ output: GPUImageInput)
 	func startCapture()
 	func stopCapture(teardown: Bool)
@@ -56,8 +58,12 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	var recordingProgressChangedBlock: ((Double) -> Void)? = nil
 	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? = nil
     var didChanged: (()->())? = nil
+    var clearAllAction: (()->())? = nil
 	
     var isPrompterEnabled: Bool
+    var isPrompterAvailable: Bool {
+        return assets.originalOccasion.words.count > 0
+    }
     
 	private let cropFilter = GPUImageCropFilter();
 	
@@ -84,8 +90,11 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		self.appState = appState
         self.assets = assets
         self.isPrompterEnabled = false
-		super.init();
 		
+        super.init()
+		
+        self.clearAllAction = { [weak self] in self?.togglePrompterMode() }
+        
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationWillResignActive, object: nil);
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.resumeCapture), name: Notification.Name.UIApplicationDidBecomeActive, object: nil);
@@ -264,6 +273,10 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	}
     
     func togglePrompterMode() {
+        if (appState.shouldShowPrompterOnboarding) {
+            self.router?.showPrompterOnboarding()
+        }
+        
         isPrompterEnabled = !isPrompterEnabled
         didChanged?()
     }
