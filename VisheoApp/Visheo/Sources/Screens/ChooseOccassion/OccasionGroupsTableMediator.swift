@@ -12,6 +12,7 @@ import UIKit
 enum CellIdentifiers : String {
     case featured = "FeaturedOccasionsTableCell"
     case standard = "StandardOccasionsTableCell"
+    case premium = "PremiumOccasionsTableCell"
 }
 
 class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDataSource {
@@ -39,6 +40,8 @@ class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDa
                 return featuredCell(forOccasionAtIndex: indexPath.row)
             case .standard:
                 return standardCell(forOccasionAtIndex: indexPath.row)
+            case .premium:
+                return premiumCell(forOccasionAtIndex: indexPath.row)
         }
     }
 
@@ -64,6 +67,17 @@ class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func premiumCell(forOccasionAtIndex index: Int) -> PremiumOccasionsTableCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.premium.rawValue) as! PremiumOccasionsTableCell
+        let group = viewModel.occasionGroups[index]
+        let viewModelForGroup = VisheoPremiumOccasionsTableCellViewModel(withTitle: group.title, subTitle: group.subTitle, occasions: group.occasions) { [weak self] in
+            self?.viewModel.selectOccasion(withOccasion: $0)
+        }
+        let mediator = PremiumCollectionMediator(viewModel: viewModelForGroup, occasionsCollection: cell.occasionsCollection)
+        cell.configure(withModel: viewModelForGroup, mediator: mediator)
+        return cell
+    }
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let group = viewModel.occasionGroups[indexPath.row]
         switch group.type {
@@ -71,6 +85,8 @@ class OccasionGroupsTableMediator : NSObject, UITableViewDelegate, UITableViewDa
             return VisheoFeaturedOccasionsTableCellViewModel.height(forWidth: tableView.frame.size.width)
         case .standard:
             return VisheoStandardOccasionsTableCellViewModel.height
+        case .premium:
+            return VisheoPremiumOccasionsTableCellViewModel.height
         }
     }
 }
