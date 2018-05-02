@@ -126,33 +126,30 @@ class ShareVisheoViewController: UIViewController {
     
     private func updateForRendering() {
         progressBar.title = viewModel.renderingTitle
-        interface(enable: false)
+        disableInterface()
         menuBarItem.isEnabled = false
-        deleteButton.isEnabled = false
         onboardingView.isHidden = !viewModel.shouldShowOnboarding()
     }
     
     private func updateForUploading() {
         progressBar.title = viewModel.uploadingTitle
-        interface(enable: false)
+        videoDidRender()
         menuBarItem.isEnabled = true
-        deleteButton.isEnabled = false
         onboardingView.isHidden = !viewModel.shouldShowOnboarding()
     }
     
     private func updateForReadyState() {
         menuBarItem.isEnabled = true
-        deleteButton.isEnabled = true
         onboardingView.isHidden = true
         viewModel.onboardingDidFinish()
         viewModel.trackVisheoUploaded()
         updateVisheoName()
+        enableInterface()
         
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.2) {
             self.progressBar.alpha = 0.0
             self.coverImage.alpha = 0.0
         }
-        interface(enable: true)
         if let visheoUrl = viewModel.visheoUrl {
             setupPlayer(with: visheoUrl)
         }
@@ -160,24 +157,39 @@ class ShareVisheoViewController: UIViewController {
     
     private func updateForMissingState() {
         menuBarItem.isEnabled = true
-        deleteButton.isEnabled = true
         UIView.animate(withDuration: 0.3) {
             self.progressBar.alpha = 0.0
             self.coverImage.alpha = 1.0
         }
-        interface(enable: false)
+        disableInterface()
     }
     
     private func updateVisheoName() {
         linkText.text = viewModel.visheoName
     }
     
-    private func interface(enable: Bool) {
-        changeStateButton.isEnabled = enable
+    private func disableInterface() {
+        changeStateButton.isEnabled = false
         
-        [shareNowContainer, shareReminderContainer].forEach {
-            $0?.alpha = enable ? 1.0 : 0.2
-            $0?.isUserInteractionEnabled = enable
+        [deleteButton, copyButton, shareButton, editButton, saveButton, shareReminderContainer].forEach {
+            $0?.alpha = 0.2
+            $0?.isUserInteractionEnabled = false
+        }
+    }
+    
+    private func enableInterface() {
+        changeStateButton.isEnabled = true
+        
+        [deleteButton, copyButton, shareButton, editButton, saveButton, shareReminderContainer].forEach {
+            $0?.alpha = 1.0
+            $0?.isUserInteractionEnabled = true
+        }
+    }
+    
+    private func videoDidRender() {
+        [editButton, saveButton].forEach {
+            $0?.alpha = 1.0
+            $0?.isUserInteractionEnabled = true
         }
     }
     
@@ -250,6 +262,7 @@ class ShareVisheoViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     
     
     @IBAction func copyPressed(_ sender: Any) {

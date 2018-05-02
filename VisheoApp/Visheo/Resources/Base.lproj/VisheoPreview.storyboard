@@ -52,7 +52,7 @@
                                         <rect key="frame" x="157" y="157" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendering Preview..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-WX-PI0">
-                                        <rect key="frame" x="103" y="187" width="128" height="18.5"/>
+                                        <rect key="frame" x="103.5" y="187" width="128" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -761,6 +761,7 @@ This visheo is no longer available in cloud</string>
                         <outlet property="copyButton" destination="vNN-3H-6Zr" id="Ndc-Dj-zVQ"/>
                         <outlet property="coverImage" destination="JUY-Yl-B80" id="mhg-IF-Q9h"/>
                         <outlet property="deleteButton" destination="xNJ-3f-zSM" id="rhJ-Ip-aWW"/>
+                        <outlet property="editButton" destination="Kbi-BI-yX8" id="CJx-iE-Os8"/>
                         <outlet property="linkText" destination="j2b-GP-nn3" id="j9P-n9-Enp"/>
                         <outlet property="menuBarItem" destination="QL0-nA-9zK" id="TMN-S9-TE6"/>
                         <outlet property="missingVisheoView" destination="LOg-oO-jCL" id="jOJ-Go-1pb"/>
