@@ -42,9 +42,13 @@ protocol CameraViewModel: class
 	func addPreviewOutput(_ output: GPUImageInput)
 	func startCapture()
 	func stopCapture(teardown: Bool)
+
 	func toggleRecording()
 	func toggleCameraFace()
     func togglePrompterMode()
+    
+    var shouldPresentCameraTips: Bool { get }
+    func markCameraTipsSeen()
 }
 
 
@@ -297,6 +301,15 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	@objc private func resumeCapture() {
 		camera?.resumeCameraCapture();
 	}
+    
+    var shouldPresentCameraTips: Bool {
+        return appState.shouldShowCameraTips;
+    }
+    
+    func markCameraTipsSeen() {
+        appState.cameraTips(wereSeen: true);
+    }
+
 }
 
 

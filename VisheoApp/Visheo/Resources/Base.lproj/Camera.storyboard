@@ -185,11 +185,6 @@
                                 <action selector="backButtonPressed:" destination="Isd-d2-FNo" id="yrY-04-H0G"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="tipsIcon" id="yN4-fc-nAD">
-                            <connections>
-                                <action selector="togglePrompterMode" destination="Isd-d2-FNo" id="qDv-70-Dvf"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -203,7 +198,6 @@
                         <outlet property="rotationHintLeading" destination="4vp-iT-01D" id="auR-SL-lXn"/>
                         <outlet property="rotationHintTrailing" destination="IPp-zm-MPp" id="LAn-JW-poI"/>
                         <outlet property="rotationHintView" destination="BNF-hk-vTk" id="Pdd-Gu-CWn"/>
-                        <outlet property="tipsBarButton" destination="yN4-fc-nAD" id="EKM-xG-huB"/>
                         <segue destination="UoZ-eD-0S2" kind="show" identifier="showTrimScreen" id="0eb-1U-Z0s"/>
                         <segue destination="HQg-xR-Mri" kind="show" identifier="showPrompterOnboarding" id="I5W-BR-ldh"/>
                     </connections>
@@ -611,9 +605,8 @@ I wish this new year of your life let all your dreams &amp; wishes come true!</s
         <image name="onboarding_video" width="132" height="132"/>
         <image name="play" width="80" height="80"/>
         <image name="promptOnboarding" width="240" height="240"/>
-        <image name="tipsIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Qk-pt-sxu"/>
+        <segue reference="fJP-hQ-Yo3"/>
     </inferredMetricsTieBreakers>
 </document>

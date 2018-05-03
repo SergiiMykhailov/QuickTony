@@ -22,7 +22,6 @@ class CameraViewController: UIViewController
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var prompterViewController: UIView!
 	
-    @IBOutlet weak var tipsBarButton: UIBarButtonItem!
     //MARK: - VM+Router init
 	
 	private(set) var viewModel: CameraViewModel!
@@ -72,9 +71,18 @@ class CameraViewController: UIViewController
 		let mask = CAShapeLayer();
 		rotationHintView.layer.mask = mask;
 		rotationHintView.alpha = 0.0;
+        
+        updateFromViewModel()
 	}
 	
-	
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        if isMovingToParentViewController && viewModel.shouldPresentCameraTips {
+            displayTipsController();
+        }
+    }
+
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated);
 		viewModel.startCapture();
@@ -95,9 +103,20 @@ class CameraViewController: UIViewController
 	}
 	
     func updateFromViewModel() {
-        self.prompterViewController.isHidden = !self.viewModel.isPrompterEnabled
+        prompterViewController.isHidden = !self.viewModel.isPrompterEnabled
+        self.navigationItem.rightBarButtonItem = tipsBarButtonItem
     }
 	
+    var tipsBarButtonItem: UIBarButtonItem {
+        let icon = !viewModel.isPrompterEnabled ? #imageLiteral(resourceName: "tipsIcon") : #imageLiteral(resourceName: "bestPracticies")
+        let tipsButton = UIButton(type: .custom);
+        tipsButton.frame = CGRect(origin: .zero, size: icon.size);
+        tipsButton.setImage(icon, for: .normal);
+        tipsButton.addTarget(self, action: #selector(CameraViewController.togglePrompterMode), for: .touchUpInside);
+
+        return UIBarButtonItem(customView: tipsButton)
+    }
+    
 	//MARK: - Actions
 	
 	@IBAction func toggleVideoRecording() {
@@ -108,7 +127,7 @@ class CameraViewController: UIViewController
 		viewModel.toggleCameraFace()
 	}
     
-    @IBAction func togglePrompterMode() {
+    @objc func togglePrompterMode() {
         viewModel.togglePrompterMode()
     }
     
@@ -194,6 +213,24 @@ class CameraViewController: UIViewController
 			self.view.layoutIfNeeded();
 		}, completion: nil)
 	}
+}
+
+extension CameraViewController {
+    //MARK: - Tips
+    
+    private func displayTipsController(onDisplay: (() -> Void)? = nil) {
+        guard let buttonView = navigationItem.rightBarButtonItem?.customView, let navigationView = navigationController?.view else {
+            return;
+        }
+        
+        let tipsButtonFrame = navigationView.convert(buttonView.frame, from: buttonView.superview);
+        
+        let tipsView = CameraTipsView.display(in: navigationView, aligningTo: tipsButtonFrame, completion: onDisplay)
+        
+        tipsView?.tipsDismissedBlock = { [weak self] in
+            self?.viewModel.markCameraTipsSeen()
+        }
+    }
 }
 
 extension CameraViewController {
