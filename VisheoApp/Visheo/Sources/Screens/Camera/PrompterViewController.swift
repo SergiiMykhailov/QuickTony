@@ -44,11 +44,6 @@ final class PrompterViewController: UIViewController {
         pageIndicateLabel.text = viewModel.pageIndicatorText
     }
     
-    // MARK: - Actions -
-    
-    @IBAction func clearAllButtonPressed() {
-        viewModel.clearAllPressed()
-    }
 }
 
 // MARK: - Router -

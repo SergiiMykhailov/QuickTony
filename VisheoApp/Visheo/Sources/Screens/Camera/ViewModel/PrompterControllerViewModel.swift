@@ -16,7 +16,6 @@ protocol PrompterViewModel: class {
     
     var currentPageChanged: (()->())? { get set }
     
-    func clearAllPressed()
     func text(forIndex index: Int) -> String
 }
 
@@ -25,14 +24,12 @@ final class PrompterControllerViewModel: PrompterViewModel {
     // MARK: - Private properties -
     private(set) weak var router: PrompterRouter?
     private var words: [WordIdea]
-    private var clearAllAction: ()->()
     // MARK: - Lifecycle -
 
-    init(router: PrompterRouter, words: [WordIdea], clearAllAction: @escaping ()->()) {
+    init(router: PrompterRouter, words: [WordIdea]) {
         self.router = router
         self.currentPage = 0
         self.words = words
-        self.clearAllAction = clearAllAction
     }
 
     var currentPageChanged: (()->())?
@@ -45,10 +42,6 @@ final class PrompterControllerViewModel: PrompterViewModel {
         didSet {
             currentPageChanged?()
         }
-    }
-    
-    func clearAllPressed() {
-        clearAllAction()
     }
     
     var pageIndicatorText: String {

@@ -56,11 +56,10 @@ class VisheoCameraRouter: CameraRouter
             let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: assets)
             trimmingRouter.start(with: trimmingController)
         case .showPrompterView:
-            guard let clearAllAction = viewModel?.clearAllAction else { return }
             let prompterController = segue.destination as! PrompterViewController
             let words = assets.originalOccasion.words
             let prompterRouter = DefaultPrompterRouter(withDependecies: dependencies)
-            prompterRouter.start(with: prompterController, words: words, clearAllAction: clearAllAction)
+            prompterRouter.start(with: prompterController, words: words)
         case .showPrompterOnboarding:
             let prompterOnboardingController = segue.destination as! PrompterOnboardingViewController
             let prompterOnboardingRouter = DefaultPrompterOnboardingRouter(withDependencies: dependencies)
