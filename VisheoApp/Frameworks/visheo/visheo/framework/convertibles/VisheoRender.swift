@@ -50,7 +50,7 @@ public final class VisheoRender: VideoConvertible
 	private let outro: URL?
 	private let quality: RenderQuality;
 	
-	private let exportVideoBitrate = 1_000_000;
+	private let exportVideoBitrate = 1_500_000;
 	private let exportAudioBitrate = 128_000;
 	
 	public init(timeline: URL, video: URL, audio: URL? = nil, outro: URL? = nil, quality: RenderQuality) {
