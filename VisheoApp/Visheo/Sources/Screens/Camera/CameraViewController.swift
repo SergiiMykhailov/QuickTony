@@ -21,6 +21,7 @@ class CameraViewController: UIViewController
 	@IBOutlet weak var recordingIndicator: CameraRecordIndicator!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var prompterViewController: UIView!
+    @IBOutlet weak var swipeOnboardingView: UIView!
 	
     //MARK: - VM+Router init
 	
@@ -103,8 +104,9 @@ class CameraViewController: UIViewController
 	}
 	
     func updateFromViewModel() {
-        prompterViewController.isHidden = !self.viewModel.isPrompterEnabled
-        self.navigationItem.rightBarButtonItem = tipsBarButtonItem
+        prompterViewController.isHidden = !viewModel.isPrompterEnabled
+        swipeOnboardingView.isHidden = !viewModel.shouldPresentSwipeOnboarding
+        navigationItem.rightBarButtonItem = tipsBarButtonItem
     }
 	
     var tipsBarButtonItem: UIBarButtonItem {

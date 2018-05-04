@@ -33,7 +33,7 @@ class DefaultPrompterRouter:  PrompterRouter {
 
     func start(with controller: PrompterViewController, words: [WordIdea]) {
         self.controller = controller
-        let vm = PrompterControllerViewModel(router: self, words: words)
+        let vm = PrompterControllerViewModel(router: self, words: words, appStateService: dependencies.appStateService)
         viewModel = vm
         controller.configure(viewModel: vm, router: self)
     }

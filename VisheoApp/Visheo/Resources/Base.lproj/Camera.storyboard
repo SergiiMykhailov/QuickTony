@@ -224,6 +224,7 @@
                         <outlet property="rotationHintLeading" destination="4vp-iT-01D" id="auR-SL-lXn"/>
                         <outlet property="rotationHintTrailing" destination="IPp-zm-MPp" id="LAn-JW-poI"/>
                         <outlet property="rotationHintView" destination="BNF-hk-vTk" id="Pdd-Gu-CWn"/>
+                        <outlet property="swipeOnboardingView" destination="Htw-69-Bmc" id="MVQ-Q4-eSh"/>
                         <segue destination="UoZ-eD-0S2" kind="show" identifier="showTrimScreen" id="0eb-1U-Z0s"/>
                         <segue destination="HQg-xR-Mri" kind="show" identifier="showPrompterOnboarding" id="I5W-BR-ldh"/>
                     </connections>

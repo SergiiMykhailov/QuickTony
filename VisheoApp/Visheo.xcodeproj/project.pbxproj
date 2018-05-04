@@ -78,7 +78,6 @@
 		2CACC9B72097898600D75AA4 /* PrompterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B12097898600D75AA4 /* PrompterRouter.swift */; };
 		2CACC9B82097898600D75AA4 /* PrompterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B22097898600D75AA4 /* PrompterViewController.swift */; };
 		2CACC9B92097898600D75AA4 /* PrompterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACC9B22097898600D75AA4 /* PrompterViewController.swift */; };
-		2CADBE982085FFA10011C88E /* GoogleService-Info-old.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */; };
 		2CADBEA020879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */; };
 		2CADBEA120879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */; };
 		2CADBEA220879AA70011C88E /* SubscriptionDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CADBE9D20879AA70011C88E /* SubscriptionDescriptionRouter.swift */; };
@@ -512,7 +511,6 @@
 		2CACC9B02097898600D75AA4 /* PrompterControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterControllerViewModel.swift; sourceTree = "<group>"; };
 		2CACC9B12097898600D75AA4 /* PrompterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterRouter.swift; sourceTree = "<group>"; };
 		2CACC9B22097898600D75AA4 /* PrompterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterViewController.swift; sourceTree = "<group>"; };
-		2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-old.plist"; sourceTree = "<group>"; };
 		2CADBE992086033D0011C88E /* Visheo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Visheo.entitlements; sourceTree = "<group>"; };
 		2CADBE9C20879AA70011C88E /* SubscriptionDescriptionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionControllerViewModel.swift; sourceTree = "<group>"; };
 		2CADBE9D20879AA70011C88E /* SubscriptionDescriptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDescriptionRouter.swift; sourceTree = "<group>"; };
@@ -876,7 +874,6 @@
 			isa = PBXGroup;
 			children = (
 				2C8CC9582092059000FF9B4F /* GoogleService-Info.plist */,
-				2CADBE972085FFA10011C88E /* GoogleService-Info-old.plist */,
 			);
 			path = production;
 			sourceTree = "<group>";
@@ -1802,7 +1799,6 @@
 				B4A79CF11FAC927200C208CF /* Main.storyboard in Resources */,
 				B48AAAC11FA9E58F000BB33B /* LaunchProxy.storyboard in Resources */,
 				92DEDBB11FC0599100C7FBB1 /* CameraTips.xib in Resources */,
-				2CADBE982085FFA10011C88E /* GoogleService-Info-old.plist in Resources */,
 				B4775FFF1FD57EAA00A02BEF /* Account.storyboard in Resources */,
 				92DEDBAE1FC0598400C7FBB1 /* Camera.storyboard in Resources */,
 				92A8D30D1FC86E86001E194D /* beginning.m4a in Resources */,

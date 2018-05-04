@@ -35,7 +35,10 @@ protocol AppStateService {
 	func cameraTips(wereSeen seen: Bool)
 	
     var shouldShowPrompterOnboarding: Bool { get }
-    func prompterOnboarding(wereSeen seen: Bool)
+    func prompterOnboarding(wasSeen seen: Bool)
+    
+    var shouldShowSwipeOnboarding: Bool { get }
+    func swipeOnboarding(wasSeen seen: Bool)
     
 	var appSettings: AppSettings { get }
 	
@@ -54,6 +57,7 @@ class VisheoAppStateService: AppStateService {
     private static let onboardingCoverShownKey = "onboardingCoverShownKey"
     private static let onboardingShareShownKey = "onboardingShareShownKey"
     private static let onboardingPrompterShownKey = "onboardingPrompterShownKey"
+    private static let onboardingPrompterSwipeShownKey = "onboardingPrompterSwipeShownKey"
     
     var isFreeAvailable : Bool = false
     var isCouponAvailable : Bool = false
@@ -130,8 +134,17 @@ class VisheoAppStateService: AppStateService {
         return !UserDefaults.standard.bool(forKey: VisheoAppStateService.onboardingPrompterShownKey)
     }
 	
-    func prompterOnboarding(wereSeen seen: Bool) {
+    func prompterOnboarding(wasSeen seen: Bool) {
         UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingPrompterShownKey)
+        UserDefaults.standard.synchronize()
+    }
+    
+    var shouldShowSwipeOnboarding: Bool {
+        return !UserDefaults.standard.bool(forKey: VisheoAppStateService.onboardingPrompterSwipeShownKey)
+    }
+    
+    func swipeOnboarding(wasSeen seen: Bool) {
+        UserDefaults.standard.set(seen, forKey: VisheoAppStateService.onboardingPrompterSwipeShownKey)
         UserDefaults.standard.synchronize()
     }
     

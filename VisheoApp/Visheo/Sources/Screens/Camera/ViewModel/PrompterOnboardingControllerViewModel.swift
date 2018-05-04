@@ -27,6 +27,6 @@ final class PrompterOnboardingControllerViewModel: PrompterOnboardingViewModel {
     }
 
     func goBack() {
-        appStateService.prompterOnboarding(wereSeen: true)
+        appStateService.prompterOnboarding(wasSeen: true)
     }
 }

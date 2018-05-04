@@ -48,6 +48,7 @@ protocol CameraViewModel: class
     func togglePrompterMode()
     
     var shouldPresentCameraTips: Bool { get }
+    var shouldPresentSwipeOnboarding: Bool { get }
     func markCameraTipsSeen()
 }
 
@@ -98,6 +99,8 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationWillResignActive, object: nil);
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.resumeCapture), name: Notification.Name.UIApplicationDidBecomeActive, object: nil);
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.viewShouldUpdate), name: Notification.Name.PrompterDidSwiped, object: nil)
 	}
 	
 	deinit {
@@ -278,9 +281,13 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
         }
         
         isPrompterEnabled = !isPrompterEnabled
-        didChanged?()
+        viewShouldUpdate()
     }
 	
+    @objc func viewShouldUpdate() {
+        didChanged?()
+    }
+    
 	private func handleMotionUpdate(_ motion: CMDeviceMotion) {
 		let gravity = motion.gravity;
 		
@@ -299,11 +306,15 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	}
 	
 	@objc private func resumeCapture() {
-		camera?.resumeCameraCapture();
+		camera?.resumeCameraCapture()
 	}
     
     var shouldPresentCameraTips: Bool {
-        return appState.shouldShowCameraTips;
+        return appState.shouldShowCameraTips
+    }
+    
+    var shouldPresentSwipeOnboarding: Bool {
+        return isPrompterEnabled && appState.shouldShowSwipeOnboarding
     }
     
     func markCameraTipsSeen() {
