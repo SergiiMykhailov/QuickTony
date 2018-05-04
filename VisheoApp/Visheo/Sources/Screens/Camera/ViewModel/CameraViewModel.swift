@@ -274,7 +274,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
     
     func togglePrompterMode() {
         if (appState.shouldShowPrompterOnboarding) {
-            self.router?.showPrompterOnboarding()
+            router?.showPrompterOnboarding()
         }
         
         isPrompterEnabled = !isPrompterEnabled

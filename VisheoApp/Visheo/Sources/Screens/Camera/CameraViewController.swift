@@ -108,10 +108,10 @@ class CameraViewController: UIViewController
     }
 	
     var tipsBarButtonItem: UIBarButtonItem {
-        let icon = !viewModel.isPrompterEnabled ? #imageLiteral(resourceName: "tipsIcon") : #imageLiteral(resourceName: "bestPracticies")
-        let tipsButton = UIButton(type: .custom);
-        tipsButton.frame = CGRect(origin: .zero, size: icon.size);
-        tipsButton.setImage(icon, for: .normal);
+        let icon = !viewModel.isPrompterEnabled ? #imageLiteral(resourceName: "tipsIcon_black") : #imageLiteral(resourceName: "tipsIcon")
+        let tipsButton = UIButton(type: .custom)
+        tipsButton.frame = CGRect(origin: .zero, size: icon.size)
+        tipsButton.setImage(icon, for: .normal)
         tipsButton.addTarget(self, action: #selector(CameraViewController.togglePrompterMode), for: .touchUpInside);
 
         return UIBarButtonItem(customView: tipsButton)

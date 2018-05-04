@@ -50,21 +50,21 @@ class VisheoCameraRouter: CameraRouter
 		guard let segueList = SegueList(segue: segue) else {
 			return
 		}
+        
 		switch segueList {
-        case .showTrimScreen:
-            let trimmingController = segue.destination as! VideoTrimmingViewController
-            let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: assets)
-            trimmingRouter.start(with: trimmingController)
-        case .showPrompterView:
-            let prompterController = segue.destination as! PrompterViewController
-            let words = assets.originalOccasion.words
-            let prompterRouter = DefaultPrompterRouter(withDependecies: dependencies)
-            prompterRouter.start(with: prompterController, words: words)
-        case .showPrompterOnboarding:
-            let prompterOnboardingController = segue.destination as! PrompterOnboardingViewController
-            let prompterOnboardingRouter = DefaultPrompterOnboardingRouter(withDependencies: dependencies)
-            prompterOnboardingRouter.start(with: prompterOnboardingController)
-            
+            case .showTrimScreen:
+                let trimmingController = segue.destination as! VideoTrimmingViewController
+                let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: assets)
+                trimmingRouter.start(with: trimmingController)
+            case .showPrompterView:
+                let prompterController = segue.destination as! PrompterViewController
+                let words = assets.originalOccasion.words
+                let prompterRouter = DefaultPrompterRouter(withDependecies: dependencies)
+                prompterRouter.start(with: prompterController, words: words)
+            case .showPrompterOnboarding:
+                let prompterOnboardingController = segue.destination as! PrompterOnboardingViewController
+                let prompterOnboardingRouter = DefaultPrompterOnboardingRouter(withDependencies: dependencies)
+                prompterOnboardingRouter.start(with: prompterOnboardingController)
 		}
 	}
 }
