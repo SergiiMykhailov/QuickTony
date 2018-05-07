@@ -45,10 +45,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNF-hk-vTk">
-                                        <rect key="frame" x="129.5" y="136" width="205.5" height="62.5"/>
+                                        <rect key="frame" x="115" y="138.5" width="220" height="57.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your device to portrait orientation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="Srt-Bl-ce3">
-                                                <rect key="frame" x="10" y="10" width="185.5" height="42.5"/>
+                                                <rect key="frame" x="10" y="10" width="200" height="37.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                                         </connections>
                                     </containerView>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnp-BU-IW8">
-                                        <rect key="frame" x="20" y="281" width="34" height="34"/>
+                                        <rect key="frame" x="15" y="286" width="34" height="34"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="camera_icon"/>
                                         <connections>
@@ -83,17 +83,17 @@
                                         </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V01-yZ-NSN">
-                                        <rect key="frame" x="275" y="15" width="44.5" height="19"/>
+                                        <rect key="frame" x="273" y="15" width="46.5" height="19"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-DV-gPA" customClass="CameraRecordIndicator" customModule="Visheo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="9.5" height="9.5"/>
+                                                <rect key="frame" x="0.0" y="5" width="9" height="9.5"/>
                                                 <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pSM-DV-gPA" secondAttribute="height" multiplier="1:1" id="9sA-Ik-ddr"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="REC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct7-4F-cZX">
-                                                <rect key="frame" x="14.5" y="0.0" width="30" height="19"/>
+                                                <rect key="frame" x="14" y="0.0" width="32.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -115,9 +115,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gjS-Wn-L8J" secondAttribute="height" multiplier="1:1" id="2a4-3m-htd"/>
                                     <constraint firstItem="BNF-hk-vTk" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="4vp-iT-01D"/>
-                                    <constraint firstAttribute="bottom" secondItem="Gnp-BU-IW8" secondAttribute="bottom" constant="20" id="BoB-jS-RV0"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gnp-BU-IW8" secondAttribute="bottom" constant="13" id="BoB-jS-RV0"/>
                                     <constraint firstItem="MjJ-FK-D1Y" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="GdU-xW-uYi"/>
-                                    <constraint firstItem="Gnp-BU-IW8" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" constant="20" id="HtJ-oO-Ap7"/>
+                                    <constraint firstItem="Gnp-BU-IW8" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" constant="15" id="HtJ-oO-Ap7"/>
                                     <constraint firstAttribute="trailing" secondItem="BNF-hk-vTk" secondAttribute="trailing" id="IPp-zm-MPp"/>
                                     <constraint firstAttribute="bottom" secondItem="MjJ-FK-D1Y" secondAttribute="bottom" id="OEO-Hr-tBO"/>
                                     <constraint firstItem="JPG-JC-rxM" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="RNF-jd-HvY"/>
@@ -168,10 +168,10 @@
                                 </connections>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Htw-69-Bmc" userLabel="Swipe Onboardin View">
-                                <rect key="frame" x="78" y="385" width="218" height="26.5"/>
+                                <rect key="frame" x="78" y="385" width="218" height="26"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to see more wishes ideas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFd-pB-Z0Y">
-                                        <rect key="frame" x="23" y="6" width="172" height="14.5"/>
+                                        <rect key="frame" x="23" y="6" width="172" height="14"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -281,7 +281,7 @@ I wish this new year of your life let all your dreams &amp; wishes come true!</s
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFY-w6-h8U">
-                                <rect key="frame" x="172.5" y="345.5" width="31.5" height="14.5"/>
+                                <rect key="frame" x="172.5" y="344" width="31.5" height="16"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -478,7 +478,7 @@ I wish this new year of your life let all your dreams &amp; wishes come true!</s
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3 / 3" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJk-8Q-bOw">
-                                <rect key="frame" x="148.5" y="32" width="78" height="21.5"/>
+                                <rect key="frame" x="148" y="32" width="79" height="24"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -489,7 +489,7 @@ I wish this new year of your life let all your dreams &amp; wishes come true!</s
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-i9-Wr9">
-                                <rect key="frame" x="48" y="291.5" width="279" height="95"/>
+                                <rect key="frame" x="48" y="294" width="279" height="95"/>
                                 <string key="text">Video Message (up to 30 sec) is the key component of your Visheo that makes it personal &amp; touching
 </string>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
@@ -497,14 +497,14 @@ I wish this new year of your life let all your dreams &amp; wishes come true!</s
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_video" translatesAutoresizingMaskIntoConstraints="NO" id="CRD-Sb-ofq">
-                                <rect key="frame" x="121.5" y="131.5" width="132" height="132"/>
+                                <rect key="frame" x="121.5" y="134" width="132" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CRD-Sb-ofq" secondAttribute="height" id="JdJ-Wl-IsQ"/>
                                     <constraint firstAttribute="width" constant="132" id="a9z-FG-4MH"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-tb-5X6">
-                                <rect key="frame" x="20" y="421.5" width="335" height="60"/>
+                                <rect key="frame" x="20" y="424" width="335" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xJm-ZU-Tct"/>
