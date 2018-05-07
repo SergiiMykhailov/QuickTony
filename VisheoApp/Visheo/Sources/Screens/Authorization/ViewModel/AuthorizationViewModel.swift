@@ -83,6 +83,7 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     var showProgressCallback: ((Bool) -> ())?
     let anonymousAllowed : Bool
     let userNotificationService: UserNotificationsService
+    let invitesService: InvitesService
 	private let authReason : AuthorizationReason;
     
     weak var router: AuthorizationRouter?
@@ -91,11 +92,13 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     init(authService: AuthorizationService,
          anonymousAllowed: Bool,
          authReason: AuthorizationReason,
-         userNotificationService: UserNotificationsService) {
+         userNotificationService: UserNotificationsService,
+         invitesService: InvitesService) {
 		self.authReason = authReason
         self.authService = authService
         self.anonymousAllowed = anonymousAllowed
         self.userNotificationService = userNotificationService
+        self.invitesService = invitesService
     }
     
     deinit {
@@ -139,6 +142,7 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
         
         if (!authService.isAnonymous) {
             userNotificationService.registerNotifications()
+            invitesService.handleAuthorization()
         }
     }
     

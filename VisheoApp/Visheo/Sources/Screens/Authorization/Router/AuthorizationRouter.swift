@@ -37,7 +37,8 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
 		let vm = VisheoAutorizationViewModel(authService: dependencies.authorizationService,
 											 anonymousAllowed: anonymousAllowed,
 											 authReason : authReason,
-                                             userNotificationService: dependencies.userNotificationsService)
+                                             userNotificationService: dependencies.userNotificationsService,
+                                             invitesService: dependencies.invitationService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
