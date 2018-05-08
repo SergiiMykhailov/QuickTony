@@ -274,7 +274,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd of November" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycr-zN-ANO" customClass="HolidayDateLabel" customModule="Visheo" customModuleProvider="target">
-                                                                        <rect key="frame" x="20" y="281" width="164" height="34"/>
+                                                                        <rect key="frame" x="20" y="281" width="130.5" height="34"/>
                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="34" id="jrh-Ew-3Cj"/>
@@ -298,7 +298,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AS6-df-UMP" customClass="BadgeSwift" customModule="BadgeSwift">
-                                                                        <rect key="frame" x="287" y="307" width="38" height="18"/>
+                                                                        <rect key="frame" x="287" y="308.5" width="38" height="16.5"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -881,10 +881,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EiO-gV-dQl">
-                                        <rect key="frame" x="-1" y="0.0" width="375" height="557"/>
+                                        <rect key="frame" x="-1" y="0.0" width="375" height="503"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4U-uH-XRh">
-                                                <rect key="frame" x="20" y="20" width="335" height="42.5"/>
+                                                <rect key="frame" x="20" y="16" width="335" height="42.5"/>
                                                 <string key="text">Get 2 Visheo Cards for every friend 
 who installs the app!</string>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
@@ -892,7 +892,7 @@ who installs the app!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2f-pM-RQk">
-                                                <rect key="frame" x="20" y="272.5" width="335" height="47.5"/>
+                                                <rect key="frame" x="20" y="228.5" width="335" height="47.5"/>
                                                 <string key="text">Invite friends to join Visheo family 
 by sending them this link</string>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
@@ -900,11 +900,11 @@ by sending them this link</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="f36-sT-QAI">
-                                                <rect key="frame" x="20" y="334" width="335" height="52"/>
+                                                <rect key="frame" x="20" y="286" width="335" height="52"/>
                                                 <color key="color" red="1" green="0.28235294119999998" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://visheo.com/SqdRs/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfG-fO-sbS">
-                                                <rect key="frame" x="20" y="334" width="335" height="52"/>
+                                                <rect key="frame" x="20" y="286" width="335" height="52"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="UGz-CV-ekg"/>
@@ -925,16 +925,17 @@ by sending them this link</string>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="zSK-M0-JME" appends="YES" id="BL0-B9-hjZ"/>
+                                                    <outletCollection property="gestureRecognizers" destination="Vd8-d4-To0" appends="YES" id="p57-5P-u6R"/>
                                                 </connections>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invitation" translatesAutoresizingMaskIntoConstraints="NO" id="uxQ-3y-m4g">
-                                                <rect key="frame" x="124.5" y="100.5" width="126" height="126"/>
+                                                <rect key="frame" x="124.5" y="78.5" width="126" height="126"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="uxQ-3y-m4g" secondAttribute="height" id="mvD-KJ-TSL"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="BIv-y6-kjb">
-                                                <rect key="frame" x="20" y="410" width="336" height="132"/>
+                                                <rect key="frame" x="20" y="356" width="336" height="132"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtO-sJ-J2I">
                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="132"/>
@@ -1070,22 +1071,22 @@ Twitter</string>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="BIv-y6-kjb" firstAttribute="top" secondItem="MfG-fO-sbS" secondAttribute="bottom" constant="24" id="0J1-XY-Xm3"/>
+                                            <constraint firstItem="BIv-y6-kjb" firstAttribute="top" secondItem="MfG-fO-sbS" secondAttribute="bottom" constant="18" id="0J1-XY-Xm3"/>
                                             <constraint firstItem="BIv-y6-kjb" firstAttribute="leading" secondItem="EiO-gV-dQl" secondAttribute="leading" constant="20" id="J79-Eh-gEL"/>
                                             <constraint firstAttribute="bottom" secondItem="BIv-y6-kjb" secondAttribute="bottom" constant="15" id="JMd-89-eKw"/>
                                             <constraint firstItem="BIv-y6-kjb" firstAttribute="centerX" secondItem="EiO-gV-dQl" secondAttribute="centerX" id="RrT-51-waY"/>
                                             <constraint firstItem="f36-sT-QAI" firstAttribute="top" secondItem="MfG-fO-sbS" secondAttribute="top" id="WLW-kh-aQA"/>
-                                            <constraint firstItem="d2f-pM-RQk" firstAttribute="top" secondItem="uxQ-3y-m4g" secondAttribute="bottom" constant="46" id="bqy-XW-WpG"/>
+                                            <constraint firstItem="d2f-pM-RQk" firstAttribute="top" secondItem="uxQ-3y-m4g" secondAttribute="bottom" constant="24" id="bqy-XW-WpG"/>
                                             <constraint firstItem="f36-sT-QAI" firstAttribute="trailing" secondItem="MfG-fO-sbS" secondAttribute="trailing" id="cHJ-Ku-C9u"/>
-                                            <constraint firstItem="MfG-fO-sbS" firstAttribute="top" secondItem="d2f-pM-RQk" secondAttribute="bottom" constant="14" id="d4O-zh-sy8"/>
+                                            <constraint firstItem="MfG-fO-sbS" firstAttribute="top" secondItem="d2f-pM-RQk" secondAttribute="bottom" constant="10" id="d4O-zh-sy8"/>
                                             <constraint firstItem="m4U-uH-XRh" firstAttribute="centerX" secondItem="EiO-gV-dQl" secondAttribute="centerX" id="dNL-UE-WHJ"/>
                                             <constraint firstItem="MfG-fO-sbS" firstAttribute="leading" secondItem="EiO-gV-dQl" secondAttribute="leading" constant="20" id="dU1-Mp-Hah"/>
                                             <constraint firstItem="f36-sT-QAI" firstAttribute="bottom" secondItem="MfG-fO-sbS" secondAttribute="bottom" id="h6a-4V-chW"/>
                                             <constraint firstItem="uxQ-3y-m4g" firstAttribute="centerX" secondItem="EiO-gV-dQl" secondAttribute="centerX" id="irA-3x-McU"/>
                                             <constraint firstItem="f36-sT-QAI" firstAttribute="leading" secondItem="MfG-fO-sbS" secondAttribute="leading" id="jc3-B7-xbH"/>
-                                            <constraint firstItem="m4U-uH-XRh" firstAttribute="top" secondItem="EiO-gV-dQl" secondAttribute="top" constant="20" id="mLy-FX-qz1"/>
+                                            <constraint firstItem="m4U-uH-XRh" firstAttribute="top" secondItem="EiO-gV-dQl" secondAttribute="top" constant="16" id="mLy-FX-qz1"/>
                                             <constraint firstItem="d2f-pM-RQk" firstAttribute="centerX" secondItem="EiO-gV-dQl" secondAttribute="centerX" id="n1Q-6L-nDX"/>
-                                            <constraint firstItem="uxQ-3y-m4g" firstAttribute="top" secondItem="m4U-uH-XRh" secondAttribute="bottom" constant="38" id="oIX-a8-Hpd"/>
+                                            <constraint firstItem="uxQ-3y-m4g" firstAttribute="top" secondItem="m4U-uH-XRh" secondAttribute="bottom" constant="20" id="oIX-a8-Hpd"/>
                                             <constraint firstItem="MfG-fO-sbS" firstAttribute="centerX" secondItem="EiO-gV-dQl" secondAttribute="centerX" id="t7p-AY-WY8"/>
                                             <constraint firstItem="m4U-uH-XRh" firstAttribute="leading" secondItem="EiO-gV-dQl" secondAttribute="leading" constant="20" id="w3C-pl-dP3"/>
                                             <constraint firstItem="d2f-pM-RQk" firstAttribute="leading" secondItem="EiO-gV-dQl" secondAttribute="leading" constant="20" id="ytd-9b-ZmY"/>
@@ -1123,6 +1124,11 @@ Twitter</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMq-Uu-KE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Vd8-d4-To0">
+                    <connections>
+                        <action selector="tapGesture:" destination="17U-LF-E4N" id="Y7F-f5-woK"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <pongPressGestureRecognizer delaysTouchesEnded="NO" allowableMovement="10" minimumPressDuration="1" id="zSK-M0-JME">
                     <connections>
                         <action selector="longPressGesture:" destination="17U-LF-E4N" id="6Ex-Sl-Tdq"/>
