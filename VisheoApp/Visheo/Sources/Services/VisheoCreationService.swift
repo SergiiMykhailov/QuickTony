@@ -21,6 +21,7 @@ struct VisheoCreationInfo : Codable {
     let picturesCount : Int
     let soundtrackId : Int    
     var premium: Bool = false
+    var free: Bool = false
     
     var coverRelPath : String
     var soundtrackRelPath : String?
@@ -167,6 +168,7 @@ class VisheoCreationService : CreationService {
     func createVisheo(from assets: VisheoRenderingAssets, premium: Bool) {
         var info = assets.creationInfo
         info.premium = premium
+        info.free = assets.originalOccasion.isFree
         var visheoRecord = info.firebaseRecord
         visheoRecord["userId"] = self.userInfoProvider.userId
         visheoRecord["userName"] = self.userInfoProvider.userName ?? "Guest"
@@ -189,11 +191,13 @@ class VisheoCreationService : CreationService {
             Database.database().reference().child("users/\(userId)/cards/\(id)").removeValue()
         }
         
-        let premiumRef = storageRef(for: id, premium: true)
-        let freeRef = storageRef(for: id, premium: false)
+        let paidRef = storageRef(for: id, premium: true, isFree: true)
+        let freeRef = storageRef(for: id, premium: true, isFree: false)
+        let publicRef = storageRef(for: id, premium: false)
         
-        premiumRef.delete(completion: nil)
+        paidRef.delete(completion: nil)
         freeRef.delete(completion: nil)
+        publicRef.delete(completion: nil)
         
         VisheoRenderingAssets.deleteAssets(for: id)
     }
@@ -284,7 +288,7 @@ class VisheoCreationService : CreationService {
 			return;
 		}
 		
-        let videoRef = storageRef(for: creationInfo.visheoId, premium: creationInfo.premium)
+        let videoRef = storageRef(for: creationInfo.visheoId, premium: creationInfo.premium, isFree: creationInfo.free)
         
         self.uploadingProgress[creationInfo.visheoId] = 0.0
         self.notifyUploading(progress: 0.0, for: creationInfo.visheoId, fileURL: creationInfo.visheoURL)
@@ -366,8 +370,8 @@ class VisheoCreationService : CreationService {
         }
     }
     
-    private func  storageRef(for id: String, premium: Bool) -> StorageReference {
-		return Environment.current.storageRef(for: id, premium: premium);
+    private func  storageRef(for id: String, premium: Bool, isFree: Bool = false) -> StorageReference {
+        return Environment.current.storageRef(for: id, premium: premium, isFree: isFree);
     }
     
     private func shortUrl(for id: String) -> String {
@@ -411,7 +415,7 @@ extension VisheoCreationInfo {
                       "picturesCount" : picturesCount,
                       "soundtrackId" : soundtrackId,
                       "occasionName" : occasionName,
-                      "signature" : signature,
+                      "signature" : signature ?? "",
                       "timestamp" : ServerValue.timestamp() ] as [String : Any]
         
         if let coverPreviewUrlString = coverRemotePreviewUrl?.absoluteString {
