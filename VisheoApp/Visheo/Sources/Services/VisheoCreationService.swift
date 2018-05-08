@@ -404,7 +404,7 @@ class VisheoCreationService : CreationService {
 	}
 	
 	private func sendAnalyticsInfo(creationInfo: VisheoCreationInfo) {
-		let event = CardSentEvent(isPremium: creationInfo.premium);
+        let event = CardSentEvent(isPremium: creationInfo.premium, isFree: creationInfo.free);
 		loggingService.log(event: event);
 	}
 }

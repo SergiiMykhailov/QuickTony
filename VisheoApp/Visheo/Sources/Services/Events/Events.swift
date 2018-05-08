@@ -15,8 +15,9 @@ enum EventType: String {
     case inviteLinkTwitterShared  = "invite_link_twitter_shared"
     case inviteDidHappen          = "invite_happened"
 	case userRegistered           = "user_registered"
-	case regularCardSent          = "regular_card_sent"
-	case premiumCardSent          = "premium_card_sent"
+	case openCardSent             = "public_card_sent"
+    case freeCardSent             = "free_card_sent"
+	case paidCardSent             = "paid_card_sent"
 	case smallBundlePurchased     = "S_bundle_purchase"
 	case bigBundlePurchased       = "L_bundle_purchase"
     case subsctiptionPurchased    = "subscription_purchase"
@@ -73,9 +74,11 @@ struct RegistrationEvent: EventRepresenting {
 
 struct CardSentEvent: EventRepresenting {
 	let isPremium: Bool
-	
+    let isFree: Bool
+    
 	var type: EventType {
-		return isPremium ? .premiumCardSent : .regularCardSent
+        if !isPremium { return .openCardSent }
+		return isFree ? .freeCardSent : .paidCardSent
 	}
 }
 
