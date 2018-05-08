@@ -63,6 +63,9 @@ class VisheoOccasionGroupsListService : OccasionGroupsListService {
             guard let occasionGroups = snapshot.value as? [String : Any] else {return}
             self._occasionGroups = occasionGroups.flatMap { $1 as? [String : Any] }
                 .flatMap { VisheoOccasionGroup(dictionary: $0, occasionList: self._occasionListService.occasionRecords) }
+                .sorted(by: {
+                    $0.priority < $1.priority
+                })
             self.didChange()
         }
     }
