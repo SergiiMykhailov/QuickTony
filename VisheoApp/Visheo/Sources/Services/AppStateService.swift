@@ -17,6 +17,7 @@ extension Notification.Name {
     static let subscriptionAvailableChanged = Notification.Name("subscriptionAvailableChanged")
     static let inviteFriendsAvailableChanged = Notification.Name("inviteFriendsAvailableChanged")
     static let UXCamStateChanged = Notification.Name("UXCamStateChanged")
+    static let termsOfUseHiddenChanged = Notification.Name("TermsOfUseHiddenChanged")
 }
 
 protocol AppStateService {
@@ -48,6 +49,7 @@ protocol AppStateService {
     var isCouponAvailable : Bool {get}
     var isSubscriptionLimited : Bool {get}
     var isInviteFriendsAvailable : Bool {get}
+    var isTermsOfUseHidden : Bool {get}
 }
 
 class VisheoAppStateService: AppStateService {
@@ -64,12 +66,14 @@ class VisheoAppStateService: AppStateService {
     var isSubscriptionLimited : Bool = false
     var isInviteFriendsAvailable : Bool = false
     var isUXCamAvailable : Bool = false
+    var isTermsOfUseHidden: Bool = false
     
     private var freeVishesReference : DatabaseReference?
     private var subscriptionReference : DatabaseReference?
     private var couponsReference : DatabaseReference?
     private var inviteFriendsReference : DatabaseReference?
     private var uxCamReference : DatabaseReference?
+    private var termsOfUseReference : DatabaseReference?
     
     let firstLaunch: Bool
 	private let reachability = Reachability();
@@ -172,7 +176,8 @@ class VisheoAppStateService: AppStateService {
             couponsReference,
             subscriptionReference,
             inviteFriendsReference,
-            uxCamReference
+            uxCamReference,
+            termsOfUseReference
             ].flatMap { $0 }.forEach {
             $0.removeAllObservers()
         }
@@ -221,6 +226,15 @@ class VisheoAppStateService: AppStateService {
             self.isUXCamAvailable = isUXCamAvailable
             NotificationCenter.default.post(name: Notification.Name.UXCamStateChanged, object: self)
             isUXCamAvailable ? UXCam.start(withKey: "a138a13355e1245") : UXCam.stopApplicationAndUploadData()
+        }
+        
+        let termsOfUseHiddenRef = Database.database().reference(withPath: "appConfiguration/isTermsOfUseHidden")
+        termsOfUseReference = termsOfUseHiddenRef
+        
+        termsOfUseHiddenRef.observe(.value) {
+            guard let isTermsOfUseHidden = $0.value as? Bool else { self.isTermsOfUseHidden = false; return}
+            self.isTermsOfUseHidden = isTermsOfUseHidden
+            NotificationCenter.default.post(name: Notification.Name.termsOfUseHiddenChanged, object: self)
         }
     }
 }

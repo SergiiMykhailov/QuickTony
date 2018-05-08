@@ -38,7 +38,8 @@ class VisheoAuthorizationRouter : AuthorizationRouter {
 											 anonymousAllowed: anonymousAllowed,
 											 authReason : authReason,
                                              userNotificationService: dependencies.userNotificationsService,
-                                             invitesService: dependencies.invitationService)
+                                             invitesService: dependencies.invitationService,
+                                             appStateService: dependencies.appStateService)
         viewModel = vm
         vm.router = self
         self.controller = viewController
