@@ -112,7 +112,7 @@ class CameraViewController: UIViewController
     var tipsBarButtonItem: UIBarButtonItem {
         let icon = !viewModel.isPrompterEnabled ? #imageLiteral(resourceName: "tipsIcon_black") : #imageLiteral(resourceName: "tipsIcon")
         let tipsButton = UIButton(type: .custom)
-        tipsButton.frame = CGRect(origin: .zero, size: icon.size)
+        tipsButton.frame = CGRect(origin: .zero, size: CGSize(width: icon.size.width,height: 44))
         tipsButton.setImage(icon, for: .normal)
         tipsButton.addTarget(self, action: #selector(CameraViewController.togglePrompterMode), for: .touchUpInside);
 
