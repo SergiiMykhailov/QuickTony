@@ -19,9 +19,11 @@ class CameraViewController: UIViewController
 	@IBOutlet weak var cameraToggleButton: UIButton!
 	@IBOutlet weak var recordingStatusView: UIView!
 	@IBOutlet weak var recordingIndicator: CameraRecordIndicator!
-	@IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var prompterViewController: UIView!
+    @IBOutlet weak var swipeOnboardingView: UIView!
 	
-	//MARK: - VM+Router init
+    //MARK: - VM+Router init
 	
 	private(set) var viewModel: CameraViewModel!
 	private(set) var router: FlowRouter!
@@ -37,6 +39,10 @@ class CameraViewController: UIViewController
 	{
 		super.viewDidLoad()
 
+        if (!viewModel.isPrompterAvailable) {
+            navigationItem.rightBarButtonItem = nil
+        }
+        
 		viewModel.addPreviewOutput(cameraPreview);
 		
 		viewModel.recordingStateChangedBlock = { [weak self] update in
@@ -56,13 +62,28 @@ class CameraViewController: UIViewController
 				self?.handleDeviceRotation(orientation)
 			}
 		}
+        
+        viewModel.didChanged = { [weak self] in
+            DispatchQueue.main.async {
+                self?.updateFromViewModel()
+            }
+        }
 		
 		let mask = CAShapeLayer();
 		rotationHintView.layer.mask = mask;
 		rotationHintView.alpha = 0.0;
+        
+        updateFromViewModel()
 	}
 	
-	
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        if isMovingToParentViewController && viewModel.shouldPresentCameraTips {
+            displayTipsController();
+        }
+    }
+
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated);
 		viewModel.startCapture();
@@ -82,17 +103,36 @@ class CameraViewController: UIViewController
 		mask.path = UIBezierPath(roundedRect: rotationHintView.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 6.0, height: 6.0)).cgPath;
 	}
 	
+    func updateFromViewModel() {
+        prompterViewController.isHidden = !viewModel.isPrompterEnabled
+        swipeOnboardingView.isHidden = !viewModel.shouldPresentSwipeOnboarding
+        navigationItem.rightBarButtonItem = tipsBarButtonItem
+    }
 	
+    var tipsBarButtonItem: UIBarButtonItem {
+        let icon = !viewModel.isPrompterEnabled ? #imageLiteral(resourceName: "tipsIcon_black") : #imageLiteral(resourceName: "tipsIcon")
+        let tipsButton = UIButton(type: .custom)
+        tipsButton.frame = CGRect(origin: .zero, size: icon.size)
+        tipsButton.setImage(icon, for: .normal)
+        tipsButton.addTarget(self, action: #selector(CameraViewController.togglePrompterMode), for: .touchUpInside);
+
+        return UIBarButtonItem(customView: tipsButton)
+    }
+    
 	//MARK: - Actions
 	
 	@IBAction func toggleVideoRecording() {
-		viewModel.toggleRecording();
+		viewModel.toggleRecording()
 	}
 	
 	@IBAction func toggleCameraFace() {
 		viewModel.toggleCameraFace()
 	}
-	
+    
+    @objc func togglePrompterMode() {
+        viewModel.togglePrompterMode()
+    }
+    
 	@IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
 		navigationController?.popViewController(animated: true);
 	}
@@ -175,6 +215,24 @@ class CameraViewController: UIViewController
 			self.view.layoutIfNeeded();
 		}, completion: nil)
 	}
+}
+
+extension CameraViewController {
+    //MARK: - Tips
+    
+    private func displayTipsController(onDisplay: (() -> Void)? = nil) {
+        guard let buttonView = navigationItem.rightBarButtonItem?.customView, let navigationView = navigationController?.view else {
+            return;
+        }
+        
+        let tipsButtonFrame = navigationView.convert(buttonView.frame, from: buttonView.superview);
+        
+        let tipsView = CameraTipsView.display(in: navigationView, aligningTo: tipsButtonFrame, completion: onDisplay)
+        
+        tipsView?.tipsDismissedBlock = { [weak self] in
+            self?.viewModel.markCameraTipsSeen()
+        }
+    }
 }
 
 extension CameraViewController {

@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import CoreAudio
 
 public typealias VisheoVideoComposition = (mainComposition: AVComposition, videoComposition: AVVideoComposition, audioMix: AVAudioMix);
 
@@ -14,6 +15,12 @@ public typealias VisheoVideoComposition = (mainComposition: AVComposition, video
 public enum RenderError: Error {
 	case missingVideoTrack(url: URL);
 	case missingAudioTrack(url: URL);
+	
+	case invalidComposition
+	case invalidReaderOutputs
+	case invalidWriterInputs
+	case assetWriterFailed
+	case missingVideoTrackDescription
 }
 
 
@@ -43,6 +50,9 @@ public final class VisheoRender: VideoConvertible
 	private let outro: URL?
 	private let quality: RenderQuality;
 	
+	private let exportVideoBitrate = 3_000_000;
+	private let exportAudioBitrate = 128_000;
+	
 	public init(timeline: URL, video: URL, audio: URL? = nil, outro: URL? = nil, quality: RenderQuality) {
 		self.timeline = timeline;
 		self.video = video;
@@ -60,21 +70,117 @@ public final class VisheoRender: VideoConvertible
 		{
 			let results = try prepareComposition();
 			
-			guard let session = AVAssetExportSession(asset: results.mainComposition, presetName: quality.exportSessionPreset) else {
-				throw VideoConvertibleError.error;
+			let audioTracks = results.mainComposition.tracks(withMediaType: .audio);
+			let videoTracks = results.mainComposition.tracks(withMediaType: .video);
+			
+			guard !videoTracks.isEmpty, !audioTracks.isEmpty else {
+				throw RenderError.invalidComposition;
 			}
 			
-			session.outputURL = url;
-			session.outputFileType = .mp4;
-			session.videoComposition = results.videoComposition;
-			session.audioMix = results.audioMix;
+			let decompressionAudioSettings = [ AVFormatIDKey : kAudioFormatLinearPCM ]
+			let audioMixOutput = AVAssetReaderAudioMixOutput(audioTracks: audioTracks, audioSettings: decompressionAudioSettings);
+			audioMixOutput.audioMix = results.audioMix;
 			
-			session.exportAsynchronously {
-				if let e = session.error {
-					completion(.failure(error: e));
-				} else {
-					completion(.success(value: Void()))
+			let decompressionVideoSettings: [String: Any] = [ kCVPixelBufferPixelFormatTypeKey as String : kCVPixelFormatType_422YpCbCr8,
+															  kCVPixelBufferIOSurfacePropertiesKey as String : [:]];
+			let videoCompositionOutput = AVAssetReaderVideoCompositionOutput(videoTracks: videoTracks, videoSettings: decompressionVideoSettings);
+			videoCompositionOutput.videoComposition = results.videoComposition;
+			
+			let reader = try AVAssetReader(asset: results.mainComposition);
+			
+			guard reader.canAdd(audioMixOutput), reader.canAdd(videoCompositionOutput) else {
+				throw RenderError.invalidReaderOutputs;
+			}
+			
+			reader.add(audioMixOutput);
+			reader.add(videoCompositionOutput);
+			
+			let writer = try AVAssetWriter(outputURL: url, fileType: .mp4);
+			
+			let compressionVideoSettings: [String : Any] = [ AVVideoCompressionPropertiesKey : [ AVVideoAverageBitRateKey : exportVideoBitrate ],
+															 AVVideoCodecKey : AVVideoCodecH264,
+															 AVVideoHeightKey: quality.renderSize.height,
+															 AVVideoWidthKey: quality.renderSize.width
+															]
+			
+			guard let videoFormatDescription = videoTracks[0].formatDescriptions.last else {
+				throw RenderError.missingVideoTrackDescription;
+			}
+			
+			let videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: compressionVideoSettings, sourceFormatHint: (videoFormatDescription as! CMFormatDescription));
+			videoInput.expectsMediaDataInRealTime = false;
+			
+			var stereoChannelLayout = AudioChannelLayout();
+			stereoChannelLayout.mChannelLayoutTag = kAudioChannelLayoutTag_Stereo;
+			stereoChannelLayout.mChannelBitmap = AudioChannelBitmap(rawValue: 0);
+			stereoChannelLayout.mNumberChannelDescriptions = 0;
+			
+			let channelLayoutData = Data(bytes: &stereoChannelLayout, count: MemoryLayout<AudioChannelLayout>.size);
+			
+			let compressionAudioSettings: [String: Any] = [ AVFormatIDKey : kAudioFormatMPEG4AAC,
+															AVEncoderBitRateKey : exportAudioBitrate,
+															AVSampleRateKey : 44100,
+															AVChannelLayoutKey : channelLayoutData,
+															AVNumberOfChannelsKey : 2
+														]
+			
+			let audioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: compressionAudioSettings);
+			audioInput.expectsMediaDataInRealTime = false;
+			
+			guard writer.canAdd(videoInput), writer.canAdd(audioInput) else {
+				throw RenderError.invalidWriterInputs;
+			}
+			
+			writer.add(videoInput);
+			writer.add(audioInput);
+			
+			writer.startWriting();
+			reader.startReading();
+			
+			writer.startSession(atSourceTime: kCMTimeZero);
+			
+			let group = DispatchGroup();
+			let processingQueue = DispatchQueue(label: "com.visheo.assetWriter");
+			
+			group.enter();
+			videoInput.requestMediaDataWhenReady(on: processingQueue) {
+				while videoInput.isReadyForMoreMediaData {
+					if let sample = videoCompositionOutput.copyNextSampleBuffer() {
+						videoInput.append(sample);
+					} else {
+						videoInput.markAsFinished();
+						group.leave();
+						break;
+					}
 				}
+			}
+			
+			group.enter()
+			audioInput.requestMediaDataWhenReady(on: processingQueue) {
+				while audioInput.isReadyForMoreMediaData {
+					if let sample = audioMixOutput.copyNextSampleBuffer() {
+						audioInput.append(sample);
+					} else {
+						audioInput.markAsFinished();
+						group.leave();
+						break;
+					}
+				}
+			}
+			
+			group.notify(queue: DispatchQueue.global()) {
+				writer.finishWriting {
+					switch writer.status {
+						case .completed:
+							completion(.success(value: Void()));
+						case .writing:
+							break;
+						default:
+							let error = writer.error ?? RenderError.assetWriterFailed;
+							completion(.failure(error: error));
+					}
+				}
+				reader.cancelReading();
 			}
 		}
 		catch (let error) {

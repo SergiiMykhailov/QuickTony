@@ -29,6 +29,7 @@ protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerat
     func loginAsAnonymous()
     
     var anonymousAllowed : Bool { get }
+    var shouldShowTermsOfUse : Bool { get }
     
     func signIn()
     func signUp()
@@ -36,6 +37,7 @@ protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerat
     func cancel()
     
     var getPresentationViewController : (() -> (UIViewController?))? {get set}
+    var didChange : (()->())? {get set}
     
     var cancelAllowed : Bool {get}
     var descriptionString : String? {get}
@@ -46,6 +48,10 @@ protocol AuthorizationViewModel : class, ProgressGenerating, WarningAlertGenerat
 class VisheoAutorizationViewModel : AuthorizationViewModel {
     var cancelAllowed: Bool {
         return authReason != .none
+    }
+    
+    var shouldShowTermsOfUse: Bool {
+        return appState.isTermsOfUseHidden
     }
     
     var descriptionString: String? {
@@ -78,12 +84,15 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
 		}
 	}
     
+    var didChange : (()->())?
     var warningAlertHandler: ((String) -> ())?
     var getPresentationViewController: (() -> (UIViewController?))?
     var showProgressCallback: ((Bool) -> ())?
     let anonymousAllowed : Bool
     let userNotificationService: UserNotificationsService
-	private let authReason : AuthorizationReason;
+    let invitesService: InvitesService
+	private let authReason : AuthorizationReason
+    private let appState : AppStateService
     
     weak var router: AuthorizationRouter?
     var authService : AuthorizationService
@@ -91,11 +100,19 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
     init(authService: AuthorizationService,
          anonymousAllowed: Bool,
          authReason: AuthorizationReason,
-         userNotificationService: UserNotificationsService) {
+         userNotificationService: UserNotificationsService,
+         invitesService: InvitesService,
+         appStateService: AppStateService) {
 		self.authReason = authReason
         self.authService = authService
         self.anonymousAllowed = anonymousAllowed
         self.userNotificationService = userNotificationService
+        self.invitesService = invitesService
+        self.appState = appStateService
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.termsOfUseHiddenChanged, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.didChange?()
+        }
     }
     
     deinit {
@@ -139,6 +156,7 @@ class VisheoAutorizationViewModel : AuthorizationViewModel {
         
         if (!authService.isAnonymous) {
             userNotificationService.registerNotifications()
+            invitesService.handleAuthorization()
         }
     }
     

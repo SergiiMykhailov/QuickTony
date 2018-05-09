@@ -228,6 +228,7 @@ extension VisheoRenderingAssets {
                                   picturesCount: photoUrls.count,
                                   soundtrackId: soundtrackId ?? -1,
                                   premium: false,
+                                  free: false,
                                   coverRelPath: coverRelPath,
                                   soundtrackRelPath: soundtrackRelPath,
                                   videoRelPath: videoRelPath,

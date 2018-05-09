@@ -19,6 +19,7 @@ protocol InvitesService {
     func createInviteURLIfNeeded(withCompletion completion: @escaping (URL?) -> (Void))
     func handleDynamicLink(from dynamicLink: DynamicLink?) -> Bool
     func activateInvitation(forUserId userId: String, withPromo promo: String)
+    func handleAuthorization()
 }
 
 struct DynamicLinkParams {

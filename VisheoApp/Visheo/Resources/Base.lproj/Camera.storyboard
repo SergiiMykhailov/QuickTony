@@ -44,47 +44,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V01-yZ-NSN">
-                                        <rect key="frame" x="275.5" y="15" width="44.5" height="19"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-DV-gPA" customClass="CameraRecordIndicator" customModule="Visheo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="9.5" height="9.5"/>
-                                                <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="pSM-DV-gPA" secondAttribute="height" multiplier="1:1" id="9sA-Ik-ddr"/>
-                                                </constraints>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="REC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct7-4F-cZX">
-                                                <rect key="frame" x="14.5" y="0.0" width="30" height="19"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
-                                                <color key="textColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="centerY" secondItem="Ct7-4F-cZX" secondAttribute="centerY" id="3PE-ui-5Ea"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ct7-4F-cZX" secondAttribute="bottom" id="57N-Pc-ptE"/>
-                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="leading" secondItem="V01-yZ-NSN" secondAttribute="leading" id="CJQ-sI-8Qe"/>
-                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="height" secondItem="Ct7-4F-cZX" secondAttribute="height" multiplier="0.5" id="XS5-kZ-ANr"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ct7-4F-cZX" secondAttribute="trailing" id="ZCN-QJ-ZSM"/>
-                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="trailing" secondItem="Ct7-4F-cZX" secondAttribute="leading" constant="-5" id="aFX-3F-Ser"/>
-                                            <constraint firstItem="Ct7-4F-cZX" firstAttribute="top" secondItem="V01-yZ-NSN" secondAttribute="top" id="oSd-ju-uBU"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnp-BU-IW8">
-                                        <rect key="frame" x="20" y="281" width="34" height="34"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="camera_icon"/>
-                                        <connections>
-                                            <action selector="toggleCameraFace" destination="Isd-d2-FNo" eventType="touchUpInside" id="8Hz-Ac-sHb"/>
-                                        </connections>
-                                    </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNF-hk-vTk">
-                                        <rect key="frame" x="129.5" y="136" width="205.5" height="62.5"/>
+                                        <rect key="frame" x="115" y="138.5" width="220" height="57.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your device to portrait orientation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="Srt-Bl-ce3">
-                                                <rect key="frame" x="10" y="10" width="185.5" height="42.5"/>
+                                                <rect key="frame" x="10" y="10" width="200" height="37.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -103,21 +67,68 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPG-JC-rxM">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <segue destination="VKw-wB-rYl" kind="embed" identifier="showPrompterView" id="aYW-nq-t5C"/>
+                                        </connections>
+                                    </containerView>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnp-BU-IW8">
+                                        <rect key="frame" x="15" y="286" width="34" height="34"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="camera_icon"/>
+                                        <connections>
+                                            <action selector="toggleCameraFace" destination="Isd-d2-FNo" eventType="touchUpInside" id="8Hz-Ac-sHb"/>
+                                        </connections>
+                                    </button>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V01-yZ-NSN">
+                                        <rect key="frame" x="273" y="15" width="46.5" height="19"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSM-DV-gPA" customClass="CameraRecordIndicator" customModule="Visheo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="5" width="9" height="9.5"/>
+                                                <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="pSM-DV-gPA" secondAttribute="height" multiplier="1:1" id="9sA-Ik-ddr"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="REC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct7-4F-cZX">
+                                                <rect key="frame" x="14" y="0.0" width="32.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                                <color key="textColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="centerY" secondItem="Ct7-4F-cZX" secondAttribute="centerY" id="3PE-ui-5Ea"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ct7-4F-cZX" secondAttribute="bottom" id="57N-Pc-ptE"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="leading" secondItem="V01-yZ-NSN" secondAttribute="leading" id="CJQ-sI-8Qe"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="height" secondItem="Ct7-4F-cZX" secondAttribute="height" multiplier="0.5" id="XS5-kZ-ANr"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ct7-4F-cZX" secondAttribute="trailing" id="ZCN-QJ-ZSM"/>
+                                            <constraint firstItem="pSM-DV-gPA" firstAttribute="trailing" secondItem="Ct7-4F-cZX" secondAttribute="leading" constant="-5" id="aFX-3F-Ser"/>
+                                            <constraint firstItem="Ct7-4F-cZX" firstAttribute="top" secondItem="V01-yZ-NSN" secondAttribute="top" id="oSd-ju-uBU"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gjS-Wn-L8J" secondAttribute="height" multiplier="1:1" id="2a4-3m-htd"/>
                                     <constraint firstItem="BNF-hk-vTk" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="4vp-iT-01D"/>
-                                    <constraint firstAttribute="bottom" secondItem="Gnp-BU-IW8" secondAttribute="bottom" constant="20" id="BoB-jS-RV0"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gnp-BU-IW8" secondAttribute="bottom" constant="13" id="BoB-jS-RV0"/>
                                     <constraint firstItem="MjJ-FK-D1Y" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="GdU-xW-uYi"/>
-                                    <constraint firstItem="Gnp-BU-IW8" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" constant="20" id="HtJ-oO-Ap7"/>
+                                    <constraint firstItem="Gnp-BU-IW8" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" constant="15" id="HtJ-oO-Ap7"/>
                                     <constraint firstAttribute="trailing" secondItem="BNF-hk-vTk" secondAttribute="trailing" id="IPp-zm-MPp"/>
                                     <constraint firstAttribute="bottom" secondItem="MjJ-FK-D1Y" secondAttribute="bottom" id="OEO-Hr-tBO"/>
+                                    <constraint firstItem="JPG-JC-rxM" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="RNF-jd-HvY"/>
                                     <constraint firstItem="MjJ-FK-D1Y" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="Sgq-Bv-hsv"/>
                                     <constraint firstAttribute="trailing" secondItem="MjJ-FK-D1Y" secondAttribute="trailing" id="dMy-Xf-wQX"/>
+                                    <constraint firstItem="JPG-JC-rxM" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="f3E-KB-lLq"/>
+                                    <constraint firstAttribute="trailing" secondItem="JPG-JC-rxM" secondAttribute="trailing" id="h65-4o-AJP"/>
                                     <constraint firstItem="BNF-hk-vTk" firstAttribute="centerY" secondItem="gjS-Wn-L8J" secondAttribute="centerY" id="jjR-pb-Ukh"/>
                                     <constraint firstItem="4kz-0E-zHu" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" id="o7w-15-9xD"/>
                                     <constraint firstAttribute="trailing" secondItem="4kz-0E-zHu" secondAttribute="trailing" id="oNb-hM-Axo"/>
+                                    <constraint firstAttribute="bottom" secondItem="JPG-JC-rxM" secondAttribute="bottom" id="ovE-sn-ahC"/>
                                     <constraint firstAttribute="trailing" secondItem="V01-yZ-NSN" secondAttribute="trailing" constant="15" id="qbn-rt-J7k"/>
                                     <constraint firstItem="4kz-0E-zHu" firstAttribute="leading" secondItem="gjS-Wn-L8J" secondAttribute="leading" id="vEM-n3-yMU"/>
                                     <constraint firstItem="V01-yZ-NSN" firstAttribute="top" secondItem="gjS-Wn-L8J" secondAttribute="top" constant="15" id="zNf-Pi-bmG"/>
@@ -156,6 +167,29 @@
                                     <action selector="toggleVideoRecording" destination="Isd-d2-FNo" eventType="touchUpInside" id="Lyo-4Y-4yg"/>
                                 </connections>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Htw-69-Bmc" userLabel="Swipe Onboardin View">
+                                <rect key="frame" x="78" y="385" width="218" height="26"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to see more wishes ideas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFd-pB-Z0Y">
+                                        <rect key="frame" x="23" y="6" width="172" height="14"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="kFd-pB-Z0Y" firstAttribute="leading" secondItem="Htw-69-Bmc" secondAttribute="leading" constant="23" id="5zU-3m-aL4"/>
+                                    <constraint firstAttribute="bottom" secondItem="kFd-pB-Z0Y" secondAttribute="bottom" constant="6" id="MoR-eD-40d"/>
+                                    <constraint firstAttribute="trailing" secondItem="kFd-pB-Z0Y" secondAttribute="trailing" constant="23" id="ON8-y8-Uv1"/>
+                                    <constraint firstItem="kFd-pB-Z0Y" firstAttribute="top" secondItem="Htw-69-Bmc" secondAttribute="top" constant="6" id="qkw-ZR-esm"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -163,7 +197,10 @@
                             <constraint firstItem="gjS-Wn-L8J" firstAttribute="leading" secondItem="hQK-Ul-OcZ" secondAttribute="leading" constant="20" id="Cye-xO-RQ1"/>
                             <constraint firstItem="hQK-Ul-OcZ" firstAttribute="trailing" secondItem="gjS-Wn-L8J" secondAttribute="trailing" constant="20" id="R1D-g8-fdU"/>
                             <constraint firstItem="hQK-Ul-OcZ" firstAttribute="bottom" secondItem="kWJ-0h-vua" secondAttribute="bottom" constant="40" id="eqp-wd-j8N"/>
+                            <constraint firstItem="Htw-69-Bmc" firstAttribute="top" secondItem="JPG-JC-rxM" secondAttribute="bottom" constant="10" id="nmA-ye-IVh"/>
                             <constraint firstItem="gjS-Wn-L8J" firstAttribute="top" secondItem="hQK-Ul-OcZ" secondAttribute="top" constant="20" id="s9s-sI-gBm"/>
+                            <constraint firstItem="Htw-69-Bmc" firstAttribute="centerX" secondItem="JPG-JC-rxM" secondAttribute="centerX" id="sjv-dm-r8c"/>
+                            <constraint firstItem="Htw-69-Bmc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hQK-Ul-OcZ" secondAttribute="leading" constant="20" id="vIm-Bu-VkE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hQK-Ul-OcZ"/>
                     </view>
@@ -181,17 +218,96 @@
                         <outlet property="cameraRecordButton" destination="kWJ-0h-vua" id="KhT-YZ-bKy"/>
                         <outlet property="cameraToggleButton" destination="Gnp-BU-IW8" id="Hhg-VT-2eT"/>
                         <outlet property="countdownLabel" destination="MjJ-FK-D1Y" id="MU7-ak-MSh"/>
+                        <outlet property="prompterViewController" destination="JPG-JC-rxM" id="Ihi-04-xCG"/>
                         <outlet property="recordingIndicator" destination="pSM-DV-gPA" id="Zai-iO-14U"/>
                         <outlet property="recordingStatusView" destination="V01-yZ-NSN" id="5Qh-Qh-zKq"/>
                         <outlet property="rotationHintLeading" destination="4vp-iT-01D" id="auR-SL-lXn"/>
                         <outlet property="rotationHintTrailing" destination="IPp-zm-MPp" id="LAn-JW-poI"/>
                         <outlet property="rotationHintView" destination="BNF-hk-vTk" id="Pdd-Gu-CWn"/>
+                        <outlet property="swipeOnboardingView" destination="Htw-69-Bmc" id="MVQ-Q4-eSh"/>
                         <segue destination="UoZ-eD-0S2" kind="show" identifier="showTrimScreen" id="0eb-1U-Z0s"/>
+                        <segue destination="HQg-xR-Mri" kind="show" identifier="showPrompterOnboarding" id="I5W-BR-ldh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71N-M6-rxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="180"/>
+            <point key="canvasLocation" x="1312.8" y="179.46026986506749"/>
+        </scene>
+        <!--Prompter View Controller-->
+        <scene sceneID="lMc-Qc-DCv">
+            <objects>
+                <viewController id="VKw-wB-rYl" customClass="PrompterViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pgm-A4-xoh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0I6-g4-z17">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.30262433978873238" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IbT-Zy-fdR">
+                                    <size key="itemSize" width="375" height="375"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PrompterCollectionViewCell" id="QbJ-FE-JN3" customClass="PrompterCollectionViewCell" customModule="Visheo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PO-T3-5WE">
+                                                    <rect key="frame" x="20" y="20" width="335" height="335"/>
+                                                    <string key="text">Happy Birthday, my love! 
+I wish this new year of your life let all your dreams &amp; wishes come true!</string>
+                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="6PO-T3-5WE" firstAttribute="top" secondItem="QbJ-FE-JN3" secondAttribute="top" constant="20" id="LwB-r6-P6A"/>
+                                            <constraint firstItem="6PO-T3-5WE" firstAttribute="leading" secondItem="QbJ-FE-JN3" secondAttribute="leading" constant="20" id="QGl-aS-eGL"/>
+                                            <constraint firstAttribute="trailing" secondItem="6PO-T3-5WE" secondAttribute="trailing" constant="20" id="Rmn-2Z-Jpa"/>
+                                            <constraint firstAttribute="bottom" secondItem="6PO-T3-5WE" secondAttribute="bottom" constant="20" id="jUR-O1-5Oy"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="textLabel" destination="6PO-T3-5WE" id="KQz-Cs-Jq3"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFY-w6-h8U">
+                                <rect key="frame" x="172.5" y="344" width="31.5" height="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0I6-g4-z17" firstAttribute="top" secondItem="S90-EI-zcR" secondAttribute="top" id="F9U-j9-Hd3"/>
+                            <constraint firstItem="S90-EI-zcR" firstAttribute="trailing" secondItem="0I6-g4-z17" secondAttribute="trailing" id="Kf4-1D-LG3"/>
+                            <constraint firstItem="fFY-w6-h8U" firstAttribute="centerX" secondItem="S90-EI-zcR" secondAttribute="centerX" id="Vmq-uI-iee"/>
+                            <constraint firstItem="0I6-g4-z17" firstAttribute="leading" secondItem="S90-EI-zcR" secondAttribute="leading" id="Z29-Lq-PyN"/>
+                            <constraint firstItem="S90-EI-zcR" firstAttribute="bottom" secondItem="0I6-g4-z17" secondAttribute="bottom" id="hhq-iS-axj"/>
+                            <constraint firstItem="fFY-w6-h8U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="S90-EI-zcR" secondAttribute="leading" constant="20" id="onf-iX-hq0"/>
+                            <constraint firstItem="S90-EI-zcR" firstAttribute="bottom" secondItem="fFY-w6-h8U" secondAttribute="bottom" constant="15" id="sV3-oe-uCm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S90-EI-zcR"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="375"/>
+                    <connections>
+                        <outlet property="pageIndicateLabel" destination="fFY-w6-h8U" id="91B-QD-fg0"/>
+                        <outlet property="wordsCollectionView" destination="0I6-g4-z17" id="yu8-gC-4cM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZY-zu-l6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1313" y="925"/>
         </scene>
         <!--RECORD YOUR VIDEO WISH-->
         <scene sceneID="8Ma-Bt-ZOd">
@@ -362,7 +478,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3 / 3" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJk-8Q-bOw">
-                                <rect key="frame" x="148.5" y="32" width="78" height="21.5"/>
+                                <rect key="frame" x="148" y="32" width="79" height="24"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -373,7 +489,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-i9-Wr9">
-                                <rect key="frame" x="48" y="291.5" width="279" height="95"/>
+                                <rect key="frame" x="48" y="294" width="279" height="95"/>
                                 <string key="text">Video Message (up to 30 sec) is the key component of your Visheo that makes it personal &amp; touching
 </string>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
@@ -381,15 +497,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_video" translatesAutoresizingMaskIntoConstraints="NO" id="CRD-Sb-ofq">
-                                <rect key="frame" x="121.5" y="131.5" width="132" height="132"/>
+                                <rect key="frame" x="121.5" y="134" width="132" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CRD-Sb-ofq" secondAttribute="height" id="JdJ-Wl-IsQ"/>
                                     <constraint firstAttribute="width" constant="132" id="a9z-FG-4MH"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-tb-5X6">
-                                <rect key="frame" x="20" y="421.5" width="335" height="60"/>
-                                <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="424" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xJm-ZU-Tct"/>
                                 </constraints>
@@ -439,7 +555,75 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pua-D5-CXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="969"/>
+            <point key="canvasLocation" x="430" y="967"/>
+        </scene>
+        <!--WISHES IDEAS-->
+        <scene sceneID="aLf-fF-jDk">
+            <objects>
+                <viewController storyboardIdentifier="PrompterOnboardingViewController" id="HQg-xR-Mri" customClass="PrompterOnboardingViewController" customModule="Visheo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cXt-TX-ayp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLg-vR-eRQ">
+                                <rect key="frame" x="36" y="262" width="303" height="95"/>
+                                <string key="text">We collected wishes for your inspiration. Swipe and choose one, but be creative! Only words of your heart will sound heartwarming.</string>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="promptOnboarding" translatesAutoresizingMaskIntoConstraints="NO" id="HUK-YV-pka">
+                                <rect key="frame" x="127.5" y="102" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HUK-YV-pka" secondAttribute="height" id="Cu3-AF-hI4"/>
+                                    <constraint firstAttribute="width" constant="120" id="iU1-Zb-9Is"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbh-83-DWg">
+                                <rect key="frame" x="20" y="413" width="335" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.38308382029999999" blue="0.36823463439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="vz5-En-b0v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
+                                <state key="normal" title="Ok, got it">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goBack" destination="HQg-xR-Mri" eventType="touchUpInside" id="TDR-88-ilb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pLg-vR-eRQ" firstAttribute="leading" secondItem="oJe-9J-HfV" secondAttribute="leading" constant="36" id="2cf-xH-9SD"/>
+                            <constraint firstItem="dbh-83-DWg" firstAttribute="top" secondItem="pLg-vR-eRQ" secondAttribute="bottom" constant="56" id="3mZ-Ty-0Oh"/>
+                            <constraint firstItem="HUK-YV-pka" firstAttribute="centerX" secondItem="oJe-9J-HfV" secondAttribute="centerX" id="7fj-Pt-vTZ"/>
+                            <constraint firstAttribute="trailing" secondItem="pLg-vR-eRQ" secondAttribute="trailing" constant="36" id="Sk0-44-FSp"/>
+                            <constraint firstItem="dbh-83-DWg" firstAttribute="leading" secondItem="oJe-9J-HfV" secondAttribute="leading" constant="20" id="ZF7-lH-kZ4"/>
+                            <constraint firstItem="dbh-83-DWg" firstAttribute="centerX" secondItem="oJe-9J-HfV" secondAttribute="centerX" id="Zy0-h2-JMs"/>
+                            <constraint firstItem="pLg-vR-eRQ" firstAttribute="top" secondItem="HUK-YV-pka" secondAttribute="bottom" constant="40" id="fkr-Al-9GM"/>
+                            <constraint firstItem="HUK-YV-pka" firstAttribute="top" secondItem="oJe-9J-HfV" secondAttribute="top" constant="82" id="udX-c7-geY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oJe-9J-HfV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="WISHES IDEAS" id="bHq-KZ-nfh">
+                        <barButtonItem key="leftBarButtonItem" image="arrow" id="KU5-p7-lIu">
+                            <connections>
+                                <action selector="goBack" destination="HQg-xR-Mri" id="GNz-x3-j5n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2yk-cq-ibq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2276" y="1071"/>
         </scene>
     </scenes>
     <resources>
@@ -447,8 +631,9 @@
         <image name="camera_icon" width="34" height="34"/>
         <image name="onboarding_video" width="132" height="132"/>
         <image name="play" width="80" height="80"/>
+        <image name="promptOnboarding" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Qk-pt-sxu"/>
+        <segue reference="fJP-hQ-Yo3"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,32 +16,7 @@ class AuthorizationViewController: UIViewController, RouterProxy {
         configureTextViewLinks()
         configureTermsOfUseLink()
         
-        if !viewModel.anonymousAllowed {
-            skipRegistrationBottomConstraint.constant = 0
-            skipRegistrationHeightConstraint.constant = 0
-            signInBottomConstraint.constant = 31
-        } else {
-            signUpMandatoryLabel.isHidden = true
-            signUpMandatoryLabel.text = ""
-        }
-        
-        closeButton.isHidden = !viewModel.cancelAllowed
-        if let description = viewModel.descriptionString {
-            authReasonlabel.text = description
-        }
-		
-		if let type = viewModel.closeButtonType {
-			switch type {
-				case .back:
-					closeButtonLeadingConstraint.constant = 4.0;
-					closeButton.setTitle(nil, for: .normal);
-					closeButton.setImage(UIImage(named: "arrow"), for: .normal);
-				case .close:
-					closeButtonLeadingConstraint.constant = 20.0;
-					closeButton.setImage(nil, for: .normal);
-					closeButton.setTitle(NSLocalizedString("Close", comment: ""), for: .normal);
-			}
-		}
+        updateFromViewModel()
     }
     
 	@IBOutlet weak var closeButtonLeadingConstraint: NSLayoutConstraint!
@@ -76,6 +51,39 @@ class AuthorizationViewController: UIViewController, RouterProxy {
         }
 
         self.viewModel.getPresentationViewController = {[weak self] in self}
+        
+        self.viewModel.didChange = { [weak self] in self?.updateFromViewModel() }
+    }
+    
+    private func updateFromViewModel() {
+        termsOfUseLabel.isHidden = viewModel.shouldShowTermsOfUse
+        
+        if !viewModel.anonymousAllowed {
+            skipRegistrationBottomConstraint.constant = 0
+            skipRegistrationHeightConstraint.constant = 0
+            signInBottomConstraint.constant = 31
+        } else {
+            signUpMandatoryLabel.isHidden = true
+            signUpMandatoryLabel.text = ""
+        }
+        
+        closeButton.isHidden = !viewModel.cancelAllowed
+        if let description = viewModel.descriptionString {
+            authReasonlabel.text = description
+        }
+        
+        if let type = viewModel.closeButtonType {
+            switch type {
+            case .back:
+                closeButtonLeadingConstraint.constant = 4.0;
+                closeButton.setTitle(nil, for: .normal);
+                closeButton.setImage(UIImage(named: "arrow"), for: .normal);
+            case .close:
+                closeButtonLeadingConstraint.constant = 20.0;
+                closeButton.setImage(nil, for: .normal);
+                closeButton.setTitle(NSLocalizedString("Close", comment: ""), for: .normal);
+            }
+        }
     }
     
     // MARK: Actions

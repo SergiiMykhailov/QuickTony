@@ -31,17 +31,25 @@ private let maxVideoRecordingDuration: TimeInterval = 30.0;
 protocol CameraViewModel: class
 {
 	var isRecording: Bool { get }
-	
+    var isPrompterEnabled: Bool { get }
+    var isPrompterAvailable: Bool { get }
+    
 	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? { get set };
 	var recordingProgressChangedBlock: ((Double) -> Void)? { get set }
-	
+    var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
+    var didChanged: (()->())? { get set }
+    
 	func addPreviewOutput(_ output: GPUImageInput)
 	func startCapture()
 	func stopCapture(teardown: Bool)
+
 	func toggleRecording()
 	func toggleCameraFace()
-	
-	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? { get set }
+    func togglePrompterMode()
+    
+    var shouldPresentCameraTips: Bool { get }
+    var shouldPresentSwipeOnboarding: Bool { get }
+    func markCameraTipsSeen()
 }
 
 
@@ -50,10 +58,16 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	var appState : AppStateService
 	
 	weak var router: CameraRouter?
-	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil;
-	var recordingProgressChangedBlock: ((Double) -> Void)? = nil;
-	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? = nil;
+	var recordingStateChangedBlock: ((CameraRecordingState) -> Void)? = nil
+	var recordingProgressChangedBlock: ((Double) -> Void)? = nil
+	var deviceOrientationChangeBlock: ((_ orientation: UIInterfaceOrientationMask) -> Void)? = nil
+    var didChanged: (()->())? = nil
 	
+    var isPrompterEnabled: Bool
+    var isPrompterAvailable: Bool {
+        return assets.originalOccasion.words.count > 0
+    }
+    
 	private let cropFilter = GPUImageCropFilter();
 	
 	private var camera: GPUImageVideoCamera?;
@@ -76,13 +90,17 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	}
 	
 	init(appState: AppStateService, assets : VisheoRenderingAssets) {
-		self.appState = appState;
+		self.appState = appState
         self.assets = assets
-		super.init();
+        self.isPrompterEnabled = false
 		
+        super.init()
+        
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationWillResignActive, object: nil);
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.resumeCapture), name: Notification.Name.UIApplicationDidBecomeActive, object: nil);
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.viewShouldUpdate), name: Notification.Name.PrompterDidSwiped, object: nil)
 	}
 	
 	deinit {
@@ -256,7 +274,20 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	func toggleCameraFace() {
 		camera?.rotateCamera();
 	}
+    
+    func togglePrompterMode() {
+        if (appState.shouldShowPrompterOnboarding) {
+            router?.showPrompterOnboarding()
+        }
+        
+        isPrompterEnabled = !isPrompterEnabled
+        viewShouldUpdate()
+    }
 	
+    @objc func viewShouldUpdate() {
+        didChanged?()
+    }
+    
 	private func handleMotionUpdate(_ motion: CMDeviceMotion) {
 		let gravity = motion.gravity;
 		
@@ -275,8 +306,21 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	}
 	
 	@objc private func resumeCapture() {
-		camera?.resumeCameraCapture();
+		camera?.resumeCameraCapture()
 	}
+    
+    var shouldPresentCameraTips: Bool {
+        return appState.shouldShowCameraTips
+    }
+    
+    var shouldPresentSwipeOnboarding: Bool {
+        return isPrompterEnabled && appState.shouldShowSwipeOnboarding
+    }
+    
+    func markCameraTipsSeen() {
+        appState.cameraTips(wereSeen: true);
+    }
+
 }
 
 

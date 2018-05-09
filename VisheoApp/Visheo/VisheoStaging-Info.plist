@@ -17,9 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Visheo needs access to the location to improve user experience</string>
+	<string>2.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -82,6 +80,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Visheo needs access to the camera to make video recording</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Visheo needs access to the location to improve user experience</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Visheo needs access to the microphone to make audio recording</string>
 	<key>NSPhotoLibraryUsageDescription</key>

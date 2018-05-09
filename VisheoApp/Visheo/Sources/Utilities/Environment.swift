@@ -24,18 +24,19 @@ enum Environment {
 }
 
 fileprivate enum StoragePaths {
-    static let premium     = "RegularVisheo"
-    static let free        = "PublicVisheo"
+    static let free        = "FreeVisheo"
+    static let paid        = "PaidVisheo"
+    static let open        = "PublicVisheo"
 }
 
 
 extension Environment {
-	func storageRef(for id: String, premium: Bool) -> StorageReference {
+    func storageRef(for id: String, premium: Bool, isFree: Bool) -> StorageReference {
 		switch self {
 			case .staging:
-				return StagingStorageBuckets.storageRef(for: id, premium: premium);
+				return StagingStorageBuckets.storageRef(for: id, premium: premium, isFree: isFree);
 			case .production:
-				return ProductionStorageBuckets.storageRef(for: id, premium: premium);
+				return ProductionStorageBuckets.storageRef(for: id, premium: premium, isFree: isFree);
 		}
 	}
     
@@ -62,22 +63,24 @@ extension Environment {
 
 
 protocol StorageBuckets {
-	static func storageRef(for id: String, premium: Bool) -> StorageReference
+	static func storageRef(for id: String, premium: Bool, isFree: Bool) -> StorageReference
     static func bucketUrl() -> String
-    static func storagePath(premium: Bool) -> String
+    static func storagePath(premium: Bool, isFree: Bool) -> String
 }
 
 extension StorageBuckets {
-    static func storageRef(for id: String, premium: Bool) -> StorageReference {
-        let path = self.storagePath(premium: premium)
+    static func storageRef(for id: String, premium: Bool, isFree: Bool) -> StorageReference {
+        let path = self.storagePath(premium: premium, isFree: isFree)
         let url = self.bucketUrl()
         let child = path + "/" + id;
         let storageRef = Storage.storage(url: url).reference().child(child)
         return storageRef
     }
     
-    static func storagePath(premium: Bool) -> String {
-        return premium ? StoragePaths.premium : StoragePaths.free
+    static func storagePath(premium: Bool, isFree: Bool) -> String {
+        if !premium { return StoragePaths.open }
+        
+        return isFree ? StoragePaths.free : StoragePaths.paid
     }
 }
 

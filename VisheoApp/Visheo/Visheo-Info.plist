@@ -16,10 +16,8 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Visheo needs access to the location to improve user experience</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1</string>
+	<string>2.3</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -49,7 +47,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>36</string>
+	<string>47</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -82,6 +80,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Visheo needs access to the camera to make video recording</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Visheo needs access to the location to improve user experience</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Visheo needs access to the microphone to make audio recording</string>
 	<key>NSPhotoLibraryUsageDescription</key>

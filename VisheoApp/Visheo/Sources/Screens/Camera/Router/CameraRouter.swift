@@ -11,6 +11,7 @@ import UIKit
 
 protocol CameraRouter: FlowRouter {
 	func showTrimScreen(with assets: VisheoRenderingAssets)
+    func showPrompterOnboarding()
 }
 
 
@@ -18,6 +19,8 @@ class VisheoCameraRouter: CameraRouter
 {
 	enum SegueList: String, SegueListType {
 		case showTrimScreen = "showTrimScreen"
+        case showPrompterView = "showPrompterView"
+        case showPrompterOnboarding = "showPrompterOnboarding"
 	}
 	
 	let dependencies: RouterDependencies
@@ -27,7 +30,9 @@ class VisheoCameraRouter: CameraRouter
     
     private var finishRecordingCallback: ((VisheoRenderingAssets)->())?
 
-    public init(dependencies: RouterDependencies, assets: VisheoRenderingAssets, finishRecordingCallback: ((VisheoRenderingAssets)->())? = nil) {
+    public init(dependencies: RouterDependencies,
+                assets: VisheoRenderingAssets,
+                finishRecordingCallback: ((VisheoRenderingAssets)->())? = nil) {
 		self.dependencies = dependencies
         self.assets = assets
         self.finishRecordingCallback = finishRecordingCallback
@@ -45,11 +50,21 @@ class VisheoCameraRouter: CameraRouter
 		guard let segueList = SegueList(segue: segue) else {
 			return
 		}
+        
 		switch segueList {
-        	case .showTrimScreen:
-            	let trimmingController = segue.destination as! VideoTrimmingViewController
-            	let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: assets)
-            	trimmingRouter.start(with: trimmingController)
+            case .showTrimScreen:
+                let trimmingController = segue.destination as! VideoTrimmingViewController
+                let trimmingRouter = VisheoVideoTrimmingRouter(dependencies: dependencies, assets: assets)
+                trimmingRouter.start(with: trimmingController)
+            case .showPrompterView:
+                let prompterController = segue.destination as! PrompterViewController
+                let words = assets.originalOccasion.words
+                let prompterRouter = DefaultPrompterRouter(withDependecies: dependencies)
+                prompterRouter.start(with: prompterController, words: words)
+            case .showPrompterOnboarding:
+                let prompterOnboardingController = segue.destination as! PrompterOnboardingViewController
+                let prompterOnboardingRouter = DefaultPrompterOnboardingRouter(withDependencies: dependencies)
+                prompterOnboardingRouter.start(with: prompterOnboardingController)
 		}
 	}
 }
@@ -63,5 +78,9 @@ extension VisheoCameraRouter {
         } else {
             controller?.performSegue(SegueList.showTrimScreen, sender: assets)
         }
+    }
+    
+    func showPrompterOnboarding() {
+        controller?.performSegue(SegueList.showPrompterOnboarding, sender: nil)
     }
 }

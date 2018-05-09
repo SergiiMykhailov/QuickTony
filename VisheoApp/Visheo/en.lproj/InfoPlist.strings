@@ -2,9 +2,6 @@
 "CFBundleDisplayName" = "Visheo";
 
 /* (No Comment) */
-"CFBundleName" = "$(PRODUCT_NAME)";
-
-/* (No Comment) */
 "NSCameraUsageDescription" = "Visheo needs access to the camera to make video recording";
 
 /* (No Comment) */

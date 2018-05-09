@@ -46,6 +46,10 @@ final class InviteFriendsViewController: UIViewController {
         }
     }
     
+    @IBAction func tapGesture(_ sender: Any) {
+        copyToClipboard()
+    }
+    
     @IBAction func copyPressed(_ sender: Any) {
         copyToClipboard()
     }
