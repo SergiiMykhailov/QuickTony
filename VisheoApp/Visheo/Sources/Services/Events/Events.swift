@@ -38,6 +38,7 @@ enum EventType: String {
     case bestPracticesClicked     = "best_practices_clicked"
     case onboardingPassed         = "onboarding_passed"
     case prompterEnabled          = "prompter_enabled"
+    case visheoRecorded           = "video_wish_recorded"
 }
 
 protocol EventRepresenting {
@@ -271,6 +272,12 @@ struct BestPracticesClicked: EventRepresenting {
 struct OnboardingPassed: EventRepresenting {
     var type: EventType {
         return .onboardingPassed
+    }
+}
+
+struct VisheoRecorded: EventRepresenting {
+    var type: EventType {
+        return .visheoRecorded
     }
 }
 

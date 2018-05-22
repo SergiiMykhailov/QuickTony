@@ -254,6 +254,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
             if let strongSelf = self {
                 DispatchQueue.main.async {
                     strongSelf.router?.showTrimScreen(with: strongSelf.assets)
+                    strongSelf.loggingService.log(event: VisheoRecorded(), id: strongSelf.assets.creationInfo.visheoId)
                 }
             }
 		});
