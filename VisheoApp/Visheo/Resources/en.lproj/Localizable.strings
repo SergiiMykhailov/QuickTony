@@ -7,6 +7,12 @@
 /* redeem success description */
 "%d premium card(s) added to your account" = "%d premium card(s) added to your account";
 
+/* Invite friends menu substring */
+"& get Visheo Cards for FREE" = "& get Visheo Cards for FREE";
+
+/* Limited subscription text */
+"* Limited offer" = "* Limited offer";
+
 /* Error while deleting account text messaage */
 "An error occurred while deleting account" = "An error occurred while deleting account";
 
@@ -21,6 +27,9 @@
 
 /* Visheo deletion confirmation */
 "Are you sure you want to delete this Visheo? It will be deleted forever." = "Are you sure you want to delete this Visheo Card? It will be deleted forever from the Visheo App and online storage.";
+
+/* Best Practicies menu item */
+"Best Practicies" = "Best Practicies";
 
 /* Cancel
    Cancel button
@@ -88,6 +97,12 @@
 /* if you exit now you Visheo won't be saved */
 "If you exit now you Visheo won't be saved" = "If you exit now you Visheo won't be saved";
 
+/* Invite frinds menu item */
+"Invite friends" = "Invite friends";
+
+/* Invite link was copied to clipboard message */
+"Invite link was copied" = "Invite link was copied";
+
 /* Invalid email warning */
 "It does not look like a proper email" = "It does not look like a proper email";
 
@@ -99,9 +114,6 @@
 
 /* exit from preview message title */
 "Message" = "Message";
-
-/* Best Practicies menu item */
-"Best Practicies" = "Best Practicies";
 
 /* My purchases menu item */
 "My Purchases" = "My Purchases";
@@ -156,6 +168,9 @@
 /* Email client not setup error message */
 "Please setup your email client to send feedback" = "Please setup your email client to send feedback";
 
+/* Please sign in to invite friends */
+"Please sign in to invite friends" = "Please sign in to invite friends";
+
 /* Please sign in to purchase premium cards */
 "Please sign in to purchase premium cards" = "Please sign in to purchase premium cards";
 
@@ -164,9 +179,6 @@
 
 /* Please sign in to send feedback */
 "Please sign in to send feedback" = "Please sign in to send feedback";
-
-/* Please sign in to invite friends*/
-"Please sign in to invite friends" = "Please sign in to invite friends";
 
 /* Confirm account deletion alert button */
 "Proceed" = "Proceed";
@@ -237,10 +249,10 @@
 /* Try Later visheo upload/render */
 "Try Later" = "Try Later";
 
-/* Unlimited visheos subscription template */
+/* (No Comment) */
 "Unlimited / %@ per month" = "Unlimited / %@ per month";
 
-/* Unlimited visheos subscription template */
+/* (No Comment) */
 "Unlimited / %@ per month *" = "Unlimited / %@ per month *";
 
 /* Upload visheo error */

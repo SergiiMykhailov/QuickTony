@@ -1,16 +1,19 @@
-/* Class = "UISegmentedControl"; 2Za-I9-yK2.segmentTitles[0] = "Words Ideas"; ObjectID = "2Za-I9-yK2"; */
+/* (No Comment) */
 "2Za-I9-yK2.segmentTitles[0]" = "Wishes Ideas";
 
-/* Class = "UISegmentedControl"; 2Za-I9-yK2.segmentTitles[1] = "Best Practices"; ObjectID = "2Za-I9-yK2"; */
+/* (No Comment) */
 "2Za-I9-yK2.segmentTitles[1]" = "Best Practices";
 
+/* Class = "UILabel"; text = "Happy Birthday, my love! \nI wish this new year of your life let all your dreams & wishes come true!"; ObjectID = "6PO-T3-5WE"; */
+"6PO-T3-5WE.text" = "Happy Birthday, my love! \nI wish this new year of your life let all your dreams & wishes come true!";
+
 /* Class = "UIButton"; normalTitle = "Allow Access"; ObjectID = "Cbl-tb-5X6"; */
-"Cbl-tb-5X6.normalTitle" = "Record Video Message";
+"Cbl-tb-5X6.normalTitle" = "Record Video";
 
 /* Class = "UILabel"; text = "REC"; ObjectID = "Ct7-4F-cZX"; */
 "Ct7-4F-cZX.text" = "REC";
 
-/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "Ej2-FM-vwo"; */
+/* (No Comment) */
 "Ej2-FM-vwo.title" = "Close";
 
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "LNN-dW-DoG"; */
@@ -25,7 +28,7 @@
 /* Class = "UILabel"; text = "Please rotate your device to portrait orientation"; ObjectID = "Srt-Bl-ce3"; */
 "Srt-Bl-ce3.text" = "Please rotate your device to portrait orientation";
 
-/* Class = "UILabel"; text = "Good Lighting is Critical"; ObjectID = "YMW-wT-ePu"; */
+/* (No Comment) */
 "YMW-wT-ePu.text" = "Good Lighting is Critical";
 
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "a5t-vd-l66"; */
@@ -34,17 +37,32 @@
 /* Class = "UIButton"; normalTitle = "Video Wish is Ready"; ObjectID = "agg-W8-Ax4"; */
 "agg-W8-Ax4.normalTitle" = "Proceed to Preview";
 
+/* Class = "UINavigationItem"; title = "WISHES IDEAS"; ObjectID = "bHq-KZ-nfh"; */
+"bHq-KZ-nfh.title" = "WISHES IDEAS";
+
 /* Class = "UINavigationItem"; title = "RECORD YOUR VIDEO WISH"; ObjectID = "crN-cW-0Hk"; */
 "crN-cW-0Hk.title" = "RECORD VIDEO MESSAGE";
 
-/* Class = "UILabel"; text = "01"; ObjectID = "eBH-g9-WZk"; */
+/* Class = "UIButton"; normalTitle = "Ok, got it"; ObjectID = "dbh-83-DWg"; */
+"dbh-83-DWg.normalTitle" = "Ok, got it";
+
+/* (No Comment) */
 "eBH-g9-WZk.text" = "01";
 
-/* Class = "UINavigationItem"; title = "INSPIRATION"; ObjectID = "gxc-oN-cko"; */
+/* Class = "UILabel"; text = "1 / 24"; ObjectID = "fFY-w6-h8U"; */
+"fFY-w6-h8U.text" = "1 / 24";
+
+/* (No Comment) */
 "gxc-oN-cko.title" = "BEST PRACTICIES";
 
-/* Class = "UILabel"; text = "My honey!\n May your Thanksgiving be filled with love & cheer, but also with full tummies. \nHappy Thanksgiving!"; ObjectID = "nMR-P5-9Es"; */
+/* Class = "UILabel"; text = "Swipe to see more wishes ideas"; ObjectID = "kFd-pB-Z0Y"; */
+"kFd-pB-Z0Y.text" = "Swipe to see more wishes ideas";
+
+/* (No Comment) */
 "nMR-P5-9Es.text" = "My honey!\n May your Thanksgiving be filled with love & cheer, but also with full tummies. \nHappy Thanksgiving!";
+
+/* Class = "UILabel"; text = "We collected wishes for your inspiration. Swipe and choose one, but be creative! Only words of your heart will sound heartwarming."; ObjectID = "pLg-vR-eRQ"; */
+"pLg-vR-eRQ.text" = "We collected wishes for your inspiration. Swipe and choose one, but be creative! Only words of your heart will sound heartwarming.";
 
 /* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "r23-1M-WM6"; */
 "r23-1M-WM6.title" = "Cancel";
@@ -55,6 +73,6 @@
 /* Class = "UILabel"; text = "Step 3 / 3"; ObjectID = "xJk-8Q-bOw"; */
 "xJk-8Q-bOw.text" = "Step 3 / 3";
 
-/* Class = "UILabel"; text = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video."; ObjectID = "zUb-Nv-0Bh"; */
+/* (No Comment) */
 "zUb-Nv-0Bh.text" = "Proper lighting has a huge impact on smartphone cameras because they have smaller image sensors and lenses. Try as much as possible to shoot your video in brightly lit areas. \nThis will help avoid unnecessary shadows and grainy areas in your video.";
 
