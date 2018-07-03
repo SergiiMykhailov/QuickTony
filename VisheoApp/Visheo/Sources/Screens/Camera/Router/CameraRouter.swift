@@ -39,7 +39,7 @@ class VisheoCameraRouter: CameraRouter
 	}
 	
 	func start(with viewController: CameraViewController) {
-        let vm = VisheoCameraViewModel(appState: dependencies.appStateService, assets: self.assets);
+        let vm = VisheoCameraViewModel(appState: dependencies.appStateService, assets: self.assets, loggingService: dependencies.loggingService);
 		viewModel = vm
 		vm.router = self
 		self.controller = viewController

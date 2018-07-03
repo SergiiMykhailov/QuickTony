@@ -5,6 +5,9 @@
 "NSCameraUsageDescription" = "Visheo needs access to the camera to make video recording";
 
 /* (No Comment) */
+"NSLocationWhenInUseUsageDescription" = "Visheo needs access to the location to improve user experience";
+
+/* (No Comment) */
 "NSMicrophoneUsageDescription" = "Visheo needs access to the microphone to make audio recording";
 
 /* (No Comment) */

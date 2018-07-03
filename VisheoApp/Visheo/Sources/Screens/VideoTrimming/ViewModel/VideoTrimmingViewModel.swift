@@ -122,7 +122,7 @@ class VisheoVideoTrimmingViewModel : VideoTrimmingViewModel {
 		player?.pause()
         stopPlaybackTimeChecker()
 		
-		loggingService.log(event: RetakeVideoEvent(), id: assets.creationInfo.visheoId);
+		loggingService.log(event: RetakeVideoEvent(), id: assets.creationInfo.visheoId)
 		
         router?.showRetake(with: assets)
     }

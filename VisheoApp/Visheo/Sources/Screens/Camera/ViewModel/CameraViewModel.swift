@@ -79,6 +79,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 	private var displayLink: CADisplayLink? = nil;
 	
     private let assets : VisheoRenderingAssets
+    private let loggingService: EventLoggingService
 	private lazy var motionManager: CMMotionManager = CMMotionManager();
 	private lazy var motionQueue: OperationQueue = OperationQueue();
 	private var interfaceOrientation: UIInterfaceOrientationMask = .portrait {
@@ -89,11 +90,12 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
 		}
 	}
 	
-	init(appState: AppStateService, assets : VisheoRenderingAssets) {
+    init(appState: AppStateService, assets : VisheoRenderingAssets, loggingService: EventLoggingService) {
 		self.appState = appState
         self.assets = assets
         self.isPrompterEnabled = false
-		
+		self.loggingService = loggingService
+        
         super.init()
         
 		NotificationCenter.default.addObserver(self, selector: #selector(VisheoCameraViewModel.pauseCapture), name: Notification.Name.UIApplicationWillResignActive, object: nil);
@@ -252,6 +254,7 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
             if let strongSelf = self {
                 DispatchQueue.main.async {
                     strongSelf.router?.showTrimScreen(with: strongSelf.assets)
+                    strongSelf.loggingService.log(event: VisheoRecorded(), id: strongSelf.assets.creationInfo.visheoId)
                 }
             }
 		});
@@ -282,6 +285,8 @@ class VisheoCameraViewModel: NSObject, CameraViewModel
         
         isPrompterEnabled = !isPrompterEnabled
         viewShouldUpdate()
+        
+        if (isPrompterEnabled) { loggingService.log(event: PrompterEnabled()) }
     }
 	
     @objc func viewShouldUpdate() {
