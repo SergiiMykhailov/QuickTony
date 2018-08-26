@@ -1,0 +1,1 @@
+python QuickTony.py <BtcTradeUAPublicKey> <BtcTradeUAPrivateKey> <KunaPublicKey> <KunaPrivateKey>
