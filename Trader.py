@@ -82,8 +82,7 @@ class Trader(object):
         currentDate = datetime.datetime.now()
         currentDayString = currentDate.strftime("%Y-%m-%d")
         logFileDir = os.path.join(os.getcwd(), "log")
-        if not os.path.exists(os.path.dirname(logFileDir)):
-            os.makedirs(logFileDir)
+        os.makedirs(logFileDir, exist_ok = True)
 
         fileName = currentDayString + "_" + suffixWithExtension
         filePath = os.path.join(logFileDir, fileName)
