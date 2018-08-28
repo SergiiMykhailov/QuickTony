@@ -154,6 +154,12 @@ class Trader(object):
         for indexToRemove in completedDealsIndices:
             del self.__deals[indexToRemove]
 
+
+
+    def __shouldPerformReverseOperation(deal, reverseRatio) -> bool:
+        result = deal.profitInPercents + reverseRatio - Trader.MAX_LOSS > 0.0
+        return result
+
         
 
 
@@ -166,16 +172,15 @@ class Trader(object):
             # with appropriate loss
             kunaToBtcTradeRatio = self.__platformsState.kunaToBtcTradeBuySellRatio()
 
-            if kunaToBtcTradeRatio > Trader.MIN_RETURN_RATIO:
+            if self.__shouldPerformReverseOperation(deal, kunaToBtcTradeRatio):
                 reverseDeal = self.__buyAtKunaSellAtBtcTrade(deal.cryptoAmountToReturn)
-
         else:
             # Originally we bought at KUNA and sold at BTCTrade
             # Check if we can return assets to original platforms
             # with appropriate loss
             btcTradeToKunaRatio = self.__platformsState.btcTradeToKunaBuySellRatio()
 
-            if btcTradeToKunaRatio > Trader.MIN_RETURN_RATIO:
+            if self.__shouldPerformReverseOperation(deal, btcTradeToKunaRatio):
                 reverseDeal = self.__buyAtBtcTradeSellAtKuna(deal.cryptoAmountToReturn)
 
         if reverseDeal is not None:
@@ -270,8 +275,8 @@ class Trader(object):
 
 
     # Constants
-    MIN_BUY_SELL_RATIO = 2.5
-    MIN_RETURN_RATIO = -1.0
+    MIN_BUY_SELL_RATIO = 1.5
+    AFFORDABLE_LOSS = 1.6 # We want to pick at least 1% of NET income (0.6% goes for trading platforms fee)
     BTC_TRADE_MIN_ORDER_AMOUNT = 0.001
 
     # Nested types
