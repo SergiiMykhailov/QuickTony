@@ -154,6 +154,12 @@ class Trader(object):
         for indexToRemove in completedDealsIndices:
             del self.__deals[indexToRemove]
 
+
+
+    def __shouldPerformReverseOperation(deal, reverseRatio) -> bool:
+        result = deal.profitInPercents + reverseRatio - Trader.AFFORDABLE_LOSS > 0.0
+        return result
+
         
 
     def __handlePendingDeal(self, deal):
@@ -172,7 +178,7 @@ class Trader(object):
 
         ratio = self.__getRatio(sourcePlatformState, destinationPlatformState)
 
-        if ratio > Trader.MIN_RETURN_RATIO:
+        if self.__shouldPerformReverseOperation(deal, ratio):
             reverseDeal = self.__performBuySell(sourcePlatform, \
                                                 sourcePlatformState, \
                                                 destinationPlatform, \
@@ -245,8 +251,8 @@ class Trader(object):
 
 
     # Constants
-    MIN_BUY_SELL_RATIO = 2.5
-    MIN_RETURN_RATIO = -1.0
+    MIN_BUY_SELL_RATIO = 1.5
+    AFFORDABLE_LOSS = 1.6 # We want to pick at least 1% of NET income (0.6% goes for trading platforms fee)
     MIN_ORDER_AMOUNT = 0.001
 
     # Nested types
