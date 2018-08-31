@@ -1,6 +1,4 @@
-import BTCTradeUA
-import PlatformsState
-from kuna import kuna
+import TradingPlatform
 
 import time
 import datetime
@@ -10,18 +8,11 @@ import uuid
 
 class Trader(object):
     
-
-
-    __btcTradeUAProvider = BTCTradeUA.BtcTradeUA()
-    __kunaProvider = kuna.KunaAPI()
-    __deals = [] # TODO: Replace by storing all pending deals in database
-
-
-
-    def __init__(self, btcTradeUAPublicKey, btcTradeUAPrivateKey, kunaPublicKey, kunaPrivateKey):
-        self.__btcTradeUAProvider = BTCTradeUA.BtcTradeUA(public_key = btcTradeUAPublicKey, \
-                                                          private_key = btcTradeUAPrivateKey)
-        self.__kunaProvider = kuna.KunaAPI(kunaPublicKey, kunaPrivateKey)
+    def __init__(self, \
+                 platfrom1:TradingPlatform.TradingPlatform, \
+                 platform2:TradingPlatform.TradingPlatform):
+        self.__platform1 = platfrom1
+        self.__platform2 = platform2
 
 
 
@@ -50,31 +41,19 @@ class Trader(object):
     def __updatePlatformsState(self):
         print(">>> BEGIN RETRIEVING TRADING DATA")
         
-        kunaOrdersBook = self.__kunaProvider.get_order_book('btcuah')
-        kunaBuyOrders = kunaOrdersBook['bids']
-        kunaSellOrders = kunaOrdersBook['asks']
-        kunaAccountInfo = self.__kunaProvider.get_user_account_info()
+        startTime = time.time()
+        self.__platform1State = self.__platform1.getState()
+        endTime = time.time()
+        platform1Duration = endTime - startTime
 
-        btcTradeUABalanceItems = self.__btcTradeUAProvider.balance()
-        btcTradeUABuyOrders = self.__btcTradeUAProvider.buy_list()
-        btcTradeUASellOrders = self.__btcTradeUAProvider.sell_list()
-        
-        print("<<< END RETRIEVING TRADING DATA")        
+        startTime = endTime
+        self.__platform2State = self.__platform2.getState()
+        endTime = time.time()
+        platform2Duration = endTime - startTime
 
-        self.__platformsState = PlatformsState.PlatformsState(btcTradeUABuyOrders, \
-                                                              btcTradeUASellOrders, \
-                                                              btcTradeUABalanceItems, \
-                                                              kunaBuyOrders, \
-                                                              kunaSellOrders, \
-                                                              kunaAccountInfo)
-
-        if (len(self.__platformsState.btcTradeBuyOrders) == 0 or 
-            len(self.__platformsState.btcTradeSellOrders) == 0 or 
-            len(self.__platformsState.kunaBuyOrders) == 0 or 
-            len(self.__platformsState.kunaSellOrders) == 0):
-            return False
-
-        return True
+        print("<<< END RETRIEVING TRADING DATA: Platform 1 - " \
+              + "{0:.2f}".format(platform1Duration) \
+              + " (sec), Platform 2 - " + "{0:.2f}".format(platform2Duration) + " (sec)")
 
         
 
@@ -93,36 +72,57 @@ class Trader(object):
 
 
     def __storePrices(self):
-        topBtcTradeBuyPrice = self.__platformsState.topBtcTradeBuyPrice()
-        topBtcTradeSellPrice = self.__platformsState.topBtcTradeSellPrice()
-        topKunaBuyPrice = self.__platformsState.topKunaBuyPrice()
-        topKunaSellPrice = self.__platformsState.topKunaSellPrice()
+        platform1TopBuyOrder = self.__platform1State.getTopBuyOrder()
+        platform1TopSellOrder = self.__platform1State.getTopSellOrder()
+        platform2TopBuyOrder = self.__platform2State.getTopBuyOrder()
+        platform2TopSellOrder = self.__platform2State.getTopSellOrder()
 
-        btcToKunaRatio = self.__platformsState.btcTradeToKunaBuySellRatio()
-        kunaToBtcRatio = self.__platformsState.kunaToBtcTradeBuySellRatio()
+        platform1ToPlatform2Ratio = self.__getRatio(self.__platform1State, self.__platform2State)
+        platform2ToPlatform1Ratio = self.__getRatio(self.__platform2State, self.__platform1State)
 
         with self.__openFileForDailyRecords("prices.csv") as pricesFile:
-            textToAppend = "{0:.2f}".format(topBtcTradeBuyPrice) + "," + \
-                           "{0:.2f}".format(topBtcTradeSellPrice) + "," + \
-                           "{0:.2f}".format(topKunaBuyPrice) + "," + \
-                           "{0:.2f}".format(topKunaSellPrice) + "," + \
-                           "{0:.2f}".format(btcToKunaRatio) + "," + \
-                           "{0:.2f}".format(kunaToBtcRatio) + "\n"
+            textToAppend = "{0:.2f}".format(platform1TopBuyOrder.price) + "," + \
+                           "{0:.2f}".format(platform1TopSellOrder.price) + "," + \
+                           "{0:.2f}".format(platform2TopBuyOrder.price) + "," + \
+                           "{0:.2f}".format(platform2TopSellOrder.price) + "," + \
+                           "{0:.2f}".format(platform1ToPlatform2Ratio) + "," + \
+                           "{0:.2f}".format(platform2ToPlatform1Ratio) + "\n"
 
             pricesFile.write(textToAppend)
 
 
 
+    def __getRatio(self, platformState1, platformState2):
+        platform1TopBuyOrder = platformState1.getTopBuyOrder()
+        platform2TopSellOrder = platformState2.getTopSellOrder()
+
+        if platform1TopBuyOrder is not None and platform2TopSellOrder is not None:
+            ratio = (platform2TopSellOrder.price - platform1TopBuyOrder.price) / platform2TopSellOrder.price
+
+            return ratio
+
+        return None
+
+
+
     def __buyAndSellAssetIfPossible(self):
-        btcTradeToKunaRatio = self.__platformsState.btcTradeToKunaBuySellRatio()
-        kunaToBtcTradeRatio = self.__platformsState.kunaToBtcTradeBuySellRatio()
+        platform1ToPlatform2Ratio = self.__getRatio(self.__platform1State, self.__platform2State)
+        platform2ToPlatform1Ratio = self.__getRatio(self.__platform2State, self.__platform1State)
 
         deal = None
 
-        if btcTradeToKunaRatio > Trader.MIN_BUY_SELL_RATIO:
-            deal = self.__buyAtBtcTradeSellAtKuna()                 
-        elif kunaToBtcTradeRatio > Trader.MIN_BUY_SELL_RATIO:
-            deal = self.__buyAtKunaSellAtBtcTrade()
+        if platform1ToPlatform2Ratio > Trader.MIN_BUY_SELL_RATIO:
+            deal = self.__performBuySell(self.__platform1, \
+                                         self.__platform1State, \
+                                         self.__platform2, \
+                                         self.__platform2State)    
+            deal.fromPlatform1ToPlatform2 = True             
+        elif platform2ToPlatform1Ratio > Trader.MIN_BUY_SELL_RATIO:
+            deal = self.__performBuySell(self.__platform1, \
+                                         self.__platform1State, \
+                                         self.__platform2, \
+                                         self.__platform2State) 
+            deal.fromPlatform1ToPlatform2 = False
             
         if deal is not None:
             self.__storeDeal(deal, 'forwardDeals.csv')
@@ -133,7 +133,7 @@ class Trader(object):
     def __storeDeal(self, deal, fileName):
         with self.__openFileForDailyRecords(fileName) as forwardDealsFile:
             textToAppend = str(deal.id) + "," + \
-                           str(deal.fromBtcTradeToKuna) + "," + \
+                           str(deal.fromPlatform1ToPlatform2) + "," + \
                            "{0:.4f}".format(deal.initialCryptoAmount) + "," + \
                            "{0:.2f}".format(deal.profitInPercents) + "," + \
                            "{0:.2f}".format(deal.profitFiat) + "\n"
@@ -156,27 +156,28 @@ class Trader(object):
 
         
 
-
     def __handlePendingDeal(self, deal):
         reverseDeal = None
 
-        if deal.fromBtcTradeToKuna == True:
-            # Originally we bought at BTCTrade and sold at KUNA
-            # Check if we can return assets to original platforms
-            # with appropriate loss
-            kunaToBtcTradeRatio = self.__platformsState.kunaToBtcTradeBuySellRatio()
+        sourcePlatformState = self.__platform1State
+        sourcePlatform = self.__platform1
+        destinationPlatformState = self.__platform2State
+        destinationPlatform = self.__platform2
 
-            if kunaToBtcTradeRatio > Trader.MIN_RETURN_RATIO:
-                reverseDeal = self.__buyAtKunaSellAtBtcTrade(deal.cryptoAmountToReturn)
+        if deal.fromPlatform1ToPlatform2 == False:
+            sourcePlatformState = self.__platform2State
+            sourcePlatform = self.__platform2
+            destinationPlatformState = self.__platform1State
+            destinationPlatform = self.__platform1
 
-        else:
-            # Originally we bought at KUNA and sold at BTCTrade
-            # Check if we can return assets to original platforms
-            # with appropriate loss
-            btcTradeToKunaRatio = self.__platformsState.btcTradeToKunaBuySellRatio()
+        ratio = self.__getRatio(sourcePlatformState, destinationPlatformState)
 
-            if btcTradeToKunaRatio > Trader.MIN_RETURN_RATIO:
-                reverseDeal = self.__buyAtBtcTradeSellAtKuna(deal.cryptoAmountToReturn)
+        if ratio > Trader.MIN_RETURN_RATIO:
+            reverseDeal = self.__performBuySell(sourcePlatform, \
+                                                sourcePlatformState, \
+                                                destinationPlatform, \
+                                                destinationPlatformState, \
+                                                deal.cryptoAmountToReturn)
 
         if reverseDeal is not None:
             deal.cryptoAmountToReturn -= reverseDeal.initialCryptoAmount
@@ -193,29 +194,36 @@ class Trader(object):
 
 
 
-    def __buyAtBtcTradeSellAtKuna(self, preferredCryptoAmount = 1000000000):
-        kunaTopBuyOrderCryptoAmount = self.__platformsState.kunaTopBuyOrderCryptoAmount()
-        kunaAvailableCryptoAmount = self.__platformsState.kunaAvailableCryptoAmount()
-        btcTradeTopSellOrderFiatAmount = self.__platformsState.btcTradeTopSellOrderFiatAmount()
-        btcTradeAvailableFiatAmount = self.__platformsState.btcTradeAvailableFiatAmount()
+    def __performBuySell(self, \
+                         platformToBuy, \
+                         platformToBuyState, \
+                         platformToSell, \
+                         platformToSellState, \
+                         preferredCryptoAmount = 1000000000):
+        platformToBuyTopSellOrder = platformToBuyState.getTopSellOrder()
+        platformToBuyAvailableFiatAmount = platformToBuyState.getAvailableFiatAmount()
+        platformToSellTopBuyOrder = platformToSellState.getTopBuyOrder()
+        platformToSellAvailableCryptoAmount = platformToSellState.getAvailableCryptoAmount()
 
         # Calculate how much we should buy depending of 
         # how much funds we have at the moment
         # and how much is available for buying 
         # and how much can be sold at the opposite site
-        buyFunds = min(btcTradeTopSellOrderFiatAmount, btcTradeAvailableFiatAmount)
-        buyPrice = self.__platformsState.topBtcTradeSellPrice()
-        
+        buyFunds = min(platformToBuyTopSellOrder.getFiatAmount(), platformToBuyAvailableFiatAmount)
+        buyPrice = platformToBuyTopSellOrder.price
+
         dealCryptoAmount = buyFunds / buyPrice
-        sellFunds = min(kunaAvailableCryptoAmount, kunaTopBuyOrderCryptoAmount)
+        sellFunds = min(platformToSellAvailableCryptoAmount, platformToSellTopBuyOrder.cryptoAmount)
         sellFunds = min(sellFunds, preferredCryptoAmount)
         dealCryptoAmount = min(dealCryptoAmount, sellFunds)       
 
-        if dealCryptoAmount > Trader.BTC_TRADE_MIN_ORDER_AMOUNT:
-            # Buy at the top selling (ASK) price at BTCTradeUA and 
-            # sell at the top buying (BID) price at KUNA
-            sellPrice = self.__platformsState.topKunaBuyPrice()  
-            self.__btcTradeUAProvider.buy(buyPrice, dealCryptoAmount)           
+        if dealCryptoAmount > Trader.MIN_ORDER_AMOUNT:
+            # Buy at the top selling (ASK) price at platform 1 
+            # sell at the top buying (BID) price at platform 2
+            sellPrice = platformToSellTopBuyOrder.price 
+            platformToSell.sell(sellPrice, dealCryptoAmount)
+            platformToBuy.buy(buyPrice, dealCryptoAmount) 
+                    
             self.__kunaProvider.put_order('sell', dealCryptoAmount, 'btcuah', sellPrice) 
             
             deal = Trader.RoundtripDeal()
@@ -231,53 +239,20 @@ class Trader(object):
 
 
 
-    def __buyAtKunaSellAtBtcTrade(self, preferredCryptoAmount = 1000000000):
-        kunaTopSellOrderFiatAmount = self.__platformsState.kunaTopSellOrderFiatAmount()
-        kunaAvailableFiatAmount = self.__platformsState.kunaAvailableFiatAmount()
-        btcTradeTopBuyOrderCryptoAmount = self.__platformsState.btcTradeTopBuyOrderCryptoAmount()
-        btcTradeAvailableCryptoAmount = self.__platformsState.btcTradeAvailableCryptoAmount()
+    # Internal fields
 
-        # Calculate how much we should buy depending of 
-        # how much funds we have at the moment
-        # and how much is available for buying 
-        # and how much can be sold at the opposite site
-        buyFunds = min(kunaTopSellOrderFiatAmount, kunaAvailableFiatAmount)
-        buyPrice = self.__platformsState.topKunaSellPrice()
-
-        dealCryptoAmount = buyFunds / buyPrice
-        sellFunds = min(btcTradeTopBuyOrderCryptoAmount, btcTradeAvailableCryptoAmount)
-        sellFunds = min(sellFunds, preferredCryptoAmount)
-        dealCryptoAmount = min(dealCryptoAmount, sellFunds)
-
-        if dealCryptoAmount > Trader.BTC_TRADE_MIN_ORDER_AMOUNT:
-            # Buy at the top selling (ASK) price at KUNA and 
-            # sell at the top buying (BID) price at BTCTrade
-            sellPrice = self.__platformsState.topBtcTradeBuyPrice()
-            self.__kunaProvider.put_order('buy', dealCryptoAmount, 'btcuah', buyPrice) 
-            self.__btcTradeUAProvider.sell(sellPrice, dealCryptoAmount) 
-                    
-            deal = Trader.RoundtripDeal()
-            deal.fromBtcTradeToKuna = False
-            deal.initialCryptoAmount = dealCryptoAmount
-            deal.cryptoAmountToReturn = dealCryptoAmount
-            deal.profitFiat = dealCryptoAmount * (buyPrice - sellPrice)
-            deal.profitInPercents = (buyPrice - sellPrice) / buyPrice * 100
-
-            return deal
-
-        return None
-
+    __deals = [] # TODO: Replace by storing all pending deals in database
 
 
     # Constants
     MIN_BUY_SELL_RATIO = 2.5
     MIN_RETURN_RATIO = -1.0
-    BTC_TRADE_MIN_ORDER_AMOUNT = 0.001
+    MIN_ORDER_AMOUNT = 0.001
 
     # Nested types
     class RoundtripDeal:
         id = uuid.uuid1()
-        fromBtcTradeToKuna = True
+        fromPlatform1ToPlatform2 = True
         initialCryptoAmount = 0.0
         cryptoAmountToReturn = 0.0
         profitInPercents = 0.0
