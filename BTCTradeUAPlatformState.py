@@ -47,7 +47,7 @@ class BTCTradeUAPlatformState(PlatformState.PlatformState):
 
 
     def __getAvailableAmount(self, asset):
-        accounts = self.balanceItems['accounts']
+        accounts = self.__balanceItems['accounts']
         for balanceItem in accounts:
             if balanceItem['currency'] == asset:
                 result = float(balanceItem['balance'])

@@ -97,7 +97,7 @@ class Trader(object):
         platform2TopSellOrder = platformState2.getTopSellOrder()
 
         if platform1TopBuyOrder is not None and platform2TopSellOrder is not None:
-            ratio = (platform2TopSellOrder.price - platform1TopBuyOrder.price) / platform2TopSellOrder.price
+            ratio = (platform2TopSellOrder.price - platform1TopBuyOrder.price) / platform2TopSellOrder.price * 100
 
             return ratio
 
@@ -115,14 +115,16 @@ class Trader(object):
             deal = self.__performBuySell(self.__platform1, \
                                          self.__platform1State, \
                                          self.__platform2, \
-                                         self.__platform2State)    
-            deal.fromPlatform1ToPlatform2 = True             
+                                         self.__platform2State)
+            if deal is not None:
+                deal.fromPlatform1ToPlatform2 = True           
         elif platform2ToPlatform1Ratio > Trader.MIN_BUY_SELL_RATIO:
-            deal = self.__performBuySell(self.__platform1, \
-                                         self.__platform1State, \
-                                         self.__platform2, \
-                                         self.__platform2State) 
-            deal.fromPlatform1ToPlatform2 = False
+            deal = self.__performBuySell(self.__platform2, \
+                                         self.__platform2State, \
+                                         self.__platform1, \
+                                         self.__platform1State) 
+            if deal is not None:
+                deal.fromPlatform1ToPlatform2 = False 
             
         if deal is not None:
             self.__storeDeal(deal, 'forwardDeals.csv')
@@ -138,8 +140,7 @@ class Trader(object):
                            "{0:.2f}".format(deal.profitInPercents) + "," + \
                            "{0:.2f}".format(deal.profitFiat) + "\n"
 
-            pricesFile.write(textToAppend)
-        return
+            forwardDealsFile.write(textToAppend)
 
 
 
@@ -229,8 +230,6 @@ class Trader(object):
             sellPrice = platformToSellTopBuyOrder.price 
             platformToSell.sell(sellPrice, dealCryptoAmount)
             platformToBuy.buy(buyPrice, dealCryptoAmount) 
-                    
-            self.__kunaProvider.put_order('sell', dealCryptoAmount, 'btcuah', sellPrice) 
             
             deal = Trader.RoundtripDeal()
             deal.fromBtcTradeToKuna = True
@@ -240,6 +239,8 @@ class Trader(object):
             deal.profitFiat = (buyPrice - sellPrice) / buyPrice * 100
 
             return deal
+
+        print("!!! NOT ENOUGH FUNDS TO PERFORM FORWARD OPERATION")
 
         return None
 
