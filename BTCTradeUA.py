@@ -123,7 +123,7 @@ class BtcTradeUA(object):
         if out_order_id is None:
             out_order_id = BtcTradeUA.random_order()
 
-        url = self.__end_points["sell"]+ market + "/" +"?is_api=1"
+        url = self.__end_points["sell"]+ market
         params = {"out_order_id": out_order_id, "nonce": self.__nonce, "count": amount, "price": price}
         raw_data = urllib.parse.urlencode(params)
         result = self.__post_request(url, raw_data, auth=True)
@@ -134,7 +134,7 @@ class BtcTradeUA(object):
         if out_order_id is None:
             out_order_id = BtcTradeUA.random_order()
 
-        url = self.__end_points["buy"]+ market + "/" +"?is_api=1"
+        url = self.__end_points["buy"]+ market
         params = {"out_order_id": out_order_id, "nonce": self.__nonce, "count": amount, "price": price}
         raw_data = urllib.parse.urlencode(params)
         result = self.__post_request(url, raw_data, auth=True)
@@ -147,7 +147,7 @@ class BtcTradeUA(object):
         if out_order_id is None:
             out_order_id = BtcTradeUA.random_order()
 
-        url = self.__end_points["bid"]+ market + "/" +"?is_api=1&amount="+str(amount)
+        url = self.__end_points["bid"]+ market + "/" +"?amount="+str(amount)
         params = {"out_order_id": out_order_id, "nonce": self.__nonce}
         raw_data = urllib.parse.urlencode(params)
         result = self.__post_request(url, raw_data, auth=True)
@@ -158,7 +158,7 @@ class BtcTradeUA(object):
         if out_order_id is None:
             out_order_id = BtcTradeUA.random_order()
 
-        url = self.__end_points["ask"]+ market + "/" +"?is_api=1&amount="+str(amount)
+        url = self.__end_points["ask"]+ market + "/" +"?amount="+str(amount)
         params = {"out_order_id": out_order_id, "nonce": self.__nonce}
         raw_data = urllib.parse.urlencode(params)
         result = self.__post_request(url, raw_data, auth=True)
@@ -169,7 +169,7 @@ class BtcTradeUA(object):
         if out_order_id is None:
             out_order_id = BtcTradeUA.random_order()
 
-        url = self.__end_points["balance"]+ "?is_api=1"
+        url = self.__end_points["balance"]
         params = {"out_order_id": out_order_id, "nonce": self.__nonce}
         raw_data = urllib.parse.urlencode(params)
         result = self.__post_request(url, raw_data, auth=True)
@@ -262,7 +262,7 @@ class BtcTradeUA(object):
         if out_order_id is None:
             out_order_id = BtcTradeUA.random_order()
 
-        url = self.__end_points["address"]+ currency + "?is_api=1"
+        url = self.__end_points["address"]+ currency
         params = {"out_order_id": out_order_id, "nonce": self.__nonce}
         raw_data = urllib.parse.urlencode(params)
         result = self.__post_request(url, raw_data, auth=True)
