@@ -93,11 +93,11 @@ class Trader(object):
 
 
     def __getRatio(self, platformState1, platformState2):
-        platform1TopBuyOrder = platformState1.getTopBuyOrder()
-        platform2TopSellOrder = platformState2.getTopSellOrder()
+        platform1TopSellOrder = platformState1.getTopSellOrder()
+        platform2TopBuyOrder = platformState2.getTopBuyOrder()
 
-        if platform1TopBuyOrder is not None and platform2TopSellOrder is not None:
-            ratio = (platform2TopSellOrder.price - platform1TopBuyOrder.price) / platform2TopSellOrder.price * 100
+        if platform1TopSellOrder is not None and platform2TopBuyOrder is not None:
+            ratio = (platform2TopBuyOrder.price - platform1TopSellOrder.price) / platform1TopSellOrder.price * 100
 
             return ratio
 
@@ -111,14 +111,14 @@ class Trader(object):
 
         deal = None
 
-        if platform1ToPlatform2Ratio > Trader.MIN_BUY_SELL_RATIO:
+        if platform1ToPlatform2Ratio is not None and platform1ToPlatform2Ratio > Trader.MIN_BUY_SELL_RATIO:
             deal = self.__performBuySell(self.__platform1, \
                                          self.__platform1State, \
                                          self.__platform2, \
                                          self.__platform2State)
             if deal is not None:
                 deal.fromPlatform1ToPlatform2 = True           
-        elif platform2ToPlatform1Ratio > Trader.MIN_BUY_SELL_RATIO:
+        elif platform2ToPlatform1Ratio is not None and platform2ToPlatform1Ratio > Trader.MIN_BUY_SELL_RATIO:
             deal = self.__performBuySell(self.__platform2, \
                                          self.__platform2State, \
                                          self.__platform1, \
@@ -148,6 +148,7 @@ class Trader(object):
         completedDealsIndices = []
 
         for dealIndex in range(len(self.__deals)):
+            deal = self.__deals[dealIndex]
             if self.__handlePendingDeal(deal) == True:
                 completedDealsIndices.insert(0, dealIndex)
 
@@ -157,7 +158,7 @@ class Trader(object):
 
 
 
-    def __shouldPerformReverseOperation(deal, reverseRatio) -> bool:
+    def __shouldPerformReverseOperation(self, deal, reverseRatio) -> bool:
         result = deal.profitInPercents + reverseRatio - Trader.AFFORDABLE_LOSS > 0.0
         return result
 
@@ -166,16 +167,16 @@ class Trader(object):
     def __handlePendingDeal(self, deal):
         reverseDeal = None
 
-        sourcePlatformState = self.__platform1State
-        sourcePlatform = self.__platform1
-        destinationPlatformState = self.__platform2State
-        destinationPlatform = self.__platform2
+        sourcePlatformState = self.__platform2State
+        sourcePlatform = self.__platform2
+        destinationPlatformState = self.__platform1State
+        destinationPlatform = self.__platform1
 
         if deal.fromPlatform1ToPlatform2 == False:
-            sourcePlatformState = self.__platform2State
-            sourcePlatform = self.__platform2
-            destinationPlatformState = self.__platform1State
-            destinationPlatform = self.__platform1
+            sourcePlatformState = self.__platform1State
+            sourcePlatform = self.__platform1
+            destinationPlatformState = self.__platform2State
+            destinationPlatform = self.__platform2
 
         ratio = self.__getRatio(sourcePlatformState, destinationPlatformState)
 
@@ -232,11 +233,10 @@ class Trader(object):
             platformToBuy.buy(buyPrice, dealCryptoAmount) 
             
             deal = Trader.RoundtripDeal()
-            deal.fromBtcTradeToKuna = True
             deal.initialCryptoAmount = dealCryptoAmount
             deal.cryptoAmountToReturn = dealCryptoAmount
-            deal.profitAbsolute = dealCryptoAmount * (buyPrice - sellPrice)
-            deal.profitFiat = (buyPrice - sellPrice) / buyPrice * 100
+            deal.profitAbsolute = dealCryptoAmount * (sellPrice - buyPrice)
+            deal.profitInPercents = self.__getRatio(platformToBuyState, platformToSellState)
 
             return deal
 
@@ -252,7 +252,7 @@ class Trader(object):
 
 
     # Constants
-    MIN_BUY_SELL_RATIO = 1.5
+    MIN_BUY_SELL_RATIO = 2.5
     AFFORDABLE_LOSS = 1.6 # We want to pick at least 1% of NET income (0.6% goes for trading platforms fee)
     MIN_ORDER_AMOUNT = 0.001
 
