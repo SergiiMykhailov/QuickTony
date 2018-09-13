@@ -1,6 +1,6 @@
-import KunaPlatformState
-import TradingPlatform
-import PlatformState
+from .. import TradingPlatform
+from .. import PlatformState
+from . import KunaPlatformState
 from kuna import kuna
 
 

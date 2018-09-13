@@ -1,7 +1,7 @@
-import TradingPlatform
-import PlatformState
-import BTCTradeUA
-import BTCTradeUAPlatformState
+from .. import TradingPlatform
+from .. import PlatformState
+from . import BTCTradeUA
+from . import BTCTradeUAPlatformState
 
 
 class BTCTradeUATradingPlatform(TradingPlatform.TradingPlatform):

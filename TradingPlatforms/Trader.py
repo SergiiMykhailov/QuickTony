@@ -1,4 +1,4 @@
-import TradingPlatform
+from . import TradingPlatform
 
 import time
 import datetime

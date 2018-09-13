@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import PlatformState
+from . import PlatformState
 
 
 class TradingPlatform(ABC):

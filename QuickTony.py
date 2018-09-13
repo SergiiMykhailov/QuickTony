@@ -1,4 +1,4 @@
-import TraderFactory
+from TradingPlatforms.TraderFactory import TraderFactory
 
-trader = TraderFactory.TraderFactory().makeTrader()
+trader = TraderFactory().makeTrader()
 trader.run()

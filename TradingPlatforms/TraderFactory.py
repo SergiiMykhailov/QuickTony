@@ -1,6 +1,6 @@
-import Trader
-import BTCTradeUATradingPlatform
-import KunaTradingPlatform
+from . import Trader
+from .BTCTrade import BTCTradeUATradingPlatform
+from .KUNA import KunaTradingPlatform
 import argparse
 from enum import Enum
 
