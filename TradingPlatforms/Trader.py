@@ -29,17 +29,24 @@ class Trader(object):
 
 
     def __handlePlatformsState(self):
+        print("--- LOOP STARTED")
+
         if self.__updatePlatformsState() == False:
             return        
 
         self.__storePrices()
+        print("    >>> PERFORMING BUY/SELL OPERATIONS")
         self.__buyAndSellAssetIfPossible()
+        print("    <<< PERFORMING BUY/SELL OPERATIONS")
+        print("    >>> TRYING TO RETURN BOUGHT ASSETS")
         self.__handlePendingDeals()
+        print("    <<< TRYING TO RETURN BOUGHT ASSETS")
+        print("--- LOOP COMPLETED")
 
 
     
     def __updatePlatformsState(self):
-        print(">>> BEGIN RETRIEVING TRADING DATA")
+        print("    >>> BEGIN RETRIEVING TRADING DATA")
         
         startTime = time.time()
         self.__platform1State = self.__platform1.getState()
@@ -51,7 +58,7 @@ class Trader(object):
         endTime = time.time()
         platform2Duration = endTime - startTime
 
-        print("<<< END RETRIEVING TRADING DATA: Platform 1 - " \
+        print("    <<< END RETRIEVING TRADING DATA: Platform 1 - " \
               + "{0:.2f}".format(platform1Duration) \
               + " (sec), Platform 2 - " + "{0:.2f}".format(platform2Duration) + " (sec)")
 
