@@ -118,7 +118,7 @@ class BtcTradeUA(object):
 
     def __update_auth(self, result):
         self.__nonce = self.__nonce + 1
-    
+
     def sell(self, price, amount, market="btc_uah",  out_order_id=None):
         if out_order_id is None:
             out_order_id = BtcTradeUA.random_order()
@@ -225,6 +225,11 @@ class BtcTradeUA(object):
         url = self.__end_points["sell_list"] + market
         result = self.__get_request(url, auth=False)
         return result
+
+    def ticker(self, market="btc_uah"):
+        url = self.__end_points["ticker"] + market
+        result = self.__get_request(url, auth=False)
+        return result
     
     def markets(self):
         url = self.__end_points["markets"]
@@ -286,6 +291,7 @@ class BtcTradeUA(object):
         self.__end_points["auth"] = BtcTradeUA.API_URL_V1 + "auth"
         self.__end_points["sell_list"] = BtcTradeUA.API_URL_V1 + "trades/sell/"
         self.__end_points["buy_list"] = BtcTradeUA.API_URL_V1 + "trades/buy/"
+        self.__end_points["ticker"] = BtcTradeUA.API_URL_V1 + "ticker/"
         self.__end_points["ask"] = BtcTradeUA.API_URL_V1 + "ask/"
         self.__end_points["bid"] = BtcTradeUA.API_URL_V1 + "bid/"
         self.__end_points["buy"] = BtcTradeUA.API_URL_V1 + "buy/"

@@ -88,10 +88,10 @@ class Trader(object):
         platform2ToPlatform1Ratio = self.__getRatio(self.__platform2State, self.__platform1State)
 
         with self.__openFileForDailyRecords("prices.csv") as pricesFile:
-            textToAppend = "{0:.2f}".format(platform1TopBuyOrder.price) + "," + \
-                           "{0:.2f}".format(platform1TopSellOrder.price) + "," + \
-                           "{0:.2f}".format(platform2TopBuyOrder.price) + "," + \
-                           "{0:.2f}".format(platform2TopSellOrder.price) + "," + \
+            textToAppend = "{0:.2f}".format(platform1TopBuyOrder.price / self.__platform1State.fiatCurrencyRate) + "," + \
+                           "{0:.2f}".format(platform1TopSellOrder.price / self.__platform1State.fiatCurrencyRate) + "," + \
+                           "{0:.2f}".format(platform2TopBuyOrder.price / self.__platform2State.fiatCurrencyRate) + "," + \
+                           "{0:.2f}".format(platform2TopSellOrder.price / self.__platform2State.fiatCurrencyRate) + "," + \
                            "{0:.2f}".format(platform1ToPlatform2Ratio) + "," + \
                            "{0:.2f}".format(platform2ToPlatform1Ratio) + "\n"
 
@@ -99,12 +99,14 @@ class Trader(object):
 
 
 
-    def __getRatio(self, platformState1, platformState2):
-        platform1TopSellOrder = platformState1.getTopSellOrder()
-        platform2TopBuyOrder = platformState2.getTopBuyOrder()
+    def __getRatio(self, platformToBuyState, platformToSellState):
+        topSellOrder = platformToBuyState.getTopSellOrder()
+        topBuyOrder = platformToSellState.getTopBuyOrder()
 
-        if platform1TopSellOrder is not None and platform2TopBuyOrder is not None:
-            ratio = (platform2TopBuyOrder.price - platform1TopSellOrder.price) / platform1TopSellOrder.price * 100
+        if topSellOrder is not None and topBuyOrder is not None:
+            buyPriceConverted = topSellOrder.price / platformToBuyState.fiatCurrencyRate
+            sellPriceConverted = topBuyOrder.price / platformToSellState.fiatCurrencyRate
+            ratio = (sellPriceConverted - buyPriceConverted) / buyPriceConverted * 100
 
             return ratio
 
@@ -216,7 +218,7 @@ class Trader(object):
                          platformToSellState, \
                          preferredCryptoAmount = 1000000000):
         platformToBuyTopSellOrder = platformToBuyState.getTopSellOrder()
-        platformToBuyAvailableFiatAmount = platformToBuyState.getAvailableFiatAmount()
+        platformToBuyAvailableFiatAmount = platformToBuyState.getAvailableFiatAmount() / platformToBuyState.fiatCurrencyRate
         platformToSellTopBuyOrder = platformToSellState.getTopBuyOrder()
         platformToSellAvailableCryptoAmount = platformToSellState.getAvailableCryptoAmount()
 
@@ -224,8 +226,8 @@ class Trader(object):
         # how much funds we have at the moment
         # and how much is available for buying 
         # and how much can be sold at the opposite site
-        buyFunds = min(platformToBuyTopSellOrder.getFiatAmount(), platformToBuyAvailableFiatAmount)
-        buyPrice = platformToBuyTopSellOrder.price
+        buyFunds = min(platformToBuyTopSellOrder.getFiatAmount() / platformToBuyState.fiatCurrencyRate, platformToBuyAvailableFiatAmount)
+        buyPrice = platformToBuyTopSellOrder.price / platformToBuyState.fiatCurrencyRate
 
         dealCryptoAmount = buyFunds / buyPrice
         sellFunds = min(platformToSellAvailableCryptoAmount, platformToSellTopBuyOrder.cryptoAmount)
@@ -237,12 +239,13 @@ class Trader(object):
             # sell at the top buying (BID) price at platform 2
             sellPrice = platformToSellTopBuyOrder.price 
             platformToSell.sell(sellPrice, dealCryptoAmount)
-            platformToBuy.buy(buyPrice, dealCryptoAmount) 
+            buyPriceConverted = buyPrice * platformToBuyState.fiatCurrencyRate
+            platformToBuy.buy(buyPriceConverted, dealCryptoAmount) 
             
             deal = Trader.RoundtripDeal()
             deal.initialCryptoAmount = dealCryptoAmount
             deal.cryptoAmountToReturn = dealCryptoAmount
-            deal.profitAbsolute = dealCryptoAmount * (sellPrice - buyPrice)
+            deal.profitAbsolute = dealCryptoAmount * (sellPrice / platformToSellState.fiatCurrencyRate - buyPrice)
             deal.profitInPercents = self.__getRatio(platformToBuyState, platformToSellState)
 
             return deal

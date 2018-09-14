@@ -37,7 +37,7 @@ class Client:
 
         Example: [{'currency': 'BTC', 'balance': '0.00000000', 'reserve': '0.00000000'}, ...]
         """
-        return self._query('get', 'v1/wallet/', params=kwargs, auth=True)
+        return self._query('get', 'v1/wallets/', params=kwargs, auth=True)
 
     def get_sell_orders(self, **kwargs):
         """ Returns all sell orders
@@ -78,12 +78,12 @@ class Client:
         'trades': [{'type': 'sell', 'price': '870.69000000', 'o_id': '11266', 'amount': '0.00010000', 'tid': '6049'}]
         }
         """
-        data = {'pair': pair, 'amount': amount, 'price': price, 'type': 1}
+        data = {'pair': pair, 'amount': "{0:.8f}".format(amount), 'price': price, 'type': 'sell'}
         return self._query('post', 'v1/order/', data=data, auth=True)
 
     def create_buy_order(self, pair, amount, price):
         """ Create buy order """
-        data = {'pair': pair, 'amount': amount, 'price': price, 'type': 2}
+        data = {'pair': pair, 'amount': "{0:.8f}".format(amount), 'price': price, 'type': 'buy'}
         return self._query('post', 'v1/order/', data=data, auth=True)
 
     def cancel_order(self, oid):
@@ -151,9 +151,7 @@ class Client:
         }
         """
 
-        kwargs['pair'] = pair
-
-        return self._query('get', 'v1/orderbook/', params=kwargs)
+        return self._query('get', 'v1/orderbook/' + pair)
 
     def get_charts(self, pair, type, **kwargs):
         """ Return data for chart candles

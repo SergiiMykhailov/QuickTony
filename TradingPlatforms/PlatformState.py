@@ -17,6 +17,8 @@ class Order(object):
 
 class PlatformState(ABC):
 
+    fiatCurrencyRate = 1.0
+
     @abstractmethod
     def getTopBuyOrder(self) -> Order:
         pass

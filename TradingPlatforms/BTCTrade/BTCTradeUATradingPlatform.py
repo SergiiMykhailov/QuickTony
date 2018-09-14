@@ -17,8 +17,10 @@ class BTCTradeUATradingPlatform(TradingPlatform.TradingPlatform):
         balanceItems = self.__apiObject.balance()
         buyOrders = self.__apiObject.buy_list()
         sellOrders = self.__apiObject.sell_list()
+        tickerInfo = self.__apiObject.ticker()
+        currencyRate = float(tickerInfo["btc_uah"]["usd_rate"])
 
-        return BTCTradeUAPlatformState.BTCTradeUAPlatformState(buyOrders, sellOrders, balanceItems)
+        return BTCTradeUAPlatformState.BTCTradeUAPlatformState(buyOrders, sellOrders, balanceItems, currencyRate)
 
 
 

@@ -4,9 +4,12 @@ from .. import PlatformState
 
 class KunaPlatformState(PlatformState.PlatformState):
 
-    def __init__(self, ordersBook, accountInfo):
+
+
+    def __init__(self, ordersBook, accountInfo, fiatCurrencyRate):
         self.__ordersBook = ordersBook
         self.__accountInfo = accountInfo
+        self.fiatCurrencyRate = fiatCurrencyRate
 
 
 

@@ -8,10 +8,12 @@ class BTCTradeUAPlatformState(PlatformState.PlatformState):
     def __init__(self, \
                  buyOrders, \
                  sellOrders, \
-                 balanceItems):
+                 balanceItems, \
+                 fiatCurrencyRate):
         self.__buyOrders = buyOrders
         self.__sellOrders = sellOrders
         self.__balanceItems = balanceItems
+        self.fiatCurrencyRate = fiatCurrencyRate
 
         
 

@@ -1,6 +1,7 @@
 from . import Trader
 from .BTCTrade import BTCTradeUATradingPlatform
 from .KUNA import KunaTradingPlatform
+from .BTCAlpha import BTCAlphaTradingPlatform
 import argparse
 from enum import Enum
 
@@ -35,6 +36,8 @@ class TraderFactory(object):
             return BTCTradeUATradingPlatform.BTCTradeUATradingPlatform(platformPublicKey, platformPrivateKey)
         elif platformType == TraderFactory.Platform.KUNA:
             return KunaTradingPlatform.KunaTradingPlatform(platformPublicKey, platformPrivateKey)
+        elif platformType == TraderFactory.Platform.BTC_ALPHA:
+            return BTCAlphaTradingPlatform.BTCAlphaTradingPlatform(platformPublicKey, platformPrivateKey)
         elif platformType is None:
             raise ValueError('Unsupported platform: ' + platformName)
 
