@@ -234,7 +234,9 @@ class Trader(object):
         sellFunds = min(sellFunds, preferredCryptoAmount)
         dealCryptoAmount = min(dealCryptoAmount, sellFunds)       
 
-        if dealCryptoAmount > Trader.MIN_ORDER_AMOUNT:
+        minOrderCryptoAmount = max(platformToBuy.minOrderCryptoAmount, platformToSell.minOrderCryptoAmount)
+
+        if dealCryptoAmount > minOrderCryptoAmount:
             # Buy at the top selling (ASK) price at platform 1 
             # sell at the top buying (BID) price at platform 2
             sellPrice = platformToSellTopBuyOrder.price 
@@ -264,7 +266,6 @@ class Trader(object):
     # Constants
     MIN_BUY_SELL_RATIO = 2.5
     AFFORDABLE_LOSS = 1.6 # We want to pick at least 1% of NET income (0.6% goes for trading platforms fee)
-    MIN_ORDER_AMOUNT = 0.001
 
     # Nested types
     class RoundtripDeal:

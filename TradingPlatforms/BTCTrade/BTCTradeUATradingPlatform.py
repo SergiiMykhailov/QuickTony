@@ -10,6 +10,7 @@ class BTCTradeUATradingPlatform(TradingPlatform.TradingPlatform):
                  publicKey, \
                  privateKey):
         self.__apiObject = BTCTradeUA.BtcTradeUA(public_key = publicKey, private_key = privateKey)
+        self.minOrderCryptoAmount = 0.001
 
 
 
