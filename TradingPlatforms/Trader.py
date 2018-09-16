@@ -1,4 +1,5 @@
 from . import TradingPlatform
+from . import Storage
 
 import time
 import datetime
@@ -151,6 +152,18 @@ class Trader(object):
 
             forwardDealsFile.write(textToAppend)
 
+        boughtAtPlatform = self.__platform1.getName()
+        soldAtPlatform = self.__platform2.getName()
+        if deal.fromPlatform1ToPlatform2 == False:
+            boughtAtPlatform = self.__platform2.name()
+            soldAtPlatform = self.__platform1.name()
+
+        Storage.Storage.addDeal(boughtAtPlatform, \
+                                soldAtPlatform, \
+                                deal.initialCryptoAmount, \
+                                deal.buyPrice, \
+                                deal.sellPrice)
+
 
 
     def __handlePendingDeals(self):
@@ -249,6 +262,8 @@ class Trader(object):
             deal.cryptoAmountToReturn = dealCryptoAmount
             deal.profitAbsolute = dealCryptoAmount * (sellPrice / platformToSellState.fiatCurrencyRate - buyPrice)
             deal.profitInPercents = self.__getRatio(platformToBuyState, platformToSellState)
+            deal.buyPrice = platformToBuyTopSellOrder.price / platformToBuyState.fiatCurrencyRate
+            deal.sellPrice = platformToSellTopBuyOrder.price / platformToSellState.fiatCurrencyRate
 
             return deal
 
@@ -276,3 +291,5 @@ class Trader(object):
         profitInPercents = 0.0
         profitFiat = 0.0
         accumulatedLoss = 0.0
+        buyPrice = 0.0
+        sellPrice = 0.0

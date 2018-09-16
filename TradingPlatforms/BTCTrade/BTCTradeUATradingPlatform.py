@@ -32,3 +32,8 @@ class BTCTradeUATradingPlatform(TradingPlatform.TradingPlatform):
 
     def sell(self, price, cryptoAmount):
         self.__apiObject.sell(price, cryptoAmount) 
+
+
+
+    def getName(self):
+        return "btctrade"

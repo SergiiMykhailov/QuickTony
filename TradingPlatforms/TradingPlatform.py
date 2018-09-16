@@ -17,3 +17,7 @@ class TradingPlatform(ABC):
     @abstractmethod
     def sell(self, price, cryptoAmount):
         pass
+
+    @abstractmethod
+    def getName(self):
+        pass
