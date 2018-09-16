@@ -1,5 +1,5 @@
 from . import TradingPlatform
-from . import Storage
+from .Storage import Storage
 
 import time
 import datetime
@@ -10,13 +10,12 @@ import uuid
 class Trader(object):
     
     def __init__(self, \
-                 platfrom1:TradingPlatform.TradingPlatform, \
+                 platform1:TradingPlatform.TradingPlatform, \
                  platform2:TradingPlatform.TradingPlatform):
-        self.__platform1 = platfrom1
+        self.__platform1 = platform1
         self.__platform2 = platform2
 
-        platformsPairName = platfrom1.getName() + "__" + platform2.getName()
-        self.__storage = Storage.Storage(platformsPairName)
+        self.__storage = Storage(platform1.getName(), platform2.getName())
 
 
 
@@ -141,12 +140,12 @@ class Trader(object):
                 deal.fromPlatform1ToPlatform2 = False 
             
         if deal is not None:
-            self.__storeDeal(deal, 'forwardDeals.csv')
+            self.__storeDeal(deal, True, 'forwardDeals.csv')
             self.__deals.append(deal)
 
 
 
-    def __storeDeal(self, deal, fileName):
+    def __storeDeal(self, deal, isForward, fileName):
         with self.__openFileForDailyRecords(fileName) as forwardDealsFile:
             textToAppend = str(deal.id) + "," + \
                            str(deal.fromPlatform1ToPlatform2) + "," + \
@@ -156,7 +155,12 @@ class Trader(object):
 
             forwardDealsFile.write(textToAppend)
 
-        self.__storage.addDeal(deal.fromPlatform1ToPlatform2, \
+        boughtAtPlatform = self.__platform1.getName()
+        if deal.fromPlatform1ToPlatform2 == False:
+            boughtAtPlatform = self.__platform2.getName()
+
+        self.__storage.addDeal(isForward, \
+                               boughtAtPlatform, \
                                deal.initialCryptoAmount, \
                                deal.buyPrice, \
                                deal.sellPrice)
@@ -211,7 +215,7 @@ class Trader(object):
             
             # Make connection between forward deal and return deal
             reverseDeal.id = deal.id
-            self.__storeDeal(reverseDeal, 'reverseDeals.csv')
+            self.__storeDeal(reverseDeal, False, 'reverseDeals.csv')
 
             if deal.cryptoAmountToReturn <= 0.0:
                 # We have returned all funds which we used in forward deal
