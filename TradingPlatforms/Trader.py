@@ -155,15 +155,11 @@ class Trader(object):
 
             forwardDealsFile.write(textToAppend)
 
-        boughtAtPlatform = self.__platform1.getName()
-        if deal.fromPlatform1ToPlatform2 == False:
-            boughtAtPlatform = self.__platform2.getName()
-
-        self.__storage.addDeal(isForward, \
-                               boughtAtPlatform, \
-                               deal.initialCryptoAmount, \
-                               deal.buyPrice, \
-                               deal.sellPrice)
+        self.__storage.storeDeal(isForward, \
+                                 deal.fromPlatform1ToPlatform2, \
+                                 deal.initialCryptoAmount, \
+                                 deal.buyPrice, \
+                                 deal.sellPrice)
 
 
 
