@@ -24,6 +24,7 @@ class Trader(object):
         while True:
             try:
                 self.__handlePlatformsState()
+                self.__storage.recordTimestamp()
             except:
                 e = sys.exc_info()[0]
                 print("Exception handled: ", e)
