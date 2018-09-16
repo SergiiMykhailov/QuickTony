@@ -7,25 +7,36 @@ class Storage:
 
 
 
-    @staticmethod
-    def addDeal(boughtAtPlatform:str, \
-                soldAtPlatfrom:str, \
+    def __init__(self, \
+                 platformsPairName):
+        self.__platformsPairName = platformsPairName
+
+
+
+    def addDeal(self,
+                isForward:bool, \
                 amount:float, \
                 buyPrice:float, \
                 sellPrice:float):
-        platformsNode = boughtAtPlatform.lower() + "__" + soldAtPlatfrom.lower()
-        db = Storage.__firebase.database()
-
-        date = '{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        incomeInPercents = (sellPrice - buyPrice) / buyPrice * 100
+        incomeFiat = (sellPrice - buyPrice) * amount
 
         data = {
-            "amount" : str(amount),
-            "boughtAt" : boughtAtPlatform,
+            "amount" : "{0:.6f}".format(amount),
             "buyPrice" : str(buyPrice),
-            "sellPrice" : str(sellPrice)
+            "sellPrice" : str(sellPrice),
+            "incomeOrLossInPercents" : str(incomeInPercents),
+            "incomeOrLossFiat" : "{0:.2f}".format(incomeFiat)
         }
 
-        db.child(platformsNode).child(date).set(data)
+        nodeName = '{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        if isForward:
+            nodeName = "Forward_" + nodeName
+        else:
+            nodeName = "Reverse_" + nodeName
+
+        db = Storage.__firebase.database()
+        db.child(self.__platformsPairName).child(nodeName).set(data)
 
 
 

@@ -15,6 +15,9 @@ class Trader(object):
         self.__platform1 = platfrom1
         self.__platform2 = platform2
 
+        platformsPairName = platfrom1.getName() + "__" + platform2.getName()
+        self.__storage = Storage.Storage(platformsPairName)
+
 
 
     def run(self):
@@ -152,17 +155,10 @@ class Trader(object):
 
             forwardDealsFile.write(textToAppend)
 
-        boughtAtPlatform = self.__platform1.getName()
-        soldAtPlatform = self.__platform2.getName()
-        if deal.fromPlatform1ToPlatform2 == False:
-            boughtAtPlatform = self.__platform2.name()
-            soldAtPlatform = self.__platform1.name()
-
-        Storage.Storage.addDeal(boughtAtPlatform, \
-                                soldAtPlatform, \
-                                deal.initialCryptoAmount, \
-                                deal.buyPrice, \
-                                deal.sellPrice)
+        self.__storage.addDeal(deal.fromPlatform1ToPlatform2, \
+                               deal.initialCryptoAmount, \
+                               deal.buyPrice, \
+                               deal.sellPrice)
 
 
 
