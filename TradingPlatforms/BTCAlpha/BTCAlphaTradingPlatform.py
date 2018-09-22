@@ -29,3 +29,8 @@ class BTCAlphaTradingPlatform(TradingPlatform.TradingPlatform):
 
     def sell(self, price, cryptoAmount):
         self.__apiObject.create_sell_order("BTC_USD", cryptoAmount, price)   
+
+
+
+    def getName(self):
+        return "btcalpha"

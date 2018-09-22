@@ -1,4 +1,5 @@
 from . import TradingPlatform
+from .Storage import Storage
 
 import time
 import datetime
@@ -9,10 +10,12 @@ import uuid
 class Trader(object):
     
     def __init__(self, \
-                 platfrom1:TradingPlatform.TradingPlatform, \
+                 platform1:TradingPlatform.TradingPlatform, \
                  platform2:TradingPlatform.TradingPlatform):
-        self.__platform1 = platfrom1
+        self.__platform1 = platform1
         self.__platform2 = platform2
+
+        self.__storage = Storage(platform1.getName(), platform2.getName())
 
 
 
@@ -20,6 +23,7 @@ class Trader(object):
         while True:
             try:
                 self.__handlePlatformsState()
+                self.__storage.recordTimestamp()
             except:
                 e = sys.exc_info()[0]
                 print("Exception handled: ", e)
@@ -136,12 +140,12 @@ class Trader(object):
                 deal.fromPlatform1ToPlatform2 = False 
             
         if deal is not None:
-            self.__storeDeal(deal, 'forwardDeals.csv')
+            self.__storeDeal(deal, True, 'forwardDeals.csv')
             self.__deals.append(deal)
 
 
 
-    def __storeDeal(self, deal, fileName):
+    def __storeDeal(self, deal, isForward, fileName):
         with self.__openFileForDailyRecords(fileName) as forwardDealsFile:
             textToAppend = str(deal.id) + "," + \
                            str(deal.fromPlatform1ToPlatform2) + "," + \
@@ -150,6 +154,12 @@ class Trader(object):
                            "{0:.2f}".format(deal.profitFiat) + "\n"
 
             forwardDealsFile.write(textToAppend)
+
+        self.__storage.storeDeal(isForward, \
+                                 deal.fromPlatform1ToPlatform2, \
+                                 deal.initialCryptoAmount, \
+                                 deal.buyPrice, \
+                                 deal.sellPrice)
 
 
 
@@ -201,7 +211,7 @@ class Trader(object):
             
             # Make connection between forward deal and return deal
             reverseDeal.id = deal.id
-            self.__storeDeal(reverseDeal, 'reverseDeals.csv')
+            self.__storeDeal(reverseDeal, False, 'reverseDeals.csv')
 
             if deal.cryptoAmountToReturn <= 0.0:
                 # We have returned all funds which we used in forward deal
@@ -234,7 +244,9 @@ class Trader(object):
         sellFunds = min(sellFunds, preferredCryptoAmount)
         dealCryptoAmount = min(dealCryptoAmount, sellFunds)       
 
-        if dealCryptoAmount > Trader.MIN_ORDER_AMOUNT:
+        minOrderCryptoAmount = max(platformToBuy.minOrderCryptoAmount, platformToSell.minOrderCryptoAmount)
+
+        if dealCryptoAmount > minOrderCryptoAmount:
             # Buy at the top selling (ASK) price at platform 1 
             # sell at the top buying (BID) price at platform 2
             sellPrice = platformToSellTopBuyOrder.price 
@@ -247,6 +259,8 @@ class Trader(object):
             deal.cryptoAmountToReturn = dealCryptoAmount
             deal.profitAbsolute = dealCryptoAmount * (sellPrice / platformToSellState.fiatCurrencyRate - buyPrice)
             deal.profitInPercents = self.__getRatio(platformToBuyState, platformToSellState)
+            deal.buyPrice = platformToBuyTopSellOrder.price / platformToBuyState.fiatCurrencyRate
+            deal.sellPrice = platformToSellTopBuyOrder.price / platformToSellState.fiatCurrencyRate
 
             return deal
 
@@ -264,7 +278,6 @@ class Trader(object):
     # Constants
     MIN_BUY_SELL_RATIO = 2.5
     AFFORDABLE_LOSS = 1.6 # We want to pick at least 1% of NET income (0.6% goes for trading platforms fee)
-    MIN_ORDER_AMOUNT = 0.001
 
     # Nested types
     class RoundtripDeal:
@@ -275,3 +288,5 @@ class Trader(object):
         profitInPercents = 0.0
         profitFiat = 0.0
         accumulatedLoss = 0.0
+        buyPrice = 0.0
+        sellPrice = 0.0

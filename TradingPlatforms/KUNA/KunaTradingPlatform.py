@@ -46,6 +46,11 @@ class KunaTradingPlatform(TradingPlatform.TradingPlatform):
 
 
 
+    def getName(self):
+        return "kuna"
+
+
+
     # Internal fields and constants
 
     CURRENCY_RATE_URL = "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11"
