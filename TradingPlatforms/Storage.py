@@ -107,7 +107,7 @@ class Storage:
 
         response = self.__getRootNode().child(nodeName).get()
         if response.pyres is not None:
-            result = float(response.pyres)
+            result = float(response.pyres[0].item[1])
 
         return result
 
