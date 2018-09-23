@@ -42,7 +42,7 @@ class Storage:
             "amount" : "{0:.6f}".format(amount),
             "buyPrice" : str(buyPrice),
             "sellPrice" : str(sellPrice),
-            "incomeOrLossInPercents" : str(incomeInPercents),
+            "incomeOrLossInPercents" : "{0:.2f}".format(incomeInPercents),
             "incomeOrLossFiat" : "{0:.2f}".format(incomeFiat)
         }
 
@@ -135,6 +135,6 @@ class Storage:
 
     def __updateAmountToReturn(self, amount, isForward, isFromPlatform1Platform2):
         if isForward == True:
-            self.__adjustAmountToReturn(amount, not isFromPlatform1Platform2)
+            self.__adjustAmountToReturn(amount, isFromPlatform1Platform2)
         else:
-            self.__adjustAmountToReturn(-amount, not isFromPlatform1Platform2)
+            self.__adjustAmountToReturn(-amount, isFromPlatform1Platform2)

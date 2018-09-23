@@ -15,13 +15,13 @@ class Trader(object):
         self.__platform1 = platform1
         self.__platform2 = platform2
 
-        self.__storage = Storage(platform1.getName(), platform2.getName())
-
 
 
     def run(self):
         while True:
             try:
+                self.__storage = Storage(self.__platform1.getName(), \
+                                         self.__platform2.getName())
                 self.__handlePlatformsState()
                 self.__storage.recordTimestamp()
             except:
@@ -33,20 +33,15 @@ class Trader(object):
 
 
     def __handlePlatformsState(self):
-        print("--- LOOP STARTED")
-
         if self.__updatePlatformsState() == False:
             return        
 
         self.__storePrices()
-        print("    >>> PERFORMING BUY/SELL OPERATIONS")
         self.__buyAndSellAssetIfPossible()
-        print("    <<< PERFORMING BUY/SELL OPERATIONS")
-        print("    >>> TRYING TO RETURN BOUGHT ASSETS")
-        self.__handlePendingDeals()
-        print("    <<< TRYING TO RETURN BOUGHT ASSETS")
-        print("--- LOOP COMPLETED")
-
+        
+        self.__performReverseDealIfPossible(True)
+        self.__performReverseDealIfPossible(False)
+        
 
     
     def __updatePlatformsState(self):
@@ -140,21 +135,11 @@ class Trader(object):
                 deal.fromPlatform1ToPlatform2 = False 
             
         if deal is not None:
-            self.__storeDeal(deal, True, 'forwardDeals.csv')
-            self.__deals.append(deal)
+            self.__storeDeal(deal, True)
 
 
 
-    def __storeDeal(self, deal, isForward, fileName):
-        with self.__openFileForDailyRecords(fileName) as forwardDealsFile:
-            textToAppend = str(deal.id) + "," + \
-                           str(deal.fromPlatform1ToPlatform2) + "," + \
-                           "{0:.4f}".format(deal.initialCryptoAmount) + "," + \
-                           "{0:.2f}".format(deal.profitInPercents) + "," + \
-                           "{0:.2f}".format(deal.profitFiat) + "\n"
-
-            forwardDealsFile.write(textToAppend)
-
+    def __storeDeal(self, deal, isForward):
         self.__storage.storeDeal(isForward, \
                                  deal.fromPlatform1ToPlatform2, \
                                  deal.initialCryptoAmount, \
@@ -163,61 +148,43 @@ class Trader(object):
 
 
 
-    def __handlePendingDeals(self):
-        completedDealsIndices = []
-
-        for dealIndex in range(len(self.__deals)):
-            deal = self.__deals[dealIndex]
-            if self.__handlePendingDeal(deal) == True:
-                completedDealsIndices.insert(0, dealIndex)
-
-        # Indices are stored using descending order
-        for indexToRemove in completedDealsIndices:
-            del self.__deals[indexToRemove]
-
-
-
-    def __shouldPerformReverseOperation(self, deal, reverseRatio) -> bool:
-        result = deal.profitInPercents + reverseRatio - Trader.AFFORDABLE_LOSS > 0.0
+    def __shouldPerformReverseOperation(self, reverseRatio) -> bool:
+        result = reverseRatio > Trader.MIN_RETURN_RATIO
         return result
 
         
 
-    def __handlePendingDeal(self, deal):
-        reverseDeal = None
+    def __performReverseDealIfPossible(self, isFromPlatform1):
+        amountToReturn = self.__storage.getAmountToReturn(isFromPlatform1)
 
-        sourcePlatformState = self.__platform2State
-        sourcePlatform = self.__platform2
-        destinationPlatformState = self.__platform1State
-        destinationPlatform = self.__platform1
+        if amountToReturn < self.__platform1.minOrderCryptoAmount \
+           or amountToReturn < self.__platform2.minOrderCryptoAmount:
+           return
 
-        if deal.fromPlatform1ToPlatform2 == False:
-            sourcePlatformState = self.__platform1State
-            sourcePlatform = self.__platform1
-            destinationPlatformState = self.__platform2State
-            destinationPlatform = self.__platform2
+        sourcePlatformState = self.__platform1State
+        sourcePlatform = self.__platform1
+        destinationPlatformState = self.__platform2State
+        destinationPlatform = self.__platform2
+
+        if isFromPlatform1 == False:
+            sourcePlatformState = self.__platform2State
+            sourcePlatform = self.__platform2
+            destinationPlatformState = self.__platform1State
+            destinationPlatform = self.__platform1
 
         ratio = self.__getRatio(sourcePlatformState, destinationPlatformState)
 
-        if self.__shouldPerformReverseOperation(deal, ratio):
+        if self.__shouldPerformReverseOperation(ratio):
             reverseDeal = self.__performBuySell(sourcePlatform, \
                                                 sourcePlatformState, \
                                                 destinationPlatform, \
                                                 destinationPlatformState, \
-                                                deal.cryptoAmountToReturn)
+                                                amountToReturn)
 
-        if reverseDeal is not None:
-            deal.cryptoAmountToReturn -= reverseDeal.initialCryptoAmount
+            reverseDeal.fromPlatform1ToPlatform2 = isFromPlatform1
+
+            self.__storeDeal(reverseDeal, False)
             
-            # Make connection between forward deal and return deal
-            reverseDeal.id = deal.id
-            self.__storeDeal(reverseDeal, False, 'reverseDeals.csv')
-
-            if deal.cryptoAmountToReturn <= 0.0:
-                # We have returned all funds which we used in forward deal
-                return True 
-
-        return False 
 
 
 
@@ -270,14 +237,9 @@ class Trader(object):
 
 
 
-    # Internal fields
-
-    __deals = [] # TODO: Replace by storing all pending deals in database
-
-
     # Constants
     MIN_BUY_SELL_RATIO = 2.5
-    AFFORDABLE_LOSS = 1.6 # We want to pick at least 1% of NET income (0.6% goes for trading platforms fee)
+    MIN_RETURN_RATIO = -1.0
 
     # Nested types
     class RoundtripDeal:
