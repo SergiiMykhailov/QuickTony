@@ -181,9 +181,10 @@ class Trader(object):
                                                 destinationPlatformState, \
                                                 amountToReturn)
 
-            reverseDeal.fromPlatform1ToPlatform2 = isFromPlatform1
+            if reverseDeal is not None:
+                reverseDeal.fromPlatform1ToPlatform2 = isFromPlatform1
 
-            self.__storeDeal(reverseDeal, False)
+                self.__storeDeal(reverseDeal, False)
             
 
 
@@ -231,7 +232,7 @@ class Trader(object):
 
             return deal
 
-        print("!!! NOT ENOUGH FUNDS TO PERFORM FORWARD OPERATION")
+        print("!!! NOT ENOUGH FUNDS TO PERFORM OPERATION " + platformToBuy.getName() + " <-> " + platformToSell.getName())
 
         return None
 
