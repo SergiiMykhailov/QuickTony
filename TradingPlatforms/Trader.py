@@ -239,8 +239,8 @@ class Trader(object):
 
 
     # Constants
-    MIN_BUY_SELL_RATIO = 2.5
-    MIN_RETURN_RATIO = -1.0
+    MIN_BUY_SELL_RATIO = 5.0
+    MIN_RETURN_RATIO = -2.5
 
     # Nested types
     class RoundtripDeal:
