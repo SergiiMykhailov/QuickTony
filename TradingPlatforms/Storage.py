@@ -24,9 +24,6 @@ class Storage:
         firebase = pyrebase.initialize_app(config)
         self.__database = firebase.database()
 
-        self.__returnFromPlatform1 = self.__getAmountToReturn(self.__getReturnFromNodeName(True))
-        self.__returnFromPlatform2 = self.__getAmountToReturn(self.__getReturnFromNodeName(False))
-
 
 
     def storeDeal(self,
@@ -74,10 +71,8 @@ class Storage:
 
 
     def getAmountToReturn(self, isFromPlatform1):
-        if isFromPlatform1:
-            return self.__returnFromPlatform1
-        else:
-            return self.__returnFromPlatform2
+        result = self.__getAmountToReturn(self.__getReturnFromNodeName(isFromPlatform1))
+        return result
 
 
 
