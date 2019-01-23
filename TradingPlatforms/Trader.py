@@ -37,10 +37,15 @@ class Trader(object):
             return        
 
         self.__storePrices()
-        self.__buyAndSellAssetIfPossible()
+
+        if self.__buyAndSellAssetIfPossible() == True:
+            return
         
-        self.__performReverseDealIfPossible(True)
-        self.__performReverseDealIfPossible(False)
+        if self.__performReverseDealIfPossible(True) == True:
+            return
+
+        if self.__performReverseDealIfPossible(False) == True:
+            return
         
 
     
@@ -86,6 +91,9 @@ class Trader(object):
         platform1ToPlatform2Ratio = self.__getRatio(self.__platform1State, self.__platform2State)
         platform2ToPlatform1Ratio = self.__getRatio(self.__platform2State, self.__platform1State)
 
+        print("    RATIO: forward ({0:.2f}".format(platform1ToPlatform2Ratio) + "), " + \
+              "reverse ({0:.2f}".format(platform2ToPlatform1Ratio) + ")")
+
         with self.__openFileForDailyRecords("prices.csv") as pricesFile:
             textToAppend = "{0:.2f}".format(platform1TopBuyOrder.price / self.__platform1State.fiatCurrencyRate) + "," + \
                            "{0:.2f}".format(platform1TopSellOrder.price / self.__platform1State.fiatCurrencyRate) + "," + \
@@ -113,20 +121,26 @@ class Trader(object):
 
 
 
-    def __buyAndSellAssetIfPossible(self):
+    def __buyAndSellAssetIfPossible(self) -> bool:
         platform1ToPlatform2Ratio = self.__getRatio(self.__platform1State, self.__platform2State)
         platform2ToPlatform1Ratio = self.__getRatio(self.__platform2State, self.__platform1State)
 
         deal = None
 
-        if platform1ToPlatform2Ratio is not None and platform1ToPlatform2Ratio > Trader.MIN_BUY_SELL_RATIO:
+        minBuySellRatio = self.__storage.getMinForwardRatio()
+
+        if minBuySellRatio is None:
+            print("!!! WARNING: Min buy/sell ratio is not specified in configuration.")
+            return False
+
+        if platform1ToPlatform2Ratio is not None and platform1ToPlatform2Ratio > minBuySellRatio:
             deal = self.__performBuySell(self.__platform1, \
                                          self.__platform1State, \
                                          self.__platform2, \
                                          self.__platform2State)
             if deal is not None:
                 deal.fromPlatform1ToPlatform2 = True           
-        elif platform2ToPlatform1Ratio is not None and platform2ToPlatform1Ratio > Trader.MIN_BUY_SELL_RATIO:
+        elif platform2ToPlatform1Ratio is not None and platform2ToPlatform1Ratio > minBuySellRatio:
             deal = self.__performBuySell(self.__platform2, \
                                          self.__platform2State, \
                                          self.__platform1, \
@@ -136,6 +150,9 @@ class Trader(object):
             
         if deal is not None:
             self.__storeDeal(deal, True)
+            return True
+
+        return False
 
 
 
@@ -149,17 +166,26 @@ class Trader(object):
 
 
     def __shouldPerformReverseOperation(self, reverseRatio) -> bool:
-        result = reverseRatio > Trader.MIN_RETURN_RATIO
+        maxLoss = self.__storage.getMaxLossRatio()
+
+        if maxLoss is None:
+            print("!!! ATTENTION: Max loss is not specified in configuration")
+            return False
+
+        result = reverseRatio > maxLoss
         return result
 
         
 
-    def __performReverseDealIfPossible(self, isFromPlatform1):
+    def __performReverseDealIfPossible(self, isFromPlatform1) -> bool:
         amountToReturn = self.__storage.getAmountToReturn(isFromPlatform1)
+
+        if amountToReturn is None:
+            return False
 
         if amountToReturn < self.__platform1.minOrderCryptoAmount \
            or amountToReturn < self.__platform2.minOrderCryptoAmount:
-           return
+            return False
 
         sourcePlatformState = self.__platform1State
         sourcePlatform = self.__platform1
@@ -185,6 +211,10 @@ class Trader(object):
                 reverseDeal.fromPlatform1ToPlatform2 = isFromPlatform1
 
                 self.__storeDeal(reverseDeal, False)
+
+                return True
+
+        return False
             
 
 
@@ -237,10 +267,6 @@ class Trader(object):
         return None
 
 
-
-    # Constants
-    MIN_BUY_SELL_RATIO = 5.0
-    MIN_RETURN_RATIO = -2.5
 
     # Nested types
     class RoundtripDeal:

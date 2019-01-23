@@ -49,9 +49,9 @@ class Storage:
             boughtAt = self.__platform2Name
 
         if isForward:
-            nodeName = "forward_from_" + boughtAt + "_" + nodeName
+            nodeName = nodeName + "_forward_from_" + boughtAt
         else:
-            nodeName = "reverse_from_" + boughtAt + "_" + nodeName
+            nodeName = nodeName + "_reverse_from_" + boughtAt
 
         self.__getRootNode().child("deals").child(nodeName).set(data)
 
@@ -72,6 +72,23 @@ class Storage:
 
     def getAmountToReturn(self, isFromPlatform1):
         result = self.__getAmountToReturn(self.__getReturnFromNodeName(isFromPlatform1))
+        return result
+
+
+
+
+    def getMinForwardRatio(self):
+        node = self.__getRootNode().child("min_forward_ratio")
+        result = self.__getValueOrNoneForNode(node)
+
+        return result
+
+
+
+    def getMaxLossRatio(self):
+        node = self.__getRootNode().child("max_loss_ratio")
+        result = self.__getValueOrNoneForNode(node)
+
         return result
 
 
@@ -98,33 +115,27 @@ class Storage:
 
 
     def __getAmountToReturn(self, nodeName):
-        result = 0.0
-
-        response = self.__getRootNode().child(nodeName).get()
-        if response.pyres is not None:
-            result = float(response.pyres[0].item[1])
+        node = self.__getRootNode().child(nodeName)
+        result = self.__getValueOrNoneForNode(node)
 
         return result
 
 
 
     def __adjustAmountToReturn(self, adjustAmount, isForPlatform1):
-        updatedValue = 0.0
+        updatedValue = self.getAmountToReturn(isForPlatform1)
+        if updatedValue is None:
+            updatedValue = 0.0
 
-        if isForPlatform1 == True:
-            self.__returnFromPlatform1 += adjustAmount
-            updatedValue = self.__returnFromPlatform1
-        else:
-            self.__returnFromPlatform2 += adjustAmount
-            updatedValue = self.__returnFromPlatform2
+        updatedValue += adjustAmount
 
         nodeName = self.__getReturnFromNodeName(isForPlatform1)
 
         data = {
-            "amount" : "{0:.6f}".format(updatedValue)
+            nodeName : "{0:.6f}".format(updatedValue)
         }
 
-        self.__getRootNode().child(nodeName).set(data)
+        self.__getRootNode().update(data)
 
 
 
@@ -133,3 +144,14 @@ class Storage:
             self.__adjustAmountToReturn(amount, isFromPlatform1Platform2)
         else:
             self.__adjustAmountToReturn(-amount, isFromPlatform1Platform2)
+
+
+
+    def __getValueOrNoneForNode(self, node):
+        result = None
+
+        response = node.get()
+        if response.pyres is not None:
+            result = float(response.pyres)
+
+        return result
