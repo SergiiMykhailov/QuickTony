@@ -133,7 +133,10 @@ class Trader(object):
             print("!!! WARNING: Min buy/sell ratio is not specified in configuration.")
             return False
 
+        didTryToPerformOperation = False
+
         if platform1ToPlatform2Ratio is not None and platform1ToPlatform2Ratio > minBuySellRatio:
+            didTryToPerformOperation = True
             deal = self.__performBuySell(self.__platform1, \
                                          self.__platform1State, \
                                          self.__platform2, \
@@ -141,6 +144,7 @@ class Trader(object):
             if deal is not None:
                 deal.fromPlatform1ToPlatform2 = True           
         elif platform2ToPlatform1Ratio is not None and platform2ToPlatform1Ratio > minBuySellRatio:
+            didTryToPerformOperation = True
             deal = self.__performBuySell(self.__platform2, \
                                          self.__platform2State, \
                                          self.__platform1, \
@@ -150,9 +154,8 @@ class Trader(object):
             
         if deal is not None:
             self.__storeDeal(deal, True)
-            return True
 
-        return False
+        return didTryToPerformOperation
 
 
 
